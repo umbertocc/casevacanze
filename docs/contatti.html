@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<meta name="language" content="Italian">
+<meta name="author" content="Affitti Torre Pali">
+<link rel="canonical" href="https://affittotorrepali.netlify.app/contatti">
+<title>Contattaci | Affitti Torre Pali Salento</title>
+<meta name="description" content="Contattaci per informazioni su case vacanze a Torre Pali. Rispondiamo entro 1 ora. WhatsApp, telefono e form di contatto.">
+<meta name="keywords" content="contatti torre pali, affitti salento contatti, prenotazioni torre pali">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); }
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+header { text-align: center; margin-bottom: 50px; padding: 40px 20px; background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); color: white; border-radius: 20px; }
+header h1 { font-size: 2.5em; margin-bottom: 15px; }
+.back-btn { display: inline-block; background: #34495e; color: white; padding: 10px 20px; border-radius: 30px; text-decoration: none; margin-bottom: 20px; }
+.back-btn:hover { background: #2c3e50; }
+.content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 50px; }
+.contact-info, .contact-form { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+.contact-info h2, .contact-form h2 { font-size: 1.8em; color: #2c3e50; margin-bottom: 25px; }
+.contact-method { margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #ecf0f1; }
+.contact-method:last-child { border-bottom: none; }
+.contact-method h3 { color: #e74c3c; margin-bottom: 10px; font-size: 1.2em; }
+.contact-method p { color: #555; font-size: 1.1em; margin-bottom: 10px; }
+.contact-method a { display: inline-block; background: linear-gradient(135deg, #e74c3c, #c0392b); color: white; padding: 12px 25px; border-radius: 30px; text-decoration: none; font-weight: bold; margin-top: 10px; transition: transform 0.3s; }
+.contact-method a:hover { transform: scale(1.05); }
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; margin-bottom: 8px; font-weight: bold; color: #2c3e50; }
+.form-group input, .form-group textarea { width: 100%; padding: 12px; border: 2px solid #ecf0f1; border-radius: 8px; font-family: Arial, sans-serif; font-size: 1em; transition: border-color 0.3s; }
+.form-group input:focus, .form-group textarea:focus { outline: none; border-color: #e74c3c; }
+.form-group textarea { resize: vertical; min-height: 150px; }
+.form-btn { background: linear-gradient(135deg, #e74c3c, #c0392b); color: white; padding: 15px 40px; border: none; border-radius: 30px; font-size: 1.1em; font-weight: bold; cursor: pointer; transition: transform 0.3s; width: 100%; }
+.form-btn:hover { transform: scale(1.02); }
+.success-message { display: none; background: #d4edda; color: #155724; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #c3e6cb; }
+@media (max-width: 768px) {
+  .container { padding: 15px; }
+  header h1 { font-size: 1.8em; }
+  .content-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+<a href="index.html" class="back-btn">← Torna alla homepage</a>
+
+<header>
+<h1>📞 Contattaci</h1>
+<p style="font-size: 1.1em; margin-top: 15px;">Siamo qui per rispondere a tutte le tue domande su case vacanze a Torre Pali</p>
+</header>
+
+<div class="content-grid">
+<div class="contact-info">
+<h2>Metodi di Contatto</h2>
+
+<div class="contact-method">
+<h3>💬 WhatsApp</h3>
+<p>Risposta rapida (entro 10 minuti)</p>
+<a href="https://wa.me/3804580135">Scrivi su WhatsApp</a>
+</div>
+
+<div class="contact-method">
+<h3>📞 Telefono</h3>
+<p>Disponibile 09:00 - 20:00</p>
+<a href="tel:+393804580135">+39 380 4580135</a>
+</div>
+
+<div class="contact-method">
+<h3>📧 Email</h3>
+<p>Rispondiamo entro 1 ora</p>
+<p><strong>info@affittotorreapali.it</strong></p>
+</div>
+
+<div class="contact-method">
+<h3>📍 Ubicazione</h3>
+<p>Torre Pali, Lecce (LE)<br>Salento, Puglia</p>
+</div>
+</div>
+
+<div class="contact-form">
+<h2>Invia un Messaggio</h2>
+<div class="success-message" id="successMsg">✅ Messaggio inviato con successo! Ti contatteremo presto.</div>
+
+<form name="contatti" method="POST" netlify netlify-honeypot="bot-field">
+<input type="hidden" name="form-name" value="contatti">
+<input type="hidden" name="bot-field">
+
+<div class="form-group">
+<label for="nome">Nome Completo *</label>
+<input type="text" id="nome" name="nome" required>
+</div>
+
+<div class="form-group">
+<label for="email">Email *</label>
+<input type="email" id="email" name="email" required>
+</div>
+
+<div class="form-group">
+<label for="telefono">Telefono</label>
+<input type="tel" id="telefono" name="telefono">
+</div>
+
+<div class="form-group">
+<label for="appartamento">Quale appartamento ti interessa?</label>
+<select name="appartamento" id="appartamento" style="width: 100%; padding: 12px; border: 2px solid #ecf0f1; border-radius: 8px; font-family: Arial, sans-serif; font-size: 1em;">
+<option value="">-- Seleziona --</option>
+<option value="casa-bellavista-2">Casa Bellavista 2</option>
+<option value="generico">Richiesta Generica</option>
+</select>
+</div>
+
+<div class="form-group">
+<label for="messaggio">Messaggio *</label>
+<textarea id="messaggio" name="messaggio" required placeholder="Raccontaci cosa ti interessa..."></textarea>
+</div>
+
+<button type="submit" class="form-btn">Invia Messaggio</button>
+</form>
+</div>
+</div>
+
+<div style="text-align: center; padding: 40px; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+<h2 style="color: #2c3e50; margin-bottom: 20px;">Tempo di Risposta</h2>
+<p style="font-size: 1.1em; color: #555; margin-bottom: 20px;">
+⏱️ <strong>WhatsApp:</strong> 10 minuti<br>
+⏱️ <strong>Telefono:</strong> Risposta immediata<br>
+⏱️ <strong>Email/Form:</strong> Entro 1 ora
+</p>
+<p style="color: #7f8c8d;">Siamo disponibili 7 giorni su 7, dalle 09:00 alle 20:00</p>
+</div>
+</div>
+
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G3VV1KJ8SL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-G3VV1KJ8SL');
+</script>
+</body>
+</html>

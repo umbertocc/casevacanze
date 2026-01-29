@@ -1,0 +1,13 @@
+# Allow all bots to crawl the website
+User-agent: *
+Allow: /
+
+# Disallow crawling of internal/private paths (if any)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Specify sitemap location
+Sitemap: https://affittotorrepali.netlify.app/sitemap.xml
+
+# Crawl delay (optional - in seconds)
+Crawl-delay: 1
