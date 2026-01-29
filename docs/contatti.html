@@ -82,9 +82,8 @@ header h1 { font-size: 2.5em; margin-bottom: 15px; }
 <div class="contact-form">
 <h2>Invia un Messaggio</h2>
 
-<form action="https://formspree.io/f/mvzrrpdr" method="POST" target="_top">
-<input type="hidden" name="_next" value="https://umbertocc.github.io/casevacanze/thankyou.html">
-<input type="hidden" name="_captcha" value="false">
+<div class="success-message" id="successMsg">✅ Messaggio inviato con successo! Ti contatteremo presto.</div>
+<form id="contactForm" action="https://formspree.io/f/mvzrrpdr" method="POST">
 
 <div class="form-group">
 <label for="nome">Nome Completo *</label>
@@ -138,6 +137,37 @@ header h1 { font-size: 2.5em; margin-bottom: 15px; }
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-G3VV1KJ8SL');
+</script>
+<script>
+// AJAX submission to Formspree to avoid redirect
+document.addEventListener('DOMContentLoaded', function(){
+  const form = document.getElementById('contactForm');
+  const success = document.getElementById('successMsg');
+  if (!form) return;
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    try {
+      const resp = await fetch(form.action, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: data
+      });
+      if (resp.ok) {
+        success.style.display = 'block';
+        form.reset();
+        setTimeout(() => { success.style.display = 'none'; }, 7000);
+      } else {
+        const text = await resp.text();
+        console.error('Formspree error', resp.status, text);
+        alert('Si è verificato un errore durante l\'invio. Riprova più tardi.');
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Errore di rete. Riprova più tardi.');
+    }
+  });
+});
 </script>
 </body>
 </html>
