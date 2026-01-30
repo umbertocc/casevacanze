@@ -31,7 +31,11 @@ header { margin-bottom: 30px; }
 h1 { font-size: 2.5em; color: #2c3e50; margin-bottom: 10px; }
 .subtitle { font-size: 1.2em; color: #e74c3c; margin-bottom: 20px; }
 .property { background: white; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); margin-bottom: 40px; }
-.main-gallery { height: 500px; overflow: hidden; position: relative; border-radius: 20px 20px 0 0; background: linear-gradient(135deg, #3498db, #2980b9); display: flex; align-items: center; justify-content: center; color: white; font-size: 2em; cursor: pointer; }
+.main-gallery { height: 500px; overflow: hidden; position: relative; border-radius: 0 0 0 0; background: linear-gradient(135deg, #3498db, #2980b9); display: flex; align-items: center; justify-content: center; color: white; font-size: 2em; cursor: pointer; }
+.gallery-filters { display: flex; gap: 10px; flex-wrap: wrap; padding: 15px; background: #f8f9fa; border-radius: 20px 20px 0 0; justify-content: center; }
+.filter-btn { background: white; border: 2px solid #e0e0e0; color: #555; padding: 10px 20px; border-radius: 25px; cursor: pointer; font-weight: bold; transition: all 0.3s; }
+.filter-btn:hover { border-color: #3498db; color: #3498db; }
+.filter-btn.active { background: linear-gradient(135deg, #3498db, #2980b9); color: white; border-color: #3498db; }
 .main-gallery img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.5s; }
 .main-gallery img.active { opacity: 1; }
 .gallery-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; font-size: 2em; padding: 15px 20px; cursor: pointer; z-index: 10; transition: background 0.3s; }
@@ -138,29 +142,36 @@ h1 { font-size: 2.5em; color: #2c3e50; margin-bottom: 10px; }
 </header>
 
 <div class="property">
+<div class="gallery-filters">
+	<button class="filter-btn active" data-filter="all">Tutte</button>
+	<button class="filter-btn" data-filter="esterni">Esterni</button>
+	<button class="filter-btn" data-filter="soggiorno">Soggiorno</button>
+	<button class="filter-btn" data-filter="camere">Camere</button>
+	<button class="filter-btn" data-filter="bagni">Bagno</button>
+</div>
 <div class="main-gallery" id="gallery">
 	<button class="gallery-arrow arrow-left" onclick="changeImg(-1)">&#10094;</button>
 	<button class="gallery-arrow arrow-right" onclick="changeImg(1)">&#10095;</button>
 	<div class="photo-counter"><span id="current-photo">1</span> / <span id="total-photos">19</span></div>
-	<img src="img/casa-giorgio/prospetto.jpg" alt="Prospetto Casa Giorgio" loading="lazy">
-	<img src="img/casa-giorgio/prospetto2.jpg" alt="Vista esterna Casa Giorgio" loading="lazy">
-	<img src="img/casa-giorgio/cortileinterno.jpg" alt="Cortile interno" loading="lazy">
-	<img src="img/casa-giorgio/cortileinterno1.jpg" alt="Spazio esterno" loading="lazy">
-	<img src="img/casa-giorgio/cortileinterno3.jpg" alt="Area esterna attrezzata" loading="lazy">
-	<img src="img/casa-giorgio/soggiorno.jpg" alt="Soggiorno" loading="lazy">
-	<img src="img/casa-giorgio/soggiorno2.jpg" alt="Soggiorno angolo cottura" loading="lazy">
-	<img src="img/casa-giorgio/soggiorno3.jpg" alt="Soggiorno con divano" loading="lazy">
-	<img src="img/casa-giorgio/cucina.jpg" alt="Cucina attrezzata" loading="lazy">
-	<img src="img/casa-giorgio/camera.jpg" alt="Camera matrimoniale" loading="lazy">
-	<img src="img/casa-giorgio/camera2.jpg" alt="Camera da letto" loading="lazy">
-	<img src="img/casa-giorgio/camera3.jpg" alt="Camera con letti singoli" loading="lazy">
-	<img src="img/casa-giorgio/camera4.jpg" alt="Camera con letti singoli" loading="lazy">
-	<img src="img/casa-giorgio/camera5.jpg" alt="Camera da letto" loading="lazy">
-	<img src="img/casa-giorgio/camera6.jpg" alt="Camera da letto" loading="lazy">
-	<img src="img/casa-giorgio/camera7.jpg" alt="Camera da letto" loading="lazy">
-	<img src="img/casa-giorgio/bagno1.jpg" alt="Bagno con doccia" loading="lazy">
-	<img src="img/casa-giorgio/corridoio.jpg" alt="Corridoio" loading="lazy">
-	<img src="img/casa-giorgio/ripostiglio.jpg" alt="Ripostiglio" loading="lazy">
+	<img src="img/casa-giorgio/prospetto.jpg" alt="Prospetto Casa Giorgio" loading="lazy" data-category="esterni">
+	<img src="img/casa-giorgio/prospetto2.jpg" alt="Vista esterna Casa Giorgio" loading="lazy" data-category="esterni">
+	<img src="img/casa-giorgio/cortileinterno.jpg" alt="Cortile interno" loading="lazy" data-category="esterni">
+	<img src="img/casa-giorgio/cortileinterno1.jpg" alt="Spazio esterno" loading="lazy" data-category="esterni">
+	<img src="img/casa-giorgio/cortileinterno3.jpg" alt="Area esterna attrezzata" loading="lazy" data-category="esterni">
+	<img src="img/casa-giorgio/soggiorno.jpg" alt="Soggiorno" loading="lazy" data-category="soggiorno">
+	<img src="img/casa-giorgio/soggiorno2.jpg" alt="Soggiorno angolo cottura" loading="lazy" data-category="soggiorno">
+	<img src="img/casa-giorgio/soggiorno3.jpg" alt="Soggiorno con divano" loading="lazy" data-category="soggiorno">
+	<img src="img/casa-giorgio/cucina.jpg" alt="Cucina attrezzata" loading="lazy" data-category="soggiorno">
+	<img src="img/casa-giorgio/camera.jpg" alt="Camera matrimoniale" loading="lazy" data-category="camere">
+	<img src="img/casa-giorgio/camera2.jpg" alt="Camera da letto" loading="lazy" data-category="camere">
+	<img src="img/casa-giorgio/camera3.jpg" alt="Camera con letti singoli" loading="lazy" data-category="camere">
+	<img src="img/casa-giorgio/camera4.jpg" alt="Camera con letti singoli" loading="lazy" data-category="camere">
+	<img src="img/casa-giorgio/camera5.jpg" alt="Camera da letto" loading="lazy" data-category="camere">
+	<img src="img/casa-giorgio/camera6.jpg" alt="Camera da letto" loading="lazy" data-category="camere">
+	<img src="img/casa-giorgio/camera7.jpg" alt="Camera da letto" loading="lazy" data-category="camere">
+	<img src="img/casa-giorgio/bagno1.jpg" alt="Bagno con doccia" loading="lazy" data-category="bagni">
+	<img src="img/casa-giorgio/corridoio.jpg" alt="Corridoio" loading="lazy" data-category="soggiorno">
+	<img src="img/casa-giorgio/ripostiglio.jpg" alt="Ripostiglio" loading="lazy" data-category="soggiorno">
 <div class="dots" id="dots"></div>
 </div>
 
@@ -331,24 +342,58 @@ L'appartamento dispone di un'area di pertinenza antistante, che può essere util
 
 <script>
 // Se ci sono immagini, attivare la galleria
-const images = document.querySelectorAll('#gallery img');
-if (images.length > 0) {
+const allImages = document.querySelectorAll('#gallery img');
+if (allImages.length > 0) {
   let currentImg = 0;
+  let currentFilter = 'all';
   const dotsContainer = document.getElementById('dots');
   const gallery = document.getElementById('gallery');
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
+  const filterButtons = document.querySelectorAll('.filter-btn');
+
+  let filteredImages = Array.from(allImages);
+
+  // Gestione filtri
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      
+      currentFilter = btn.dataset.filter;
+      
+      if (currentFilter === 'all') {
+        filteredImages = Array.from(allImages);
+      } else {
+        filteredImages = Array.from(allImages).filter(img => img.dataset.category === currentFilter);
+      }
+      
+      allImages.forEach(img => img.style.display = 'none');
+      filteredImages.forEach(img => img.style.display = 'block');
+      
+      dotsContainer.innerHTML = '';
+      filteredImages.forEach((_, i) => {
+        const dot = document.createElement('div');
+        dot.className = 'dot';
+        dot.onclick = () => showImg(i);
+        dotsContainer.appendChild(dot);
+      });
+      
+      currentImg = 0;
+      showImg(0);
+    });
+  });
 
   // Aggiorna counter
   function updateCounter() {
     document.getElementById('current-photo').textContent = currentImg + 1;
     document.getElementById('lightbox-current').textContent = currentImg + 1;
-    document.getElementById('total-photos').textContent = images.length;
-    document.getElementById('lightbox-total').textContent = images.length;
+    document.getElementById('total-photos').textContent = filteredImages.length;
+    document.getElementById('lightbox-total').textContent = filteredImages.length;
   }
 
   // Crea i dot indicator
-  images.forEach((_, i) => {
+  filteredImages.forEach((_, i) => {
     const dot = document.createElement('div');
     dot.className = 'dot';
     dot.onclick = () => showImg(i);
@@ -357,17 +402,17 @@ if (images.length > 0) {
 
   // Funzione per mostrare immagine
   function showImg(i) {
-    images[currentImg].classList.remove('active');
+    filteredImages[currentImg].classList.remove('active');
     document.querySelectorAll('.dot')[currentImg].classList.remove('active');
     currentImg = i;
-    images[i].classList.add('active');
+    filteredImages[i].classList.add('active');
     document.querySelectorAll('.dot')[i].classList.add('active');
     updateCounter();
   }
 
   // Cambia immagine (frecce)
   window.changeImg = function(direction) {
-    let newIndex = (currentImg + direction + images.length) % images.length;
+    let newIndex = (currentImg + direction + filteredImages.length) % filteredImages.length;
     showImg(newIndex);
   }
 
@@ -375,7 +420,7 @@ if (images.length > 0) {
   gallery.addEventListener('click', (e) => {
     if (!e.target.closest('.gallery-arrow') && !e.target.closest('.dot')) {
       lightbox.classList.add('active');
-      lightboxImg.src = images[currentImg].src;
+      lightboxImg.src = filteredImages[currentImg].src;
       document.body.style.overflow = 'hidden';
     }
   });
@@ -388,9 +433,9 @@ if (images.length > 0) {
 
   // Cambia immagine in lightbox
   window.changeLightboxImg = function(direction) {
-    let newIndex = (currentImg + direction + images.length) % images.length;
+    let newIndex = (currentImg + direction + filteredImages.length) % filteredImages.length;
     showImg(newIndex);
-    lightboxImg.src = images[newIndex].src;
+    lightboxImg.src = filteredImages[newIndex].src;
   }
 
   // Chiudi lightbox con ESC
@@ -408,7 +453,7 @@ if (images.length > 0) {
   // Auto-scroll immagini ogni 5 secondi
   setInterval(() => {
     if (!lightbox.classList.contains('active')) {
-      showImg((currentImg + 1) % images.length);
+      showImg((currentImg + 1) % filteredImages.length);
     }
   }, 5000);
 }

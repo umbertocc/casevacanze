@@ -32,6 +32,11 @@ h1 { font-size: 2.5em; color: #2c3e50; margin-bottom: 10px; }
 .subtitle { font-size: 1.2em; color: #e74c3c; margin-bottom: 20px; }
 .property { background: white; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); margin-bottom: 40px; }
 .main-gallery { height: 500px; overflow: hidden; position: relative; border-radius: 20px 20px 0 0; cursor: pointer; }
+.gallery-filters { display: flex; gap: 10px; flex-wrap: wrap; padding: 15px; background: #f8f9fa; border-radius: 20px 20px 0 0; justify-content: center; }
+.filter-btn { background: white; border: 2px solid #e0e0e0; color: #555; padding: 10px 20px; border-radius: 25px; cursor: pointer; font-weight: bold; transition: all 0.3s; }
+.filter-btn:hover { border-color: #3498db; color: #3498db; }
+.filter-btn.active { background: linear-gradient(135deg, #3498db, #2980b9); color: white; border-color: #3498db; }
+.main-gallery { height: 500px; overflow: hidden; position: relative; border-radius: 0 0 0 0; cursor: pointer; }
 .main-gallery img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.5s; }
 .main-gallery img.active { opacity: 1; }
 .gallery-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; font-size: 2em; padding: 15px 20px; cursor: pointer; z-index: 10; transition: background 0.3s; }
@@ -136,32 +141,39 @@ h1 { font-size: 2.5em; color: #2c3e50; margin-bottom: 10px; }
 </header>
 
 <div class="property">
+<div class="gallery-filters">
+	<button class="filter-btn active" data-filter="all">Tutte</button>
+	<button class="filter-btn" data-filter="esterni">Esterni</button>
+	<button class="filter-btn" data-filter="soggiorno">Soggiorno</button>
+	<button class="filter-btn" data-filter="camere">Camere</button>
+	<button class="filter-btn" data-filter="bagni">Bagni</button>
+</div>
 <div class="main-gallery" id="gallery">
 	<button class="gallery-arrow arrow-left" onclick="changeImg(-1)">&#10094;</button>
 	<button class="gallery-arrow arrow-right" onclick="changeImg(1)">&#10095;</button>
 	<div class="photo-counter"><span id="current-photo">1</span> / <span id="total-photos">22</span></div>
-	<img src="img/casa-bella-vista/prospetto.jpg" alt="Prospetto Casa Bellavista" loading="lazy">
-	<img src="img/casa-bella-vista/prospetto_2.jpg" alt="Vista esterna" loading="lazy">
-	<img src="img/casa-bella-vista/cortile.jpg" alt="Cortile privato" loading="lazy">
-	<img src="img/casa-bella-vista/giardino_1.jpg" alt="Giardino" loading="lazy">
-	<img src="img/casa-bella-vista/giardino_2.jpg" alt="Spazio esterno" loading="lazy">
-	<img src="img/casa-bella-vista/giardino_3.jpg" alt="Area giardino" loading="lazy">
-	<img src="img/casa-bella-vista/giardino_4.jpg" alt="Giardino attrezzato" loading="lazy">
-	<img src="img/casa-bella-vista/soggiorno_1.jpg" alt="Soggiorno" loading="lazy">
-	<img src="img/casa-bella-vista/soggiorno_2.jpg" alt="Soggiorno con divano" loading="lazy">
-	<img src="img/casa-bella-vista/soggiorno_3.jpg" alt="Area soggiorno" loading="lazy">
-	<img src="img/casa-bella-vista/cucina.jpg" alt="Cucina attrezzata" loading="lazy">
-	<img src="img/casa-bella-vista/prima_camera_1.jpg" alt="Prima camera" loading="lazy">
-	<img src="img/casa-bella-vista/prima_camera_2.jpg" alt="Camera matrimoniale e singolo" loading="lazy">
-	<img src="img/casa-bella-vista/prima_camera_3.jpg" alt="Prima camera da letto" loading="lazy">
-	<img src="img/casa-bella-vista/seconda_camera.jpg" alt="Seconda camera" loading="lazy">
-	<img src="img/casa-bella-vista/seconda_camera_2.jpg" alt="Camera matrimoniale" loading="lazy">
-	<img src="img/casa-bella-vista/seconda_camera_5.jpg" alt="Seconda camera da letto" loading="lazy">
-	<img src="img/casa-bella-vista/seconda_camera_6.jpg" alt="Camera da letto" loading="lazy">
-	<img src="img/casa-bella-vista/terza_camera_2.jpg" alt="Terza camera tripla" loading="lazy">
-	<img src="img/casa-bella-vista/terza_camera_4.jpg" alt="Camera tripla" loading="lazy">
-	<img src="img/casa-bella-vista/primo_bagno.jpg" alt="Primo bagno" loading="lazy">
-	<img src="img/casa-bella-vista/secondo_bagno.jpg" alt="Secondo bagno" loading="lazy">
+	<img src="img/casa-bella-vista/prospetto.jpg" alt="Prospetto Casa Bellavista" loading="lazy" data-category="esterni">
+	<img src="img/casa-bella-vista/prospetto_2.jpg" alt="Vista esterna" loading="lazy" data-category="esterni">
+	<img src="img/casa-bella-vista/cortile.jpg" alt="Cortile privato" loading="lazy" data-category="esterni">
+	<img src="img/casa-bella-vista/giardino_1.jpg" alt="Giardino" loading="lazy" data-category="esterni">
+	<img src="img/casa-bella-vista/giardino_2.jpg" alt="Spazio esterno" loading="lazy" data-category="esterni">
+	<img src="img/casa-bella-vista/giardino_3.jpg" alt="Area giardino" loading="lazy" data-category="esterni">
+	<img src="img/casa-bella-vista/giardino_4.jpg" alt="Giardino attrezzato" loading="lazy" data-category="esterni">
+	<img src="img/casa-bella-vista/soggiorno_1.jpg" alt="Soggiorno" loading="lazy" data-category="soggiorno">
+	<img src="img/casa-bella-vista/soggiorno_2.jpg" alt="Soggiorno con divano" loading="lazy" data-category="soggiorno">
+	<img src="img/casa-bella-vista/soggiorno_3.jpg" alt="Area soggiorno" loading="lazy" data-category="soggiorno">
+	<img src="img/casa-bella-vista/cucina.jpg" alt="Cucina attrezzata" loading="lazy" data-category="soggiorno">
+	<img src="img/casa-bella-vista/prima_camera_1.jpg" alt="Prima camera" loading="lazy" data-category="camere">
+	<img src="img/casa-bella-vista/prima_camera_2.jpg" alt="Camera matrimoniale e singolo" loading="lazy" data-category="camere">
+	<img src="img/casa-bella-vista/prima_camera_3.jpg" alt="Prima camera da letto" loading="lazy" data-category="camere">
+	<img src="img/casa-bella-vista/seconda_camera.jpg" alt="Seconda camera" loading="lazy" data-category="camere">
+	<img src="img/casa-bella-vista/seconda_camera_2.jpg" alt="Camera matrimoniale" loading="lazy" data-category="camere">
+	<img src="img/casa-bella-vista/seconda_camera_5.jpg" alt="Seconda camera da letto" loading="lazy" data-category="camere">
+	<img src="img/casa-bella-vista/seconda_camera_6.jpg" alt="Camera da letto" loading="lazy" data-category="camere">
+	<img src="img/casa-bella-vista/terza_camera_2.jpg" alt="Terza camera tripla" loading="lazy" data-category="camere">
+	<img src="img/casa-bella-vista/terza_camera_4.jpg" alt="Camera tripla" loading="lazy" data-category="camere">
+	<img src="img/casa-bella-vista/primo_bagno.jpg" alt="Primo bagno" loading="lazy" data-category="bagni">
+	<img src="img/casa-bella-vista/secondo_bagno.jpg" alt="Secondo bagno" loading="lazy" data-category="bagni">
 <div class="dots" id="dots"></div>
 </div>
 
@@ -322,22 +334,62 @@ h1 { font-size: 2.5em; color: #2c3e50; margin-bottom: 10px; }
 
 <script>
 let currentImg = 0;
-const images = document.querySelectorAll('#gallery img');
+let currentFilter = 'all';
+const allImages = document.querySelectorAll('#gallery img');
 const dotsContainer = document.getElementById('dots');
 const gallery = document.getElementById('gallery');
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
+const filterButtons = document.querySelectorAll('.filter-btn');
+
+let filteredImages = Array.from(allImages);
+
+// Gestione filtri
+filterButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    // Rimuovi active da tutti
+    filterButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    
+    currentFilter = btn.dataset.filter;
+    
+    // Filtra immagini
+    if (currentFilter === 'all') {
+      filteredImages = Array.from(allImages);
+    } else {
+      filteredImages = Array.from(allImages).filter(img => img.dataset.category === currentFilter);
+    }
+    
+    // Nascondi tutte
+    allImages.forEach(img => img.style.display = 'none');
+    // Mostra solo filtrate
+    filteredImages.forEach(img => img.style.display = 'block');
+    
+    // Ricostruisci dots
+    dotsContainer.innerHTML = '';
+    filteredImages.forEach((_, i) => {
+      const dot = document.createElement('div');
+      dot.className = 'dot';
+      dot.onclick = () => showImg(i);
+      dotsContainer.appendChild(dot);
+    });
+    
+    // Mostra prima immagine filtrata
+    currentImg = 0;
+    showImg(0);
+  });
+});
 
 // Aggiorna counter
 function updateCounter() {
   document.getElementById('current-photo').textContent = currentImg + 1;
   document.getElementById('lightbox-current').textContent = currentImg + 1;
-  document.getElementById('total-photos').textContent = images.length;
-  document.getElementById('lightbox-total').textContent = images.length;
+  document.getElementById('total-photos').textContent = filteredImages.length;
+  document.getElementById('lightbox-total').textContent = filteredImages.length;
 }
 
-// Crea i dot indicator
-images.forEach((_, i) => {
+// Crea i dot indicator iniziali
+filteredImages.forEach((_, i) => {
   const dot = document.createElement('div');
   dot.className = 'dot';
   dot.onclick = () => showImg(i);
@@ -346,17 +398,17 @@ images.forEach((_, i) => {
 
 // Funzione per mostrare immagine
 function showImg(i) {
-  images[currentImg].classList.remove('active');
+  filteredImages[currentImg].classList.remove('active');
   document.querySelectorAll('.dot')[currentImg].classList.remove('active');
   currentImg = i;
-  images[i].classList.add('active');
+  filteredImages[i].classList.add('active');
   document.querySelectorAll('.dot')[i].classList.add('active');
   updateCounter();
 }
 
 // Cambia immagine (frecce)
 function changeImg(direction) {
-  let newIndex = (currentImg + direction + images.length) % images.length;
+  let newIndex = (currentImg + direction + filteredImages.length) % filteredImages.length;
   showImg(newIndex);
 }
 
@@ -364,7 +416,7 @@ function changeImg(direction) {
 gallery.addEventListener('click', (e) => {
   if (!e.target.closest('.gallery-arrow') && !e.target.closest('.dot')) {
     lightbox.classList.add('active');
-    lightboxImg.src = images[currentImg].src;
+    lightboxImg.src = filteredImages[currentImg].src;
     document.body.style.overflow = 'hidden';
   }
 });
@@ -377,9 +429,9 @@ function closeLightbox() {
 
 // Cambia immagine in lightbox
 function changeLightboxImg(direction) {
-  let newIndex = (currentImg + direction + images.length) % images.length;
+  let newIndex = (currentImg + direction + filteredImages.length) % filteredImages.length;
   showImg(newIndex);
-  lightboxImg.src = images[newIndex].src;
+  lightboxImg.src = filteredImages[newIndex].src;
 }
 
 // Chiudi lightbox con ESC
@@ -397,7 +449,7 @@ showImg(0);
 // Auto-rotate ogni 5 secondi
 let autoRotate = setInterval(() => {
   if (!lightbox.classList.contains('active')) {
-    showImg((currentImg + 1) % images.length);
+    showImg((currentImg + 1) % filteredImages.length);
   }
 }, 5000);
 </script>
