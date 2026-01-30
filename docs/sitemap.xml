@@ -2,17 +2,49 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Homepage -->
   <url>
-    <loc>https://affittotorrepali.netlify.app/</loc>
-    <lastmod>2026-01-29</lastmod>
+    <loc>https://affitto.torrepalivacanze.it/</loc>
+    <lastmod>2026-01-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
-  <!-- Casa Bellavista 2 Details -->
+  <!-- Casa Bellavista 2 -->
   <url>
-    <loc>https://affittotorrepali.netlify.app/casa-bellavista-2.html</loc>
-    <lastmod>2026-01-29</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://affitto.torrepalivacanze.it/casa-bellavista-2.html</loc>
+    <lastmod>2026-01-30</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  </url>
+  
+  <!-- Casa Giorgio 4 -->
+  <url>
+    <loc>https://affitto.torrepalivacanze.it/casa-giorgio-4.html</loc>
+    <lastmod>2026-01-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Casa Giorgio 6 -->
+  <url>
+    <loc>https://affitto.torrepalivacanze.it/casa-giorgio-6.html</loc>
+    <lastmod>2026-01-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Contatti -->
+  <url>
+    <loc>https://affitto.torrepalivacanze.it/contatti.html</loc>
+    <lastmod>2026-01-30</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Privacy -->
+  <url>
+    <loc>https://affitto.torrepalivacanze.it/privacy.html</loc>
+    <lastmod>2026-01-30</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>
