@@ -31,13 +31,25 @@ header { margin-bottom: 30px; }
 h1 { font-size: 2.5em; color: #2c3e50; margin-bottom: 10px; }
 .subtitle { font-size: 1.2em; color: #e74c3c; margin-bottom: 20px; }
 .property { background: white; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); margin-bottom: 40px; }
-.main-gallery { height: 400px; overflow: hidden; position: relative; border-radius: 20px 20px 0 0; background: linear-gradient(135deg, #3498db, #2980b9); display: flex; align-items: center; justify-content: center; color: white; font-size: 2em; }
+.main-gallery { height: 400px; overflow: hidden; position: relative; border-radius: 20px 20px 0 0; background: linear-gradient(135deg, #3498db, #2980b9); display: flex; align-items: center; justify-content: center; color: white; font-size: 2em; cursor: pointer; }
 .main-gallery img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.5s; }
 .main-gallery img.active { opacity: 1; }
-.dots { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; }
+.gallery-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; font-size: 2em; padding: 15px 20px; cursor: pointer; z-index: 10; transition: background 0.3s; }
+.gallery-arrow:hover { background: rgba(0,0,0,0.8); }
+.arrow-left { left: 10px; border-radius: 0 10px 10px 0; }
+.arrow-right { right: 10px; border-radius: 10px 0 0 10px; }
+.photo-counter { position: absolute; top: 20px; right: 20px; background: rgba(0,0,0,0.7); color: white; padding: 8px 16px; border-radius: 20px; font-size: 0.9em; z-index: 10; }
+.dots { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 10; }
 .dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.5); cursor: pointer; transition: background 0.3s; }
 .dot:hover { background: rgba(255,255,255,0.8); }
 .dot.active { background: white; }
+.lightbox { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); }
+.lightbox.active { display: flex; align-items: center; justify-content: center; }
+.lightbox img { max-width: 90%; max-height: 90vh; object-fit: contain; }
+.lightbox-close { position: absolute; top: 30px; right: 40px; color: white; font-size: 3em; cursor: pointer; font-weight: bold; }
+.lightbox-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.2); color: white; border: none; font-size: 3em; padding: 20px 30px; cursor: pointer; transition: background 0.3s; }
+.lightbox-arrow:hover { background: rgba(255,255,255,0.4); }
+.lightbox-counter { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.7); color: white; padding: 10px 20px; border-radius: 25px; font-size: 1.1em; }
 .content { padding: 50px 40px; }
 .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px; }
 .info-section h3 { font-size: 1.5em; color: #2c3e50; margin-bottom: 20px; }
@@ -134,6 +146,9 @@ h1 { font-size: 2.5em; color: #2c3e50; margin-bottom: 10px; }
 
 <div class="property">
 <div class="main-gallery" id="gallery">
+	<button class="gallery-arrow arrow-left" onclick="changeImg(-1)">&#10094;</button>
+	<button class="gallery-arrow arrow-right" onclick="changeImg(1)">&#10095;</button>
+	<div class="photo-counter"><span id="current-photo">1</span> / <span id="total-photos">17</span></div>
 	<img src="img/casa-giorgio2/prospetto.jpg" alt="Prospetto Casa Giorgio 6" loading="lazy">
 	<img src="img/casa-giorgio2/prospetto2.jpg" alt="Vista esterna" loading="lazy">
 	<img src="img/casa-giorgio2/balcone.jpg" alt="Veranda vista mare" loading="lazy">
@@ -313,12 +328,32 @@ L'appartamento dispone di un'area di pertinenza antistante utilizzabile come pos
 </div>
 </div>
 
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+<span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+<button class="lightbox-arrow arrow-left" onclick="changeLightboxImg(-1)">&#10094;</button>
+<img id="lightbox-img" src="" alt="">
+<button class="lightbox-arrow arrow-right" onclick="changeLightboxImg(1)">&#10095;</button>
+<div class="lightbox-counter"><span id="lightbox-current">1</span> / <span id="lightbox-total">17</span></div>
+</div>
+
 <script>
 // Se ci sono immagini, attivare la galleria
 const images = document.querySelectorAll('#gallery img');
 if (images.length > 0) {
   let currentImg = 0;
   const dotsContainer = document.getElementById('dots');
+  const gallery = document.getElementById('gallery');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+
+  // Aggiorna counter
+  function updateCounter() {
+    document.getElementById('current-photo').textContent = currentImg + 1;
+    document.getElementById('lightbox-current').textContent = currentImg + 1;
+    document.getElementById('total-photos').textContent = images.length;
+    document.getElementById('lightbox-total').textContent = images.length;
+  }
 
   // Crea i dot indicator
   images.forEach((_, i) => {
@@ -335,15 +370,55 @@ if (images.length > 0) {
     currentImg = i;
     images[i].classList.add('active');
     document.querySelectorAll('.dot')[i].classList.add('active');
+    updateCounter();
   }
 
-  // Auto-scroll immagini ogni 4 secondi
-  setInterval(() => {
-    showImg((currentImg + 1) % images.length);
-  }, 4000);
+  // Cambia immagine (frecce)
+  window.changeImg = function(direction) {
+    let newIndex = (currentImg + direction + images.length) % images.length;
+    showImg(newIndex);
+  }
+
+  // Apri lightbox
+  gallery.addEventListener('click', (e) => {
+    if (!e.target.closest('.gallery-arrow') && !e.target.closest('.dot')) {
+      lightbox.classList.add('active');
+      lightboxImg.src = images[currentImg].src;
+      document.body.style.overflow = 'hidden';
+    }
+  });
+
+  // Chiudi lightbox
+  window.closeLightbox = function() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
+
+  // Cambia immagine in lightbox
+  window.changeLightboxImg = function(direction) {
+    let newIndex = (currentImg + direction + images.length) % images.length;
+    showImg(newIndex);
+    lightboxImg.src = images[newIndex].src;
+  }
+
+  // Chiudi lightbox con ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
+    if (lightbox.classList.contains('active')) {
+      if (e.key === 'ArrowLeft') changeLightboxImg(-1);
+      if (e.key === 'ArrowRight') changeLightboxImg(1);
+    }
+  });
 
   // Inizializza prima immagine
   showImg(0);
+
+  // Auto-scroll immagini ogni 5 secondi
+  setInterval(() => {
+    if (!lightbox.classList.contains('active')) {
+      showImg((currentImg + 1) % images.length);
+    }
+  }, 5000);
 }
 </script>
 
