@@ -85,6 +85,9 @@ header h1 { font-size: 2.5em; margin-bottom: 15px; }
 <div class="success-message" id="successMsg">✅ Messaggio inviato con successo! Ti contatteremo presto.</div>
 <form id="contactForm" action="https://formspree.io/f/mvzrrpdr" method="POST">
 
+<!-- Honeypot anti-spam (nascosto) -->
+<input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
 <div class="form-group">
 <label for="nome">Nome Completo *</label>
 <input type="text" id="nome" name="nome" required>
@@ -162,9 +165,17 @@ document.addEventListener('DOMContentLoaded', function(){
     const data = new FormData(form);
     // Add reply-to so Formspree can send an autoresponse to the user
     const userEmail = (form.elements['email'] && form.elements['email'].value) || '';
-    if (userEmail) data.append('_replyto', userEmail);
-    // Optional: set a subject for the notification/autoresponse
-    data.append('_subject', 'Conferma: abbiamo ricevuto la tua richiesta - Affitti Torre Pali');
+    const userName = (form.elements['nome'] && form.elements['nome'].value) || 'Cliente';
+    if (userEmail) {
+      data.append('_replyto', userEmail);
+      data.append('_email', userEmail); // Campo aggiuntivo per migliore deliverability
+    }
+    // Subject ottimizzato per evitare spam
+    data.append('_subject', `Nuova Richiesta da ${userName} - Affitti Torre Pali`);
+    // Template HTML per email più professionale
+    data.append('_template', 'box');
+    // Conferma automatica all'utente
+    data.append('_autoresponse', 'Grazie per averci contattato! Abbiamo ricevuto la tua richiesta e ti risponderemo entro 1 ora. - Affitti Torre Pali');
     try {
       const resp = await fetch(form.action, {
         method: 'POST',
