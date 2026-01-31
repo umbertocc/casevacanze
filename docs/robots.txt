@@ -7,7 +7,7 @@ Allow: /
 # Disallow: /private/
 
 # Specify sitemap location
-Sitemap: https://affitto.torrepalivacanze.it/sitemap.xml
+Sitemap: https://torrepalivacanze.it/sitemap.xml
 
 # Crawl delay (optional - in seconds)
 Crawl-delay: 1
