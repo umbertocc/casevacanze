@@ -68,6 +68,42 @@ h1 { font-size: 3em; margin-bottom: 15px; }
 .highlights { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 25px; }
 .highlight { flex: 1; min-width: 200px; background: linear-gradient(135deg, #3498db, #2980b9); color: white; padding: 20px; border-radius: 15px; text-align: center; }
 .highlight-title { font-size: 1.3em; font-weight: bold; margin-bottom: 10px; }
+.skeleton { background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 8px; }
+@keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+.skeleton-container { display: none; }
+.skeleton-container.active { display: block; }
+.content-loaded { display: none; }
+.content-loaded.active { display: block; }
+.skeleton-card { background: white; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); overflow: hidden; margin-bottom: 30px; }
+.skeleton-image { height: 250px; background: #e0e0e0; }
+.skeleton-content { padding: 30px; }
+.skeleton-title { height: 30px; width: 70%; margin-bottom: 15px; }
+.skeleton-subtitle { height: 20px; width: 50%; margin-bottom: 20px; }
+.skeleton-badges { display: flex; gap: 10px; margin-bottom: 20px; }
+.skeleton-badge { height: 32px; width: 80px; border-radius: 20px; }
+.skeleton-text { height: 16px; margin-bottom: 10px; }
+.skeleton-text.short { width: 60%; }
+.skeleton-price { height: 40px; width: 150px; margin-bottom: 20px; }
+.skeleton-buttons { display: flex; gap: 10px; }
+.skeleton-button { height: 50px; width: 120px; border-radius: 50px; }
+.skeleton { background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 8px; }
+@keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+.skeleton-container { display: none; }
+.skeleton-container.active { display: block; }
+.content-loaded { display: none; }
+.content-loaded.active { display: block; }
+.skeleton-card { background: white; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); overflow: hidden; margin-bottom: 30px; }
+.skeleton-image { height: 250px; background: #e0e0e0; }
+.skeleton-content { padding: 30px; }
+.skeleton-title { height: 30px; width: 70%; margin-bottom: 15px; }
+.skeleton-subtitle { height: 20px; width: 50%; margin-bottom: 20px; }
+.skeleton-badges { display: flex; gap: 10px; margin-bottom: 20px; }
+.skeleton-badge { height: 32px; width: 80px; border-radius: 20px; }
+.skeleton-text { height: 16px; margin-bottom: 10px; }
+.skeleton-text.short { width: 60%; }
+.skeleton-price { height: 40px; width: 150px; margin-bottom: 20px; }
+.skeleton-buttons { display: flex; gap: 10px; }
+.skeleton-button { height: 50px; width: 120px; border-radius: 50px; }
 @media (max-width: 768px) { 
   .container { padding: 15px; } 
   h1 { font-size: 2.2em; } 
@@ -168,7 +204,72 @@ document.querySelectorAll('a[href*="casa-"]').forEach(link => {
 
 <h2 style="text-align: center; font-size: 2.5em; color: #2c3e50; margin-bottom: 40px;" id="appartamenti">🏠 Appartamenti Disponibili</h2>
 
-<div class="properties-grid">
+<!-- Skeleton Loading -->
+<div class="skeleton-container active" id="skeleton-loader">
+<div class="skeleton-card">
+<div class="skeleton-image skeleton"></div>
+<div class="skeleton-content">
+<div class="skeleton-title skeleton"></div>
+<div class="skeleton-subtitle skeleton"></div>
+<div class="skeleton-badges">
+<div class="skeleton-badge skeleton"></div>
+<div class="skeleton-badge skeleton"></div>
+<div class="skeleton-badge skeleton"></div>
+</div>
+<div class="skeleton-text skeleton"></div>
+<div class="skeleton-text skeleton"></div>
+<div class="skeleton-text skeleton short"></div>
+<div class="skeleton-price skeleton"></div>
+<div class="skeleton-buttons">
+<div class="skeleton-button skeleton"></div>
+<div class="skeleton-button skeleton"></div>
+</div>
+</div>
+</div>
+<div class="skeleton-card">
+<div class="skeleton-image skeleton"></div>
+<div class="skeleton-content">
+<div class="skeleton-title skeleton"></div>
+<div class="skeleton-subtitle skeleton"></div>
+<div class="skeleton-badges">
+<div class="skeleton-badge skeleton"></div>
+<div class="skeleton-badge skeleton"></div>
+<div class="skeleton-badge skeleton"></div>
+</div>
+<div class="skeleton-text skeleton"></div>
+<div class="skeleton-text skeleton"></div>
+<div class="skeleton-text skeleton short"></div>
+<div class="skeleton-price skeleton"></div>
+<div class="skeleton-buttons">
+<div class="skeleton-button skeleton"></div>
+<div class="skeleton-button skeleton"></div>
+</div>
+</div>
+</div>
+<div class="skeleton-card">
+<div class="skeleton-image skeleton"></div>
+<div class="skeleton-content">
+<div class="skeleton-title skeleton"></div>
+<div class="skeleton-subtitle skeleton"></div>
+<div class="skeleton-badges">
+<div class="skeleton-badge skeleton"></div>
+<div class="skeleton-badge skeleton"></div>
+<div class="skeleton-badge skeleton"></div>
+</div>
+<div class="skeleton-text skeleton"></div>
+<div class="skeleton-text skeleton"></div>
+<div class="skeleton-text skeleton short"></div>
+<div class="skeleton-price skeleton"></div>
+<div class="skeleton-buttons">
+<div class="skeleton-button skeleton"></div>
+<div class="skeleton-button skeleton"></div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Real Content -->
+<div class="properties-grid content-loaded" id="properties-content">
 <div class="property-card">
 <div class="availability-badge">✔️ Disponibile</div>
 <div class="property-image"><img src="img/casa-bella-vista/prospetto.jpg" alt="Casa Bellavista 2" loading="lazy"></div>
@@ -232,6 +333,16 @@ document.querySelectorAll('a[href*="casa-"]').forEach(link => {
 </div>
 </div>
 </div>
+
+<script>
+// Nascondi skeleton e mostra contenuto quando caricato
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    document.getElementById('skeleton-loader').classList.remove('active');
+    document.getElementById('properties-content').classList.add('active');
+  }, 400); // Ritardo minimo per mostrare l'animazione
+});
+</script>
 
 <div class="about-torre">
 <h2>Perché scegliere Torre Pali?</h2>
