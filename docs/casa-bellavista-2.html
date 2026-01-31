@@ -30,6 +30,8 @@ body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background
 .navbar-menu { display: flex; gap: 25px; list-style: none; }
 .navbar-menu a { color: #555; text-decoration: none; font-weight: 500; transition: color 0.3s; }
 .navbar-menu a:hover { color: #e74c3c; }
+.hamburger { display: none; flex-direction: column; cursor: pointer; }
+.hamburger span { width: 25px; height: 3px; background: #2c3e50; margin: 3px 0; transition: 0.3s; border-radius: 3px; }
 .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 15px rgba(37,211,102,0.4); z-index: 999; text-decoration: none; transition: transform 0.3s; }
 .whatsapp-float:hover { transform: scale(1.1); }
 .breadcrumb { max-width: 1200px; margin: 0 auto; padding: 15px 20px; font-size: 0.95em; color: #555; }
@@ -111,6 +113,11 @@ h1 { font-size: 2.5em; color: #2c3e50; margin-bottom: 10px; }
   .info-grid { grid-template-columns: 1fr; }
   .amenities { grid-template-columns: 1fr; }
   .footer-container { grid-template-columns: 1fr; }
+  .hamburger { display: flex; }
+  .navbar-menu { position: fixed; left: -100%; top: 70px; flex-direction: column; background: white; width: 80%; max-width: 300px; height: calc(100vh - 70px); padding: 30px 20px; box-shadow: 2px 0 10px rgba(0,0,0,0.1); transition: left 0.3s; gap: 0; }
+  .navbar-menu.active { left: 0; }
+  .navbar-menu li { margin: 0; padding: 15px 0; border-bottom: 1px solid #ecf0f1; }
+  .navbar-menu a { display: block; font-size: 1.1em; }
 }
 </style>
 <!-- Structured Data (Schema.org) -->
@@ -167,12 +174,17 @@ h1 { font-size: 2.5em; color: #2c3e50; margin-bottom: 10px; }
 <nav class="navbar">
 <div class="navbar-container">
 <a href="index.html" class="navbar-brand">🏝️ Torre Pali Vacanze</a>
-<ul class="navbar-menu">
-<li><a href="index.html">Home</a></li>
-<li><a href="index.html#appartamenti">Appartamenti</a></li>
-<li><a href="torre-pali.html">Torre Pali</a></li>
-<li><a href="faq.html">FAQ</a></li>
-<li><a href="contatti.html">Contatti</a></li>
+<div class="hamburger" onclick="toggleMenu()">
+<span></span>
+<span></span>
+<span></span>
+</div>
+<ul class="navbar-menu" id="navbarMenu">
+<li><a href="index.html" onclick="closeMenu()">Home</a></li>
+<li><a href="index.html#appartamenti" onclick="closeMenu()">Appartamenti</a></li>
+<li><a href="torre-pali.html" onclick="closeMenu()">Torre Pali</a></li>
+<li><a href="faq.html" onclick="closeMenu()">FAQ</a></li>
+<li><a href="contatti.html" onclick="closeMenu()">Contatti</a></li>
 </ul>
 </div>
 </nav>
@@ -563,6 +575,28 @@ let autoRotate = setInterval(() => {
 <p>&copy; 2026 Torre Pali Vacanze. Tutti i diritti riservati.</p>
 </div>
 </footer>
+
+<script>
+// Menu Hamburger
+function toggleMenu() {
+  const menu = document.getElementById('navbarMenu');
+  menu.classList.toggle('active');
+}
+
+function closeMenu() {
+  const menu = document.getElementById('navbarMenu');
+  menu.classList.remove('active');
+}
+
+// Chiudi menu quando si clicca fuori
+document.addEventListener('click', function(event) {
+  const navbar = document.querySelector('.navbar');
+  const menu = document.getElementById('navbarMenu');
+  if (!navbar.contains(event.target) && menu.classList.contains('active')) {
+    menu.classList.remove('active');
+  }
+});
+</script>
 
 </body>
 </html>
