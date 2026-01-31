@@ -21,6 +21,7 @@
 <meta name="twitter:title" content="Affitti Torre Pali Salento | Case Vacanze">
 <meta name="twitter:description" content="Case vacanze sulla spiaggia Bandiera Blu, 20m dal mare, WiFi e AC inclusi.">
 <meta name="twitter:image" content="https://torrepalivacanze.it/img/prospetto/prospetto_1.jpg">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); padding-top: 70px; }
@@ -68,6 +69,13 @@ h1 { font-size: 3em; margin-bottom: 15px; }
 .highlights { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 25px; }
 .highlight { flex: 1; min-width: 200px; background: linear-gradient(135deg, #3498db, #2980b9); color: white; padding: 20px; border-radius: 15px; text-align: center; }
 .highlight-title { font-size: 1.3em; font-weight: bold; margin-bottom: 10px; }
+.interactive-map-section { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 40px; }
+.interactive-map-section h2 { font-size: 2.5em; color: #2c3e50; margin-bottom: 15px; text-align: center; }
+.interactive-map-section p { font-size: 1.1em; color: #555; text-align: center; margin-bottom: 30px; }
+#interactive-map { height: 500px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.15); }
+.map-legend { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
+.legend-item { display: flex; align-items: center; gap: 8px; padding: 8px 15px; background: #f8f9fa; border-radius: 20px; font-size: 0.9em; }
+.legend-icon { font-size: 1.3em; }
 .skeleton { background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 8px; }
 @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
 .skeleton-container { display: none; }
@@ -344,6 +352,19 @@ window.addEventListener('load', function() {
 });
 </script>
 
+<div class="interactive-map-section">
+<h2>🗺️ Dove Siamo</h2>
+<p>Esplora la posizione delle nostre case e i punti di interesse nelle vicinanze</p>
+<div id="interactive-map"></div>
+<div class="map-legend">
+<div class="legend-item"><span class="legend-icon">🏠</span> Case Vacanze</div>
+<div class="legend-item"><span class="legend-icon">🏖️</span> Spiaggia</div>
+<div class="legend-item"><span class="legend-icon">🛒</span> Supermercato</div>
+<div class="legend-item"><span class="legend-icon">🍴</span> Ristoranti</div>
+<div class="legend-item"><span class="legend-icon">🏯</span> Torre Storica</div>
+</div>
+</div>
+
 <div class="about-torre">
 <h2>Perché scegliere Torre Pali?</h2>
 <p>Torre Pali offre tutto ciò che serve per una vacanza perfetta: spiagge sabbiose, fondali bassi e cristallini ideali per famiglie, un'atmosfera autentica e una cucina locale genuina. La torre aragonese del XVI secolo che domina la costa è un'attrazione storica affascinante, e i tramonti sul mare sono semplicemente spettacolari.</p>
@@ -411,6 +432,90 @@ window.addEventListener('load', function() {
 <p>&copy; 2026 Torre Pali Vacanze. Tutti i diritti riservati.</p>
 </div>
 </footer>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script>
+// Inizializza mappa
+var map = L.map('interactive-map').setView([39.8391, 18.2105], 15);
+
+// Tile layer OpenStreetMap
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  maxZoom: 19
+}).addTo(map);
+
+// Icone personalizzate
+var houseIcon = L.divIcon({
+  className: 'custom-icon',
+  html: '<div style="font-size: 30px;">🏠</div>',
+  iconSize: [30, 30],
+  iconAnchor: [15, 15]
+});
+
+var beachIcon = L.divIcon({
+  className: 'custom-icon',
+  html: '<div style="font-size: 30px;">🏖️</div>',
+  iconSize: [30, 30],
+  iconAnchor: [15, 15]
+});
+
+var shopIcon = L.divIcon({
+  className: 'custom-icon',
+  html: '<div style="font-size: 30px;">🛒</div>',
+  iconSize: [30, 30],
+  iconAnchor: [15, 15]
+});
+
+var restaurantIcon = L.divIcon({
+  className: 'custom-icon',
+  html: '<div style="font-size: 30px;">🍴</div>',
+  iconSize: [30, 30],
+  iconAnchor: [15, 15]
+});
+
+var towerIcon = L.divIcon({
+  className: 'custom-icon',
+  html: '<div style="font-size: 30px;">🏰</div>',
+  iconSize: [30, 30],
+  iconAnchor: [15, 15]
+});
+
+// Markers Case Vacanze
+L.marker([39.8395, 18.2108], {icon: houseIcon}).addTo(map)
+  .bindPopup('<b>🏠 Casa Bellavista 2</b><br>20m dalla spiaggia<br><a href="casa-bellavista-2.html">Vedi dettagli</a>');
+
+L.marker([39.8388, 18.2102], {icon: houseIcon}).addTo(map)
+  .bindPopup('<b>🏠 Casa Giorgio 4</b><br>40m dalla spiaggia<br><a href="casa-giorgio-4.html">Vedi dettagli</a>');
+
+L.marker([39.8387, 18.2103], {icon: houseIcon}).addTo(map)
+  .bindPopup('<b>🏠 Casa Giorgio 6</b><br>Vista mare primo piano<br><a href="casa-giorgio-6.html">Vedi dettagli</a>');
+
+// Punti di interesse
+L.marker([39.8398, 18.2115], {icon: beachIcon}).addTo(map)
+  .bindPopup('<b>🏖️ Spiaggia Bandiera Blu</b><br>Sabbia fine e mare cristallino');
+
+L.marker([39.8385, 18.2095], {icon: shopIcon}).addTo(map)
+  .bindPopup('<b>🛒 Supermercato</b><br>Alimentari e prodotti locali');
+
+L.marker([39.8392, 18.2110], {icon: restaurantIcon}).addTo(map)
+  .bindPopup('<b>🍴 Ristorante La Vela</b><br>Pesce fresco e cucina salentina');
+
+L.marker([39.8380, 18.2100], {icon: restaurantIcon}).addTo(map)
+  .bindPopup('<b>🍴 Pizzeria Il Faro</b><br>Pizza e specialità locali');
+
+L.marker([39.8405, 18.2120], {icon: towerIcon}).addTo(map)
+  .bindPopup('<b>🏰 Torre di Torre Pali</b><br>Torre aragonese XVI secolo<br><a href="torre-pali.html">Scopri la storia</a>');
+
+// Isola della Fanciulla
+L.marker([39.8402, 18.2125], {icon: L.divIcon({
+  className: 'custom-icon',
+  html: '<div style="font-size: 30px;">🏝️</div>',
+  iconSize: [30, 30],
+  iconAnchor: [15, 15]
+})}).addTo(map)
+  .bindPopup('<b>🏝️ Isola della Fanciulla</b><br>Isolotto roccioso raggiungibile a nuoto<br><a href="torre-pali.html">Leggi la leggenda</a>');
+</script>
 
 </body>
 </html>
