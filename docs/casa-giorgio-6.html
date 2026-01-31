@@ -89,6 +89,10 @@ h1 { font-size: 2.5em; color: #2c3e50; margin-bottom: 10px; }
 .map-section { margin-top: 40px; }
 .map-section h3 { margin-bottom: 20px; color: #2c3e50; }
 #map { height: 350px; border-radius: 16px; }
+.calendar-section { margin-top: 40px; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+.calendar-section h3 { margin-bottom: 20px; color: #2c3e50; font-size: 1.8em; }
+.calendar-section p { color: #7f8c8d; margin-bottom: 20px; line-height: 1.6; }
+.calendar-iframe { width: 100%; height: 600px; border: none; border-radius: 12px; }
 .cta-buttons { text-align: center; margin-top: 40px; padding: 40px; background: white; border-radius: 15px; }
 .btn { display: inline-block; background: linear-gradient(135deg, #e74c3c, #c0392b); color: white; padding: 18px 45px; border-radius: 50px; text-decoration: none; font-weight: bold; margin: 10px; transition: transform 0.3s; font-size: 1.1em; }
 .btn:hover { transform: scale(1.05); }
@@ -381,6 +385,12 @@ L'appartamento dispone di un'area di pertinenza antistante utilizzabile come pos
 <div class="map-section">
 <h3>📍 Ubicazione</h3>
 <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=18.209%2C39.838%2C18.212%2C39.840&layer=mapnik&marker=39.8391%2C18.2105" id="map" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="border:0;width:100%;height:350px;border-radius:16px;"></iframe>
+</div>
+
+<div class="calendar-section">
+<h3>📅 Disponibilità Casa Giorgio 6</h3>
+<p>Consulta il calendario per verificare le disponibilità in tempo reale. I giorni occupati sono contrassegnati con le prenotazioni confermate.</p>
+<iframe src="https://calendar.google.com/calendar/embed?src=a9b2d0a3c200b72eb24d8ccdf8cd141f0c0135adb98bef773734ebc813e16260%40group.calendar.google.com&ctz=Europe%2FRome&mode=MONTH&showTitle=0&showPrint=0&showTabs=0&showCalendars=0" class="calendar-iframe" loading="lazy"></iframe>
 </div>
 
 <div class="cta-buttons">
