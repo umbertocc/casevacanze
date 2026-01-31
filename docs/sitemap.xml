@@ -40,6 +40,14 @@
     <priority>0.8</priority>
   </url>
   
+  <!-- FAQ -->
+  <url>
+    <loc>https://torrepalivacanze.it/faq.html</loc>
+    <lastmod>2026-01-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
   <!-- Contatti -->
   <url>
     <loc>https://torrepalivacanze.it/contatti.html</loc>
