@@ -27,9 +27,17 @@
   <!-- Casa Giorgio 6 -->
   <url>
     <loc>https://affitto.torrepalivacanze.it/casa-giorgio-6.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-01-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  </url>
+  
+  <!-- Torre Pali -->
+  <url>
+    <loc>https://affitto.torrepalivacanze.it/torre-pali.html</loc>
+    <lastmod>2026-01-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   
   <!-- Contatti -->
