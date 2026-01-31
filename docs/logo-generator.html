@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logo Generator - Torre Pali Vacanze</title>
+<style>
+body {
+  margin: 0;
+  padding: 40px;
+  background: #f0f0f0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+h1 {
+  color: #2c3e50;
+  text-align: center;
+}
+
+.instructions {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.instructions h2 {
+  color: #e74c3c;
+  margin-top: 0;
+}
+
+.instructions ol {
+  line-height: 1.8;
+}
+
+.logo-container {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.logo {
+  width: 512px;
+  height: 512px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: transform 0.3s;
+  position: relative;
+}
+
+.logo:hover {
+  transform: scale(1.02);
+}
+
+.logo-label {
+  position: absolute;
+  top: -30px;
+  font-size: 14px;
+  color: #555;
+  font-weight: bold;
+}
+
+/* Logo Stile 1: Azzurro Mare */
+.logo-1 {
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+}
+
+.logo-1 .emoji {
+  font-size: 180px;
+  margin-bottom: 20px;
+}
+
+.logo-1 .text {
+  color: white;
+  font-size: 42px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.2;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Logo Stile 2: Bianco Elegante */
+.logo-2 {
+  background: white;
+  border: 3px solid #3498db;
+}
+
+.logo-2 .emoji {
+  font-size: 180px;
+  margin-bottom: 20px;
+}
+
+.logo-2 .text {
+  color: #2c3e50;
+  font-size: 42px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* Logo Stile 3: Circolare */
+.logo-3 {
+  background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+  border-radius: 50%;
+}
+
+.logo-3 .emoji {
+  font-size: 200px;
+  margin-bottom: 10px;
+}
+
+.logo-3 .text {
+  color: white;
+  font-size: 38px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.2;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Logo Stile 4: Minimale */
+.logo-4 {
+  background: #2c3e50;
+}
+
+.logo-4 .emoji {
+  font-size: 220px;
+  margin-bottom: 30px;
+}
+
+.logo-4 .text {
+  color: white;
+  font-size: 36px;
+  font-weight: 300;
+  letter-spacing: 3px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.download-btn {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 10px;
+  transition: background 0.3s;
+}
+
+.download-btn:hover {
+  background: #c0392b;
+}
+
+.info-box {
+  background: #fff3cd;
+  border: 2px solid #ffc107;
+  padding: 15px;
+  border-radius: 8px;
+  max-width: 600px;
+  margin-top: 20px;
+}
+
+.info-box strong {
+  color: #856404;
+}
+</style>
+</head>
+<body>
+
+<h1>🏝️ Generatore Logo Torre Pali Vacanze</h1>
+
+<div class="instructions">
+<h2>📋 Istruzioni:</h2>
+<ol>
+<li>Scegli lo stile del logo che preferisci tra i 4 disponibili</li>
+<li><strong>Windows:</strong> Premi <kbd>Win + Shift + S</kbd> per lo strumento di cattura</li>
+<li>Seleziona l'area del logo che vuoi salvare</li>
+<li>Salva l'immagine come <code>logo.png</code> nella cartella <code>docs/img/</code></li>
+<li>Usa dimensione 512x512px per qualità ottimale</li>
+</ol>
+</div>
+
+<div class="logo-container">
+<!-- Logo 1: Azzurro Mare -->
+<div style="position: relative;">
+<div class="logo-label">Stile 1: Azzurro Mare</div>
+<div class="logo logo-1">
+<div class="emoji">🏝️</div>
+<div class="text">Torre Pali<br>Vacanze</div>
+</div>
+</div>
+
+<!-- Logo 2: Bianco Elegante -->
+<div style="position: relative;">
+<div class="logo-label">Stile 2: Bianco Elegante</div>
+<div class="logo logo-2">
+<div class="emoji">🏝️</div>
+<div class="text">Torre Pali<br>Vacanze</div>
+</div>
+</div>
+
+<!-- Logo 3: Circolare -->
+<div style="position: relative;">
+<div class="logo-label">Stile 3: Circolare Verde</div>
+<div class="logo logo-3">
+<div class="emoji">🏝️</div>
+<div class="text">Torre Pali<br>Vacanze</div>
+</div>
+</div>
+
+<!-- Logo 4: Minimale -->
+<div style="position: relative;">
+<div class="logo-label">Stile 4: Minimale Scuro</div>
+<div class="logo logo-4">
+<div class="emoji">🏝️</div>
+<div class="text">Torre Pali Vacanze</div>
+</div>
+</div>
+</div>
+
+<div class="info-box">
+<strong>💡 Consiglio:</strong> Lo Stile 1 (Azzurro Mare) o Stile 2 (Bianco Elegante) sono i migliori per Google Search Console. 
+Il logo deve essere quadrato (512x512px) per apparire correttamente nei risultati di ricerca Google.
+</div>
+
+<div class="instructions" style="margin-top: 30px;">
+<h2>🎨 Alternativa Professionale:</h2>
+<p>Se vuoi un logo ancora più professionale, puoi usare:</p>
+<ul>
+<li><strong>Canva</strong> - canva.com (gratuito, molti template)</li>
+<li><strong>LogoMaker</strong> - logomakr.com (online gratuito)</li>
+<li><strong>Figma</strong> - figma.com (per designer)</li>
+</ul>
+<p><strong>Specifiche tecniche per Google:</strong></p>
+<ul>
+<li>Dimensione: 512x512px (minimo 112x112px)</li>
+<li>Formato: PNG con sfondo trasparente o JPG</li>
+<li>Rapporto: 1:1 (quadrato)</li>
+<li>Peso file: max 5MB</li>
+</ul>
+</div>
+
+<script>
+// Aggiungi funzionalità click per copiare
+document.querySelectorAll('.logo').forEach(logo => {
+  logo.addEventListener('click', function() {
+    alert('Usa Win + Shift + S per catturare questo logo!\n\nPoi salvalo come logo.png nella cartella docs/img/');
+  });
+});
+</script>
+
+</body>
+</html>
