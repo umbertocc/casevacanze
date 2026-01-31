@@ -30,8 +30,53 @@ body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #333; backgr
 .navbar-menu a:hover::after { width: 100%; }
 .hamburger { display: none; flex-direction: column; cursor: pointer; }
 .hamburger span { width: 25px; height: 3px; background: #2c3e50; margin: 3px 0; transition: 0.3s; border-radius: 3px; }
-.whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 15px rgba(37,211,102,0.4); z-index: 999; text-decoration: none; transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
-.whatsapp-float:hover { transform: scale(1.15) rotate(5deg); box-shadow: 0 6px 25px rgba(37,211,102,0.6); }
+
+/* Animazione Pulse per WhatsApp */
+@keyframes pulse {
+  0% { box-shadow: 0 4px 15px rgba(37,211,102,0.4); }
+  50% { box-shadow: 0 4px 15px rgba(37,211,102,0.7), 0 0 0 10px rgba(37,211,102,0.2); }
+  100% { box-shadow: 0 4px 15px rgba(37,211,102,0.4); }
+}
+
+.whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 15px rgba(37,211,102,0.4); z-index: 999; text-decoration: none; transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55); animation: pulse 2s infinite; }
+.whatsapp-float:hover { transform: scale(1.15) rotate(5deg); box-shadow: 0 6px 25px rgba(37,211,102,0.6); animation: none; }
+
+/* Tooltip per pulsanti */
+[data-tooltip] { position: relative; }
+[data-tooltip]::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: rgba(0,0,0,0.9);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+[data-tooltip]::after {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  border: 6px solid transparent;
+  border-top-color: rgba(0,0,0,0.9);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+[data-tooltip]:hover::before,
+[data-tooltip]:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
 .footer { background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%); color: white; padding: 50px 20px 20px; margin-top: 60px; border-top: 3px solid transparent; border-image: linear-gradient(90deg, #667eea, #764ba2, #f093fb) 1; }
 .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
 .footer-section h3 { margin-bottom: 20px; color: #ecf0f1; font-weight: 600; font-size: 1.2em; }
@@ -98,7 +143,7 @@ header h1 { font-size: 3em; margin-bottom: 15px; font-weight: 700; text-shadow: 
 </nav>
 
 <!-- WhatsApp Flottante -->
-<a href="https://wa.me/3886587080" class="whatsapp-float" target="_blank" aria-label="Contattaci su WhatsApp">
+<a href="https://wa.me/393886587080?text=Ciao!%20Vorrei%20informazioni%20sulle%20vostre%20case%20vacanza%20a%20Torre%20Pali" class="whatsapp-float" target="_blank" aria-label="Contattaci su WhatsApp" data-tooltip="Chatta con noi su WhatsApp" onclick="gtag('event', 'whatsapp_click', {'event_category': 'Contact', 'event_label': 'Contatti - Floating Button'});">
 💬
 </a>
 
@@ -117,7 +162,7 @@ header h1 { font-size: 3em; margin-bottom: 15px; font-weight: 700; text-shadow: 
 <div class="contact-method">
 <h3>💬 WhatsApp</h3>
 <p>Risposta rapida (entro 10 minuti)</p>
-<a href="https://wa.me/3886587080">Scrivi su WhatsApp</a>
+<a href="https://wa.me/393886587080?text=Ciao!%20Vorrei%20informazioni%20sulle%20vostre%20case%20vacanza%20a%20Torre%20Pali" onclick="gtag('event', 'whatsapp_click', {'event_category': 'Contact', 'event_label': 'Contatti - Contact Method'});">Scrivi su WhatsApp</a>
 </div>
 
 <div class="contact-method">
@@ -283,7 +328,7 @@ document.addEventListener('DOMContentLoaded', function(){
 <h3>Contatti</h3>
 <p>📞 <a href="tel:+393886587080">+39 388 658 70 80</a></p>
 <p>📧 <strong>info@torrepalivacanze.it</strong></p>
-<p>💬 <a href="https://wa.me/3886587080" target="_blank">WhatsApp</a></p>
+<p>💬 <a href="https://wa.me/393886587080?text=Ciao!%20Vorrei%20informazioni%20sulle%20vostre%20case%20vacanza%20a%20Torre%20Pali" target="_blank" onclick="gtag('event', 'whatsapp_click', {'event_category': 'Contact', 'event_label': 'Contatti - Footer'});">WhatsApp</a></p>
 <p style="margin-top: 15px;">Orario: 09:00 - 20:00<br>Risposta entro 1 ora</p>
 </div>
 </div>

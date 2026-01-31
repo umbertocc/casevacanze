@@ -139,7 +139,7 @@ Quando sei pronto per mettere online il sito:
 ## 📞 Contatti
 
 - **Telefono:** +39 388 658 70 80
-- **WhatsApp:** https://wa.me/3886587080
+- **WhatsApp:** https://wa.me/393886587080
 - **Email:** info@torrepalivacanze.it
 - **Sito:** https://torrepalivacanze.it
 
