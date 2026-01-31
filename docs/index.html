@@ -448,61 +448,61 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 // Icone personalizzate
 var houseIcon = L.divIcon({
   className: 'custom-icon',
-  html: '<div style="font-size: 30px;">🏠</div>',
-  iconSize: [30, 30],
-  iconAnchor: [15, 15]
+  html: '<div style="font-size: 22px;">🏠</div>',
+  iconSize: [22, 22],
+  iconAnchor: [11, 11]
 });
 
 var beachIcon = L.divIcon({
   className: 'custom-icon',
-  html: '<div style="font-size: 30px;">🏖️</div>',
-  iconSize: [30, 30],
-  iconAnchor: [15, 15]
+  html: '<div style="font-size: 22px;">🏖️</div>',
+  iconSize: [22, 22],
+  iconAnchor: [11, 11]
 });
 
 var shopIcon = L.divIcon({
   className: 'custom-icon',
-  html: '<div style="font-size: 30px;">🛒</div>',
-  iconSize: [30, 30],
-  iconAnchor: [15, 15]
+  html: '<div style="font-size: 22px;">🛒</div>',
+  iconSize: [22, 22],
+  iconAnchor: [11, 11]
 });
 
 var restaurantIcon = L.divIcon({
   className: 'custom-icon',
-  html: '<div style="font-size: 30px;">🍴</div>',
-  iconSize: [30, 30],
-  iconAnchor: [15, 15]
+  html: '<div style="font-size: 22px;">🍴</div>',
+  iconSize: [22, 22],
+  iconAnchor: [11, 11]
 });
 
 var towerIcon = L.divIcon({
   className: 'custom-icon',
-  html: '<div style="font-size: 30px;">🏰</div>',
-  iconSize: [30, 30],
-  iconAnchor: [15, 15]
+  html: '<div style="font-size: 22px;">🏯</div>',
+  iconSize: [22, 22],
+  iconAnchor: [11, 11]
 });
 
-// Markers Case Vacanze
-L.marker([39.8395, 18.2108], {icon: houseIcon}).addTo(map)
-  .bindPopup('<b>🏠 Casa Bellavista 2</b><br>20m dalla spiaggia<br><a href="casa-bellavista-2.html">Vedi dettagli</a>');
+// Markers Case Vacanze - Via Vasco de Gama
+L.marker([39.8383, 18.2098], {icon: houseIcon}).addTo(map)
+  .bindPopup('<b>🏠 Casa Bellavista 2</b><br>Via Vasco de Gama 5<br>20m dalla spiaggia<br><a href="casa-bellavista-2.html">Vedi dettagli</a>');
 
-L.marker([39.8388, 18.2102], {icon: houseIcon}).addTo(map)
-  .bindPopup('<b>🏠 Casa Giorgio 4</b><br>40m dalla spiaggia<br><a href="casa-giorgio-4.html">Vedi dettagli</a>');
+L.marker([39.8382, 18.2099], {icon: houseIcon}).addTo(map)
+  .bindPopup('<b>🏠 Casa Giorgio 4</b><br>Via Vasco de Gama 7<br>40m dalla spiaggia<br><a href="casa-giorgio-4.html">Vedi dettagli</a>');
 
-L.marker([39.8387, 18.2103], {icon: houseIcon}).addTo(map)
-  .bindPopup('<b>🏠 Casa Giorgio 6</b><br>Vista mare primo piano<br><a href="casa-giorgio-6.html">Vedi dettagli</a>');
+L.marker([39.8382, 18.2099], {icon: houseIcon}).addTo(map)
+  .bindPopup('<b>🏠 Casa Giorgio 6</b><br>Via Vasco de Gama 7<br>Vista mare primo piano<br><a href="casa-giorgio-6.html">Vedi dettagli</a>');
 
 // Punti di interesse
-L.marker([39.8398, 18.2115], {icon: beachIcon}).addTo(map)
-  .bindPopup('<b>🏖️ Spiaggia Bandiera Blu</b><br>Sabbia fine e mare cristallino');
+L.marker([39.8390, 18.2105], {icon: beachIcon}).addTo(map)
+  .bindPopup('<b>🏖️ Spiaggia Torre Pali</b><br>Sabbia fine e mare cristallino<br>Bandiera Blu');
 
-L.marker([39.8385, 18.2095], {icon: shopIcon}).addTo(map)
+L.marker([39.8380, 18.2095], {icon: shopIcon}).addTo(map)
   .bindPopup('<b>🛒 Supermercato</b><br>Alimentari e prodotti locali');
 
 L.marker([39.8392, 18.2110], {icon: restaurantIcon}).addTo(map)
-  .bindPopup('<b>🍴 Ristorante La Vela</b><br>Pesce fresco e cucina salentina');
+  .bindPopup('<b>🍴 Ristoranti</b><br>Cucina tipica salentina');
 
 L.marker([39.8380, 18.2100], {icon: restaurantIcon}).addTo(map)
-  .bindPopup('<b>🍴 Pizzeria Il Faro</b><br>Pizza e specialità locali');
+  .bindPopup('<b>🍴 Pizzeria</b><br>Pizza e specialità locali');
 
 L.marker([39.8405, 18.2120], {icon: towerIcon}).addTo(map)
   .bindPopup('<b>🏰 Torre di Torre Pali</b><br>Torre aragonese XVI secolo<br><a href="torre-pali.html">Scopri la storia</a>');
@@ -510,9 +510,9 @@ L.marker([39.8405, 18.2120], {icon: towerIcon}).addTo(map)
 // Isola della Fanciulla
 L.marker([39.8402, 18.2125], {icon: L.divIcon({
   className: 'custom-icon',
-  html: '<div style="font-size: 30px;">🏝️</div>',
-  iconSize: [30, 30],
-  iconAnchor: [15, 15]
+  html: '<div style="font-size: 22px;">🏝️</div>',
+  iconSize: [22, 22],
+  iconAnchor: [11, 11]
 })}).addTo(map)
   .bindPopup('<b>🏝️ Isola della Fanciulla</b><br>Isolotto roccioso raggiungibile a nuoto<br><a href="torre-pali.html">Leggi la leggenda</a>');
 </script>
