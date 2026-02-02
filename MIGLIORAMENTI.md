@@ -21,6 +21,9 @@ Questo documento elenca tutti i miglioramenti implementati sul sito Torre Pali V
 - ✅ **Sitemap.xml aggiornato** con tutte le 7 pagine del sito
 - ✅ **Robots.txt** configurato correttamente
 - ✅ **File .htaccess** con redirect www → non-www, forza HTTPS, compressione GZIP, cache
+- ✅ **Logo/Favicon configurato** con URL assoluti, multiple dimensioni (32x32, 192x192, 180x180)
+- ✅ **Web App Manifest** (manifest.json) con icone logo per Google Search
+- ✅ **Structured Data Organization** con logo già presente in tutte le pagine
 
 ### 3. **Contenuti**
 - ✅ **Pagina Torre Pali** (torre-pali.html) con storia, leggenda Isola della Fanciulla, attrazioni

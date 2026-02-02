@@ -1,0 +1,23 @@
+{
+  "name": "Torre Pali Vacanze",
+  "short_name": "Torre Pali",
+  "description": "Case vacanze a Torre Pali nel Salento, a pochi passi dalla spiaggia Bandiera Blu",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#667eea",
+  "icons": [
+    {
+      "src": "/img/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/img/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
