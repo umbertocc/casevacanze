@@ -71,7 +71,7 @@ body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #2d3748; bac
   100% { box-shadow: 0 6px 25px rgba(37,211,102,0.4); }
 }
 
-.whatsapp-float { position: fixed; top: 60px; left: 15px; background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 6px 25px rgba(37,211,102,0.4); z-index: 999; text-decoration: none; transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55); animation: pulse 2s infinite; }
+.whatsapp-float { position: fixed; top: auto !important; left: auto !important; bottom: 20px !important; right: 20px !important; background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 6px 25px rgba(37,211,102,0.4); z-index: 999; text-decoration: none; transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55); animation: pulse 2s infinite; }
 .whatsapp-float:hover { transform: scale(1.15) rotate(5deg); box-shadow: 0 8px 35px rgba(37,211,102,0.6); animation: none; }
 
 /* Tooltip per pulsanti */
@@ -382,7 +382,7 @@ document.querySelectorAll('a[href*="casa-"]').forEach(link => {
 </nav>
 
 <!-- WhatsApp Flottante -->
-<a href="https://wa.me/393886587080?text=Ciao!%20Vorrei%20informazioni%20sulle%20vostre%20case%20vacanza%20a%20Torre%20Pali" class="whatsapp-float" target="_blank" aria-label="Contattaci su WhatsApp" data-tooltip="Chatta con noi su WhatsApp" onclick="gtag('event', 'whatsapp_click', {'event_category': 'Contact', 'event_label': 'Homepage - Floating Button'});">
+<a href="https://wa.me/393886587080?text=Ciao!%20Vorrei%20informazioni%20sulle%20vostre%20case%20vacanza%20a%20Torre%20Pali" class="whatsapp-float" style="position: fixed !important; bottom: 20px !important; right: 20px !important; top: auto !important; left: auto !important;" target="_blank" aria-label="Contattaci su WhatsApp" data-tooltip="Chatta con noi su WhatsApp" onclick="gtag('event', 'whatsapp_click', {'event_category': 'Contact', 'event_label': 'Homepage - Floating Button'});">
 💬
 </a>
 
