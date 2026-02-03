@@ -47,7 +47,7 @@ body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #333; backgr
 .navbar-menu a:hover { color: #667eea; }
 .navbar-menu a:hover::after { width: 100%; }
 .dropdown { position: relative; }
-.dropdown-toggle { cursor: pointer; display: flex; align-items: center; gap: 5px; }
+.dropdown-toggle { cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 5px 0; }
 .dropdown-toggle::before { content: '\25BC'; font-size: 0.7em; transition: transform 0.3s; }
 .dropdown:hover .dropdown-toggle::before { transform: rotate(180deg); }
 .dropdown-menu { position: absolute; top: 100%; left: 0; background: white; min-width: 220px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border-radius: 15px; padding: 15px 0; margin-top: 10px; opacity: 0; visibility: hidden; transform: translateY(-10px); transition: all 0.3s; z-index: 1000; }
