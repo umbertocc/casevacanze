@@ -101,6 +101,7 @@ header h1 { font-size: 3.5em; margin-bottom: 15px; font-weight: 700; text-shadow
 .info-card h4 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 10px; font-size: 1.3em; font-weight: 600; }
 .info-card p { color: #64748b; font-size: 1em; }
 .comparison-table { width: 100%; background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.08); margin: 30px 0; }
+.comparison-table-wrapper { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
 .comparison-table th { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; text-align: left; font-weight: 600; }
 .comparison-table td { padding: 18px 20px; border-bottom: 1px solid #ecf0f1; }
 .comparison-table tr:last-child td { border-bottom: none; }
@@ -151,8 +152,9 @@ header h1 { font-size: 3.5em; margin-bottom: 15px; font-weight: 700; text-shadow
   }
   .dropdown-menu a { padding: 10px 0; font-size: 1em; }
   .map-container iframe { height: 350px; }
-  .comparison-table { font-size: 0.9em; }
-  .comparison-table th, .comparison-table td { padding: 12px 10px; }
+  .comparison-table { font-size: 0.9em; display: block; overflow-x: auto; white-space: nowrap; }
+  .comparison-table thead, .comparison-table tbody, .comparison-table tr { display: table; width: 100%; table-layout: fixed; }
+  .comparison-table th, .comparison-table td { padding: 12px 8px; white-space: normal; }
 }
 </style>
 </head>
@@ -336,7 +338,8 @@ Spiaggia tranquilla circondata da una splendida <strong>pineta mediterranea</str
 Trova la spiaggia perfetta per le tue esigenze confrontando caratteristiche e servizi
 </p>
 
-<table class="comparison-table">
+<div style="overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 -20px; padding: 0 20px;">
+<table class="comparison-table" style="min-width: 600px;">
 <thead>
 <tr>
 <th>Caratteristica</th>
@@ -419,6 +422,7 @@ Trova la spiaggia perfetta per le tue esigenze confrontando caratteristiche e se
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 
 <div class="content-section">
