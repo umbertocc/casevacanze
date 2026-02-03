@@ -42,10 +42,20 @@ body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #333; backgr
 .navbar-brand { font-size: 1.3em; font-weight: 700; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none; transition: transform 0.3s; }
 .navbar-brand:hover { transform: scale(1.05); }
 .navbar-menu { display: flex; gap: 30px; list-style: none; }
-.navbar-menu a { color: #4a5568; text-decoration: none; font-weight: 500; transition: all 0.3s; position: relative; padding: 5px 0; }
+.navbar-menu > li { position: relative; }
+.navbar-menu a { color: #4a5568; text-decoration: none; font-weight: 500; transition: all 0.3s; position: relative; padding: 5px 0; display: block; }
 .navbar-menu a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); transition: width 0.3s; }
 .navbar-menu a:hover { color: #667eea; }
 .navbar-menu a:hover::after { width: 100%; }
+.dropdown { position: relative; }
+.dropdown-toggle { cursor: pointer; display: flex; align-items: center; gap: 5px; }
+.dropdown-toggle::before { content: '\25BC'; font-size: 0.7em; transition: transform 0.3s; }
+.dropdown:hover .dropdown-toggle::before { transform: rotate(180deg); }
+.dropdown-menu { position: absolute; top: 100%; left: 0; background: white; min-width: 220px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border-radius: 15px; padding: 15px 0; margin-top: 10px; opacity: 0; visibility: hidden; transform: translateY(-10px); transition: all 0.3s; z-index: 1000; }
+.dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+.dropdown-menu a { padding: 12px 25px; color: #4a5568; font-weight: 500; white-space: nowrap; }
+.dropdown-menu a::after { display: none; }
+.dropdown-menu a:hover { background: rgba(102, 126, 234, 0.1); color: #667eea; }
 .hamburger { display: none; flex-direction: column; cursor: pointer; }
 .hamburger span { width: 25px; height: 3px; background: #2c3e50; margin: 3px 0; transition: 0.3s; border-radius: 3px; }
 .whatsapp-float { position: fixed; top: auto !important; left: auto !important; bottom: 20px !important; right: 20px !important; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 15px rgba(37,211,102,0.4); z-index: 999; text-decoration: none; transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
@@ -108,8 +118,12 @@ header h1 { font-size: 3.5em; margin-bottom: 15px; font-weight: 700; text-shadow
   .hamburger { display: flex; }
   .navbar-menu { position: fixed; left: -100%; top: 70px; flex-direction: column; background: white; width: 80%; max-width: 300px; height: calc(100vh - 70px); padding: 30px 20px; box-shadow: 2px 0 10px rgba(0,0,0,0.1); transition: left 0.3s; gap: 0; }
   .navbar-menu.active { left: 0; }
-  .navbar-menu li { margin: 0; padding: 15px 0; border-bottom: 1px solid #ecf0f1; }
-  .navbar-menu a { display: block; font-size: 1.1em; }
+  .navbar-menu li { margin: 0; padding: 0; border-bottom: 1px solid #ecf0f1; width: 100%; }
+  .navbar-menu a { display: block; font-size: 1.1em; padding: 15px 0; }
+  .dropdown-menu { position: static; box-shadow: none; padding: 0 0 0 20px; margin: 0; opacity: 1; visibility: visible; transform: none; max-height: 0; overflow: hidden; transition: max-height 0.3s; }
+  .dropdown.active .dropdown-menu { max-height: 300px; padding: 10px 0 10px 20px; }
+  .dropdown-toggle { padding: 15px 0; }
+  .dropdown-menu a { padding: 10px 0; font-size: 1em; }
 }
 
 </style>
@@ -127,7 +141,18 @@ header h1 { font-size: 3.5em; margin-bottom: 15px; font-weight: 700; text-shadow
 <ul class="navbar-menu" id="navbarMenu">
 <li><a href="index.html" onclick="closeMenu()">Home</a></li>
 <li><a href="index.html#appartamenti" onclick="closeMenu()">Appartamenti</a></li>
-<li><a href="torre-pali.html" onclick="closeMenu()">Torre Pali</a></li>
+<li class="dropdown">
+<span class="dropdown-toggle" style="color: #4a5568; font-weight: 500;">Scopri il Salento</span>
+<div class="dropdown-menu">
+<a href="torre-vado.html" onclick="closeMenu()">Torre Vado</a>
+<a href="pescoluse.html" onclick="closeMenu()">Pescoluse</a>
+<a href="torre-pali.html" onclick="closeMenu()">Torre Pali</a>
+<a href="lido-marini.html" onclick="closeMenu()">Lido Marini</a>
+<a href="spiagge-salento-sud.html" onclick="closeMenu()">Guida Spiagge</a>
+<a href="eventi-salento.html" onclick="closeMenu()">Eventi e Tradizioni</a>
+<a href="faq-salento.html" onclick="closeMenu()">FAQ Salento</a>
+</div>
+</li>
 <li><a href="faq.html" onclick="closeMenu()">FAQ</a></li>
 <li><a href="contatti.html" onclick="closeMenu()">Contatti</a></li>
 </ul>
@@ -299,6 +324,289 @@ L'isolotto è costituito da <strong>rocce calcaree</strong> ed è circondato da 
 ✅ <strong>Sicurezza:</strong> Nuotare solo con mare calmo, in gruppo o con salvagente<br>
 ✅ <strong>Fotografia:</strong> Il tramonto dall'isola offre scatti indimenticabili<br>
 ✅ <strong>Rispetto:</strong> Non lasciare rifiuti e rispettare l'ambiente marino
+</p>
+</div>
+</div>
+
+<div class="content-section">
+<h2>🚗 Come Arrivare a Torre Pali</h2>
+<p>
+Torre Pali è facilmente raggiungibile da diverse località pugliesi e dai principali hub di trasporto della regione.
+</p>
+
+<h3>✈️ In Aereo</h3>
+<p>
+L'aeroporto più vicino è quello di <strong>Brindisi-Casale (BDS)</strong>, situato a circa <strong>120 km</strong> da Torre Pali (1 ora e 30 minuti in auto). L'aeroporto di Brindisi offre collegamenti nazionali e internazionali con le principali città europee, soprattutto durante la stagione estiva.
+</p>
+<p>
+In alternativa, l'<strong>aeroporto di Bari-Palese (BRI)</strong> dista circa <strong>220 km</strong> (2 ore e 30 minuti in auto) ed è ben collegato con voli nazionali e internazionali tutto l'anno.
+</p>
+
+<h3>🚗 In Auto</h3>
+<p>
+Da Brindisi o Lecce, seguire le indicazioni per <strong>Gallipoli</strong> sulla SS101, proseguire verso sud sulla SS274 in direzione <strong>Santa Maria di Leuca</strong> e seguire le indicazioni per <strong>Torre Pali/Salve</strong>. Il percorso è ben segnalato e panoramico.
+</p>
+<p>
+<strong>Distanze chilometriche:</strong><br>
+• Da Lecce: 70 km (1 ora)<br>
+• Da Gallipoli: 45 km (40 minuti)<br>
+• Da Otranto: 75 km (1 ora e 10 minuti)<br>
+• Da Santa Maria di Leuca: 15 km (15 minuti)<br>
+• Da Brindisi: 120 km (1 ora e 30 minuti)
+</p>
+
+<h3>🚆 In Treno</h3>
+<p>
+La stazione ferroviaria più vicina è <strong>Lecce</strong>, collegata con le principali città italiane. Dalla stazione di Lecce è possibile noleggiare un'auto o prendere autobus di linea per raggiungere Torre Pali (servizio limitato, si consiglia di verificare gli orari).
+</p>
+
+<h3>🚌 In Autobus</h3>
+<p>
+Durante la stagione estiva, collegamenti con bus di linea collegano Lecce con Torre Pali e le principali località del basso Salento. Per informazioni sugli orari: <strong>Ferrovie del Sud Est (FSE)</strong> e <strong>Salento in Bus</strong>.
+</p>
+
+<div class="highlight-box">
+<h3>🅿️ Parcheggio</h3>
+<p>
+Torre Pali dispone di ampi parcheggi gratuiti nelle vicinanze delle spiagge. Durante l'alta stagione (luglio-agosto) è consigliabile arrivare presto al mattino per trovare posto facilmente. Alcune zone residenziali offrono parcheggi a pagamento custoditi.
+</p>
+</div>
+</div>
+
+<div class="content-section">
+<h2>📅 Quando Visitare Torre Pali</h2>
+<p>
+Torre Pali è una destinazione ideale da <strong>maggio a ottobre</strong>, con il picco di affluenza turistica in luglio e agosto. Ogni periodo dell'anno offre vantaggi diversi.
+</p>
+
+<div class="info-grid">
+<div class="info-card">
+<div class="info-card-icon">🌸</div>
+<h4>Primavera (Maggio-Giugno)</h4>
+<p>Temperature miti 20-28°C, mare già balneabile, spiagge meno affollate, prezzi convenienti</p>
+</div>
+<div class="info-card">
+<div class="info-card-icon">☀️</div>
+<h4>Estate (Luglio-Agosto)</h4>
+<p>Temperature 28-35°C, mare caldo, eventi e vita notturna, massima animazione turistica</p>
+</div>
+<div class="info-card">
+<div class="info-card-icon">🍂</div>
+<h4>Autunno (Settembre-Ottobre)</h4>
+<p>Temperature piacevoli 22-28°C, mare ancora caldo, tranquillità, ideale per coppie</p>
+</div>
+</div>
+
+<h3>🌡️ Clima e Temperature</h3>
+<p>
+Torre Pali gode di un <strong>clima mediterraneo</strong> con estati calde e secche, inverni miti e piovosi. La temperatura dell'acqua raggiunge i <strong>25-27°C</strong> in luglio e agosto, rimanendo piacevole (22-24°C) anche a settembre e ottobre.
+</p>
+
+<div class="features-list">
+<div class="feature-item">
+<div class="feature-item-icon">🌞</div>
+<div>
+<strong>Giugno</strong><br>
+<span style="color: #555;">Aria 26°C • Mare 23°C • Ideale per famiglie</span>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-item-icon">🔥</div>
+<div>
+<strong>Luglio-Agosto</strong><br>
+<span style="color: #555;">Aria 30-35°C • Mare 26-27°C • Alta stagione</span>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-item-icon">🍇</div>
+<div>
+<strong>Settembre</strong><br>
+<span style="color: #555;">Aria 27°C • Mare 25°C • Bassa stagione ideale</span>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-item-icon">🌊</div>
+<div>
+<strong>Ottobre</strong><br>
+<span style="color: #555;">Aria 22°C • Mare 22°C • Tranquillo e rilassante</span>
+</div>
+</div>
+</div>
+
+<div class="highlight-box">
+<h3>💡 Consiglio Insider</h3>
+<p>
+Il periodo migliore per visitare Torre Pali è <strong>settembre</strong>: il mare è ancora caldo, le spiagge meno affollate, i prezzi più contenuti e il clima perfetto per esplorare il territorio senza il caldo torrido di agosto.
+</p>
+</div>
+</div>
+
+<div class="content-section">
+<h2>🗺️ Cosa Vedere nei Dintorni di Torre Pali</h2>
+<p>
+La posizione strategica di Torre Pali la rende il punto di partenza ideale per esplorare le meraviglie del basso Salento. Ecco le destinazioni imperdibili nelle vicinanze.
+</p>
+
+<h3>📍 A 10-20 km</h3>
+
+<div class="features-list">
+<div class="feature-item">
+<div class="feature-item-icon">🏛️</div>
+<div>
+<strong>Santa Maria di Leuca (15 km)</strong><br>
+<span style="color: #555;">Finis Terrae, faro, ville Liberty, grotte marine</span>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-item-icon">🏖️</div>
+<div>
+<strong>Pescoluse - Maldive del Salento (3 km)</strong><br>
+<span style="color: #555;">Spiaggia tropicale con sabbia bianchissima</span>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-item-icon">🏰</div>
+<div>
+<strong>Specchia (18 km)</strong><br>
+<span style="color: #555;">Borgo dei più belli d'Italia, centro storico medievale</span>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-item-icon">⛪</div>
+<div>
+<strong>Presicce-Acquarica (12 km)</strong><br>
+<span style="color: #555;">Frantoi ipogei, palazzi barocchi, chiese storiche</span>
+</div>
+</div>
+</div>
+
+<h3>📍 A 30-50 km</h3>
+
+<div class="features-list">
+<div class="feature-item">
+<div class="feature-item-icon">🌊</div>
+<div>
+<strong>Castro (35 km)</strong><br>
+<span style="color: #555;">Grotta Zinzulusa, borgo marinaro, siti archeologici</span>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-item-icon">🏖️</div>
+<div>
+<strong>Gallipoli (45 km)</strong><br>
+<span style="color: #555;">Città vecchia su isola, spiagge Baia Verde, movida</span>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-item-icon">🏰</div>
+<div>
+<strong>Otranto (75 km)</strong><br>
+<span style="color: #555;">Cattedrale con mosaico pavimentale, castello aragonese</span>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-item-icon">🏛️</div>
+<div>
+<strong>Lecce (70 km)</strong><br>
+<span style="color: #555;">Firenze del Sud, barocco leccese, anfiteatro romano</span>
+</div>
+</div>
+</div>
+
+<h3>🚤 Escursioni in Barca</h3>
+<p>
+Da Torre Pali e Santa Maria di Leuca partono numerose escursioni in barca per visitare le <strong>grotte marine</strong> della costa adriatica: Grotta Zinzulusa, Grotta Romanelli, Grotta del Diavolo, Grotta delle Tre Porte. Le escursioni durano 2-3 ore e permettono di ammirare faraglioni, insenature nascoste e acque cristalline raggiungibili solo via mare.
+</p>
+
+<h3>🌳 Entroterra Salentino</h3>
+<p>
+L'entroterra del basso Salento è costellato di <strong>masserie fortificate</strong>, <strong>frantoi ipogei</strong>, <strong>ulivi millenari</strong> e borghi autentici. Una passeggiata tra Salve, Patù, Giuliano di Lecce e Miggiano permette di scoprire la Puglia rurale, lontana dal turismo di massa, dove il tempo sembra essersi fermato.
+</p>
+
+<div class="highlight-box">
+<h3>🎯 Itinerario Consigliato (1 Giorno)</h3>
+<p>
+<strong>Mattina:</strong> Relax in spiaggia a Torre Pali e nuotata all'Isola della Fanciulla<br>
+<strong>Pranzo:</strong> Ristorante di pesce fresco sul lungomare<br>
+<strong>Pomeriggio:</strong> Visita a Santa Maria di Leuca (faro, basilica, passeggiata lungomare)<br>
+<strong>Tramonto:</strong> Aperitivo con vista a Santa Maria di Leuca<br>
+<strong>Cena:</strong> Cucina tipica salentina in un borgo dell'entroterra (Specchia o Presicce)
+</p>
+</div>
+</div>
+
+<div class="content-section">
+<h2>🛍️ Servizi e Informazioni Pratiche</h2>
+<p>
+Torre Pali è una località turistica ben organizzata con tutti i servizi necessari per una vacanza confortevole.
+</p>
+
+<h3>🏪 Servizi Essenziali</h3>
+<div class="features-list">
+<div class="feature-item">
+<div class="feature-item-icon">🛒</div>
+<div>
+<strong>Supermercati</strong><br>
+<span style="color: #555;">Supermercati aperti tutti i giorni, anche la sera</span>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-item-icon">💊</div>
+<div>
+<strong>Farmacia</strong><br>
+<span style="color: #555;">Farmacia a Salve (3 km) e Torre Vado (2 km)</span>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-item-icon">🏥</div>
+<div>
+<strong>Pronto Soccorso</strong><br>
+<span style="color: #555;">Ospedale più vicino a Tricase (25 km)</span>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-item-icon">🏦</div>
+<div>
+<strong>Bancomat</strong><br>
+<span style="color: #555;">Sportelli bancomat a Torre Pali e Salve</span>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-item-icon">⛽</div>
+<div>
+<strong>Distributori</strong><br>
+<span style="color: #555;">Stazioni di servizio sulla strada per Salve</span>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-item-icon">🚲</div>
+<div>
+<strong>Noleggio</strong><br>
+<span style="color: #555;">Bici, scooter, auto, attrezzatura mare</span>
+</div>
+</div>
+</div>
+
+<h3>🏖️ Servizi Balneari</h3>
+<p>
+Le spiagge di Torre Pali offrono sia <strong>tratti liberi</strong> che <strong>stabilimenti balneari attrezzati</strong> con ombrelloni, lettini, bar, ristoranti, docce, servizi igienici e assistenza bagnanti. Molti lidi organizzano attività sportive, corsi di acquagym, animazione per bambini e serate musicali.
+</p>
+
+<h3>📶 Connettività</h3>
+<p>
+Torre Pali è ben coperta dalla rete mobile 4G/5G. La maggior parte di bar, ristoranti e stabilimenti balneari offre Wi-Fi gratuito ai clienti.
+</p>
+
+<div class="highlight-box">
+<h3>📞 Numeri Utili</h3>
+<p>
+🚨 <strong>Emergenze:</strong> 112 (numero unico emergenze)<br>
+🚑 <strong>Pronto Soccorso:</strong> 118<br>
+👮 <strong>Carabinieri:</strong> 112<br>
+🚔 <strong>Polizia:</strong> 113<br>
+🔥 <strong>Vigili del Fuoco:</strong> 115<br>
+⚓ <strong>Guardia Costiera:</strong> 1530<br>
+💊 <strong>Guardia Medica:</strong> disponibile nei mesi estivi
 </p>
 </div>
 </div>
@@ -487,6 +795,19 @@ function closeMenu() {
   const menu = document.getElementById('navbarMenu');
   menu.classList.remove('active');
 }
+
+// Dropdown mobile
+document.addEventListener('DOMContentLoaded', function() {
+  const dropdownToggle = document.querySelector('.dropdown-toggle');
+  const dropdown = document.querySelector('.dropdown');
+  
+  if (dropdownToggle && window.innerWidth <= 768) {
+    dropdownToggle.addEventListener('click', function(e) {
+      e.stopPropagation();
+      dropdown.classList.toggle('active');
+    });
+  }
+});
 
 // Chiudi menu quando si clicca fuori
 document.addEventListener('click', function(event) {

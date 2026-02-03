@@ -30,10 +30,20 @@ body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #333; backgr
 .navbar-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; }
 .navbar-brand { font-size: 1.3em; font-weight: 700; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none; transition: transform 0.3s; }
 .navbar-menu { display: flex; gap: 30px; list-style: none; }
-.navbar-menu a { color: #4a5568; text-decoration: none; font-weight: 500; transition: all 0.3s; position: relative; padding: 5px 0; }
+.navbar-menu > li { position: relative; }
+.navbar-menu a { color: #4a5568; text-decoration: none; font-weight: 500; transition: all 0.3s; position: relative; padding: 5px 0; display: block; }
 .navbar-menu a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); transition: width 0.3s; }
 .navbar-menu a:hover { color: #667eea; }
 .navbar-menu a:hover::after { width: 100%; }
+.dropdown { position: relative; }
+.dropdown-toggle { cursor: pointer; display: flex; align-items: center; gap: 5px; }
+.dropdown-toggle::before { content: '\25BC'; font-size: 0.7em; transition: transform 0.3s; }
+.dropdown:hover .dropdown-toggle::before { transform: rotate(180deg); }
+.dropdown-menu { position: absolute; top: 100%; left: 0; background: white; min-width: 220px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border-radius: 15px; padding: 15px 0; margin-top: 10px; opacity: 0; visibility: hidden; transform: translateY(-10px); transition: all 0.3s; z-index: 1000; }
+.dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+.dropdown-menu a { padding: 12px 25px; color: #4a5568; font-weight: 500; white-space: nowrap; }
+.dropdown-menu a::after { display: none; }
+.dropdown-menu a:hover { background: rgba(102, 126, 234, 0.1); color: #667eea; }
 .hamburger { display: none; flex-direction: column; cursor: pointer; }
 .hamburger span { width: 25px; height: 3px; background: #2c3e50; margin: 3px 0; transition: 0.3s; border-radius: 3px; }
 .whatsapp-float { position: fixed; top: auto !important; left: auto !important; bottom: 20px !important; right: 20px !important; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 15px rgba(37,211,102,0.4); z-index: 999; text-decoration: none; transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
@@ -74,8 +84,12 @@ header h1 { font-size: 3.5em; margin-bottom: 15px; font-weight: 700; text-shadow
   .hamburger { display: flex; }
   .navbar-menu { position: fixed; left: -100%; top: 70px; flex-direction: column; background: white; width: 80%; max-width: 300px; height: calc(100vh - 70px); padding: 30px 20px; box-shadow: 2px 0 10px rgba(0,0,0,0.1); transition: left 0.3s; gap: 0; }
   .navbar-menu.active { left: 0; }
-  .navbar-menu li { margin: 0; padding: 15px 0; border-bottom: 1px solid #ecf0f1; }
-  .navbar-menu a { display: block; font-size: 1.1em; }
+  .navbar-menu li { margin: 0; padding: 0; border-bottom: 1px solid #ecf0f1; width: 100%; }
+  .navbar-menu a { display: block; font-size: 1.1em; padding: 15px 0; }
+  .dropdown-menu { position: static; box-shadow: none; padding: 0 0 0 20px; margin: 0; opacity: 1; visibility: visible; transform: none; max-height: 0; overflow: hidden; transition: max-height 0.3s; }
+  .dropdown.active .dropdown-menu { max-height: 300px; padding: 10px 0 10px 20px; }
+  .dropdown-toggle { padding: 15px 0; }
+  .dropdown-menu a { padding: 10px 0; font-size: 1em; }
 }
 </style>
 </head>
@@ -92,7 +106,18 @@ header h1 { font-size: 3.5em; margin-bottom: 15px; font-weight: 700; text-shadow
 <ul class="navbar-menu" id="navbarMenu">
 <li><a href="index.html" onclick="closeMenu()">Home</a></li>
 <li><a href="index.html#appartamenti" onclick="closeMenu()">Appartamenti</a></li>
-<li><a href="torre-pali.html" onclick="closeMenu()">Torre Pali</a></li>
+<li class="dropdown">
+<span class="dropdown-toggle" style="color: #4a5568; font-weight: 500;">Scopri il Salento</span>
+<div class="dropdown-menu">
+<a href="torre-vado.html" onclick="closeMenu()">Torre Vado</a>
+<a href="pescoluse.html" onclick="closeMenu()">Pescoluse</a>
+<a href="torre-pali.html" onclick="closeMenu()">Torre Pali</a>
+<a href="lido-marini.html" onclick="closeMenu()">Lido Marini</a>
+<a href="spiagge-salento-sud.html" onclick="closeMenu()">Guida Spiagge</a>
+<a href="eventi-salento.html" onclick="closeMenu()">Eventi e Tradizioni</a>
+<a href="faq-salento.html" onclick="closeMenu()">FAQ Salento</a>
+</div>
+</li>
 <li><a href="faq.html" onclick="closeMenu()">FAQ</a></li>
 <li><a href="contatti.html" onclick="closeMenu()">Contatti</a></li>
 </ul>
@@ -486,6 +511,19 @@ function closeMenu() {
   const menu = document.getElementById('navbarMenu');
   menu.classList.remove('active');
 }
+
+// Dropdown mobile
+document.addEventListener('DOMContentLoaded', function() {
+  const dropdownToggle = document.querySelector('.dropdown-toggle');
+  const dropdown = document.querySelector('.dropdown');
+  
+  if (dropdownToggle && window.innerWidth <= 768) {
+    dropdownToggle.addEventListener('click', function(e) {
+      e.stopPropagation();
+      dropdown.classList.toggle('active');
+    });
+  }
+});
 
 // Chiudi menu quando si clicca fuori
 document.addEventListener('click', function(event) {

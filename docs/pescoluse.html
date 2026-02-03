@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<meta name="language" content="Italian">
+<meta name="author" content="Affitti Torre Pali">
+<link rel="canonical" href="https://torrepalivacanze.it/pescoluse">
+<title>Pescoluse - Maldive del Salento | Spiaggia Bianca e Mare Turchese</title>
+<meta name="description" content="Pescoluse, le Maldive del Salento: spiaggia di sabbia bianchissima, mare turchese e fondali caraibici. Scopri la spiaggia più bella della Puglia!">
+<meta name="keywords" content="pescoluse, maldive del salento, spiaggia pescoluse, mare pescoluse, sabbia bianca salento, spiaggia tropicale puglia, lido marini, torre pali, salve, salento mare, vacanze pescoluse, maldive puglia">
+<!-- Open Graph Tags -->
+<meta property="og:title" content="Pescoluse - Maldive del Salento | Spiaggia Caraibica">
+<meta property="og:description" content="Pescoluse: sabbia bianchissima e mare turchese, le vere Maldive del Salento. Scopri la spiaggia più bella della Puglia!">
+<meta property="og:url" content="https://torrepalivacanze.it/pescoluse">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://torrepalivacanze.it/img/torre-pali/torrepali.jpg">
+<!-- Twitter Card Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<!-- Favicon e Logo -->
+<link rel="icon" type="image/png" sizes="32x32" href="https://torrepalivacanze.it/img/logo.png">
+<link rel="icon" type="image/png" sizes="192x192" href="https://torrepalivacanze.it/img/logo.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://torrepalivacanze.it/img/logo.png">
+<link rel="shortcut icon" href="https://torrepalivacanze.it/img/logo.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="twitter:title" content="Pescoluse - Maldive del Salento">
+<meta name="twitter:description" content="La spiaggia più bella del Salento: sabbia bianca e mare turchese come ai Caraibi.">
+<meta name="twitter:image" content="https://torrepalivacanze.it/img/torre-pali/torrepali.jpg">
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #333; background: linear-gradient(135deg, #f5f7fa 0%, #e8eaf6 100%); padding-top: 70px; }
+.navbar { position: fixed; top: 0; left: 0; right: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0,0,0,0.08); z-index: 1000; }
+.navbar-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; }
+.navbar-brand { font-size: 1.3em; font-weight: 700; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none; transition: transform 0.3s; }
+.navbar-brand:hover { transform: scale(1.05); }
+.navbar-menu { display: flex; gap: 30px; list-style: none; }
+.navbar-menu > li { position: relative; }
+.navbar-menu a { color: #4a5568; text-decoration: none; font-weight: 500; transition: all 0.3s; position: relative; padding: 5px 0; display: block; }
+.navbar-menu a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); transition: width 0.3s; }
+.navbar-menu a:hover { color: #667eea; }
+.navbar-menu a:hover::after { width: 100%; }
+.dropdown { position: relative; }
+.dropdown-toggle { cursor: pointer; display: flex; align-items: center; gap: 5px; }
+.dropdown-toggle::before { content: '\25BC'; font-size: 0.7em; transition: transform 0.3s; }
+.dropdown:hover .dropdown-toggle::before { transform: rotate(180deg); }
+.dropdown-menu { position: absolute; top: 100%; left: 0; background: white; min-width: 220px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border-radius: 15px; padding: 15px 0; margin-top: 10px; opacity: 0; visibility: hidden; transform: translateY(-10px); transition: all 0.3s; z-index: 1000; }
+.dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+.dropdown-menu a { padding: 12px 25px; color: #4a5568; font-weight: 500; white-space: nowrap; }
+.dropdown-menu a::after { display: none; }
+.dropdown-menu a:hover { background: rgba(102, 126, 234, 0.1); color: #667eea; }
+.hamburger { display: none; flex-direction: column; cursor: pointer; }
+.hamburger span { width: 25px; height: 3px; background: #2c3e50; margin: 3px 0; transition: 0.3s; border-radius: 3px; }
+.whatsapp-float { position: fixed; top: auto !important; left: auto !important; bottom: 20px !important; right: 20px !important; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 15px rgba(37,211,102,0.4); z-index: 999; text-decoration: none; transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+.whatsapp-float:hover { transform: scale(1.15) rotate(5deg); box-shadow: 0 6px 25px rgba(37,211,102,0.6); }
+.footer { background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%); color: white; padding: 50px 20px 20px; margin-top: 60px; border-top: 3px solid transparent; border-image: linear-gradient(90deg, #667eea, #764ba2, #f093fb) 1; }
+.footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.footer-section h3 { margin-bottom: 20px; color: #ecf0f1; font-weight: 600; font-size: 1.2em; }
+.footer-section p, .footer-section a { color: #bdc3c7; font-size: 0.95em; line-height: 1.8; text-decoration: none; display: block; margin-bottom: 10px; transition: all 0.3s; }
+.footer-section a:hover { color: #f093fb; transform: translateX(5px); }
+.footer-bottom { text-align: center; margin-top: 40px; padding-top: 25px; border-top: 1px solid #4a5568; color: #a0aec0; font-size: 0.9em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 30px; }
+.back-btn { display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 12px 28px; border-radius: 50px; text-decoration: none; margin-bottom: 25px; font-weight: 600; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3); transition: all 0.3s; }
+.back-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 25px rgba(102, 126, 234, 0.5); }
+header { text-align: center; margin-bottom: 50px; padding: 80px 20px; background: linear-gradient(135deg, #06beb6 0%, #48b1bf 100%); color: white; border-radius: 30px; box-shadow: 0 20px 60px rgba(6, 190, 182, 0.3); animation: fadeIn 0.8s ease-out; }
+header h1 { font-size: 3.5em; margin-bottom: 15px; font-weight: 700; text-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+.subtitle { font-size: 1.4em; color: rgba(255, 255, 255, 0.95); font-weight: 400; }
+.content-section { background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); padding: 50px 40px; border-radius: 30px; box-shadow: 0 20px 60px rgba(0,0,0,0.08); margin-bottom: 40px; border: 1px solid rgba(102, 126, 234, 0.1); animation: fadeInUp 0.6s ease-out; }
+.content-section h2 { font-size: 2.5em; background: linear-gradient(135deg, #06beb6 0%, #48b1bf 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 25px; border-left: 5px solid transparent; border-image: linear-gradient(135deg, #06beb6, #48b1bf) 1; padding-left: 20px; font-weight: 700; }
+.content-section h3 { font-size: 1.6em; color: #06beb6; margin: 30px 0 15px 0; font-weight: 600; }
+.content-section p { font-size: 1.15em; line-height: 1.8; color: #4a5568; margin-bottom: 20px; text-align: justify; }
+.highlight-box { background: linear-gradient(135deg, rgba(6, 190, 182, 0.1) 0%, rgba(72, 177, 191, 0.1) 100%); border-left: 5px solid #06beb6; padding: 30px; border-radius: 20px; margin: 30px 0; box-shadow: 0 4px 15px rgba(6, 190, 182, 0.1); }
+.highlight-box h3 { color: #06beb6; margin-top: 0; font-weight: 600; }
+.info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin: 30px 0; }
+.info-card { background: linear-gradient(135deg, rgba(6, 190, 182, 0.05) 0%, rgba(72, 177, 191, 0.05) 100%); padding: 30px; border-radius: 20px; text-align: center; transition: all 0.4s; border: 1px solid rgba(6, 190, 182, 0.1); }
+.info-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(6, 190, 182, 0.2); background: linear-gradient(135deg, rgba(6, 190, 182, 0.1) 0%, rgba(72, 177, 191, 0.1) 100%); }
+.info-card-icon { font-size: 3em; margin-bottom: 15px; }
+.info-card h4 { background: linear-gradient(135deg, #06beb6 0%, #48b1bf 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 10px; font-size: 1.3em; font-weight: 600; }
+.info-card p { color: #64748b; font-size: 1em; }
+.features-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 25px 0; }
+.feature-item { display: flex; align-items: center; gap: 15px; padding: 18px; background: rgba(6, 190, 182, 0.05); border-radius: 15px; border: 1px solid rgba(6, 190, 182, 0.1); transition: all 0.3s; }
+.feature-item:hover { background: rgba(6, 190, 182, 0.1); transform: translateX(5px); }
+.feature-item-icon { font-size: 2em; color: #06beb6; }
+.cta-section { text-align: center; background: linear-gradient(135deg, #06beb6 0%, #48b1bf 100%); color: white; padding: 60px 40px; border-radius: 30px; margin-top: 40px; box-shadow: 0 20px 60px rgba(6, 190, 182, 0.3); animation: fadeInUp 0.8s ease-out; }
+.cta-section h2 { font-size: 2.5em; margin-bottom: 20px; font-weight: 700; text-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+.cta-section p { font-size: 1.2em; margin-bottom: 30px; opacity: 0.95; font-weight: 400; }
+.btn { display: inline-block; background: white; color: #06beb6; padding: 18px 45px; border-radius: 50px; text-decoration: none; font-weight: 600; margin: 10px; transition: all 0.3s; font-size: 1.1em; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); position: relative; overflow: hidden; }
+.btn::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #48bb78 0%, #38a169 100%); opacity: 0; transition: opacity 0.3s; }
+.btn:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2); color: white; }
+.btn:hover::before { opacity: 1; }
+.btn span { position: relative; z-index: 1; }
+@media (max-width: 768px) {
+  .container { padding: 15px; }
+  header h1 { font-size: 2em; }
+  .subtitle { font-size: 1.1em; }
+  .info-grid { grid-template-columns: 1fr; }
+  .features-list { grid-template-columns: 1fr; }
+  .content-section { padding: 30px 20px; }
+  .footer-container { grid-template-columns: 1fr; }
+  .hamburger { display: flex; }
+  .navbar-menu { position: fixed; left: -100%; top: 70px; flex-direction: column; background: white; width: 80%; max-width: 300px; height: calc(100vh - 70px); padding: 30px 20px; box-shadow: 2px 0 10px rgba(0,0,0,0.1); transition: left 0.3s; gap: 0; }
+  .navbar-menu.active { left: 0; }
+  .navbar-menu li { margin: 0; padding: 0; border-bottom: 1px solid #ecf0f1; width: 100%; }
+  .navbar-menu a { display: block; font-size: 1.1em; padding: 15px 0; }
+  .dropdown-menu { position: static; box-shadow: none; padding: 0 0 0 20px; margin: 0; opacity: 1; visibility: visible; transform: none; max-height: 0; overflow: hidden; transition: max-height 0.3s; }
+  .dropdown.active .dropdown-menu { max-height: 300px; padding: 10px 0 10px 20px; }
+  .dropdown-toggle { padding: 15px 0; }
+  .dropdown-menu a { padding: 10px 0; font-size: 1em; }
+}
+</style>
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar">
+<div class="navbar-container">
+<a href="index.html" class="navbar-brand">🏝️ Torre Pali Vacanze</a>
+<div class="hamburger" onclick="toggleMenu()">
+<span></span>
+<span></span>
+<span></span>
+</div>
+<ul class="navbar-menu" id="navbarMenu">
+<li><a href="index.html" onclick="closeMenu()">Home</a></li>
+<li><a href="index.html#appartamenti" onclick="closeMenu()">Appartamenti</a></li>
+<li class="dropdown">
+<span class="dropdown-toggle" style="color: #4a5568; font-weight: 500;">Scopri il Salento</span>
+<div class="dropdown-menu">
+<a href="torre-vado.html" onclick="closeMenu()">Torre Vado</a>
+<a href="pescoluse.html" onclick="closeMenu()">Pescoluse</a>
+<a href="torre-pali.html" onclick="closeMenu()">Torre Pali</a>
+<a href="lido-marini.html" onclick="closeMenu()">Lido Marini</a>
+<a href="spiagge-salento-sud.html" onclick="closeMenu()">Guida Spiagge</a>
+<a href="eventi-salento.html" onclick="closeMenu()">Eventi e Tradizioni</a>
+<a href="faq-salento.html" onclick="closeMenu()">FAQ Salento</a>
+</div>
+</li>
+<li><a href="faq.html" onclick="closeMenu()">FAQ</a></li>
+<li><a href="contatti.html" onclick="closeMenu()">Contatti</a></li>
+</ul>
+</div>
+</nav>
+
+<!-- WhatsApp Flottante -->
+<a href="https://wa.me/3886587080" class="whatsapp-float" style="position: fixed !important; bottom: 20px !important; right: 20px !important; top: auto !important; left: auto !important;" target="_blank" aria-label="Contattaci su WhatsApp">
+💬
+</a>
+
+<div class="container">
+<a href="index.html" class="back-btn">← Torna alla homepage</a>
+
+<header>
+<h1>🏝️ Pescoluse - Le Maldive del Salento</h1>
+<p class="subtitle">Sabbia Bianca e Mare Turchese come ai Caraibi</p>
+</header>
+
+<div class="content-section">
+<h2>🌴 Benvenuti alle Maldive del Salento</h2>
+<p>
+<strong>Pescoluse</strong>, conosciuta in tutto il mondo come le <strong>"Maldive del Salento"</strong>, è una delle spiagge più spettacolari e fotografate d'Italia. Situata nel comune di <strong>Salve</strong>, a soli <strong>3 km da Torre Pali</strong>, questa incredibile spiaggia offre uno scenario caraibico con sabbia finissima e bianchissima, acque turchesi cristalline e fondali bassi che si estendono per decine di metri.
+</p>
+<p>
+Il soprannome "Maldive del Salento" non è casuale: i colori del mare, che vanno dal turchese chiaro all'azzurro intenso, ricordano perfettamente le spiagge tropicali dell'Oceano Indiano. La sabbia finissima, chiara e soffice, insieme alla trasparenza dell'acqua, crea un'atmosfera da sogno che attira ogni anno migliaia di turisti da tutta Europa.
+</p>
+
+<div class="info-grid">
+<div class="info-card">
+<div class="info-card-icon">🏖️</div>
+<h4>Sabbia Bianca</h4>
+<p>Finissima come borotalco</p>
+</div>
+<div class="info-card">
+<div class="info-card-icon">💎</div>
+<h4>Acqua Turchese</h4>
+<p>Colori caraibici mozzafiato</p>
+</div>
+<div class="info-card">
+<div class="info-card-icon">👨‍👩‍👧‍👦</div>
+<h4>Fondali Bassi</h4>
+<p>Perfetti per famiglie</p>
+</div>
+</div>
+
+<h3>📍 Dove Si Trova</h3>
+<p>
+Pescoluse si trova sulla costa ionica del Salento, tra Torre Pali (3 km) e Torre Vado (5 km). La località fa parte del comune di Salve ed è facilmente raggiungibile dalla strada litoranea SP358. Dista circa <strong>60 km da Lecce</strong>, <strong>15 km da Santa Maria di Leuca</strong> e <strong>120 km dall'aeroporto di Brindisi</strong>.
+</p>
+</div>
+
+<div class="content-section">
+<h2>🏖️ La Spiaggia delle Maldive</h2>
+<p>
+La spiaggia di Pescoluse si estende per circa <strong>4 chilometri</strong> di costa ininterrotta, offrendo ampio spazio sia per chi cerca il comfort degli stabilimenti balneari attrezzati, sia per chi preferisce la spiaggia libera e la natura selvaggia.
+</p>
+
+<h3>🌊 Caratteristiche Uniche</h3>
+<div class="features-list">
+<div class="feature-item">
+<div class="feature-item-icon">✨</div>
+<div>
+<strong>Sabbia Bianca Finissima</strong><br>
+<span style="color: #555;">Morbida e impalpabile, ideale per camminare scalzi</span>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-item-icon">💧</div>
+<div>
+<strong>Acqua Cristallina</strong><br>
+<span style="color: #555;">Trasparenza eccezionale, visibilità fino a 10 metri</span>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-item-icon">🏊</div>
+<div>
+<strong>Fondali Bassissimi</strong><br>
+<span style="color: #555;">Si tocca per oltre 50 metri dalla riva</span>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-item-icon">🌅</div>
+<div>
+<strong>Tramonti Spettacolari</strong><br>
+<span style="color: #555;">Sul mare Ionio con colori intensi</span>
+</div>
+</div>
+</div>
+
+<h3>🎨 I Colori del Mare</h3>
+<p>
+Il mare di Pescoluse è famoso per le sue sfumature di colore che variano durante il giorno e con le condizioni di luce. Al mattino presto l'acqua appare di un <strong>turchese chiaro</strong> trasparente, quasi irreale. A mezzogiorno, con il sole a picco, il mare diventa di un <strong>azzurro intenso</strong> brillante. Nel pomeriggio e al tramonto, i riflessi dorati del sole creano giochi di luce magici sulla superficie dell'acqua.
+</p>
+
+<div class="highlight-box">
+<h3>📸 Consigli per le Foto Perfette</h3>
+<p>
+✅ <strong>Orario Migliore:</strong> Mattina presto (7-9) o tardo pomeriggio (17-19) per luce ottimale<br>
+✅ <strong>Prospettive:</strong> Scatta dall'acqua verso la riva per catturare il contrasto sabbia-mare<br>
+✅ <strong>Colori:</strong> Il turchese è più intenso nelle giornate soleggiate con mare calmo<br>
+✅ <strong>Droni:</strong> Permessi in alcune zone, viste aeree spettacolari<br>
+✅ <strong>Tramonto:</strong> Imperdibile per scatti romantici e colori caldi
+</p>
+</div>
+</div>
+
+<div class="content-section">
+<h2>🏖️ Stabilimenti e Servizi</h2>
+<p>
+La spiaggia di Pescoluse offre un'ampia scelta tra <strong>stabilimenti balneari attrezzati</strong> e <strong>spiaggia libera</strong>. Gli stabilimenti forniscono ombrelloni, lettini, servizi igienici, docce, bar, ristoranti e numerose attività.
+</p>
+
+<h3>🏝️ Lidi e Stabilimenti Balneari</h3>
+<p>
+Lungo la costa di Pescoluse si trovano diversi stabilimenti balneari moderni e ben attrezzati, ognuno con la propria identità. Molti lidi offrono:
+</p>
+
+<div class="features-list">
+<div class="feature-item">
+<div class="feature-item-icon">☂️</div>
+<div>
+<strong>Ombrelloni e Lettini</strong><br>
+<span style="color: #555;">Prenotazione giornaliera o settimanale</span>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-item-icon">🍹</div>
+<div>
+<strong>Bar e Ristoranti</strong><br>
+<span style="color: #555;">Aperitivi, pranzi, cene sul mare</span>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-item-icon">🚿</div>
+<div>
+<strong>Docce e Servizi</strong><br>
+<span style="color: #555;">Acqua calda, spogliatoi, toilette</span>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-item-icon">🎾</div>
+<div>
+<strong>Sport e Animazione</strong><br>
+<span style="color: #555;">Beach volley, acquagym, giochi bambini</span>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-item-icon">🏄</div>
+<div>
+<strong>Sport Acquatici</strong><br>
+<span style="color: #555;">SUP, kayak, windsurf, pedalò</span>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-item-icon">👶</div>
+<div>
+<strong>Area Bambini</strong><br>
+<span style="color: #555;">Animazione, giochi, mini club</span>
+</div>
+</div>
+</div>
+
+<h3>🏖️ Spiaggia Libera</h3>
+<p>
+Ampi tratti di <strong>spiaggia libera</strong> sono disponibili per chi preferisce un'esperienza più selvaggia e indipendente. Si consiglia di portare ombrellone, acqua e spuntini. La spiaggia libera è perfetta per famiglie con animali domestici (verificare le zone pet-friendly) e per chi cerca tranquillità lontano dalla folla.
+</p>
+
+<div class="highlight-box">
+<h3>💰 Prezzi Indicativi (Alta Stagione)</h3>
+<p>
+• <strong>Ombrellone + 2 Lettini:</strong> €15-25 al giorno<br>
+• <strong>Abbonamento Settimanale:</strong> €80-150<br>
+• <strong>Abbonamento Mensile:</strong> €250-400<br>
+• <strong>Spiaggia Libera:</strong> Gratuita
+</p>
+<p style="margin-top: 10px; font-size: 0.95em; color: #666;">
+I prezzi variano in base alla posizione, servizi offerti e periodo (giugno, luglio-agosto, settembre).
+</p>
+</div>
+</div>
+
+<div class="content-section">
+<h2>👨‍👩‍👧‍👦 Ideale per Famiglie con Bambini</h2>
+<p>
+Pescoluse è considerata una delle spiagge più <strong>family-friendly</strong> del Salento. I fondali bassissimi e digradanti permettono ai bambini di giocare in acqua in totale sicurezza, mentre i genitori possono rilassarsi senza preoccupazioni.
+</p>
+
+<h3>🎈 Vantaggi per le Famiglie</h3>
+<div class="features-list">
+<div class="feature-item">
+<div class="feature-item-icon">👶</div>
+<div>
+<strong>Sicurezza in Acqua</strong><br>
+<span style="color: #555;">Si tocca per decine di metri, nessun pericolo</span>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-item-icon">🏖️</div>
+<div>
+<strong>Sabbia Morbida</strong><br>
+<span style="color: #555;">Perfetta per costruire castelli e giocare</span>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-item-icon">🎪</div>
+<div>
+<strong>Animazione</strong><br>
+<span style="color: #555;">Mini club, giochi organizzati, intrattenimento</span>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-item-icon">🍦</div>
+<div>
+<strong>Bar e Gelaterie</strong><br>
+<span style="color: #555;">Snack, gelati, menu bambini</span>
+</div>
+</div>
+</div>
+
+<p>
+Molti stabilimenti offrono <strong>fasciatoi</strong>, <strong>scaldabiberon</strong>, <strong>seggioloni</strong> e <strong>aree ombreggiate</strong> dedicate ai più piccoli. L'acqua calma e trasparente permette di vedere sempre i bambini mentre giocano in acqua.
+</p>
+</div>
+
+<div class="content-section">
+<h2>🌅 Cosa Fare a Pescoluse</h2>
+<p>
+Oltre al relax in spiaggia, Pescoluse e dintorni offrono diverse attività per tutti i gusti.
+</p>
+
+<h3>🏄 Sport e Attività</h3>
+<div class="features-list">
+<div class="feature-item">
+<div class="feature-item-icon">🏐</div>
+<div>
+<strong>Beach Volley e Beach Soccer</strong><br>
+<span style="color: #555;">Campi disponibili sulla spiaggia</span>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-item-icon">🚴</div>
+<div>
+<strong>Ciclismo</strong><br>
+<span style="color: #555;">Piste ciclabili panoramiche lungo la costa</span>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-item-icon">🧘</div>
+<div>
+<strong>Yoga e Fitness</strong><br>
+<span style="color: #555;">Lezioni all'alba sulla spiaggia</span>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-item-icon">🎣</div>
+<div>
+<strong>Pesca Sportiva</strong><br>
+<span style="color: #555;">Dalla costa o in barca</span>
+</div>
+</div>
+</div>
+
+<h3>🌙 Vita Notturna ed Eventi</h3>
+<p>
+Durante l'estate, Pescoluse si anima con eventi serali, concerti sulla spiaggia, aperitivi al tramonto e feste nei lidi. Molti stabilimenti organizzano <strong>serate DJ</strong>, <strong>cene in spiaggia</strong> e <strong>feste in maschera</strong> a tema tropicale.
+</p>
+
+<div class="highlight-box">
+<h3>🎉 Eventi Estivi</h3>
+<p>
+• <strong>Sunset Party:</strong> Aperitivi al tramonto con musica live<br>
+• <strong>Beach Party:</strong> Serate danzanti sulla sabbia<br>
+• <strong>Tornei Sportivi:</strong> Beach volley, calcetto, frisbee<br>
+• <strong>Yoga all'Alba:</strong> Sessioni di meditazione e yoga<br>
+• <strong>Concerti:</strong> Musica dal vivo nei lidi e sul lungomare
+</p>
+</div>
+</div>
+
+<div class="content-section">
+<h2>🍽️ Dove Mangiare</h2>
+<p>
+Pescoluse offre numerosi ristoranti, trattorie e lidi con cucina dove gustare specialità di pesce fresco e piatti tipici salentini.
+</p>
+
+<h3>🦞 Specialità Gastronomiche</h3>
+<div class="features-list">
+<div class="feature-item">
+<div class="feature-item-icon">🐟</div>
+<div>
+<strong>Pesce Fresco</strong><br>
+<span style="color: #555;">Orate, spigole, gamberi, polpo</span>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-item-icon">🍝</div>
+<div>
+<strong>Pasta ai Frutti di Mare</strong><br>
+<span style="color: #555;">Cozze, vongole, scampi</span>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-item-icon">🍕</div>
+<div>
+<strong>Pizzerie</strong><br>
+<span style="color: #555;">Pizza napoletana e focacce salentine</span>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-item-icon">🍦</div>
+<div>
+<strong>Gelaterie Artigianali</strong><br>
+<span style="color: #555;">Gelato fatto in casa con ingredienti locali</span>
+</div>
+</div>
+</div>
+
+<p>
+Molti lidi offrono <strong>ristoranti con vista mare</strong> dove pranzare o cenare a piedi nudi sulla sabbia, godendo di tramonti spettacolari e piatti preparati con il pescato del giorno.
+</p>
+</div>
+
+<div class="content-section">
+<h2>🚗 Come Arrivare a Pescoluse</h2>
+
+<h3>🛣️ In Auto</h3>
+<p>
+<strong>Da Lecce:</strong> SS16 verso sud, poi SP358 direzione Leuca. Seguire indicazioni Pescoluse/Torre Pali (60 km, 50 minuti)<br>
+<strong>Da Gallipoli:</strong> SS274 verso sud (35 km, 35 minuti)<br>
+<strong>Da Brindisi:</strong> SS16 fino a Lecce, poi SS613 verso Gallipoli e SS274 verso sud (120 km, 1h 30min)<br>
+<strong>Da Santa Maria di Leuca:</strong> SP358 verso nord (15 km, 15 minuti)
+</p>
+
+<h3>🅿️ Parcheggi</h3>
+<p>
+Lungo la strada litoranea e nelle vie adiacenti alla spiaggia si trovano <strong>parcheggi a pagamento</strong> custoditi. Prezzi indicativi: €3-5 al giorno. Si consiglia di arrivare presto la mattina (prima delle 9:30) per trovare posto facilmente, soprattutto in luglio e agosto.
+</p>
+
+<h3>🚌 Trasporti Pubblici</h3>
+<p>
+Durante l'estate, autobus di linea collegano Lecce con Pescoluse. Il servizio è limitato, verificare orari aggiornati su siti FSE e Salento in Bus.
+</p>
+
+<div class="highlight-box">
+<h3>💡 Consigli Utili</h3>
+<p>
+✅ <strong>Alta Stagione (Luglio-Agosto):</strong> Arrivare entro le 9:00 per trovare parcheggio e posto in spiaggia<br>
+✅ <strong>Prenotazione:</strong> Alcuni lidi accettano prenotazioni online<br>
+✅ <strong>Attrezzatura:</strong> Portare crema solare, cappello e occhiali da sole<br>
+✅ <strong>Acqua:</strong> Bere molta acqua, il sole è molto forte<br>
+✅ <strong>Bassa Stagione:</strong> Giugno e settembre sono mesi ideali per evitare la folla
+</p>
+</div>
+</div>
+
+<div class="content-section">
+<h2>🗺️ Dintorni da Esplorare</h2>
+<p>
+Pescoluse è circondata da località meravigliose facilmente raggiungibili.
+</p>
+
+<div class="features-list">
+<div class="feature-item">
+<div class="feature-item-icon">🏝️</div>
+<div>
+<strong>Torre Pali (3 km)</strong><br>
+<span style="color: #555;">Isola della Fanciulla, Bandiera Blu</span>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-item-icon">⚓</div>
+<div>
+<strong>Torre Vado (5 km)</strong><br>
+<span style="color: #555;">Piscina naturale, porto turistico</span>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-item-icon">🏖️</div>
+<div>
+<strong>Lido Marini (6 km)</strong><br>
+<span style="color: #555;">Spiaggia tranquilla, pineta</span>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-item-icon">🏛️</div>
+<div>
+<strong>Santa Maria di Leuca (15 km)</strong><br>
+<span style="color: #555;">Faro, basilica, ville storiche</span>
+</div>
+</div>
+</div>
+</div>
+
+<div class="cta-section">
+<h2>Vivi le Maldive del Salento</h2>
+<p>Prenota la tua vacanza a pochi passi dalla spiaggia più bella d'Italia</p>
+<a href="index.html" class="btn"><span>Vedi Appartamenti</span></a>
+<a href="contatti.html" class="btn"><span>Contattaci</span></a>
+</div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+<div class="footer-container">
+<div class="footer-section">
+<h3>🏝️ Torre Pali Vacanze</h3>
+<p>Case vacanze a Torre Pali, Salento. A pochi passi dalla spiaggia Bandiera Blu con tutti i comfort.</p>
+<p style="margin-top: 15px;">📍 Torre Pali, Lecce (LE)<br>Salento, Puglia</p>
+</div>
+<div class="footer-section">
+<h3>Link Utili</h3>
+<a href="index.html">Home</a>
+<a href="torre-pali.html">Torre Pali</a>
+<a href="pescoluse.html">Pescoluse</a>
+<a href="torre-vado.html">Torre Vado</a>
+<a href="contatti.html">Contatti</a>
+<a href="privacy.html">Privacy Policy</a>
+</div>
+<div class="footer-section">
+<h3>Contatti</h3>
+<p>📞 <a href="tel:+393886587080">+39 388 658 70 80</a></p>
+<p>📧 <strong>info@torrepalivacanze.it</strong></p>
+<p>💬 <a href="https://wa.me/3886587080" target="_blank">WhatsApp</a></p>
+<p style="margin-top: 15px;">Orario: 09:00 - 20:00<br>Risposta entro 1 ora</p>
+</div>
+</div>
+<div class="footer-bottom">
+<p>&copy; 2026 Torre Pali Vacanze. Tutti i diritti riservati.</p>
+</div>
+</footer>
+
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M0TEME57K0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-M0TEME57K0');
+</script>
+
+<script>
+// Menu Hamburger
+function toggleMenu() {
+  const menu = document.getElementById('navbarMenu');
+  menu.classList.toggle('active');
+}
+
+function closeMenu() {
+  const menu = document.getElementById('navbarMenu');
+  menu.classList.remove('active');
+}
+
+// Dropdown mobile
+document.addEventListener('DOMContentLoaded', function() {
+  const dropdownToggle = document.querySelector('.dropdown-toggle');
+  const dropdown = document.querySelector('.dropdown');
+  
+  if (dropdownToggle && window.innerWidth <= 768) {
+    dropdownToggle.addEventListener('click', function(e) {
+      e.stopPropagation();
+      dropdown.classList.toggle('active');
+    });
+  }
+});
+
+// Chiudi menu quando si clicca fuori
+document.addEventListener('click', function(event) {
+  const navbar = document.querySelector('.navbar');
+  const menu = document.getElementById('navbarMenu');
+  if (!navbar.contains(event.target) && menu.classList.contains('active')) {
+    menu.classList.remove('active');
+  }
+});
+</script>
+
+</body>
+</html>
