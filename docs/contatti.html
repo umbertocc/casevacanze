@@ -450,10 +450,13 @@ document.addEventListener('DOMContentLoaded', function() {
   const dropdownToggle = document.querySelector('.dropdown-toggle');
   const dropdown = document.querySelector('.dropdown');
   
-  if (dropdownToggle && window.innerWidth <= 768) {
+  if (dropdownToggle) {
     dropdownToggle.addEventListener('click', function(e) {
-      e.stopPropagation();
-      dropdown.classList.toggle('active');
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        e.stopPropagation();
+        dropdown.classList.toggle('active');
+      }
     });
   }
 });
@@ -462,8 +465,10 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('click', function(event) {
   const navbar = document.querySelector('.navbar');
   const menu = document.getElementById('navbarMenu');
+  const dropdown = document.querySelector('.dropdown');
   if (!navbar.contains(event.target) && menu.classList.contains('active')) {
     menu.classList.remove('active');
+    if (dropdown) dropdown.classList.remove('active');
   }
 });
 </script>
