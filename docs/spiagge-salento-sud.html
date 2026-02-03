@@ -590,7 +590,12 @@ function toggleMenu() {
 
 function closeMenu() {
   const menu = document.getElementById('navbarMenu');
+  const dropdown = document.querySelector('.dropdown');
   menu.classList.remove('active');
+  // Chiudi la dropdown solo su mobile
+  if (dropdown && window.innerWidth <= 768) {
+    dropdown.classList.remove('active');
+  }
 }
 
 // Dropdown mobile
