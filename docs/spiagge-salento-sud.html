@@ -140,9 +140,13 @@ header h1 { font-size: 3.5em; margin-bottom: 15px; font-weight: 700; text-shadow
   .navbar-menu.active { left: 0; }
   .navbar-menu li { margin: 0; padding: 0; border-bottom: 1px solid #ecf0f1; width: 100%; }
   .navbar-menu a { display: block; font-size: 1.1em; padding: 15px 0; }
-  .dropdown-menu { position: static; box-shadow: none; padding: 0 0 0 20px; margin: 0; opacity: 1; visibility: visible; transform: none; max-height: 0; overflow: hidden; transition: max-height 0.3s; }
+  .dropdown-menu { position: static; box-shadow: none; padding: 0 0 0 20px; margin: 0; opacity: 1; visibility: visible; transform: none; max-height: 0; overflow: hidden; transition: max-height 0.3s; background: transparent; }
   .dropdown.active .dropdown-menu { max-height: 300px; padding: 10px 0 10px 20px; }
   .dropdown-toggle { padding: 18px 0; font-size: 1.15em; }
+  .dropdown:hover .dropdown-menu { max-height: 0; }
+  @media (hover: none) {
+    .dropdown:hover .dropdown-menu { max-height: 0; }
+  }
   .dropdown-menu a { padding: 10px 0; font-size: 1em; }
   .map-container iframe { height: 350px; }
   .comparison-table { font-size: 0.9em; }
