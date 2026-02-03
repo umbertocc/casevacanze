@@ -3,8 +3,7 @@ User-agent: *
 Allow: /
 
 # Disallow crawling of internal/private paths (if any)
-# Disallow: /admin/
-# Disallow: /private/
+Disallow: /logo-generator.html
 
 # Specify sitemap location
 Sitemap: https://torrepalivacanze.it/sitemap.xml
