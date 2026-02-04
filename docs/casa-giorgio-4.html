@@ -193,18 +193,29 @@ h1 { font-size: 3em; background: linear-gradient(135deg, #667eea 0%, #764ba2 100
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Accommodation",
+  "@type": ["Accommodation", "VacationRental"],
+  "additionalType": "https://schema.org/House",
   "name": "Casa Giorgio 4 - Torre Pali",
   "description": "Appartamento piano terra a 40 metri dalla spiaggia Bandiera Blu di Torre Pali. 3 camere da letto, 1 bagno, ampi spazi esterni attrezzati con tavolo e sedie, doccia esterna, WiFi e aria condizionata. Ideale per famiglie fino a 6 persone.",
   "url": "https://torrepalivacanze.it/casa-giorgio-4",
   "image": [
-    "https://torrepalivacanze.it/img/casa-giorgio/giorgio_1.jpg",
-    "https://torrepalivacanze.it/img/casa-giorgio/giorgio_2.jpg"
+    "https://torrepalivacanze.it/img/casa-giorgio/prospetto.jpg",
+    "https://torrepalivacanze.it/img/casa-giorgio/prospetto2.jpg",
+    "https://torrepalivacanze.it/img/casa-giorgio/soggiorno.jpg",
+    "https://torrepalivacanze.it/img/casa-giorgio/soggiorno2.jpg",
+    "https://torrepalivacanze.it/img/casa-giorgio/cucina.jpg",
+    "https://torrepalivacanze.it/img/casa-giorgio/camera.jpg",
+    "https://torrepalivacanze.it/img/casa-giorgio/camera2.jpg",
+    "https://torrepalivacanze.it/img/casa-giorgio/camera3.jpg",
+    "https://torrepalivacanze.it/img/casa-giorgio/camera4.jpg",
+    "https://torrepalivacanze.it/img/casa-giorgio/bagno1.jpg",
+    "https://torrepalivacanze.it/img/casa-giorgio/cortileinterno.jpg",
+    "https://torrepalivacanze.it/img/casa-giorgio/cortileinterno1.jpg"
   ],
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Torre Pali",
-    "addressLocality": "Salve",
+    "streetAddress": "Via Vasco de Gama 13",
+    "addressLocality": "Torre Pali",
     "addressRegion": "Puglia",
     "postalCode": "73050",
     "addressCountry": "IT"
@@ -222,6 +233,43 @@ h1 { font-size: 3em; background: linear-gradient(135deg, #667eea 0%, #764ba2 100
     "@type": "QuantitativeValue",
     "value": "6"
   },
+  "floorSize": {
+    "@type": "QuantitativeValue",
+    "value": "90",
+    "unitCode": "MTK"
+  },
+  "containsPlace": [
+    {
+      "@type": "Accommodation",
+      "additionalType": "Bedroom",
+      "name": "Camera Matrimoniale 1",
+      "bed": {
+        "@type": "BedDetails",
+        "typeOfBed": "Letto Matrimoniale",
+        "numberOfBeds": 1
+      }
+    },
+    {
+      "@type": "Accommodation",
+      "additionalType": "Bedroom",
+      "name": "Camera Matrimoniale 2",
+      "bed": {
+        "@type": "BedDetails",
+        "typeOfBed": "Letto Matrimoniale",
+        "numberOfBeds": 1
+      }
+    },
+    {
+      "@type": "Accommodation",
+      "additionalType": "Bedroom",
+      "name": "Camera con 2 Letti Singoli",
+      "bed": {
+        "@type": "BedDetails",
+        "typeOfBed": "Letto Singolo",
+        "numberOfBeds": 2
+      }
+    }
+  ],
   "amenityFeature": [
     {
       "@type": "LocationFeatureSpecification",
@@ -259,10 +307,47 @@ h1 { font-size: 3em; background: linear-gradient(135deg, #667eea 0%, #764ba2 100
       "value": true
     }
   ],
-  "numberOfRooms": 3,
+  "numberOfRooms": 4,
   "numberOfBathroomsTotal": 1,
   "numberOfBedrooms": 3,
-  "petsAllowed": true
+  "petsAllowed": true,
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "2",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Davide"
+      },
+      "datePublished": "2025-09-12",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "La casa si trova a 40 metri e un bel posto tranquillo e i proprietari gentili e tranquilli la casa si trova vicino alle Maldive del Salento è un posto molto bello"
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Roberta"
+      },
+      "datePublished": "2025-09-05",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "Abbiamo soggiornato per 15 giorni dopo il ferragosto, ci siamo trovati bene, il paese è bello, tranquillo, mare vicino vacanze relax e proprietari gentili, disponibili e un ambiente familiare, ci ritorneremo."
+    }
+  ]
 }
 </script>
 <!-- Structured Data: Organization con Logo -->
@@ -320,6 +405,7 @@ h1 { font-size: 3em; background: linear-gradient(135deg, #667eea 0%, #764ba2 100
 <li><a href="index.html" onclick="closeMenu()">Home</a></li>
 <li><a href="index.html#appartamenti" onclick="closeMenu()">Appartamenti</a></li>
 <li><a href="torre-pali.html" onclick="closeMenu()">Torre Pali</a></li>
+<li><a href="recensioni.html" onclick="closeMenu()">⭐ Recensioni</a></li>
 <li><a href="faq.html" onclick="closeMenu()">FAQ</a></li>
 <li><a href="contatti.html" onclick="closeMenu()">Contatti</a></li>
 </ul>

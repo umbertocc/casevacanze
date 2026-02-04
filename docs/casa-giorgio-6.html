@@ -194,18 +194,29 @@ h1 { font-size: 3em; background: linear-gradient(135deg, #667eea 0%, #764ba2 100
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Accommodation",
+  "@type": ["Accommodation", "VacationRental"],
+  "additionalType": "https://schema.org/House",
   "name": "Casa Giorgio 6 Vista Mare - Torre Pali",
   "description": "Appartamento 90m² primo piano con vista mare a 40 metri dalla spiaggia Bandiera Blu di Torre Pali. 3 camere da letto, 1 bagno, veranda panoramica con vista mare, scala coperta, doccia esterna, WiFi e aria condizionata. Perfetto per coppie e famiglie fino a 6 persone.",
   "url": "https://torrepalivacanze.it/casa-giorgio-6",
   "image": [
     "https://torrepalivacanze.it/img/casa-giorgio2/prospetto.jpg",
-    "https://torrepalivacanze.it/img/casa-giorgio2/veranda.jpg"
+    "https://torrepalivacanze.it/img/casa-giorgio2/prospetto2.jpg",
+    "https://torrepalivacanze.it/img/casa-giorgio2/soggiorno.jpg",
+    "https://torrepalivacanze.it/img/casa-giorgio2/soggiorno2.jpg",
+    "https://torrepalivacanze.it/img/casa-giorgio2/camera.jpg",
+    "https://torrepalivacanze.it/img/casa-giorgio2/camera2.jpg",
+    "https://torrepalivacanze.it/img/casa-giorgio2/camera3.jpg",
+    "https://torrepalivacanze.it/img/casa-giorgio2/camera4.jpg",
+    "https://torrepalivacanze.it/img/casa-giorgio2/bagno.jpg",
+    "https://torrepalivacanze.it/img/casa-giorgio2/balcone.jpg",
+    "https://torrepalivacanze.it/img/casa-giorgio2/balcone2.jpg",
+    "https://torrepalivacanze.it/img/casa-giorgio2/scala.jpg"
   ],
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Torre Pali",
-    "addressLocality": "Salve",
+    "streetAddress": "Via Vasco de Gama 11",
+    "addressLocality": "Torre Pali",
     "addressRegion": "Puglia",
     "postalCode": "73050",
     "addressCountry": "IT"
@@ -228,6 +239,38 @@ h1 { font-size: 3em; background: linear-gradient(135deg, #667eea 0%, #764ba2 100
     "value": "90",
     "unitCode": "MTK"
   },
+  "containsPlace": [
+    {
+      "@type": "Accommodation",
+      "additionalType": "Bedroom",
+      "name": "Camera Matrimoniale 1",
+      "bed": {
+        "@type": "BedDetails",
+        "typeOfBed": "Letto Matrimoniale",
+        "numberOfBeds": 1
+      }
+    },
+    {
+      "@type": "Accommodation",
+      "additionalType": "Bedroom",
+      "name": "Camera Matrimoniale 2",
+      "bed": {
+        "@type": "BedDetails",
+        "typeOfBed": "Letto Matrimoniale",
+        "numberOfBeds": 1
+      }
+    },
+    {
+      "@type": "Accommodation",
+      "additionalType": "Bedroom",
+      "name": "Camera con 2 Letti Singoli",
+      "bed": {
+        "@type": "BedDetails",
+        "typeOfBed": "Letto Singolo",
+        "numberOfBeds": 2
+      }
+    }
+  ],
   "amenityFeature": [
     {
       "@type": "LocationFeatureSpecification",
@@ -270,10 +313,75 @@ h1 { font-size: 3em; background: linear-gradient(135deg, #667eea 0%, #764ba2 100
       "value": true
     }
   ],
-  "numberOfRooms": 3,
+  "numberOfRooms": 4,
   "numberOfBathroomsTotal": 1,
   "numberOfBedrooms": 3,
-  "petsAllowed": true
+  "petsAllowed": true,
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "4",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Alessandra L."
+      },
+      "datePublished": "2025-09-14",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "Casa molto accogliente con tutti i comfort che si possono chiedere per una casa vacanze, proprietari gentili e disponibili abbiamo soggiornato dal 5 al 14 settembre a Torre Pali paese molto carino e mare stupendo"
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Biagio"
+      },
+      "datePublished": "2025-08-02",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "Siamo stati dal 12 luglio al 2 agosto 2025. Ci siamo tornati per l'ennesima volta e anche stavolta ci siamo trovati benissimo. Abitazioni ben rifinite e a poca distanza dal mare. Ottima accoglienza da parte dei padroni di casa. La signora Stella poi sempre molto gentile e disponibile a soddisfare qualsiasi richiesta."
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Marco"
+      },
+      "datePublished": "2025-09-10",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "Abbiamo trascorso le vacanze in questa casa, accogliente, molto molto fornita e proprietaria gentilissimi, il mare e veramente a pochi passi e visibile dal terrazzo. Ci ritorneremo sicuramente... grazie"
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Antonio"
+      },
+      "datePublished": "2025-08-25",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "Proprietari davvero fantastici disponibilissimi l'appartamento ha davvero tutto ed è comodissimo posto praticamente sul mare ottimo per visitare luoghi fantastici"
+    }
+  ]
 }
 </script>
 <!-- Structured Data: Organization con Logo -->
@@ -331,6 +439,7 @@ h1 { font-size: 3em; background: linear-gradient(135deg, #667eea 0%, #764ba2 100
 <li><a href="index.html" onclick="closeMenu()">Home</a></li>
 <li><a href="index.html#appartamenti" onclick="closeMenu()">Appartamenti</a></li>
 <li><a href="torre-pali.html" onclick="closeMenu()">Torre Pali</a></li>
+<li><a href="recensioni.html" onclick="closeMenu()">⭐ Recensioni</a></li>
 <li><a href="faq.html" onclick="closeMenu()">FAQ</a></li>
 <li><a href="contatti.html" onclick="closeMenu()">Contatti</a></li>
 </ul>

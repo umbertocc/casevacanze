@@ -191,18 +191,29 @@ h1 { font-size: 3em; background: linear-gradient(135deg, #667eea 0%, #764ba2 100
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Accommodation",
+  "@type": ["Accommodation", "VacationRental"],
+  "additionalType": "https://schema.org/House",
   "name": "Casa Bellavista 2 - Torre Pali",
   "description": "Quadrilocale 90m² a soli 20 metri dalla spiaggia Bandiera Blu di Torre Pali. 3 camere da letto, 2 bagni, cortile privato, 2 posti auto riservati, WiFi e aria condizionata inclusi. Ideale per famiglie fino a 6 persone.",
   "url": "https://torrepalivacanze.it/casa-bellavista-2",
   "image": [
     "https://torrepalivacanze.it/img/prospetto/prospetto_1.jpg",
-    "https://torrepalivacanze.it/img/casa-bella-vista/bellavista_1.jpg"
+    "https://torrepalivacanze.it/img/casa-bella-vista/prospetto.jpg",
+    "https://torrepalivacanze.it/img/casa-bella-vista/soggiorno_1.jpg",
+    "https://torrepalivacanze.it/img/casa-bella-vista/soggiorno_2.jpg",
+    "https://torrepalivacanze.it/img/casa-bella-vista/prima_camera_1.jpg",
+    "https://torrepalivacanze.it/img/casa-bella-vista/seconda_camera.jpg",
+    "https://torrepalivacanze.it/img/casa-bella-vista/terza_camera_2.jpg",
+    "https://torrepalivacanze.it/img/casa-bella-vista/cucina.jpg",
+    "https://torrepalivacanze.it/img/casa-bella-vista/primo_bagno.jpg",
+    "https://torrepalivacanze.it/img/casa-bella-vista/secondo_bagno.jpg",
+    "https://torrepalivacanze.it/img/casa-bella-vista/cortile.jpg",
+    "https://torrepalivacanze.it/img/casa-bella-vista/giardino_1.jpg"
   ],
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Torre Pali",
-    "addressLocality": "Salve",
+    "streetAddress": "Via Vasco De Gama 5",
+    "addressLocality": "Torre Pali",
     "addressRegion": "Puglia",
     "postalCode": "73050",
     "addressCountry": "IT"
@@ -225,6 +236,45 @@ h1 { font-size: 3em; background: linear-gradient(135deg, #667eea 0%, #764ba2 100
     "value": "90",
     "unitCode": "MTK"
   },
+  "containsPlace": [
+    {
+      "@type": "Accommodation",
+      "additionalType": "Bedroom",
+      "name": "Camera Matrimoniale + Singolo",
+      "bed": [
+        {
+          "@type": "BedDetails",
+          "typeOfBed": "Letto Matrimoniale",
+          "numberOfBeds": 1
+        },
+        {
+          "@type": "BedDetails",
+          "typeOfBed": "Letto Singolo",
+          "numberOfBeds": 1
+        }
+      ]
+    },
+    {
+      "@type": "Accommodation",
+      "additionalType": "Bedroom",
+      "name": "Camera Matrimoniale",
+      "bed": {
+        "@type": "BedDetails",
+        "typeOfBed": "Letto Matrimoniale",
+        "numberOfBeds": 1
+      }
+    },
+    {
+      "@type": "Accommodation",
+      "additionalType": "Bedroom",
+      "name": "Camera Tripla",
+      "bed": {
+        "@type": "BedDetails",
+        "typeOfBed": "Letto Singolo",
+        "numberOfBeds": 3
+      }
+    }
+  ],
   "amenityFeature": [
     {
       "@type": "LocationFeatureSpecification",
@@ -257,10 +307,47 @@ h1 { font-size: 3em; background: linear-gradient(135deg, #667eea 0%, #764ba2 100
       "value": true
     }
   ],
-  "numberOfRooms": 3,
+  "numberOfRooms": 4,
   "numberOfBathroomsTotal": 2,
   "numberOfBedrooms": 3,
-  "petsAllowed": true
+  "petsAllowed": true,
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "2",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Famiglia Rossi"
+      },
+      "datePublished": "2025-08-15",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "Casa bellissima a due passi dal mare. Proprietari gentilissimi e disponibili. Torneremo sicuramente!"
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Marco"
+      },
+      "datePublished": "2025-07-20",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "Posizione eccellente, casa pulita e spaziosa. Cortile perfetto per cene all'aperto."
+    }
+  ]
 }
 </script>
 <!-- Structured Data: Organization con Logo -->
@@ -318,6 +405,7 @@ h1 { font-size: 3em; background: linear-gradient(135deg, #667eea 0%, #764ba2 100
 <li><a href="index.html" onclick="closeMenu()">Home</a></li>
 <li><a href="index.html#appartamenti" onclick="closeMenu()">Appartamenti</a></li>
 <li><a href="torre-pali.html" onclick="closeMenu()">Torre Pali</a></li>
+<li><a href="recensioni.html" onclick="closeMenu()">⭐ Recensioni</a></li>
 <li><a href="faq.html" onclick="closeMenu()">FAQ</a></li>
 <li><a href="contatti.html" onclick="closeMenu()">Contatti</a></li>
 </ul>
