@@ -232,6 +232,7 @@ h1 { font-size: 3.5em; margin-bottom: 20px; font-weight: 700; position: relative
   .about-torre { padding: 35px 25px; }
   .interactive-map-section { padding: 35px 25px; }
   .properties-grid { grid-template-columns: 1fr; }
+  .reviews-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
   .highlights { flex-direction: column; }
   .footer-container { grid-template-columns: 1fr; }
   .hamburger { display: flex; }
@@ -630,7 +631,7 @@ window.addEventListener('load', function() {
 <h2 style="font-size: 2.5em; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 15px; font-weight: 700; text-align: center;">⭐ Cosa Dicono i Nostri Ospiti</h2>
 <p style="text-align: center; font-size: 1.15em; color: #4a5568; margin-bottom: 40px;">Recensioni autentiche dai nostri clienti soddisfatti</p>
 
-<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-bottom: 35px;">
+<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-bottom: 35px;" class="reviews-grid">
 <div style="background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-left: 5px solid #667eea; transition: all 0.3s;">
 <div style="color: #fbbf24; font-size: 1.3em; margin-bottom: 10px;">⭐⭐⭐⭐⭐</div>
 <p style="font-size: 1.05em; color: #4a5568; line-height: 1.8; font-style: italic; margin-bottom: 15px;">"Casa molto accogliente con tutti i comfort. Proprietari gentili e disponibili. Mare stupendo!"</p>
