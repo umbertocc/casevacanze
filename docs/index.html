@@ -49,9 +49,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
-<!-- Leaflet CSS - Preload per performance -->
-<link rel="preload" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" as="style" onload="this.onload=null;this.rel='stylesheet'" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
-<noscript><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""></noscript>
 <!-- Preload immagine LCP (Largest Contentful Paint) -->
 <link rel="preload" as="image" href="img/casa-bella-vista/prospetto.jpg" fetchpriority="high">
 <style>
@@ -804,10 +801,35 @@ window.addEventListener('load', function() {
 </div>
 </footer>
 
-<!-- Leaflet JS - Defer per non bloccare rendering -->
-<script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-<script defer>
-// Inizializza mappa
+<!-- Leaflet JS - Lazy Loading quando mappa diventa visibile -->
+<script>
+// Carica Leaflet solo quando l'utente vede la mappa (risparmio 41 KiB)
+(function() {
+  let mapLoaded = false;
+  
+  function loadLeaflet() {
+    if (mapLoaded) return;
+    mapLoaded = true;
+    
+    // Carica CSS Leaflet
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+    link.integrity = 'sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=';
+    link.crossOrigin = '';
+    document.head.appendChild(link);
+    
+    // Carica JS Leaflet
+    const script = document.createElement('script');
+    script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+    script.integrity = 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=';
+    script.crossOrigin = '';
+    script.onload = initMap;
+    document.body.appendChild(script);
+  }
+  
+  function initMap() {
+    // Inizializza mappa
 var map = L.map('interactive-map').setView([39.8391, 18.2105], 15);
 
 // Tile layer OpenStreetMap
@@ -886,6 +908,26 @@ L.marker([39.8372, 18.2085], {icon: L.divIcon({
   iconAnchor: [11, 11]
 })}).addTo(map)
   .bindPopup('<b>🏝️ Isola della Fanciulla</b><br>Isolotto roccioso raggiungibile a nuoto<br><a href="torre-pali.html">Leggi la leggenda</a>');
+  }
+  
+  // Osserva quando la mappa diventa visibile
+  const mapElement = document.getElementById('interactive-map');
+  if (mapElement && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          loadLeaflet();
+          observer.disconnect();
+        }
+      });
+    }, { rootMargin: '200px' }); // Carica 200px prima che sia visibile
+    
+    observer.observe(mapElement);
+  } else if (mapElement) {
+    // Fallback: carica dopo 3 secondi se browser vecchio
+    setTimeout(loadLeaflet, 3000);
+  }
+})();
 </script>
 
 <script>
