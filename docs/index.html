@@ -50,9 +50,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Async load con display=swap per non bloccare mobile -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
-<!-- Preload immagine LCP (Largest Contentful Paint) -->
-<link rel="preload" as="image" href="img/casa-bella-vista/prospetto-mobile.jpg" fetchpriority="high" media="(max-width: 768px)">
-<link rel="preload" as="image" href="img/casa-bella-vista/prospetto.jpg" fetchpriority="high" media="(min-width: 769px)">
+<!-- Preload immagine LCP - Mobile first (PageSpeed testa sempre mobile) -->
+<link rel="preload" as="image" href="img/casa-bella-vista/prospetto-mobile.jpg" fetchpriority="high" imagesrcset="img/casa-bella-vista/prospetto-mobile.jpg 800w, img/casa-bella-vista/prospetto.jpg 1200w" imagesizes="(max-width: 768px) 100vw, 800px">
 <style>
 /* Font fallback override per ridurre CLS quando Poppins carica */
 @font-face {
