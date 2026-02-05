@@ -44,14 +44,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="apple-touch-icon" sizes="180x180" href="https://torrepalivacanze.it/img/logo.png">
 <link rel="shortcut icon" href="https://torrepalivacanze.it/img/logo.png">
 <link rel="manifest" href="/manifest.json">
-<!-- Google Fonts - Caricamento ottimizzato con preload per ridurre CLS -->
+<!-- Google Fonts - Strategia ibrida: async + swap + fallback perfetto -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Preload font critici per eliminare layout shift -->
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Async load con display=swap per non bloccare mobile -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
 <!-- Preload immagine LCP (Largest Contentful Paint) -->
-<link rel="preload" as="image" href="img/casa-bella-vista/prospetto.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="img/casa-bella-vista/prospetto-mobile.jpg" fetchpriority="high" media="(max-width: 768px)">
+<link rel="preload" as="image" href="img/casa-bella-vista/prospetto.jpg" fetchpriority="high" media="(min-width: 769px)">
 <style>
 /* Font fallback override per ridurre CLS quando Poppins carica */
 @font-face {
