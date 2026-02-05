@@ -10,18 +10,224 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Grazie — Messaggio Inviato</title>
-<style>body{font-family:Arial,Helvetica,sans-serif;background:#f5f7fa;color:#333;display:flex;align-items:center;justify-content:center;height:100vh;margin:0} .card{background:#fff;padding:40px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.08);max-width:680px;text-align:center} a.btn{display:inline-block;margin-top:20px;padding:12px 26px;background:#e74c3c;color:#fff;border-radius:30px;text-decoration:none}</style>
+<meta name="robots" content="noindex, nofollow">
+<title>Grazie per il Tuo Messaggio | Torre Pali Vacanze</title>
+<link rel="icon" type="image/png" sizes="32x32" href="https://torrepalivacanze.it/img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #2d3748; background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); background-attachment: fixed; padding-top: 70px; min-height: 100vh; }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pulse { 0% { box-shadow: 0 6px 25px rgba(37,211,102,0.4); } 50% { box-shadow: 0 6px 25px rgba(37,211,102,0.7), 0 0 0 10px rgba(37,211,102,0.2); } 100% { box-shadow: 0 6px 25px rgba(37,211,102,0.4); } }
+.navbar { position: fixed; top: 0; left: 0; right: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0,0,0,0.08); z-index: 1000; transition: all 0.3s ease; }
+.navbar:hover { box-shadow: 0 6px 30px rgba(0,0,0,0.12); }
+.navbar-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 18px 30px; }
+.navbar-brand { font-size: 1.4em; font-weight: 700; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none; transition: transform 0.3s; }
+.navbar-brand:hover { transform: scale(1.05); }
+.navbar-menu { display: flex; gap: 30px; list-style: none; }
+.navbar-menu > li { position: relative; }
+.navbar-menu a { color: #4a5568; text-decoration: none; font-weight: 500; transition: all 0.3s; position: relative; padding: 5px 0; display: block; }
+.navbar-menu a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); transition: width 0.3s; }
+.navbar-menu a:hover { color: #667eea; }
+.navbar-menu a:hover::after { width: 100%; }
+.dropdown { position: relative; }
+.dropdown-toggle { cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 5px 0; }
+.dropdown-toggle::before { content: '\25BC'; font-size: 0.7em; transition: transform 0.3s; }
+.dropdown:hover .dropdown-toggle::before { transform: rotate(180deg); }
+.dropdown-menu { position: absolute; top: 100%; left: 0; background: white; min-width: 220px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border-radius: 15px; padding: 15px 0; margin-top: 10px; opacity: 0; visibility: hidden; transform: translateY(-10px); transition: all 0.3s; z-index: 1000; }
+.dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+.dropdown-menu a { padding: 12px 25px; color: #4a5568; font-weight: 500; white-space: nowrap; }
+.dropdown-menu a::after { display: none; }
+.dropdown-menu a:hover { background: rgba(102, 126, 234, 0.1); color: #667eea; }
+.hamburger { display: none; flex-direction: column; cursor: pointer; }
+.hamburger span { width: 25px; height: 3px; background: #2c3e50; margin: 3px 0; transition: 0.3s; border-radius: 3px; }
+.whatsapp-float { position: fixed; top: auto !important; left: auto !important; bottom: 20px !important; right: 20px !important; background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 6px 25px rgba(37,211,102,0.4); z-index: 999; text-decoration: none; transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55); animation: pulse 2s infinite; }
+.whatsapp-float:hover { transform: scale(1.15) rotate(5deg); box-shadow: 0 8px 35px rgba(37,211,102,0.6); animation: none; }
+.footer { background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%); color: white; padding: 50px 30px 25px; margin-top: 60px; position: relative; }
+.footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%); }
+.footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px; }
+.footer-section h3 { margin-bottom: 20px; color: #f7fafc; font-weight: 600; font-size: 1.2em; }
+.footer-section p, .footer-section a { color: #cbd5e0; font-size: 0.95em; line-height: 2; text-decoration: none; display: block; margin-bottom: 10px; transition: all 0.3s; }
+.footer-section a:hover { color: #667eea; transform: translateX(5px); }
+.footer-bottom { text-align: center; margin-top: 40px; padding-top: 25px; border-top: 1px solid #4a5568; color: #a0aec0; font-size: 0.9em; }
+.container { max-width: 900px; margin: 0 auto; padding: 60px 30px; }
+.success-card { background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); padding: 60px 50px; border-radius: 30px; box-shadow: 0 20px 60px rgba(0,0,0,0.1); text-align: center; margin-bottom: 50px; animation: fadeInUp 0.6s ease-out; }
+.success-icon { font-size: 5em; margin-bottom: 20px; animation: fadeInUp 0.8s ease-out; }
+h1 { font-size: 2.8em; background: linear-gradient(135deg, #48bb78 0%, #38a169 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 20px; font-weight: 700; }
+.success-message { font-size: 1.3em; color: #4a5568; margin-bottom: 15px; line-height: 1.8; }
+.response-time { background: linear-gradient(135deg, rgba(72, 187, 120, 0.1) 0%, rgba(56, 161, 105, 0.1) 100%); padding: 20px; border-radius: 15px; margin: 30px 0; color: #2d3748; font-weight: 600; border-left: 4px solid #48bb78; }
+.cta-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; margin-top: 40px; }
+.cta-box { background: white; padding: 30px 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: all 0.3s; border: 2px solid transparent; text-decoration: none; display: block; }
+.cta-box:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(102, 126, 234, 0.15); border-color: #667eea; }
+.cta-icon { font-size: 2.5em; margin-bottom: 15px; }
+.cta-title { font-size: 1.3em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+.cta-desc { font-size: 0.95em; color: #718096; line-height: 1.6; }
+.btn { display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 16px 40px; border-radius: 50px; text-decoration: none; font-weight: 600; margin: 8px; transition: all 0.4s; box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3); }
+.btn:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 12px 35px rgba(102, 126, 234, 0.5); }
+.btn-secondary { background: linear-gradient(135deg, #48bb78 0%, #38a169 100%); box-shadow: 0 8px 25px rgba(72, 187, 120, 0.3); }
+.btn-secondary:hover { box-shadow: 0 12px 35px rgba(72, 187, 120, 0.5); }
+@media (max-width: 768px) {
+  .container { padding: 40px 20px; }
+  .success-card { padding: 40px 30px; }
+  h1 { font-size: 2.2em; }
+  .success-message { font-size: 1.1em; }
+  .cta-grid { grid-template-columns: 1fr; }
+  .footer-container { grid-template-columns: 1fr; }
+  .hamburger { display: flex; }
+  .navbar-menu { position: fixed; left: -100%; top: 70px; flex-direction: column; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); width: 80%; max-width: 300px; height: calc(100vh - 70px); padding: 30px 20px; box-shadow: 2px 0 20px rgba(0,0,0,0.1); transition: left 0.3s; gap: 0; }
+  .navbar-menu.active { left: 0; }
+  .navbar-menu li { margin: 0; padding: 0; border-bottom: 1px solid rgba(102, 126, 234, 0.1); width: 100%; }
+  .navbar-menu a { display: block; font-size: 1.15em; padding: 18px 0; }
+  .dropdown-menu { position: static; box-shadow: none; padding: 0 0 0 20px; margin: 0; opacity: 1; visibility: visible; transform: none; max-height: 0; overflow: hidden; transition: max-height 0.3s; }
+  .dropdown.active .dropdown-menu { max-height: 300px; padding: 10px 0 10px 20px; }
+  .dropdown-toggle { padding: 18px 0; font-size: 1.15em; }
+  .dropdown-menu a { padding: 10px 0; font-size: 1em; }
+}
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FP79B56"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<div class="card">
-<h1>✅ Grazie!</h1>
-<p>Il tuo messaggio è stato inviato correttamente. Ti contatteremo al più presto.</p>
-<a class="btn" href="index.html">Torna alla homepage</a>
+
+<!-- Navbar -->
+<nav class="navbar">
+<div class="navbar-container">
+<a href="index.html" class="navbar-brand">🏝️ Torre Pali Vacanze</a>
+<div class="hamburger" onclick="toggleMenu()">
+<span></span>
+<span></span>
+<span></span>
 </div>
+<ul class="navbar-menu" id="navbarMenu">
+<li><a href="index.html" onclick="closeMenu()">Home</a></li>
+<li><a href="index.html#appartamenti" onclick="closeMenu()">Appartamenti</a></li>
+<li class="dropdown">
+<span class="dropdown-toggle" style="color: #4a5568; font-weight: 500;">Scopri il Salento</span>
+<div class="dropdown-menu">
+<a href="torre-pali.html" onclick="closeMenu()">⭐ Torre Pali</a>
+<a href="spiagge-salento-sud.html" onclick="closeMenu()">Guida Spiagge</a>
+<a href="eventi-salento.html" onclick="closeMenu()">Eventi e Tradizioni</a>
+<a href="faq-salento.html" onclick="closeMenu()">FAQ Salento</a>
+</div>
+</li>
+<li><a href="recensioni.html" onclick="closeMenu()">⭐ Recensioni</a></li>
+<li><a href="faq.html" onclick="closeMenu()">FAQ</a></li>
+<li><a href="contatti.html" onclick="closeMenu()">Contatti</a></li>
+</ul>
+</div>
+</nav>
+
+<!-- WhatsApp Flottante -->
+<a href="https://wa.me/393886587080?text=Ciao!%20Vorrei%20informazioni%20sulle%20vostre%20case%20vacanza%20a%20Torre%20Pali" class="whatsapp-float" style="position: fixed !important; bottom: 20px !important; right: 20px !important; top: auto !important; left: auto !important;" target="_blank" aria-label="Contattaci su WhatsApp">
+<svg viewBox="0 0 32 32" width="32" height="32" fill="white">
+<path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 7.933-2.127c2.42 1.37 5.173 2.127 8.067 2.127 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.467c-2.482 0-4.908-0.646-7.07-1.87l-0.507-0.292-4.713 1.262 1.262-4.669-0.292-0.508c-1.207-2.100-1.847-4.507-1.847-6.978 0-7.51 6.11-13.619 13.619-13.619s13.619 6.109 13.619 13.619c0 7.51-6.11 13.619-13.619 13.619zM21.789 18.75c-0.214-0.107-1.268-0.625-1.464-0.696s-0.339-0.107-0.482 0.107c-0.143 0.214-0.554 0.696-0.679 0.839s-0.25 0.161-0.464 0.054c-0.214-0.107-0.902-0.333-1.718-1.060-0.635-0.567-1.064-1.268-1.189-1.482s-0.013-0.329 0.094-0.435c0.096-0.096 0.214-0.25 0.321-0.375s0.143-0.214 0.214-0.357 0.036-0.268-0.018-0.375c-0.054-0.107-0.482-1.161-0.661-1.589s-0.349-0.362-0.482-0.369c-0.125-0.007-0.268-0.007-0.411-0.007s-0.375 0.054-0.571 0.268c-0.196 0.214-0.75 0.732-0.75 1.786s0.768 2.071 0.875 2.214c0.107 0.143 1.5 2.357 3.653 3.304 0.51 0.214 0.909 0.343 1.219 0.438 0.512 0.161 0.978 0.139 1.346 0.084 0.411-0.061 1.268-0.518 1.446-1.018s0.179-0.929 0.125-1.018c-0.054-0.089-0.196-0.143-0.411-0.25z"/>
+</svg>
+</a>
+
+<div class="container">
+<div class="success-card">
+<div class="success-icon">✅</div>
+<h1>Messaggio Inviato con Successo!</h1>
+<p class="success-message">Grazie per averci contattato! Il tuo messaggio è stato ricevuto correttamente.</p>
+<div class="response-time">
+⏱️ Ti risponderemo entro 2-4 ore nei giorni feriali (9:00-20:00)
+</div>
+<p style="font-size: 1.05em; color: #718096; margin-top: 20px;">Nel frattempo, scopri di più sulle nostre case vacanze e sulla bellissima Torre Pali!</p>
+</div>
+
+<div class="cta-grid">
+<a href="index.html#appartamenti" class="cta-box">
+<div class="cta-icon">🏠</div>
+<div class="cta-title">Scopri gli Appartamenti</div>
+<div class="cta-desc">Esplora le nostre 3 case vacanze a 20-40m dal mare</div>
+</a>
+
+<a href="recensioni.html" class="cta-box">
+<div class="cta-icon">⭐</div>
+<div class="cta-title">Leggi le Recensioni</div>
+<div class="cta-desc">Scopri cosa dicono i nostri ospiti soddisfatti</div>
+</a>
+
+<a href="torre-pali.html" class="cta-box">
+<div class="cta-icon">🏝️</div>
+<div class="cta-title">Visita Torre Pali</div>
+<div class="cta-desc">Storia, leggenda e le spiagge più belle del Salento</div>
+</a>
+
+<a href="spiagge-salento-sud.html" class="cta-box">
+<div class="cta-icon">🏖️</div>
+<div class="cta-title">Guida Spiagge</div>
+<div class="cta-desc">Pescoluse, Punta Pizzo e le Maldive del Salento</div>
+</a>
+</div>
+
+<div style="text-align: center; margin-top: 40px;">
+<a href="index.html" class="btn">🏠 Torna alla Homepage</a>
+<a href="https://wa.me/393886587080?text=Ciao!%20Vorrei%20informazioni%20sulle%20vostre%20case%20vacanza%20a%20Torre%20Pali" class="btn btn-secondary" target="_blank">💬 Scrivi su WhatsApp</a>
+</div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+<div class="footer-container">
+<div class="footer-section">
+<h3>🏝️ Torre Pali Vacanze</h3>
+<p>Case vacanze a Torre Pali, Salento. A pochi passi dalla spiaggia Bandiera Blu con tutti i comfort per una vacanza indimenticabile.</p>
+<p><strong>CIN:</strong> IT075066C200039288<br><strong>CIS:</strong> LE07506691000004848</p>
+</div>
+
+<div class="footer-section">
+<h3>📍 Link Utili</h3>
+<a href="index.html">Home</a>
+<a href="index.html#appartamenti">Appartamenti</a>
+<a href="torre-pali.html">Torre Pali</a>
+<a href="recensioni.html">Recensioni</a>
+<a href="faq.html">FAQ</a>
+<a href="contatti.html">Contatti</a>
+<a href="privacy.html">Privacy Policy</a>
+</div>
+
+<div class="footer-section">
+<h3>📞 Contatti</h3>
+<p><strong>Telefono:</strong><br><a href="tel:+393886587080">+39 388 658 70 80</a></p>
+<p><strong>WhatsApp:</strong><br><a href="https://wa.me/393886587080" target="_blank">Chatta con noi</a></p>
+<p><strong>Email:</strong><br><a href="mailto:info@torrepalivacanze.it">info@torrepalivacanze.it</a></p>
+</div>
+</div>
+
+<div class="footer-bottom">
+<p>&copy; 2026 Torre Pali Vacanze. Tutti i diritti riservati.</p>
+</div>
+</footer>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById('navbarMenu');
+  const hamburger = document.querySelector('.hamburger');
+  menu.classList.toggle('active');
+  hamburger.classList.toggle('active');
+}
+
+function closeMenu() {
+  const menu = document.getElementById('navbarMenu');
+  const hamburger = document.querySelector('.hamburger');
+  menu.classList.remove('active');
+  hamburger.classList.remove('active');
+}
+
+// Dropdown mobile
+document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+  toggle.addEventListener('click', function(e) {
+    if (window.innerWidth <= 768) {
+      e.stopPropagation();
+      this.parentElement.classList.toggle('active');
+    }
+  });
+});
+</script>
 </body>
 </html>
