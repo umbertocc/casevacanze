@@ -192,13 +192,16 @@
     @media (max-width: 900px) {
       .container, .footer-container { max-width: 100%; padding: 0 8px; }
       .footer-container { grid-template-columns: 1fr !important; }
-      .navbar-container { flex-direction: column; gap: 8px; padding: 12px 8px; }
-      .hamburger { display: flex; }
-      .navbar-menu { 
+      .navbar-container { flex-direction: row; justify-content: space-between; align-items: center; gap: 8px; padding: 12px 8px; }
+      .hamburger { display: flex; justify-content: flex-end; align-items: center; }
+      .navbar-menu {
         display: none;
         position: fixed; left: -100%; top: 70px; flex-direction: column; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); width: 80%; max-width: 300px; height: calc(100vh - 70px); padding: 30px 20px; box-shadow: 2px 0 20px rgba(0,0,0,0.1); transition: left 0.3s; gap: 0;
       }
-      .navbar-menu.active { display: flex; left: 0; }
+      .navbar-menu.active {
+        display: flex;
+        left: 0;
+      }
       .navbar-menu li { margin: 0; padding: 0; border-bottom: 1px solid rgba(102, 126, 234, 0.1); width: 100%; }
       .navbar-menu a { display: block; font-size: 1.15em; padding: 18px 0; }
       .dropdown-menu { position: static; box-shadow: none; padding: 0 0 0 20px; margin: 0; opacity: 1; visibility: visible; transform: none; max-height: 0; overflow: hidden; transition: max-height 0.3s; }
