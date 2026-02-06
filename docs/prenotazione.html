@@ -211,9 +211,13 @@
             .navbar-container { flex-direction: row; justify-content: space-between; align-items: center; padding: 12px 8px; }
             .hamburger { display: flex; }
             .navbar-menu {
-              position: fixed; left: -100%; top: 70px; flex-direction: column; background: white; width: 80%; max-width: 300px; height: calc(100vh - 70px); padding: 30px 20px; box-shadow: 2px 0 10px rgba(0,0,0,0.1); transition: left 0.3s; gap: 0; display: flex;
+              display: none;
+              position: fixed; left: -100%; top: 70px; flex-direction: column; background: white; width: 80%; max-width: 300px; height: calc(100vh - 70px); padding: 30px 20px; box-shadow: 2px 0 10px rgba(0,0,0,0.1); transition: left 0.3s; gap: 0;
             }
-            .navbar-menu.active { left: 0; }
+            .navbar-menu.active {
+              display: flex;
+              left: 0;
+            }
             .navbar-menu li { margin: 0; padding: 0; border-bottom: 1px solid #ecf0f1; width: 100%; }
             .navbar-menu a { display: block; font-size: 1.1em; padding: 15px 0; }
             .dropdown-menu { position: static; box-shadow: none; padding: 0 0 0 20px; margin: 0; opacity: 1; visibility: visible; transform: none; max-height: 0; overflow: hidden; transition: max-height 0.3s; }
