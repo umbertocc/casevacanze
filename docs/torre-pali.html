@@ -38,10 +38,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Leaflet CSS per Mappa Interattiva -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 <style>
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes slideInLeft { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes pulse {
+  0% { box-shadow: 0 6px 25px rgba(37,211,102,0.4); }
+  50% { box-shadow: 0 6px 25px rgba(37,211,102,0.7), 0 0 0 10px rgba(37,211,102,0.2); }
+  100% { box-shadow: 0 6px 25px rgba(37,211,102,0.4); }
+}
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #333; background: linear-gradient(135deg, #f5f7fa 0%, #e8eaf6 100%); padding-top: 70px; }
 .navbar { position: fixed; top: 0; left: 0; right: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0,0,0,0.08); z-index: 1000; }
@@ -112,6 +119,8 @@ header h1 { font-size: 3.5em; margin-bottom: 15px; font-weight: 700; text-shadow
 .lightbox.active { display: flex; align-items: center; justify-content: center; }
 .lightbox img { max-width: 90%; max-height: 90vh; object-fit: contain; }
 .lightbox-close { position: absolute; top: 30px; right: 40px; color: white; font-size: 3em; cursor: pointer; font-weight: bold; }
+.lido-card { transition: all 0.3s ease; cursor: pointer; }
+.lido-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); }
 @media (max-width: 768px) {
   .container { padding: 15px; }
   header h1 { font-size: 2em; }
@@ -121,6 +130,7 @@ header h1 { font-size: 3.5em; margin-bottom: 15px; font-weight: 700; text-shadow
   .info-grid { grid-template-columns: 1fr; }
   .features-list { grid-template-columns: 1fr; }
   .content-section { padding: 30px 20px; }
+  .content-section h2 { font-size: 1.8em; }
   .footer-container { grid-template-columns: 1fr; }
   .hamburger { display: flex; }
   .navbar-menu { position: fixed; left: -100%; top: 70px; flex-direction: column; background: white; width: 80%; max-width: 300px; height: calc(100vh - 70px); padding: 30px 20px; box-shadow: 2px 0 10px rgba(0,0,0,0.1); transition: left 0.3s; gap: 0; }
@@ -131,6 +141,21 @@ header h1 { font-size: 3.5em; margin-bottom: 15px; font-weight: 700; text-shadow
   .dropdown.active .dropdown-menu { max-height: 300px; padding: 10px 0 10px 20px; }
   .dropdown-toggle { padding: 18px 0; font-size: 1.15em; }
   .dropdown-menu a { padding: 10px 0; font-size: 1em; }
+  .activities-grid { grid-template-columns: 1fr !important; gap: 15px !important; }
+  .price-grid { grid-template-columns: 1fr !important; gap: 15px !important; }
+  .lidi-grid { grid-template-columns: 1fr !important; gap: 15px !important; }
+  #torre-pali-map {
+    height: 400px !important;
+    width: 100%;
+    min-height: 300px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    margin-bottom: 20px;
+  }
+  .map-legend { gap: 10px; font-size: 0.85em; }
+  .btn { padding: 14px 30px; font-size: 1em; display: block; margin: 10px auto; max-width: 280px; }
+  .cta-section h2 { font-size: 1.8em; }
+  .cta-section p { font-size: 1em; }
 }
 
 </style>
@@ -169,7 +194,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </nav>
 
 <!-- WhatsApp Flottante -->
-<a href="https://wa.me/3886587080" class="whatsapp-float" style="position: fixed !important; bottom: 20px !important; right: 20px !important; top: auto !important; left: auto !important;" target="_blank" aria-label="Contattaci su WhatsApp">
+<a href="https://wa.me/393886587080?text=Ciao!%20Vorrei%20informazioni%20sulle%20vostre%20case%20vacanza%20a%20Torre%20Pali" class="whatsapp-float" style="position: fixed !important; bottom: 20px !important; right: 20px !important; top: auto !important; left: auto !important;" target="_blank" aria-label="Contattaci su WhatsApp" onclick="gtag('event', 'whatsapp_click', {'event_category': 'Contact', 'event_label': 'Torre Pali - Floating Button'});">
 <svg viewBox="0 0 32 32" width="32" height="32" fill="white">
 <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 7.933-2.127c2.42 1.37 5.173 2.127 8.067 2.127 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.467c-2.482 0-4.908-0.646-7.07-1.87l-0.507-0.292-4.713 1.262 1.262-4.669-0.292-0.508c-1.207-2.100-1.847-4.507-1.847-6.978 0-7.51 6.11-13.619 13.619-13.619s13.619 6.109 13.619 13.619c0 7.51-6.11 13.619-13.619 13.619zM21.789 18.75c-0.214-0.107-1.268-0.625-1.464-0.696s-0.339-0.107-0.482 0.107c-0.143 0.214-0.554 0.696-0.679 0.839s-0.25 0.161-0.464 0.054c-0.214-0.107-0.902-0.333-1.718-1.060-0.635-0.567-1.064-1.268-1.189-1.482s-0.013-0.329 0.094-0.435c0.096-0.096 0.214-0.25 0.321-0.375s0.143-0.214 0.214-0.357 0.036-0.268-0.018-0.375c-0.054-0.107-0.482-1.161-0.661-1.589s-0.349-0.362-0.482-0.369c-0.125-0.007-0.268-0.007-0.411-0.007s-0.375 0.054-0.571 0.268c-0.196 0.214-0.75 0.732-0.75 1.786s0.768 2.071 0.875 2.214c0.107 0.143 1.5 2.357 3.653 3.304 0.51 0.214 0.909 0.343 1.219 0.438 0.512 0.161 0.978 0.139 1.346 0.084 0.411-0.061 1.268-0.518 1.446-1.018s0.179-0.929 0.125-1.018c-0.054-0.089-0.196-0.143-0.411-0.25z"/>
 </svg>
@@ -686,6 +711,83 @@ Torre Pali è una località turistica ben organizzata con tutti i servizi necess
 Le spiagge di Torre Pali offrono sia <strong>tratti liberi</strong> che <strong>stabilimenti balneari attrezzati</strong> con ombrelloni, lettini, bar, ristoranti, docce, servizi igienici e assistenza bagnanti. Molti lidi organizzano attività sportive, corsi di acquagym, animazione per bambini e serate musicali.
 </p>
 
+<h4 style="font-size: 1.4em; color: #667eea; margin: 30px 0 20px 0;">⛱️ I Migliori Lidi di Torre Pali</h4>
+<p style="margin-bottom: 25px;">
+Scopri gli stabilimenti balneari più apprezzati di Torre Pali, ognuno con le proprie caratteristiche e servizi per rendere perfetta la tua giornata in spiaggia.
+</p>
+
+<div class="lidi-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 30px 0;">
+<div class="lido-card" style="background: linear-gradient(135deg, rgba(251, 191, 36, 0.1) 0%, rgba(245, 158, 11, 0.1) 100%); padding: 25px; border-radius: 20px; border: 2px solid rgba(251, 191, 36, 0.2); transition: all 0.3s;">
+<div style="font-size: 2.5em; margin-bottom: 10px;">🥇</div>
+<h5 style="color: #f59e0b; font-size: 1.3em; margin-bottom: 10px; font-weight: 600;">Lido Gold</h5>
+<p style="color: #4a5568; font-size: 0.95em; line-height: 1.7;">
+In uno degli angoli più suggestivi del Salento. Magico connubio tra relax, natura e cibo in atmosfera carica di profumi mediterranei. Raffinatezza, eleganza e servizio attento con pescato locale, carni selezionate e carta vini ricercata.
+</p>
+</div>
+
+<div class="lido-card" style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%); padding: 25px; border-radius: 20px; border: 2px solid rgba(139, 92, 246, 0.2); transition: all 0.3s;">
+<div style="font-size: 2.5em; margin-bottom: 10px;">👑</div>
+<h5 style="color: #8b5cf6; font-size: 1.3em; margin-bottom: 10px; font-weight: 600;">Lido Elite</h5>
+<p style="color: #4a5568; font-size: 0.95em; line-height: 1.7;">
+Meravigliosa spiaggia di sabbia finissima in uno degli angoli più magici del sud Salento. L'ampio spazio tra ombrelloni e lettini garantisce comfort e tranquillità, anche nelle giornate più affollate.
+</p>
+</div>
+
+<div class="lido-card" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.1) 100%); padding: 25px; border-radius: 20px; border: 2px solid rgba(16, 185, 129, 0.2); transition: all 0.3s;">
+<div style="font-size: 2.5em; margin-bottom: 10px;">🌴</div>
+<h5 style="color: #10b981; font-size: 1.3em; margin-bottom: 10px; font-weight: 600;">Lido Tropical</h5>
+<p style="color: #4a5568; font-size: 0.95em; line-height: 1.7;">
+Incorniciato dalle dune e dalla macchia mediterranea, splendida vacanza all'insegna di sole, relax e mare cristallino. Ampio spazio tra ombrelloni e lettini per garantire comfort e tranquillità.
+</p>
+</div>
+
+<div class="lido-card" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.1) 100%); padding: 25px; border-radius: 20px; border: 2px solid rgba(59, 130, 246, 0.2); transition: all 0.3s;">
+<div style="font-size: 2.5em; margin-bottom: 10px;">🌊</div>
+<h5 style="color: #3b82f6; font-size: 1.3em; margin-bottom: 10px; font-weight: 600;">Calòma Beach</h5>
+<p style="color: #4a5568; font-size: 0.95em; line-height: 1.7;">
+Situato a Pescoluse, nel cuore del Salento, offre sabbia dorata e mare cristallino. Lido ben organizzato con ombrelloni, lettini, bar, ristorante e attività acquatiche. Ideale per famiglie, coppie e chi cerca relax e comfort in una delle spiagge più belle d'Italia.
+</p>
+</div>
+
+<div class="lido-card" style="background: linear-gradient(135deg, rgba(236, 72, 153, 0.1) 0%, rgba(219, 39, 119, 0.1) 100%); padding: 25px; border-radius: 20px; border: 2px solid rgba(236, 72, 153, 0.2); transition: all 0.3s;">
+<div style="font-size: 2.5em; margin-bottom: 10px;">🍽️</div>
+<h5 style="color: #ec4899; font-size: 1.3em; margin-bottom: 10px; font-weight: 600;">Reem Restaurant - Beach</h5>
+<p style="color: #4a5568; font-size: 0.95em; line-height: 1.7;">
+Sulla costa salentina tra Pescoluse e Torre Pali. Servizio unico con stabilimento balneare, zona relax, zona bambini, ristorante, pizzeria e braceria. Un'esperienza di piacere e relax in simbiosi con il paesaggio salentino.
+</p>
+</div>
+
+<div class="lido-card" style="background: linear-gradient(135deg, rgba(14, 165, 233, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%); padding: 25px; border-radius: 20px; border: 2px solid rgba(14, 165, 233, 0.2); transition: all 0.3s;">
+<div style="font-size: 2.5em; margin-bottom: 10px;">🏝️</div>
+<h5 style="color: #0ea5e9; font-size: 1.3em; margin-bottom: 10px; font-weight: 600;">Brisa Beach House</h5>
+<p style="color: #4a5568; font-size: 0.95em; line-height: 1.7;">
+Affacciato sul Mar Ionio, protetto dall'antica torre. Luogo perfetto per vivere ogni momento in atmosfera accogliente: colazione, pranzo vista mare, aperitivi al tramonto e cocktail dopocena. Ombrelloni e lettini per godersi la splendida spiaggia.
+</p>
+</div>
+
+<div class="lido-card" style="background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(22, 163, 74, 0.1) 100%); padding: 25px; border-radius: 20px; border: 2px solid rgba(34, 197, 94, 0.2); transition: all 0.3s;">
+<div style="font-size: 2.5em; margin-bottom: 10px;">🌿</div>
+<h5 style="color: #22c55e; font-size: 1.3em; margin-bottom: 10px; font-weight: 600;">AGRI BEACH eden Salento</h5>
+<p style="color: #4a5568; font-size: 0.95em; line-height: 1.7;">
+Il primo AGRI-BEACH d'Italia a Pescoluse. Terreno retro dunale di 5 ettari dove si coltivano ortaggi e prodotti biologici freschi per la ristorazione. Cucina espressa anche vegana e vegetariana, area green con campo da volley e mini club. Pet-friendly.
+</p>
+</div>
+</div>
+
+<div class="highlight-box" style="margin-top: 30px;">
+<h3>💡 Info Utili sui Lidi</h3>
+<p style="margin-bottom: 10px;">
+💰 <strong>Prezzi Medi:</strong> €15-30 al giorno per lettino e ombrellone<br>
+📅 <strong>Prenotazione:</strong> Consigliata in alta stagione (luglio-agosto)<br>
+🍽️ <strong>Ristorazione:</strong> La maggior parte dei lidi ha bar e ristorante interno<br>
+🏐 <strong>Attività:</strong> Beach volley, bocce, racchettoni, corsi fitness<br>
+👶 <strong>Bambini:</strong> Area giochi, animazione e fasciatoio in molti lidi<br>
+🐕 <strong>Animali:</strong> Alcuni lidi hanno aree pet-friendly, informarsi prima<br>
+🚿 <strong>Docce:</strong> Docce calde, spogliatoi e servizi igienici inclusi<br>
+📶 <strong>Wi-Fi:</strong> Disponibile gratuitamente nella maggior parte dei lidi
+</p>
+</div>
+
 <h3>📶 Connettività</h3>
 <p>
 Torre Pali è ben coperta dalla rete mobile 4G/5G. La maggior parte di bar, ristoranti e stabilimenti balneari offre Wi-Fi gratuito ai clienti.
@@ -752,11 +854,347 @@ Durante l'estate, Torre Pali si anima con sagre, concerti sulla spiaggia, serate
 </div>
 </div>
 
+<div class="content-section">
+<h2>🍴 Dove Mangiare a Torre Pali</h2>
+<p>
+Torre Pali e dintorni offrono un'eccellente scelta di ristoranti, trattorie e pizzerie dove gustare l'autentica cucina salentina e il pesce freschissimo dell'Adriatico e dello Ionio.
+</p>
+
+<div class="restaurant-grid" style="display: grid; grid-template-columns: 1fr; gap: 25px; margin: 30px 0;">
+<div class="restaurant-card" style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(240, 147, 251, 0.05) 100%); padding: 30px; border-radius: 20px; border: 1px solid rgba(102, 126, 234, 0.1);">
+<h4 style="color: #667eea; font-size: 1.4em; margin-bottom: 10px;">🐟 Ristoranti di Pesce</h4>
+<p style="color: #4a5568; margin-bottom: 10px;">
+<strong>Specialità:</strong> Crudità di mare, spaghetti ai ricci, fritture miste, grigliata di pesce, polpo alla pignata<br>
+<strong>Fascia di prezzo:</strong> €30-50 a persona<br>
+<strong>Consigliato:</strong> Prenota al tramonto per vista mare spettacolare
+</p>
+</div>
+
+<div class="restaurant-card" style="background: linear-gradient(135deg, rgba(251, 191, 36, 0.05) 0%, rgba(245, 158, 11, 0.05) 100%); padding: 30px; border-radius: 20px; border: 1px solid rgba(251, 191, 36, 0.1);">
+<h4 style="color: #f59e0b; font-size: 1.4em; margin-bottom: 10px;">🍝 Trattorie Tradizionali</h4>
+<p style="color: #4a5568; margin-bottom: 10px;">
+<strong>Specialità:</strong> Orecchiette alle cime di rapa, pittule, parmigiana di melanzane, ciceri e tria, tiella<br>
+<strong>Fascia di prezzo:</strong> €20-35 a persona<br>
+<strong>Consigliato:</strong> Chiedi i piatti del giorno e le verdure di stagione
+</p>
+</div>
+
+<div class="restaurant-card" style="background: linear-gradient(135deg, rgba(239, 68, 68, 0.05) 0%, rgba(220, 38, 38, 0.05) 100%); padding: 30px; border-radius: 20px; border: 1px solid rgba(239, 68, 68, 0.1);">
+<h4 style="color: #ef4444; font-size: 1.4em; margin-bottom: 10px;">🍕 Pizzerie</h4>
+<p style="color: #4a5568; margin-bottom: 10px;">
+<strong>Specialità:</strong> Pizze napoletane e salentine, calzoni, focacce, pizze al metro<br>
+<strong>Fascia di prezzo:</strong> €10-20 a persona<br>
+<strong>Consigliato:</strong> Perfette per famiglie, asporto disponibile
+</p>
+</div>
+
+<div class="restaurant-card" style="background: linear-gradient(135deg, rgba(236, 72, 153, 0.05) 0%, rgba(219, 39, 119, 0.05) 100%); padding: 30px; border-radius: 20px; border: 1px solid rgba(236, 72, 153, 0.1);">
+<h4 style="color: #ec4899; font-size: 1.4em; margin-bottom: 10px;">🍦 Gelaterie e Pasticcerie</h4>
+<p style="color: #4a5568; margin-bottom: 10px;">
+<strong>Imperdibili:</strong> Pasticciotto leccese caldo, gelato artigianale, spumone salentino, caffè leccese in ghiaccio<br>
+<strong>Fascia di prezzo:</strong> €2-8<br>
+<strong>Consigliato:</strong> Colazione al bar con pasticciotto e caffè leccese
+</p>
+</div>
+</div>
+
+<div class="highlight-box">
+<h3>🍷 Prodotti Tipici da Assaggiare</h3>
+<p style="margin-bottom: 10px;">
+🫒 <strong>Olio Extravergine DOP Terra d'Otranto</strong> - Tra i migliori oli italiani<br>
+🍇 <strong>Vino Primitivo e Negroamaro</strong> - Vitigni autoctoni salentini<br>
+🥖 <strong>Friselle e Taralli</strong> - Perfetti per aperitivi con pomodoro fresco<br>
+🧀 <strong>Ricotta Forte</strong> - Formaggio piccante tipico salentino<br>
+🍅 <strong>Pomodorini di Morciano</strong> - Dolci e saporiti, presidio Slow Food<br>
+🌰 <strong>Mandorle di Toritto</strong> - Per dolci tradizionali
+</p>
+</div>
+</div>
+
+<div class="content-section">
+<h2>🎯 Attività & Sport a Torre Pali</h2>
+<p>
+Oltre al relax in spiaggia, Torre Pali offre numerose attività per chi cerca un po' di avventura e sport durante la vacanza.
+</p>
+
+<div class="activities-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin: 30px 0;">
+<div class="activity-card" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.1) 100%); padding: 25px; border-radius: 15px; border: 2px solid rgba(59, 130, 246, 0.2);">
+<div style="font-size: 2.5em; margin-bottom: 10px;">🏄</div>
+<h4 style="color: #2563eb; margin-bottom: 10px;">Sport Acquatici</h4>
+<p style="color: #4a5568; font-size: 0.95em;">
+• SUP (Stand Up Paddle)<br>
+• Kayak e canoa<br>
+• Windsurf e kitesurf<br>
+• Noleggio attrezzatura disponibile
+</p>
+</div>
+
+<div class="activity-card" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.1) 100%); padding: 25px; border-radius: 15px; border: 2px solid rgba(16, 185, 129, 0.2);">
+<div style="font-size: 2.5em; margin-bottom: 10px;">🤿</div>
+<h4 style="color: #059669; margin-bottom: 10px;">Snorkeling & Diving</h4>
+<p style="color: #4a5568; font-size: 0.95em;">
+• Fondali ricchi di vita marina<br>
+• Centri diving certificati<br>
+• Escursioni guidate<br>
+• Corsi per principianti
+</p>
+</div>
+
+<div class="activity-card" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.1) 100%); padding: 25px; border-radius: 15px; border: 2px solid rgba(245, 158, 11, 0.2);">
+<div style="font-size: 2.5em; margin-bottom: 10px;">🚴</div>
+<h4 style="color: #d97706; margin-bottom: 10px;">Cicloturismo</h4>
+<p style="color: #4a5568; font-size: 0.95em;">
+• Ciclovia dell'Acquedotto Pugliese<br>
+• Percorsi tra masserie e ulivi<br>
+• Tour guidati in e-bike<br>
+• Noleggio bici disponibile
+</p>
+</div>
+
+<div class="activity-card" style="background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(126, 34, 206, 0.1) 100%); padding: 25px; border-radius: 15px; border: 2px solid rgba(168, 85, 247, 0.2);">
+<div style="font-size: 2.5em; margin-bottom: 10px;">⛵</div>
+<h4 style="color: #7e22ce; margin-bottom: 10px;">Escursioni in Barca</h4>
+<p style="color: #4a5568; font-size: 0.95em;">
+• Tour delle grotte marine<br>
+• Gite a Santa Maria di Leuca<br>
+• Tramonto in barca<br>
+• Pesca sportiva
+</p>
+</div>
+
+<div class="activity-card" style="background: linear-gradient(135deg, rgba(236, 72, 153, 0.1) 0%, rgba(219, 39, 119, 0.1) 100%); padding: 25px; border-radius: 15px; border: 2px solid rgba(236, 72, 153, 0.2);">
+<div style="font-size: 2.5em; margin-bottom: 10px;">🧘</div>
+<h4 style="color: #db2777; margin-bottom: 10px;">Wellness & Relax</h4>
+<p style="color: #4a5568; font-size: 0.95em;">
+• Yoga sulla spiaggia<br>
+• Massaggi e trattamenti<br>
+• Pilates e fitness<br>
+• Meditazione al tramonto
+</p>
+</div>
+
+<div class="activity-card" style="background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(220, 38, 38, 0.1) 100%); padding: 25px; border-radius: 15px; border: 2px solid rgba(239, 68, 68, 0.2);">
+<div style="font-size: 2.5em; margin-bottom: 10px;">🏇</div>
+<h4 style="color: #dc2626; margin-bottom: 10px;">Esperienze Uniche</h4>
+<p style="color: #4a5568; font-size: 0.95em;">
+• Passeggiate a cavallo<br>
+• Visite a masserie storiche<br>
+• Degustazioni olio e vino<br>
+• Cooking class cucina salentina
+</p>
+</div>
+</div>
+</div>
+
+<div class="content-section">
+<h2>🌙 Vita Notturna & Eventi</h2>
+<p>
+Le serate a Torre Pali offrono il perfetto mix tra tranquillità e divertimento. Ecco cosa puoi trovare durante la tua vacanza.
+</p>
+
+<h3>🎵 Locali e Intrattenimento</h3>
+<div class="features-list">
+<div class="feature-item">
+<div class="feature-item-icon">🍹</div>
+<div>
+<strong>Bar Sulla Spiaggia</strong><br>
+<span style="color: #555;">Aperitivi al tramonto con DJ set, musica lounge e cocktail bar</span>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-item-icon">🎤</div>
+<div>
+<strong>Musica Live</strong><br>
+<span style="color: #555;">Concerti e serate con band locali nei locali sul lungomare</span>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-item-icon">🎭</div>
+<div>
+<strong>Eventi Culturali</strong><br>
+<span style="color: #555;">Teatro all'aperto, mostre d'arte, proiezioni cinema sotto le stelle</span>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-item-icon">🎪</div>
+<div>
+<strong>Sagre e Feste</strong><br>
+<span style="color: #555;">Feste patronali, sagre del pesce, eventi enogastronomici</span>
+</div>
+</div>
+</div>
+
+<h3>📅 Eventi Stagionali 2026</h3>
+<div class="events-timeline" style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(240, 147, 251, 0.05) 100%); padding: 30px; border-radius: 20px; margin: 25px 0;">
+<p style="margin-bottom: 15px;">
+<strong style="color: #667eea;">🌸 Giugno:</strong> Festa di San Pietro e Paolo (29 giugno) - Processione marinara e fuochi d'artificio<br>
+<strong style="color: #f59e0b;">☀️ Luglio:</strong> Sagra del Pesce - Festival gastronomico con specialità ittiche locali<br>
+<strong style="color: #ef4444;">🔥 Agosto:</strong> Notte della Taranta - Concerti di pizzica e musica popolare (15 agosto)<br>
+<strong style="color: #10b981;">🍂 Settembre:</strong> Festa dell'Uva e del Vino - Degustazioni e folklore salentino
+</p>
+</div>
+
+<div class="highlight-box">
+<h3>🚗 Discoteche e Locali Notturni nei Dintorni</h3>
+<p>
+Per chi cerca vita notturna più movimentata, a soli 40-60 km si trovano le famose discoteche di <strong>Gallipoli</strong>: Praia, Lido Zen Beach, Room 26, Paradise Beach Club. Molte organizzano anche <strong>shuttle bus</strong> dalle principali località turistiche.
+</p>
+</div>
+</div>
+
+<div class="content-section">
+<h2>💰 Prezzi e Costi Medi</h2>
+<p>
+Torre Pali offre un ottimo rapporto qualità-prezzo rispetto ad altre località turistiche del Salento. Ecco una guida ai costi medi per pianificare il tuo budget vacanza.
+</p>
+
+<div class="price-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin: 30px 0;">
+<div class="price-card" style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-left: 4px solid #667eea;">
+<h4 style="color: #667eea; margin-bottom: 15px;">🏠 Alloggio</h4>
+<p style="color: #4a5568; font-size: 0.95em; line-height: 1.8;">
+<strong>Case vacanze:</strong> €300-800/settimana<br>
+<strong>B&B:</strong> €40-80/notte a persona<br>
+<strong>Hotel 3*:</strong> €60-120/notte camera doppia<br>
+<strong>Campeggio:</strong> €20-40/notte piazzola
+</p>
+</div>
+
+<div class="price-card" style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-left: 4px solid #48bb78;">
+<h4 style="color: #48bb78; margin-bottom: 15px;">🍽️ Ristorazione</h4>
+<p style="color: #4a5568; font-size: 0.95em; line-height: 1.8;">
+<strong>Colazione bar:</strong> €3-6<br>
+<strong>Pranzo veloce:</strong> €8-15<br>
+<strong>Cena ristorante:</strong> €25-50<br>
+<strong>Gelato artigianale:</strong> €2.50-4
+</p>
+</div>
+
+<div class="price-card" style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-left: 4px solid #f59e0b;">
+<h4 style="color: #f59e0b; margin-bottom: 15px;">🏖️ Spiaggia</h4>
+<p style="color: #4a5568; font-size: 0.95em; line-height: 1.8;">
+<strong>Lettini e ombrellone:</strong> €15-25/giorno<br>
+<strong>Cabina:</strong> €30-50/giorno<br>
+<strong>Spiaggia libera:</strong> Gratuita<br>
+<strong>Docce:</strong> Gratuite
+</p>
+</div>
+
+<div class="price-card" style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-left: 4px solid #ec4899;">
+<h4 style="color: #ec4899; margin-bottom: 15px;">🎯 Attività</h4>
+<p style="color: #4a5568; font-size: 0.95em; line-height: 1.8;">
+<strong>Noleggio bici:</strong> €10-15/giorno<br>
+<strong>Noleggio SUP/kayak:</strong> €15-20/ora<br>
+<strong>Escursione in barca:</strong> €35-60<br>
+<strong>Lezione surf:</strong> €40-60
+</p>
+</div>
+</div>
+
+<div class="highlight-box">
+<h3>💡 Risparmia con Questi Consigli</h3>
+<p style="margin-bottom: 10px;">
+✅ <strong>Prenota in anticipo:</strong> Sconto fino al 20% su case vacanze e hotel<br>
+✅ <strong>Giugno/Settembre:</strong> Prezzi inferiori del 30-40% rispetto ad agosto<br>
+✅ <strong>Spesa al supermercato:</strong> Cucina in appartamento per risparmiare<br>
+✅ <strong>Spiaggia libera:</strong> Ampi tratti gratuiti, porta ombrellone e sdraio<br>
+✅ <strong>Aperitivi:</strong> Evita locali ultra-turistici, scegli bar locali<br>
+✅ <strong>Mezzi:</strong> Noleggia bici o scooter invece dell'auto per spostamenti brevi
+</p>
+</div>
+</div>
+
+<div class="content-section">
+<h2>❓ Domande Frequenti su Torre Pali</h2>
+
+<div class="faq-list" style="margin: 30px 0;">
+<div class="faq-item" style="background: white; padding: 25px; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border-left: 4px solid #667eea;">
+<h4 style="color: #667eea; margin-bottom: 10px; font-size: 1.2em;">🏖️ Torre Pali è adatta alle famiglie con bambini?</h4>
+<p style="color: #4a5568; line-height: 1.7;">
+Assolutamente sì! Torre Pali è perfetta per famiglie: la spiaggia ha fondali bassi e sabbiosi per decine di metri, il mare è calmo e trasparente con Bandiera Blu, ci sono stabilimenti con servizi per bambini, parchi giochi, e il paese è piccolo e sicuro. Ideale per i più piccoli!
+</p>
+</div>
+
+<div class="faq-item" style="background: white; padding: 25px; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border-left: 4px solid #48bb78;">
+<h4 style="color: #48bb78; margin-bottom: 10px; font-size: 1.2em;">🚗 Serve l'auto a Torre Pali?</h4>
+<p style="color: #4a5568; line-height: 1.7;">
+Dipende. Se alloggi vicino al mare e vuoi goderti solo spiaggia e relax, puoi farne a meno: supermercati, ristoranti e bar sono a piedi. Se vuoi esplorare il Salento (Gallipoli, Lecce, Otranto, grotte), l'auto è consigliata. Alternative: noleggio scooter/bici o escursioni organizzate.
+</p>
+</div>
+
+<div class="faq-item" style="background: white; padding: 25px; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border-left: 4px solid #f59e0b;">
+<h4 style="color: #f59e0b; margin-bottom: 10px; font-size: 1.2em;">🌊 Quando è il mare più bello a Torre Pali?</h4>
+<p style="color: #4a5568; line-height: 1.7;">
+Il mare è splendido da maggio a ottobre. L'acqua raggiunge i 25-27°C in luglio-agosto, restando piacevole (22-24°C) anche a settembre-ottobre. Per acqua cristallina e poca folla, prediligi giugno o settembre. Il mare è quasi sempre calmo grazie alla conformazione della costa.
+</p>
+</div>
+
+<div class="faq-item" style="background: white; padding: 25px; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border-left: 4px solid #ec4899;">
+<h4 style="color: #ec4899; margin-bottom: 10px; font-size: 1.2em;">🏝️ L'Isola della Fanciulla è raggiungibile a nuoto?</h4>
+<p style="color: #4a5568; line-height: 1.7;">
+Sì, facilmente! Dista circa 100-150 metri dalla riva ed è raggiungibile a nuoto in 5-10 minuti anche per nuotatori non esperti. Il mare è basso e calmo. In alternativa, puoi usare kayak, SUP o materassino. È uno dei simboli di Torre Pali, bellissima per foto!
+</p>
+</div>
+
+<div class="faq-item" style="background: white; padding: 25px; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border-left: 4px solid #8b5cf6;">
+<h4 style="color: #8b5cf6; margin-bottom: 10px; font-size: 1.2em;">💤 Torre Pali è troppo tranquilla? C'è vita notturna?</h4>
+<p style="color: #4a5568; line-height: 1.7;">
+Torre Pali è perfetta per chi cerca relax ma non è affatto noiosa! Ci sono bar sulla spiaggia con aperitivi e DJ set, ristoranti con musica live, e d'estate eventi e sagre. Per discoteche e vita notturna intensa, Gallipoli è a 40 km (molti locali organizzano shuttle bus).
+</p>
+</div>
+
+<div class="faq-item" style="background: white; padding: 25px; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border-left: 4px solid #06b6d4;">
+<h4 style="color: #06b6d4; margin-bottom: 10px; font-size: 1.2em;">🏠 Meglio Torre Pali o Pescoluse?</h4>
+<p style="color: #4a5568; line-height: 1.7;">
+Entrambe bellissime! Torre Pali è più autentica, meno affollata, con prezzi leggermente inferiori e l'atmosfera di un vero borgo marinaro. Pescoluse (3 km a sud) è più turistica, con più stabilimenti e la famosa spiaggia "Maldive del Salento". Puoi visitarle entrambe facilmente!
+</p>
+</div>
+
+<div class="faq-item" style="background: white; padding: 25px; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border-left: 4px solid #f43f5e;">
+<h4 style="color: #f43f5e; margin-bottom: 10px; font-size: 1.2em;">🐕 Posso portare il cane in spiaggia?</h4>
+<p style="color: #4a5568; line-height: 1.7;">
+Sì! Ci sono tratti di spiaggia libera dog-friendly dove i cani sono benvenuti e alcuni stabilimenti attrezzati per ospitare i nostri amici a quattro zampe. Ricorda guinzaglio, museruola quando serve, e rispetta le regole di igiene. Molte case vacanze accettano animali!
+</p>
+</div>
+
+<div class="faq-item" style="background: white; padding: 25px; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border-left: 4px solid #0ea5e9;">
+<h4 style="color: #0ea5e9; margin-bottom: 10px; font-size: 1.2em;">📱 C'è connessione internet e copertura telefonica?</h4>
+<p style="color: #4a5568; line-height: 1.7;">
+Sì, ottima! Torre Pali ha copertura 4G/5G di tutti i principali operatori. Bar, ristoranti e stabilimenti offrono Wi-Fi gratuito. Le case vacanze moderne hanno quasi tutte connessione Wi-Fi inclusa. Puoi tranquillamente lavorare in smart working se necessario!
+</p>
+</div>
+</div>
+</div>
+
+<div class="content-section">
+<h2>🗺️ Mappa Interattiva di Torre Pali</h2>
+<p style="margin-bottom: 25px;">
+Esplora la mappa interattiva per scoprire la posizione di Torre Pali, le spiagge, i servizi e i punti di interesse. Clicca sui marker per maggiori informazioni!
+</p>
+<div id="torre-pali-map" style="height: 500px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); margin-bottom: 20px;"></div>
+<div class="map-legend" style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 20px;">
+<div class="legend-item" style="display: flex; align-items: center; gap: 8px; padding: 10px 20px; background: rgba(102, 126, 234, 0.1); border-radius: 20px; font-size: 0.9em;">
+<span style="font-size: 1.3em;">🏠</span> Case Vacanze
+</div>
+<div class="legend-item" style="display: flex; align-items: center; gap: 8px; padding: 10px 20px; background: rgba(72, 187, 120, 0.1); border-radius: 20px; font-size: 0.9em;">
+<span style="font-size: 1.3em;">🏖️</span> Spiagge
+</div>
+<div class="legend-item" style="display: flex; align-items: center; gap: 8px; padding: 10px 20px; background: rgba(251, 191, 36, 0.1); border-radius: 20px; font-size: 0.9em;">
+<span style="font-size: 1.3em;">🍴</span> Ristoranti
+</div>
+<div class="legend-item" style="display: flex; align-items: center; gap: 8px; padding: 10px 20px; background: rgba(236, 72, 153, 0.1); border-radius: 20px; font-size: 0.9em;">
+<span style="font-size: 1.3em;">🏛️</span> Punti di Interesse
+</div>
+</div>
+</div>
+
 <div class="cta-section">
-<h2>Vivi Torre Pali</h2>
-<p>Scopri le nostre case vacanze a pochi passi dal mare e dall'Isola della Fanciulla</p>
-<a href="index.html" class="btn">Vedi Appartamenti</a>
-<a href="contatti.html" class="btn">Contattaci</a>
+<h2>🏖️ Prenota la Tua Vacanza a Torre Pali</h2>
+<p style="font-size: 1.2em; margin-bottom: 30px;">Scopri le nostre case vacanze a pochi passi dal mare, dall'Isola della Fanciulla e dal molo dei tramonti</p>
+<a href="index.html#appartamenti" class="btn" style="font-size: 1.1em; padding: 18px 40px;">🏠 Vedi Appartamenti Disponibili</a>
+<a href="contatti.html" class="btn" style="font-size: 1.1em; padding: 18px 40px;">📞 Contattaci per Info</a>
+<p style="margin-top: 25px; color: #fff; font-size: 1em; text-shadow: 0 1px 8px #4f46e5; font-weight: 500;">
+💬 Risposta rapida su WhatsApp • <span style='color:#fbbf24;'>📞 +39 388 658 70 80</span> • <span style='color:#38bdf8;'>✉️ info@torrepalivacanze.it</span>
+</p>
 </div>
 </div>
 
@@ -880,6 +1318,80 @@ Durante l'estate, Torre Pali si anima con sagre, concerti sulla spiaggia, serate
 }
 </script>
 
+<!-- Structured Data: FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Torre Pali è adatta alle famiglie con bambini?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Assolutamente sì! Torre Pali è perfetta per famiglie: la spiaggia ha fondali bassi e sabbiosi per decine di metri, il mare è calmo e trasparente con Bandiera Blu, ci sono stabilimenti con servizi per bambini, parchi giochi, e il paese è piccolo e sicuro. Ideale per i più piccoli!"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Serve l'auto a Torre Pali?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dipende. Se alloggi vicino al mare e vuoi goderti solo spiaggia e relax, puoi farne a meno: supermercati, ristoranti e bar sono a piedi. Se vuoi esplorare il Salento (Gallipoli, Lecce, Otranto, grotte), l'auto è consigliata. Alternative: noleggio scooter/bici o escursioni organizzate."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quando è il mare più bello a Torre Pali?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Il mare è splendido da maggio a ottobre. L'acqua raggiunge i 25-27°C in luglio-agosto, restando piacevole (22-24°C) anche a settembre-ottobre. Per acqua cristallina e poca folla, prediligi giugno o settembre. Il mare è quasi sempre calmo grazie alla conformazione della costa."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "L'Isola della Fanciulla è raggiungibile a nuoto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sì, facilmente! Dista circa 100-150 metri dalla riva ed è raggiungibile a nuoto in 5-10 minuti anche per nuotatori non esperti. Il mare è basso e calmo. In alternativa, puoi usare kayak, SUP o materassino. È uno dei simboli di Torre Pali, bellissima per foto!"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Torre Pali è troppo tranquilla? C'è vita notturna?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Torre Pali è perfetta per chi cerca relax ma non è affatto noiosa! Ci sono bar sulla spiaggia con aperitivi e DJ set, ristoranti con musica live, e d'estate eventi e sagre. Per discoteche e vita notturna intensa, Gallipoli è a 40 km (molti locali organizzano shuttle bus)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Meglio Torre Pali o Pescoluse?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Entrambe bellissime! Torre Pali è più autentica, meno affollata, con prezzi leggermente inferiori e l'atmosfera di un vero borgo marinaro. Pescoluse (3 km a sud) è più turistica, con più stabilimenti e la famosa spiaggia Maldive del Salento. Puoi visitarle entrambe facilmente!"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Posso portare il cane in spiaggia a Torre Pali?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sì! Ci sono tratti di spiaggia libera dog-friendly dove i cani sono benvenuti e alcuni stabilimenti attrezzati per ospitare i nostri amici a quattro zampe. Ricorda guinzaglio, museruola quando serve, e rispetta le regole di igiene. Molte case vacanze accettano animali!"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "C'è connessione internet e copertura telefonica a Torre Pali?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sì, ottima! Torre Pali ha copertura 4G/5G di tutti i principali operatori. Bar, ristoranti e stabilimenti offrono Wi-Fi gratuito. Le case vacanze moderne hanno quasi tutte connessione Wi-Fi inclusa. Puoi tranquillamente lavorare in smart working se necessario!"
+      }
+    }
+  ]
+}
+</script>
+
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-M0TEME57K0"></script>
 <script>
@@ -889,7 +1401,123 @@ Durante l'estate, Torre Pali si anima con sagre, concerti sulla spiaggia, serate
   gtag('config', 'G-M0TEME57K0');
 </script>
 
+<!-- Leaflet JS per Mappa Interattiva -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
 <script>
+// Mappa Interattiva Torre Pali
+(function() {
+  function initTorrePaliMap() {
+    const map = L.map('torre-pali-map', {
+      center: [39.8400, 18.2100], // Più sopra e più a destra
+      zoom: 15,
+      scrollWheelZoom: false
+    });
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors',
+      maxZoom: 18
+    }).addTo(map);
+
+    // Marker Case Vacanze
+    const casaIcon = L.divIcon({
+      html: '<div style="background: #667eea; color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 0 4px 15px rgba(102,126,234,0.4);">🏠</div>',
+      iconSize: [35, 35],
+      className: 'custom-icon'
+    });
+
+    L.marker([39.8447, 18.0789], { icon: casaIcon }).addTo(map)
+      .bindPopup('<b>🏠 Nostre Case Vacanze</b><br>A 20m dalla spiaggia<br><a href="index.html#appartamenti" style="color: #667eea; font-weight: 600;">Vedi Disponibilità</a>');
+
+    // Marker Isola della Fanciulla
+    const isolaIcon = L.divIcon({
+      html: '<div style="background: #ec4899; color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 0 4px 15px rgba(236,72,153,0.4);">🏝️</div>',
+      iconSize: [35, 35],
+      className: 'custom-icon'
+    });
+
+    L.marker([39.8455, 18.0815], { icon: isolaIcon }).addTo(map)
+      .bindPopup('<b>🏝️ Isola della Fanciulla</b><br>Simbolo di Torre Pali<br>Raggiungibile a nuoto (150m)');
+
+    // Marker Molo
+    const moloIcon = L.divIcon({
+      html: '<div style="background: #f59e0b; color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 0 4px 15px rgba(245,158,11,0.4);">🌅</div>',
+      iconSize: [35, 35],
+      className: 'custom-icon'
+    });
+
+    L.marker([39.8440, 18.0820], { icon: moloIcon }).addTo(map)
+      .bindPopup('<b>🌅 Molo dei Tramonti</b><br>Tuffi e tramonti mozzafiato<br>Perfetto per foto Instagram!');
+
+    // Marker Spiaggia
+    const spiaggiaIcon = L.divIcon({
+      html: '<div style="background: #48bb78; color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 0 4px 15px rgba(72,187,120,0.4);">🏖️</div>',
+      iconSize: [35, 35],
+      className: 'custom-icon'
+    });
+
+    L.marker([39.8450, 18.0800], { icon: spiaggiaIcon }).addTo(map)
+      .bindPopup('<b>🏖️ Spiaggia Bandiera Blu</b><br>Sabbia dorata e mare cristallino<br>Fondali bassi, perfetta per famiglie');
+
+    // Marker Torre Storica
+    const torreIcon = L.divIcon({
+      html: '<div style="background: #8b5cf6; color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 0 4px 15px rgba(139,92,246,0.4);">🏛️</div>',
+      iconSize: [35, 35],
+      className: 'custom-icon'
+    });
+
+    L.marker([39.8425, 18.0825], { icon: torreIcon }).addTo(map)
+      .bindPopup('<b>🏛️ Torre di Guardia</b><br>Storica torre del XVI secolo<br>Eredità del periodo aragonese');
+
+    // Marker Ristoranti zona
+    const ristoranteIcon = L.divIcon({
+      html: '<div style="background: #ef4444; color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 0 4px 15px rgba(239,68,68,0.4);">🍴</div>',
+      iconSize: [35, 35],
+      className: 'custom-icon'
+    });
+
+    L.marker([39.8442, 18.0795], { icon: ristoranteIcon }).addTo(map)
+      .bindPopup('<b>🍴 Zona Ristoranti</b><br>Pesce fresco e cucina salentina<br>Sul lungomare');
+
+    // Marker Supermercato
+    const superIcon = L.divIcon({
+      html: '<div style="background: #06b6d4; color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 0 4px 15px rgba(6,182,212,0.4);">🛒</div>',
+      iconSize: [35, 35],
+      className: 'custom-icon'
+    });
+
+    L.marker([39.8435, 18.0785], { icon: superIcon }).addTo(map)
+      .bindPopup('<b>🛒 Supermercati e Servizi</b><br>A 50m dalle case<br>Bar, tabacchi, farmacia');
+
+    // Marker Pescoluse (Maldive del Salento)
+    const maldiveIcon = L.divIcon({
+      html: '<div style="background: #0ea5e9; color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 0 4px 15px rgba(14,165,233,0.4);">🏝️</div>',
+      iconSize: [35, 35],
+      className: 'custom-icon'
+    });
+
+    L.marker([39.8280, 18.0890], { icon: maldiveIcon }).addTo(map)
+      .bindPopup('<b>🏝️ Pescoluse</b><br>Le Maldive del Salento<br>A soli 3 km da Torre Pali');
+  }
+
+  // Carica la mappa quando diventa visibile
+  const mapElement = document.getElementById('torre-pali-map');
+  if (mapElement && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          initTorrePaliMap();
+          observer.disconnect();
+        }
+      });
+    }, { rootMargin: '200px' });
+    
+    observer.observe(mapElement);
+  } else if (mapElement) {
+    setTimeout(initTorrePaliMap, 2000);
+  }
+})();
+
 function openLightbox(src) {
   document.getElementById('lightbox').classList.add('active');
   document.getElementById('lightbox-img').src = src;
