@@ -190,6 +190,11 @@
     .hamburger span { width: 25px; height: 3px; background: #2c3e50; margin: 3px 0; transition: 0.3s; border-radius: 3px; }
     @media (max-width: 1200px) { .footer-container { grid-template-columns: 1fr; } }
     @media (max-width: 900px) {
+            .navbar {
+              top: 0;
+              width: 100%;
+              z-index: 1000;
+            }
       .container, .footer-container { max-width: 100%; padding: 0 8px; }
       .footer-container { grid-template-columns: 1fr !important; }
       .navbar-container { flex-direction: row; justify-content: space-between; align-items: center; gap: 8px; padding: 12px 8px; }
@@ -271,31 +276,30 @@
   </div>
 </nav>
 <script>
-// Hamburger menu e dropdown identici a index.html
+// Hamburger menu identico a contatti.html
 function toggleMenu() {
-  var menu = document.getElementById('navbarMenu');
+  const menu = document.getElementById('navbarMenu');
   menu.classList.toggle('active');
 }
 function closeMenu() {
-  var menu = document.getElementById('navbarMenu');
+  const menu = document.getElementById('navbarMenu');
   menu.classList.remove('active');
 }
 // Dropdown mobile
-if (typeof window !== 'undefined') {
-  document.querySelectorAll('.dropdown-toggle').forEach(function(toggle) {
-    toggle.addEventListener('click', function(e) {
-      var parent = toggle.parentElement;
-      parent.classList.toggle('active');
-      e.stopPropagation();
+document.addEventListener('DOMContentLoaded', function() {
+  const dropdownToggle = document.querySelector('.dropdown-toggle');
+  const dropdown = document.querySelector('.dropdown');
+  if (dropdownToggle) {
+    dropdownToggle.addEventListener('click', function(e) {
+      if (window.innerWidth <= 900) {
+        e.preventDefault();
+        e.stopPropagation();
+        dropdown.classList.toggle('active');
+      }
     });
-  });
-  document.body.addEventListener('click', function() {
-    document.querySelectorAll('.dropdown').forEach(function(drop) {
-      drop.classList.remove('active');
-    });
-  });
-}
-// Chiudi menu quando si clicca fuori (come in index.html)
+  }
+});
+// Chiudi menu quando si clicca fuori
 document.addEventListener('click', function(event) {
   const navbar = document.querySelector('.navbar');
   const menu = document.getElementById('navbarMenu');
