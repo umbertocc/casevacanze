@@ -259,31 +259,31 @@
   <!-- End Google Tag Manager (noscript) -->
 </head>
 <nav class="navbar">
-  <div class="navbar-container">
-    <a href="index.html" class="navbar-brand">🏝️ Torre Pali Vacanze</a>
-    <div class="hamburger" onclick="toggleMenu()" tabindex="0" aria-label="Apri menu" style="outline: none;">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <ul class="navbar-menu" id="navbarMenu">
-      <li><a href="index.html" onclick="closeMenu()">Home</a></li>
-      <li><a href="index.html#appartamenti" onclick="closeMenu()">Appartamenti</a></li>
-      <li class="dropdown">
-        <span class="dropdown-toggle" style="color: #4a5568; font-weight: 500;">Scopri il Salento</span>
-        <div class="dropdown-menu">
-          <a href="torre-pali.html" onclick="closeMenu()">⭐ Torre Pali</a>
-          <a href="spiagge-salento-sud.html" onclick="closeMenu()">Guida Spiagge</a>
-          <a href="eventi-salento.html" onclick="closeMenu()">Eventi e Tradizioni</a>
-          <a href="faq-salento.html" onclick="closeMenu()">FAQ Salento</a>
-        </div>
-      </li>
-      <li><a href="recensioni.html" onclick="closeMenu()">⭐ Recensioni</a></li>
-      <li><a href="faq.html" onclick="closeMenu()">FAQ</a></li>
-      <li><a href="prenotazione.html" onclick="closeMenu()">Prenotazione</a></li>
-      <li><a href="contatti.html" onclick="closeMenu()">Contatti</a></li>
-    </ul>
-  </div>
+<div class="navbar-container">
+<a href="index.html" class="navbar-brand">🏝️ Torre Pali Vacanze</a>
+<div class="hamburger" onclick="toggleMenu()">
+<span></span>
+<span></span>
+<span></span>
+</div>
+<ul class="navbar-menu" id="navbarMenu">
+<li><a href="index.html" onclick="closeMenu()">Home</a></li>
+<li><a href="index.html#appartamenti" onclick="closeMenu()">Appartamenti</a></li>
+<li class="dropdown">
+<span class="dropdown-toggle" style="color: #4a5568; font-weight: 500;">Scopri il Salento</span>
+<div class="dropdown-menu">
+<a href="torre-pali.html" onclick="closeMenu()">⭐ Torre Pali</a>
+<a href="spiagge-salento-sud.html" onclick="closeMenu()">Guida Spiagge</a>
+<a href="eventi-salento.html" onclick="closeMenu()">Eventi e Tradizioni</a>
+<a href="faq-salento.html" onclick="closeMenu()">FAQ Salento</a>
+</div>
+</li>
+<li><a href="recensioni.html" onclick="closeMenu()">⭐ Recensioni</a></li>
+<li><a href="faq.html" onclick="closeMenu()">FAQ</a></li>
+<li><a href="prenotazione.html" onclick="closeMenu()">Prenotazione</a></li>
+<li><a href="contatti.html" onclick="closeMenu()">Contatti</a></li>
+</ul>
+</div>
 </nav>
 <body>
 <script>
@@ -336,39 +336,45 @@ document.addEventListener('click', function(event) {
       "telephone": "+393886587080",
       "email": "info@torrepalivacanze.it",
       "priceRange": "€€",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Torre Pali",
-        "addressLocality": "Salve",
-        "addressRegion": "Puglia",
-        "postalCode": "73050",
-        "addressCountry": "IT"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "39.8447",
-        "longitude": "18.0789"
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-          "Sunday"
-        ],
-        "opens": "09:00",
-        "closes": "20:00"
-      },
-      "amenityFeature": [
-        {"@type": "LocationFeatureSpecification", "name": "WiFi gratuito", "value": true},
-        {"@type": "LocationFeatureSpecification", "name": "Aria condizionata", "value": true},
-        {"@type": "LocationFeatureSpecification", "name": "Parcheggio", "value": true},
-        {"@type": "LocationFeatureSpecification", "name": "Animali ammessi", "value": true}
-      ],
+      </main>
+
+      <script>
+      function toggleMenu() {
+        const menu = document.getElementById('navbarMenu');
+        menu.classList.toggle('active');
+      }
+
+      function closeMenu() {
+        const menu = document.getElementById('navbarMenu');
+        menu.classList.remove('active');
+      }
+
+      // Dropdown mobile
+      document.addEventListener('DOMContentLoaded', function() {
+        const dropdownToggle = document.querySelector('.dropdown-toggle');
+        const dropdown = document.querySelector('.dropdown');
+        if (dropdownToggle) {
+          dropdownToggle.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+              e.preventDefault();
+              e.stopPropagation();
+              dropdown.classList.toggle('active');
+            }
+          });
+        }
+      });
+
+      // Chiudi menu quando si clicca fuori
+      document.addEventListener('click', function(event) {
+        const navbar = document.querySelector('.navbar');
+        const menu = document.getElementById('navbarMenu');
+        const dropdown = document.querySelector('.dropdown');
+        if (!navbar.contains(event.target) && menu.classList.contains('active')) {
+          menu.classList.remove('active');
+          if (dropdown) dropdown.classList.remove('active');
+        }
+      });
+      </script>
       "petsAllowed": true,
       "checkinTime": "15:00",
       "checkoutTime": "10:00",
