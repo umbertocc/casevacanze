@@ -104,9 +104,6 @@ header h1 { font-size: 3.5em; margin-bottom: 15px; font-weight: 700; text-shadow
 .btn span { position: relative; z-index: 1; }
 @media (max-width: 768px) {
   .container { padding: 15px; }
-  .hero-gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 50px; border-radius: 25px; overflow: hidden; padding: 10px; background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(10px); }
-  .hero-gallery img { width: 100%; height: 250px; object-fit: cover; cursor: pointer; transition: all 0.4s; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-  .hero-gallery img:hover { transform: scale(1.05) translateY(-5px); box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3); }
   header h1 { font-size: 2em; }
   .subtitle { font-size: 1.1em; }
   .info-grid { grid-template-columns: 1fr; }
@@ -180,7 +177,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p style="margin-top:10px;font-size:1.1em;">Scopri anche: <a href="torre-pali.html">Torre Pali</a> | <a href="lido-marini.html">Lido Marini</a> | <a href="torre-vado.html">Torre Vado</a> | <a href="spiagge-salento-sud.html">Tutte le spiagge</a> | <a href="index.html#appartamenti">Case vacanza</a></p>
 </header>
 
-<div class="hero-gallery">
+<div class="hero-gallery" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 50px; border-radius: 25px; overflow: hidden; padding: 10px; background: rgba(255,255,255,0.6); backdrop-filter: blur(10px);">
   <img src="img/pescoluse/pescoluse2.jpg" alt="Panorama spiaggia bianca Pescoluse" loading="lazy" style="width: 100%; height: 250px; object-fit: cover; cursor: pointer; transition: all 0.4s; border-radius: 15px; box-shadow: 0 4px 15px rgba(6,190,182,0.1);">
   <img src="img/pescoluse/pescoluse3.jpg" alt="Mare turchese Pescoluse Salento" loading="lazy" style="width: 100%; height: 250px; object-fit: cover; cursor: pointer; transition: all 0.4s; border-radius: 15px; box-shadow: 0 4px 15px rgba(6,190,182,0.1);">
   <img src="img/pescoluse/pescoluse4.jpg" alt="Spiaggia Maldive del Salento Pescoluse" loading="lazy" style="width: 100%; height: 250px; object-fit: cover; cursor: pointer; transition: all 0.4s; border-radius: 15px; box-shadow: 0 4px 15px rgba(6,190,182,0.1);">
