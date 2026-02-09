@@ -272,8 +272,11 @@
 <li class="dropdown">
 <span class="dropdown-toggle" style="color: #4a5568; font-weight: 500;">Scopri il Salento</span>
 <div class="dropdown-menu">
-<a href="torre-pali.html" onclick="closeMenu()">⭐ Torre Pali</a>
 <a href="spiagge-salento-sud.html" onclick="closeMenu()">Guida Spiagge</a>
+<a href="torre-pali.html" onclick="closeMenu()">⭐ Torre Pali</a>
+<a href="lido-marini.html" onclick="closeMenu()">Lido Marini</a>
+<a href="torre-vado.html" onclick="closeMenu()">Torre Vado</a>
+<a href="pescoluse.html" onclick="closeMenu()">Pescoluse</a>
 <a href="eventi-salento.html" onclick="closeMenu()">Eventi e Tradizioni</a>
 <a href="faq-salento.html" onclick="closeMenu()">FAQ Salento</a>
 </div>
@@ -475,7 +478,6 @@ document.addEventListener('click', function(event) {
 <p style="margin-top: 15px;">Orario: 09:00 - 20:00<br>Risposta entro 1 ora</p>
 </div>
 </div>
-<div class="footer-bottom">
 <p>&copy; 2026 Torre Pali Vacanze. Tutti i diritti riservati.</p>
 </div>
 </footer>
@@ -496,6 +498,15 @@ document.getElementById('booking-form').addEventListener('submit', function(e) {
       window.scrollTo({top: 0, behavior: 'smooth'});
     } else {
       confirmation.style.display = 'block';
+<div class="dropdown-menu">
+  <a href="torre-pali.html" onclick="closeMenu()">⭐ Torre Pali</a>
+  <a href="lido-marini.html" onclick="closeMenu()">Lido Marini</a>
+  <a href="torre-vado.html" onclick="closeMenu()">Torre Vado</a>
+  <a href="pescoluse.html" onclick="closeMenu()">Pescoluse</a>
+  <a href="spiagge-salento-sud.html" onclick="closeMenu()">Guida Spiagge</a>
+  <a href="eventi-salento.html" onclick="closeMenu()">Eventi e Tradizioni</a>
+  <a href="faq-salento.html" onclick="closeMenu()">FAQ Salento</a>
+</div>
       confirmation.textContent = 'Errore nell’invio. Riprova o contattaci via WhatsApp.';
     }
   }).catch(function() {

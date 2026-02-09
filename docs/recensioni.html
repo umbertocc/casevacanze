@@ -74,7 +74,7 @@ body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #2d3748; bac
 .footer-section a:hover { color: #667eea; transform: translateX(5px); }
 .footer-bottom { text-align: center; margin-top: 40px; padding-top: 25px; border-top: 1px solid #4a5568; color: #a0aec0; font-size: 0.9em; }
 .container { max-width: 1200px; margin: 0 auto; padding: 30px; }
-header { text-align: center; margin-bottom: 60px; padding: 80px 30px; background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%); color: white; border-radius: 30px; box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3); position: relative; overflow: hidden; }
+header { text-align: center; margin-bottom: 60px; padding: 80px 30px; background: linear-gradient(135deg, #22577a 0%, #18304b 100%); color: #fff; border-radius: 30px; box-shadow: 0 20px 60px rgba(34, 87, 122, 0.3); position: relative; overflow: hidden; }
 h1 { font-size: 3.5em; margin-bottom: 20px; font-weight: 700; position: relative; z-index: 1; text-shadow: 0 4px 15px rgba(0,0,0,0.2); }
 .tagline { font-size: 1.4em; margin-bottom: 25px; color: rgba(255, 255, 255, 0.95); font-weight: 300; position: relative; z-index: 1; }
 .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 50px; }
@@ -179,8 +179,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li class="dropdown">
 <span class="dropdown-toggle" style="color: #4a5568; font-weight: 500;">Scopri il Salento</span>
 <div class="dropdown-menu">
-<a href="torre-pali.html" onclick="closeMenu()">⭐ Torre Pali</a>
 <a href="spiagge-salento-sud.html" onclick="closeMenu()">Guida Spiagge</a>
+<a href="torre-pali.html" onclick="closeMenu()">⭐ Torre Pali</a>
+<a href="lido-marini.html" onclick="closeMenu()">Lido Marini</a>
+<a href="torre-vado.html" onclick="closeMenu()">Torre Vado</a>
+<a href="pescoluse.html" onclick="closeMenu()">Pescoluse</a>
 <a href="eventi-salento.html" onclick="closeMenu()">Eventi e Tradizioni</a>
 <a href="faq-salento.html" onclick="closeMenu()">FAQ Salento</a>
 </div>
@@ -206,7 +209,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p class="tagline">Cosa dicono i nostri ospiti delle Case Vacanze Torre Pali</p>
 </header>
 
-<div class="stats-grid">
 <div class="stat-card">
 <div class="stars">⭐⭐⭐⭐⭐</div>
 <div class="stat-number">5.0</div>
@@ -227,6 +229,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <button class="filter-btn" onclick="filterReviews('casa-bellavista')">Casa Bellavista 2</button>
 <button class="filter-btn" onclick="filterReviews('casa-giorgio-4')">Casa Giorgio 4</button>
 <button class="filter-btn" onclick="filterReviews('casa-giorgio-6')">Casa Giorgio 6</button>
+<div class="dropdown-menu">
+<a href="spiagge-salento-sud.html" onclick="closeMenu()">Guida Spiagge</a>
+<a href="torre-pali.html" onclick="closeMenu()">⭐ Torre Pali</a>
+<a href="lido-marini.html" onclick="closeMenu()">Lido Marini</a>
+<a href="torre-vado.html" onclick="closeMenu()">Torre Vado</a>
+<a href="pescoluse.html" onclick="closeMenu()">Pescoluse</a>
+<a href="eventi-salento.html" onclick="closeMenu()">Eventi e Tradizioni</a>
+<a href="faq-salento.html" onclick="closeMenu()">FAQ Salento</a>
+</div>
 </div>
 
 <div class="reviews-grid" id="reviewsContainer">
