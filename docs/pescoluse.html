@@ -664,6 +664,11 @@ Molti lidi offrono <strong>ristoranti con vista mare</strong> dove pranzare o ce
 <strong>Da Santa Maria di Leuca:</strong> SP358 verso nord (12 km, 15 minuti)
 </p>
 
+<h3>🚗 Da Torre Pali</h3>
+<p>
+Pescoluse dista circa 3 km da Torre Pali. Per arrivare, basta percorrere la strada litoranea <strong>SP 91</strong> in direzione sud (verso Santa Maria di Leuca). Il tragitto dura circa 5 minuti in auto e offre splendide viste sulla costa. È possibile raggiungere Pescoluse anche a piedi o in bici, seguendo il percorso panoramico tra le dune e la spiaggia.
+</p>
+
 <h3>🅿️ Parcheggi</h3>
 <p>
 Lungo la strada litoranea e nelle vie adiacenti alla spiaggia si trovano <strong>parcheggi a pagamento</strong> custoditi. Prezzi indicativi: €3-5 al giorno. Si consiglia di arrivare presto la mattina (prima delle 9:30) per trovare posto facilmente, soprattutto in luglio e agosto.
@@ -858,18 +863,30 @@ function closeMenu() {
 
 // Dropdown mobile
 document.addEventListener('DOMContentLoaded', function() {
-  const dropdownToggle = document.querySelector('.dropdown-toggle');
-  const dropdown = document.querySelector('.dropdown');
-  
-  if (dropdownToggle) {
-    dropdownToggle.addEventListener('click', function(e) {
+  const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+  dropdownToggles.forEach(function(toggle) {
+    toggle.addEventListener('click', function(e) {
       if (window.innerWidth <= 768) {
         e.preventDefault();
         e.stopPropagation();
-        dropdown.classList.toggle('active');
+        const parentDropdown = this.closest('.dropdown');
+        if (parentDropdown) {
+          parentDropdown.classList.toggle('active');
+        }
       }
     });
-  }
+    // Supporto touch
+    toggle.addEventListener('touchstart', function(e) {
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        e.stopPropagation();
+        const parentDropdown = this.closest('.dropdown');
+        if (parentDropdown) {
+          parentDropdown.classList.toggle('active');
+        }
+      }
+    }, { passive: false });
+  });
 });
 
 // Chiudi menu quando si clicca fuori
