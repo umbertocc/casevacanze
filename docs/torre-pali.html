@@ -1697,10 +1697,13 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('click', function(event) {
   const navbar = document.querySelector('.navbar');
   const menu = document.getElementById('navbarMenu');
-  const dropdown = document.querySelector('.dropdown');
   if (!navbar.contains(event.target) && menu.classList.contains('active')) {
     menu.classList.remove('active');
-    if (dropdown) dropdown.classList.remove('active');
+    // Chiudi tutte le dropdown attive
+    const dropdowns = document.querySelectorAll('.dropdown.active');
+    dropdowns.forEach(function(drop) {
+      drop.classList.remove('active');
+    });
   }
 });
 </script>
