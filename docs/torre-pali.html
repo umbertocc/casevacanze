@@ -544,7 +544,11 @@ Durante la stagione estiva, collegamenti con bus di linea collegano Lecce con To
 <div class="highlight-box">
 <h3>🅿️ Parcheggio</h3>
 <p>
-Torre Pali dispone di ampi parcheggi gratuiti nelle vicinanze delle spiagge. Durante l'alta stagione (luglio-agosto) è consigliabile arrivare presto al mattino per trovare posto facilmente. Alcune zone residenziali offrono parcheggi a pagamento custoditi.
+Torre Pali dispone di ampi parcheggi gratuiti nelle vicinanze delle spiagge e lungo il canale di Torre Pali. Durante l'alta stagione (luglio-agosto) è consigliabile arrivare presto al mattino per trovare posto facilmente. Le zone residenziali offrono parcheggi a pagamento custoditi.
+</p>
+<p>
+Nel centro abitato il parcheggio è a pagamento, ma agli affittuari viene fornito un <strong>pass gratuito</strong> che permette di parcheggiare senza dover pagare nulla nelle aree riservate. Questo vantaggio rende il soggiorno ancora più comodo e conveniente per chi affitta una casa vacanza.
+</p>
 </p>
 </div>
 </div>
@@ -656,7 +660,7 @@ La posizione strategica di Torre Pali la rende il punto di partenza ideale per e
 </div>
 </div>
 
-<h3>📍 A 30-50 km</h3>
+<h3>📍 A 30-70 km</h3>
 
 <div class="features-list">
 <div class="feature-item">
@@ -676,7 +680,7 @@ La posizione strategica di Torre Pali la rende il punto di partenza ideale per e
 <div class="feature-item">
 <div class="feature-item-icon">🏰</div>
 <div>
-<strong>Otranto (75 km)</strong><br>
+<strong>Otranto (60 km)</strong><br>
 <span style="color: #555;">Cattedrale con mosaico pavimentale, castello aragonese</span>
 </div>
 </div>
@@ -1656,18 +1660,30 @@ function closeMenu() {
 
 // Dropdown mobile
 document.addEventListener('DOMContentLoaded', function() {
-  const dropdownToggle = document.querySelector('.dropdown-toggle');
-  const dropdown = document.querySelector('.dropdown');
-  
-  if (dropdownToggle) {
-    dropdownToggle.addEventListener('click', function(e) {
+  const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+  dropdownToggles.forEach(function(toggle) {
+    toggle.addEventListener('click', function(e) {
       if (window.innerWidth <= 768) {
         e.preventDefault();
         e.stopPropagation();
-        dropdown.classList.toggle('active');
+        const parentDropdown = this.closest('.dropdown');
+        if (parentDropdown) {
+          parentDropdown.classList.toggle('active');
+        }
       }
     });
-  }
+    // Supporto touch
+    toggle.addEventListener('touchstart', function(e) {
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        e.stopPropagation();
+        const parentDropdown = this.closest('.dropdown');
+        if (parentDropdown) {
+          parentDropdown.classList.toggle('active');
+        }
+      }
+    }, { passive: false });
+  });
 });
 
 // Chiudi menu quando si clicca fuori

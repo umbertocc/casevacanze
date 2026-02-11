@@ -233,7 +233,7 @@ Se cerchi una casa vacanze a Torre Pali, questa guida ti aiuta a scoprire tutte 
 </p>
 <p style="margin-top: 10px;">
 <strong>Distanze da Torre Pali:</strong><br>
-• Torre Vado: 6 km<br>
+• Torre Vado: 5 km<br>
 • Pescoluse: 3 km<br>
 • Lido Marini: 2 km<br>
 Tutte le spiagge sono raggiungibili in pochi minuti!
@@ -735,28 +735,30 @@ function closeMenu() {
 
 // Dropdown mobile
 document.addEventListener('DOMContentLoaded', function() {
-  const dropdownToggle = document.querySelector('.dropdown-toggle');
-  const dropdown = document.querySelector('.dropdown');
-  
-  if (dropdownToggle && dropdown) {
-    dropdownToggle.addEventListener('click', function(e) {
+  const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+  dropdownToggles.forEach(function(toggle) {
+    toggle.addEventListener('click', function(e) {
       if (window.innerWidth <= 768) {
         e.preventDefault();
         e.stopPropagation();
-        dropdown.classList.toggle('active');
-        console.log('Dropdown clicked, active:', dropdown.classList.contains('active'));
+        const parentDropdown = this.closest('.dropdown');
+        if (parentDropdown) {
+          parentDropdown.classList.toggle('active');
+        }
       }
     });
-    
-    // Assicura che il click funzioni anche su touch
-    dropdownToggle.addEventListener('touchstart', function(e) {
+    // Supporto touch
+    toggle.addEventListener('touchstart', function(e) {
       if (window.innerWidth <= 768) {
         e.preventDefault();
         e.stopPropagation();
-        dropdown.classList.toggle('active');
+        const parentDropdown = this.closest('.dropdown');
+        if (parentDropdown) {
+          parentDropdown.classList.toggle('active');
+        }
       }
     }, { passive: false });
-  }
+  });
 });
 
 // Chiudi menu quando si clicca fuori
