@@ -725,11 +725,13 @@ function toggleMenu() {
 
 function closeMenu() {
   const menu = document.getElementById('navbarMenu');
-  const dropdown = document.querySelector('.dropdown');
   menu.classList.remove('active');
-  // Chiudi la dropdown solo su mobile
-  if (dropdown && window.innerWidth <= 768) {
-    dropdown.classList.remove('active');
+  // Chiudi tutte le dropdown su mobile
+  if (window.innerWidth <= 768) {
+    const dropdowns = document.querySelectorAll('.dropdown.active');
+    dropdowns.forEach(function(drop) {
+      drop.classList.remove('active');
+    });
   }
 }
 
