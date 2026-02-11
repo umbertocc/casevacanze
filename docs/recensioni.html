@@ -441,18 +441,30 @@ function closeMenu() {
 
 // Dropdown mobile
 document.addEventListener('DOMContentLoaded', function() {
-  const dropdownToggle = document.querySelector('.dropdown-toggle');
-  const dropdown = document.querySelector('.dropdown');
-  
-  if (dropdownToggle) {
-    dropdownToggle.addEventListener('click', function(e) {
+  const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+  dropdownToggles.forEach(function(toggle) {
+    toggle.addEventListener('click', function(e) {
       if (window.innerWidth <= 768) {
         e.preventDefault();
         e.stopPropagation();
-        dropdown.classList.toggle('active');
+        const parentDropdown = this.closest('.dropdown');
+        if (parentDropdown) {
+          parentDropdown.classList.toggle('active');
+        }
       }
     });
-  }
+    // Supporto touch
+    toggle.addEventListener('touchstart', function(e) {
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        e.stopPropagation();
+        const parentDropdown = this.closest('.dropdown');
+        if (parentDropdown) {
+          parentDropdown.classList.toggle('active');
+        }
+      }
+    }, { passive: false });
+  });
 });
 
 // Chiudi menu quando si clicca fuori
