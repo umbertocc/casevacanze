@@ -268,37 +268,50 @@ h1 { font-size: 3em; color: #fff; margin-bottom: 15px; font-weight: 700; text-sh
   },
   "containsPlace": [
     {
-      "@type": "Room",
-      "name": "Camera Matrimoniale 1",
-      "bed": {
-        "@type": "BedDetails",
-        "typeOfBed": "Letto Matrimoniale",
-        "numberOfBeds": 1
+      "@type": "Accommodation",
+      "name": "Dettaglio Camere Casa Giorgio 4",
+      "additionalType": "House",
+      "numberOfRooms": 4,
+      "numberOfBedrooms": 3,
+      "numberOfBathroomsTotal": 1,
+      "bed": [
+        {
+          "@type": "BedDetails",
+          "typeOfBed": "Letto Matrimoniale",
+          "numberOfBeds": 1
+        },
+        {
+          "@type": "BedDetails",
+          "typeOfBed": "Letto Matrimoniale",
+          "numberOfBeds": 1
+        },
+        {
+          "@type": "BedDetails",
+          "typeOfBed": "Letto Singolo",
+          "numberOfBeds": 2
+        }
+      ],
+      "occupancy": {
+        "@type": "QuantitativeValue",
+        "value": 6
       },
-        "occupancy": { "@type": "QuantitativeValue", "value": 2 },
-        "identifier": "giorgio4-cam-matrimoniale-1"
-    },
-    {
-      "@type": "Room",
-      "name": "Camera Matrimoniale 2",
-      "bed": {
-        "@type": "BedDetails",
-        "typeOfBed": "Letto Matrimoniale",
-        "numberOfBeds": 1
-      },
-        "occupancy": { "@type": "QuantitativeValue", "value": 2 },
-        "identifier": "giorgio4-cam-matrimoniale-2"
-    },
-    {
-      "@type": "Room",
-      "name": "Camera con 2 Letti Singoli",
-      "bed": {
-        "@type": "BedDetails",
-        "typeOfBed": "Letto Singolo",
-        "numberOfBeds": 2
-      },
-        "occupancy": { "@type": "QuantitativeValue", "value": 2 },
-        "identifier": "giorgio4-cam-due-singoli"
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Camera 1",
+          "value": "Letto Matrimoniale"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Camera 2",
+          "value": "Letto Matrimoniale"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Camera 3",
+          "value": "2 Letti Singoli"
+        }
+      ]
     }
   ],
   "amenityFeature": [
