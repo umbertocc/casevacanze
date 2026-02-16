@@ -150,6 +150,17 @@ h1 { font-size: 3.5em; margin-bottom: 20px; font-weight: 700; position: relative
   ]
 }
 </script>
+<script>
+// Filtro automatico in base all'ancora/hash nell'URL
+document.addEventListener('DOMContentLoaded', function() {
+  const hash = window.location.hash;
+  if (hash === '#casa-bellavista' || hash === '#casa-giorgio-4' || hash === '#casa-giorgio-6') {
+    // Trova il bottone corrispondente e simula il click
+    const btn = document.querySelector('.filter-btn[onclick*="' + hash.replace('#','') + '"]');
+    if (btn) btn.click();
+  }
+});
+</script>
 <!-- Google Analytics GA4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-M0TEME57K0"></script>
 <script>
