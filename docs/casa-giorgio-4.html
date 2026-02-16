@@ -890,18 +890,16 @@ if (allImages.length > 0) {
     btn.addEventListener('click', () => {
       filterButtons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      
       currentFilter = btn.dataset.filter;
-      
       if (currentFilter === 'all') {
         filteredImages = Array.from(allImages);
+        // Mostra tutte le immagini e resetta lo stato
+        allImages.forEach(img => img.style.display = 'block');
       } else {
         filteredImages = Array.from(allImages).filter(img => img.dataset.category === currentFilter);
+        allImages.forEach(img => img.style.display = 'none');
+        filteredImages.forEach(img => img.style.display = 'block');
       }
-      
-      allImages.forEach(img => img.style.display = 'none');
-      filteredImages.forEach(img => img.style.display = 'block');
-      
       dotsContainer.innerHTML = '';
       filteredImages.forEach((_, i) => {
         const dot = document.createElement('div');
@@ -909,7 +907,6 @@ if (allImages.length > 0) {
         dot.onclick = () => showImg(i);
         dotsContainer.appendChild(dot);
       });
-      
       currentImg = 0;
       showImg(0);
     });
@@ -933,12 +930,23 @@ if (allImages.length > 0) {
 
   // Funzione per mostrare immagine
   function showImg(i) {
-    filteredImages[currentImg].classList.remove('active');
-    document.querySelectorAll('.dot')[currentImg].classList.remove('active');
+    // Protezione: se non ci sono immagini, esci
+    if (!filteredImages.length) return;
+    // Se l'indice è fuori range, resetta a 0
+    if (i < 0 || i >= filteredImages.length) i = 0;
+    // Rimuovi 'active' da tutte le immagini e dot
+    filteredImages.forEach(img => img.classList.remove('active'));
+    document.querySelectorAll('.dot').forEach(dot => dot.classList.remove('active'));
     currentImg = i;
     filteredImages[i].classList.add('active');
-    document.querySelectorAll('.dot')[i].classList.add('active');
+    if (document.querySelectorAll('.dot')[i]) {
+      document.querySelectorAll('.dot')[i].classList.add('active');
+    }
     updateCounter();
+    // Aggiorna anche la lightbox se è aperta
+    if (lightbox && lightbox.classList.contains('active')) {
+      lightboxImg.src = filteredImages[i].src;
+    }
   }
 
   // Cambia immagine (frecce)
