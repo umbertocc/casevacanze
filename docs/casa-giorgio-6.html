@@ -48,8 +48,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   max-height: 90vh;
   display: block;
   margin: auto;
-  object-fit: cover;
-  background: #000;
+  object-fit: contain;
+  background: #fff;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #1a202c; background: #e3f6fd; background-attachment: fixed; padding-top: 70px; }
@@ -142,12 +142,12 @@ h1 { font-size: 3em; color: #fff; margin-bottom: 15px; font-weight: 700; text-sh
 .subtitle { font-size: 1.3em; color: #3498db; margin-bottom: 25px; font-weight: 500; text-shadow: none; }
 .property { background: rgba(255, 255, 255, 0.98); border-radius: 30px; box-shadow: 0 20px 60px rgba(0,0,0,0.1); margin-bottom: 50px; border: 1px solid rgba(102, 126, 234, 0.1); transition: all 0.5s; }
 .property:hover { transform: translateY(-5px); box-shadow: 0 25px 80px rgba(102, 126, 234, 0.2); }
-.main-gallery { height: 500px; overflow: hidden; position: relative; border-radius: 0; background: linear-gradient(135deg, #3498db, #2980b9); display: flex; align-items: center; justify-content: center; color: white; font-size: 2em; cursor: pointer; }
+.main-gallery { height: 500px; overflow: hidden; position: relative; border-radius: 0; background: #fff; display: flex; align-items: center; justify-content: center; color: white; font-size: 2em; cursor: pointer; }
 .gallery-filters { display: flex; gap: 10px; flex-wrap: wrap; padding: 15px; background: #f8f9fa; border-radius: 20px 20px 0 0; justify-content: center; }
 .filter-btn { background: white; border: 2px solid #e0e0e0; color: #555; padding: 10px 20px; border-radius: 25px; cursor: pointer; font-weight: bold; transition: all 0.3s; }
 .filter-btn:hover { border-color: #3498db; color: #3498db; }
 .filter-btn.active { background: linear-gradient(135deg, #3498db, #2980b9); color: white; border-color: #3498db; }
-.main-gallery img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.5s; }
+.main-gallery img { width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.5s; }
 .main-gallery img.active { opacity: 1; }
 .gallery-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; font-size: 2em; padding: 15px 20px; cursor: pointer; z-index: 10; transition: background 0.3s; }
 .gallery-arrow:hover { background: rgba(0,0,0,0.8); }
@@ -161,14 +161,14 @@ h1 { font-size: 3em; color: #fff; margin-bottom: 15px; font-weight: 700; text-sh
 .lightbox { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); }
 .lightbox.active { display: flex; align-items: center; justify-content: center; }
 .lightbox img {
-  width: 98vw;
-  height: 90vh;
+  width: auto;
+  height: auto;
   max-width: 98vw;
   max-height: 90vh;
   display: block;
   margin: auto;
-  object-fit: cover;
-  background: #000;
+  object-fit: contain;
+  background: #fff;
 }
 .lightbox-close { position: absolute; top: 30px; right: 40px; color: white; font-size: 3em; cursor: pointer; font-weight: bold; }
 .lightbox-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.2); color: white; border: none; font-size: 3em; padding: 20px 30px; cursor: pointer; transition: background 0.3s; }
@@ -561,26 +561,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <img src="img/casa-giorgio2/prospetto.jpg" alt="Prospetto Casa Giorgio 6" loading="lazy" data-category="esterni">
   <img src="img/casa-giorgio2/prospetto2.jpg" alt="Vista esterna" loading="lazy" data-category="esterni">
   <img src="img/casa-giorgio2/balcone.jpg" alt="Veranda vista mare" loading="lazy" data-category="esterni">
-  <img src="img/torre-pali/torrepali.jpg" alt="Torre Pali" loading="lazy" data-category="esterni">
   <img src="img/casa-giorgio2/balcone2.jpg" alt="Veranda attrezzata" loading="lazy" data-category="esterni">
   <img src="img/casa-giorgio2/balcone3.jpg" alt="Balcone con vista" loading="lazy" data-category="esterni">
   <img src="img/casa-giorgio2/scala.jpg" alt="Scala coperta di accesso" loading="lazy" data-category="esterni">
-  <img src="img/torre-pali/torrepali2.jpg" alt="Torre Pali 2" loading="lazy" data-category="esterni">
   <img src="img/casa-giorgio2/balcone4.jpg" alt="Spazio esterno" loading="lazy" data-category="esterni">
   <img src="img/casa-giorgio2/ingresso.jpg" alt="Ingresso appartamento" loading="lazy" data-category="soggiorno">
   <img src="img/casa-giorgio2/soggiorno.jpg" alt="Soggiorno" loading="lazy" data-category="soggiorno">
   <img src="img/casa-giorgio2/soggiorno2.jpg" alt="Soggiorno con angolo cottura" loading="lazy" data-category="soggiorno">
-  <img src="img/torre-pali/torrepali5.jpg" alt="Torre Pali 5" loading="lazy" data-category="esterni">
   <img src="img/casa-giorgio2/camera.jpg" alt="Camera matrimoniale" loading="lazy" data-category="camere">
   <img src="img/casa-giorgio2/camera2.jpg" alt="Camera da letto" loading="lazy" data-category="camere">
   <img src="img/casa-giorgio2/camera3.jpg" alt="Camera con letti singoli" loading="lazy" data-category="camere">
-  <img src="img/torre-pali/torrepali6.jpg" alt="Torre Pali 6" loading="lazy" data-category="esterni">
   <img src="img/casa-giorgio2/camera4.jpg" alt="Camera da letto" loading="lazy" data-category="camere">
   <img src="img/casa-giorgio2/camera5.jpg" alt="Camera da letto" loading="lazy" data-category="camere">
   <img src="img/casa-giorgio2/camera6.jpg" alt="Camera da letto" loading="lazy" data-category="camere">
-  <img src="img/torre-pali/torrepali7.jpg" alt="Torre Pali 7" loading="lazy" data-category="esterni">
-  <img src="img/torre-pali/torrepali8.jpg" alt="Torre Pali 8" loading="lazy" data-category="esterni">
-  <img src="img/torre-pali/torrepali9.jpg" alt="Torre Pali 9" loading="lazy" data-category="esterni">
   <img src="img/casa-giorgio2/bagno.jpg" alt="Bagno con doccia" loading="lazy" data-category="bagni">
 <div class="dots" id="dots"></div>
 </div>
@@ -618,6 +611,9 @@ L'appartamento dispone di <strong>area parcheggio antistante</strong>, comodo ac
 
 <div style="margin: 30px 0 0 0; text-align: center;">
   <a href="recensioni.html#casa-giorgio-6" class="btn" style="background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%); color: white; font-weight: 600; padding: 14px 32px; border-radius: 50px; text-decoration: none; box-shadow: 0 4px 18px rgba(237,137,54,0.15); font-size: 1.1em;">⭐ Leggi le recensioni su Casa Giorgio 6</a>
+</div>
+<div style="margin: 10px 0 30px 0; text-align: center;">
+  <a href="torre-pali.html" class="btn" style="font-size:1.1em; padding: 14px 38px; background: linear-gradient(135deg, #4fc3f7 0%, #0288d1 100%); color: white; border-radius: 50px; text-decoration: none; font-weight: 600; margin-top: 0.5em; display: inline-block;">🌊 Guarda anche le foto del mare e della spiaggia di Torre Pali</a>
 </div>
 </div>
 
