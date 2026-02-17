@@ -65,7 +65,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 /* Font stack ottimizzato per zero CLS */
-body { font-family: 'Poppins', 'Poppins Fallback', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; line-height: 1.6; color: #2d3748; background: #e3f6fd; background-attachment: fixed; padding-top: 100px; }
+body { font-family: 'Poppins', 'Poppins Fallback', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; line-height: 1.6; color: #2d3748; background: #e3f6fd; background-attachment: fixed; padding-top: 0; }
 
 /* Animazioni */
 @keyframes fadeInUp {
@@ -466,6 +466,10 @@ document.querySelectorAll('a[href*="casa-"]').forEach(link => {
 </script>
 </head>
 <body>
+<div class="hero-section-mare" style="background: linear-gradient(135deg, rgba(0,0,0,0.32) 0%, rgba(0,0,0,0.22) 100%), url('img/lido-marini/lido-marini.jpg') center/cover no-repeat; min-height: 600px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 20px 80px 20px;">
+  <h1 style="font-size: 3.2em; color: white; font-weight: 700; text-shadow: 0 6px 32px rgba(0,0,0,0.35); margin-bottom: 18px; text-align: center;">Prenota la tua vacanza a Torre Pali</h1>
+  <p style="font-size: 1.35em; color: #fff; font-weight: 500; text-shadow: 0 2px 12px rgba(0,0,0,0.25); margin-bottom: 32px; text-align: center;">Scopri spiagge, comfort e relax nel Salento</p>
+</div>
 <!-- Service Worker Registration per cache ottimizzata -->
 <script>
 if ('serviceWorker' in navigator) {
@@ -485,11 +489,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="navbar-container">
 <div style="display:flex; flex-direction:column;">
   <a href="index.html" class="navbar-brand">🏝️ Torre Pali Vacanze</a>
-  <span style="margin-top:4px; font-size:1.08em; font-weight:600; color:#38bdf8; display:inline-block;">
-    <a href="tel:+393886587080" style="color:#38bdf8; text-decoration:none; font-weight:600;">
-      <span style="font-size:1.2em; vertical-align:middle;">📞</span> +39 388 658 70 80
-    </a>
-  </span>
 </div>
 <div class="hamburger" onclick="toggleMenu()">
 <span></span>
