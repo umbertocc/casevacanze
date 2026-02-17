@@ -46,40 +46,46 @@
       "publisher": {
         "@type": "Organization",
         "name": "Torre Pali Vacanze",
-        "logo": {
-          document.addEventListener('DOMContentLoaded', function() {
-            const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-            dropdownToggles.forEach(function(toggle) {
-              toggle.addEventListener('click', function(e) {
-                if (window.innerWidth <= 768) {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  // Chiudi tutte le dropdown attive prima di aprire quella cliccata
-                  document.querySelectorAll('.dropdown.active').forEach(function(drop) {
-                    drop.classList.remove('active');
-                  });
-                  const parentDropdown = this.closest('.dropdown');
-                  if (parentDropdown) {
-                    parentDropdown.classList.toggle('active');
-                  }
-                }
-              });
-              // Supporto touch
-              toggle.addEventListener('touchstart', function(e) {
-                if (window.innerWidth <= 768) {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  document.querySelectorAll('.dropdown.active').forEach(function(drop) {
-                    drop.classList.remove('active');
-                  });
-                  const parentDropdown = this.closest('.dropdown');
-                  if (parentDropdown) {
-                    parentDropdown.classList.toggle('active');
-                  }
-                }
-              }, { passive: false });
-            });
-          });
+        "logo": {}
+      }
+    }
+</script>
+<script>
+// Gestione dropdown mobile (spostato fuori dal JSON-LD)
+document.addEventListener('DOMContentLoaded', function() {
+  const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+  dropdownToggles.forEach(function(toggle) {
+    toggle.addEventListener('click', function(e) {
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        e.stopPropagation();
+        // Chiudi tutte le dropdown attive prima di aprire quella cliccata
+        document.querySelectorAll('.dropdown.active').forEach(function(drop) {
+          drop.classList.remove('active');
+        });
+        const parentDropdown = this.closest('.dropdown');
+        if (parentDropdown) {
+          parentDropdown.classList.toggle('active');
+        }
+      }
+    });
+    // Supporto touch
+    toggle.addEventListener('touchstart', function(e) {
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        e.stopPropagation();
+        document.querySelectorAll('.dropdown.active').forEach(function(drop) {
+          drop.classList.remove('active');
+        });
+        const parentDropdown = this.closest('.dropdown');
+        if (parentDropdown) {
+          parentDropdown.classList.toggle('active');
+        }
+      }
+    }, { passive: false });
+  });
+});
+</script>
     </script>
     <!-- Structured Data: ImageObject per SEO immagini -->
     <script type="application/ld+json">
@@ -290,12 +296,12 @@
 <ul class="navbar-menu" id="navbarMenu">
 <li><a href="index.html" onclick="closeMenu()">Home</a></li>
 <li class="dropdown">
-<span class="dropdown-toggle" style="color: #4a5568; font-weight: 500;">Appartamenti</span>
-<div class="dropdown-menu">
-<a href="casa-bellavista-2.html" onclick="closeMenu()">Casa Bella Vista 2</a>
-<a href="casa-giorgio-4.html" onclick="closeMenu()">Casa Giorgio 4</a>
-<a href="casa-giorgio-6.html" onclick="closeMenu()">Casa Giorgio 6</a>
-</div>
+  <span class="dropdown-toggle" style="color: #4a5568; font-weight: 500;">Appartamenti</span>
+  <div class="dropdown-menu">
+    <a href="casa-bellavista-2.html">Casa Bella Vista 2</a>
+    <a href="casa-giorgio-4.html">Casa Giorgio 4</a>
+    <a href="casa-giorgio-6.html">Casa Giorgio 6</a>
+  </div>
 </li>
 <li class="dropdown">
 <span class="dropdown-toggle" style="color: #4a5568; font-weight: 500;">Scopri il Salento</span>
@@ -321,6 +327,8 @@ function toggleMenu() {
   const menu = document.getElementById('navbarMenu');
   menu.classList.toggle('active');
 }
+
+// Versione unica di closeMenu con debug
 function closeMenu() {
   const menu = document.getElementById('navbarMenu');
   menu.classList.remove('active');
@@ -328,36 +336,39 @@ function closeMenu() {
   if (window.innerWidth <= 768) {
     const dropdowns = document.querySelectorAll('.dropdown.active');
     dropdowns.forEach(function(drop) {
-      drop.classList.remove('active');
+    drop.classList.remove('active');
     });
   }
-  }
+}
 
 // Dropdown mobile
 document.addEventListener('DOMContentLoaded', function() {
   const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
   dropdownToggles.forEach(function(toggle) {
-    toggle.addEventListener('click', function(e) {
+    function handleDropdownToggle(e) {
       if (window.innerWidth <= 768) {
         e.preventDefault();
         e.stopPropagation();
         const parentDropdown = this.closest('.dropdown');
         if (parentDropdown) {
-          parentDropdown.classList.toggle('active');
+          if (parentDropdown.classList.contains('active')) {
+            parentDropdown.classList.remove('active');
+          } else {
+            document.querySelectorAll('.dropdown.active').forEach(function(drop) {
+              drop.classList.remove('active');
+            });
+            parentDropdown.classList.add('active');
+          }
         }
       }
-    });
-    // Supporto touch
-    toggle.addEventListener('touchstart', function(e) {
-      if (window.innerWidth <= 768) {
-        e.preventDefault();
-        e.stopPropagation();
-        const parentDropdown = this.closest('.dropdown');
-        if (parentDropdown) {
-          parentDropdown.classList.toggle('active');
-        }
-      }
-    }, { passive: false });
+    }
+    // Rimuovo eventuali duplicati di handler
+    toggle.replaceWith(toggle.cloneNode(true));
+    const newToggle = parentDropdown = null;
+    // Ricollego handler solo una volta
+    const realToggle = document.querySelector('.dropdown-toggle');
+    realToggle.addEventListener('click', handleDropdownToggle);
+    realToggle.addEventListener('touchstart', handleDropdownToggle, { passive: false });
   });
 });
 // Chiudi menu quando si clicca fuori
@@ -392,8 +403,8 @@ document.addEventListener('click', function(event) {
 
   <div class="container">
     <header>
-      <h1>Prenotazione Case Vacanze Torre Pali</h1>
-      <p class="tagline">Compila il modulo per richiedere disponibilità. Ti risponderemo entro 1 ora!</p>
+      <h1>Case Vacanze Torre Pali</h1>
+      <p class="tagline">Compila il modulo per richiedere disponibilità e ottenere un preventivo!</p>
     </header>
     <section class="booking-form-section">
       <div class="confirmation" id="confirmation">Richiesta inviata! Ti risponderemo entro 1 ora via email o WhatsApp.</div>
@@ -516,10 +527,7 @@ function toggleMenu() {
   const menu = document.getElementById('navbarMenu');
   menu.classList.toggle('active');
 }
-function closeMenu() {
-  const menu = document.getElementById('navbarMenu');
-  menu.classList.remove('active');
-}
+
 // Dropdown mobile
 document.addEventListener('DOMContentLoaded', function() {
   const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
