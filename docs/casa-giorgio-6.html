@@ -85,8 +85,9 @@ body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #1a202c; bac
 .dropdown-menu a { padding: 12px 25px; color: #4a5568; font-weight: 500; white-space: nowrap; }
 .dropdown-menu a::after { display: none; }
 .dropdown-menu a:hover { background: rgba(34, 87, 122, 0.08); color: #22577a; }
-.hamburger { display: none; flex-direction: column; cursor: pointer; }
-.hamburger span { width: 25px; height: 3px; background: #2c3e50; margin: 3px 0; transition: 0.3s; border-radius: 3px; }
+.hamburger { display: none; flex-direction: column; cursor: pointer; z-index: 1001; background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%) !important; border: 2.5px solid #43e68b !important; border-radius: 14px !important; padding: 8px 8px !important; width: 44px !important; height: 44px !important; box-shadow: 0 2px 12px rgba(67,233,123,0.13) !important; }
+.hamburger:focus { outline: 3px solid #43e68b !important; outline-offset: 2px; }
+.hamburger span { width: 24px !important; height: 4px !important; background: #fff !important; margin: 3px 0 !important; border-radius: 3px !important; transition: 0.3s; display: block; }
 
 /* Animazione Pulse per WhatsApp */
 @keyframes pulse {
@@ -520,11 +521,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div style="display:flex; flex-direction:column;">
   <a href="index.html" class="navbar-brand">🏝️ Torre Pali Vacanze</a>
 </div>
-<div class="hamburger" onclick="toggleMenu()">
-<span></span>
-<span></span>
-<span></span>
-</div>
+<button class="hamburger" onclick="toggleMenu()" aria-label="Apri menu di navigazione" tabindex="0">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
 <ul class="navbar-menu" id="navbarMenu">
 <li><a href="index.html" onclick="closeMenu()">Home</a></li>
 <li class="dropdown">
@@ -609,9 +610,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <img src="img/casa-giorgio2/camera5.jpg" alt="Camera da letto" loading="lazy" data-category="camere">
   <img src="img/casa-giorgio2/camera6.jpg" alt="Camera da letto" loading="lazy" data-category="camere">
   <img src="img/casa-giorgio2/bagno.jpg" alt="Bagno con doccia" loading="lazy" data-category="bagni">
+  <img src="img/torre-pali/torrepali15.jpg" alt="Torre Pali 2" loading="lazy" data-category="esterni">
   <img src="img/torre-pali/torrepali8.jpg" alt="Torre Pali 8" loading="lazy" data-category="esterni">
   <img src="img/torre-pali/torrepali9.jpg" alt="Torre Pali 9" loading="lazy" data-category="esterni">
   <img src="img/torre-pali/torrepali2.jpg" alt="Torre Pali 2" loading="lazy" data-category="esterni">
+  <img src="img/torre-pali/torrepali16.jpg" alt="Torre Pali 2" loading="lazy" data-category="esterni">
   <img src="img/torre-pali/torrepali10.jpg" alt="Torre Pali 10" loading="lazy" data-category="esterni">
 <div class="dots" id="dots"></div>
 </div>
