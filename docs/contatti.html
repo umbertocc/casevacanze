@@ -29,6 +29,43 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
 <style>
+/* Bottoni e link verdi con testo nero in contatti.html */
+a.btn, .btn, .back-btn, .contact-method a, .whatsapp-float {
+  background: #25d366 !important;
+  color: #111 !important;
+  border: none !important;
+  box-shadow: 0 4px 15px rgba(37,211,102,0.10);
+  font-weight: 600;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+a.btn:hover, .btn:hover, .back-btn:hover, .contact-method a:hover, .whatsapp-float:hover {
+  background: #1ed760 !important;
+  color: #111 !important;
+  box-shadow: 0 8px 25px rgba(37,211,102,0.18);
+}
+/* HERO SECTION MARE - COPIATO DA INDEX.HTML */
+.hero-section-mare {
+  background: linear-gradient(135deg, rgba(0,0,0,0.32) 0%, rgba(0,0,0,0.22) 100%), url('img/lido-marini/lido-marini.jpg') center/cover no-repeat;
+  align-items: flex-start;
+}
+a.btn, .btn, .back-btn, .contact-method a, .whatsapp-float {
+  color: #fff !important;
+}
+a.btn:hover, .btn:hover, .back-btn:hover, .contact-method a:hover, .whatsapp-float:hover {
+  color: #fff !important;
+}
+@media (max-width: 768px) {
+  .hero-section-mare {
+    background: linear-gradient(135deg, rgba(0,0,0,0.32) 0%, rgba(0,0,0,0.22) 100%), url('img/torre-pali/torrepali.jpg') center/cover no-repeat;
+  }
+}
+.hero-section h1, .hero-section-mare h1 {
+  font-size: 2em !important;
+  margin-bottom: 12px;
+}
+.hero-section p, .hero-section-mare p {
+  font-size: 1em !important;
+}
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes slideInLeft { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
@@ -60,6 +97,47 @@ body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #2c3e50; bac
   0% { box-shadow: 0 4px 15px rgba(37,211,102,0.4); }
   50% { box-shadow: 0 4px 15px rgba(37,211,102,0.7), 0 0 0 10px rgba(37,211,102,0.2); }
   100% { box-shadow: 0 4px 15px rgba(37,211,102,0.4); }
+}
+
+.hero-section p, .hero-section-mare p {
+  font-size: 1em !important;
+}
+
+/* BTN STYLE - COPIATO DA INDEX.HTML */
+.btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+  color: #fff;
+  padding: 16px 40px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  margin: 8px;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+.btn:hover {
+  background: linear-gradient(135deg, #128c7e 0%, #25d366 100%);
+  color: #fff;
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 12px 35px rgba(102, 126, 234, 0.5);
+}
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.btn:hover::before {
+  opacity: 1;
+}
+.btn span {
+  position: relative;
+  z-index: 1;
 }
 
 .whatsapp-float { position: fixed; top: auto !important; left: auto !important; bottom: 20px !important; right: 20px !important; background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 6px 25px rgba(37,211,102,0.4); z-index: 999; text-decoration: none; transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55); animation: pulse 2s infinite; }
@@ -109,7 +187,7 @@ body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #2c3e50; bac
 .footer-section a:hover { color: #667eea; transform: translateX(5px); }
 .footer-bottom { text-align: center; margin-top: 40px; padding-top: 25px; border-top: 1px solid #4a5568; color: #a0aec0; font-size: 0.9em; }
 .container { max-width: 1200px; margin: 0 auto; padding: 30px; }
-header { text-align: center; margin-bottom: 50px; padding: 60px 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 30px; box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3); animation: fadeIn 0.8s ease-out; }
+header { text-align: center; margin-bottom: 50px; padding: 60px 20px; color: ; border-radius: 30px; box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3); animation: fadeIn 0.8s ease-out; }
 header h1 { font-size: 3em; margin-bottom: 15px; font-weight: 700; text-shadow: 0 4px 10px rgba(0,0,0,0.2); }
 .back-btn { display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 12px 28px; border-radius: 50px; text-decoration: none; margin-bottom: 25px; font-weight: 600; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3); transition: all 0.3s; }
 .back-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 25px rgba(102, 126, 234, 0.5); }
@@ -129,10 +207,27 @@ header h1 { font-size: 3em; margin-bottom: 15px; font-weight: 700; text-shadow: 
 .form-group input, .form-group textarea { width: 100%; padding: 14px; border: 2px solid rgba(102, 126, 234, 0.2); border-radius: 12px; font-family: 'Poppins', sans-serif; font-size: 1em; transition: all 0.3s; background: rgba(102, 126, 234, 0.02); }
 .form-group input:focus, .form-group textarea:focus { outline: none; border-color: #667eea; background: white; box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1); }
 .form-group textarea { resize: vertical; min-height: 150px; }
-.form-btn { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 16px 40px; border: none; border-radius: 50px; font-size: 1.1em; font-weight: 600; cursor: pointer; transition: all 0.3s; width: 100%; box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3); position: relative; overflow: hidden; }
-.form-btn::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #764ba2 0%, #f093fb 100%); opacity: 0; transition: opacity 0.3s; }
-.form-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(102, 126, 234, 0.5); }
-.form-btn:hover::before { opacity: 1; }
+.form-btn {
+  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+  color: #fff;
+  padding: 16px 40px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  width: 100%;
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+.form-btn:hover {
+  background: linear-gradient(135deg, #128c7e 0%, #25d366 100%);
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(102, 126, 234, 0.5);
+}
 .success-message { display: none; background: linear-gradient(135deg, rgba(72, 187, 120, 0.1) 0%, rgba(56, 161, 105, 0.1) 100%); color: #38a169; padding: 15px; border-radius: 12px; margin-bottom: 20px; border: 2px solid #48bb78; font-weight: 500; }
 @media (max-width: 768px) {
   .container { padding: 15px; }
@@ -204,6 +299,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- Main Content -->
 <main id="main-content" role="main">
+<div class="hero-section-mare" style="min-height: 600px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 20px 80px 20px;">
+  <h1 style="font-size: 3.2em; color: white; font-weight: 700; text-shadow: 0 6px 32px rgba(0,0,0,0.35); margin-bottom: 18px; text-align: center;">Contatti</h1>
+  <p style="font-size: 1.35em; color: #fff; font-weight: 500; text-shadow: 0 2px 12px rgba(0,0,0,0.25); margin-bottom: 32px; text-align: center;">Compila il form per inviarci una richiesta</p>
+  <a href="tel:+393886587080" class="btn" style="font-size:1.25em; margin-top:10px;">📞 Chiama per info</a>
+</div>
 <div class="container">
 <a href="index.html" class="back-btn">← Torna alla homepage</a>
 
