@@ -207,7 +207,24 @@ h1 { font-size: 3.5em; margin-bottom: 20px; font-weight: 700; position: relative
 .feature-badge:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(72, 187, 120, 0.4); }
 .property-description { color: #4a5568; margin-bottom: 25px; line-height: 1.9; font-size: 1.05em; }
 .property-price { font-size: 2.5em; background: linear-gradient(135deg, #48bb78 0%, #38a169 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700; margin-bottom: 25px; }
-.btn { display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 16px 40px; border-radius: 50px; text-decoration: none; font-weight: 600; margin: 8px; transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3); position: relative; overflow: hidden; }
+.btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+  color: #fff;
+  padding: 16px 40px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  margin: 8px;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+.btn:hover {
+  background: linear-gradient(135deg, #128c7e 0%, #25d366 100%);
+  color: #fff;
+}
 .btn::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, #764ba2 0%, #667eea 100%); opacity: 0; transition: opacity 0.4s; }
 .btn:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 12px 35px rgba(102, 126, 234, 0.5); }
 .btn:hover { transform: translateY(-4px) scale(1.08); box-shadow: 0 12px 35px rgba(102, 126, 234, 0.5); background: linear-gradient(135deg, #4b3fa2 0%, #3a67ea 100%); color: #fff; }
@@ -499,6 +516,7 @@ document.querySelectorAll('a[href*="casa-"]').forEach(link => {
 <div class="hero-section-mare" style="min-height: 600px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 20px 80px 20px;">
   <h1 style="font-size: 3.2em; color: white; font-weight: 700; text-shadow: 0 6px 32px rgba(0,0,0,0.35); margin-bottom: 18px; text-align: center;">Prenota la tua vacanza a Torre Pali</h1>
   <p style="font-size: 1.35em; color: #fff; font-weight: 500; text-shadow: 0 2px 12px rgba(0,0,0,0.25); margin-bottom: 32px; text-align: center;">Scopri spiagge, comfort e relax nel Salento</p>
+  <a href="tel:+393886587080" class="btn" style="font-size:1.25em; margin-top:10px;">📞 Chiama per info</a>
 </div>
 <!-- Service Worker Registration per cache ottimizzata -->
 <script>
@@ -693,7 +711,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <div style="text-align: center;">
-<a href="recensioni.html" class="btn" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 16px 40px; border-radius: 50px; text-decoration: none; font-weight: 600; display: inline-block; transition: all 0.4s; box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);">📖 Leggi Tutte le Recensioni</a>
+<a href="recensioni.html" class="btn">📖 Leggi Tutte le Recensioni</a>
 </div>
 </div>
 
@@ -746,7 +764,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p><strong>Torre Pali</strong> offre tutto ciò che serve per una vacanza perfetta nel Salento: spiagge sabbiose dorate con acque cristalline, fondali bassi e sicuri ideali per famiglie con bambini, un'atmosfera autentica e rilassata e una cucina locale genuina a base di pesce fresco. La <strong>torre aragonese del XVI secolo</strong> che domina la costa è un'attrazione storica affascinante, e i tramonti sul mare sono semplicemente spettacolari.</p>
 <p>A pochi metri dalla riva si trova l'<strong>Isola della Fanciulla</strong>, un suggestivo isolotto roccioso circondato da una romantica leggenda d'amore, facilmente raggiungibile a nuoto (circa 50 metri) o in kayak. Un luogo perfetto per fare snorkeling, esplorare la flora marina e scattare fotografie indimenticabili con lo sfondo del Mar Ionio!</p>
 <p><strong>Cosa visitare vicino a Torre Pali:</strong> Le famose <a href="spiagge-salento-sud.html" style="color: #5a67d8; font-weight: 600; text-decoration: underline;">Maldive del Salento a Pescoluse</a> (3 km), Punta Pizzo con le sue dune (5 km), Santa Maria di Leuca con il faro e il Santuario (15 km), le Grotte di Castro Marina (25 km), Gallipoli (35 km), Otranto (50 km) e la barocca Lecce (60 km). Torre Pali è la base perfetta per esplorare tutto il Salento meridionale!</p>
-<p style="text-align: center; margin-top: 25px;"><a href="torre-pali.html" class="btn" style="background: linear-gradient(135deg, #3498db, #2980b9);">🏝️ Scopri Torre Pali e l'Isola della Fanciulla</a></p>
+<p style="text-align: center; margin-top: 25px;"><a href="torre-pali.html" class="btn">🏝️ Scopri Torre Pali e l'Isola della Fanciulla</a></p>
 
 <div class="highlights">
 <div class="highlight">
