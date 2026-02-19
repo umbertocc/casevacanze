@@ -210,8 +210,26 @@ h1 { font-size: 3em; color: #111; margin-bottom: 15px; font-weight: 700; text-sh
   border: none;
   margin: 30px 0;
 }
-.price { font-size: 2.8em; margin-bottom: 10px; font-weight: 700; }
-.price-desc { font-size: 1.1em; opacity: 0.95; font-weight: 500; }
+.price-section {
+  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+  color: white;
+  padding: 22px 30px;
+  border-radius: 22px;
+  text-align: center;
+  box-shadow: 0 10px 28px rgba(72, 187, 120, 0.22);
+  max-width: 700px;
+  margin: 0 auto 32px auto;
+}
+.price {
+  font-size: 1.7em;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+.price-desc {
+  font-size: 1em;
+  opacity: 0.95;
+  font-weight: 500;
+}
 .amenities { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
 .amenity { display: flex; align-items: center; gap: 10px; padding: 18px; background: rgba(102, 126, 234, 0.05); border-radius: 15px; border: 1px solid rgba(102, 126, 234, 0.1); transition: all 0.3s; }
 .amenity:hover { background: rgba(102, 126, 234, 0.1); transform: translateX(5px); }
@@ -639,18 +657,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <span class="feature">Vista Mare</span>
 </div>
 </div>
-
-<div class="price-section">
-<div class="price"><a href="prenotazione.html" style="color:inherit;text-decoration:underline;">Richiedi Preventivo</a></div>
-<div class="price-desc" style="font-size: 1.05em; opacity: 1; margin-top: 15px;">Contattaci per ricevere un preventivo personalizzato</div>
-<div class="price-desc" style="font-size: 0.95em; opacity: 0.9; margin-top: 10px;">Vista Mare Esclusiva | Check-in 15:00 | Check-out 10:00 | Pulizie incluse</div>
-</div>
 </div>
 
 <div class="description">
 <strong>Casa Giorgio 6</strong> è un elegante <strong>appartamento primo piano vista mare</strong> di circa 90 mq situato in una struttura composta da quattro appartamenti gemelli (due al piano terra e due al primo piano), a soli <strong>40 metri reali dalla spiaggia di sabbia dorata di Torre Pali</strong>. Perfetto per <strong>coppie che cercano una vacanza romantica</strong> o per famiglie e gruppi fino a 6 persone, l'appartamento offre un'<strong>esclusiva veranda panoramica con vista mare</strong>, ideale per godere di <strong>tramonti mozzafiato sul Mar Ionio</strong> e cene romantiche all'aperto.
 <br><br>
-L'appartamento dispone di <strong>area parcheggio antistante</strong>, comodo accesso tramite scala coperta, e ben <strong>due verande attrezzate</strong>: quella antistante con <strong>vista mare esclusiva</strong> per ammirare l'alba e il mare cristallino, e quella retrostante per pranzi all'ombra. Entrambe sono attrezzate con tavolo e sedie per pasti all'aperto. La posizione al primo piano garantisce maggiore privacy e una <strong>vista panoramica unica</strong> sul mare e sulla <a href="torre-pali.html" style="color: #667eea; font-weight: 600;">costa di Torre Pali</a>. Ideale per chi cerca un'<strong>esperienza vacanza romantica e rilassante</strong> nel Salento. Scopri anche <a href="index.html" style="color: #667eea; font-weight: 600;">le altre nostre case vacanze</a> o la <a href="spiagge-salento-sud.html" style="color: #667eea; font-weight: 600;">guida completa alle spiagge del Salento</a>.
+L'appartamento dispone di <strong>area parcheggio antistante</strong>, comodo accesso tramite scala coperta, e ben <strong>due verande attrezzate</strong>: quella antistante con <strong>vista mare esclusiva</strong> per ammirare l'alba e il mare cristallino, e quella retrostante per pranzi all'ombra. Entrambe sono attrezzate con tavolo e sedie per pasti all'aperto. La posizione al primo piano garantisce maggiore privacy e una <strong>vista panoramica unica</strong> sul mare e sulla costa di Torre Pali. Ideale per chi cerca un'<strong>esperienza vacanza romantica e rilassante</strong> nel Salento. Scopri anche <a href="index.html" style="color: #667eea; font-weight: 600;">le altre nostre case vacanze</a> o la <a href="spiagge-salento-sud.html" style="color: #667eea; font-weight: 600;">guida completa alle spiagge del Salento</a>.
 </div>
 </div>
 
@@ -790,6 +802,13 @@ L'appartamento dispone di <strong>area parcheggio antistante</strong>, comodo ac
 <h2 style="color: #2c3e50; margin-bottom: 25px;">Sei Interessato? Contattaci!</h2>
 <a href="https://wa.me/393886587080?text=Ciao!%20Sono%20interessato%20alla%20Casa%20Giorgio%206%20a%20Torre%20Pali" class="btn" data-tooltip="Invia messaggio WhatsApp" onclick="gtag('event', 'whatsapp_click', {'event_category': 'Contact', 'event_label': 'Casa Giorgio 6 - CTA Button'});">📱 WhatsApp</a>
 <a href="tel:+393886587080" class="btn">📞 Chiama Ora</a>
+
+<div class="price-section">
+<div class="price"><a href="prenotazione.html" style="color:inherit;text-decoration:underline;">Richiedi Preventivo</a></div>
+<div class="price-desc" style="font-size: 1.05em; opacity: 1; margin-top: 15px;">Contattaci per ricevere un preventivo personalizzato</div>
+<div class="price-desc" style="font-size: 0.95em; opacity: 0.9; margin-top: 10px;">Vista Mare Esclusiva | Check-in 15:00 | Check-out 10:00 | Pulizie incluse</div>
+</div>
+
 <p style="margin-top: 25px; color: #7f8c8d; font-size: 1.1em;">+39 388 658 70 80 • Risposta rapida</p>
 
 <div class="social-share">
@@ -804,6 +823,7 @@ L'appartamento dispone di <strong>area parcheggio antistante</strong>, comodo ac
 <a href="mailto:?subject=Casa Giorgio 6 - Torre Pali&body=Guarda questa casa vacanze a Torre Pali: https://torrepalivacanze.it/casa-giorgio-6.html" class="social-btn" style="background: linear-gradient(135deg, #27ae60, #229954) !important;">
 <span>✉️</span> Email
 </a>
+
 </div>
 </div>
 </div>
