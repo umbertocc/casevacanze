@@ -517,6 +517,54 @@ document.querySelectorAll('a[href*="casa-"]').forEach(link => {
 </script>
 </head>
 <body>
+<!-- Cookie Consent Banner -->
+<div id="cookie-consent-banner" style="position:fixed;bottom:0;left:0;width:100%;background:#222;color:#fff;padding:16px 8px;z-index:9999;text-align:center;display:none;">
+  Questo sito utilizza cookie per migliorare la tua esperienza di navigazione. Per saperne di più consulta la <a href="privacy.html" style="color:#ffd700;text-decoration:underline;">Privacy Policy</a>.
+  <button id="cookie-accept" style="margin-left:16px;padding:8px 16px;background:#ffd700;color:#222;border:none;cursor:pointer;">Accetta</button>
+  <button id="cookie-decline" style="margin-left:8px;padding:8px 16px;background:#888;color:#fff;border:none;cursor:pointer;">Rifiuta</button>
+</div>
+<script>
+// Mostra il banner se consenso non dato
+if (!localStorage.getItem('cookieConsent')) {
+  document.getElementById('cookie-consent-banner').style.display = 'block';
+}
+document.getElementById('cookie-accept').onclick = function() {
+  localStorage.setItem('cookieConsent', 'true');
+  document.getElementById('cookie-consent-banner').style.display = 'none';
+  loadTrackingScripts();
+};
+document.getElementById('cookie-decline').onclick = function() {
+  localStorage.setItem('cookieConsent', 'false');
+  document.getElementById('cookie-consent-banner').style.display = 'none';
+};
+function loadTrackingScripts() {
+  // Google Analytics
+  var gaScript = document.createElement('script');
+  gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-M0TEME57K0';
+  gaScript.async = true;
+  document.body.appendChild(gaScript);
+  gaScript.onload = function() {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-M0TEME57K0');
+  };
+  // Google Tag Manager
+  (function(w,d,s,l,i){
+    w[l]=w[l]||[];
+    w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+    var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+    j.async=true;
+    j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+    f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-5FP79B56');
+}
+// Carica tracking se consenso già dato
+if (localStorage.getItem('cookieConsent') === 'true') {
+  loadTrackingScripts();
+}
+</script>
 <div class="hero-section-mare" style="min-height: 600px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 20px 80px 20px; position:relative; overflow:hidden; background: linear-gradient(135deg, rgba(0,0,0,0.32) 0%, rgba(0,0,0,0.22) 100%), url('img/lido-marini/lido-marini.webp') center/cover no-repeat;">
   <!-- Preload immagini LCP principali (mobile e desktop) -->
   <link rel="preload" as="image" href="img/torre-pali/torrepali-mobile.webp" imagesrcset="img/torre-pali/torrepali-mobile.webp 788w, img/torre-pali/torrepali.jpg 1099w" imagesizes="100vw" media="(max-width: 768px)">
