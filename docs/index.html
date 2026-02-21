@@ -552,29 +552,7 @@ document.querySelectorAll('a[href*="casa-"]').forEach(link => {
 });
 </script>
 </head>
-<body>
-<!-- Cookie Consent Banner -->
-<div class="hero-section-mare" style="min-height: 600px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 20px 80px 20px; position:relative; overflow:hidden; background: linear-gradient(135deg, rgba(0,0,0,0.32) 0%, rgba(0,0,0,0.22) 100%), url('img/lido-marini/lido-marini.webp') center/cover no-repeat;">
-  <!-- Preload immagini LCP principali (mobile e desktop) -->
-  <link rel="preload" as="image" href="img/torre-pali/torrepali-mobile.webp" imagesrcset="img/torre-pali/torrepali-mobile.webp 788w, img/torre-pali/torrepali.jpg 1099w" imagesizes="100vw" media="(max-width: 768px)">
-  <link rel="preload" as="image" href="img/lido-marini/lido-marini.webp" imagesrcset="img/lido-marini/lido-marini.webp 1080w, img/lido-marini/lido-marini.jpg 1080w" imagesizes="1080px" media="(min-width: 769px)">
-  <picture style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;">
-    <source srcset="img/torre-pali/torrepali-mobile.webp" media="(max-width: 800px)" type="image/webp" sizes="100vw">
-    <source srcset="img/lido-marini/lido-marini.webp" media="(min-width: 801px)" type="image/webp" sizes="1200px">
-    <img 
-      src="img/lido-marini/lido-marini.webp"
-      fetchpriority="high"
-      width="1080" height="2400"
-      alt="Vista panoramica di Lido Marini, Salento, fronte mare"
-      decoding="async"
-      style="width:100%;height:100%;object-fit:cover;object-position:center;"
-    />
-  </picture>
-  <h1 style="font-size: 3.2em; color: white; font-weight: 700; text-shadow: 0 6px 32px rgba(0,0,0,0.35); margin-bottom: 18px; text-align: center; position:relative; z-index:1;">Prenota la tua vacanza a Torre Pali</h1>
-  <p style="font-size: 1.35em; color: #fff; font-weight: 500; text-shadow: 0 2px 12px rgba(0,0,0,0.25); margin-bottom: 32px; text-align: center; position:relative; z-index:1;">Scopri spiagge, comfort e relax nel Salento</p>
-  <a href="tel:+393886587080" class="btn" style="font-size:1.25em; margin-top:10px; position:relative; z-index:1;">📞 Chiama per info</a>
-</div>
-<!-- Service Worker Registration per cache ottimizzata -->
+
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
