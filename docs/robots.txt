@@ -1,1 +1,9 @@
+# Allow all bots to crawl the website
+User-agent: *
+Allow: /
+
+# Disallow crawling of internal/private paths (if any)
+Disallow: /logo-generator.html
+
+# Specify sitemap location
 Sitemap: https://torrepalivacanze.it/sitemap.xml
