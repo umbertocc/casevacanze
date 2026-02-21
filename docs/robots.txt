@@ -23,10 +23,7 @@
 # RIGHTS UNDER ARTICLE 4 OF THE EUROPEAN UNION DIRECTIVE 2019/790 ON COPYRIGHT
 # AND RELATED RIGHTS IN THE DIGITAL SINGLE MARKET.
 
-# BEGIN Cloudflare Managed content
-
 User-agent: *
- 
 Allow: /
 
 User-agent: Amazonbot
@@ -52,7 +49,5 @@ Disallow: /
 
 User-agent: meta-externalagent
 Disallow: /
-
-# END Cloudflare Managed Content
 
 Sitemap: https://torrepalivacanze.it/sitemap.xml
