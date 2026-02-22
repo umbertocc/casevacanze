@@ -54,6 +54,7 @@ a.btn:hover, .btn:hover, .back-btn:hover, .contact-method a:hover, .whatsapp-flo
   color: #fff !important;
 }
 .hero-section h1, .hero-section-mare h1 {
+  font-size: 3.2em !important;
   margin-bottom: 12px;
 }
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
@@ -130,7 +131,6 @@ body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #2c3e50; bac
 
 .whatsapp-float { position: fixed; top: auto !important; left: auto !important; bottom: 20px !important; right: 20px !important; background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 6px 25px rgba(37,211,102,0.4); z-index: 999; text-decoration: none; transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55); animation: pulse 2s infinite; }
 .whatsapp-float:hover { transform: scale(1.15) rotate(5deg); box-shadow: 0 6px 25px rgba(37,211,102,0.6); animation: none; }
-
 /* Tooltip per pulsanti */
 [data-tooltip] { position: relative; }
 [data-tooltip]::before {
@@ -176,7 +176,7 @@ body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #2c3e50; bac
 .footer-bottom { text-align: center; margin-top: 40px; padding-top: 25px; border-top: 1px solid #4a5568; color: #a0aec0; font-size: 0.9em; }
 .container { max-width: 1200px; margin: 0 auto; padding: 30px; }
 header { text-align: center; margin-bottom: 50px; padding: 60px 20px; color: #2c3e50; border-radius: 30px; box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3); animation: fadeIn 0.8s ease-out; }
-header h1 { font-size: 3em; margin-bottom: 15px; font-weight: 700; text-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+header h1 { font-size: 3.2em !important; margin-bottom: 15px; font-weight: 700; text-shadow: 0 4px 10px rgba(0,0,0,0.2); }
 .back-btn { display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 12px 28px; border-radius: 50px; text-decoration: none; margin-bottom: 25px; font-weight: 600; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3); transition: all 0.3s; }
 .back-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 25px rgba(102, 126, 234, 0.5); }
 .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 50px; }
@@ -219,7 +219,18 @@ header h1 { font-size: 3em; margin-bottom: 15px; font-weight: 700; text-shadow: 
 .success-message { display: none; background: linear-gradient(135deg, rgba(72, 187, 120, 0.1) 0%, rgba(56, 161, 105, 0.1) 100%); color: #38a169; padding: 15px; border-radius: 12px; margin-bottom: 20px; border: 2px solid #48bb78; font-weight: 500; }
 @media (max-width: 768px) {
   .container { padding: 15px; }
-  header h1 { font-size: 1.8em; }
+  header h1 { font-size: 2em !important; }
+  .hero-section h1, .hero-section-mare h1 {
+    font-size: 2em !important;
+    margin-bottom: 12px;
+  }
+  .hero-section p, .hero-section-mare p {
+    font-size: 1em !important;
+    margin-bottom: 18px;
+  }
+  p {
+    font-size: 1em !important;
+  }
   .content-grid { grid-template-columns: 1fr; }
   .footer-container { grid-template-columns: 1fr; }
   .hamburger { display: flex; }
@@ -302,9 +313,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       sizes="(max-width: 768px) 100vw, 1080px"
     />
   </picture>
-  <h1 style="font-size: 3.2em; color: white; font-weight: 700; text-shadow: 0 6px 32px rgba(0,0,0,0.35); margin-bottom: 18px; text-align: center; position:relative; z-index:1;">Contatti</h1>
-  <p style="font-size: 1.35em; color: #fff; font-weight: 500; text-shadow: 0 2px 12px rgba(0,0,0,0.25); margin-bottom: 32px; text-align: center; position:relative; z-index:1;">Hai domande o richieste particolari? Siamo a tua disposizione per informazioni rapide e assistenza personalizzata.</p>
-  <a href="https://wa.me/393886587080?text=Ciao!%20Vorrei%20informazioni%20sulle%20case%20vacanza" class="btn" style="font-size:1.25em; margin-top:10px; position:relative; z-index:1;">💬 Scrivici su WhatsApp</a>
+  <h1 style="color: white; font-weight: 700; text-shadow: 0 6px 32px rgba(0,0,0,0.35); margin-bottom: 18px; text-align: center; position:relative; z-index:1;">Contatti</h1>
+  <p style="color: #fff; font-weight: 500; text-shadow: 0 2px 12px rgba(0,0,0,0.25); margin-bottom: 32px; text-align: center; position:relative; z-index:1;">Hai domande o richieste particolari? Siamo a tua disposizione per informazioni rapide e assistenza personalizzata.</p>
+  <a href="https://wa.me/393886587080?text=Ciao!%20Vorrei%20informazioni%20sulle%20vostre%20case%20vacanza" class="btn" style="font-size:1.25em; margin-top:10px; position:relative; z-index:1;">💬 WhatsApp</a>
 </div>
 <div class="container">
 
@@ -540,15 +551,6 @@ document.addEventListener('DOMContentLoaded', function(){
       "telephone": "+39-388-658-7080",
       "contactType": "customer service",
       "availableLanguage": ["Italian"],
-<div class="dropdown-menu">
-  <a href="torre-pali.html" onclick="closeMenu()">⭐ Torre Pali</a>
-  <a href="lido-marini.html" onclick="closeMenu()">Lido Marini</a>
-  <a href="torre-vado.html" onclick="closeMenu()">Torre Vado</a>
-  <a href="pescoluse.html" onclick="closeMenu()">Pescoluse</a>
-  <a href="spiagge-salento-sud.html" onclick="closeMenu()">Guida Spiagge</a>
-  <a href="eventi-salento.html" onclick="closeMenu()">Eventi e Tradizioni</a>
-  <a href="faq-salento.html" onclick="closeMenu()">FAQ Salento</a>
-</div>
       "hoursAvailable": {
         "@type": "OpeningHoursSpecification",
         "opens": "09:00",
