@@ -292,11 +292,11 @@ h1 { font-size: 3em; color: #111; margin-bottom: 15px; font-weight: 700; text-sh
 {
   "@context": "https://schema.org",
   "@type": ["Accommodation", "VacationRental"],
-  "additionalType": "https://schema.org/House",
+  "additionalType": "House",
   "name": "Casa Giorgio 6 Vista Mare - Torre Pali",
   "description": "Appartamento 90m² primo piano con vista mare a 40 metri dalla spiaggia Bandiera Blu di Torre Pali. 3 camere da letto, 1 bagno, veranda panoramica con vista mare, scala coperta, doccia esterna, WiFi e aria condizionata. Perfetto per coppie e famiglie fino a 6 persone.",
   "url": "https://torrepalivacanze.it/casa-giorgio-6",
-    "identifier": { "@type": "PropertyValue", "propertyID": "URL", "value": "https://torrepalivacanze.it/casa-giorgio-6" },
+  "identifier": "casa-giorgio-6",
   "image": [
     "https://torrepalivacanze.it/img/casa-giorgio2/prospetto.jpg",
     "https://torrepalivacanze.it/img/casa-giorgio2/prospetto2.jpg",
@@ -340,39 +340,48 @@ h1 { font-size: 3em; color: #111; margin-bottom: 15px; font-weight: 700; text-sh
   "containsPlace": [
     {
       "@type": "Accommodation",
-      "additionalType": "https://schema.org/Bedroom",
-      "name": "Camera Matrimoniale 1",
-      "bed": {
-        "@type": "BedDetails",
-        "typeOfBed": "Letto Matrimoniale",
-        "numberOfBeds": 1
-      }
-        ,"occupancy": { "@type": "QuantitativeValue", "value": 2 },
-        "identifier": "giorgio6-cam-matrimoniale-1"
-    },
-    {
-      "@type": "Accommodation",
-      "additionalType": "https://schema.org/Bedroom",
-      "name": "Camera Matrimoniale 2",
-      "bed": {
-        "@type": "BedDetails",
-        "typeOfBed": "Letto Matrimoniale",
-        "numberOfBeds": 1
-      }
-        "occupancy": { "@type": "QuantitativeValue", "value": 2 },
-        "identifier": "giorgio6-cam-matrimoniale-1"
-    },
-    {
-      "@type": "Accommodation",
-      "additionalType": "https://schema.org/Bedroom",
-      "name": "Camera con 2 Letti Singoli",
-      "bed": {
-        "@type": "BedDetails",
-        "typeOfBed": "Letto Singolo",
-        "numberOfBeds": 2
-      }
-        ,"occupancy": { "@type": "QuantitativeValue", "value": 2 },
-        "identifier": "giorgio6-cam-due-singoli"
+      "name": "Dettaglio Camere Casa Giorgio 4",
+      "numberOfRooms": 4,
+      "numberOfBedrooms": 3,
+      "numberOfBathroomsTotal": 1,
+      "bed": [
+        {
+          "@type": "BedDetails",
+          "typeOfBed": "Letto Matrimoniale",
+          "numberOfBeds": 1
+        },
+        {
+          "@type": "BedDetails",
+          "typeOfBed": "Letto Matrimoniale",
+          "numberOfBeds": 1
+        },
+        {
+          "@type": "BedDetails",
+          "typeOfBed": "Letto Singolo",
+          "numberOfBeds": 2
+        }
+      ],
+      "occupancy": {
+        "@type": "QuantitativeValue",
+        "value": 6
+      },
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Camera 1",
+          "value": "Letto Matrimoniale"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Camera 2",
+          "value": "Letto Matrimoniale"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Camera 3",
+          "value": "2 Letti Singoli"
+        }
+      ]
     }
   ],
   "amenityFeature": [
@@ -489,6 +498,44 @@ h1 { font-size: 3em; color: #111; margin-bottom: 15px; font-weight: 700; text-sh
 }
 </script>
 <!-- Structured Data: Organization con Logo -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LodgingBusiness",
+  "name": "Torre Pali Vacanze Reception",
+  "description": "Reception e accoglienza per case vacanza a Torre Pali, Salento.",
+  "url": "https://torrepalivacanze.it",
+  "image": "https://torrepalivacanze.it/img/logo.png",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Via Vasco de Gama 11",
+    "addressLocality": "Torre Pali",
+    "addressRegion": "Puglia",
+    "postalCode": "73050",
+    "addressCountry": "IT"
+  },
+  "telephone": "+393886587080",
+  "email": "info@torrepalivacanze.it",
+  "openingHours": ["Mo-Su 09:00-20:00"],
+  "amenityFeature": [
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Accoglienza ospiti",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Prenotazione diretta",
+      "value": true
+    }
+  ],
+  "sameAs": [
+    "https://www.facebook.com/torrepalivacanze",
+    "https://www.instagram.com/torrepalivacanze"
+  ]
+}
+</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
