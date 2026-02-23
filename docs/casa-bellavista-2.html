@@ -284,11 +284,11 @@ h1 { font-size: 3em; color: #111; margin-bottom: 15px; font-weight: 700; text-sh
 {
   "@context": "https://schema.org",
   "@type": ["Accommodation", "VacationRental"],
-  "additionalType": "https://schema.org/House",
+  "additionalType": "House",
   "name": "Casa Bellavista 2 - Torre Pali",
   "description": "Quadrilocale 90m² a soli 20 metri dalla spiaggia Bandiera Blu di Torre Pali. 3 camere da letto, 2 bagni, cortile privato, 2 posti auto riservati, WiFi e aria condizionata inclusi. Ideale per famiglie fino a 8 persone.",
   "url": "https://torrepalivacanze.it/casa-bellavista-2",
-  "identifier": { "@type": "PropertyValue", "propertyID": "URL", "value": "https://torrepalivacanze.it/casa-bellavista-2"},
+  "identifier": "casa-bellavista-2",
   "image": [
     "https://torrepalivacanze.it/img/prospetto/prospetto_1.jpg",
     "https://torrepalivacanze.it/img/casa-bella-vista/prospetto.jpg",
@@ -332,49 +332,44 @@ h1 { font-size: 3em; color: #111; margin-bottom: 15px; font-weight: 700; text-sh
   "containsPlace": [
     {
       "@type": "Accommodation",
-      "additionalType": "https://schema.org/Bedroom",
-      "name": "Camera Matrimoniale + Singolo",
+      "name": "Dettaglio Camere Casa Bella Vista 2",
+      "numberOfRooms": 4,
+      "numberOfBedrooms": 3,
+      "numberOfBathroomsTotal": 2,
       "bed": [
         {
           "@type": "BedDetails",
           "typeOfBed": "Letto Matrimoniale",
-          "numberOfBeds": 1,
-          "numberOfBedrooms": 1
+          "numberOfBeds": 2
         },
         {
           "@type": "BedDetails",
           "typeOfBed": "Letto Singolo",
-          "numberOfBedrooms": 1
+          "numberOfBeds": 4
+        }
+      ],
+      "occupancy": {
+        "@type": "QuantitativeValue",
+        "value": 8
+      },
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Camera 1",
+          "value": "Letto Matrimoniale + letto singolo"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Camera 2",
+          "value": "Letto Matrimoniale"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Camera 3",
+          "value": "2 Letti Singoli"
         }
       ]
-      ,"occupancy": { "@type": "QuantitativeValue", "value": 3 },
-      "identifier": "bellavista-cam-mistaposto-1"
-    },
-    {
-      "@type": "Accommodation",
-      "additionalType": "https://schema.org/Bedroom",
-      "name": "Camera Matrimoniale",
-      "bed": {
-        "@type": "BedDetails",
-        "typeOfBed": "Letto Matrimoniale",
-        "numberOfBeds": 1,
-        "numberOfBedrooms": 1
-      }
-      ,"occupancy": { "@type": "QuantitativeValue", "value": 2 },
-      "identifier": "bellavista-cam-matrimoniale"
-    },
-    {
-      "@type": "Accommodation",
-      "additionalType": "https://schema.org/Bedroom",
-      "name": "Camera Tripla",
-      "bed": {
-        "@type": "BedDetails",
-        "typeOfBed": "Letto Singolo",
-        "numberOfBeds": 3,
-        "numberOfBedrooms": 1
-      }
-    },  "occupancy": { "@type": "QuantitativeValue", "value": 3 },
-        "identifier": "bellavista-cam-tripla-singoli"
+    }
   ],
   "amenityFeature": [
     {
@@ -460,7 +455,6 @@ h1 { font-size: 3em; color: #111; margin-bottom: 15px; font-weight: 700; text-sh
   "alternateName": "Affitti Torre Pali Salento",
   "url": "https://torrepalivacanze.it",
   "logo": "https://torrepalivacanze.it/img/logo.png",
-  "image": "https://torrepalivacanze.it/img/logo.png",
   "description": "Case vacanze a Torre Pali, Salento. A pochi passi dalla spiaggia Bandiera Blu con tutti i comfort.",
   "address": {
     "@type": "PostalAddress",
@@ -477,6 +471,44 @@ h1 { font-size: 3em; color: #111; margin-bottom: 15px; font-weight: 700; text-sh
     "availableLanguage": ["Italian"],
     "areaServed": "IT"
   },
+  "sameAs": [
+    "https://www.facebook.com/torrepalivacanze",
+    "https://www.instagram.com/torrepalivacanze"
+  ]
+}
+</script>
+<!-- Structured Data: LocalBusiness (Reception/Agenzia) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LodgingBusiness",
+  "name": "Torre Pali Vacanze Reception",
+  "description": "Reception e accoglienza per case vacanza a Torre Pali, Salento.",
+  "url": "https://torrepalivacanze.it",
+  "image": "https://torrepalivacanze.it/img/logo.png",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Via Vasco de Gama 5",
+    "addressLocality": "Torre Pali",
+    "addressRegion": "Puglia",
+    "postalCode": "73050",
+    "addressCountry": "IT"
+  },
+  "telephone": "+393886587080",
+  "email": "info@torrepalivacanze.it",
+  "openingHours": ["Mo-Su 09:00-20:00"],
+  "amenityFeature": [
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Accoglienza ospiti",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Prenotazione diretta",
+      "value": true
+    }
+  ],
   "sameAs": [
     "https://www.facebook.com/torrepalivacanze",
     "https://www.instagram.com/torrepalivacanze"
