@@ -46,12 +46,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #333; background: linear-gradient(135deg, #f5f7fa 0%, #e8eaf6 100%); padding-top: 70px; }
 .navbar { position: fixed; top: 0; left: 0; right: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0,0,0,0.08); z-index: 1000; }
 .navbar-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 18px 30px; }
-.navbar-brand { font-size: 1.4em; font-weight: 700; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none; transition: transform 0.3s; }
+.navbar-brand { font-size: 1.4em; font-weight: 700; background: linear-gradient(135deg, #667eea 0%, #667eea 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none; transition: transform 0.3s; }
 .navbar-brand:hover { transform: scale(1.05); }
 .navbar-menu { display: flex; gap: 30px; list-style: none; }
 .navbar-menu > li { position: relative; }
 .navbar-menu a { color: #4a5568; text-decoration: none; font-weight: 500; transition: all 0.3s; position: relative; padding: 5px 0; display: block; }
-.navbar-menu a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); transition: width 0.3s; }
+.navbar-menu a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: linear-gradient(135deg, #667eea 0%, #667eea 100%); transition: width 0.3s; }
 .navbar-menu a:hover { color: #667eea; }
 .navbar-menu a:hover::after { width: 100%; }
 .dropdown { position: relative; }
@@ -68,20 +68,20 @@ body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #333; backgr
 .hamburger span { width: 24px !important; height: 4px !important; background: #fff !important; margin: 3px 0 !important; border-radius: 3px !important; transition: 0.3s; display: block; }
 .whatsapp-float { position: fixed; top: auto !important; left: auto !important; bottom: 20px !important; right: 20px !important; background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 6px 25px rgba(37,211,102,0.4); z-index: 999; text-decoration: none; transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55); animation: pulse 2s infinite; }
 .whatsapp-float:hover { transform: scale(1.15) rotate(5deg); box-shadow: 0 6px 25px rgba(37,211,102,0.6); }
-.footer { background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%); color: white; padding: 50px 20px 20px; margin-top: 60px; border-top: 3px solid transparent; border-image: linear-gradient(90deg, #667eea, #764ba2, #f093fb) 1; }
+.footer { background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%); color: white; padding: 50px 20px 20px; margin-top: 60px; border-top: 3px solid transparent; border-image: linear-gradient(90deg, #667eea, #667eea, #f093fb) 1; }
 .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
 .footer-section h3 { margin-bottom: 20px; color: #ecf0f1; font-weight: 600; font-size: 1.2em; }
 .footer-section p, .footer-section a { color: #bdc3c7; font-size: 0.95em; line-height: 1.8; text-decoration: none; display: block; margin-bottom: 10px; transition: all 0.3s; }
 .footer-section a:hover { color: #f093fb; transform: translateX(5px); }
 .footer-bottom { text-align: center; margin-top: 40px; padding-top: 25px; border-top: 1px solid #4a5568; color: #a0aec0; font-size: 0.9em; }
 .container { max-width: 1200px; margin: 0 auto; padding: 30px; }
-.back-btn { display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 12px 28px; border-radius: 50px; text-decoration: none; margin-bottom: 25px; font-weight: 600; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3); transition: all 0.3s; }
+.back-btn { display: inline-block; background: linear-gradient(135deg, #667eea 0%, #667eea 100%); color: white; padding: 12px 28px; border-radius: 50px; text-decoration: none; margin-bottom: 25px; font-weight: 600; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3); transition: all 0.3s; }
 .back-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 25px rgba(102, 126, 234, 0.5); }
 header { text-align: center; margin-bottom: 50px; padding: 80px 20px; background: linear-gradient(135deg, #22577a 0%, #18304b 100%); color: #fff; border-radius: 30px; box-shadow: 0 20px 60px rgba(34, 87, 122, 0.3); animation: fadeIn 0.8s ease-out; }
 header h1 { font-size: 3.5em; margin-bottom: 15px; font-weight: 700; text-shadow: 0 4px 10px rgba(0,0,0,0.2); }
 .subtitle { font-size: 1.4em; color: rgba(255, 255, 255, 0.95); font-weight: 400; }
 .content-section { background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); padding: 50px 40px; border-radius: 30px; box-shadow: 0 20px 60px rgba(0,0,0,0.08); margin-bottom: 40px; border: 1px solid rgba(102, 126, 234, 0.1); animation: fadeInUp 0.6s ease-out; }
-.content-section h2 { font-size: 2.5em; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 25px; border-left: 5px solid transparent; border-image: linear-gradient(135deg, #667eea, #764ba2) 1; padding-left: 20px; font-weight: 700; }
+.content-section h2 { font-size: 2.5em; background: linear-gradient(135deg, #667eea 0%, #667eea 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 25px; border-left: 5px solid transparent; border-image: linear-gradient(135deg, #667eea, #667eea) 1; padding-left: 20px; font-weight: 700; }
 .content-section h3 { font-size: 1.6em; color: #667eea; margin: 30px 0 15px 0; font-weight: 600; }
 .content-section p { font-size: 1.15em; line-height: 1.8; color: #4a5568; margin-bottom: 20px; text-align: justify; }
 .highlight-box { background: linear-gradient(135deg, rgba(72, 187, 120, 0.1) 0%, rgba(56, 161, 105, 0.1) 100%); border-left: 5px solid #48bb78; padding: 30px; border-radius: 20px; margin: 30px 0; box-shadow: 0 4px 15px rgba(72, 187, 120, 0.1); }
@@ -90,13 +90,13 @@ header h1 { font-size: 3.5em; margin-bottom: 15px; font-weight: 700; text-shadow
 .info-card { background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(240, 147, 251, 0.05) 100%); padding: 30px; border-radius: 20px; text-align: center; transition: all 0.4s; border: 1px solid rgba(102, 126, 234, 0.1); }
 .info-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2); background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(240, 147, 251, 0.1) 100%); }
 .info-card-icon { font-size: 3em; margin-bottom: 15px; }
-.info-card h4 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 10px; font-size: 1.3em; font-weight: 600; }
+.info-card h4 { background: linear-gradient(135deg, #667eea 0%, #667eea 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 10px; font-size: 1.3em; font-weight: 600; }
 .info-card p { color: #64748b; font-size: 1em; }
 .features-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 25px 0; }
 .feature-item { display: flex; align-items: center; gap: 15px; padding: 18px; background: rgba(102, 126, 234, 0.05); border-radius: 15px; border: 1px solid rgba(102, 126, 234, 0.1); transition: all 0.3s; }
 .feature-item:hover { background: rgba(102, 126, 234, 0.1); transform: translateX(5px); }
 .feature-item-icon { font-size: 2em; color: #667eea; }
-.cta-section { text-align: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 60px 40px; border-radius: 30px; margin-top: 40px; box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3); animation: fadeInUp 0.8s ease-out; }
+.cta-section { text-align: center; background: linear-gradient(135deg, #667eea 0%, #667eea 100%); color: white; padding: 60px 40px; border-radius: 30px; margin-top: 40px; box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3); animation: fadeInUp 0.8s ease-out; }
 .cta-section h2 { font-size: 2.5em; margin-bottom: 20px; font-weight: 700; text-shadow: 0 2px 10px rgba(0,0,0,0.1); }
 .cta-section p { font-size: 1.2em; margin-bottom: 30px; opacity: 0.95; font-weight: 400; }
 .btn { display: inline-block; background: white; color: #667eea; padding: 18px 45px; border-radius: 50px; text-decoration: none; font-weight: 600; margin: 10px; transition: all 0.3s; font-size: 1.1em; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); position: relative; overflow: hidden; }
@@ -445,7 +445,7 @@ La posizione di Torre Vado permette di esplorare facilmente tutte le attrazioni 
 </div>
 
 <p style="text-align: center; margin-top: 30px;">
-<a href="spiagge-salento-sud.html" style="display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: 600; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);">📍 Vedi Tutte le Spiagge del Salento Sud</a>
+<a href="spiagge-salento-sud.html" style="display: inline-block; background: linear-gradient(135deg, #667eea 0%, #667eea 100%); color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: 600; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);">📍 Vedi Tutte le Spiagge del Salento Sud</a>
 </p>
 
 <h3>📍 Distanze dalle Principali Località</h3>
