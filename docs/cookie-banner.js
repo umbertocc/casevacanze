@@ -2,8 +2,11 @@
 function setupCookieBanner() {
   var banner = document.getElementById('cookie-banner');
   if (!banner) return;
+  // Mostra solo se non c'è già consenso
   if (!localStorage.getItem('cookieConsent')) {
     banner.style.display = 'block';
+  } else {
+    banner.style.display = 'none';
   }
   var accept = document.getElementById('cookie-accept');
   var refuse = document.getElementById('cookie-refuse');
