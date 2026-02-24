@@ -18,6 +18,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   gtag('js', new Date());
   gtag('config', 'G-G3VV1KJ8SL');
 </script>
+
+<div id="cookie-banner-container"></div>
+<script>
+fetch('cookie-banner.html')
+  .then(r => r.text())
+  .then(html => {
+    document.getElementById('cookie-banner-container').innerHTML = html;
+    var script = document.createElement('script');
+    script.src = 'cookie-banner.js';
+    document.body.appendChild(script);
+  });
+</script>
 <!-- Tag Manager rimosso -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">

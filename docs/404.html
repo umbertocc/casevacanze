@@ -56,6 +56,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <span class="emoji">💬</span> Contattaci
 </a>
 </div>
+</div>
+<div id="cookie-banner-container"></div>
+<script>
+fetch('cookie-banner.html')
+  .then(r => r.text())
+  .then(html => {
+    document.getElementById('cookie-banner-container').innerHTML = html;
+    var script = document.createElement('script');
+    script.src = 'cookie-banner.js';
+    document.body.appendChild(script);
+  });
+</script>
 
 <div class="help-text">
 <p><strong>Link Utili:</strong></p>
