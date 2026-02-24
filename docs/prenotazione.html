@@ -148,22 +148,38 @@ document.addEventListener('DOMContentLoaded', function() {
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
   <style>
-                  /* Bottoni principali con sfondo verde come in contatti.html */
-                  .btn, a.btn, .back-btn, .form-btn {
+                                    .booking-form-section form {
+                                      display: flex;
+                                      flex-direction: column;
+                                      align-items: center;
+                                    }
+                                    .booking-form-section form .form-group {
+                                      width: 100%;
+                                    }
+                                    .booking-form-section form .form-btn {
+                                      align-self: center;
+                                    }
+                  /* Bottone principale verde, grande e ben visibile */
+                  .btn, .form-btn {
                     background: linear-gradient(135deg, #25d366 0%, #128c7e 100%) !important;
                     color: #fff !important;
-                    border: none !important;
-                    box-shadow: 0 4px 15px rgba(37,211,102,0.10);
-                    font-weight: 600;
+                    border: 2px solid #b2f2d7;
+                    box-shadow: 0 6px 24px rgba(37,211,102,0.18);
+                    font-weight: 700;
                     border-radius: 50px;
                     text-decoration: none;
                     transition: background 0.3s, color 0.3s, box-shadow 0.3s;
                     display: inline-block;
+                    font-size: 1.18em;
+                    padding: 18px 48px;
+                    margin: 18px 0 0 0;
+                    letter-spacing: 0.5px;
                   }
-                  .btn:hover, a.btn:hover, .back-btn:hover, .form-btn:hover {
+                  .btn:hover, .form-btn:hover {
                     background: linear-gradient(135deg, #128c7e 0%, #25d366 100%) !important;
                     color: #fff !important;
-                    box-shadow: 0 8px 25px rgba(37,211,102,0.18);
+                    box-shadow: 0 12px 32px rgba(37,211,102,0.28);
+                    border-color: #25d366 !important;
                   }
               /* HERO SECTION MARE - background come in contatti.html */
               .hero-section-mare {
@@ -511,23 +527,25 @@ document.addEventListener('click', function(event) {
   <div class="container">
       
     <section class="booking-form-section">
-      <div class="confirmation" id="confirmation">Richiesta inviata! Ti risponderemo entro 1 ora via email o WhatsApp.</div>
+      <div class="success-message" id="confirmation" style="display:none;">✅ Richiesta inviata! Ti risponderemo entro 1 ora via email o WhatsApp.</div>
       <form id="booking-form" action="https://formspree.io/f/mvzrrpdr" method="POST">
+        <!-- Honeypot anti-spam (nascosto) -->
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
         <div class="form-group">
           <label for="nome">Nome *</label>
-          <input type="text" id="nome" name="nome" required>
+          <input type="text" id="nome" name="nome" required placeholder="Il tuo nome">
         </div>
         <div class="form-group">
           <label for="email">Email *</label>
-          <input type="email" id="email" name="email" required>
+          <input type="email" id="email" name="email" required placeholder="esempio@email.com">
         </div>
         <div class="form-group">
           <label for="telefono">Telefono</label>
-          <input type="tel" id="telefono" name="telefono">
+          <input type="tel" id="telefono" name="telefono" placeholder="(opzionale)">
         </div>
         <div class="form-group">
-          <label for="appartamento">Appartamento</label>
-          <select id="appartamento" name="appartamento">
+          <label for="appartamento">Quale appartamento ti interessa?</label>
+          <select name="appartamento" id="appartamento" style="width: 100%; padding: 12px; border: 2px solid #ecf0f1; border-radius: 8px; font-family: Arial, sans-serif; font-size: 1em;">
             <option value="">-- Seleziona --</option>
             <option value="casa-bellavista-2">Casa Bellavista 2</option>
             <option value="casa-giorgio-4">Casa Giorgio 4 (Piano terra)</option>
@@ -545,13 +563,13 @@ document.addEventListener('click', function(event) {
         </div>
         <div class="form-group">
           <label for="persone">Numero di Persone *</label>
-          <input type="number" id="persone" name="persone" min="1" max="10" required>
+          <input type="number" id="persone" name="persone" min="1" max="10" required placeholder="Quanti sarete?">
         </div>
         <div class="form-group">
           <label for="messaggio">Messaggio *</label>
-          <textarea id="messaggio" name="messaggio" rows="4" required></textarea>
+          <textarea id="messaggio" name="messaggio" required placeholder="Raccontaci cosa ti interessa..."></textarea>
         </div>
-        <button class="btn" type="submit">Invia Richiesta</button>
+        <button type="submit" class="form-btn">Invia Richiesta</button>
       </form>
       <a class="privacy-link" href="privacy.html" target="_blank">Leggi la Privacy Policy</a>
       <p style="margin-top: 20px; font-size: 0.95em; color: #555;">Risposta entro 1 ora via email o WhatsApp. Nessun pagamento anticipato richiesto.</p>
