@@ -1362,6 +1362,7 @@ Esplora la mappa interattiva per scoprire la posizione di Torre Pali, le spiagge
 {
   "@context": "https://schema.org",
   "@type": "TouristAttraction",
+  "@id": "https://torrepalivacanze.it/torre-pali",
   "name": "Torre Pali",
   "description": "Torre Pali è una località balneare del Salento con spiagge Bandiera Blu, mare cristallino, l'Isola della Fanciulla e il caratteristico molo per tuffi e tramonti mozzafiato.",
   "image": [
@@ -1375,9 +1376,11 @@ Esplora la mappa interattiva per scoprire la posizione di Torre Pali, le spiagge
     "https://torrepalivacanze.it/img/torre-pali/molo4.jpg"
   ],
   "url": "https://torrepalivacanze.it/torre-pali.html",
+  "isPartOf": {
+    "@id": "https://torrepalivacanze.it/#website"
+  },
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Via Vasco De Gama 5",
     "addressLocality": "Torre Pali",
     "addressRegion": "Puglia",
     "postalCode": "73050",
@@ -1415,24 +1418,19 @@ Esplora la mappa interattiva per scoprire la posizione di Torre Pali, le spiagge
   ],
   "containsPlace": [
     {
-      "@type": "Accommodation",
-      "additionalType": "https://schema.org/Bedroom",
-      "name": "Camera Matrimoniale",
-      "bed": {
-        "@type": "BedDetails",
-        "typeOfBed": "Letto Matrimoniale",
-        "numberOfBeds": 1
-      }
+      "@type": "House",
+      "name": "Casa Bellavista 2",
+      "url": "https://torrepalivacanze.it/casa-bellavista-2.html"
     },
     {
-      "@type": "Accommodation",
-      "additionalType": "https://schema.org/Bedroom",
-      "name": "Camera Tripla",
-      "bed": {
-        "@type": "BedDetails",
-        "typeOfBed": "Letto Singolo",
-        "numberOfBeds": 3
-      }
+      "@type": "House",
+      "name": "Casa Giorgio 4",
+      "url": "https://torrepalivacanze.it/casa-giorgio-4.html"
+    },
+    {
+      "@type": "House",
+      "name": "Casa Giorgio 6",
+      "url": "https://torrepalivacanze.it/casa-giorgio-6.html"
     }
   ]
 }
