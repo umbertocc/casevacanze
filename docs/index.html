@@ -326,104 +326,38 @@ h1 { font-size: 3.5em; margin-bottom: 20px; font-weight: 700; position: relative
 </style>
 <!-- Structured Data (Schema.org) -->
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LodgingBusiness",
-  "name": "Torre Pali Vacanze",
-  "description": "Case vacanze a Torre Pali nel Salento: 3 appartamenti a 20-40m dalla spiaggia Bandiera Blu. WiFi, aria condizionata, parcheggio. Proprietari sul posto disponibili 24/7.",
-  "url": "https://torrepalivacanze.it/",
-  "logo": "https://torrepalivacanze.it/img/logo.png",
-  "image": [
-    "https://torrepalivacanze.it/img/prospetto/prospetto_1.jpg",
-    "https://torrepalivacanze.it/img/logo.png"
-  ],
-  "telephone": "+393886587080",
-  "email": "info@torrepalivacanze.it",
-  "priceRange": "€€",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Torre Pali",
-    "addressLocality": "Salve",
-    "addressRegion": "Puglia",
-    "postalCode": "73050",
-    "addressCountry": "IT"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": "39.8447",
-    "longitude": "18.0789"
-  },
-  "openingHoursSpecification": {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-      "Sunday"
-    ],
-    "opens": "09:00",
-    "closes": "20:00"
-  },
-  "amenityFeature": [
-    {
-      "@type": "LocationFeatureSpecification",
-      "name": "WiFi gratuito",
-      "value": true
-    },
-    {
-      "@type": "LocationFeatureSpecification",
-      "name": "Aria condizionata",
-      "value": true
-    },
-    {
-      "@type": "LocationFeatureSpecification",
-      "name": "Parcheggio",
-      "value": true
-    },
-    {
-      "@type": "LocationFeatureSpecification",
-      "name": "Animali ammessi",
-      "value": true
-    }
-  ],
-  "petsAllowed": true,
-  "checkinTime": "15:00",
-  "checkoutTime": "10:00",
-  "numberOfRooms": 3,
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "5.0",
-    "reviewCount": "8",
-    "bestRating": "5",
-    "worstRating": "1"
-  },
-  "sameAs": [
-    "https://wa.me/393886587080"
-  ]
-}
+{ "@context": "https://schema.org", 
+"@type": "LodgingBusiness", 
+"@id": "https://torrepalivacanze.it/#lodging", 
+"name": "Torre Pali Vacanze", 
+"description": "Case vacanza a Torre Pali nel Salento: 3 appartamenti a 20-40m dalla spiaggia Bandiera Blu. WiFi, aria condizionata, parcheggio. Proprietari sul posto disponibili 24/7.", 
+"url": "https://torrepalivacanze.it/", 
+"logo": "https://torrepalivacanze.it/img/logo.png", 
+"image": [ "https://torrepalivacanze.it/img/prospetto/prospetto_1.jpg",
+           "https://torrepalivacanze.it/img/torrepali.jpg"], 
+"telephone": "+393886587080", 
+"email": "info@torrepalivacanze.it", 
+"priceRange": "€€", 
+"amenityFeature": [ { "@type": "LocationFeatureSpecification",
+ "name": "WiFi gratuito", "value": true }, 
+ { "@type": "LocationFeatureSpecification", "name": "Aria condizionata", "value": true }, 
+ { "@type": "LocationFeatureSpecification", "name": "Parcheggio", "value": true }, { "@type": "LocationFeatureSpecification", "name": "Animali ammessi", "value": true } ], 
+ "petsAllowed": true, "checkinTime": "15:00", "checkoutTime": "10:00", 
+ "hasPart": [ { "@type": "Accommodation", "name": "Casa Giorgio 4", "url": "https://torrepalivacanze.it/casa-giorgio-4", "@id": "https://torrepalivacanze.it/schema/casa-giorgio-4" }, 
+ { "@type": "Accommodation", "name": "Casa Giorgio 6", "url": "https://torrepalivacanze.it/casa-giorgio-6", "@id": "https://torrepalivacanze.it/schema/casa-giorgio-6" }, 
+{"@type": "Accommodation", "name": "Casa Bellavista 2", "url": "https://torrepalivacanze.it/casa-bellavista-2", "@id": "https://torrepalivacanze.it/schema/casa-bellavista-2" } ], "sameAs": [ "https://wa.me/393886587080" ] }
 </script>
 <!-- Structured Data: Organization con Logo -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": "https://torrepalivacanze.it/#organization",
   "name": "Torre Pali Vacanze",
   "alternateName": "Torre Pali Salento",
   "url": "https://torrepalivacanze.it",
   "logo": "https://torrepalivacanze.it/img/logo.png",
-  "image": "https://torrepalivacanze.it/img/logo.png",
   "description": "Case vacanze a Torre Pali, Salento. A pochi passi dalla spiaggia Bandiera Blu con tutti i comfort.",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Torre Pali",
-    "addressLocality": "Salve",
-    "addressRegion": "Puglia",
-    "postalCode": "73050",
-    "addressCountry": "IT"
-  },
   "contactPoint": {
     "@type": "ContactPoint",
     "telephone": "+39-388-658-70-80",
@@ -436,12 +370,14 @@ h1 { font-size: 3.5em; margin-bottom: 20px; font-weight: 700; position: relative
     "https://www.instagram.com/torrepalivacanze"
   ]
 }
+
 </script>
 <!-- Structured Data: WebSite con SearchAction -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": "https://torrepalivacanze.it/#website"
   "name": "Torre Pali Vacanze",
   "alternateName": "Case Vacanze Torre Pali Salento",
   "url": "https://torrepalivacanze.it/",
@@ -462,6 +398,7 @@ h1 { font-size: 3.5em; margin-bottom: 20px; font-weight: 700; position: relative
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
+  "@id": "https://torrepalivacanze.it/#breadcrumbs",
   "itemListElement": [{
     "@type": "ListItem",
     "position": 1,

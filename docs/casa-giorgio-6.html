@@ -296,7 +296,7 @@ h1 { font-size: 3em; color: #111; margin-bottom: 15px; font-weight: 700; text-sh
   "name": "Casa Giorgio 6 Vista Mare - Torre Pali",
   "description": "Appartamento 90m² primo piano con vista mare a 40 metri dalla spiaggia Bandiera Blu di Torre Pali. 3 camere da letto, 1 bagno, veranda panoramica con vista mare, scala coperta, doccia esterna, WiFi e aria condizionata. Perfetto per coppie e famiglie fino a 6 persone.",
   "url": "https://torrepalivacanze.it/casa-giorgio-6",
-  "identifier": "casa-giorgio-6",
+  "@id": "https://torrepalivacanze.it/schema/casa-giorgio-6",
   "image": [
     "https://torrepalivacanze.it/img/casa-giorgio2/prospetto.jpg",
     "https://torrepalivacanze.it/img/casa-giorgio2/prospetto2.jpg",
@@ -340,7 +340,8 @@ h1 { font-size: 3em; color: #111; margin-bottom: 15px; font-weight: 700; text-sh
   "containsPlace": [
     {
       "@type": "Accommodation",
-      "name": "Dettaglio Camere Casa Giorgio 4",
+      "@id": "https://torrepalivacanze.it/schema/casa-giorgio-6#rooms",
+      "name": "Dettaglio Camere Casa Giorgio 6",
       "numberOfRooms": 4,
       "numberOfBedrooms": 3,
       "numberOfBathroomsTotal": 1,
@@ -494,80 +495,37 @@ h1 { font-size: 3em; color: #111; margin-bottom: 15px; font-weight: 700; text-sh
       },
       "reviewBody": "Proprietari davvero fantastici disponibilissimi l'appartamento ha davvero tutto ed è comodissimo posto praticamente sul mare ottimo per visitare luoghi fantastici"
     }
+  ],
+    "isPartOf": {
+    "@id": "https://torrepalivacanze.it/#lodging"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": "https://torrepalivacanze.it/casa-giorgio-6/#breadcrumbs",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://torrepalivacanze.it/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Casa Giorgio 6",
+      "item": "https://torrepalivacanze.it/casa-giorgio-6"
+    }
   ]
 }
+
 </script>
 
 <!-- Structured Data: Organization con Logo -->
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LodgingBusiness",
-  "name": "Torre Pali Vacanze Reception",
-  "description": "Reception e accoglienza per case vacanza a Torre Pali, Salento.",
-  "url": "https://torrepalivacanze.it",
-  "image": "https://torrepalivacanze.it/img/logo.png",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Via Vasco de Gama 11",
-    "addressLocality": "Torre Pali",
-    "addressRegion": "Puglia",
-    "postalCode": "73050",
-    "addressCountry": "IT"
-  },
-  "telephone": "+393886587080",
-  "email": "info@torrepalivacanze.it",
-  "openingHours": ["Mo-Su 09:00-20:00"],
-  "amenityFeature": [
-    {
-      "@type": "LocationFeatureSpecification",
-      "name": "Accoglienza ospiti",
-      "value": true
-    },
-    {
-      "@type": "LocationFeatureSpecification",
-      "name": "Prenotazione diretta",
-      "value": true
-    }
-  ],
-  "sameAs": [
-    "https://www.facebook.com/torrepalivacanze",
-    "https://www.instagram.com/torrepalivacanze"
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Torre Pali Vacanze",
-  "alternateName": "Affitti Torre Pali Salento",
-  "url": "https://torrepalivacanze.it",
-  "logo": "https://torrepalivacanze.it/img/logo.png",
-  "image": "https://torrepalivacanze.it/img/logo.png",
-  "description": "Case vacanze a Torre Pali, Salento. A pochi passi dalla spiaggia Bandiera Blu con tutti i comfort.",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Torre Pali",
-    "addressLocality": "Salve",
-    "addressRegion": "Puglia",
-    "postalCode": "73050",
-    "addressCountry": "IT"
-  },
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "+39-388-658-70-80",
-    "contactType": "Customer Service",
-    "availableLanguage": ["Italian"],
-    "areaServed": "IT"
-  },
-  "sameAs": [
-    "https://www.facebook.com/torrepalivacanze",
-    "https://www.instagram.com/torrepalivacanze"
-  ]
-}
-</script>
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-M0TEME57K0"></script>
 <script>
