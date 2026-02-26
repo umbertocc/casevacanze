@@ -13,30 +13,20 @@
   </style>
 </head>
 <body>
-    <!-- Cookie Banner -->
 <!-- Cookie Consent Banner -->
 <div id="cookie-banner" style="position:fixed;bottom:0;left:0;width:100%;background:#222;color:#fff;padding:16px 8px;z-index:9999;text-align:center;font-size:16px;box-shadow:0 -2px 8px rgba(0,0,0,0.15);display:none;">
-  Questo sito utilizza i cookie per offrirti la miglior esperienza possibile sul nostro sito web. Accettando, accetti l'utilizzo di tali cookie. Leggi la <a href="privacy.html" style="color:#ffd700;text-decoration:underline;">privacy policy</a>.<br><br
-  <button id="cookie-accept" style="margin-left:16px;padding:8px 18px;background:#ffd700;color:#222;border:none;border-radius:4px;cursor:pointer;font-weight:bold;">Accetta</button>
-  <button id="cookie-refuse" style="margin-left:8px;padding:8px 18px;background:#888;color:#fff;border:none;border-radius:4px;cursor:pointer;font-weight:bold;">Rifiuta</button>
+  Questo sito utilizza solo cookie tecnici necessari al funzionamento e alla sicurezza. Leggi la <a href="privacy.html" style="color:#ffd700;text-decoration:underline;">privacy policy</a>.<br><br>
+  <button id="cookie-ok" style="margin-left:16px;padding:8px 18px;background:#ffd700;color:#222;border:none;border-radius:4px;cursor:pointer;font-weight:bold;">OK</button>
 </div>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    if (!localStorage.getItem('cookieConsent')) {
+    if (!localStorage.getItem('cookieBannerClosed')) {
       document.getElementById('cookie-banner').style.display = 'block';
     }
-    document.getElementById('cookie-accept').onclick = function() {
-      localStorage.setItem('cookieConsent', 'true');
+    document.getElementById('cookie-ok').onclick = function() {
+      localStorage.setItem('cookieBannerClosed', 'true');
       document.getElementById('cookie-banner').style.display = 'none';
     };
-    document.getElementById('cookie-refuse').onclick = function() {
-      localStorage.setItem('cookieConsent', 'refused');
-      document.getElementById('cookie-banner').style.display = 'none';
-      window['ga-disable-G-M0TEME57K0'] = true;
-    };
-    if (localStorage.getItem('cookieConsent') === 'refused') {
-      window['ga-disable-G-M0TEME57K0'] = true;
-    }
   });
 </script>
   <div class="container">
@@ -49,7 +39,6 @@
     <h2>Tipi di cookie utilizzati</h2>
     <ul>
       <li><strong>Cookie tecnici</strong>: necessari per il funzionamento del sito e per fornire i servizi richiesti.</li>
-      <li><strong>Cookie di terze parti</strong>: il sito utilizza Google Analytics per analizzare il traffico e migliorare i contenuti. Google Analytics può raccogliere dati anonimi sull’uso del sito.</li>
     </ul>
 
     <h2>Gestione del consenso</h2>
@@ -58,8 +47,7 @@
     <h2>Disattivazione dei cookie</h2>
     <p>L’utente può gestire o disattivare i cookie tramite le impostazioni del browser. La disattivazione dei cookie tecnici può compromettere il funzionamento del sito.</p>
 
-    <h2>Cookie di Google Analytics</h2>
-    <p>Google Analytics è un servizio di analisi web fornito da Google Inc. I dati raccolti sono anonimi e non permettono l’identificazione personale. Per maggiori informazioni, consulta la <a href="https://policies.google.com/privacy?hl=it" target="_blank">Privacy Policy di Google</a> e la <a href="https://policies.google.com/technologies/cookies?hl=it" target="_blank">Cookie Policy di Google</a>.</p>
+
 
     <h2>Contatti</h2>
     <p>Per domande sulla Cookie Policy, puoi scrivere a <a href="mailto:info@torrepalivacanze.it">info@torrepalivacanze.it</a>.</p>
