@@ -16,7 +16,7 @@ Write-Host ""
 $coloriContrasto = @{
     "#718096" = "Grigio medio (VECCHIO - insufficiente)"
     "#4a5568" = "Grigio scuro (NUOVO - contrasto 8.59:1)"
-    "#7f8c8d" = "Grigio (VECCHIO - insufficiente)"
+    "#22577a" = "Grigio (VECCHIO - insufficiente)"
     "#95a5a6" = "Grigio chiaro (VECCHIO - insufficiente 2.84:1)"
     "#22577a" = "Viola (VECCHIO - insufficiente 3.5:1)"
     "#5a67d8" = "Viola scuro (NUOVO - contrasto 5.14:1)"
@@ -27,7 +27,7 @@ $coloriContrasto = @{
 Write-Host "1. COLORI PROBLEMATICI RIMOSSI:" -ForegroundColor Yellow
 Write-Host ""
 
-$problematici = @("#718096", "#7f8c8d", "#95a5a6")
+$problematici = @("#718096", "#22577a", "#95a5a6")
 foreach ($colore in $problematici) {
     if ($content -match [regex]::Escape("color: $colore")) {
         Write-Host "  [WARN] $colore ancora presente!" -ForegroundColor Red
@@ -64,7 +64,7 @@ Write-Host "  - Date/Info: #718096 -> #4a5568 (4 elementi)" -ForegroundColor Gra
 Write-Host "  - Contrasto: da 4.0:1 a 8.59:1 (+115%)" -ForegroundColor Gray
 Write-Host ""
 Write-Host "TESTI FOOTER:" -ForegroundColor White
-Write-Host "  - Telefono: #7f8c8d -> #4a5568" -ForegroundColor Gray
+Write-Host "  - Telefono: #22577a -> #4a5568" -ForegroundColor Gray
 Write-Host "  - Privacy: #95a5a6 -> #4a5568 con link #5a67d8" -ForegroundColor Gray
 Write-Host ""
 Write-Host "LINK E PREZZI:" -ForegroundColor White
