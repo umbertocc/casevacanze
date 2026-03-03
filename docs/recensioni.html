@@ -34,13 +34,13 @@ body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #1a202c; bac
 .navbar { position: fixed; top: 0; left: 0; right: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0,0,0,0.08); z-index: 1000; transition: all 0.3s ease; }
 .navbar:hover { box-shadow: 0 6px 30px rgba(0,0,0,0.12); }
 .navbar-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 18px 30px; }
-.navbar-brand { font-size: 1.4em; font-weight: 700; background: linear-gradient(135deg, #667eea 0%, #667eea 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none; transition: transform 0.3s; }
+.navbar-brand { font-size: 1.4em; font-weight: 700; background: linear-gradient(135deg, #22577a 0%, #22577a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none; transition: transform 0.3s; }
 .navbar-brand:hover { transform: scale(1.05); }
 .navbar-menu { display: flex; gap: 30px; list-style: none; }
 .navbar-menu > li { position: relative; }
 .navbar-menu a { color: #4a5568; text-decoration: none; font-weight: 500; transition: all 0.3s; position: relative; padding: 5px 0; display: block; }
-.navbar-menu a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: linear-gradient(135deg, #667eea 0%, #667eea 100%); transition: width 0.3s; }
-.navbar-menu a:hover { color: #667eea; }
+.navbar-menu a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: linear-gradient(135deg, #22577a 0%, #22577a 100%); transition: width 0.3s; }
+.navbar-menu a:hover { color: #22577a; }
 .navbar-menu a:hover::after { width: 100%; }
 .dropdown { position: relative; }
 .dropdown-toggle { cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 5px 0; }
@@ -50,7 +50,7 @@ body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #1a202c; bac
 .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
 .dropdown-menu a { padding: 12px 25px; color: #4a5568; font-weight: 500; white-space: nowrap; }
 .dropdown-menu a::after { display: none; }
-.dropdown-menu a:hover { background: rgba(102, 126, 234, 0.1); color: #667eea; }
+.dropdown-menu a:hover { background: rgba(102, 126, 234, 0.1); color: #22577a; }
 .hamburger { display: none; flex-direction: column; cursor: pointer; z-index: 1001; background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%) !important; border: 2.5px solid #43e68b !important; border-radius: 14px !important; padding: 8px 8px !important; width: 44px !important; height: 44px !important; box-shadow: 0 2px 12px rgba(67,233,123,0.13) !important; }
 .hamburger:focus { outline: 3px solid #43e68b !important; outline-offset: 2px; }
 .hamburger span { width: 24px !important; height: 4px !important; background: #fff !important; margin: 3px 0 !important; border-radius: 3px !important; transition: 0.3s; display: block; }
@@ -61,11 +61,11 @@ body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #1a202c; bac
 [data-tooltip]::after { content: ''; position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%) translateY(10px); border: 6px solid transparent; border-top-color: rgba(0,0,0,0.9); opacity: 0; pointer-events: none; transition: all 0.3s ease; }
 [data-tooltip]:hover::before, [data-tooltip]:hover::after { opacity: 1; transform: translateX(-50%) translateY(0); }
 .footer { background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%); color: white; padding: 50px 30px 25px; margin-top: 60px; position: relative; }
-.footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #667eea 0%, #667eea 50%, #f093fb 100%); }
+.footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #22577a 0%, #22577a 50%, #f093fb 100%); }
 .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px; }
 .footer-section h3 { margin-bottom: 20px; color: #f7fafc; font-weight: 600; font-size: 1.2em; }
 .footer-section p, .footer-section a { color: #cbd5e0; font-size: 0.95em; line-height: 2; text-decoration: none; display: block; margin-bottom: 10px; transition: all 0.3s; }
-.footer-section a:hover { color: #667eea; transform: translateX(5px); }
+.footer-section a:hover { color: #22577a; transform: translateX(5px); }
 .footer-bottom { text-align: center; margin-top: 40px; padding-top: 25px; border-top: 1px solid #4a5568; color: #a0aec0; font-size: 0.9em; }
 .container { max-width: 1200px; margin: 0 auto; padding: 30px; }
 header { text-align: center; margin-bottom: 60px; padding: 80px 30px; background: linear-gradient(135deg, #22577a 0%, #18304b 100%); color: #fff; border-radius: 30px; box-shadow: 0 20px 60px rgba(34, 87, 122, 0.3); position: relative; overflow: hidden; }
@@ -74,33 +74,33 @@ h1 { font-size: 3.5em; margin-bottom: 20px; font-weight: 700; position: relative
 .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 50px; }
 .stat-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 35px; border-radius: 25px; text-align: center; box-shadow: 0 15px 40px rgba(0,0,0,0.1); transition: all 0.4s; }
 .stat-card:hover { transform: translateY(-10px); box-shadow: 0 20px 60px rgba(102, 126, 234, 0.2); }
-.stat-number { font-size: 3em; font-weight: 700; background: linear-gradient(135deg, #667eea 0%, #667eea 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 10px; }
+.stat-number { font-size: 3em; font-weight: 700; background: linear-gradient(135deg, #22577a 0%, #22577a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 10px; }
 .stat-label { font-size: 1.1em; color: #4a5568; font-weight: 500; }
 .stars { color: #fbbf24; font-size: 1.5em; margin-bottom: 10px; }
 .filter-buttons { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; margin-bottom: 40px; }
 .filter-btn { background: white; border: 2px solid #e2e8f0; color: #4a5568; padding: 12px 30px; border-radius: 50px; cursor: pointer; font-weight: 600; transition: all 0.3s; font-size: 1em; }
-.filter-btn:hover { border-color: #667eea; color: #667eea; transform: translateY(-2px); }
-.filter-btn.active { background: linear-gradient(135deg, #667eea 0%, #667eea 100%); color: white; border-color: #667eea; }
+.filter-btn:hover { border-color: #22577a; color: #22577a; transform: translateY(-2px); }
+.filter-btn.active { background: linear-gradient(135deg, #22577a 0%, #22577a 100%); color: white; border-color: #22577a; }
 .reviews-grid { display: grid; grid-template-columns: 1fr; gap: 30px; justify-items: center; }
 .review-card { background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); border-radius: 25px; padding: 40px; box-shadow: 0 15px 50px rgba(0,0,0,0.08); transition: all 0.4s; border-left: 5px solid transparent; max-width: 700px; width: 100%; }
 .review-card:hover { transform: translateY(-5px); box-shadow: 0 20px 70px rgba(0,0,0,0.12); }
-.review-card.casa-bellavista { border-left-color: #667eea; }
+.review-card.casa-bellavista { border-left-color: #22577a; }
 .review-card.casa-giorgio-4 { border-left-color: #48bb78; }
 .review-card.casa-giorgio-6 { border-left-color: #ed8936; }
 .review-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px; }
 .review-author { font-size: 1.3em; font-weight: 700; color: #2d3748; }
 .review-date { color: #718096; font-size: 0.95em; }
 .review-casa { display: inline-block; padding: 8px 20px; border-radius: 50px; font-weight: 600; font-size: 0.9em; margin-bottom: 15px; }
-.casa-bellavista { background: linear-gradient(135deg, #667eea 0%, #667eea 100%); color: white; }
+.casa-bellavista { background: linear-gradient(135deg, #22577a 0%, #22577a 100%); color: white; }
 .casa-giorgio-4 { background: linear-gradient(135deg, #48bb78 0%, #38a169 100%); color: white; }
 .casa-giorgio-6 { background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%); color: white; }
 .review-rating { margin-bottom: 20px; }
 .review-text { font-size: 1.1em; color: #4a5568; line-height: 1.9; font-style: italic; position: relative; padding-left: 30px; }
 .review-text::before { content: '"'; position: absolute; left: 0; top: -10px; font-size: 4em; color: rgba(102, 126, 234, 0.2); font-family: Georgia, serif; }
 .cta-section { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 50px; border-radius: 30px; box-shadow: 0 20px 60px rgba(0,0,0,0.1); text-align: center; margin-top: 60px; }
-.cta-section h2 { font-size: 2.5em; background: linear-gradient(135deg, #667eea 0%, #667eea 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 20px; font-weight: 700; }
+.cta-section h2 { font-size: 2.5em; background: linear-gradient(135deg, #22577a 0%, #22577a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 20px; font-weight: 700; }
 .cta-section p { font-size: 1.2em; color: #4a5568; margin-bottom: 30px; }
-.btn { display: inline-block; background: linear-gradient(135deg, #667eea 0%, #667eea 100%); color: white; padding: 16px 40px; border-radius: 50px; text-decoration: none; font-weight: 600; margin: 8px; transition: all 0.4s; box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3); }
+.btn { display: inline-block; background: linear-gradient(135deg, #22577a 0%, #22577a 100%); color: white; padding: 16px 40px; border-radius: 50px; text-decoration: none; font-weight: 600; margin: 8px; transition: all 0.4s; box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3); }
 .btn:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 12px 35px rgba(102, 126, 234, 0.5); }
 @media (max-width: 768px) {
   .container { padding: 20px; }
@@ -331,13 +331,13 @@ Abbiamo soggiornato per 15 giorni dopo il ferragosto, ci siamo trovati bene. Il 
 
 <!-- Sezione Lascia Recensione -->
 <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%); padding: 60px 40px; border-radius: 30px; margin-bottom: 60px; text-align: center; border: 2px solid rgba(102, 126, 234, 0.1);">
-<h2 style="font-size: 2.5em; background: linear-gradient(135deg, #667eea 0%, #667eea 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 20px; font-weight: 700;">✍️ Vuoi Lasciare una Recensione?</h2>
+<h2 style="font-size: 2.5em; background: linear-gradient(135deg, #22577a 0%, #22577a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 20px; font-weight: 700;">✍️ Vuoi Lasciare una Recensione?</h2>
 <p style="font-size: 1.2em; color: #4a5568; margin-bottom: 30px; line-height: 1.8;">Hai soggiornato nelle nostre case vacanze? La tua opinione è importante per noi!<br>Condividi la tua esperienza e aiuta altri viaggiatori a scegliere Torre Pali.</p>
 <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 30px;">
 <a href="https://wa.me/393886587080?text=Ciao!%20Vorrei%20lasciare%20una%20recensione%20sul%20mio%20soggiorno%20a%20Torre%20Pali" class="btn" data-tooltip="Invia recensione via WhatsApp" style="background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);">💬 Invia via WhatsApp</a>
 <a href="contatti.html" class="btn" data-tooltip="Compila il form contatti">📧 Compila Form</a>
 </div>
-<p style="font-size: 0.95em; color: #718096; margin-top: 25px;">📝 Puoi anche inviarci un'email a <strong style="color: #667eea;">info@torrepalivacanze.it</strong></p>
+<p style="font-size: 0.95em; color: #718096; margin-top: 25px;">📝 Puoi anche inviarci un'email a <strong style="color: #22577a;">info@torrepalivacanze.it</strong></p>
 </div>
 
 <div class="cta-section">

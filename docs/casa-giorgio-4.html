@@ -49,13 +49,13 @@ body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #1a202c; bac
 .navbar { position: fixed; top: 0; left: 0; right: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0,0,0,0.08); z-index: 1000; transition: all 0.3s ease; }
 .navbar:hover { box-shadow: 0 6px 30px rgba(0,0,0,0.12); }
 .navbar-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 18px 30px; }
-.navbar-brand { font-size: 1.4em; font-weight: 700; background: linear-gradient(135deg, #667eea 0%, #667eea 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none; transition: transform 0.3s; }
+.navbar-brand { font-size: 1.4em; font-weight: 700; background: linear-gradient(135deg, #22577a 0%, #22577a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none; transition: transform 0.3s; }
 .navbar-brand:hover { transform: scale(1.05); }
 .navbar-menu { display: flex; gap: 30px; list-style: none; }
 .navbar-menu > li { position: relative; }
 .navbar-menu a { color: #4a5568; text-decoration: none; font-weight: 500; transition: all 0.3s; position: relative; padding: 5px 0; display: block; }
-.navbar-menu a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: linear-gradient(135deg, #667eea 0%, #667eea 100%); transition: width 0.3s; }
-.navbar-menu a:hover { color: #667eea; }
+.navbar-menu a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: linear-gradient(135deg, #22577a 0%, #22577a 100%); transition: width 0.3s; }
+.navbar-menu a:hover { color: #22577a; }
 .navbar-menu a:hover::after { width: 100%; }
 .dropdown { position: relative; }
 .dropdown-toggle { cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 5px 0; }
@@ -65,7 +65,7 @@ body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #1a202c; bac
 .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
 .dropdown-menu a { padding: 12px 25px; color: #4a5568; font-weight: 500; white-space: nowrap; }
 .dropdown-menu a::after { display: none; }
-.dropdown-menu a:hover { background: rgba(102, 126, 234, 0.1); color: #667eea; }
+.dropdown-menu a:hover { background: rgba(102, 126, 234, 0.1); color: #22577a; }
 .hamburger { display: none; flex-direction: column; cursor: pointer; z-index: 1001; background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%) !important; border: 2.5px solid #43e68b !important; border-radius: 14px !important; padding: 8px 8px !important; width: 44px !important; height: 44px !important; box-shadow: 0 2px 12px rgba(67,233,123,0.13) !important; }
 .hamburger:focus { outline: 3px solid #43e68b !important; outline-offset: 2px; }
 .hamburger span { width: 24px !important; height: 4px !important; background: #fff !important; margin: 3px 0 !important; border-radius: 3px !important; transition: 0.3s; display: block; }
@@ -121,11 +121,11 @@ body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #1a202c; bac
 .breadcrumb a:hover { color: #154360; text-decoration: underline; }
 .breadcrumb span { margin: 0 8px; color: #2c3e50; font-weight: 600; }
 .footer { background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%); color: white; padding: 50px 30px 25px; margin-top: 60px; position: relative; }
-.footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #667eea 0%, #667eea 50%, #f093fb 100%); }
+.footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #22577a 0%, #22577a 50%, #f093fb 100%); }
 .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px; }
 .footer-section h3 { margin-bottom: 20px; color: #f7fafc; font-weight: 600; font-size: 1.2em; }
 .footer-section p, .footer-section a { color: #cbd5e0; font-size: 0.95em; line-height: 2; text-decoration: none; display: block; margin-bottom: 10px; transition: all 0.3s; }
-.footer-section a:hover { color: #667eea; transform: translateX(5px); }
+.footer-section a:hover { color: #22577a; transform: translateX(5px); }
 .footer-bottom { text-align: center; margin-top: 40px; padding-top: 25px; border-top: 1px solid #4a5568; color: #a0aec0; font-size: 0.9em; }
 .container { max-width: 1200px; margin: 0 auto; padding: 30px; }
 header { margin-bottom: 20px; background: none; color: #111; border-radius: 30px; box-shadow: none; padding: 20px 20px; text-align: center; animation: fadeIn 0.8s ease-out; }
@@ -189,7 +189,7 @@ h1 { font-size: 3em; color: #111; margin-bottom: 15px; font-weight: 700; text-sh
 .lightbox-counter { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.7); color: white; padding: 10px 20px; border-radius: 25px; font-size: 1.1em; }
 .content { padding: 50px 40px; }
 .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px; }
-.info-section h3 { font-size: 1.5em; background: linear-gradient(135deg, #667eea 0%, #667eea 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 20px; font-weight: 600; }
+.info-section h3 { font-size: 1.5em; background: linear-gradient(135deg, #22577a 0%, #22577a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 20px; font-weight: 600; }
 .features { display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 25px; }
 .feature, .feature-badge, .vista-mare-badge, .highlight-box {
   background: linear-gradient(135deg, #27ae60, #229954);
@@ -205,7 +205,7 @@ h1 { font-size: 3em; color: #111; margin-bottom: 15px; font-weight: 700; text-sh
   transition: all 0.3s;
 }
 .feature:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); }
-.location { font-size: 1.3em; color: #667eea; margin-bottom: 15px; font-weight: 600; }
+.location { font-size: 1.3em; color: #22577a; margin-bottom: 15px; font-weight: 600; }
 .price-section {
   background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
   color: white;
@@ -233,15 +233,15 @@ h1 { font-size: 3em; color: #111; margin-bottom: 15px; font-weight: 700; text-sh
 .amenity-text { color: #555; }
 .description { background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(240, 147, 251, 0.05) 100%); padding: 35px; border-radius: 20px; margin-bottom: 30px; line-height: 1.8; font-size: 1.1em; border: 1px solid rgba(102, 126, 234, 0.1); }
 .map-section { margin-top: 40px; }
-.map-section h3 { margin-bottom: 20px; background: linear-gradient(135deg, #667eea 0%, #667eea 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 600; }
+.map-section h3 { margin-bottom: 20px; background: linear-gradient(135deg, #22577a 0%, #22577a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 600; }
 #map { height: 350px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
 .calendar-section { margin-top: 40px; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); padding: 35px; border-radius: 25px; box-shadow: 0 15px 50px rgba(0,0,0,0.1); border: 1px solid rgba(102, 126, 234, 0.1); }
-.calendar-section h3 { margin-bottom: 20px; background: linear-gradient(135deg, #667eea 0%, #667eea 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 1.8em; font-weight: 600; }
+.calendar-section h3 { margin-bottom: 20px; background: linear-gradient(135deg, #22577a 0%, #22577a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 1.8em; font-weight: 600; }
 .calendar-section p { color: #64748b; margin-bottom: 20px; line-height: 1.6; }
 .calendar-iframe { width: 100%; height: 600px; border: none; border-radius: 15px; }
 .cta-buttons { text-align: center; margin-top: 40px; padding: 40px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-radius: 25px; }
 .btn { display: inline-block; background: linear-gradient(135deg, #27ae60, #229954); color: white; padding: 16px 40px; border-radius: 50px; text-decoration: none; font-weight: 600; margin: 10px; transition: all 0.3s; font-size: 1.1em; box-shadow: 0 8px 25px rgba(39, 174, 96, 0.25); position: relative; overflow: hidden; border: none; }
-.btn::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #667eea 0%, #f093fb 100%); opacity: 0; transition: opacity 0.3s; }
+.btn::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #22577a 0%, #f093fb 100%); opacity: 0; transition: opacity 0.3s; }
 .btn:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(102, 126, 234, 0.5); }
 .btn:hover::before { opacity: 1; }
 .btn-secondary { background: linear-gradient(135deg, #3498db, #2980b9); }
@@ -809,13 +809,13 @@ L'appartamento dispone di <strong>area esterna privata antistante</strong> utili
     </div>
   </div>
   <div style="text-align:center; margin-top: 10px;">
-  <a href="recensioni.html#casa-giorgio-4" class="btn btn-secondary" style="background: linear-gradient(135deg, #667eea, #5a67d8); color: #fff; font-weight:600; border-radius: 30px; padding: 14px 38px; font-size: 1.13em; text-decoration: none; box-shadow: 0 4px 18px rgba(102,126,234,0.10); transition: background 0.3s; display:inline-block;">Leggi tutte le recensioni</a>
+  <a href="recensioni.html#casa-giorgio-4" class="btn btn-secondary" style="background: linear-gradient(135deg, #22577a, #5a67d8); color: #fff; font-weight:600; border-radius: 30px; padding: 14px 38px; font-size: 1.13em; text-decoration: none; box-shadow: 0 4px 18px rgba(102,126,234,0.10); transition: background 0.3s; display:inline-block;">Leggi tutte le recensioni</a>
 
 <div class="map-section">
 <h3 style="font-size: 1.8em;">📍 Ubicazione</h3>
 <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=18.209%2C39.838%2C18.212%2C39.840&layer=mapnik&marker=39.8391%2C18.2105" id="map" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="border:0;width:100%;height:350px;border-radius:16px;"></iframe>
 <div style="text-align:center; margin: 12px 0 24px 0;">
-  <a href="https://www.google.com/maps/place/Via+Vasco+de+Gama+13,+Torre+Pali,+Salve+LE" target="_blank" rel="noopener" style="color:#667eea; font-weight:600; text-decoration:underline;">Vedi la casa su Google Maps</a>
+  <a href="https://www.google.com/maps/place/Via+Vasco+de+Gama+13,+Torre+Pali,+Salve+LE" target="_blank" rel="noopener" style="color:#22577a; font-weight:600; text-decoration:underline;">Vedi la casa su Google Maps</a>
 </div>
 </div>
 
@@ -1035,7 +1035,7 @@ if (allImages.length > 0) {
 </main>
 
 <div style="text-align:center; margin: 40px 0 0 0; font-size:1.15em; padding:15px;">
-Scopri anche <a href="index.html" style="color: #667eea; font-weight: 600;">le altre nostre case vacanze</a> o la <a href="spiagge-salento-sud.html" style="color: #667eea; font-weight: 600;">guida completa alle spiagge del Salento</a>.
+Scopri anche <a href="index.html" style="color: #22577a; font-weight: 600;">le altre nostre case vacanze</a> o la <a href="spiagge-salento-sud.html" style="color: #22577a; font-weight: 600;">guida completa alle spiagge del Salento</a>.
 </div>
 <!-- End Main Content -->
 
