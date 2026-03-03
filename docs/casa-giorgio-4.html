@@ -132,14 +132,14 @@ header { margin-bottom: 20px; background: none; color: #111; border-radius: 30px
 .back-btn { display: inline-block; background: linear-gradient(135deg, #7ed6fb 0%, #81ecec 100%); color: #22577a; padding: 12px 28px; border-radius: 50px; text-decoration: none; margin-bottom: 25px; font-weight: 600; box-shadow: 0 4px 15px rgba(126, 214, 251, 0.3); transition: all 0.3s; }
 .back-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 25px rgba(126, 214, 251, 0.5); color: #38a3a5; }
 h1 { font-size: 3em; color: #111; margin-bottom: 15px; font-weight: 700; text-shadow: 0 4px 10px rgba(0,0,0,0.2); -webkit-font-smoothing: antialiased; }
-.subtitle { font-size: 1.3em; color: #3498db; margin-bottom: 25px; font-weight: 500; text-shadow: none; }
+.subtitle { font-size: 1.3em; color: #22577a; margin-bottom: 25px; font-weight: 500; text-shadow: none; }
 .property { background: rgba(255, 255, 255, 0.98); border-radius: 30px; box-shadow: 0 20px 60px rgba(0,0,0,0.1); margin-bottom: 50px; border: 1px solid rgba(102, 126, 234, 0.1); transition: all 0.5s; }
 .property:hover { transform: translateY(-5px); box-shadow: 0 25px 80px rgba(102, 126, 234, 0.2); }
 .main-gallery { height: 500px; overflow: hidden; position: relative; border-radius: 0; background: #fff; display: flex; align-items: center; justify-content: center; color: white; font-size: 2em; cursor: pointer; }
 .gallery-filters { display: flex; gap: 10px; flex-wrap: wrap; padding: 15px; background: #f8f9fa; border-radius: 20px 20px 0 0; justify-content: center; }
 .filter-btn { background: white; border: 2px solid #e0e0e0; color: #555; padding: 10px 20px; border-radius: 25px; cursor: pointer; font-weight: bold; transition: all 0.3s; }
-.filter-btn:hover { border-color: #3498db; color: #3498db; }
-.filter-btn.active { background: linear-gradient(135deg, #3498db, #2980b9); color: white; border-color: #3498db; }
+.filter-btn:hover { border-color: #22577a; color: #22577a; }
+.filter-btn.active { background: linear-gradient(135deg, #22577a, #2980b9); color: white; border-color: #22577a; }
 .main-gallery img { width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.5s; }
 .main-gallery img.active { opacity: 1; }
 .gallery-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; font-size: 2em; padding: 15px 20px; cursor: pointer; z-index: 10; transition: background 0.3s; }
@@ -244,7 +244,7 @@ h1 { font-size: 3em; color: #111; margin-bottom: 15px; font-weight: 700; text-sh
 .btn::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #22577a 0%, #f093fb 100%); opacity: 0; transition: opacity 0.3s; }
 .btn:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(102, 126, 234, 0.5); }
 .btn:hover::before { opacity: 1; }
-.btn-secondary { background: linear-gradient(135deg, #3498db, #2980b9); }
+.btn-secondary { background: linear-gradient(135deg, #22577a, #2980b9); }
 .social-share { margin-top: 30px; padding-top: 30px; border-top: 2px solid #ecf0f1; }
 .social-share h4 { color: #2c3e50; margin-bottom: 15px; font-size: 1.1em; }
 .social-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
@@ -786,8 +786,8 @@ L'appartamento dispone di <strong>area esterna privata antistante</strong> utili
 
   <!-- Recensioni Casa Giorgio 4 -->
   <div class="description" style="margin-top: 40px; background: linear-gradient(135deg, #f7fafc 0%, #e3f6fd 100%);">
-    <h3 style="color:#3498db;margin-bottom:22px;font-size:2em;text-align:center;">⭐ Recensioni degli ospiti</h3>
-    <div class="review-card casa-giorgio-4" data-casa="casa-giorgio-4" style="background: #fff; border-radius: 18px; box-shadow: 0 4px 18px rgba(52,152,219,0.08); padding: 24px 28px; margin-bottom: 22px; border-left: 6px solid #3498db;">
+    <h3 style="color:#22577a;margin-bottom:22px;font-size:2em;text-align:center;">⭐ Recensioni degli ospiti</h3>
+    <div class="review-card casa-giorgio-4" data-casa="casa-giorgio-4" style="background: #fff; border-radius: 18px; box-shadow: 0 4px 18px rgba(52,152,219,0.08); padding: 24px 28px; margin-bottom: 22px; border-left: 6px solid #22577a;">
       <div class="review-header" style="display:flex;align-items:center;gap:12px;margin-bottom:4px;">
         <div class="review-author" style="font-weight:600;color:#22577a;font-size:1.15em;">Davide</div>
         <div class="review-date" style="color:#7f8c8d;font-size:0.98em;">Settembre 2025</div>
@@ -797,7 +797,7 @@ L'appartamento dispone di <strong>area esterna privata antistante</strong> utili
         <em>"La casa si trova a 40 metri dal mare, un bel posto tranquillo e i proprietari gentili e tranquilli. La casa si trova vicino alle Maldive del Salento, è un posto molto bello."</em>
       </div>
     </div>
-    <div class="review-card casa-giorgio-4" data-casa="casa-giorgio-4" style="background: #fff; border-radius: 18px; box-shadow: 0 4px 18px rgba(52,152,219,0.08); padding: 24px 28px; margin-bottom: 22px; border-left: 6px solid #3498db;">
+    <div class="review-card casa-giorgio-4" data-casa="casa-giorgio-4" style="background: #fff; border-radius: 18px; box-shadow: 0 4px 18px rgba(52,152,219,0.08); padding: 24px 28px; margin-bottom: 22px; border-left: 6px solid #22577a;">
       <div class="review-header" style="display:flex;align-items:center;gap:12px;margin-bottom:4px;">
         <div class="review-author" style="font-weight:600;color:#22577a;font-size:1.15em;">Roberta</div>
         <div class="review-date" style="color:#7f8c8d;font-size:0.98em;">Settembre 2025</div>

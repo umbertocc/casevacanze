@@ -18,7 +18,7 @@ $coloriContrasto = @{
     "#4a5568" = "Grigio scuro (NUOVO - contrasto 8.59:1)"
     "#7f8c8d" = "Grigio (VECCHIO - insufficiente)"
     "#95a5a6" = "Grigio chiaro (VECCHIO - insufficiente 2.84:1)"
-    "#667eea" = "Viola (VECCHIO - insufficiente 3.5:1)"
+    "#22577a" = "Viola (VECCHIO - insufficiente 3.5:1)"
     "#5a67d8" = "Viola scuro (NUOVO - contrasto 5.14:1)"
     "#48bb78" = "Verde (OK - contrasto 4.52:1)"
     "#ed8936" = "Arancione (OK - contrasto 4.68:1)"
@@ -68,9 +68,9 @@ Write-Host "  - Telefono: #7f8c8d -> #4a5568" -ForegroundColor Gray
 Write-Host "  - Privacy: #95a5a6 -> #4a5568 con link #5a67d8" -ForegroundColor Gray
 Write-Host ""
 Write-Host "LINK E PREZZI:" -ForegroundColor White
-Write-Host "  - Subtitle: #667eea -> #5a67d8" -ForegroundColor Gray
-Write-Host "  - Prezzi: #667eea -> #5a67d8" -ForegroundColor Gray
-Write-Host "  - Link testo: #667eea -> #5a67d8 + sottolineatura" -ForegroundColor Gray
+Write-Host "  - Subtitle: #22577a -> #5a67d8" -ForegroundColor Gray
+Write-Host "  - Prezzi: #22577a -> #5a67d8" -ForegroundColor Gray
+Write-Host "  - Link testo: #22577a -> #5a67d8 + sottolineatura" -ForegroundColor Gray
 Write-Host "  - Contrasto: da 3.5:1 a 5.14:1 (+47%)" -ForegroundColor Gray
 Write-Host ""
 Write-Host "IMPATTO SEO E UX:" -ForegroundColor Yellow
