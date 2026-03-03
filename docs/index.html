@@ -310,26 +310,68 @@ h1 { font-size: 3.5em; margin-bottom: 20px; font-weight: 700; position: relative
 </style>
 <!-- Structured Data (Schema.org) -->
 <script type="application/ld+json">
-{ "@context": "https://schema.org", 
-"@type": "LodgingBusiness", 
-"@id": "https://torrepalivacanze.it/#lodging", 
-"name": "Torre Pali Vacanze", 
-"description": "Case vacanza a Torre Pali nel Salento: 3 appartamenti a 20-40m dalla spiaggia Bandiera Blu. WiFi, aria condizionata, parcheggio. Proprietari sul posto disponibili 24/7.", 
-"url": "https://torrepalivacanze.it/", 
-"logo": "https://torrepalivacanze.it/img/logo.png", 
-"image": [ "https://torrepalivacanze.it/img/prospetto/prospetto_1.jpg",
-           "https://torrepalivacanze.it/img/torrepali.jpg"], 
-"telephone": "+393886587080", 
-"email": "info@torrepalivacanze.it", 
-"priceRange": "€50-€150 a notte", 
-"amenityFeature": [ { "@type": "LocationFeatureSpecification",
- "name": "WiFi gratuito", "value": true }, 
- { "@type": "LocationFeatureSpecification", "name": "Aria condizionata", "value": true }, 
- { "@type": "LocationFeatureSpecification", "name": "Parcheggio", "value": true }, { "@type": "LocationFeatureSpecification", "name": "Animali ammessi", "value": true } ], 
- "petsAllowed": true, "checkinTime": "15:00", "checkoutTime": "10:00", 
- "hasPart": [ { "@type": "VacationRental", "name": "Casa Giorgio 4 - Torre Pali", "url": "https://torrepalivacanze.it/casa-giorgio-4", "@id": "https://torrepalivacanze.it/schema/casa-giorgio-4" }, 
- { "@type": "VacationRental", "name": "Casa Giorgio 6 - Torre Pali", "url": "https://torrepalivacanze.it/casa-giorgio-6", "@id": "https://torrepalivacanze.it/schema/casa-giorgio-6" }, 
-{"@type": "VacationRental", "name": "Casa Bellavista 2 - Torre Pali", "url": "https://torrepalivacanze.it/casa-bellavista-2", "@id": "https://torrepalivacanze.it/schema/casa-bellavista-2" } ], "sameAs": [ "https://wa.me/393886587080" ] }
+{
+  "@context": "https://schema.org",
+  "@type": "LodgingBusiness",
+  "@id": "https://torrepalivacanze.it/#lodging",
+  "name": "Torre Pali Vacanze",
+  "description": "Case vacanza a Torre Pali nel Salento: 3 appartamenti a 20-40m dalla spiaggia Bandiera Blu. WiFi, aria condizionata, parcheggio. Proprietari sul posto disponibili 24/7.",
+  "url": "https://torrepalivacanze.it/",
+  "logo": "https://torrepalivacanze.it/img/logo.png",
+  "image": [
+    "https://torrepalivacanze.it/img/prospetto/prospetto_1.jpg",
+    "https://torrepalivacanze.it/img/torrepali.jpg"
+  ],
+  "telephone": "+393886587080",
+  "email": "info@torrepalivacanze.it",
+  "priceRange": "€50-€150 a notte",
+  "amenityFeature": [
+    { "@type": "LocationFeatureSpecification", "name": "WiFi gratuito", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Aria condizionata", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Parcheggio", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Animali ammessi", "value": true }
+  ],
+  "petsAllowed": true,
+  "checkinTime": "15:00",
+  "checkoutTime": "10:00",
+  "hasPart": [
+    { "@type": "VacationRental", "name": "Casa Giorgio 4 - Torre Pali", "url": "https://torrepalivacanze.it/casa-giorgio-4", "@id": "https://torrepalivacanze.it/schema/casa-giorgio-4" },
+    { "@type": "VacationRental", "name": "Casa Giorgio 6 - Torre Pali", "url": "https://torrepalivacanze.it/casa-giorgio-6", "@id": "https://torrepalivacanze.it/schema/casa-giorgio-6" },
+    { "@type": "VacationRental", "name": "Casa Bellavista 2 - Torre Pali", "url": "https://torrepalivacanze.it/casa-bellavista-2", "@id": "https://torrepalivacanze.it/schema/casa-bellavista-2" }
+  ],
+  "sameAs": [ "https://wa.me/393886587080" ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "reviewCount": "8"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "author": { "@type": "Person", "name": "Alessandra L." },
+      "reviewBody": "Casa molto accogliente con tutti i comfort. Proprietari gentili e disponibili. Mare stupendo!"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "author": { "@type": "Person", "name": "Biagio" },
+      "reviewBody": "Ci siamo tornati per l'ennesima volta! Ottima accoglienza, abitazioni ben rifinite e a poca distanza dal mare."
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "author": { "@type": "Person", "name": "Davide" },
+      "reviewBody": "Posto tranquillo, proprietari gentili. Vicinissimo alle Maldive del Salento, un posto molto bello!"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "author": { "@type": "Person", "name": "Roberta" },
+      "reviewBody": "Vacanza rilassante, paese tranquillo, mare vicino e proprietari gentili. Ci siamo trovati bene e ci ritorneremo!"
+    }
+  ]
+}
 </script>
 <!-- Structured Data: Organization con Logo -->
 <script type="application/ld+json">
@@ -403,45 +445,6 @@ h1 { font-size: 3.5em; margin-bottom: 20px; font-weight: 700; position: relative
     "@type": "Organization",
     "name": "Torre Pali Vacanze"
   }
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LodgingBusiness",
-  "name": "Case Vacanze Torre Pali",
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "5",
-    "reviewCount": "8"
-  },
-  "review": [
-    {
-      "@type": "Review",
-      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
-      "author": { "@type": "Person", "name": "Alessandra L." },
-      "reviewBody": "Casa molto accogliente con tutti i comfort. Proprietari gentili e disponibili. Mare stupendo!"
-    },
-    {
-      "@type": "Review",
-      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
-      "author": { "@type": "Person", "name": "Biagio" },
-      "reviewBody": "Ci siamo tornati per l'ennesima volta! Ottima accoglienza, abitazioni ben rifinite e a poca distanza dal mare."
-    },
-    {
-      "@type": "Review",
-      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
-      "author": { "@type": "Person", "name": "Davide" },
-      "reviewBody": "Posto tranquillo, proprietari gentili. Vicinissimo alle Maldive del Salento, un posto molto bello!"
-    },
-    {
-      "@type": "Review",
-      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
-      "author": { "@type": "Person", "name": "Roberta" },
-      "reviewBody": "Vacanza rilassante, paese tranquillo, mare vicino e proprietari gentili. Ci siamo trovati bene e ci ritorneremo!"
-    }
-  ]
 }
 </script>
 
@@ -810,7 +813,7 @@ if ('serviceWorker' in navigator) {
     // Carica CSS Leaflet
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+    link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
     link.integrity = 'sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=';
     link.crossOrigin = '';
     document.head.appendChild(link);
