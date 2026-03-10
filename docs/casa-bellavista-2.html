@@ -227,7 +227,7 @@
 <body>
 <div id="cookie-banner-container"></div>
 <script>
-fetch('cookie-banner.html')
+fetch('cookie-banner')
   .then(r => r.text())
   .then(html => {
     document.getElementById('cookie-banner-container').innerHTML = html;
@@ -261,7 +261,7 @@ fetch('cookie-banner.html')
 <nav class="navbar">
 <div class="navbar-container">
 <div style="display:flex; flex-direction:column;">
-  <a href="index.html" class="navbar-brand">🏝️ Torre Pali Vacanze</a>
+  <a href="/" class="navbar-brand">🏝️ Torre Pali Vacanze</a>
 </div>
 <button class="hamburger" onclick="toggleMenu()" aria-label="Apri menu di navigazione" tabindex="0">
   <span></span>
@@ -269,30 +269,30 @@ fetch('cookie-banner.html')
   <span></span>
 </button>
 <ul class="navbar-menu" id="navbarMenu">
-<li><a href="index.html" onclick="closeMenu()">Home</a></li>
+<li><a href="/" onclick="closeMenu()">Home</a></li>
 <li class="dropdown">
 <span class="dropdown-toggle" style="color: #4a5568; font-weight: 500;">Appartamenti</span>
 <div class="dropdown-menu">
-<a href="casa-bellavista-2.html" onclick="closeMenu()">Casa Bella Vista 2</a>
-<a href="casa-giorgio-4.html" onclick="closeMenu()">Casa Giorgio 4</a>
-<a href="casa-giorgio-6.html" onclick="closeMenu()">Casa Giorgio 6</a>
+<a href="casa-bellavista-2" onclick="closeMenu()">Casa Bella Vista 2</a>
+<a href="casa-giorgio-4" onclick="closeMenu()">Casa Giorgio 4</a>
+<a href="casa-giorgio-6" onclick="closeMenu()">Casa Giorgio 6</a>
 </div>
 </li>
 <li class="dropdown">
 <span class="dropdown-toggle" style="color: #4a5568; font-weight: 500;">Scopri il Salento</span>
 <div class="dropdown-menu">
-<a href="spiagge-salento-sud.html" onclick="closeMenu()">Guida Spiagge</a>
+<a href="spiagge-salento-sud" onclick="closeMenu()">Guida Spiagge</a>
 <a href="torre-pali" onclick="closeMenu()">⭐ Torre Pali</a>
-<a href="lido-marini.html" onclick="closeMenu()">Lido Marini</a>
-<a href="torre-vado.html" onclick="closeMenu()">Torre Vado</a>
-<a href="pescoluse.html" onclick="closeMenu()">Pescoluse</a>
-<a href="eventi-salento.html" onclick="closeMenu()">Eventi e Tradizioni</a>
+<a href="lido-marini" onclick="closeMenu()">Lido Marini</a>
+<a href="torre-vado" onclick="closeMenu()">Torre Vado</a>
+<a href="pescoluse" onclick="closeMenu()">Pescoluse</a>
+<a href="eventi-salento" onclick="closeMenu()">Eventi e Tradizioni</a>
 </div>
 </li>
-<li><a href="recensioni.html" onclick="closeMenu()">⭐ Recensioni</a></li>
-<li><a href="faq.html" onclick="closeMenu()">FAQ</a></li>
-<li><a href="prenotazione.html" onclick="closeMenu()">Prenotazione</a></li>
-<li><a href="contatti.html" onclick="closeMenu()">Contatti</a></li>
+<li><a href="recensioni" onclick="closeMenu()">⭐ Recensioni</a></li>
+<li><a href="faq" onclick="closeMenu()">FAQ</a></li>
+<li><a href="prenotazione" onclick="closeMenu()">Prenotazione</a></li>
+<li><a href="contatti" onclick="closeMenu()">Contatti</a></li>
 </ul>
 </div>
 </nav>
@@ -301,9 +301,9 @@ fetch('cookie-banner.html')
 <main id="main-content" role="main">
 <!-- Breadcrumb -->
 <div class="breadcrumb">
-<a href="index.html">🏠 Home</a>
+<a href="/">🏠 Home</a>
 <span>›</span>
-<a href="index.html#appartamenti">Appartamenti</a>
+<a href="/#appartamenti">Appartamenti</a>
 <span>›</span>
 <span>Casa Bellavista 2</span>
 </div>
@@ -473,7 +473,7 @@ fetch('cookie-banner.html')
 
 </div>
 <div class="location-advantages">
-L'appartamento è perfettamente posizionato: in 30 secondi a piedi sei già sulla <strong>spiaggia Bandiera Blu 2026</strong> con mare cristallino e fondali bassi sicuri per i bambini. A pochi passi trovi <strong>supermercato (50m), ristoranti di pesce fresco, bar e gelaterie</strong>. La posizione strategica ti permette di raggiungere facilmente le <a href="pescoluse.html" style="color: #22577a; font-weight: 600;">Maldive del Salento a Pescoluse</a> (3 km), Santa Maria di Leuca (15 km), Gallipoli (35 km) e Otranto (50 km).
+L'appartamento è perfettamente posizionato: in 30 secondi a piedi sei già sulla <strong>spiaggia Bandiera Blu 2026</strong> con mare cristallino e fondali bassi sicuri per i bambini. A pochi passi trovi <strong>supermercato (50m), ristoranti di pesce fresco, bar e gelaterie</strong>. La posizione strategica ti permette di raggiungere facilmente le <a href="pescoluse" style="color: #22577a; font-weight: 600;">Maldive del Salento a Pescoluse</a> (3 km), Santa Maria di Leuca (15 km), Gallipoli (35 km) e Otranto (50 km).
 
 <div style="margin: 10px 0 30px 0; text-align: center;">
 </div>
@@ -593,7 +593,7 @@ L'appartamento è perfettamente posizionato: in 30 secondi a piedi sei già sull
     <li><strong>È richiesta una caparra?</strong><br>Sì, per confermare la prenotazione è richiesta una caparra. L'importo e le modalità ti verranno comunicate al momento della richiesta.</li>
     <li><strong>Quanto costa l'affitto per una settimana?</strong><br>Il costo esatto dipende dal periodo e dal numero di ospiti. Puoi richiedere un preventivo personalizzato e senza impegno.</li>
   </ul>
-  <p style="margin-top:18px;font-size:1.08em;">Per ulteriori informazioni consulta la <a href="faq.html" style="color:#0074d9;text-decoration:underline;">sezione FAQ</a> oppure <a href="contatti.html" style="color:#0074d9;text-decoration:underline;">compila il form contatti</a>.</p>
+  <p style="margin-top:18px;font-size:1.08em;">Per ulteriori informazioni consulta la <a href="faq" style="color:#0074d9;text-decoration:underline;">sezione FAQ</a> oppure <a href="contatti" style="color:#0074d9;text-decoration:underline;">compila il form contatti</a>.</p>
 </section>
 
 
@@ -618,7 +618,7 @@ L'appartamento è perfettamente posizionato: in 30 secondi a piedi sei già sull
 <a href="https://wa.me/393886587080?text=Ciao!%20Sono%20interessato%20alla%20Casa%20Bella%20Vista%202%20a%20Torre%20Pali" class="btn" data-tooltip="Invia messaggio WhatsApp" onclick="gtag('event', 'whatsapp_click', {'event_category': 'Contact', 'event_label': 'Casa Bella Vista 2 - CTA Button'});">📱 WhatsApp</a>
 <a href="tel:+393886587080" class="btn">📞 Chiama Ora</a>
 <div class="price-section">
-  <div class="price"><a href="prenotazione.html" style="color:inherit;text-decoration:underline;">Richiedi Preventivo</a></div>
+  <div class="price"><a href="prenotazione" style="color:inherit;text-decoration:underline;">Richiedi Preventivo</a></div>
   <div class="price-desc" style="font-size: 1.05em; opacity: 1; margin-top: 15px;">Contattaci per ricevere un preventivo personalizzato</div>
   <div class="price-desc" style="font-size: 0.95em; opacity: 0.9; margin-top: 10px;">Check-in 15:00 | Check-out 10:00 | Pulizie finali incluse | Caparra 30%</div>
 </div>
@@ -628,13 +628,13 @@ L'appartamento è perfettamente posizionato: in 30 secondi a piedi sei già sull
 <h3>👍 Condividi questa casa:</h3>
 <div style="margin-bottom:18px;"></div>
 <div class="social-buttons">
-<a href="https://wa.me/?text=Guarda questa casa vacanze a Torre Pali! https://torrepalivacanze.it/casa-bellavista-2.html" class="social-btn whatsapp" target="_blank" rel="noopener">
+<a href="https://wa.me/?text=Guarda questa casa vacanze a Torre Pali! https://torrepalivacanze.it/casa-bellavista-2" class="social-btn whatsapp" target="_blank" rel="noopener">
 <span>📲</span> WhatsApp
 </a>
-<a href="https://www.facebook.com/sharer/sharer.php?u=https://torrepalivacanze.it/casa-bellavista-2.html" class="social-btn facebook" target="_blank" rel="noopener">
+<a href="https://www.facebook.com/sharer/sharer.php?u=https://torrepalivacanze.it/casa-bellavista-2" class="social-btn facebook" target="_blank" rel="noopener">
 <span>f</span> Facebook
 </a>
-<a href="mailto:?subject=Casa Bellavista 2 - Torre Pali&body=Guarda questa casa vacanze a Torre Pali: https://torrepalivacanze.it/casa-bellavista-2.html" class="social-btn email">
+<a href="mailto:?subject=Casa Bellavista 2 - Torre Pali&body=Guarda questa casa vacanze a Torre Pali: https://torrepalivacanze.it/casa-bellavista-2" class="social-btn email">
 <span>✉️</span> Email
 </a>
 </div>
@@ -659,7 +659,7 @@ L'appartamento è perfettamente posizionato: in 30 secondi a piedi sei già sull
 <!-- End Main Content -->
 
 <div style="text-align:center; margin: 40px 0 0 0; font-size:1.15em; padding:15px;">
-Scopri anche <a href="index.html" style="color: #22577a; font-weight: 600;">le altre nostre case vacanze</a> o la <a href="spiagge-salento-sud.html" style="color: #22577a; font-weight: 600;">guida completa alle spiagge del Salento</a>.
+Scopri anche <a href="/" style="color: #22577a; font-weight: 600;">le altre nostre case vacanze</a> o la <a href="spiagge-salento-sud" style="color: #22577a; font-weight: 600;">guida completa alle spiagge del Salento</a>.
 </div>
 <!-- Footer -->
 <footer class="footer" aria-label="Footer Torre Pali Salento">
@@ -671,19 +671,19 @@ Scopri anche <a href="index.html" style="color: #22577a; font-weight: 600;">le a
 </div>
 <div class="footer-section">
 <h3>Link utili Torre Pali</h3>
-<a href="index.html">Home</a>
-<a href="casa-bellavista-2.html">Casa Bellavista 2</a>
-<a href="casa-giorgio-4.html">Casa Giorgio 4</a>
-<a href="casa-giorgio-6.html">Casa Giorgio 6</a>
+<a href="/">Home</a>
+<a href="casa-bellavista-2">Casa Bellavista 2</a>
+<a href="casa-giorgio-4">Casa Giorgio 4</a>
+<a href="casa-giorgio-6">Casa Giorgio 6</a>
 <a href="torre-pali">Scopri Torre Pali</a>
-<a href="contatti.html">Contatti</a>
-<a href="privacy.html">Privacy Policy</a>
-<a href="cookie-policy.html">Cookie Policy</a>
+<a href="contatti">Contatti</a>
+<a href="privacy">Privacy Policy</a>
+<a href="cookie-policy">Cookie Policy</a>
 <br>
 <h4 style="margin-bottom:8px;font-size:1em;">Link utili località</h4>
-<a href="torre-vado.html">Torre Vado</a>
-<a href="lido-marini.html">Lido Marini</a>
-<a href="pescoluse.html">Pescoluse</a>
+<a href="torre-vado">Torre Vado</a>
+<a href="lido-marini">Lido Marini</a>
+<a href="pescoluse">Pescoluse</a>
 </div>
 <div class="footer-section">
 <h3>Contatti Torre Pali Vacanze</h3>

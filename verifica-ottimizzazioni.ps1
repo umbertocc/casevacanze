@@ -8,13 +8,13 @@ $docsPath = "c:\Users\CCNMRT87R\ProjectVsCode\affittosimple\CasaBellaVista\docs"
 
 # File da verificare
 $files = @(
-    "index.html",
-    "casa-bellavista-2.html",
-    "casa-giorgio-4.html",
-    "casa-giorgio-6.html",
-    "faq.html",
-    "contatti.html",
-    "thankyou.html"
+    "/",
+    "casa-bellavista-2",
+    "casa-giorgio-4",
+    "casa-giorgio-6",
+    "faq",
+    "contatti",
+    "thankyou"
 )
 
 Write-Host "1. GOOGLE FONTS OTTIMIZZATI:" -ForegroundColor Yellow
@@ -32,10 +32,10 @@ foreach ($file in $files) {
 }
 
 Write-Host ""
-Write-Host "2. LEAFLET OTTIMIZZATO (index.html):" -ForegroundColor Yellow
+Write-Host "2. LEAFLET OTTIMIZZATO (/):" -ForegroundColor Yellow
 Write-Host ""
 
-$indexPath = Join-Path $docsPath "index.html"
+$indexPath = Join-Path $docsPath "/"
 $indexContent = Get-Content $indexPath -Raw
 
 if ($indexContent -match 'rel="preload".*leaflet') {

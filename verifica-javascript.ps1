@@ -4,7 +4,7 @@ Write-Host "VERIFICA LAZY LOADING JAVASCRIPT" -ForegroundColor Cyan
 Write-Host "=================================" -ForegroundColor Cyan
 Write-Host ""
 
-$indexPath = "c:\Users\CCNMRT87R\ProjectVsCode\affittosimple\CasaBellaVista\docs\index.html"
+$indexPath = "c:\Users\CCNMRT87R\ProjectVsCode\affittosimple\CasaBellaVista\docs\/"
 $content = Get-Content $indexPath -Raw
 
 Write-Host "ANALISI JAVASCRIPT:" -ForegroundColor Yellow

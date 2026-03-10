@@ -14,12 +14,12 @@ if (Test-Path $swPath) {
     Write-Host "  [NO] Service Worker mancante!" -ForegroundColor Red
 }
 
-# Verifica registrazione in index.html
-$indexPath = Join-Path $docsPath "index.html"
+# Verifica registrazione in /
+$indexPath = Join-Path $docsPath "/"
 $indexContent = Get-Content $indexPath -Raw
 
 if ($indexContent -match 'serviceWorker.*register') {
-    Write-Host "  [OK] Service Worker registrato in index.html" -ForegroundColor Green
+    Write-Host "  [OK] Service Worker registrato in /" -ForegroundColor Green
 } else {
     Write-Host "  [NO] Service Worker non registrato" -ForegroundColor Red
 }

@@ -448,7 +448,7 @@ h1 { font-size: 3.5em; margin-bottom: 20px; font-weight: 700; position: relative
 
 <div id="cookie-banner-container"></div>
 <script>
-fetch('cookie-banner.html')
+fetch('cookie-banner')
   .then(r => r.text())
   .then(html => {
     document.getElementById('cookie-banner-container').innerHTML = html;
@@ -491,7 +491,7 @@ if ('serviceWorker' in navigator) {
 <nav class="navbar">
 <div class="navbar-container">
 <div style="display:flex; flex-direction:column;">
-  <a href="index.html" class="navbar-brand">🏝️ Torre Pali Vacanze</a>
+  <a href="/" class="navbar-brand">🏝️ Torre Pali Vacanze</a>
 </div>
 <button class="hamburger" onclick="toggleMenu()" aria-label="Apri menu di navigazione" tabindex="0">
   <span></span>
@@ -500,31 +500,31 @@ if ('serviceWorker' in navigator) {
   <!-- Tracciamento Google Analytics rimosso -->
 </button>
 <ul class="navbar-menu" id="navbarMenu">
-<li><a href="index.html" onclick="closeMenu()">Home</a></li>
+<li><a href="/" onclick="closeMenu()">Home</a></li>
 <li class="dropdown">
 <span class="dropdown-toggle" style="color: #4a5568; font-weight: 500;">Appartamenti</span>
 <div class="dropdown-menu">
-<a href="casa-bellavista-2.html" onclick="closeMenu()">Casa Bella Vista 2</a>
-<a href="casa-giorgio-4.html" onclick="closeMenu()">Casa Giorgio 4</a>
-<a href="casa-giorgio-6.html" onclick="closeMenu()">Casa Giorgio 6</a>
+<a href="casa-bellavista-2" onclick="closeMenu()">Casa Bella Vista 2</a>
+<a href="casa-giorgio-4" onclick="closeMenu()">Casa Giorgio 4</a>
+<a href="casa-giorgio-6" onclick="closeMenu()">Casa Giorgio 6</a>
 </div>
 </li>
 <li class="dropdown">
 <span class="dropdown-toggle" style="color: #4a5568; font-weight: 500;">Scopri il Salento</span>
 <div class="dropdown-menu">
-<a href="spiagge-salento-sud.html" onclick="closeMenu()">Guida Spiagge</a>
+<a href="spiagge-salento-sud" onclick="closeMenu()">Guida Spiagge</a>
 <a href="torre-pali" onclick="closeMenu()">⭐ Torre Pali</a>
-<a href="lido-marini.html" onclick="closeMenu()">Lido Marini</a>
-<a href="torre-vado.html" onclick="closeMenu()">Torre Vado</a>
-<a href="pescoluse.html" onclick="closeMenu()">Pescoluse</a>
-<a href="eventi-salento.html" onclick="closeMenu()">Eventi e Tradizioni</a>
-<a href="faq-salento.html" onclick="closeMenu()">FAQ Salento</a>
+<a href="lido-marini" onclick="closeMenu()">Lido Marini</a>
+<a href="torre-vado" onclick="closeMenu()">Torre Vado</a>
+<a href="pescoluse" onclick="closeMenu()">Pescoluse</a>
+<a href="eventi-salento" onclick="closeMenu()">Eventi e Tradizioni</a>
+<a href="faq-salento" onclick="closeMenu()">FAQ Salento</a>
 </div>
 </li>
-<li><a href="recensioni.html" onclick="closeMenu()">⭐ Recensioni</a></li>
-<li><a href="faq.html" onclick="closeMenu()">FAQ</a></li>
-<li><a href="prenotazione.html" onclick="closeMenu()">Prenotazione</a></li>
-<li><a href="contatti.html" onclick="closeMenu()">Contatti</a></li>
+<li><a href="recensioni" onclick="closeMenu()">⭐ Recensioni</a></li>
+<li><a href="faq" onclick="closeMenu()">FAQ</a></li>
+<li><a href="prenotazione" onclick="closeMenu()">Prenotazione</a></li>
+<li><a href="contatti" onclick="closeMenu()">Contatti</a></li>
 </ul>
 </div>
 </nav>
@@ -572,9 +572,9 @@ if ('serviceWorker' in navigator) {
 <span class="feature-badge">WiFi • AC</span>
 </div>
 <p class="property-description">Quadrilocale piano terra con cortile privato in affitto. Soggiorno-cucina, 3 camere (matrimoniale+singolo, matrimoniale, tripla), 2 bagni, lavatrice, TV. Affitto ideale per famiglie che desiderano un'esperienza completa con tutti i comfort.</p>
-<div class="property-price" style="font-size: 1.5em; color: #5a67d8; font-weight: 600; margin-bottom: 20px;"><a href="prenotazione.html" style="color: #5a67d8; text-decoration: underline;">Richiedi Preventivo</a></div>
+<div class="property-price" style="font-size: 1.5em; color: #5a67d8; font-weight: 600; margin-bottom: 20px;"><a href="prenotazione" style="color: #5a67d8; text-decoration: underline;">Richiedi Preventivo</a></div>
 <div>
-<a href="casa-bellavista-2.html" class="btn" data-tooltip="Visualizza dettagli e foto della casa">📋 Vedi casa</a>
+<a href="casa-bellavista-2" class="btn" data-tooltip="Visualizza dettagli e foto della casa">📋 Vedi casa</a>
 <a href="https://wa.me/393886587080?text=Ciao!%20Sono%20interessato%20alla%20Casa%20Bella%20Vista%202%20a%20Torre%20Pali" class="btn" data-tooltip="Invia messaggio WhatsApp">💬 Info</a>
 </div>
 </div>
@@ -596,9 +596,9 @@ if ('serviceWorker' in navigator) {
 <span class="feature-badge">AC • TV Sat</span>
 </div>
 <p class="property-description">Appartamento in affitto piano terra con spazi esterni attrezzati. 3 camere (fino a 3 matrimoniali possibili), doccia esterna, zanzariere, climatizzatore. Affitto a 50m da tutti i servizi e 100m dal porticciolo.</p>
-<div class="property-price" style="font-size: 1.5em; color: #48bb78; font-weight: 600; margin-bottom: 20px;"><a href="prenotazione.html" style="color: #48bb78; text-decoration: underline;">Richiedi Preventivo</a></div>
+<div class="property-price" style="font-size: 1.5em; color: #48bb78; font-weight: 600; margin-bottom: 20px;"><a href="prenotazione" style="color: #48bb78; text-decoration: underline;">Richiedi Preventivo</a></div>
 <div>
-<a href="casa-giorgio-4.html" class="btn" data-tooltip="Visualizza dettagli e foto della casa">📋 Vedi casa</a>
+<a href="casa-giorgio-4" class="btn" data-tooltip="Visualizza dettagli e foto della casa">📋 Vedi casa</a>
 <a href="https://wa.me/393886587080?text=Ciao!%20Sono%20interessato%20alla%20Casa%20Giorgio%204%20a%20Torre%20Pali" class="btn" data-tooltip="Invia messaggio WhatsApp">💬 Info</a>
 </div>
 </div>
@@ -620,9 +620,9 @@ if ('serviceWorker' in navigator) {
 <span class="feature-badge">Vista Mare</span>
 </div>
 <p class="property-description">Appartamento 90mq al primo piano con esclusiva veranda vista mare. 3 camere, scala coperta, spazi esterni attrezzati per pranzi all'aperto. Tramonti mozzafiato sul mare di Torre Pali.</p>
-<div class="property-price" style="font-size: 1.5em; color: #ed8936; font-weight: 600; margin-bottom: 20px;"><a href="prenotazione.html" style="color: #ed8936; text-decoration: underline;">Richiedi Preventivo</a></div>
+<div class="property-price" style="font-size: 1.5em; color: #ed8936; font-weight: 600; margin-bottom: 20px;"><a href="prenotazione" style="color: #ed8936; text-decoration: underline;">Richiedi Preventivo</a></div>
 <div>
-<a href="casa-giorgio-6.html" class="btn" data-tooltip="Visualizza dettagli e foto della casa">📋 Vedi casa</a>
+<a href="casa-giorgio-6" class="btn" data-tooltip="Visualizza dettagli e foto della casa">📋 Vedi casa</a>
 <a href="https://wa.me/393886587080?text=Ciao!%20Sono%20interessato%20alla%20Casa%20Giorgio%206%20a%20Torre%20Pali" class="btn" data-tooltip="Invia messaggio WhatsApp">💬 Info</a>
 </div>
 </div>
@@ -669,7 +669,7 @@ if ('serviceWorker' in navigator) {
 </div>
 
 <div style="text-align: center;">
-<a href="recensioni.html" class="btn">📖 Leggi Tutte le Recensioni</a>
+<a href="recensioni" class="btn">📖 Leggi Tutte le Recensioni</a>
 </div>
 </div>
 
@@ -711,19 +711,19 @@ if ('serviceWorker' in navigator) {
 <div style="background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-left: 5px solid #22577a;">
 <div style="font-size: 2.5em; margin-bottom: 15px;">�</div>
 <h3 style="font-size: 1.4em; color: #2d3748; margin-bottom: 15px; font-weight: 700;">Preventivi Personalizzati</h3>
-<p style="color: #4a5568; line-height: 1.8;">Tariffe flessibili secondo la stagione e durata del soggiorno. <strong>No costi nascosti</strong>: pulizie finali incluse, caparra solo 30%. <a href="contatti.html" style="color: #5a67d8; font-weight: 600; text-decoration: underline;">Contattaci per un preventivo</a>. Accettiamo animali di piccola taglia.</p>
+<p style="color: #4a5568; line-height: 1.8;">Tariffe flessibili secondo la stagione e durata del soggiorno. <strong>No costi nascosti</strong>: pulizie finali incluse, caparra solo 30%. <a href="contatti" style="color: #5a67d8; font-weight: 600; text-decoration: underline;">Contattaci per un preventivo</a>. Accettiamo animali di piccola taglia.</p>
 </div>
 </div>
-<p style="text-align: center; font-size: 1.15em; color: #4a5568; margin-top: 20px;">Oltre <strong>8 recensioni con 5 stelle</strong> dai nostri ospiti soddisfatti. <a href="recensioni.html" style="color: #5a67d8; font-weight: 600; text-decoration: underline;">Leggi cosa dicono di noi</a> e scopri perché le nostre case vacanze a Torre Pali sono la scelta ideale per le tue vacanze in Salento.</p>
+<p style="text-align: center; font-size: 1.15em; color: #4a5568; margin-top: 20px;">Oltre <strong>8 recensioni con 5 stelle</strong> dai nostri ospiti soddisfatti. <a href="recensioni" style="color: #5a67d8; font-weight: 600; text-decoration: underline;">Leggi cosa dicono di noi</a> e scopri perché le nostre case vacanze a Torre Pali sono la scelta ideale per le tue vacanze in Salento.</p>
 </div>
 
 <div class="about-torre">
 <h2>Torre Pali: La Tua Vacanza nel Salento Autentico</h2>
 <p><strong>Torre Pali</strong> offre tutto ciò che serve per una vacanza perfetta nel Salento: spiagge sabbiose dorate con acque cristalline, fondali bassi e sicuri ideali per famiglie con bambini, un'atmosfera autentica e rilassata e una cucina locale genuina a base di pesce fresco. La <strong>torre aragonese del XVI secolo</strong> che domina la costa è un'attrazione storica affascinante, e i tramonti sul mare sono semplicemente spettacolari.</p>
 <p>A pochi metri dalla riva si trova l'<strong>Isola della Fanciulla</strong>, un suggestivo isolotto roccioso circondato da una romantica leggenda d'amore, facilmente raggiungibile a nuoto (circa 50 metri) o in kayak. Un luogo perfetto per fare snorkeling, esplorare la flora marina e scattare fotografie indimenticabili con lo sfondo del Mar Ionio!</p>
-<p><strong>Cosa visitare vicino a Torre Pali:</strong> Le famose <a href="spiagge-salento-sud.html" style="color: #5a67d8; font-weight: 600; text-decoration: underline;">Maldive del Salento a Pescoluse</a> (3 km), Punta Pizzo con le sue dune (5 km), Santa Maria di Leuca con il faro e il Santuario (15 km), le Grotte di Castro Marina (25 km), Gallipoli (35 km), Otranto (50 km) e la barocca Lecce (60 km). Torre Pali è la base perfetta per esplorare tutto il Salento meridionale!</p>
+<p><strong>Cosa visitare vicino a Torre Pali:</strong> Le famose <a href="spiagge-salento-sud" style="color: #5a67d8; font-weight: 600; text-decoration: underline;">Maldive del Salento a Pescoluse</a> (3 km), Punta Pizzo con le sue dune (5 km), Santa Maria di Leuca con il faro e il Santuario (15 km), le Grotte di Castro Marina (25 km), Gallipoli (35 km), Otranto (50 km) e la barocca Lecce (60 km). Torre Pali è la base perfetta per esplorare tutto il Salento meridionale!</p>
 <p style="text-align: center; margin-top: 25px;"><a href="torre-pali" class="btn">🏝️ Scopri Torre Pali e l'Isola della Fanciulla</a></p>
-<p style="text-align: center; margin-top: 10px;"><a href="spiagge-salento-sud.html" class="btn">🏖️ Scopri le spiagge del Salento</a></p>
+<p style="text-align: center; margin-top: 10px;"><a href="spiagge-salento-sud" class="btn">🏖️ Scopri le spiagge del Salento</a></p>
 
 <div class="highlights">
 <div class="highlight">
@@ -750,9 +750,9 @@ if ('serviceWorker' in navigator) {
 <p style="color: #555; margin-bottom: 25px;">Siamo disponibili per rispondere a tutte le tue domande sugli appartamenti e su Torre Pali.</p>
 <a href="https://wa.me/393886587080?text=Ciao!%20Vorrei%20informazioni%20sulle%20vostre%20case%20vacanza%20a%20Torre%20Pali" class="btn" data-tooltip="Chatta con noi ora">📱 WhatsApp</a>
 <a href="tel:+393886587080" class="btn">📞 Chiama</a>
-<a href="contatti.html" class="btn">✉️ Form Contatti</a>
+<a href="contatti" class="btn">✉️ Form Contatti</a>
 <p style="margin-top: 20px; color: #4a5568;">+39 388 658 70 80 • Risposta entro 1h</p>
-<p style="margin-top: 25px; font-size: 0.85em; color: #4a5568;"><a href="privacy.html" style="color: #5a67d8; text-decoration: underline;">Privacy Policy</a></p>
+<p style="margin-top: 25px; font-size: 0.85em; color: #4a5568;"><a href="privacy" style="color: #5a67d8; text-decoration: underline;">Privacy Policy</a></p>
 </div>
 </div>
 </main>
@@ -768,19 +768,19 @@ if ('serviceWorker' in navigator) {
 </div>
 <div class="footer-section">
 <h3>Link utili Torre Pali</h3>
-<a href="index.html">Home</a>
-<a href="casa-bellavista-2.html">Casa Bellavista 2</a>
-<a href="casa-giorgio-4.html">Casa Giorgio 4</a>
-<a href="casa-giorgio-6.html">Casa Giorgio 6</a>
+<a href="/">Home</a>
+<a href="casa-bellavista-2">Casa Bellavista 2</a>
+<a href="casa-giorgio-4">Casa Giorgio 4</a>
+<a href="casa-giorgio-6">Casa Giorgio 6</a>
 <a href="torre-pali">Scopri Torre Pali</a>
-<a href="contatti.html">Contatti</a>
-<a href="privacy.html">Privacy Policy</a>
- <a href="cookie-policy.html">Cookie Policy</a>
+<a href="contatti">Contatti</a>
+<a href="privacy">Privacy Policy</a>
+ <a href="cookie-policy">Cookie Policy</a>
 <br>
 <h4 style="margin-bottom:8px;font-size:1em;">Link utili località</h4>
-<a href="torre-vado.html">Torre Vado</a>
-<a href="lido-marini.html">Lido Marini</a>
-<a href="pescoluse.html">Pescoluse</a>
+<a href="torre-vado">Torre Vado</a>
+<a href="lido-marini">Lido Marini</a>
+<a href="pescoluse">Pescoluse</a>
 </div>
 <div class="footer-section">
 <h3>Contatti Torre Pali Vacanze</h3>
@@ -870,13 +870,13 @@ var towerIcon = L.divIcon({
 
 // Markers Case Vacanze - Via Vasco de Gama
 L.marker([39.8393, 18.2105], {icon: houseIcon}).addTo(map)
-  .bindPopup('<b>🏠 Casa Bellavista 2</b><br>Via Vasco de Gama 5<br>20m dalla spiaggia<br><a href="casa-bellavista-2.html">Vedi dettagli</a>');
+  .bindPopup('<b>🏠 Casa Bellavista 2</b><br>Via Vasco de Gama 5<br>20m dalla spiaggia<br><a href="casa-bellavista-2">Vedi dettagli</a>');
 
 L.marker([39.8392, 18.2106], {icon: houseIcon}).addTo(map)
-  .bindPopup('<b>🏠 Casa Giorgio 4</b><br>Via Vasco de Gama 13<br>40m dalla spiaggia<br><a href="casa-giorgio-4.html">Vedi dettagli</a>');
+  .bindPopup('<b>🏠 Casa Giorgio 4</b><br>Via Vasco de Gama 13<br>40m dalla spiaggia<br><a href="casa-giorgio-4">Vedi dettagli</a>');
 
 L.marker([39.8392, 18.2106], {icon: houseIcon}).addTo(map)
-  .bindPopup('<b>🏠 Casa Giorgio 6</b><br>Via Vasco de Gama 11<br>Vista mare primo piano<br><a href="casa-giorgio-6.html">Vedi dettagli</a>');
+  .bindPopup('<b>🏠 Casa Giorgio 6</b><br>Via Vasco de Gama 11<br>Vista mare primo piano<br><a href="casa-giorgio-6">Vedi dettagli</a>');
 
 // Punti di interesse
 L.marker([39.8390, 18.2105], {icon: beachIcon}).addTo(map)

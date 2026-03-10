@@ -1,5 +1,5 @@
 # Pagina di errore personalizzata 404
-ErrorDocument 404 /404.html
+ErrorDocument 404 /404
 
 # Reindirizzamento da www a non-www
 RewriteEngine On

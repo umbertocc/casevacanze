@@ -133,7 +133,7 @@ header h1 { font-size: 3.5em; margin-bottom: 15px; font-weight: 700; text-shadow
 
 <div id="cookie-banner-container"></div>
 <script>
-fetch('cookie-banner.html')
+fetch('cookie-banner')
   .then(r => r.text())
   .then(html => {
     document.getElementById('cookie-banner-container').innerHTML = html;
@@ -145,38 +145,38 @@ fetch('cookie-banner.html')
 <!-- Navbar -->
 <nav class="navbar">
 <div class="navbar-container">
-<a href="index.html" class="navbar-brand">🏝️ Torre Pali Vacanze</a>
+<a href="/" class="navbar-brand">🏝️ Torre Pali Vacanze</a>
 <button class="hamburger" onclick="toggleMenu()" aria-label="Apri il menu di navigazione" tabindex="0" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); border: 2.5px solid #43e68b; border-radius: 14px; padding: 10px 10px; display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer; width: 54px; height: 54px; box-shadow: 0 2px 12px rgba(67,233,123,0.13);">
   <span style="display: block; width: 32px; height: 5px; background: #fff; margin: 4px 0; border-radius: 3px;"></span>
   <span style="display: block; width: 32px; height: 5px; background: #fff; margin: 4px 0; border-radius: 3px;"></span>
   <span style="display: block; width: 32px; height: 5px; background: #fff; margin: 4px 0; border-radius: 3px;"></span>
 </button>
 <ul class="navbar-menu" id="navbarMenu">
-<li><a href="index.html" onclick="closeMenu()">Home</a></li>
+<li><a href="/" onclick="closeMenu()">Home</a></li>
 <li class="dropdown">
 <span class="dropdown-toggle" style="color: #4a5568; font-weight: 500;">Appartamenti</span>
 <div class="dropdown-menu">
-<a href="casa-bellavista-2.html" onclick="closeMenu()">Casa Bella Vista 2</a>
-<a href="casa-giorgio-4.html" onclick="closeMenu()">Casa Giorgio 4</a>
-<a href="casa-giorgio-6.html" onclick="closeMenu()">Casa Giorgio 6</a>
+<a href="casa-bellavista-2" onclick="closeMenu()">Casa Bella Vista 2</a>
+<a href="casa-giorgio-4" onclick="closeMenu()">Casa Giorgio 4</a>
+<a href="casa-giorgio-6" onclick="closeMenu()">Casa Giorgio 6</a>
 </div>
 </li>
 <li class="dropdown">
 <span class="dropdown-toggle" style="color: #4a5568; font-weight: 500;">Scopri il Salento</span>
 <div class="dropdown-menu">
-<a href="spiagge-salento-sud.html" onclick="closeMenu()">Guida Spiagge</a>
+<a href="spiagge-salento-sud" onclick="closeMenu()">Guida Spiagge</a>
 <a href="torre-pali" onclick="closeMenu()">⭐ Torre Pali</a>
-<a href="lido-marini.html" onclick="closeMenu()">Lido Marini</a>
-<a href="torre-vado.html" onclick="closeMenu()">Torre Vado</a>
-<a href="pescoluse.html" onclick="closeMenu()">Pescoluse</a>
-<a href="eventi-salento.html" onclick="closeMenu()">Eventi e Tradizioni</a>
-<a href="faq-salento.html" onclick="closeMenu()">FAQ Salento</a>
+<a href="lido-marini" onclick="closeMenu()">Lido Marini</a>
+<a href="torre-vado" onclick="closeMenu()">Torre Vado</a>
+<a href="pescoluse" onclick="closeMenu()">Pescoluse</a>
+<a href="eventi-salento" onclick="closeMenu()">Eventi e Tradizioni</a>
+<a href="faq-salento" onclick="closeMenu()">FAQ Salento</a>
 </div>
 </li>
-<li><a href="recensioni.html" onclick="closeMenu()">⭐ Recensioni</a></li>
-<li><a href="faq.html" onclick="closeMenu()">FAQ</a></li>
-<li><a href="prenotazione.html" onclick="closeMenu()">Prenotazione</a></li>
-<li><a href="contatti.html" onclick="closeMenu()">Contatti</a></li>
+<li><a href="recensioni" onclick="closeMenu()">⭐ Recensioni</a></li>
+<li><a href="faq" onclick="closeMenu()">FAQ</a></li>
+<li><a href="prenotazione" onclick="closeMenu()">Prenotazione</a></li>
+<li><a href="contatti" onclick="closeMenu()">Contatti</a></li>
 </ul>
 </div>
 </nav>
@@ -190,16 +190,16 @@ fetch('cookie-banner.html')
 
 <div class="container">
 <nav aria-label="breadcrumb" style="margin-bottom: 18px; font-size: 1.05em;">
-  <span><a href="index.html">Home</a> &gt; </span>
-  <span><a href="spiagge-salento-sud.html">Spiagge Salento Sud</a> &gt; </span>
+  <span><a href="/">Home</a> &gt; </span>
+  <span><a href="spiagge-salento-sud">Spiagge Salento Sud</a> &gt; </span>
   <span style="color:#06beb6;font-weight:600;">Pescoluse</span>
 </nav>
-<a href="index.html" class="back-btn">← Torna alla homepage</a>
+<a href="/" class="back-btn">← Torna alla homepage</a>
 
 <header>
 <h1>🏝️ Pescoluse - Le Maldive del Salento</h1>
 <p class="subtitle">Sabbia Bianca e Mare Turchese come ai Caraibi</p>
-<p style="margin-top:10px;font-size:1.1em;">Scopri anche: <a href="torre-pali" style="color:#fff !important;">Torre Pali</a> | <a href="lido-marini.html" style="color:#fff !important;">Lido Marini</a> | <a href="torre-vado.html" style="color:#fff !important;">Torre Vado</a> | <a href="spiagge-salento-sud.html" style="color:#fff !important;">Tutte le spiagge</a> | <a href="index.html#appartamenti" style="color:#fff !important;">Case vacanza</a></p>
+<p style="margin-top:10px;font-size:1.1em;">Scopri anche: <a href="torre-pali" style="color:#fff !important;">Torre Pali</a> | <a href="lido-marini" style="color:#fff !important;">Lido Marini</a> | <a href="torre-vado" style="color:#fff !important;">Torre Vado</a> | <a href="spiagge-salento-sud" style="color:#fff !important;">Tutte le spiagge</a> | <a href="/#appartamenti" style="color:#fff !important;">Case vacanza</a></p>
 </header>
 <div class="hero-gallery" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin: 30px 0 10px 0; border-radius: 20px; overflow: hidden; padding: 10px; background: rgba(255,255,255,0.6); backdrop-filter: blur(10px);">
   <img src="img/pescoluse/pescoluse2.jpg" alt="Panorama della spiaggia bianca di Pescoluse, Salento, vista Maldive del Salento" loading="lazy" style="width: 100%; height: 280px; object-fit: cover; cursor: pointer; transition: all 0.4s; border-radius: 15px; box-shadow: 0 4px 15px rgba(6,190,182,0.1);">
@@ -210,7 +210,7 @@ fetch('cookie-banner.html')
 
 <!-- CTA Prenotazione -->
 <div style="display:flex;justify-content:center;margin:30px 0 40px 0;">
-  <a href="index.html#appartamenti" class="cta-btn" aria-label="Prenota la tua vacanza a Pescoluse" style="background:linear-gradient(90deg,#06beb6 0%,#48b1f3 100%);color:#fff;font-weight:700;font-size:1.25em;padding:18px 38px;border-radius:40px;box-shadow:0 4px 18px rgba(6,190,182,0.13);text-decoration:none;transition:background 0.3s,transform 0.2s;letter-spacing:0.5px;">Prenota la tua vacanza a Pescoluse</a>
+  <a href="/#appartamenti" class="cta-btn" aria-label="Prenota la tua vacanza a Pescoluse" style="background:linear-gradient(90deg,#06beb6 0%,#48b1f3 100%);color:#fff;font-weight:700;font-size:1.25em;padding:18px 38px;border-radius:40px;box-shadow:0 4px 18px rgba(6,190,182,0.13);text-decoration:none;transition:background 0.3s,transform 0.2s;letter-spacing:0.5px;">Prenota la tua vacanza a Pescoluse</a>
 </div>
 </div>
 
@@ -218,7 +218,7 @@ fetch('cookie-banner.html')
 <div class="content-section">
 <h2>🌴 Benvenuti a Pescoluse: la spiaggia più famosa del Salento</h2>
 <p>
-<strong>Pescoluse</strong>, conosciuta in tutto il mondo come le <strong>"Maldive del Salento"</strong>, è una delle spiagge più spettacolari e fotografate d'Italia. Situata nel comune di <strong>Salve</strong>, a soli <strong>3 km da <a href="torre-pali">Torre Pali</a></strong>, vicino a <a href="lido-marini.html">Lido Marini</a> e <a href="torre-vado.html">Torre Vado</a>, questa incredibile spiaggia offre uno scenario caraibico con sabbia finissima e bianchissima, acque turchesi cristalline e fondali bassi che si estendono per decine di metri.
+<strong>Pescoluse</strong>, conosciuta in tutto il mondo come le <strong>"Maldive del Salento"</strong>, è una delle spiagge più spettacolari e fotografate d'Italia. Situata nel comune di <strong>Salve</strong>, a soli <strong>3 km da <a href="torre-pali">Torre Pali</a></strong>, vicino a <a href="lido-marini">Lido Marini</a> e <a href="torre-vado">Torre Vado</a>, questa incredibile spiaggia offre uno scenario caraibico con sabbia finissima e bianchissima, acque turchesi cristalline e fondali bassi che si estendono per decine di metri.
 </p>
 <p>
 Il soprannome "Maldive del Salento" non è casuale: i colori del mare, che vanno dal turchese chiaro all'azzurro intenso, ricordano perfettamente le spiagge tropicali dell'Oceano Indiano. La sabbia finissima, chiara e soffice, insieme alla trasparenza dell'acqua, crea un'atmosfera da sogno che attira ogni anno migliaia di turisti da tutta Europa.
@@ -316,7 +316,7 @@ Il mare di Pescoluse è famoso per le sue sfumature di colore che variano durant
       "name": "Dove si trova Pescoluse?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Pescoluse si trova sulla costa ionica del Salento, tra Torre Pali e Torre Vado, nel comune di Salve (LE). Scopri <a href=\"torre-pali\">Torre Pali</a> e <a href=\"torre-vado.html\">Torre Vado</a>."
+        "text": "Pescoluse si trova sulla costa ionica del Salento, tra Torre Pali e Torre Vado, nel comune di Salve (LE). Scopri <a href=\"torre-pali\">Torre Pali</a> e <a href=\"torre-vado\">Torre Vado</a>."
       }
     },
     {
@@ -324,7 +324,7 @@ Il mare di Pescoluse è famoso per le sue sfumature di colore che variano durant
       "name": "Com'è il mare a Pescoluse?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Il mare di Pescoluse è famoso per le sue acque turchesi, limpide e con fondali bassi ideali per famiglie e bambini. <a href=\"spiagge-salento-sud.html\">Guida spiagge Salento Sud</a>."
+        "text": "Il mare di Pescoluse è famoso per le sue acque turchesi, limpide e con fondali bassi ideali per famiglie e bambini. <a href=\"spiagge-salento-sud\">Guida spiagge Salento Sud</a>."
       }
     },
     {
@@ -348,7 +348,7 @@ Il mare di Pescoluse è famoso per le sue sfumature di colore che variano durant
       "name": "Quali sono i consigli per la visita a Pescoluse?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Arriva presto in alta stagione, porta protezione solare, acqua e ombrellone. Consulta la <a href=\"#consigli-foto\">guida fotografica</a> e <a href=\"spiagge-salento-sud.html\">scopri le spiagge vicine</a>."
+        "text": "Arriva presto in alta stagione, porta protezione solare, acqua e ombrellone. Consulta la <a href=\"#consigli-foto\">guida fotografica</a> e <a href=\"spiagge-salento-sud\">scopri le spiagge vicine</a>."
       }
     }
   ]
@@ -604,20 +604,20 @@ Pescoluse fa parte del bellissimo tratto costiero delle <strong>Marine di Salve<
 </div>
 <div class="info-card">
 <div class="info-card-icon">⚓</div>
-<h4><a href="torre-vado.html" style="text-decoration: none; color: inherit;">Torre Vado</a></h4>
+<h4><a href="torre-vado" style="text-decoration: none; color: inherit;">Torre Vado</a></h4>
 <p>Piscina naturale, porto turistico, tradizione marinara. A 2 km da Pescoluse.</p>
-<a href="torre-vado.html" style="color: #06beb6; font-weight: 600;">Scopri Torre Vado →</a>
+<a href="torre-vado" style="color: #06beb6; font-weight: 600;">Scopri Torre Vado →</a>
 </div>
 <div class="info-card">
 <div class="info-card-icon">🌲</div>
-<h4><a href="lido-marini.html" style="text-decoration: none; color: inherit;">Lido Marini</a></h4>
+<h4><a href="lido-marini" style="text-decoration: none; color: inherit;">Lido Marini</a></h4>
 <p>Pineta mediterranea, spiaggia tranquilla, ideale per famiglie. A 5 km da Pescoluse.</p>
-<a href="lido-marini.html" style="color: #06beb6; font-weight: 600;">Scopri Lido Marini →</a>
+<a href="lido-marini" style="color: #06beb6; font-weight: 600;">Scopri Lido Marini →</a>
 </div>
 </div>
 
 <p style="text-align: center; margin-top: 30px;">
-<a href="spiagge-salento-sud.html" style="display: inline-block; background: linear-gradient(135deg, #06beb6 0%, #48b1bf 100%); color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: 600; box-shadow: 0 4px 15px rgba(6, 190, 182, 0.3);">📍 Vedi Tutte le Spiagge del Salento Sud</a>
+<a href="spiagge-salento-sud" style="display: inline-block; background: linear-gradient(135deg, #06beb6 0%, #48b1bf 100%); color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: 600; box-shadow: 0 4px 15px rgba(6, 190, 182, 0.3);">📍 Vedi Tutte le Spiagge del Salento Sud</a>
 </p>
 </div>
 
@@ -743,8 +743,8 @@ Pescoluse è circondata da località meravigliose facilmente raggiungibili.
 <div class="cta-section">
 <h2>Vivi le Maldive del Salento</h2>
 <p>Prenota la tua vacanza a pochi passi dalla spiaggia più bella d'Italia</p>
-<a href="index.html" class="btn"><span>Vedi Appartamenti</span></a>
-<a href="contatti.html" class="btn"><span>Contattaci</span></a>
+<a href="/" class="btn"><span>Vedi Appartamenti</span></a>
+<a href="contatti" class="btn"><span>Contattaci</span></a>
 </div>
 </div>
 
@@ -758,20 +758,20 @@ Pescoluse è circondata da località meravigliose facilmente raggiungibili.
 </div>
 <div class="footer-section">
 <h3>Link utili Torre Pali</h3>
-<a href="index.html">Home</a>
-<a href="casa-bellavista-2.html">Casa Bellavista 2</a>
-<a href="casa-giorgio-4.html">Casa Giorgio 4</a>
-<a href="casa-giorgio-6.html">Casa Giorgio 6</a>
+<a href="/">Home</a>
+<a href="casa-bellavista-2">Casa Bellavista 2</a>
+<a href="casa-giorgio-4">Casa Giorgio 4</a>
+<a href="casa-giorgio-6">Casa Giorgio 6</a>
 <a href="torre-pali">Scopri Torre Pali</a>
-<a href="contatti.html">Contatti</a>
-<a href="privacy.html">Privacy Policy</a>
-<a href="cookie-policy.html">Cookie Policy</a>
+<a href="contatti">Contatti</a>
+<a href="privacy">Privacy Policy</a>
+<a href="cookie-policy">Cookie Policy</a>
 
 <br>
 <h4 style="margin-bottom:8px;font-size:1em;">Link utili località</h4>
-<a href="torre-vado.html">Torre Vado</a>
-<a href="lido-marini.html">Lido Marini</a>
-<a href="pescoluse.html">Pescoluse</a>
+<a href="torre-vado">Torre Vado</a>
+<a href="lido-marini">Lido Marini</a>
+<a href="pescoluse">Pescoluse</a>
 </div>
 <div class="footer-section">
 <h3>Contatti Torre Pali Vacanze</h3>
@@ -841,13 +841,13 @@ Pescoluse è circondata da località meravigliose facilmente raggiungibili.
       "@type": "ListItem",
       "position": 2,
       "name": "Spiagge Salento Sud",
-      "item": "https://torrepalivacanze.it/spiagge-salento-sud.html"
+      "item": "https://torrepalivacanze.it/spiagge-salento-sud"
     },
     {
       "@type": "ListItem",
       "position": 3,
       "name": "Pescoluse",
-      "item": "https://torrepalivacanze.it/pescoluse.html"
+      "item": "https://torrepalivacanze.it/pescoluse"
     }
   ]
 }

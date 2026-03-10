@@ -8,7 +8,7 @@ self.addEventListener('install', (event) => {
     caches.open('torre-pali-v1').then((cache) => {
       return cache.addAll([
         '/',
-        '/index.html',
+        '//',
         '/img/casa-bella-vista/prospetto.jpg',
         '/img/casa-giorgio/prospetto.jpg',
         '/img/casa-giorgio2/balcone.jpg'

@@ -164,7 +164,7 @@ header h1 { font-size: 3.5em; margin-bottom: 15px; font-weight: 700; text-shadow
 
 <div id="cookie-banner-container"></div>
 <script>
-fetch('cookie-banner.html')
+fetch('cookie-banner')
   .then(r => r.text())
   .then(html => {
     document.getElementById('cookie-banner-container').innerHTML = html;
@@ -176,38 +176,38 @@ fetch('cookie-banner.html')
 <!-- Navbar -->
 <nav class="navbar">
 <div class="navbar-container">
-<a href="index.html" class="navbar-brand">🏝️ Torre Pali Vacanze</a>
+<a href="/" class="navbar-brand">🏝️ Torre Pali Vacanze</a>
 <button class="hamburger" onclick="toggleMenu()" aria-label="Apri il menu di navigazione" tabindex="0" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); border: 2.5px solid #43e68b; border-radius: 14px; padding: 10px 10px; display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer; width: 54px; height: 54px; box-shadow: 0 2px 12px rgba(67,233,123,0.13);">
   <span style="display: block; width: 32px; height: 5px; background: #fff; margin: 4px 0; border-radius: 3px;"></span>
   <span style="display: block; width: 32px; height: 5px; background: #fff; margin: 4px 0; border-radius: 3px;"></span>
   <span style="display: block; width: 32px; height: 5px; background: #fff; margin: 4px 0; border-radius: 3px;"></span>
 </button>
     <ul class="navbar-menu" id="navbarMenu">
-      <li><a href="index.html" onclick="closeMenu()">Home</a></li>
+      <li><a href="/" onclick="closeMenu()">Home</a></li>
       <li class="dropdown">
          <span class="dropdown-toggle" style="color: #4a5568; font-weight: 500;">Appartamenti</span>
          <div class="dropdown-menu">
-         <a href="casa-bellavista-2.html" onclick="closeMenu()">Casa Bella Vista 2</a>
-         <a href="casa-giorgio-4.html" onclick="closeMenu()">Casa Giorgio 4</a>
-         <a href="casa-giorgio-6.html" onclick="closeMenu()">Casa Giorgio 6</a>
+         <a href="casa-bellavista-2" onclick="closeMenu()">Casa Bella Vista 2</a>
+         <a href="casa-giorgio-4" onclick="closeMenu()">Casa Giorgio 4</a>
+         <a href="casa-giorgio-6" onclick="closeMenu()">Casa Giorgio 6</a>
          </div>
       </li>
       <li class="dropdown">
         <span class="dropdown-toggle" style="color: #4a5568; font-weight: 500;">Scopri il Salento</span>
         <div class="dropdown-menu">
-            <a href="spiagge-salento-sud.html" onclick="closeMenu()">Guida Spiagge</a>
+            <a href="spiagge-salento-sud" onclick="closeMenu()">Guida Spiagge</a>
             <a href="torre-pali" onclick="closeMenu()">⭐ Torre Pali</a>
-            <a href="lido-marini.html" onclick="closeMenu()">Lido Marini</a>
-            <a href="torre-vado.html" onclick="closeMenu()">Torre Vado</a>
-            <a href="pescoluse.html" onclick="closeMenu()">Pescoluse</a>
-            <a href="eventi-salento.html" onclick="closeMenu()">Eventi e Tradizioni</a>
-            <a href="faq-salento.html" onclick="closeMenu()">FAQ Salento</a>
+            <a href="lido-marini" onclick="closeMenu()">Lido Marini</a>
+            <a href="torre-vado" onclick="closeMenu()">Torre Vado</a>
+            <a href="pescoluse" onclick="closeMenu()">Pescoluse</a>
+            <a href="eventi-salento" onclick="closeMenu()">Eventi e Tradizioni</a>
+            <a href="faq-salento" onclick="closeMenu()">FAQ Salento</a>
         </div>
       </li>
-      <li><a href="recensioni.html" onclick="closeMenu()">⭐ Recensioni</a></li>
-      <li><a href="faq.html" onclick="closeMenu()">FAQ</a></li>
-      <li><a href="prenotazione.html" onclick="closeMenu()">Prenotazione</a></li>
-      <li><a href="contatti.html" onclick="closeMenu()">Contatti</a></li>
+      <li><a href="recensioni" onclick="closeMenu()">⭐ Recensioni</a></li>
+      <li><a href="faq" onclick="closeMenu()">FAQ</a></li>
+      <li><a href="prenotazione" onclick="closeMenu()">Prenotazione</a></li>
+      <li><a href="contatti" onclick="closeMenu()">Contatti</a></li>
     </ul>
 </div>
 </nav>
@@ -220,7 +220,7 @@ fetch('cookie-banner.html')
 </a>
 
 <div class="container">
-<a href="index.html" class="back-btn">← Torna alla homepage</a>
+<a href="/" class="back-btn">← Torna alla homepage</a>
 
 <header>
 <h1>🏖️ Spiagge del Salento Sud</h1>
@@ -300,7 +300,7 @@ Marina pittoresca famosa per la sua <strong>piscina naturale</strong>, un'insena
 <span class="beach-feature">🐟 Pesce Fresco</span>
 <span class="beach-feature">🚤 Escursioni</span>
 </div>
-<a href="torre-vado.html" class="beach-card-btn">Scopri Torre Vado</a>
+<a href="torre-vado" class="beach-card-btn">Scopri Torre Vado</a>
 </div>
 </div>
 
@@ -342,7 +342,7 @@ Le famose <strong>"Maldive del Salento"</strong>: 4 km di spiaggia con sabbia bi
 <span class="beach-feature">📸 Instagrammabile</span>
 <span class="beach-feature">🏄 Sport Acquatici</span>
 </div>
-<a href="pescoluse.html" class="beach-card-btn">Scopri Pescoluse</a>
+<a href="pescoluse" class="beach-card-btn">Scopri Pescoluse</a>
 </div>
 </div>
 
@@ -363,7 +363,7 @@ Spiaggia tranquilla circondata da una splendida <strong>pineta mediterranea</str
 <span class="beach-feature">🧺 Area Picnic</span>
 <span class="beach-feature">🐕 Dog-Friendly</span>
 </div>
-<a href="lido-marini.html" class="beach-card-btn">Scopri Lido Marini</a>
+<a href="lido-marini" class="beach-card-btn">Scopri Lido Marini</a>
 </div>
 </div>
 
@@ -579,7 +579,7 @@ Per visitare comodamente tutte le spiagge, la posizione ideale è <strong>Torre 
 Offriamo appartamenti moderni e completamente attrezzati a pochi passi dalla spiaggia di Torre Pali, posizione strategica per esplorare tutte le spiagge della costa. Ideali per famiglie e gruppi di amici.
 </p>
 <div style="margin-top: 20px;">
-<a href="index.html#appartamenti" class="beach-card-btn">Vedi i Nostri Appartamenti</a>
+<a href="/#appartamenti" class="beach-card-btn">Vedi i Nostri Appartamenti</a>
 </div>
 </div>
 </div>
@@ -587,8 +587,8 @@ Offriamo appartamenti moderni e completamente attrezzati a pochi passi dalla spi
 <div class="cta-section">
 <h2>Prenota la Tua Vacanza nel Salento Sud</h2>
 <p>Scegli i nostri appartamenti a Torre Pali e scopri tutte le spiagge più belle</p>
-<a href="index.html" class="btn"><span>Vedi Appartamenti</span></a>
-<a href="contatti.html" class="btn"><span>Contattaci</span></a>
+<a href="/" class="btn"><span>Vedi Appartamenti</span></a>
+<a href="contatti" class="btn"><span>Contattaci</span></a>
 </div>
 </div>
 
@@ -602,19 +602,19 @@ Offriamo appartamenti moderni e completamente attrezzati a pochi passi dalla spi
 </div>
 <div class="footer-section">
 <h3>Link Utili</h3>
-<a href="index.html">Home</a>
-<a href="casa-bellavista-2.html">Casa Bellavista 2</a>
-<a href="casa-giorgio-4.html">Casa Giorgio 4</a>
-<a href="casa-giorgio-6.html">Casa Giorgio 6</a>
+<a href="/">Home</a>
+<a href="casa-bellavista-2">Casa Bellavista 2</a>
+<a href="casa-giorgio-4">Casa Giorgio 4</a>
+<a href="casa-giorgio-6">Casa Giorgio 6</a>
 <a href="torre-pali">Scopri Torre Pali</a>
-<a href="contatti.html">Contatti</a>
-<a href="privacy.html">Privacy Policy</a>
-<a href="cookie-policy.html">Cookie Policy</a>
+<a href="contatti">Contatti</a>
+<a href="privacy">Privacy Policy</a>
+<a href="cookie-policy">Cookie Policy</a>
 <br>
 <h4 style="margin-bottom:8px;font-size:1em;">Link utili località</h4>
-<a href="torre-vado.html">Torre Vado</a>
-<a href="lido-marini.html">Lido Marini</a>
-<a href="pescoluse.html">Pescoluse</a>
+<a href="torre-vado">Torre Vado</a>
+<a href="lido-marini">Lido Marini</a>
+<a href="pescoluse">Pescoluse</a>
 </div>
 <div class="footer-section">
 <h3>Contatti Torre Pali Vacanze</h3>
@@ -636,7 +636,7 @@ Offriamo appartamenti moderni e completamente attrezzati a pochi passi dalla spi
   "@type": "TouristDestination",
   "name": "Spiagge del Salento Sud - Marine di Salve",
   "description": "Il tratto di costa ionica che va da Torre Vado a Lido Marini rappresenta uno dei litorali più belli d'Italia. 12 km di spiagge ininterrotte con sabbia finissima, acque cristalline color turchese, pinete mediterranee e località balneari autentiche.",
-  "url": "https://torrepalivacanze.it/spiagge-salento-sud.html",
+  "url": "https://torrepalivacanze.it/spiagge-salento-sud",
   "image": [
     "https://torrepalivacanze.it/img/torre-pali/torrepali.jpg",
     "https://torrepalivacanze.it/img/torre-pali/spiaggia1.jpg",
@@ -664,7 +664,7 @@ Offriamo appartamenti moderni e completamente attrezzati a pochi passi dalla spi
     {
       "@type": "TouristAttraction",
       "name": "Torre Vado",
-      "url": "https://torrepalivacanze.it/torre-vado.html",
+      "url": "https://torrepalivacanze.it/torre-vado",
       "description": "Marina pittoresca con piscina naturale"
     },
     {
@@ -676,13 +676,13 @@ Offriamo appartamenti moderni e completamente attrezzati a pochi passi dalla spi
     {
       "@type": "TouristAttraction",
       "name": "Pescoluse - Maldive del Salento",
-      "url": "https://torrepalivacanze.it/pescoluse.html",
+      "url": "https://torrepalivacanze.it/pescoluse",
       "description": "Sabbia bianchissima e mare turchese caraibico"
     },
     {
       "@type": "TouristAttraction",
       "name": "Lido Marini",
-      "url": "https://torrepalivacanze.it/lido-marini.html",
+      "url": "https://torrepalivacanze.it/lido-marini",
       "description": "Pineta mediterranea e tranquillità"
     }
   ]
@@ -705,7 +705,7 @@ Offriamo appartamenti moderni e completamente attrezzati a pochi passi dalla spi
       "@type": "ListItem",
       "position": 2,
       "name": "Spiagge Salento Sud",
-      "item": "https://torrepalivacanze.it/spiagge-salento-sud.html"
+      "item": "https://torrepalivacanze.it/spiagge-salento-sud"
     }
   ]
 }

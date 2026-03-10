@@ -1,5 +1,5 @@
 // Loader Cookie Banner
-fetch('cookie-banner.html')
+fetch('cookie-banner')
   .then(r => r.text())
   .then(html => {
     document.getElementById('cookie-banner-container').innerHTML = html;

@@ -8,13 +8,13 @@ $docsPath = "c:\Users\CCNMRT87R\ProjectVsCode\affittosimple\CasaBellaVista\docs"
 
 # Pagine da verificare
 $pagine = @(
-    "index.html",
-    "casa-bellavista-2.html",
-    "casa-giorgio-4.html",
-    "casa-giorgio-6.html",
-    "faq.html",
-    "contatti.html",
-    "thankyou.html"
+    "/",
+    "casa-bellavista-2",
+    "casa-giorgio-4",
+    "casa-giorgio-6",
+    "faq",
+    "contatti",
+    "thankyou"
 )
 
 Write-Host "STANDARD WCAG 2.1:" -ForegroundColor Yellow

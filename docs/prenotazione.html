@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <meta name="theme-color" content="#22577a">
   <meta property="og:title" content="Prenotazione Case Vacanze Torre Pali | Spiaggia Bandiera Blu">
   <meta property="og:description" content="Prenota la tua casa vacanze a Torre Pali, Salento. Compila il modulo per richiedere disponibilità e ricevere conferma via email o WhatsApp. Risposta entro 1 ora.">
-  <meta property="og:url" content="https://torrepalivacanze.it/prenotazione.html">
+  <meta property="og:url" content="https://torrepalivacanze.it/prenotazione">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://torrepalivacanze.it/img/prospetto/prospetto_1.jpg">
   <meta name="twitter:card" content="summary_large_image">
@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     box-shadow: 0 12px 32px rgba(37,211,102,0.28);
                     border-color: #25d366 !important;
                   }
-              /* HERO SECTION MARE - background come in contatti.html */
+              /* HERO SECTION MARE - background come in contatti */
               .hero-section-mare {
                 align-items: flex-start;
               }
@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', function() {
           box-shadow: 0 8px 35px rgba(37,211,102,0.6);
           animation: none;
         }
-    /* ...estratto da index.html: font, gradient, navbar, hamburger, container, header, form, btn, footer, responsive... */
+    /* ...estratto da /: font, gradient, navbar, hamburger, container, header, form, btn, footer, responsive... */
     @font-face {
       font-family: 'Poppins Fallback';
       src: local('Arial');
@@ -338,7 +338,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <div id="cookie-banner-container"></div>
 <script>
-fetch('cookie-banner.html')
+fetch('cookie-banner')
   .then(r => r.text())
   .then(html => {
     document.getElementById('cookie-banner-container').innerHTML = html;
@@ -364,38 +364,38 @@ fetch('cookie-banner.html')
 </script>
 <nav class="navbar">
 <div class="navbar-container">
-<a href="index.html" class="navbar-brand">🏝️ Torre Pali Vacanze</a>
+<a href="/" class="navbar-brand">🏝️ Torre Pali Vacanze</a>
 <button class="hamburger" onclick="toggleMenu()" aria-label="Apri menu di navigazione" tabindex="0">
   <span></span>
   <span></span>
   <span></span>
 </button>
 <ul class="navbar-menu" id="navbarMenu">
-<li><a href="index.html" onclick="closeMenu()">Home</a></li>
+<li><a href="/" onclick="closeMenu()">Home</a></li>
 <li class="dropdown">
   <span class="dropdown-toggle" style="color: #4a5568; font-weight: 500;">Appartamenti</span>
   <div class="dropdown-menu">
-    <a href="casa-bellavista-2.html">Casa Bella Vista 2</a>
-    <a href="casa-giorgio-4.html">Casa Giorgio 4</a>
-    <a href="casa-giorgio-6.html">Casa Giorgio 6</a>
+    <a href="casa-bellavista-2">Casa Bella Vista 2</a>
+    <a href="casa-giorgio-4">Casa Giorgio 4</a>
+    <a href="casa-giorgio-6">Casa Giorgio 6</a>
   </div>
 </li>
 <li class="dropdown">
 <span class="dropdown-toggle" style="color: #4a5568; font-weight: 500;">Scopri il Salento</span>
 <div class="dropdown-menu">
-<a href="spiagge-salento-sud.html" onclick="closeMenu()">Guida Spiagge</a>
+<a href="spiagge-salento-sud" onclick="closeMenu()">Guida Spiagge</a>
 <a href="torre-pali" onclick="closeMenu()">⭐ Torre Pali</a>
-<a href="lido-marini.html" onclick="closeMenu()">Lido Marini</a>
-<a href="torre-vado.html" onclick="closeMenu()">Torre Vado</a>
-<a href="pescoluse.html" onclick="closeMenu()">Pescoluse</a>
-<a href="eventi-salento.html" onclick="closeMenu()">Eventi e Tradizioni</a>
-<a href="faq-salento.html" onclick="closeMenu()">FAQ Salento</a>
+<a href="lido-marini" onclick="closeMenu()">Lido Marini</a>
+<a href="torre-vado" onclick="closeMenu()">Torre Vado</a>
+<a href="pescoluse" onclick="closeMenu()">Pescoluse</a>
+<a href="eventi-salento" onclick="closeMenu()">Eventi e Tradizioni</a>
+<a href="faq-salento" onclick="closeMenu()">FAQ Salento</a>
 </div>
 </li>
-<li><a href="recensioni.html" onclick="closeMenu()">⭐ Recensioni</a></li>
-<li><a href="faq.html" onclick="closeMenu()">FAQ</a></li>
-<li><a href="prenotazione.html" onclick="closeMenu()">Prenotazione</a></li>
-<li><a href="contatti.html" onclick="closeMenu()">Contatti</a></li>
+<li><a href="recensioni" onclick="closeMenu()">⭐ Recensioni</a></li>
+<li><a href="faq" onclick="closeMenu()">FAQ</a></li>
+<li><a href="prenotazione" onclick="closeMenu()">Prenotazione</a></li>
+<li><a href="contatti" onclick="closeMenu()">Contatti</a></li>
 </ul>
 </div>
 </nav>
@@ -553,7 +553,7 @@ document.addEventListener('click', function(event) {
         </div>
         <button type="submit" class="form-btn">Invia Richiesta</button>
       </form>
-      <a class="privacy-link" href="privacy.html" target="_blank">Leggi la Privacy Policy</a>
+      <a class="privacy-link" href="privacy" target="_blank">Leggi la Privacy Policy</a>
       <p style="margin-top: 20px; font-size: 0.95em; color: #555;">Risposta entro 1 ora via email o WhatsApp. Nessun pagamento anticipato richiesto.</p>
        </section>
       </div>
@@ -561,7 +561,7 @@ document.addEventListener('click', function(event) {
 
 <!-- Bottone Torna alla homepage in fondo -->
 <div style="text-align:center; margin: 40px 0 0 0;">
-  <a href="index.html" class="btn" style="font-size:1.15em; padding: 14px 38px; background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: #fff; border-radius: 50px; text-decoration: none; font-weight: 600; box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);">⬅ Torna alla homepage</a>
+  <a href="/" class="btn" style="font-size:1.15em; padding: 14px 38px; background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: #fff; border-radius: 50px; text-decoration: none; font-weight: 600; box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);">⬅ Torna alla homepage</a>
 </div>
 
 <footer class="footer" aria-label="Footer Torre Pali Salento">
@@ -573,19 +573,19 @@ document.addEventListener('click', function(event) {
 </div>
 <div class="footer-section">
 <h3>Link utili Torre Pali</h3>
-<a href="index.html">Home</a>
-<a href="casa-bellavista-2.html">Casa Bellavista 2</a>
-<a href="casa-giorgio-4.html">Casa Giorgio 4</a>
-<a href="casa-giorgio-6.html">Casa Giorgio 6</a>
+<a href="/">Home</a>
+<a href="casa-bellavista-2">Casa Bellavista 2</a>
+<a href="casa-giorgio-4">Casa Giorgio 4</a>
+<a href="casa-giorgio-6">Casa Giorgio 6</a>
 <a href="torre-pali">Scopri Torre Pali</a>
-<a href="contatti.html">Contatti</a>
-<a href="privacy.html">Privacy Policy</a>
-<a href="cookie-policy.html">Cookie Policy</a>
+<a href="contatti">Contatti</a>
+<a href="privacy">Privacy Policy</a>
+<a href="cookie-policy">Cookie Policy</a>
 <br>
 <h4 style="margin-bottom:8px;font-size:1em;">Link utili località</h4>
-<a href="torre-vado.html">Torre Vado</a>
-<a href="lido-marini.html">Lido Marini</a>
-<a href="pescoluse.html">Pescoluse</a>
+<a href="torre-vado">Torre Vado</a>
+<a href="lido-marini">Lido Marini</a>
+<a href="pescoluse">Pescoluse</a>
 </div>
 <div class="footer-section">
 <h3>Contatti Torre Pali Vacanze</h3>
@@ -624,7 +624,7 @@ document.getElementById('booking-form').addEventListener('submit', function(e) {
   });
 });
 
-// Hamburger menu identico a contatti.html
+// Hamburger menu identico a contatti
 function toggleMenu() {
   const menu = document.getElementById('navbarMenu');
   menu.classList.toggle('active');

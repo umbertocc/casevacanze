@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <div id="cookie-banner-container"></div>
 <script>
-fetch('cookie-banner.html')
+fetch('cookie-banner')
   .then(r => r.text())
   .then(html => {
     document.getElementById('cookie-banner-container').innerHTML = html;
@@ -174,38 +174,38 @@ fetch('cookie-banner.html')
 </script>
 <nav class="navbar">
 <div class="navbar-container">
-<a href="index.html" class="navbar-brand">🏝️ Torre Pali Vacanze</a>
+<a href="/" class="navbar-brand">🏝️ Torre Pali Vacanze</a>
 <button class="hamburger" onclick="toggleMenu()" aria-label="Apri menu di navigazione" tabindex="0">
   <span></span>
   <span></span>
   <span></span>
 </button>
 <ul class="navbar-menu" id="navbarMenu">
-<li><a href="index.html" onclick="closeMenu()">Home</a></li>
+<li><a href="/" onclick="closeMenu()">Home</a></li>
 <li class="dropdown">
 <span class="dropdown-toggle" style="color: #4a5568; font-weight: 500;">Appartamenti</span>
 <div class="dropdown-menu">
-<a href="casa-bellavista-2.html" onclick="closeMenu()">Casa Bella Vista 2</a>
-<a href="casa-giorgio-4.html" onclick="closeMenu()">Casa Giorgio 4</a>
-<a href="casa-giorgio-6.html" onclick="closeMenu()">Casa Giorgio 6</a>
+<a href="casa-bellavista-2" onclick="closeMenu()">Casa Bella Vista 2</a>
+<a href="casa-giorgio-4" onclick="closeMenu()">Casa Giorgio 4</a>
+<a href="casa-giorgio-6" onclick="closeMenu()">Casa Giorgio 6</a>
 </div>
 </li>
 <li class="dropdown">
 <span class="dropdown-toggle" style="color: #4a5568; font-weight: 500;">Scopri il Salento</span>
 <div class="dropdown-menu">
-<a href="spiagge-salento-sud.html" onclick="closeMenu()">Guida Spiagge</a>
+<a href="spiagge-salento-sud" onclick="closeMenu()">Guida Spiagge</a>
 <a href="torre-pali" onclick="closeMenu()">⭐ Torre Pali</a>
-<a href="lido-marini.html" onclick="closeMenu()">Lido Marini</a>
-<a href="torre-vado.html" onclick="closeMenu()">Torre Vado</a>
-<a href="pescoluse.html" onclick="closeMenu()">Pescoluse</a>
-<a href="eventi-salento.html" onclick="closeMenu()">Eventi e Tradizioni</a>
-<a href="faq-salento.html" onclick="closeMenu()">FAQ Salento</a>
+<a href="lido-marini" onclick="closeMenu()">Lido Marini</a>
+<a href="torre-vado" onclick="closeMenu()">Torre Vado</a>
+<a href="pescoluse" onclick="closeMenu()">Pescoluse</a>
+<a href="eventi-salento" onclick="closeMenu()">Eventi e Tradizioni</a>
+<a href="faq-salento" onclick="closeMenu()">FAQ Salento</a>
 </div>
 </li>
-<li><a href="recensioni.html" onclick="closeMenu()">⭐ Recensioni</a></li>
-<li><a href="faq.html" onclick="closeMenu()">FAQ</a></li>
-<li><a href="prenotazione.html" onclick="closeMenu()">Prenotazione</a></li>
-<li><a href="contatti.html" onclick="closeMenu()">Contatti</a></li>
+<li><a href="recensioni" onclick="closeMenu()">⭐ Recensioni</a></li>
+<li><a href="faq" onclick="closeMenu()">FAQ</a></li>
+<li><a href="prenotazione" onclick="closeMenu()">Prenotazione</a></li>
+<li><a href="contatti" onclick="closeMenu()">Contatti</a></li>
 </ul>
 </div>
 </nav>
@@ -244,13 +244,13 @@ fetch('cookie-banner.html')
 <button class="filter-btn" onclick="filterReviews('casa-giorgio-4')">Casa Giorgio 4</button>
 <button class="filter-btn" onclick="filterReviews('casa-giorgio-6')">Casa Giorgio 6</button>
 <div class="dropdown-menu">
-<a href="spiagge-salento-sud.html" onclick="closeMenu()">Guida Spiagge</a>
+<a href="spiagge-salento-sud" onclick="closeMenu()">Guida Spiagge</a>
 <a href="torre-pali" onclick="closeMenu()">⭐ Torre Pali</a>
-<a href="lido-marini.html" onclick="closeMenu()">Lido Marini</a>
-<a href="torre-vado.html" onclick="closeMenu()">Torre Vado</a>
-<a href="pescoluse.html" onclick="closeMenu()">Pescoluse</a>
-<a href="eventi-salento.html" onclick="closeMenu()">Eventi e Tradizioni</a>
-<a href="faq-salento.html" onclick="closeMenu()">FAQ Salento</a>
+<a href="lido-marini" onclick="closeMenu()">Lido Marini</a>
+<a href="torre-vado" onclick="closeMenu()">Torre Vado</a>
+<a href="pescoluse" onclick="closeMenu()">Pescoluse</a>
+<a href="eventi-salento" onclick="closeMenu()">Eventi e Tradizioni</a>
+<a href="faq-salento" onclick="closeMenu()">FAQ Salento</a>
 </div>
 </div>
 
@@ -335,7 +335,7 @@ Abbiamo soggiornato per 15 giorni dopo il ferragosto, ci siamo trovati bene. Il 
 <p style="font-size: 1.2em; color: #4a5568; margin-bottom: 30px; line-height: 1.8;">Hai soggiornato nelle nostre case vacanze? La tua opinione è importante per noi!<br>Condividi la tua esperienza e aiuta altri viaggiatori a scegliere Torre Pali.</p>
 <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 30px;">
 <a href="https://wa.me/393886587080?text=Ciao!%20Vorrei%20lasciare%20una%20recensione%20sul%20mio%20soggiorno%20a%20Torre%20Pali" class="btn" data-tooltip="Invia recensione via WhatsApp" style="background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);">💬 Invia via WhatsApp</a>
-<a href="contatti.html" class="btn" data-tooltip="Compila il form contatti">📧 Compila Form</a>
+<a href="contatti" class="btn" data-tooltip="Compila il form contatti">📧 Compila Form</a>
 </div>
 <p style="font-size: 0.95em; color: #718096; margin-top: 25px;">📝 Puoi anche inviarci un'email a <strong style="color: #22577a;">info@torrepalivacanze.it</strong></p>
 </div>
@@ -343,7 +343,7 @@ Abbiamo soggiornato per 15 giorni dopo il ferragosto, ci siamo trovati bene. Il 
 <div class="cta-section">
 <h2>🏖️ Prenota la Tua Vacanza da Sogno</h2>
 <p>Unisciti ai nostri ospiti soddisfatti e vivi un'esperienza indimenticabile a Torre Pali</p>
-<a href="index.html#appartamenti" class="btn">📋 Scopri gli Appartamenti</a>
+<a href="/#appartamenti" class="btn">📋 Scopri gli Appartamenti</a>
 <a href="https://wa.me/393886587080?text=Ciao!%20Vorrei%20informazioni%20sulle%20vostre%20case%20vacanza%20a%20Torre%20Pali" class="btn" data-tooltip="Chatta con noi ora">💬 Contattaci su WhatsApp</a>
 </div>
 </div>
@@ -358,19 +358,19 @@ Abbiamo soggiornato per 15 giorni dopo il ferragosto, ci siamo trovati bene. Il 
 </div>
 <div class="footer-section">
 <h3>Link utili Torre Pali</h3>
-<a href="index.html">Home</a>
-<a href="casa-bellavista-2.html">Casa Bellavista 2</a>
-<a href="casa-giorgio-4.html">Casa Giorgio 4</a>
-<a href="casa-giorgio-6.html">Casa Giorgio 6</a>
+<a href="/">Home</a>
+<a href="casa-bellavista-2">Casa Bellavista 2</a>
+<a href="casa-giorgio-4">Casa Giorgio 4</a>
+<a href="casa-giorgio-6">Casa Giorgio 6</a>
 <a href="torre-pali">Scopri Torre Pali</a>
-<a href="contatti.html">Contatti</a>
-<a href="privacy.html">Privacy Policy</a>ù+
-<a href="cookie-policy.html">Cookie Policy</a>
+<a href="contatti">Contatti</a>
+<a href="privacy">Privacy Policy</a>ù+
+<a href="cookie-policy">Cookie Policy</a>
 <br>
 <h4 style="margin-bottom:8px;font-size:1em;">Link utili località</h4>
-<a href="torre-vado.html">Torre Vado</a>
-<a href="lido-marini.html">Lido Marini</a>
-<a href="pescoluse.html">Pescoluse</a>
+<a href="torre-vado">Torre Vado</a>
+<a href="lido-marini">Lido Marini</a>
+<a href="pescoluse">Pescoluse</a>
 </div>
 <div class="footer-section">
 <h3>Contatti Torre Pali Vacanze</h3>

@@ -188,7 +188,7 @@ header h1 { font-size: 3.5em; margin-bottom: 15px; font-weight: 700; text-shadow
 <!-- Cookie Banner Include -->
 <div id="cookie-banner-container"></div>
 <script>
-fetch('cookie-banner.html')
+fetch('cookie-banner')
   .then(r => r.text())
   .then(html => {
     document.getElementById('cookie-banner-container').innerHTML = html;
@@ -200,38 +200,38 @@ fetch('cookie-banner.html')
 <!-- Navbar -->
 <nav class="navbar">
 <div class="navbar-container">
-<a href="index.html" class="navbar-brand">🏝️ Torre Pali Vacanze</a>
+<a href="/" class="navbar-brand">🏝️ Torre Pali Vacanze</a>
 <button class="hamburger" onclick="toggleMenu()" aria-label="Apri il menu di navigazione" tabindex="0" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); border: 2.5px solid #43e68b; border-radius: 14px; padding: 10px 10px; display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer; width: 54px; height: 54px; box-shadow: 0 2px 12px rgba(67,233,123,0.13);">
   <span style="display: block; width: 32px; height: 5px; background: #fff; margin: 4px 0; border-radius: 3px;"></span>
   <span style="display: block; width: 32px; height: 5px; background: #fff; margin: 4px 0; border-radius: 3px;"></span>
   <span style="display: block; width: 32px; height: 5px; background: #fff; margin: 4px 0; border-radius: 3px;"></span>
 </button>
 <ul class="navbar-menu" id="navbarMenu">
-<li><a href="index.html" onclick="closeMenu()">Home</a></li>
+<li><a href="/" onclick="closeMenu()">Home</a></li>
 <li class="dropdown">
 <span class="dropdown-toggle" style="color: #4a5568; font-weight: 500;">Appartamenti</span>
 <div class="dropdown-menu">
-<a href="casa-bellavista-2.html" onclick="closeMenu()">Casa Bella Vista 2</a>
-<a href="casa-giorgio-4.html" onclick="closeMenu()">Casa Giorgio 4</a>
-<a href="casa-giorgio-6.html" onclick="closeMenu()">Casa Giorgio 6</a>
+<a href="casa-bellavista-2" onclick="closeMenu()">Casa Bella Vista 2</a>
+<a href="casa-giorgio-4" onclick="closeMenu()">Casa Giorgio 4</a>
+<a href="casa-giorgio-6" onclick="closeMenu()">Casa Giorgio 6</a>
 </div>
 </li>
 <li class="dropdown">
 <span class="dropdown-toggle" style="color: #4a5568; font-weight: 500;">Scopri il Salento</span>
 <div class="dropdown-menu">
-<a href="spiagge-salento-sud.html" onclick="closeMenu()">Guida Spiagge</a>
+<a href="spiagge-salento-sud" onclick="closeMenu()">Guida Spiagge</a>
 <a href="torre-pali" onclick="closeMenu()">⭐ Torre Pali</a>
-<a href="lido-marini.html" onclick="closeMenu()">Lido Marini</a>
-<a href="torre-vado.html" onclick="closeMenu()">Torre Vado</a>
-<a href="pescoluse.html" onclick="closeMenu()">Pescoluse</a>
-<a href="eventi-salento.html" onclick="closeMenu()">Eventi e Tradizioni</a>
-<a href="faq-salento.html" onclick="closeMenu()">FAQ Salento</a>
+<a href="lido-marini" onclick="closeMenu()">Lido Marini</a>
+<a href="torre-vado" onclick="closeMenu()">Torre Vado</a>
+<a href="pescoluse" onclick="closeMenu()">Pescoluse</a>
+<a href="eventi-salento" onclick="closeMenu()">Eventi e Tradizioni</a>
+<a href="faq-salento" onclick="closeMenu()">FAQ Salento</a>
 </div>
 </li>
-<li><a href="recensioni.html" onclick="closeMenu()">⭐ Recensioni</a></li>
-<li><a href="faq.html" onclick="closeMenu()">FAQ</a></li>
-<li><a href="prenotazione.html" onclick="closeMenu()">Prenotazione</a></li>
-<li><a href="contatti.html" onclick="closeMenu()">Contatti</a></li>
+<li><a href="recensioni" onclick="closeMenu()">⭐ Recensioni</a></li>
+<li><a href="faq" onclick="closeMenu()">FAQ</a></li>
+<li><a href="prenotazione" onclick="closeMenu()">Prenotazione</a></li>
+<li><a href="contatti" onclick="closeMenu()">Contatti</a></li>
 </ul>
 </div>
 </nav>
@@ -246,21 +246,21 @@ fetch('cookie-banner.html')
 
 <div class="container">
   <nav aria-label="breadcrumb" style="margin-bottom: 18px; font-size: 1.05em;">
-    <span><a href="index.html">Home</a> &gt; </span>
-    <span><a href="spiagge-salento-sud.html">Spiagge Salento Sud</a> &gt; </span>
+    <span><a href="/">Home</a> &gt; </span>
+    <span><a href="spiagge-salento-sud">Spiagge Salento Sud</a> &gt; </span>
     <span style="color:#22577a;font-weight:600;">Torre Pali</span>
   </nav>
-  <a href="index.html" class="back-btn">← Torna alla homepage</a>
+  <a href="/" class="back-btn">← Torna alla homepage</a>
 
 <header>
 <h1>🏝️ Torre Pali: Guida 2026 a Spiagge, Mare, Storia e Vacanze</h1>
 <p class="subtitle">Scopri Torre Pali, Salento: spiagge Bandiera Blu, Isola della Fanciulla, molo, storia, cosa vedere e dove dormire vicino al mare.</p>
 <p style="margin-top:10px;font-size:1.1em;">Scopri anche: 
-  <a href="pescoluse.html" style="color:#fff !important;">Pescoluse</a> | 
-  <a href="lido-marini.html" style="color:#fff !important;">Lido Marini</a> | 
-  <a href="torre-vado.html" style="color:#fff !important;">Torre Vado</a> | 
-  <a href="spiagge-salento-sud.html" style="color:#fff !important;">Tutte le spiagge</a> | 
-  <a href="index.html#appartamenti" style="color:#fff !important;">Case vacanza</a>
+  <a href="pescoluse" style="color:#fff !important;">Pescoluse</a> | 
+  <a href="lido-marini" style="color:#fff !important;">Lido Marini</a> | 
+  <a href="torre-vado" style="color:#fff !important;">Torre Vado</a> | 
+  <a href="spiagge-salento-sud" style="color:#fff !important;">Tutte le spiagge</a> | 
+  <a href="/#appartamenti" style="color:#fff !important;">Case vacanza</a>
 </p>
 </header>
 
@@ -325,7 +325,7 @@ fetch('cookie-banner.html')
 
 <!-- CTA Prenotazione -->
 <div style="display:flex;justify-content:center;margin:30px 0 40px 0;">
-  <a href="index.html#appartamenti" class="cta-btn" aria-label="Prenota la tua vacanza a Torre Pali" style="background:linear-gradient(90deg,#22577a 0%,#22577a 100%);color:#fff;font-weight:700;font-size:1.25em;padding:18px 38px;border-radius:40px;box-shadow:0 4px 18px rgba(102,126,234,0.13);text-decoration:none;transition:background 0.3s,transform 0.2s;letter-spacing:0.5px;">Prenota la tua vacanza a Torre Pali</a>
+  <a href="/#appartamenti" class="cta-btn" aria-label="Prenota la tua vacanza a Torre Pali" style="background:linear-gradient(90deg,#22577a 0%,#22577a 100%);color:#fff;font-weight:700;font-size:1.25em;padding:18px 38px;border-radius:40px;box-shadow:0 4px 18px rgba(102,126,234,0.13);text-decoration:none;transition:background 0.3s,transform 0.2s;letter-spacing:0.5px;">Prenota la tua vacanza a Torre Pali</a>
 </div>
 
 <div class="content-section">
@@ -1343,8 +1343,8 @@ Esplora la mappa interattiva per scoprire la posizione di Torre Pali, le spiagge
 <div class="cta-section">
 <h2>🏖️ Prenota la Tua Vacanza a Torre Pali</h2>
 <p style="font-size: 1.2em; margin-bottom: 30px;">Scopri le nostre case vacanze a pochi passi dal mare, dall'Isola della Fanciulla e dal molo dei tramonti</p>
-<a href="index.html#appartamenti" class="btn" style="font-size: 1.1em; padding: 18px 40px;">🏠 Vedi Appartamenti Disponibili</a>
-<a href="contatti.html" class="btn" style="font-size: 1.1em; padding: 18px 40px;">📞 Contattaci per Info</a>
+<a href="/#appartamenti" class="btn" style="font-size: 1.1em; padding: 18px 40px;">🏠 Vedi Appartamenti Disponibili</a>
+<a href="contatti" class="btn" style="font-size: 1.1em; padding: 18px 40px;">📞 Contattaci per Info</a>
 <p style="margin-top: 25px; color: #fff; font-size: 1em; text-shadow: 0 1px 8px #4f46e5; font-weight: 500;">
 💬 Risposta rapida su WhatsApp • <span style='color:#fbbf24;'>📞 +39 388 658 70 80</span> • <span style='color:#38bdf8;'>✉️ info@torrepalivacanze.it</span>
 </p>
@@ -1453,17 +1453,17 @@ Esplora la mappa interattiva per scoprire la posizione di Torre Pali, le spiagge
     {
       "@type": "House",
       "name": "Casa Bellavista 2",
-      "url": "https://torrepalivacanze.it/casa-bellavista-2.html"
+      "url": "https://torrepalivacanze.it/casa-bellavista-2"
     },
     {
       "@type": "House",
       "name": "Casa Giorgio 4",
-      "url": "https://torrepalivacanze.it/casa-giorgio-4.html"
+      "url": "https://torrepalivacanze.it/casa-giorgio-4"
     },
     {
       "@type": "House",
       "name": "Casa Giorgio 6",
-      "url": "https://torrepalivacanze.it/casa-giorgio-6.html"
+      "url": "https://torrepalivacanze.it/casa-giorgio-6"
     }
   ]
 }
@@ -1487,7 +1487,7 @@ Esplora la mappa interattiva per scoprire la posizione di Torre Pali, le spiagge
       "@type": "ListItem",
       "position": 2,
       "name": "Scopri il Salento",
-      "item": "https://torrepalivacanze.it/spiagge-salento-sud.html"
+      "item": "https://torrepalivacanze.it/spiagge-salento-sud"
     },
     {
       "@type": "ListItem",
@@ -1636,19 +1636,19 @@ document.addEventListener('keydown', function(e) {
 </div>
 <div class="footer-section">
 <h3>Link Utili</h3>
-<a href="index.html">Home</a>
-<a href="casa-bellavista-2.html">Casa Bellavista 2</a>
-<a href="casa-giorgio-4.html">Casa Giorgio 4</a>
-<a href="casa-giorgio-6.html">Casa Giorgio 6</a>
+<a href="/">Home</a>
+<a href="casa-bellavista-2">Casa Bellavista 2</a>
+<a href="casa-giorgio-4">Casa Giorgio 4</a>
+<a href="casa-giorgio-6">Casa Giorgio 6</a>
 <a href="torre-pali">Scopri Torre Pali</a>
-<a href="contatti.html">Contatti</a>
-<a href="privacy.html">Privacy Policy</a>
-<a href="cookie-policy.html">Cookie Policy</a>
+<a href="contatti">Contatti</a>
+<a href="privacy">Privacy Policy</a>
+<a href="cookie-policy">Cookie Policy</a>
 <br>
 <h4 style="margin-bottom:8px;font-size:1em;">Link utili località</h4>
-<a href="torre-vado.html">Torre Vado</a>
-<a href="lido-marini.html">Lido Marini</a>
-<a href="pescoluse.html">Pescoluse</a>
+<a href="torre-vado">Torre Vado</a>
+<a href="lido-marini">Lido Marini</a>
+<a href="pescoluse">Pescoluse</a>
 </div>
 <div class="footer-section">
 <h3>Contatti</h3>

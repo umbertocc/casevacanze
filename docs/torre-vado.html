@@ -122,7 +122,7 @@ header h1 { font-size: 3.5em; margin-bottom: 15px; font-weight: 700; text-shadow
 <!-- Cookie Banner -->
 <div id="cookie-banner-container"></div>
 <script>
-fetch('cookie-banner.html')
+fetch('cookie-banner')
   .then(r => r.text())
   .then(html => {
     document.getElementById('cookie-banner-container').innerHTML = html;
@@ -134,37 +134,37 @@ fetch('cookie-banner.html')
 <!-- Navbar -->
 <nav class="navbar">
 <div class="navbar-container">
-<a href="index.html" class="navbar-brand">🏝️ Torre Pali Vacanze</a>
+<a href="/" class="navbar-brand">🏝️ Torre Pali Vacanze</a>
 <button class="hamburger" onclick="toggleMenu()" aria-label="Apri il menu di navigazione" tabindex="0" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); border: 2.5px solid #43e68b; border-radius: 14px; padding: 10px 10px; display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer; width: 54px; height: 54px; box-shadow: 0 2px 12px rgba(67,233,123,0.13);">
   <span style="display: block; width: 32px; height: 5px; background: #fff; margin: 4px 0; border-radius: 3px;"></span>
   <span style="display: block; width: 32px; height: 5px; background: #fff; margin: 4px 0; border-radius: 3px;"></span>
   <span style="display: block; width: 32px; height: 5px; background: #fff; margin: 4px 0; border-radius: 3px;"></span>
 </button>
 <ul class="navbar-menu" id="navbarMenu">
-<li><a href="index.html" onclick="closeMenu()">Home</a></li>
+<li><a href="/" onclick="closeMenu()">Home</a></li>
 <li class="dropdown">
 <span class="dropdown-toggle" style="color: #4a5568; font-weight: 500;">Appartamenti</span>
 <div class="dropdown-menu">
-<a href="casa-bellavista-2.html" onclick="closeMenu()">Casa Bella Vista 2</a>
-<a href="casa-giorgio-4.html" onclick="closeMenu()">Casa Giorgio 4</a>
-<a href="casa-giorgio-6.html" onclick="closeMenu()">Casa Giorgio 6</a>
+<a href="casa-bellavista-2" onclick="closeMenu()">Casa Bella Vista 2</a>
+<a href="casa-giorgio-4" onclick="closeMenu()">Casa Giorgio 4</a>
+<a href="casa-giorgio-6" onclick="closeMenu()">Casa Giorgio 6</a>
 </div>
 </li>
 <li class="dropdown">
 <span class="dropdown-toggle" style="color: #4a5568; font-weight: 500;">Scopri il Salento</span>
 <div class="dropdown-menu">
-<a href="spiagge-salento-sud.html" onclick="closeMenu()">Guida Spiagge</a>
+<a href="spiagge-salento-sud" onclick="closeMenu()">Guida Spiagge</a>
 <a href="torre-pali" onclick="closeMenu()">⭐ Torre Pali</a>
-<a href="lido-marini.html" onclick="closeMenu()">Lido Marini</a>
-<a href="torre-vado.html" onclick="closeMenu()">Torre Vado</a>
-<a href="pescoluse.html" onclick="closeMenu()">Pescoluse</a>
-<a href="eventi-salento.html" onclick="closeMenu()">Eventi e Tradizioni</a>
-<a href="faq-salento.html" onclick="closeMenu()">FAQ Salento</a>
+<a href="lido-marini" onclick="closeMenu()">Lido Marini</a>
+<a href="torre-vado" onclick="closeMenu()">Torre Vado</a>
+<a href="pescoluse" onclick="closeMenu()">Pescoluse</a>
+<a href="eventi-salento" onclick="closeMenu()">Eventi e Tradizioni</a>
+<a href="faq-salento" onclick="closeMenu()">FAQ Salento</a>
 </div>
 </li>
-<li><a href="faq.html" onclick="closeMenu()">FAQ</a></li>
-<li><a href="prenotazione.html" onclick="closeMenu()">Prenotazione</a></li>
-<li><a href="contatti.html" onclick="closeMenu()">Contatti</a></li>
+<li><a href="faq" onclick="closeMenu()">FAQ</a></li>
+<li><a href="prenotazione" onclick="closeMenu()">Prenotazione</a></li>
+<li><a href="contatti" onclick="closeMenu()">Contatti</a></li>
 </ul>
 </div>
 </nav>
@@ -178,16 +178,16 @@ fetch('cookie-banner.html')
 
 <div class="container">
 <nav aria-label="breadcrumb" style="margin-bottom: 18px; font-size: 1.05em;">
-  <span><a href="index.html">Home</a> &gt; </span>
-  <span><a href="spiagge-salento-sud.html">Spiagge Salento Sud</a> &gt; </span>
+  <span><a href="/">Home</a> &gt; </span>
+  <span><a href="spiagge-salento-sud">Spiagge Salento Sud</a> &gt; </span>
   <span style="color:#22577a;font-weight:600;">Torre Vado</span>
 </nav>
-<a href="index.html" class="back-btn">← Torna alla homepage</a>
+<a href="/" class="back-btn">← Torna alla homepage</a>
 
 <header>
 <h1>Guida a Torre Vado: Piscina Naturale, Porto e Spiagge</h1>
 <p class="subtitle">Tutto su Torre Vado: piscina naturale, porto turistico, grotte marine e spiagge cristalline nel Salento.</p>
-<p style="margin-top:10px;font-size:1.1em;">Scopri anche: <a href="torre-pali" style="color:#fff !important;">Torre Pali</a> | <a href="pescoluse.html" style="color:#fff !important;">Pescoluse</a> | <a href="lido-marini.html" style="color:#fff !important;">Lido Marini</a> | <a href="spiagge-salento-sud.html" style="color:#fff !important;">Tutte le spiagge</a> | <a href="index.html#appartamenti" style="color:#fff !important;">Case vacanza</a></p>
+<p style="margin-top:10px;font-size:1.1em;">Scopri anche: <a href="torre-pali" style="color:#fff !important;">Torre Pali</a> | <a href="pescoluse" style="color:#fff !important;">Pescoluse</a> | <a href="lido-marini" style="color:#fff !important;">Lido Marini</a> | <a href="spiagge-salento-sud" style="color:#fff !important;">Tutte le spiagge</a> | <a href="/#appartamenti" style="color:#fff !important;">Case vacanza</a></p>
 </header>
 </header>
 <script type="application/ld+json">
@@ -428,9 +428,9 @@ La posizione di Torre Vado permette di esplorare facilmente tutte le attrazioni 
 <div class="info-grid">
 <div class="info-card">
 <div class="info-card-icon">🏖️</div>
-<h4><a href="pescoluse.html" style="text-decoration: none; color: inherit;">Pescoluse</a></h4>
+<h4><a href="pescoluse" style="text-decoration: none; color: inherit;">Pescoluse</a></h4>
 <p>Maldive del Salento, sabbia bianchissima e mare turchese. A 3 km da Torre Vado.</p>
-<a href="pescoluse.html" style="color: #22577a; font-weight: 600;">Scopri Pescoluse →</a>
+<a href="pescoluse" style="color: #22577a; font-weight: 600;">Scopri Pescoluse →</a>
 </div>
 <div class="info-card">
 <div class="info-card-icon">🏝️</div>
@@ -440,14 +440,14 @@ La posizione di Torre Vado permette di esplorare facilmente tutte le attrazioni 
 </div>
 <div class="info-card">
 <div class="info-card-icon">🌲</div>
-<h4><a href="lido-marini.html" style="text-decoration: none; color: inherit;">Lido Marini</a></h4>
+<h4><a href="lido-marini" style="text-decoration: none; color: inherit;">Lido Marini</a></h4>
 <p>Pineta mediterranea e tranquillità. A 7 km da Torre Vado.</p>
-<a href="lido-marini.html" style="color: #22577a; font-weight: 600;">Scopri Lido Marini →</a>
+<a href="lido-marini" style="color: #22577a; font-weight: 600;">Scopri Lido Marini →</a>
 </div>
 </div>
 
 <p style="text-align: center; margin-top: 30px;">
-<a href="spiagge-salento-sud.html" style="display: inline-block; background: linear-gradient(135deg, #22577a 0%, #22577a 100%); color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: 600; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);">📍 Vedi Tutte le Spiagge del Salento Sud</a>
+<a href="spiagge-salento-sud" style="display: inline-block; background: linear-gradient(135deg, #22577a 0%, #22577a 100%); color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: 600; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);">📍 Vedi Tutte le Spiagge del Salento Sud</a>
 </p>
 
 <h3>📍 Distanze dalle Principali Località</h3>
@@ -547,8 +547,8 @@ Parcheggi a pagamento disponibili vicino al porto e alla piscina naturale. Duran
 <div class="cta-section">
 <h2>Scopri Torre Vado</h2>
 <p>Prenota la tua vacanza a due passi dalla piscina naturale più bella del Salento</p>
-<a href="index.html" class="btn"><span>Vedi Appartamenti</span></a>
-<a href="contatti.html" class="btn"><span>Contattaci</span></a>
+<a href="/" class="btn"><span>Vedi Appartamenti</span></a>
+<a href="contatti" class="btn"><span>Contattaci</span></a>
 </div>
 </div>
 
@@ -562,19 +562,19 @@ Parcheggi a pagamento disponibili vicino al porto e alla piscina naturale. Duran
 </div>
 <div class="footer-section">
 <h3>Link Utili</h3>
-<a href="index.html">Home</a>
-<a href="casa-bellavista-2.html">Casa Bellavista 2</a>
-<a href="casa-giorgio-4.html">Casa Giorgio 4</a>
-<a href="casa-giorgio-6.html">Casa Giorgio 6</a>
+<a href="/">Home</a>
+<a href="casa-bellavista-2">Casa Bellavista 2</a>
+<a href="casa-giorgio-4">Casa Giorgio 4</a>
+<a href="casa-giorgio-6">Casa Giorgio 6</a>
 <a href="torre-pali">Scopri Torre Pali</a>
-<a href="contatti.html">Contatti</a>
-<a href="privacy.html">Privacy Policy</a>
-<a href="cookie-policy.html">Cookie Policy</a>
+<a href="contatti">Contatti</a>
+<a href="privacy">Privacy Policy</a>
+<a href="cookie-policy">Cookie Policy</a>
 <br>
 <h4 style="margin-bottom:8px;font-size:1em;">Link utili località</h4>
-<a href="torre-vado.html">Torre Vado</a>
-<a href="lido-marini.html">Lido Marini</a>
-<a href="pescoluse.html">Pescoluse</a>
+<a href="torre-vado">Torre Vado</a>
+<a href="lido-marini">Lido Marini</a>
+<a href="pescoluse">Pescoluse</a>
 </div>
 <div class="footer-section">
 <h3>Contatti Torre Pali Vacanze</h3>
@@ -644,13 +644,13 @@ Parcheggi a pagamento disponibili vicino al porto e alla piscina naturale. Duran
       "@type": "ListItem",
       "position": 2,
       "name": "Spiagge Salento Sud",
-      "item": "https://torrepalivacanze.it/spiagge-salento-sud.html"
+      "item": "https://torrepalivacanze.it/spiagge-salento-sud"
     },
     {
       "@type": "ListItem",
       "position": 3,
       "name": "Torre Vado",
-      "item": "https://torrepalivacanze.it/torre-vado.html"
+      "item": "https://torrepalivacanze.it/torre-vado"
     }
   ]
 }

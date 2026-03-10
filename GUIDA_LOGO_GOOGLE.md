@@ -17,7 +17,7 @@ Ho implementato tutte le configurazioni tecniche necessarie per far apparire il 
 - ✅ Link al manifest aggiunto in tutte le pagine HTML
 
 ### 3. **Structured Data con Logo**
-Già presente nell'index.html:
+Già presente nell'/:
 ```json
 {
   "@type": "Organization",
@@ -35,13 +35,13 @@ Già presente nell'index.html:
 Devi caricare questi file sul tuo hosting:
 
 1. **File modificati:**
-   - `docs/index.html` *(favicon aggiornati)*
-   - `docs/casa-bellavista-2.html` *(favicon aggiornati)*
-   - `docs/casa-giorgio-4.html` *(favicon aggiornati)*
-   - `docs/casa-giorgio-6.html` *(favicon aggiornati)*
-   - `docs/faq.html` *(favicon aggiornati)*
-   - `docs/contatti.html` *(favicon aggiornati)*
-   - `docs/privacy.html` *(favicon aggiornati)*
+   - `docs//` *(favicon aggiornati)*
+   - `docs/casa-bellavista-2` *(favicon aggiornati)*
+   - `docs/casa-giorgio-4` *(favicon aggiornati)*
+   - `docs/casa-giorgio-6` *(favicon aggiornati)*
+   - `docs/faq` *(favicon aggiornati)*
+   - `docs/contatti` *(favicon aggiornati)*
+   - `docs/privacy` *(favicon aggiornati)*
    - `docs/torre-pali` *(favicon aggiornati)*
 
 2. **File nuovo:**
@@ -86,9 +86,9 @@ Dopo aver caricato i file aggiornati:
 3. Inserisci: `https://torrepalivacanze.it`
 4. Clicca su **"Richiedi indicizzazione"**
 5. Ripeti per le pagine principali:
-   - `https://torrepalivacanze.it/casa-bellavista-2.html`
-   - `https://torrepalivacanze.it/casa-giorgio-4.html`
-   - `https://torrepalivacanze.it/casa-giorgio-6.html`
+   - `https://torrepalivacanze.it/casa-bellavista-2`
+   - `https://torrepalivacanze.it/casa-giorgio-4`
+   - `https://torrepalivacanze.it/casa-giorgio-6`
 
 ### 3. **Controlla i Dati Strutturati**
 

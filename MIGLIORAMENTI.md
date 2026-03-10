@@ -13,7 +13,7 @@ Questo documento elenca tutti i miglioramenti implementati sul sito Torre Pali V
 - ✅ **Footer** a 3 colonne (info, link, contatti) su tutte le pagine
 - ✅ **Breadcrumb navigation** su tutte le pagine proprietà (Home › Appartamenti › Casa X)
 - ✅ **Pulsante WhatsApp flottante** in basso a destra su tutte le pagine
-- ✅ **Pagina 404 personalizzata** (404.html) con navigazione e link utili
+- ✅ **Pagina 404 personalizzata** (404) con navigazione e link utili
 
 ### 2. **SEO & Indicizzazione**
 - ✅ **Meta description ottimizzate** (150-160 caratteri) su tutte le pagine
@@ -27,7 +27,7 @@ Questo documento elenca tutti i miglioramenti implementati sul sito Torre Pali V
 
 ### 3. **Contenuti**
 - ✅ **Pagina Torre Pali** (torre-pali) con storia, leggenda Isola della Fanciulla, attrazioni
-- ✅ **Pagina FAQ** (faq.html) con 20+ domande frequenti in 6 categorie
+- ✅ **Pagina FAQ** (faq) con 20+ domande frequenti in 6 categorie
 - ✅ **Alt text descrittivi** su tutte le immagini
 - ✅ **Lazy loading** implementato sulle immagini
 
@@ -89,17 +89,17 @@ Questo documento elenca tutti i miglioramenti implementati sul sito Torre Pali V
 ## 📝 Note Tecniche
 
 ### File Modificati
-- `docs/index.html` - Homepage con navbar, footer, badges, GA4
-- `docs/casa-bellavista-2.html` - Proprietà con breadcrumb, social share
-- `docs/casa-giorgio-4.html` - Proprietà con breadcrumb, social share
-- `docs/casa-giorgio-6.html` - Proprietà con breadcrumb, social share
+- `docs//` - Homepage con navbar, footer, badges, GA4
+- `docs/casa-bellavista-2` - Proprietà con breadcrumb, social share
+- `docs/casa-giorgio-4` - Proprietà con breadcrumb, social share
+- `docs/casa-giorgio-6` - Proprietà con breadcrumb, social share
 - `docs/torre-pali` - Guida completa Torre Pali
-- `docs/faq.html` - FAQ con accordion
-- `docs/contatti.html` - Form con honeypot
+- `docs/faq` - FAQ con accordion
+- `docs/contatti` - Form con honeypot
 - `docs/sitemap.xml` - Sitemap completo
 - `docs/robots.txt` - File robots aggiornato
 - `docs/.htaccess` - Configurazione server (NUOVO)
-- `docs/404.html` - Pagina errore personalizzata (NUOVO)
+- `docs/404` - Pagina errore personalizzata (NUOVO)
 
 ### Tecnologie
 - **HTML5** - Struttura semantica
