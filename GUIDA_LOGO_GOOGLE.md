@@ -42,7 +42,7 @@ Devi caricare questi file sul tuo hosting:
    - `docs/faq.html` *(favicon aggiornati)*
    - `docs/contatti.html` *(favicon aggiornati)*
    - `docs/privacy.html` *(favicon aggiornati)*
-   - `docs/torre-pali.html` *(favicon aggiornati)*
+   - `docs/torre-pali` *(favicon aggiornati)*
 
 2. **File nuovo:**
    - `docs/manifest.json` *(NUOVO - da caricare)*

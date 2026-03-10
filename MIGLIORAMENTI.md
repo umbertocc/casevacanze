@@ -26,7 +26,7 @@ Questo documento elenca tutti i miglioramenti implementati sul sito Torre Pali V
 - ✅ **Structured Data Organization** con logo già presente in tutte le pagine
 
 ### 3. **Contenuti**
-- ✅ **Pagina Torre Pali** (torre-pali.html) con storia, leggenda Isola della Fanciulla, attrazioni
+- ✅ **Pagina Torre Pali** (torre-pali) con storia, leggenda Isola della Fanciulla, attrazioni
 - ✅ **Pagina FAQ** (faq.html) con 20+ domande frequenti in 6 categorie
 - ✅ **Alt text descrittivi** su tutte le immagini
 - ✅ **Lazy loading** implementato sulle immagini
@@ -93,7 +93,7 @@ Questo documento elenca tutti i miglioramenti implementati sul sito Torre Pali V
 - `docs/casa-bellavista-2.html` - Proprietà con breadcrumb, social share
 - `docs/casa-giorgio-4.html` - Proprietà con breadcrumb, social share
 - `docs/casa-giorgio-6.html` - Proprietà con breadcrumb, social share
-- `docs/torre-pali.html` - Guida completa Torre Pali
+- `docs/torre-pali` - Guida completa Torre Pali
 - `docs/faq.html` - FAQ con accordion
 - `docs/contatti.html` - Form con honeypot
 - `docs/sitemap.xml` - Sitemap completo
