@@ -39,6 +39,14 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- Itinerario 7 giorni Salento -->
+  <url>
+    <loc>https://torrepalivacanze.it/itinerario-7-giorni-salento.html</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
   
   <!-- Località -->
   <url>
