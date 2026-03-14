@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Itinerario di 7 giorni nel Salento: scopri le migliori spiagge, borghi storici, tradizioni e sapori tipici per una vacanza indimenticabile.">
+    <title>Itinerario di 7 giorni nel Salento: mare, cultura e sapori</title>
+    <link rel="canonical" href="https://www.tuosito.it/itinerario-7-giorni-salento.html">
+    <link rel="stylesheet" href="style-casa-bellavista-2.css">
+</head>
+<body>
+<!-- Navbar coerente con il sito -->
+<nav class="navbar">
+    <div class="navbar-container">
+        <div style="display:flex; flex-direction:column;">
+            <a href="index.html" class="navbar-brand">🏝️ Torre Pali Vacanze</a>
+        </div>
+        <button class="hamburger" onclick="toggleMenu()" aria-label="Apri menu di navigazione" tabindex="0">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="navbar-menu" id="navbarMenu">
+            <li><a href="index.html" onclick="closeMenu()">Home</a></li>
+            <li class="dropdown">
+                <span class="dropdown-toggle" style="color: #4a5568; font-weight: 500;">Appartamenti</span>
+                <div class="dropdown-menu">
+                    <a href="casa-bellavista-2.html" onclick="closeMenu()">Casa Bella Vista 2</a>
+                    <a href="casa-giorgio-4.html" onclick="closeMenu()">Casa Giorgio 4</a>
+                    <a href="casa-giorgio-6.html" onclick="closeMenu()">Casa Giorgio 6</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <span class="dropdown-toggle" style="color: #4a5568; font-weight: 500;">Scopri il Salento</span>
+                <div class="dropdown-menu">
+                    <a href="spiagge-salento-sud.html" onclick="closeMenu()">Guida Spiagge</a>
+                    <a href="torre-pali.html" onclick="closeMenu()">⭐ Torre Pali</a>
+                    <a href="lido-marini.html" onclick="closeMenu()">Lido Marini</a>
+                    <a href="torre-vado.html" onclick="closeMenu()">Torre Vado</a>
+                    <a href="pescoluse.html" onclick="closeMenu()">Pescoluse</a>
+                    <a href="eventi-salento.html" onclick="closeMenu()">Eventi e Tradizioni</a>
+                    <a href="faq-salento.html" onclick="closeMenu()">FAQ Salento</a>
+                </div>
+            </li>
+            <li><a href="recensioni.html" onclick="closeMenu()">⭐ Recensioni</a></li>
+            <li><a href="faq.html" onclick="closeMenu()">FAQ</a></li>
+            <li><a href="prenotazione.html" onclick="closeMenu()">Prenotazione</a></li>
+            <li><a href="contatti.html" onclick="closeMenu()">Contatti</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <!-- Mappa interattiva del Salento con tappe itinerario -->
+    <section class="interactive-map-section" style="margin-bottom:40px;">
+        <h2 style="font-size:2em; color:#22577a; text-align:center; margin-bottom:18px;">Mappa Itinerario Salento</h2>
+        <p style="text-align:center; color:#4a5568; margin-bottom:18px;">Visualizza le tappe principali dell'itinerario di 7 giorni nel Salento</p>
+        <div id="itinerario-map" style="height: 420px; border-radius: 25px; box-shadow: 0 10px 40px rgba(0,0,0,0.12); border: 3px solid rgba(102, 126, 234, 0.18);"></div>
+        <div class="map-legend" style="justify-content:center; margin-top:18px;">
+            <div class="legend-item"><span class="legend-icon">🏛️</span> Lecce</div>
+            <div class="legend-item"><span class="legend-icon">🏰</span> Otranto</div>
+            <div class="legend-item"><span class="legend-icon">⛪</span> Leuca</div>
+            <div class="legend-item"><span class="legend-icon">🏖️</span> Pescoluse</div>
+            <div class="legend-item"><span class="legend-icon">🌅</span> Gallipoli</div>
+            <div class="legend-item"><span class="legend-icon">🏘️</span> Specchia/Presicce</div>
+            <div class="legend-item"><span class="legend-icon">🍝</span> Esperienza tipica</div>
+        </div>
+    </section>
+    <header style="text-align:center; margin-bottom:40px; padding-top:60px; color:black; border-radius:30px; box-shadow:0 20px 60px rgba(102,126,234,0.3); position:relative; overflow:hidden;">
+        <h1 style="font-size:2.5em; font-weight:700; margin-bottom:18px;">Itinerario di 7 giorni nel Salento</h1>
+        <p class="tagline">Scopri il meglio del Salento tra spiagge, borghi, cultura e gastronomia in una settimana indimenticabile.</p>
+    </header>
+    <main>
+        <section class="hero-section" style="margin-bottom:40px;">
+            <h2 style="font-size:2em; color:#22577a; text-align:center; margin-bottom:20px;">Itinerario giorno per giorno</h2>
+            <div style="display:grid; gap:32px;">
+                <div style="background:white; border-radius:20px; box-shadow:0 10px 30px rgba(102,126,234,0.08); padding:32px;">
+                    <h3 style="color:#22577a;">Giorno 1: Lecce, la Firenze del Sud</h3>
+                    <p>Visita il centro storico di Lecce, ammira il Duomo, la Basilica di Santa Croce e passeggia tra le vie barocche. Pranzo tipico in trattoria.</p>
+                </div>
+                <div style="background:white; border-radius:20px; box-shadow:0 10px 30px rgba(102,126,234,0.08); padding:32px;">
+                    <h3 style="color:#22577a;">Giorno 2: Otranto e la costa adriatica</h3>
+                    <p>Esplora Otranto, la Cattedrale con il mosaico pavimentale e il Castello Aragonese. Relax al mare a Baia dei Turchi o Porto Badisco.</p>
+                </div>
+                <div style="background:white; border-radius:20px; box-shadow:0 10px 30px rgba(102,126,234,0.08); padding:32px;">
+                    <h3 style="color:#22577a;">Giorno 3: Leuca e le grotte marine</h3>
+                    <p>Arriva a Santa Maria di Leuca, visita il Santuario e il faro. Escursione in barca alle grotte marine e bagno nelle acque cristalline.</p>
+                </div>
+                <div style="background:white; border-radius:20px; box-shadow:0 10px 30px rgba(102,126,234,0.08); padding:32px;">
+                    <h3 style="color:#22577a;">Giorno 4: Spiagge Ioniche: Pescoluse e le Maldive del Salento</h3>
+                    <p>Giornata di relax sulle spiagge di Pescoluse, conosciute come le Maldive del Salento. Aperitivo al tramonto in uno dei lidi.</p>
+                </div>
+                <div style="background:white; border-radius:20px; box-shadow:0 10px 30px rgba(102,126,234,0.08); padding:32px;">
+                    <h3 style="color:#22577a;">Giorno 5: Gallipoli, tra storia e movida</h3>
+                    <p>Visita il centro storico di Gallipoli, il Castello e il mercato del pesce. Pomeriggio in spiaggia e serata nei locali del centro.</p>
+                </div>
+                <div style="background:white; border-radius:20px; box-shadow:0 10px 30px rgba(102,126,234,0.08); padding:32px;">
+                    <h3 style="color:#22577a;">Giorno 6: Borghi dell'entroterra: Specchia e Presicce</h3>
+                    <p>Scopri due dei borghi più belli d'Italia: Specchia e Presicce, tra frantoi ipogei, palazzi storici e tradizioni autentiche.</p>
+                </div>
+                <div style="background:white; border-radius:20px; box-shadow:0 10px 30px rgba(102,126,234,0.08); padding:32px;">
+                    <h3 style="color:#22577a;">Giorno 7: Gastronomia e tradizioni salentine</h3>
+                    <p>Partecipa a una lezione di cucina tipica o visita una masseria per degustare prodotti locali: pasticciotto, orecchiette, olio e vino.</p>
+                </div>
+            </div>
+        </section>
+        <section class="about-torre" style="margin-bottom:40px;">
+            <h2 style="font-size:1.7em; color:#22577a; text-align:center; margin-bottom:18px;">Consigli utili per il tuo viaggio</h2>
+            <ul style="font-size:1.1em; color:#4a5568; line-height:2; max-width:600px; margin:0 auto;">
+                <li>Muoviti in auto per raggiungere facilmente tutte le tappe.</li>
+                <li>Porta con te crema solare e cappello, il sole salentino è intenso!</li>
+                <li>Assaggia i piatti tipici in ogni tappa.</li>
+            </ul>
+        </section>
+        <div style="text-align:center; margin-bottom:40px;">
+            <a href="index.html" class="btn">🏠 Torna alla Home</a>
+            <a href="spiagge-salento-sud.html" class="btn">🏖️ Guida Spiagge</a>
+            <a href="contatti.html" class="btn">✉️ Contattaci</a>
+        </div>
+    </main>
+</div>
+
+<footer class="footer" aria-label="Footer Torre Pali Salento">
+<script>
+// Carica Leaflet solo quando la mappa diventa visibile
+(function() {
+    let mapLoaded = false;
+    function loadLeaflet() {
+        if (mapLoaded) return;
+        mapLoaded = true;
+        // Carica CSS Leaflet
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+        link.integrity = 'sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=';
+        link.crossOrigin = '';
+        document.head.appendChild(link);
+        // Carica JS Leaflet
+        const script = document.createElement('script');
+        script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+        script.integrity = 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=';
+        script.crossOrigin = '';
+        script.onload = initMap;
+        document.body.appendChild(script);
+    }
+    function initMap() {
+        var map = L.map('itinerario-map').setView([40.05, 18.1], 9);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            maxZoom: 19
+        }).addTo(map);
+        // Marker tappe itinerario
+        L.marker([40.3529, 18.1743], {icon: L.divIcon({className:'custom-icon', html:'<div style="font-size:22px;">🏛️</div>', iconSize:[22,22], iconAnchor:[11,11]})}).addTo(map).bindPopup('<b>Lecce</b><br>Barocco e centro storico');
+        L.marker([40.1486, 18.4866], {icon: L.divIcon({className:'custom-icon', html:'<div style="font-size:22px;">🏰</div>', iconSize:[22,22], iconAnchor:[11,11]})}).addTo(map).bindPopup('<b>Otranto</b><br>Cattedrale e Castello');
+        L.marker([39.7967, 18.3636], {icon: L.divIcon({className:'custom-icon', html:'<div style="font-size:22px;">⛪</div>', iconSize:[22,22], iconAnchor:[11,11]})}).addTo(map).bindPopup('<b>Santa Maria di Leuca</b><br>Faro e grotte marine');
+        L.marker([39.8500, 18.2500], {icon: L.divIcon({className:'custom-icon', html:'<div style="font-size:22px;">🏖️</div>', iconSize:[22,22], iconAnchor:[11,11]})}).addTo(map).bindPopup('<b>Pescoluse</b><br>Maldive del Salento');
+        L.marker([40.0555, 17.9906], {icon: L.divIcon({className:'custom-icon', html:'<div style="font-size:22px;">🌅</div>', iconSize:[22,22], iconAnchor:[11,11]})}).addTo(map).bindPopup('<b>Gallipoli</b><br>Centro storico e spiagge');
+        L.marker([39.9292, 18.2972], {icon: L.divIcon({className:'custom-icon', html:'<div style="font-size:22px;">🏘️</div>', iconSize:[22,22], iconAnchor:[11,11]})}).addTo(map).bindPopup('<b>Specchia</b> e <b>Presicce</b><br>Borghi autentici');
+        L.marker([40.05, 18.1], {icon: L.divIcon({className:'custom-icon', html:'<div style="font-size:22px;">🍝</div>', iconSize:[22,22], iconAnchor:[11,11]})}).addTo(map).bindPopup('<b>Esperienza tipica</b><br>Degustazioni e cucina locale');
+    }
+    // Lazy load: carica Leaflet quando la mappa è visibile
+    const mapElement = document.getElementById('itinerario-map');
+    if (mapElement && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    loadLeaflet();
+                    observer.disconnect();
+                }
+            });
+        }, { rootMargin: '200px' });
+        observer.observe(mapElement);
+    } else if (mapElement) {
+        setTimeout(loadLeaflet, 3000);
+    }
+})();
+</script>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3>🏝️ Torre Pali Vacanze - Info</h3>
+            <p>Case vacanze a Torre Pali, Salento. A pochi passi dalla spiaggia Bandiera Blu con tutti i comfort.</p>
+            <p style="margin-top: 15px;">📍 Torre Pali, Lecce (LE)<br>Salento, Puglia</p>
+        </div>
+        <div class="footer-section">
+            <h3>Link utili Torre Pali</h3>
+            <a href="index.html">Home</a>
+            <a href="casa-bellavista-2.html">Casa Bellavista 2</a>
+            <a href="casa-giorgio-4.html">Casa Giorgio 4</a>
+            <a href="casa-giorgio-6.html">Casa Giorgio 6</a>
+            <a href="torre-pali.html">Scopri Torre Pali</a>
+            <a href="contatti.html">Contatti</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="cookie-policy.html">Cookie Policy</a>
+            <br>
+            <h4 style="margin-bottom:8px;font-size:1em;">Link utili località</h4>
+            <a href="torre-vado.html">Torre Vado</a>
+            <a href="lido-marini.html">Lido Marini</a>
+            <a href="pescoluse.html">Pescoluse</a>
+        </div>
+        <div class="footer-section">
+            <h3>Contatti Torre Pali Vacanze</h3>
+            <p>📞 <a href="tel:+393886587080">+39 388 658 70 80</a></p>
+            <p>📧 <strong>info@torrepalivacanze.it</strong></p>
+            <p>💬 <a href="https://wa.me/393886587080?text=Ciao!%20Vorrei%20informazioni%20sulle%20vostre%20case%20vacanza%20a%20Torre%20Pali" target="_blank">WhatsApp</a></p>
+            <p style="margin-top: 15px;">Orario: 09:00 - 20:00<br>Risposta entro 1 ora</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Torre Pali Vacanze. Tutti i diritti riservati.</p>
+    </div>
+</footer>
+
+<script>
+// Menu Hamburger
+function toggleMenu() {
+    const menu = document.getElementById('navbarMenu');
+    menu.classList.toggle('active');
+}
+function closeMenu() {
+    const menu = document.getElementById('navbarMenu');
+    menu.classList.remove('active');
+    if (window.innerWidth <= 768) {
+        const dropdowns = document.querySelectorAll('.dropdown.active');
+        dropdowns.forEach(function(drop) { drop.classList.remove('active'); });
+    }
+}
+document.addEventListener('DOMContentLoaded', function() {
+    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+    dropdownToggles.forEach(function(toggle) {
+        toggle.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                e.stopPropagation();
+                const parentDropdown = this.closest('.dropdown');
+                if (parentDropdown) {
+                    parentDropdown.classList.toggle('active');
+                }
+            }
+        });
+        toggle.addEventListener('touchstart', function(e) {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                e.stopPropagation();
+                const parentDropdown = this.closest('.dropdown');
+                if (parentDropdown) {
+                    parentDropdown.classList.toggle('active');
+                }
+            }
+        }, { passive: false });
+    });
+});
+document.addEventListener('click', function(event) {
+    const navbar = document.querySelector('.navbar');
+    const menu = document.getElementById('navbarMenu');
+    const dropdown = document.querySelector('.dropdown');
+    if (!navbar.contains(event.target) && menu.classList.contains('active')) {
+        menu.classList.remove('active');
+        if (dropdown) dropdown.classList.remove('active');
+    }
+});
+</script>
+</body>
+</html>
