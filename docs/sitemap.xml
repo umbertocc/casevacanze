@@ -130,12 +130,4 @@
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
     </url>
-
-    <!-- Thank You -->
-    <url>
-      <loc>https://torrepalivacanze.it/thankyou</loc>
-      <lastmod>2026-03-01</lastmod>
-      <changefreq>monthly</changefreq>
-      <priority>0.5</priority>
-    </url>
 </urlset>
