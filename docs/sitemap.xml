@@ -55,6 +55,13 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <!-- Posizione Torre Pali -->
+  <url>
+    <loc>https://torrepalivacanze.it/torre-pali-posizione</loc>
+    <lastmod>2026-03-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
   
   <url>
     <loc>https://torrepalivacanze.it/torre-vado</loc>
