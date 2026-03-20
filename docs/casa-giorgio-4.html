@@ -845,13 +845,30 @@ L'appartamento dispone di <strong>area esterna privata antistante</strong> utili
 
 <div class="map-section">
 <div style="padding-left:16px; text-align:center;">
-<h3 style="font-size: 1.8em;">📍 Ubicazione</h3>
-<p style="font-size:1.15em; color:#22577a; font-weight:500; margin-bottom:10px;"><strong>Via Vasco de Gama, 13, Torre Pali (LE)</strong></p>
+  <h3 style="font-size: 1.8em;">📍 Ubicazione</h3>
+  <p style="font-size:1.15em; color:#22577a; font-weight:500; margin-bottom:10px;"><strong>Via Vasco de Gama, 13, Torre Pali (LE)</strong></p>
 </div>
-<iframe src="https://www.openstreetmap.org/export/embed.html?bbox=18.209%2C39.838%2C18.212%2C39.840&layer=mapnik&marker=39.8391%2C18.2105" id="map" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="border:0;width:100%;height:350px;border-radius:16px;" title="Mappa posizione Casa Giorgio 4"></iframe>
+<div style="position:relative; width:100%; max-width:100%; height:350px; border-radius:16px; margin-bottom:0;">
+  <div id="map-overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.55);backdrop-filter:blur(2px);z-index:2;display:flex;align-items:center;justify-content:center;cursor:pointer;border-radius:16px;font-weight:600;font-size:1.08em;color:#22577a;transition:background 0.2s;">Clicca sulla mappa per attivare lo zoom e la navigazione</div>
+  <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=18.209%2C39.838%2C18.212%2C39.840&layer=mapnik&marker=39.8391%2C18.2105" id="map" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="border:0;width:100%;height:350px;border-radius:16px;pointer-events:none;filter:grayscale(0.08);" title="Mappa posizione Casa Giorgio 4"></iframe>
+</div>
 <div style="text-align:center; margin: 12px 0 24px 0;">
   <a href="https://maps.app.goo.gl/s4Q47uR6kkjW23uF6" target="_blank" rel="noopener" style="color:#22577a; font-weight:600; text-decoration:underline;">Vedi la casa su Google Maps</a>
 </div>
+<script>
+  // Sblocca la mappa solo dopo click sull'overlay
+  document.addEventListener('DOMContentLoaded', function() {
+    var overlay = document.getElementById('map-overlay');
+    var mapFrame = document.getElementById('map');
+    if(overlay && mapFrame) {
+      overlay.addEventListener('click', function() {
+        overlay.style.display = 'none';
+        mapFrame.style.pointerEvents = 'auto';
+        mapFrame.focus();
+      });
+    }
+  });
+</script>
 </div>
 
 <div class="calendar-section">
