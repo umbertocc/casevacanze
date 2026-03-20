@@ -160,7 +160,7 @@ body { font-family: 'Poppins', 'Poppins Fallback', -apple-system, BlinkMacSystem
 .footer-section a:hover { color: #22577a; transform: translateX(5px); }
 .footer-bottom { text-align: center; margin-top: 40px; padding-top: 25px; border-top: 1px solid #4a5568; color: #a0aec0; font-size: 0.9em; }
 .container { max-width: 1200px; margin: 0 auto; padding: 30px; }
-header { text-align: center; margin-bottom: 60px; padding-top: 60px; color: black; border-radius: 30px; box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3); position: relative; overflow: hidden; transform-style: preserve-3d; }
+header { text-align: center; margin-bottom: 60px; padding-top: 60px; color: black; position: relative; overflow: hidden; transform-style: preserve-3d; }
 header::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%); animation: rotate 20s linear infinite; }
 @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 h1 { font-size: 3.5em; margin-bottom: 20px; font-weight: 700; position: relative; z-index: 1; text-shadow: 0 4px 15px rgba(0,0,0,0.2); }
@@ -169,7 +169,7 @@ h1 { font-size: 3.5em; margin-bottom: 20px; font-weight: 700; position: relative
   align-items: flex-start;
   }
 
-.hero-section { backdrop-filter: blur(10px); padding: 50px; border-radius: 30px; margin-bottom: 60px; box-shadow: 0 20px 60px rgba(0,0,0,0.1); transition: all 0.5s; }
+.hero-section { backdrop-filter: blur(10px); padding: 0px;  margin-bottom: 60px; transition: all 0.5s; }
 .hero-section:hover { transform: translateY(-5px); box-shadow: 0 25px 80px rgba(0,0,0,0.15); }
 .hero-section h2 {
   font-size: 2.2em;
@@ -275,7 +275,6 @@ h1 { font-size: 3.5em; margin-bottom: 20px; font-weight: 700; position: relative
 @media (max-width: 768px) { 
   .container { padding: 20px; } 
   h1 { font-size: 2.5em; } 
-  header { padding: 60px 25px; }
   .hero-section h1, .hero-section-mare h1 {
     font-size: 2em !important;
     margin-bottom: 12px;

@@ -422,27 +422,27 @@ fetch('cookie-banner')
     <img src="img/casa-bella-vista/secondo_bagno.jpg" alt="Secondo bagno" loading="lazy" data-category="bagni">
   </picture>
     <picture><source srcset="img/torre-pali/torrepali15.webp" type="image/webp">
-    <img src="img/torre-pali/torrepali15.jpg" alt="Vista frontale del mare azzurro e della spiaggia di Torre Pali" loading="lazy" data-category="esterni">
+    <img alt="Vista frontale del mare azzurro e della spiaggia di Torre Pali" loading="lazy" data-category="esterni">
   </picture>
   <picture>
     <source srcset="img/torre-pali/torrepali8.webp" type="image/webp">
-    <img src="img/torre-pali/torrepali8.jpg" alt="Spiaggia sabbiosa di Torre Pali tra cielo e mare" loading="lazy" data-category="esterni">
+    <img alt="Spiaggia sabbiosa di Torre Pali tra cielo e mare" loading="lazy" data-category="esterni">
   </picture>
   <picture>
     <source srcset="img/torre-pali/torrepali9.webp" type="image/webp">
-    <img src="img/torre-pali/torrepali9.jpg" alt="Vista frontale della spiaggia e del mare di Torre Pali con mare azzurro e sabbia fine" loading="lazy" data-category="esterni">
+    <img alt="Vista frontale della spiaggia e del mare di Torre Pali con mare azzurro e sabbia fine" loading="lazy" data-category="esterni">
   </picture>
   <picture>
     <source srcset="img/torre-pali/torrepali2.webp" type="image/webp">
-    <img src="img/torre-pali/torrepali2.jpg" alt="Panorama della costa di Torre Pali tra mare e natura" loading="lazy" data-category="esterni">
+    <img alt="Panorama della costa di Torre Pali tra mare e natura" loading="lazy" data-category="esterni">
   </picture>
   <picture>
     <source srcset="img/torre-pali/torrepali16.webp" type="image/webp">
-    <img src="img/torre-pali/torrepali16.jpg" alt="Panorama della costa di Torre Pali con mare limpido" loading="lazy" data-category="esterni">
+    <img alt="Panorama della costa di Torre Pali con mare limpido" loading="lazy" data-category="esterni">
   </picture>
   <picture>
     <source srcset="img/torre-pali/torrepali10.webp" type="image/webp">
-    <img src="img/torre-pali/torrepali10.jpg" alt="Vista sulla Torre aragonese di Torre Pali e il mare" loading="lazy" data-category="esterni">
+    <img alt="Vista sulla Torre aragonese di Torre Pali e il mare" loading="lazy" data-category="esterni">
   </picture>
 <div class="dots" id="dots"></div>
 </div>
@@ -602,14 +602,32 @@ L'appartamento è perfettamente posizionato: in 30 secondi a piedi sei già sull
 
 
 <div class="map-section">
+
 <div style="padding-left:16px; text-align:center;">
-<h3 style="font-size: 1.8em;">📍 Ubicazione</h3>
-<p style="font-size:1.15em; color:#22577a; font-weight:500; margin-bottom:10px;"><strong>Via Vasco de Gama, 5, Torre Pali (LE)</strong></p>
+  <h3 style="font-size: 1.8em;">📍 Ubicazione</h3>
+  <p style="font-size:1.15em; color:#22577a; font-weight:500; margin-bottom:10px;"><strong>Via Vasco de Gama, 5, Torre Pali (LE)</strong></p>
 </div>
-<iframe src="https://www.openstreetmap.org/export/embed.html?bbox=18.209%2C39.838%2C18.212%2C39.840&layer=mapnik&marker=39.8392%2C18.2105" id="map" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="border:0;width:100%;height:350px;border-radius:16px;" title="Mappa posizione Casa Bellavista 2"></iframe>
+<div style="position:relative; width:100%; max-width:100%; height:350px; border-radius:16px; margin-bottom:0;">
+  <div id="map-overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.55);backdrop-filter:blur(2px);z-index:2;display:flex;align-items:center;justify-content:center;cursor:pointer;border-radius:16px;font-weight:600;font-size:1.08em;color:#22577a;transition:background 0.2s;">Clicca sulla mappa per attivare lo zoom e la navigazione</div>
+  <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=18.209%2C39.838%2C18.212%2C39.840&layer=mapnik&marker=39.8392%2C18.2105" id="map" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="border:0;width:100%;height:350px;border-radius:16px;pointer-events:none;filter:grayscale(0.08);" title="Mappa posizione Casa Bellavista 2"></iframe>
+</div>
 <div style="text-align:center; margin: 12px 0 24px 0;">
   <a href="https://maps.app.goo.gl/DTirr6eZY2KYoi4C8" target="_blank" rel="noopener" style="color:#22577a; font-weight:600; text-decoration:underline;">Vedi la casa su Google Maps</a>
 </div>
+<script>
+  // Sblocca la mappa solo dopo click sull'overlay
+  document.addEventListener('DOMContentLoaded', function() {
+    var overlay = document.getElementById('map-overlay');
+    var mapFrame = document.getElementById('map');
+    if(overlay && mapFrame) {
+      overlay.addEventListener('click', function() {
+        overlay.style.display = 'none';
+        mapFrame.style.pointerEvents = 'auto';
+        mapFrame.focus();
+      });
+    }
+  });
+</script>
 </div>
 
 <div class="calendar-section">
