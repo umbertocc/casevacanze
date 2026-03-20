@@ -676,6 +676,7 @@ if ('serviceWorker' in navigator) {
 <div class="interactive-map-section">
 <h2>🗺️ Dove Siamo</h2>
 <p>Esplora la posizione delle nostre case e i punti di interesse nelle vicinanze</p>
+<div id="map-activate-msg" style="margin-bottom:12px;text-align:center;font-size:1.05em;color:#22577a;font-weight:600;">Clicca sulla mappa per attivare lo zoom e la navigazione</div>
 <div id="interactive-map"></div>
 <div style="text-align:center; margin: 18px 0 32px 0;">
   <a href="https://www.google.com/maps/place/Via+Vasco+de+Gama,+Torre+Pali,+Salve+LE" target="_blank" rel="noopener" style="color:#22577a; font-weight:700; text-decoration:underline; background:#fff; padding:6px 14px; border-radius:8px; box-shadow:0 2px 8px rgba(34,87,122,0.08);">Apri la zona su Google Maps</a>
@@ -827,7 +828,14 @@ if ('serviceWorker' in navigator) {
   
   function initMap() {
     // Inizializza mappa
-var map = L.map('interactive-map').setView([39.8391, 18.2105], 15);
+  var map = L.map('interactive-map', {
+    dragging: false,
+    touchZoom: false,
+    scrollWheelZoom: false,
+    doubleClickZoom: false,
+    boxZoom: false,
+    keyboard: false
+  }).setView([39.8391, 18.2105], 15);
 
 // Tile layer OpenStreetMap
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -905,6 +913,17 @@ L.marker([39.8372, 18.2085], {icon: L.divIcon({
   iconAnchor: [11, 11]
 })}).addTo(map)
   .bindPopup('<b>🏝️ Isola della Fanciulla</b><br>Isolotto roccioso raggiungibile a nuoto<br><a href="torre-pali">Leggi la leggenda</a>');
+// Abilita interazione mappa solo al click
+document.getElementById('interactive-map').addEventListener('click', function() {
+  map.dragging.enable();
+  map.touchZoom.enable();
+  map.scrollWheelZoom.enable();
+  map.doubleClickZoom.enable();
+  map.boxZoom.enable();
+  map.keyboard.enable();
+  var msg = document.getElementById('map-activate-msg');
+  if (msg) msg.style.display = 'none';
+});
   }
   
   // Osserva quando la mappa diventa visibile

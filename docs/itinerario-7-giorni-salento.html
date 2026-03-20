@@ -92,9 +92,10 @@
         </section>
         <!-- Mappa interattiva del Salento con tappe itinerario (spostata qui) -->
         <section class="interactive-map-section" style="margin-bottom:40px;">
-            <h2 style="font-size:2em; color:#22577a; text-align:center; margin-bottom:18px;">Mappa Itinerario Salento</h2>
-            <p style="text-align:center; color:#4a5568; margin-bottom:18px;">Visualizza le tappe principali dell'itinerario di 7 giorni nel Salento</p>
-            <div id="itinerario-map" style="height: 420px; border-radius: 25px; box-shadow: 0 10px 40px rgba(0,0,0,0.12); border: 3px solid rgba(102, 126, 234, 0.18);"></div>
+              <h2 style="font-size:2em; color:#22577a; text-align:center; margin-bottom:18px;">Mappa Itinerario Salento</h2>
+              <p style="text-align:center; color:#4a5568; margin-bottom:18px;">Visualizza le tappe principali dell'itinerario di 7 giorni nel Salento</p>
+              <div id="map-activate-msg" style="margin-bottom:12px;text-align:center;font-size:1.05em;color:#22577a;font-weight:600;">Clicca sulla mappa per attivare lo zoom e la navigazione</div>
+              <div id="itinerario-map" style="height: 420px; border-radius: 25px; box-shadow: 0 10px 40px rgba(0,0,0,0.12); border: 3px solid rgba(102, 126, 234, 0.18); position:relative;"></div>
             <div class="map-legend" style="justify-content:center; margin-top:18px;">
                 <div class="legend-item"><span class="legend-icon">🏛️</span> Lecce</div>
                 <div class="legend-item"><span class="legend-icon">🏰</span> Otranto</div>
@@ -164,7 +165,14 @@
         document.body.appendChild(script);
     }
     function initMap() {
-        var map = L.map('itinerario-map').setView([40.05, 18.1], 9);
+            var map = L.map('itinerario-map', {
+                dragging: false,
+                touchZoom: false,
+                scrollWheelZoom: false,
+                doubleClickZoom: false,
+                boxZoom: false,
+                keyboard: false
+            }).setView([40.05, 18.1], 9);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
             maxZoom: 19
@@ -177,6 +185,17 @@
         L.marker([40.0555, 17.9906], {icon: L.divIcon({className:'custom-icon', html:'<div style="font-size:22px;">🌅</div>', iconSize:[22,22], iconAnchor:[11,11]})}).addTo(map).bindPopup('<b>Gallipoli</b><br>Centro storico e spiagge');
         L.marker([39.9292, 18.2972], {icon: L.divIcon({className:'custom-icon', html:'<div style="font-size:22px;">🏘️</div>', iconSize:[22,22], iconAnchor:[11,11]})}).addTo(map).bindPopup('<b>Specchia</b> e <b>Presicce</b><br>Borghi autentici');
         L.marker([40.05, 18.1], {icon: L.divIcon({className:'custom-icon', html:'<div style="font-size:22px;">🍝</div>', iconSize:[22,22], iconAnchor:[11,11]})}).addTo(map).bindPopup('<b>Esperienza tipica</b><br>Degustazioni e cucina locale');
+            // Abilita interazione mappa solo al click
+            document.getElementById('itinerario-map').addEventListener('click', function() {
+                map.dragging.enable();
+                map.touchZoom.enable();
+                map.scrollWheelZoom.enable();
+                map.doubleClickZoom.enable();
+                map.boxZoom.enable();
+                map.keyboard.enable();
+                var msg = document.getElementById('map-activate-msg');
+                if (msg) msg.style.display = 'none';
+            });
     }
     // Lazy load: carica Leaflet quando la mappa è visibile
     const mapElement = document.getElementById('itinerario-map');
