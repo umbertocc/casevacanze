@@ -138,3 +138,20 @@
       <priority>0.8</priority>
     </url>
 </urlset>
+
+  <!-- Molo Torre Pali -->
+  <url>
+    <loc>https://torrepalivacanze.it/molo-torre-pali</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Galleria Torre Pali -->
+  <url>
+    <loc>https://torrepalivacanze.it/galleria-torre-pali</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+</urlset>

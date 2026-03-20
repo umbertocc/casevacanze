@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="Italian">
+  <meta name="author" content="Torre Pali Vacanze">
+  <link rel="canonical" href="https://torrepalivacanze.it/galleria-torre-pali">
+  <title>Galleria Foto Torre Pali: Spiagge, Mare, Tramonti, Molo e Vita Salentina</title>
+  <meta name="description" content="Galleria fotografica di Torre Pali: spiagge Bandiera Blu, mare cristallino, tramonti, la torre, il molo, l'isola e la vita autentica del Salento. Tutte le immagini più belle per ispirare la tua vacanza.">
+  <meta name="keywords" content="galleria torre pali, foto torre pali, immagini torre pali, spiagge torre pali, mare salento, tramonti torre pali, molo torre pali, isola della fanciulla, vacanze salento, case vacanze torre pali, estate 2026, salento foto, gallery salento, torre pali vacanze, paesaggi salento, bandiera blu salento, case vicino mare torre pali, relax salento, vacanze famiglia salento">
+  <!-- Open Graph Tags -->
+  <meta property="og:title" content="Galleria Foto Torre Pali: Spiagge, Mare, Tramonti e Vita Salentina">
+  <meta property="og:description" content="Scopri Torre Pali attraverso una selezione di foto autentiche: spiagge dorate, mare cristallino, tramonti, la torre, il molo e la vita in paese. Tutte le immagini più belle del Salento.">
+  <meta property="og:url" content="https://torrepalivacanze.it/galleria-torre-pali">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://torrepalivacanze.it/img/torre-pali/torrepali.jpg">
+  <!-- Twitter Card Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Galleria Foto Torre Pali: Spiagge, Mare, Tramonti e Vita Salentina">
+  <meta name="twitter:description" content="Scopri Torre Pali attraverso una selezione di foto autentiche: spiagge dorate, mare cristallino, tramonti, la torre, il molo e la vita in paese. Tutte le immagini più belle del Salento.">
+  <meta name="twitter:image" content="https://torrepalivacanze.it/img/torre-pali/torrepali.jpg">
+  <!-- Favicon e Logo -->
+  <link rel="icon" type="image/png" sizes="32x32" href="https://torrepalivacanze.it/img/logo.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="https://torrepalivacanze.it/img/logo.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://torrepalivacanze.it/img/logo.png">
+  <link rel="shortcut icon" href="https://torrepalivacanze.it/img/logo.png">
+  <link rel="manifest" href="/manifest.json">
+  <!-- Dati Strutturati LocalBusiness per SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Torre Pali Vacanze",
+    "image": "https://torrepalivacanze.it/img/logo.png",
+    "@id": "https://torrepalivacanze.it",
+    "url": "https://torrepalivacanze.it",
+    "telephone": "+39-388-658-70-80",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Torre Pali",
+      "addressLocality": "Salve",
+      "addressRegion": "Puglia",
+      "postalCode": "73050",
+      "addressCountry": "IT"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 39.8447,
+      "longitude": 18.0789
+    },
+    "sameAs": [
+      "https://www.facebook.com/profile.php?id=61577506430394"
+    ]
+  }
+  </script>
+  <link rel="stylesheet" href="style-casa-bellavista-2.css">
+  <style>
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin: 40px auto 60px auto; max-width: 1200px; }
+    .gallery-grid img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 0 2px 12px rgba(102,126,234,0.08);
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      background: #e8eaf6;
+      display: block;
+    }
+    .gallery-grid img:hover { transform: scale(1.04); box-shadow: 0 8px 32px rgba(34,87,122,0.13); }
+    .back-btn { display: inline-block; background: linear-gradient(135deg, #22577a 0%, #22577a 100%); color: white; padding: 12px 28px; border-radius: 50px; text-decoration: none; margin-bottom: 25px; font-weight: 600; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3); transition: all 0.3s; }
+    .back-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 25px rgba(102, 126, 234, 0.5); }
+    @media (max-width: 700px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-grid img { height: 250px; }
+    }
+    /* Lightbox styles */
+  .lightbox { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; }
+    .lightbox.active { display: flex; }
+    .lightbox-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100vw;
+      height: 100vh;
+      max-width: 100vw;
+      max-height: 100vh;
+      margin: 0 auto;
+      pointer-events: none;
+    }
+    .lightbox img {
+      max-width: 98vw;
+      max-height: 94vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 18px;
+      box-shadow: 0 8px 32px rgba(34,87,122,0.25);
+      background: #222;
+      display: block;
+      pointer-events: auto;
+    }
+    .lightbox-close { position: absolute; top: 30px; right: 40px; color: white; font-size: 3em; cursor: pointer; font-weight: bold; z-index: 10001; }
+        .lightbox-arrow {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          color: #fff;
+          font-size: 3em;
+          background: rgba(0,0,0,0.25);
+          border: none;
+          cursor: pointer;
+          z-index: 10001;
+          padding: 0 16px;
+          border-radius: 50%;
+          user-select: none;
+          transition: background 0.2s;
+        }
+        .lightbox-arrow:hover { background: rgba(0,0,0,0.45); }
+        .lightbox-arrow.left { left: 10px; }
+        .lightbox-arrow.right { right: 10px; }
+        @media (max-width: 600px) {
+          .lightbox-arrow { font-size: 2em; padding: 0 8px; }
+          .lightbox-arrow.left { left: 2px; }
+          .lightbox-arrow.right { right: 2px; }
+        }
+    #lightbox-caption { color: #fff; text-align: center; margin-top: 18px; font-size: 1.15em; max-width: 90vw; word-break: break-word; padding: 0 10px; }
+    @media (max-width: 900px) {
+      .lightbox-content { max-width: 100vw; height: 100vh; }
+      .lightbox img { max-width: 98vw; max-height: 60vh; }
+    }
+    @media (max-width: 600px) {
+      .lightbox-content { max-width: 100vw; height: 100vh; }
+      .lightbox img { max-width: 98vw; max-height: 50vh; }
+      #lightbox-caption { font-size: 1em; padding: 0 6px; }
+      .lightbox-close { top: 10px; right: 16px; font-size: 2.2em; }
+    }
+  </style>
+  
+</head>
+<body>
+  <!-- Navbar avanzata -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="/" class="navbar-brand">🏝️ Torre Pali Vacanze</a>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Apri il menu di navigazione" tabindex="0" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); border: 2.5px solid #43e68b; border-radius: 14px; padding: 10px 10px; display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer; width: 54px; height: 54px; box-shadow: 0 2px 12px rgba(67,233,123,0.13);">
+        <span style="display: block; width: 32px; height: 5px; background: #fff; margin: 4px 0; border-radius: 3px;"></span>
+        <span style="display: block; width: 32px; height: 5px; background: #fff; margin: 4px 0; border-radius: 3px;"></span>
+        <span style="display: block; width: 32px; height: 5px; background: #fff; margin: 4px 0; border-radius: 3px;"></span>
+      </button>
+      <ul class="navbar-menu" id="navbarMenu">
+        <li><a href="/" onclick="closeMenu()">Home</a></li>
+        <li class="dropdown">
+          <span class="dropdown-toggle" style="color: #4a5568; font-weight: 500;">Appartamenti</span>
+          <div class="dropdown-menu">
+            <a href="casa-bellavista-2" onclick="closeMenu()">Casa Bella Vista 2</a>
+            <a href="casa-giorgio-4" onclick="closeMenu()">Casa Giorgio 4</a>
+            <a href="casa-giorgio-6" onclick="closeMenu()">Casa Giorgio 6</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <span class="dropdown-toggle" style="color: #4a5568; font-weight: 500;">Scopri il Salento</span>
+          <div class="dropdown-menu">
+            <a href="spiagge-salento-sud" onclick="closeMenu()">Guida Spiagge</a>
+            <a href="torre-pali" onclick="closeMenu()">⭐ Torre Pali</a>
+            <a href="lido-marini" onclick="closeMenu()">Lido Marini</a>
+            <a href="torre-vado" onclick="closeMenu()">Torre Vado</a>
+            <a href="pescoluse" onclick="closeMenu()">Pescoluse</a>
+            <a href="eventi-salento" onclick="closeMenu()">Eventi e Tradizioni</a>
+            <a href="faq-salento" onclick="closeMenu()">FAQ Salento</a>
+          </div>
+        </li>
+        <li><a href="recensioni" onclick="closeMenu()">⭐ Recensioni</a></li>
+        <li><a href="faq" onclick="closeMenu()">FAQ</a></li>
+        <li><a href="prenotazione" onclick="closeMenu()">Prenotazione</a></li>
+        <li><a href="contatti" onclick="closeMenu()">Contatti</a></li>
+      </ul>
+    </div>
+  </nav>
+  <script>
+    function toggleMenu() {
+      var menu = document.getElementById('navbarMenu');
+      menu.classList.toggle('active');
+    }
+    function closeMenu() {
+      var menu = document.getElementById('navbarMenu');
+      menu.classList.remove('active');
+    }
+    // Dropdown mobile
+    document.addEventListener('DOMContentLoaded', function() {
+      var dropdowns = document.querySelectorAll('.dropdown-toggle');
+      dropdowns.forEach(function(toggle) {
+        toggle.addEventListener('click', function(e) {
+          var parent = this.parentElement;
+          parent.classList.toggle('active');
+        });
+      });
+    });
+  </script>
+  <div style="max-width:1200px;margin:0 auto;padding:0 10px;">
+    <h1 style="margin-top:32px;font-size:2.3em;color:#22577a;text-align:center;letter-spacing:-1px;">Galleria fotografica Torre Pali</h1>
+    <p style="max-width:700px;margin:18px auto 36px auto;font-size:1.18em;color:#234;line-height:1.6;text-align:center;">
+      Scopri Torre Pali attraverso una selezione di foto autentiche: spiagge dorate, mare cristallino, tramonti suggestivi, la storica torre aragonese, il molo, la vita in paese e le emozioni del Salento. Ogni immagine racconta un momento speciale di questa località unica.
+    </p>
+    <div class="gallery-grid">
+      <img src="img/torre-pali/torrepali.jpg" alt="Panorama della spiaggia di Torre Pali con mare cristallino, sabbia dorata e Bandiera Blu, estate 2026" loading="lazy" onclick="openLightbox(this.src, this.alt)">
+      <img src="img/torre-pali/torrepali2.webp" alt="Vista della costa di Torre Pali, panorama costiero del Salento 2026" loading="lazy" onclick="openLightbox(this.src, this.alt)">
+      <img src="img/torre-pali/torrepali3.webp" alt="Vista del tramonto su Torre Pali, con acque trasparenti e fondali bassi, Bandiera Blu Salento" loading="lazy" onclick="openLightbox(this.src, this.alt)">
+      <img src="img/torre-pali/torrepali4.webp" alt="Costa di Torre Pali con case vacanze a pochi metri dal mare, paesaggio autentico del Salento" loading="lazy" onclick="openLightbox(this.src, this.alt)">
+      <img src="img/torre-pali/torrepali6.webp" alt="Vista panoramica della spiaggia e del mare di Torre Pali, Salento, con il molo sullo sfondo" loading="lazy" onclick="openLightbox(this.src, this.alt)">
+      <img src="img/torre-pali/molo.jpg" alt="La parte bassa del molo di Torre Pali, ideale per fare il bagno in acqua bassa e sicura" loading="lazy" onclick="openLightbox(this.src, this.alt)">
+      <img src="img/torre-pali/molo4.jpg" alt="Scatto sul molo di Torre Pali, con il mare agitato sullo sfondo" loading="lazy" onclick="openLightbox(this.src, this.alt)">
+      <img src="img/torre-pali/torrepali7.jpg" alt="Torre Pali, estate, relax e tradizione" loading="lazy" onclick="openLightbox(this.src, this.alt)">
+      <img src="img/torre-pali/torrepali8.webp" alt="Spiaggia sabbiosa di Torre Pali con mare turchese e cielo limpido, tipico paesaggio estivo salentino" loading="lazy" onclick="openLightbox(this.src, this.alt)">
+      <img src="img/torre-pali/torrepali9.webp" alt="Vista frontale della spiaggia e del mare di Torre Pali, acqua azzurra e sabbia fine, Salento" loading="lazy" onclick="openLightbox(this.src, this.alt)">
+      <img src="img/torre-pali/torrepali10.webp" alt="Torre aragonese di Torre Pali con il mare sullo sfondo, simbolo della località salentina" loading="lazy" onclick="openLightbox(this.src, this.alt)">
+      <img src="img/torre-pali/torrepali11.webp" alt="Scorcio panoramico di Torre Pali con spiaggia, mare e tramonto mozzafiato" loading="lazy" onclick="openLightbox(this.src, this.alt)">
+      <img src="img/torre-pali/torrepali12.webp" alt="Tratto di costa di Torre Pali con la torre aragonese, mare calmo e sabbia dorata, ideale per vacanze rilassanti" loading="lazy" onclick="openLightbox(this.src, this.alt)">
+      <img src="img/torre-pali/torrepali14.webp" alt="Spiaggia di Torre Pali adatta a famiglie e bambini, mare limpido e sabbia fine, estate in Salento" loading="lazy" onclick="openLightbox(this.src, this.alt)">
+      <img src="img/torre-pali/torrepali15.webp" alt="Vista frontale del mare azzurro e della spiaggia di Torre Pali, Salento, giornata soleggiata" loading="lazy" onclick="openLightbox(this.src, this.alt)">
+      <img src="img/torre-pali/torrepali16.webp" alt="Panorama della costa di Torre Pali con mare limpido e cielo azzurro, paesaggio tipico salentino" loading="lazy" onclick="openLightbox(this.src, this.alt)">
+        <!-- Lightbox -->
+        <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+          <span class="lightbox-close" onclick="closeLightbox();event.stopPropagation();">&times;</span>
+          <button class="lightbox-arrow left" id="lightbox-prev" onclick="event.stopPropagation();showPrevImage();" aria-label="Immagine precedente">&#8592;</button>
+          <button class="lightbox-arrow right" id="lightbox-next" onclick="event.stopPropagation();showNextImage();" aria-label="Immagine successiva">&#8594;</button>
+          <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="Immagine ingrandita Torre Pali">
+            <div id="lightbox-caption"></div>
+          </div>
+        </div>
+    </div>
+  </div>
+  <!-- Footer -->
+  <footer class="footer">
+  <div class="footer-container">
+  <div class="footer-section">
+  <h3>🏝️ Torre Pali Vacanze</h3>
+  <p>Affitto case vacanze a Torre Pali, Salento. Appartamenti in affitto a pochi passi dalla spiaggia Bandiera Blu con tutti i comfort.</p>
+  <p style="margin-top: 15px;">📍 Torre Pali, Lecce (LE)<br>Salento, Puglia</p>
+  </div>
+  <div class="footer-section">
+  <h3>Link Utili</h3>
+  <a href="/">Home</a>
+  <a href="casa-bellavista-2">Casa Bellavista 2</a>
+  <a href="casa-giorgio-4">Casa Giorgio 4</a>
+  <a href="casa-giorgio-6">Casa Giorgio 6</a>
+  <a href="torre-pali">Scopri Torre Pali</a>
+  <a href="torre-pali-posizione">Dove si trova Torre Pali</a>
+  <a href="contatti">Contatti</a>
+  <a href="privacy">Privacy Policy</a>
+  <a href="cookie-policy">Cookie Policy</a>
+  <br>
+  <h4 style="margin-bottom:8px;font-size:1em;">Link utili località</h4>
+  <a href="torre-vado">Torre Vado</a>
+  <a href="lido-marini">Lido Marini</a>
+  <a href="pescoluse">Pescoluse</a>
+  <a href="itinerario-7-giorni-salento">Itinerario 7 giorni Salento</a>
+  </div>
+  <div class="footer-section">
+  <h3>Contatti</h3>
+  <p> <a href="tel:+393886587080"> 📞+39 388 658 70 80</a></p>
+  <p>📧 <strong>info@torrepalivacanze.it</strong></p>
+  <p><a href="https://wa.me/393886587080?text=Ciao!%20Vorrei%20informazioni%20sulle%20vostre%20case%20vacanza%20a%20Torre%20Pali" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill="#fff" style="background:#25d366; border-radius:3px;"><path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 7.933-2.127c2.42 1.37 5.173 2.127 8.067 2.127 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.467c-2.482 0-4.908-0.646-7.07-1.87l-0.507-0.292-4.713 1.262 1.262-4.669-0.292-0.508c-1.207-2.100-1.847-4.507-1.847-6.978 0-7.51 6.11-13.619 13.619-13.619s13.619 6.109 13.619 13.619c0 7.51-6.11 13.619-13.619 13.619zM21.789 18.75c-0.214-0.107-1.268-0.625-1.464-0.696s-0.339-0.107-0.482 0.107c-0.143 0.214-0.554 0.696-0.679 0.839s-0.25 0.161-0.464 0.054c-0.214-0.107-0.902-0.333-1.718-1.060-0.635-0.567-1.064-1.268-1.189-1.482s-0.013-0.329 0.094-0.435c0.096-0.096 0.214-0.25 0.321-0.375s0.143-0.214 0.214-0.357 0.036-0.268-0.018-0.375c-0.054-0.107-0.482-1.161-0.661-1.589s-0.349-0.362-0.482-0.369c-0.125-0.007-0.268-0.007-0.411-0.007s-0.375 0.054-0.571 0.268c-0.196 0.214-0.75 0.732-0.75 1.786s0.768 2.071 0.875 2.214c0.107 0.143 1.5 2.357 3.653 3.304 0.51 0.214 0.909 0.343 1.219 0.438 0.512 0.161 0.978 0.139 1.346 0.084 0.411-0.061 1.268-0.518 1.446-1.018s0.179-0.929 0.125-1.018c-0.054-0.089-0.196-0.143-0.411-0.25z"/></svg>WhatsApp</a></p>
+  <p><a href="https://www.facebook.com/profile.php?id=61577506430394" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#fff" style="background:#1877f2; border-radius:3px;"><path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.406.595 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.406 24 22.674V1.326C24 .592 23.406 0 22.675 0z"/></svg>Seguici su Facebook</a></p>
+  <p style="margin-top: 15px;">Orario: 09:00 - 20:00<br>Risposta entro 1 ora</p>
+  </div>
+  </div>
+  <div class="footer-bottom">
+  <p>&copy; 2026 Torre Pali Vacanze. Tutti i diritti riservati.</p>
+  </div>
+  </footer>
+</body>
+<script>
+// Lightbox con scorrimento
+var galleryImages = Array.from(document.querySelectorAll('.gallery-grid img'));
+var currentIndex = 0;
+
+function openLightbox(src, alt) {
+  currentIndex = galleryImages.findIndex(img => img.src === src || img.currentSrc === src);
+  if (currentIndex === -1) currentIndex = 0;
+  showLightboxImage(currentIndex);
+  document.getElementById('lightbox').classList.add('active');
+}
+
+function showLightboxImage(idx) {
+  var img = document.getElementById('lightbox-img');
+  var caption = document.getElementById('lightbox-caption');
+  var image = galleryImages[idx];
+  img.src = image.src;
+  img.alt = image.alt;
+  caption.textContent = image.alt || '';
+  // Aggiorna visibilità frecce
+  document.getElementById('lightbox-prev').style.display = (idx > 0) ? 'block' : 'none';
+  document.getElementById('lightbox-next').style.display = (idx < galleryImages.length - 1) ? 'block' : 'none';
+}
+
+function closeLightbox() {
+  var lightbox = document.getElementById('lightbox');
+  var img = document.getElementById('lightbox-img');
+  img.src = '';
+  lightbox.classList.remove('active');
+}
+
+function showPrevImage() {
+  if (currentIndex > 0) {
+    currentIndex--;
+    showLightboxImage(currentIndex);
+  }
+}
+function showNextImage() {
+  if (currentIndex < galleryImages.length - 1) {
+    currentIndex++;
+    showLightboxImage(currentIndex);
+  }
+}
+
+document.addEventListener('keydown', function(e) {
+  var lightbox = document.getElementById('lightbox');
+  if (!lightbox.classList.contains('active')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') showPrevImage();
+  if (e.key === 'ArrowRight') showNextImage();
+});
+
+// Swipe mobile
+let touchStartX = null;
+let touchEndX = null;
+const lightboxContent = document.querySelector('.lightbox-content');
+if (lightboxContent) {
+  lightboxContent.addEventListener('touchstart', function(e) {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+  lightboxContent.addEventListener('touchend', function(e) {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  });
+}
+function handleSwipe() {
+  if (touchStartX !== null && touchEndX !== null) {
+    if (touchEndX - touchStartX > 50) showPrevImage();
+    if (touchStartX - touchEndX > 50) showNextImage();
+  }
+  touchStartX = null;
+  touchEndX = null;
+}
+</script>
+</html>

@@ -147,7 +147,15 @@ header h1 { font-size: 3.5em; margin-bottom: 15px; font-weight: 700; text-shadow
   header h1 { font-size: 2em; }
   .subtitle { font-size: 1.1em; }
   .hero-gallery { grid-template-columns: 1fr; padding: 0; gap: 10px; }
-  .hero-gallery img { height: auto; width: 100%; max-width: 100%; border-radius: 10px; }
+  .hero-gallery img {
+    height: 250px;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+    background: #e8eaf6;
+    display: block;
+  }
   .info-grid { grid-template-columns: 1fr; }
   .features-list { grid-template-columns: 1fr; }
   .content-section { padding: 30px 20px; }
@@ -244,81 +252,67 @@ fetch('cookie-banner')
 </a>
 
 <div class="container">
-  <nav aria-label="breadcrumb" style="margin-bottom: 18px; font-size: 1.05em;">
-    <span><a href="/">Home</a> &gt; </span>
-    <span><a href="spiagge-salento-sud">Spiagge Salento Sud</a> &gt; </span>
-    <span style="color:#22577a;font-weight:600;">Torre Pali</span>
-  </nav>
-  <a href="/" class="back-btn">← Torna alla homepage</a>
 
-<header>
-<h1>🏝️ Torre Pali: Guida 2026 a Spiagge, Mare, Storia e Vacanze</h1>
-<p class="subtitle">Scopri Torre Pali, Salento: spiagge Bandiera Blu, Isola della Fanciulla, molo, storia, cosa vedere e dove dormire vicino al mare.</p>
-<p style="margin-top:10px;font-size:1.1em;">Scopri anche: 
-  <a href="pescoluse" style="color:#fff !important;">Pescoluse</a> | 
-  <a href="lido-marini" style="color:#fff !important;">Lido Marini</a> | 
-  <a href="torre-vado" style="color:#fff !important;">Torre Vado</a> | 
-  <a href="spiagge-salento-sud" style="color:#fff !important;">Tutte le spiagge</a> | 
-  <a href="/#appartamenti" style="color:#fff !important;">Case vacanza</a>
-</p>
-</header>
+
+<!-- Hero Section Torre Pali -->
+<section class="hero-torre-pali" style="position:relative; min-height:340px; max-width:1200px; margin:0 auto 38px auto; border-radius:32px; overflow:hidden; box-shadow:0 10px 40px rgba(34,87,122,0.13); display:flex; align-items:center; justify-content:center; background:#18304b;">
+  <picture style="width:100%; height:100%; position:absolute; inset:0; z-index:1;">
+    <source srcset="img/torre-pali/torrepali.webp" type="image/webp">
+    <img src="img/torre-pali/torrepali.jpg" alt="Panorama di Torre Pali con spiaggia, mare cristallino e la torre aragonese" style="width:100%; height:100%; object-fit:cover; object-position:center; min-height:340px; filter:brightness(0.72) blur(0px);">
+  </picture>
+  <div style="position:relative; z-index:2; color:#fff; text-align:center; padding:48px 18px 44px 18px; width:100%;">
+    <h1 style="font-size:2.7em; font-weight:800; letter-spacing:0.5px; text-shadow:0 4px 18px #0007; margin-bottom:12px;">🏝️ Torre Pali: Guida 2026</h1>
+    <p style="font-size:1.25em; font-weight:400; max-width:700px; margin:0 auto 10px auto; text-shadow:0 2px 8px #0006;">Scopri Torre Pali, Salento: spiagge Bandiera Blu, Isola della Fanciulla, molo, storia, cosa vedere e dove dormire vicino al mare.</p>
+  </div>
+  <div style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(34,87,122,0.18) 0%,rgba(24,48,75,0.38) 100%); z-index:1;"></div>
+</section>
+  </nav>
+
+    <!-- Sommario Interattivo -->
+  <nav id="sommario" aria-label="Sommario della pagina" style="margin: 0 auto 28px auto; max-width: 900px; background: rgba(255,255,255,0.93); border-radius: 18px; box-shadow: 0 2px 12px rgba(102,126,234,0.07); padding: 22px 18px 18px 18px;">
+    <strong style="color:#22577a; font-size:1.18em; letter-spacing:0.5px;">Indice rapido:</strong>
+    <ul style="list-style:none; padding:0; margin:12px 0 0 0; display:flex; flex-wrap:wrap; gap:12px 22px; font-size:1.04em;">
+      <li><a href="#dove" style="color:#22577a; text-decoration:underline;">Dove si trova</a></li>
+      <li><a href="#spiagge" style="color:#22577a; text-decoration:underline;">Le spiagge</a></li>
+      <li><a href="#torre" style="color:#22577a; text-decoration:underline;">La Torre</a></li>
+      <li><a href="#lidi" style="color:#22577a; text-decoration:underline;">I migliori lidi</a></li>
+      <li><a href="#isola" style="color:#22577a; text-decoration:underline;">Isola della Fanciulla</a></li>
+      <li><a href="#molo" style="color:#22577a; text-decoration:underline;">Il Molo</a></li>
+      <li><a href="#arrivare" style="color:#22577a; text-decoration:underline;">Come arrivare</a></li>
+      <li><a href="#quando" style="color:#22577a; text-decoration:underline;">Quando visitare</a></li>
+      <li><a href="#vicino" style="color:#22577a; text-decoration:underline;">Cosa vedere vicino</a></li>
+      <li><a href="#servizi" style="color:#22577a; text-decoration:underline;">Servizi</a></li>
+      <li><a href="#gastronomia" style="color:#22577a; text-decoration:underline;">Gastronomia</a></li>
+        <li><a href="#dormire" style="color:#22577a; text-decoration:underline;">Dove dormire</a></li>
+      <li><a href="#mangiare" style="color:#22577a; text-decoration:underline;">Dove mangiare</a></li>
+      <li><a href="#attivita" style="color:#22577a; text-decoration:underline;">Attività & Sport</a></li>
+      <li><a href="#notte" style="color:#22577a; text-decoration:underline;">Vita notturna</a></li>
+      <li><a href="#prezzi" style="color:#22577a; text-decoration:underline;">Prezzi</a></li>
+      <li><a href="#faq" style="color:#22577a; text-decoration:underline;">Domande frequenti</a></li>
+      <li><a href="#mappa" style="color:#22577a; text-decoration:underline;">Mappa</a></li>
+    </ul>
+  </nav>
 
 <div class="hero-gallery">
 <picture>
   <source srcset="img/torre-pali/torrepali.webp" type="image/webp">
-  <img alt="Panorama della spiaggia di Torre Pali con mare cristallino, sabbia dorata e Bandiera Blu, estate 2026" loading="lazy" decoding="async" width="600" height="400" onclick="openLightbox(this.src)">
+  <img alt="Panorama della spiaggia di Torre Pali con mare cristallino, sabbia dorata, Bandiera Blu e torre aragonese" loading="lazy" decoding="async" width="600" height="400" onclick="openLightbox(this.currentSrc)">
 </picture>
 <picture>
   <source srcset="img/torre-pali/torrepali2.webp" type="image/webp">
-  <img alt="Vista aerea di Torre Pali e dell'Isola della Fanciulla, panorama costiero del Salento 2026" loading="lazy" decoding="async" width="600" height="400" onclick="openLightbox(this.src)">
-</picture>
-<picture>
-  <source srcset="img/torre-pali/torrepali3.webp" type="image/webp">
-  <img alt="Acque trasparenti e fondali bassi di Torre Pali, ideali per famiglie e bambini, Bandiera Blu Salento" loading="lazy" decoding="async" width="600" height="400" onclick="openLightbox(this.src)">
-</picture>
-<picture>
-  <source srcset="img/torre-pali/torrepali4.webp" type="image/webp">
-  <img alt="Costa di Torre Pali con case vacanze a pochi metri dal mare, paesaggio autentico del Salento" loading="lazy" decoding="async" width="600" height="400"  onclick="openLightbox(this.src)">
-</picture>
-<picture>
-  <source srcset="img/torre-pali/torrepali6.webp" type="image/webp">
-  <img alt="Vista panoramica della spiaggia e del mare di Torre Pali, Salento, con bagnanti e ombrelloni colorati" loading="lazy" decoding="async" width="600" height="400" onclick="openLightbox(this.src)">
-</picture>
-<picture>
-  <source srcset="img/torre-pali/torrepali8.webp" type="image/webp">
-  <img alt="Spiaggia sabbiosa di Torre Pali con mare turchese e cielo limpido, tipico paesaggio estivo salentino" loading="lazy" decoding="async" width="600" height="400" onclick="openLightbox(this.src)">
-</picture>
-<picture>
-  <source srcset="img/torre-pali/torrepali9.webp" type="image/webp">
-  <img alt="Vista frontale della spiaggia e del mare di Torre Pali, acqua azzurra e sabbia fine, Salento" loading="lazy" decoding="async" width="600" height="400" onclick="openLightbox(this.src)">
+  <img alt="Vista della costa di Torre Pali, panorama costiero del Salento 2026" loading="lazy" decoding="async" width="600" height="400" onclick="openLightbox(this.currentSrc)">
 </picture>
 <picture>
   <source srcset="img/torre-pali/torrepali10.webp" type="image/webp">
-  <img alt="Torre aragonese di Torre Pali con il mare sullo sfondo, simbolo della località salentina" loading="lazy" decoding="async" width="600" height="400" onclick="openLightbox(this.src)">
-</picture>
-<picture>
-  <source srcset="img/torre-pali/torrepali11.webp" type="image/webp">
-  <img alt="Scorcio panoramico di Torre Pali con spiaggia, mare e tipiche abitazioni bianche del Salento" loading="lazy" decoding="async" width="600" height="400" onclick="openLightbox(this.src)">
-</picture>
-<picture>
-  <source srcset="img/torre-pali/torrepali12.webp" type="image/webp">
-  <img alt="Tratto di costa di Torre Pali con mare calmo e sabbia dorata, ideale per vacanze rilassanti" loading="lazy" decoding="async" width="600" height="400" onclick="openLightbox(this.src)">
-</picture>
-<picture>
-  <source srcset="img/torre-pali/torrepali13.webp" type="image/webp">
-  <img alt="Vista panoramica di Torre Pali al tramonto, colori caldi e atmosfera suggestiva sul mare" loading="lazy" decoding="async" width="600" height="400" onclick="openLightbox(this.src)">
+  <img alt="Torre aragonese di Torre Pali con il mare sullo sfondo, simbolo della località salentina" loading="lazy" decoding="async" width="600" height="400" onclick="openLightbox(this.currentSrc)">
 </picture>
 <picture>
   <source srcset="img/torre-pali/torrepali14.webp" type="image/webp">
-  <img alt="Spiaggia di Torre Pali con famiglie e bambini, mare limpido e sabbia fine, estate in Salento" loading="lazy" decoding="async" width="600" height="400" onclick="openLightbox(this.src)">
+  <img alt="Spiaggia di Torre Pali con mare limpido e sabbia fine, estate in Salento" loading="lazy" decoding="async" width="600" height="400" onclick="openLightbox(this.currentSrc)">
 </picture>
 <picture>
   <source srcset="img/torre-pali/torrepali15.webp" type="image/webp">
-  <img alt="Vista frontale del mare azzurro e della spiaggia di Torre Pali, Salento, giornata soleggiata" loading="lazy" decoding="async" width="600" height="400" onclick="openLightbox(this.src)">
-</picture>
-<picture>
-  <source srcset="img/torre-pali/torrepali16.webp" type="image/webp">
-  <img alt="Panorama della costa di Torre Pali con mare limpido e cielo azzurro, paesaggio tipico salentino" loading="lazy" decoding="async" width="600" height="400" onclick="openLightbox(this.src)">
+  <img alt="Vista frontale del mare azzurro e della spiaggia di Torre Pali, Salento, giornata soleggiata" loading="lazy" decoding="async" width="600" height="400" onclick="openLightbox(this.currentSrc)">
 </picture>
 </div>
 
@@ -328,6 +322,7 @@ fetch('cookie-banner')
 </div>
 
 <div class="content-section">
+<div id="dove"></div>
 <h2>🌊 Torre Pali: Dove si trova e perché sceglierla</h2>
 <p>
 Torre Pali è una piccola frazione marina di <strong>Salve</strong>, situata nella punta più meridionale del Salento, in provincia di Lecce. Questa località balneare rappresenta una delle destinazioni più affascinanti e autentiche della Puglia, dove il mare cristallino incontra la tradizione millenaria del Sud Italia.
@@ -359,6 +354,7 @@ Con le sue spiagge premiate dalla <strong>Bandiera Blu</strong> per la qualità 
 Torre Pali si affaccia sul <strong>Mar Ionio</strong>, a soli <strong>70 km da Lecce</strong> e <strong>120 km dall'aeroporto di Brindisi</strong>. La sua posizione strategica la rende facilmente raggiungibile e al tempo stesso un punto di partenza ideale per esplorare tutto il Salento: da Gallipoli a Santa Maria di Leuca, dalle grotte di Castro alle spiagge di Pescoluse.
 </p>
 
+<div id="spiagge"></div>
 <h3>🏖️ Le Spiagge</h3>
 <p>
 Le spiagge di Torre Pali sono caratterizzate da <strong>sabbia finissima e dorata</strong>, fondali bassi e digradanti perfetti per le famiglie con bambini, e un mare dai colori spettacolari che vanno dal turchese all'azzurro intenso. La costa si estende per diversi chilometri, alternando spiagge libere attrezzate con ombrelloni e lettini a tratti di costa selvaggia dove la natura domina incontrastata.
@@ -398,6 +394,7 @@ Il litorale è protetto da correnti e venti grazie alla sua conformazione natura
 </div>
 </div>
 
+<div id="torre"></div>
 <h3>🏰 La Torre di Guardia</h3>
 <p>
 Il nome Torre Pali deriva dall'antica <strong>torre di avvistamento</strong> costruita nel XVI secolo come parte del sistema difensivo costiero contro le incursioni dei pirati saraceni. La torre, ancora visibile e ben conservata, rappresenta un importante testimonianza storica e un simbolo della località.
@@ -409,6 +406,7 @@ Queste torri costiere, costruite durante il dominio spagnolo del Regno di Napoli
 Le spiagge di Torre Pali offrono sia <strong>tratti liberi</strong> che <strong>stabilimenti balneari attrezzati</strong> con ombrelloni, lettini, bar, ristoranti, docce, servizi igienici e assistenza bagnanti. Molti lidi organizzano attività sportive, corsi di acquagym, animazione per bambini e serate musicali.
 </p>
 
+<div id="lidi"></div>
 <h4 style="font-size: 1.4em; color: #22577a; margin: 30px 0 20px 0;">⛱️ I Migliori Lidi di Torre Pali</h4>
 <p style="margin-bottom: 25px;">
 Scopri gli stabilimenti balneari più apprezzati di Torre Pali, ognuno con le proprie caratteristiche e servizi per rendere perfetta la tua giornata in spiaggia. <span style="display:block; margin-top:8px; color:#4a5568; font-size:1.04em;">Puoi raggiungere comodamente tutti i lidi passeggiando in spiaggia tra Torre Pali e Pescoluse.</span>
@@ -491,6 +489,7 @@ Il primo AGRI-BEACH d'Italia a Pescoluse. Terreno retro dunale di 5 ettari dove 
 </div>
 
 <div class="content-section">
+<div id="isola"></div>
 <h2>🏝️ Isola della Fanciulla: simbolo di Torre Pali</h2>
 <p>
 A pochi metri dalla costa di Torre Pali emerge dall'acqua cristallina un piccolo isolotto roccioso conosciuto come <strong>Isola della Fanciulla</strong> (o Isola della Fanciulla di Torre Pali). Questo scoglio, raggiungibile facilmente a nuoto o con un breve tragitto in canoa, è uno dei simboli più fotografati e amati della località.
@@ -560,6 +559,7 @@ L'isolotto è costituito da <strong>rocce calcaree</strong> ed è circondato da 
 </div>
 
 <div class="content-section">
+<div id="molo"></div>
 <h2>🌅 Il Molo di Torre Pali: tuffi e tramonti</h2>
 <p>
 Uno dei luoghi più affascinanti e fotografati di Torre Pali è il suo caratteristico <strong>molo in pietra</strong>, una piccola scogliera che si protende nel mare cristallino. Questo angolo suggestivo rappresenta il punto d'incontro perfetto tra il relax diurno e i tramonti mozzafiato sul Mar Ionio.
@@ -643,6 +643,7 @@ Durante le serate estive, il molo è anche punto di partenza per suggestive <str
 </div>
 
 <div class="content-section">
+<div id="arrivare"></div>
 <h2>🚗 Come arrivare a Torre Pali</h2>
 <p>
 Torre Pali è facilmente raggiungibile da diverse località pugliesi e dai principali hub di trasporto della regione.
@@ -692,6 +693,7 @@ Nel centro abitato il parcheggio è a pagamento, ma agli affittuari viene fornit
 </div>
 
 <div class="content-section">
+<div id="quando"></div>
 <h2>📅 Quando visitare Torre Pali</h2>
 <p>
 Torre Pali è una destinazione ideale da <strong>maggio a ottobre</strong>, con il picco di affluenza turistica in luglio e agosto. Ogni periodo dell'anno offre vantaggi diversi.
@@ -760,6 +762,7 @@ Il periodo migliore per visitare Torre Pali è <strong>settembre</strong>: il ma
 </div>
 
 <div class="content-section">
+<div id="vicino"></div>
 <h2>🗺️ Cosa vedere vicino Torre Pali</h2>
 <p>
 La posizione strategica di Torre Pali la rende il punto di partenza ideale per esplorare le meraviglie del basso Salento. Ecco le destinazioni imperdibili nelle vicinanze.
@@ -854,6 +857,7 @@ L'entroterra del basso Salento è costellato di <strong>masserie fortificate</st
 </div>
 
 <div class="content-section">
+<div id="servizi"></div>
 <h2>🛍️ Servizi e informazioni pratiche a Torre Pali</h2>
 <p>
 Torre Pali è una località turistica ben organizzata con tutti i servizi necessari per una vacanza confortevole.
@@ -927,6 +931,7 @@ Torre Pali è ben coperta dalla rete mobile 4G/5G. La maggior parte di bar, rist
 </div>
 
 <div class="content-section">
+<div id="gastronomia"></div>
 <h2>🍽️ Gastronomia e Tradizioni</h2>
 <p>
 Torre Pali offre numerosi ristoranti, trattorie e pizzerie dove gustare i piatti tipici della <strong>cucina salentina</strong>: dalle orecchiette alle cozze alla tarantina, dal pesce freschissimo ai dolci tradizionali come il pasticciotto leccese.
@@ -974,6 +979,23 @@ Durante l'estate, Torre Pali si anima con sagre, concerti sulla spiaggia, serate
 </div>
 
 <div class="content-section">
+<p>
+<div id="dormire"></div>
+<h2>🏠 Dove Dormire a Torre Pali</h2>
+<p>
+Torre Pali offre diverse soluzioni per il soggiorno: case vacanze a pochi passi dal mare, appartamenti per famiglie, B&B accoglienti e hotel con tutti i comfort. Le case vacanze sono la scelta ideale per chi cerca indipendenza e spazi ampi, spesso dotate di cucina, veranda e parcheggio. In alternativa, puoi optare per B&B e hotel con colazione inclusa e servizi aggiuntivi. Prenota con anticipo per trovare le migliori offerte, soprattutto nei mesi di alta stagione.
+</p>
+<ul style="margin-bottom:24px;">
+  <li><strong>Case vacanze fronte mare:</strong> Ideali per famiglie e gruppi, con accesso diretto alla spiaggia.</li>
+  <li><strong>Appartamenti in centro:</strong> Comodi per raggiungere a piedi spiaggia, ristoranti e servizi.</li>
+  <li><strong>B&B e hotel:</strong> Soluzioni con colazione, pulizia giornaliera e reception.</li>
+  <li><strong>Campeggi e villaggi:</strong> Per chi ama la natura e la vita all’aria aperta.</li>
+</ul>
+<p>
+<strong>Consiglio:</strong> Scegli alloggi con recensioni verificate e verifica la distanza reale dal mare. Per offerte e disponibilità, consulta la sezione <a href="/" style="color:#22577a; text-decoration:underline;">Appartamenti Disponibili</a> o <a href="contatti" style="color:#22577a; text-decoration:underline;">contattaci</a> per una proposta personalizzata.
+</p>
+
+<div id="mangiare"></div>
 <h2>🍴 Dove Mangiare a Torre Pali</h2>
 <p>
 Torre Pali e dintorni offrono un'eccellente scelta di ristoranti, trattorie e pizzerie dove gustare l'autentica cucina salentina e il pesce freschissimo dell'Adriatico e dello Ionio.
@@ -1062,6 +1084,7 @@ Torre Pali e dintorni offrono un'eccellente scelta di ristoranti, trattorie e pi
 </div>
 
 <div class="content-section">
+<div id="attivita"></div>
 <h2>🎯 Attività & Sport a Torre Pali</h2>
 <p>
 Oltre al relax in spiaggia, Torre Pali offre numerose attività per chi cerca un po' di avventura e sport durante la vacanza
@@ -1136,6 +1159,7 @@ Oltre al relax in spiaggia, Torre Pali offre numerose attività per chi cerca un
 </div>
 
 <div class="content-section">
+<div id="notte"></div>
 <h2>🌙 Vita Notturna & Eventi</h2>
 <p>
 Le serate a Torre Pali offrono il perfetto mix tra tranquillità e divertimento. Ecco cosa puoi trovare durante la tua vacanza.
@@ -1192,6 +1216,7 @@ Per chi cerca vita notturna più movimentata, a soli 40-60 km si trovano le famo
 </div>
 
 <div class="content-section">
+<div id="prezzi"></div>
 <h2>💰 Prezzi e Costi Medi</h2>
 <p>
 Torre Pali offre un ottimo rapporto qualità-prezzo rispetto ad altre località turistiche del Salento. Ecco una guida ai costi medi per pianificare il tuo budget vacanza.
@@ -1253,6 +1278,7 @@ Torre Pali offre un ottimo rapporto qualità-prezzo rispetto ad altre località 
 </div>
 
 <div class="content-section">
+<div id="faq"></div>
 <h2>❓ Domande Frequenti su Torre Pali</h2>
 
 <div class="faq-list" style="margin: 30px 0;">
@@ -1315,6 +1341,7 @@ Sì, ottima! Torre Pali ha copertura 4G/5G di tutti i principali operatori. Bar,
 </div>
 
 <div class="content-section">
+<div id="mappa"></div>
 <h2>🗺️ Mappa Interattiva di Torre Pali</h2>
 <p style="margin-bottom: 25px;">
 Esplora la mappa interattiva per scoprire la posizione di Torre Pali, le spiagge, i servizi e i punti di interesse. Clicca sui marker per maggiori informazioni!
@@ -1345,7 +1372,7 @@ Esplora la mappa interattiva per scoprire la posizione di Torre Pali, le spiagge
 <a href="/#appartamenti" class="btn" style="font-size: 1.1em; padding: 18px 40px;">🏠 Vedi Appartamenti Disponibili</a>
 <a href="contatti" class="btn" style="font-size: 1.1em; padding: 18px 40px;">📞 Contattaci per Info</a>
 <p style="margin-top: 25px; color: #fff; font-size: 1em; text-shadow: 0 1px 8px #4f46e5; font-weight: 500;">
-💬 Risposta rapida su WhatsApp • <span style='color:#fbbf24;'>📞 +39 388 658 70 80</span> • <span style='color:#38bdf8;'>✉️ info@torrepalivacanze.it</span>
+💬 Risposta rapida su WhatsApp • </br><span style='color:#fbbf24;'>📞 +39 388 658 70 80</span> • </br><span style='color:#38bdf8;vertical-align:middle;'><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#38bdf8" style="vertical-align:middle;margin-right:6px;"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 20v-9.99l7.99 7.99c.39.39 1.02.39 1.41 0L20 10.01V20H4z"/></svg>info@torrepalivacanze.it</span>
 </p>
 </div>
 </div>
@@ -1663,6 +1690,14 @@ document.addEventListener('keydown', function(e) {
 <p>&copy; 2026 Torre Pali Vacanze. Tutti i diritti riservati.</p>
 </div>
 </footer>
+<!-- Scroll to Top Button -->
+<button id="scrollToTopBtn" aria-label="Torna su" title="Torna su">
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="16" cy="16" r="16" fill="#fff" fill-opacity="0.85"/>
+    <path d="M16 10L16 22" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+    <path d="M10 16L16 10L22 16" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
 
 <!-- Dati Strutturati Località Turistica -->
 </script>
@@ -1755,4 +1790,61 @@ document.addEventListener('click', function(event) {
 </script>
 
 </body>
+<style>
+#scrollToTopBtn {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 40px;
+  z-index: 1000;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  border-radius: 50%;
+}
+#scrollToTopBtn svg {
+  display: block;
+}
+#scrollToTopBtn.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+#scrollToTopBtn:active {
+  transform: scale(0.95);
+}
+@media (max-width: 600px) {
+  #scrollToTopBtn {
+    left: 50%;
+    right: auto;
+    bottom: 28px;
+    transform: translateX(-50%);
+    width: 48px;
+    height: 48px;
+  }
+  #scrollToTopBtn svg {
+    width: 28px;
+    height: 28px;
+  }
+}
+</style>
+<script>
+// Scroll to Top Button logic
+const scrollBtn = document.getElementById('scrollToTopBtn');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 300) {
+    scrollBtn.classList.add('show');
+  } else {
+    scrollBtn.classList.remove('show');
+  }
+});
+scrollBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+</script>
 </html>
