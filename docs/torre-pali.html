@@ -1346,7 +1346,10 @@ Sì, ottima! Torre Pali ha copertura 4G/5G di tutti i principali operatori. Bar,
 <p style="margin-bottom: 25px;">
 Esplora la mappa interattiva per scoprire la posizione di Torre Pali, le spiagge, i servizi e i punti di interesse. Clicca sui marker per maggiori informazioni!
 </p>
-<div id="torre-pali-map" style="height: 500px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); margin-bottom: 20px;"></div>
+<div style="position:relative;">
+  <div id="torre-pali-map" style="height: 500px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); margin-bottom: 20px;"></div>
+  <div id="map-overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.01);z-index:10;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2em;color:#22577a;font-weight:600;transition:background 0.2s;">Clicca per interagire con la mappa</div>
+</div>
 <div style="text-align:center; margin: 12px 0 24px 0;">
   <a href="https://www.google.com/maps/place/Torre+Pali,+Salve+LE" target="_blank" rel="noopener" style="color:#22577a; font-weight:600; text-decoration:underline;">Apri Torre Pali su Google Maps</a>
 </div>
@@ -1605,10 +1608,18 @@ Esplora la mappa interattiva per scoprire la posizione di Torre Pali, le spiagge
 // Mappa Interattiva Torre Pali
 (function() {
   function initTorrePaliMap() {
+
     const map = L.map('torre-pali-map', {
-      center: [39.8400, 18.2100], // Più sopra e più a destra
+      center: [39.8400, 18.2100],
       zoom: 15,
-      scrollWheelZoom: false
+      scrollWheelZoom: false,
+      dragging: false,
+      doubleClickZoom: false,
+      boxZoom: false,
+      keyboard: false,
+      tap: false,
+      touchZoom: false,
+      zoomControl: true
     });
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -1621,19 +1632,65 @@ Esplora la mappa interattiva per scoprire la posizione di Torre Pali, le spiagge
 
   // Carica la mappa quando diventa visibile
   const mapElement = document.getElementById('torre-pali-map');
-  if (mapElement && 'IntersectionObserver' in window) {
+  const overlay = document.getElementById('map-overlay');
+  let mapInstance = null;
+  function enableMapInteraction() {
+    if (!mapInstance) return;
+    mapInstance.dragging.enable();
+    mapInstance.scrollWheelZoom.enable();
+    mapInstance.doubleClickZoom.enable();
+    mapInstance.boxZoom.enable();
+    mapInstance.keyboard.enable();
+    mapInstance.tap && mapInstance.tap.enable();
+    mapInstance.touchZoom.enable();
+    overlay.style.display = 'none';
+  }
+  if (mapElement && overlay && 'IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          initTorrePaliMap();
+          mapInstance = L.map('torre-pali-map', {
+            center: [39.8400, 18.2100],
+            zoom: 15,
+            scrollWheelZoom: false,
+            dragging: false,
+            doubleClickZoom: false,
+            boxZoom: false,
+            keyboard: false,
+            tap: false,
+            touchZoom: false,
+            zoomControl: true
+          });
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors',
+            maxZoom: 18
+          }).addTo(mapInstance);
+          overlay.addEventListener('click', enableMapInteraction);
           observer.disconnect();
         }
       });
     }, { rootMargin: '200px' });
-    
     observer.observe(mapElement);
-  } else if (mapElement) {
-    setTimeout(initTorrePaliMap, 2000);
+  } else if (mapElement && overlay) {
+    setTimeout(() => {
+      mapInstance = L.map('torre-pali-map', {
+        center: [39.8400, 18.2100],
+        zoom: 15,
+        scrollWheelZoom: false,
+        dragging: false,
+        doubleClickZoom: false,
+        boxZoom: false,
+        keyboard: false,
+        tap: false,
+        touchZoom: false,
+        zoomControl: true
+      });
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors',
+        maxZoom: 18
+      }).addTo(mapInstance);
+      overlay.addEventListener('click', enableMapInteraction);
+    }, 2000);
   }
 })();
 
