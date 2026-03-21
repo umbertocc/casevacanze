@@ -1348,7 +1348,7 @@ Esplora la mappa interattiva per scoprire la posizione di Torre Pali, le spiagge
 </p>
 <div style="position:relative;">
   <div id="torre-pali-map" style="height: 500px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); margin-bottom: 20px;"></div>
-  <div id="map-overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.01);z-index:10;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2em;color:#22577a;font-weight:600;transition:background 0.2s;">Clicca per interagire con la mappa</div>
+  <div id="map-overlay" style="position:absolute !important;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.55);backdrop-filter:blur(2px);z-index:9999 !important;display:flex;align-items:center;justify-content:center;cursor:pointer;border-radius:16px;font-weight:600;font-size:1.08em;color:#22577a;transition:background 0.2s;">Clicca sulla mappa per attivare lo zoom e la navigazione</div>
 </div>
 <div style="text-align:center; margin: 12px 0 24px 0;">
   <a href="https://www.google.com/maps/place/Torre+Pali,+Salve+LE" target="_blank" rel="noopener" style="color:#22577a; font-weight:600; text-decoration:underline;">Apri Torre Pali su Google Maps</a>
@@ -1605,11 +1605,14 @@ Esplora la mappa interattiva per scoprire la posizione di Torre Pali, le spiagge
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
 <script>
-// Mappa Interattiva Torre Pali
-(function() {
-  function initTorrePaliMap() {
 
-    const map = L.map('torre-pali-map', {
+// Mappa Interattiva Torre Pali con overlay stile Casa Bellavista 2
+document.addEventListener('DOMContentLoaded', function() {
+  var overlay = document.getElementById('map-overlay');
+  var mapDiv = document.getElementById('torre-pali-map');
+  var mapInstance = null;
+  function createMap() {
+    mapInstance = L.map('torre-pali-map', {
       center: [39.8400, 18.2100],
       zoom: 15,
       scrollWheelZoom: false,
@@ -1621,78 +1624,52 @@ Esplora la mappa interattiva per scoprire la posizione di Torre Pali, le spiagge
       touchZoom: false,
       zoomControl: true
     });
-
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap contributors',
       maxZoom: 18
-    }).addTo(map);
-
-    // Nessun marker: mappa senza simboli di posizione
+    }).addTo(mapInstance);
+    // Blocca interazione finché non si clicca
+    if(mapDiv) mapDiv.style.pointerEvents = 'none';
+    if(overlay) overlay.style.display = 'flex';
   }
-
-  // Carica la mappa quando diventa visibile
-  const mapElement = document.getElementById('torre-pali-map');
-  const overlay = document.getElementById('map-overlay');
-  let mapInstance = null;
-  function enableMapInteraction() {
-    if (!mapInstance) return;
-    mapInstance.dragging.enable();
-    mapInstance.scrollWheelZoom.enable();
-    mapInstance.doubleClickZoom.enable();
-    mapInstance.boxZoom.enable();
-    mapInstance.keyboard.enable();
-    mapInstance.tap && mapInstance.tap.enable();
-    mapInstance.touchZoom.enable();
-    overlay.style.display = 'none';
+  // Lazy load con IntersectionObserver, evita doppia creazione
+  let mapLoaded = false;
+  function lazyLoadMap() {
+    if (!mapLoaded) {
+      createMap();
+      mapLoaded = true;
+    }
   }
-  if (mapElement && overlay && 'IntersectionObserver' in window) {
+  if (mapDiv && 'IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          mapInstance = L.map('torre-pali-map', {
-            center: [39.8400, 18.2100],
-            zoom: 15,
-            scrollWheelZoom: false,
-            dragging: false,
-            doubleClickZoom: false,
-            boxZoom: false,
-            keyboard: false,
-            tap: false,
-            touchZoom: false,
-            zoomControl: true
-          });
-          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors',
-            maxZoom: 18
-          }).addTo(mapInstance);
-          overlay.addEventListener('click', enableMapInteraction);
+          lazyLoadMap();
           observer.disconnect();
         }
       });
     }, { rootMargin: '200px' });
-    observer.observe(mapElement);
-  } else if (mapElement && overlay) {
-    setTimeout(() => {
-      mapInstance = L.map('torre-pali-map', {
-        center: [39.8400, 18.2100],
-        zoom: 15,
-        scrollWheelZoom: false,
-        dragging: false,
-        doubleClickZoom: false,
-        boxZoom: false,
-        keyboard: false,
-        tap: false,
-        touchZoom: false,
-        zoomControl: true
-      });
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors',
-        maxZoom: 18
-      }).addTo(mapInstance);
-      overlay.addEventListener('click', enableMapInteraction);
-    }, 2000);
+    observer.observe(mapDiv);
+  } else if (mapDiv) {
+    setTimeout(lazyLoadMap, 2000);
   }
-})();
+  // Sblocca la mappa solo dopo click sull'overlay
+  if(overlay && mapDiv) {
+    overlay.addEventListener('click', function() {
+      overlay.style.display = 'none';
+      mapDiv.style.pointerEvents = 'auto';
+      if(mapInstance) {
+        mapInstance.dragging.enable();
+        mapInstance.scrollWheelZoom.enable();
+        mapInstance.doubleClickZoom.enable();
+        mapInstance.boxZoom.enable();
+        mapInstance.keyboard.enable();
+        if(mapInstance.tap) mapInstance.tap.enable();
+        mapInstance.touchZoom.enable();
+      }
+    });
+  }
+});
 
 function openLightbox(src) {
   document.getElementById('lightbox').classList.add('active');
