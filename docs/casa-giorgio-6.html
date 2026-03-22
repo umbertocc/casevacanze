@@ -142,7 +142,7 @@ header { margin-bottom: 20px; background: none; color: #111; border-radius: 30px
 .back-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 25px rgba(126, 214, 251, 0.5); color: #38a3a5; }
 h1 { font-size: 3em; color: #111; margin-bottom: 15px; font-weight: 700; text-shadow: 0 4px 10px rgba(0,0,0,0.2); -webkit-font-smoothing: antialiased; }
 .subtitle { font-size: 1.3em; color: #22577a; margin-bottom: 25px; font-weight: 500; text-shadow: none; }
-.property { background: rgba(255, 255, 255, 0.98); border-radius: 30px; box-shadow: 0 20px 60px rgba(0,0,0,0.1); margin-bottom: 50px; border: 1px solid rgba(102, 126, 234, 0.1); transition: all 0.5s; }
+.property { background: rgba(255, 255, 255, 0.98); border-radius: 30px; box-shadow: 0 20px 60px rgba(0,0,0,0.1); margin-bottom: 50px; border: 1px solid rgba(102, 126, 234, 0.1); transition: all 0.5s; width: 100vw !important; max-width: 100vw !important; margin-left: -50vw !important; left: 50%; position: relative; right: 0; }
 .property:hover { transform: translateY(-5px); box-shadow: 0 25px 80px rgba(102, 126, 234, 0.2); }
 .main-gallery { height: 500px; overflow: hidden; position: relative; border-radius: 0; background: #fff; display: flex; align-items: center; justify-content: center; color: white; font-size: 2em; cursor: pointer; }
 .gallery-filters { display: flex; gap: 10px; flex-wrap: wrap; padding: 15px; background: #f8f9fa; border-radius: 20px 20px 0 0; justify-content: center; }
@@ -222,7 +222,7 @@ h1 { font-size: 3em; color: #111; margin-bottom: 15px; font-weight: 700; text-sh
 .amenity:hover { background: rgba(102, 126, 234, 0.1); transform: translateX(5px); }
 .amenity-icon { font-size: 1.8em; }
 .amenity-text { color: #4a5568; }
-.description { background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(240, 147, 251, 0.05) 100%); padding: 35px; border-radius: 20px; margin-bottom: 30px; line-height: 1.8; font-size: 1.1em; border: 1px solid rgba(102, 126, 234, 0.1); }
+.description { background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(240, 147, 251, 0.05) 100%); padding: 35px; border-radius: 20px; margin-bottom: 30px; line-height: 1.8; font-size: 1.1em; border: 1px solid rgba(102, 126, 234, 0.1); width: 100vw !important; max-width: 100vw !important; margin-left: -50vw !important; left: 50%; position: relative; right: 0; }
 .map-section { margin-top: 40px; }
 .map-section h3 { margin-bottom: 20px; background: linear-gradient(135deg, #22577a 0%, #22577a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 600; }
 #map { height: 350px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
@@ -230,7 +230,7 @@ h1 { font-size: 3em; color: #111; margin-bottom: 15px; font-weight: 700; text-sh
 .calendar-section h3 { margin-bottom: 20px; background: linear-gradient(135deg, #22577a 0%, #22577a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 1.8em; font-weight: 600; }
 .calendar-section p { color: #64748b; margin-bottom: 20px; line-height: 1.6; }
 .calendar-iframe { width: 100%; height: 600px; border: none; border-radius: 15px; }
-.cta-buttons { text-align: center; margin-top: 40px; padding: 40px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-radius: 25px; }
+.cta-buttons { text-align: center; margin-top: 40px; padding: 40px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-radius: 25px; width: 100vw !important; max-width: 100vw !important; margin-left: -50vw !important; left: 50%; position: relative; right: 0; }
 .btn { display: inline-block; background: linear-gradient(135deg, #27ae60, #229954); color: white; padding: 16px 40px; border-radius: 50px; text-decoration: none; font-weight: 600; margin: 10px; transition: all 0.3s; font-size: 1.1em; box-shadow: 0 8px 25px rgba(39, 174, 96, 0.25); position: relative; overflow: hidden; border: none; }
 .btn::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #22577a 0%, #f093fb 100%); opacity: 0; transition: opacity 0.3s; }
 .btn:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(102, 126, 234, 0.5); }
@@ -568,7 +568,7 @@ fetch('cookie-banner')
   });
 </script>
 
-<div class="hero-section-mare" style="min-height: 600px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 20px 80px 20px; position:relative; overflow:hidden; background: linear-gradient(135deg, rgba(0,0,0,0.32) 0%, rgba(0,0,0,0.22) 100%), url('img/lido-marini/lido-marini.webp') center/cover no-repeat;">
+<div class="hero-section-mare" style="min-height: 400px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 20px 80px 20px; position:relative; overflow:hidden; background: linear-gradient(135deg, rgba(0,0,0,0.32) 0%, rgba(0,0,0,0.22) 100%), url('img/lido-marini/lido-marini.webp') center/cover no-repeat;">
   <picture style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;">
     <source srcset="img/torre-pali/torrepali-mobile.webp" type="image/webp" media="(max-width: 768px)" sizes="100vw">
     <source srcset="img/torre-pali/torrepali.jpg" type="image/jpeg" media="(max-width: 768px)" sizes="100vw">
@@ -583,9 +583,8 @@ fetch('cookie-banner')
       sizes="(max-width: 768px) 100vw, 1080px"
     />
   </picture>
-  <h1 style="font-size: 3.2em; color: white; font-weight: 700; text-shadow: 0 6px 32px rgba(0,0,0,0.35); margin-bottom: 18px; text-align: center; position:relative; z-index:1;">Prenota la tua vacanza a Torre Pali</h1>
+  <h1 style="font-size: 3.2em; color: white; font-weight: 700; text-shadow: 0 6px 32px rgba(0,0,0,0.35); margin-bottom: 18px; text-align: center; position:relative; z-index:1;">Casa Vacanza a Torre Pali</h1>
   <p style="font-size: 1.35em; color: #fff; font-weight: 500; text-shadow: 0 2px 12px rgba(0,0,0,0.25); margin-bottom: 32px; text-align: center; position:relative; z-index:1;">Scopri i dettagli delle nostre case vacanze</p>
-  <a href="tel:+393886587080" class="btn" style="font-size:1.25em; margin-top:10px; position:relative; z-index:1;">📞 Chiama per info</a>
 </div>
   <nav class="navbar">
     <div class="navbar-container" style="position:relative;">
@@ -661,27 +660,27 @@ fetch('cookie-banner')
   <picture><source srcset="img/casa-giorgio2/camera6.webp" type="image/webp"><img src="img/casa-giorgio2/camera6.jpg" alt="Camera da letto" loading="lazy" data-category="camere"></picture>
   <picture><source srcset="img/casa-giorgio2/bagno.webp" type="image/webp"><img src="img/casa-giorgio2/bagno.jpg" alt="Bagno con doccia" loading="lazy" data-category="bagni"></picture>
   <picture><source srcset="img/torre-pali/torrepali15.webp" type="image/webp">
-    <img alt="Vista frontale del mare azzurro e della spiaggia di Torre Pali" loading="lazy" data-category="esterni">
+    <img src="img/torre-pali/torrepali15.webp" alt="Vista frontale del mare azzurro e della spiaggia di Torre Pali" loading="lazy" data-category="esterni">
   </picture>
   <picture>
     <source srcset="img/torre-pali/torrepali8.webp" type="image/webp">
-    <img alt="Spiaggia sabbiosa di Torre Pali tra cielo e mare" loading="lazy" data-category="esterni">
+    <img src="img/torre-pali/torrepali8.webp" alt="Spiaggia sabbiosa di Torre Pali tra cielo e mare" loading="lazy" data-category="esterni">
   </picture>
   <picture>
     <source srcset="img/torre-pali/torrepali9.webp" type="image/webp">
-    <img alt="Vista frontale della spiaggia e del mare di Torre Pali con mare azzurro e sabbia fine" loading="lazy" data-category="esterni">
+    <img src="img/torre-pali/torrepali9.webp" alt="Vista frontale della spiaggia e del mare di Torre Pali con mare azzurro e sabbia fine" loading="lazy" data-category="esterni">
   </picture>
   <picture>
     <source srcset="img/torre-pali/torrepali2.webp" type="image/webp">
-    <img alt="Panorama della costa di Torre Pali tra mare e natura" loading="lazy" data-category="esterni">
+    <img src="img/torre-pali/torrepali2.webp" alt="Panorama della costa di Torre Pali tra mare e natura" loading="lazy" data-category="esterni">
   </picture>
   <picture>
     <source srcset="img/torre-pali/torrepali16.webp" type="image/webp">
-    <img alt="Panorama della costa di Torre Pali con mare limpido" loading="lazy" data-category="esterni">
+    <img src="img/torre-pali/torrepali16.webp" alt="Panorama della costa di Torre Pali con mare limpido" loading="lazy" data-category="esterni">
   </picture>
   <picture>
     <source srcset="img/torre-pali/torrepali10.webp" type="image/webp">
-    <img alt="Vista sulla Torre aragonese di Torre Pali e il mare" loading="lazy" data-category="esterni">
+    <img src="img/torre-pali/torrepali10.webp" alt="Vista sulla Torre aragonese di Torre Pali e il mare" loading="lazy" data-category="esterni">
   </picture>
 <div class="dots" id="dots"></div>
 </div>
@@ -898,18 +897,6 @@ L'appartamento dispone di <strong>area parcheggio antistante</strong>, comodo ac
 </script>
 </div>
 
-<div class="calendar-section">
-<div style="padding-left:16px;">
-<h3>📅 Disponibilità Casa Giorgio 6</h3>
-</div>
-<p>Consulta il calendario per verificare le disponibilità in tempo reale. I giorni occupati sono contrassegnati con le prenotazioni confermate.</p>
-<iframe src="https://calendar.google.com/calendar/embed?src=a9b2d0a3c200b72eb24d8ccdf8cd141f0c0135adb98bef773734ebc813e16260%40group.calendar.google.com&ctz=Europe%2FRome&mode=MONTH&showTitle=0&showPrint=0&showTabs=0&showCalendars=0" class="calendar-iframe" loading="lazy" title="Calendario disponibilità Casa Giorgio 6"></iframe>
-</div>
-
-<div class="gallery-cta">
-  <!-- Bottone rimosso su richiesta -->
-</div>
-
 <div class="cta-buttons">
 <h2 style="color: #2c3e50; margin-bottom: 25px;">Sei Interessato? Contattaci!</h2>
 <a href="https://wa.me/393886587080?text=Ciao!%20Sono%20interessato%20alla%20Casa%20Giorgio%206%20a%20Torre%20Pali" class="btn" data-tooltip="Invia messaggio WhatsApp">📱 WhatsApp</a>
@@ -1083,7 +1070,7 @@ if (allImages.length > 0) {
 
 </div>
 <div style="text-align:center; margin: 10px 0 0 0; font-size:1.15em; padding:15px;">
-Scopri anche <a href="/" style="color: #22577a; font-weight: 600;">le altre nostre case vacanze</a> o la <a href="spiagge-salento-sud" style="color: #22577a; font-weight: 600;">guida completa alle spiagge del Salento</a>.
+Scopri anche <a href="/" style="color: #22577a; font-weight: 600;">le altre nostre case vacanze</a> a Torre Pali, Salento. A pochi passi dalla spiaggia con tutti i comfort.
 </div>
 </div>
 <!-- End Main Content -->
