@@ -174,43 +174,24 @@ fetch('cookie-banner')
   });
 </script>
 <!-- Navbar -->
-<nav class="navbar">
-<div class="navbar-container">
-<a href="/" class="navbar-brand">🏝️ Torre Pali Vacanze</a>
-<button class="hamburger" onclick="toggleMenu()" aria-label="Apri il menu di navigazione" tabindex="0" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); border: 2.5px solid #43e68b; border-radius: 14px; padding: 10px 10px; display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer; width: 54px; height: 54px; box-shadow: 0 2px 12px rgba(67,233,123,0.13);">
-  <span style="display: block; width: 32px; height: 5px; background: #fff; margin: 4px 0; border-radius: 3px;"></span>
-  <span style="display: block; width: 32px; height: 5px; background: #fff; margin: 4px 0; border-radius: 3px;"></span>
-  <span style="display: block; width: 32px; height: 5px; background: #fff; margin: 4px 0; border-radius: 3px;"></span>
-</button>
-    <ul class="navbar-menu" id="navbarMenu">
-      <li><a href="/" onclick="closeMenu()">Home</a></li>
-      <li class="dropdown">
-         <span class="dropdown-toggle" style="color: #4a5568; font-weight: 500;">Appartamenti</span>
-         <div class="dropdown-menu">
-         <a href="casa-bellavista-2" onclick="closeMenu()">Casa Bella Vista 2</a>
-         <a href="casa-giorgio-4" onclick="closeMenu()">Casa Giorgio 4</a>
-         <a href="casa-giorgio-6" onclick="closeMenu()">Casa Giorgio 6</a>
-         </div>
-      </li>
-      <li class="dropdown">
-        <span class="dropdown-toggle" style="color: #4a5568; font-weight: 500;">Scopri il Salento</span>
-        <div class="dropdown-menu">
-            <a href="spiagge-salento-sud" onclick="closeMenu()">Guida Spiagge</a>
-            <a href="torre-pali" onclick="closeMenu()">⭐ Torre Pali</a>
-            <a href="lido-marini" onclick="closeMenu()">Lido Marini</a>
-            <a href="torre-vado" onclick="closeMenu()">Torre Vado</a>
-            <a href="pescoluse" onclick="closeMenu()">Pescoluse</a>
-            <a href="eventi-salento" onclick="closeMenu()">Eventi e Tradizioni</a>
-            <a href="faq-salento" onclick="closeMenu()">FAQ Salento</a>
-        </div>
-      </li>
-      <li><a href="recensioni" onclick="closeMenu()">⭐ Recensioni</a></li>
-      <li><a href="faq" onclick="closeMenu()">FAQ</a></li>
-      <li><a href="prenotazione" onclick="closeMenu()">Prenotazione</a></li>
-      <li><a href="contatti" onclick="closeMenu()">Contatti</a></li>
-    </ul>
-</div>
-</nav>
+  <nav class="navbar">
+    <div class="navbar-container" style="position:relative;">
+      <a href="/" class="navbar-brand">🏝️ Torre Pali Vacanze</a>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Apri menu di navigazione" tabindex="0" style="position:absolute;top:10px;right:10px;z-index:2001;display:flex;">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="navbar-menu" id="navbarMenu">
+        <li><a href="/" onclick="closeMenu()">Home</a></li>
+        <li><a href="torre-pali" onclick="closeMenu()">Torre Pali</a></li>
+        <li><a href="recensioni" onclick="closeMenu()">⭐ Recensioni</a></li>
+        <li><a href="faq" onclick="closeMenu()">FAQ</a></li>
+        <li><a href="prenotazione" onclick="closeMenu()">Prenotazione</a></li>
+        <li><a href="contatti" onclick="closeMenu()">Contatti</a></li>
+      </ul>
+    </div>
+  </nav>
 
 <!-- WhatsApp Flottante -->
 <a href="https://wa.me/3886587080" class="whatsapp-float" style="position: fixed !important; bottom: 20px !important; right: 20px !important; top: auto !important; left: auto !important;" target="_blank" aria-label="Contattaci su WhatsApp">

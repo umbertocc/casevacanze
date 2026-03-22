@@ -258,44 +258,24 @@ fetch('cookie-banner')
 <!-- Google Tag Manager (noscript) -->
 <!-- End Google Tag Manager (noscript) -->
 <!-- Navbar -->
-<nav class="navbar">
-<div class="navbar-container">
-<div style="display:flex; flex-direction:column;">
-  <a href="/" class="navbar-brand">🏝️ Torre Pali Vacanze</a>
-</div>
-<button class="hamburger" onclick="toggleMenu()" aria-label="Apri menu di navigazione" tabindex="0">
-  <span></span>
-  <span></span>
-  <span></span>
-</button>
-<ul class="navbar-menu" id="navbarMenu">
-<li><a href="/" onclick="closeMenu()">Home</a></li>
-<li class="dropdown">
-<span class="dropdown-toggle" style="color: #4a5568; font-weight: 500;">Appartamenti</span>
-<div class="dropdown-menu">
-<a href="casa-bellavista-2" onclick="closeMenu()">Casa Bella Vista 2</a>
-<a href="casa-giorgio-4" onclick="closeMenu()">Casa Giorgio 4</a>
-<a href="casa-giorgio-6" onclick="closeMenu()">Casa Giorgio 6</a>
-</div>
-</li>
-<li class="dropdown">
-<span class="dropdown-toggle" style="color: #4a5568; font-weight: 500;">Scopri il Salento</span>
-<div class="dropdown-menu">
-<a href="spiagge-salento-sud" onclick="closeMenu()">Guida Spiagge</a>
-<a href="torre-pali" onclick="closeMenu()">⭐ Torre Pali</a>
-<a href="lido-marini" onclick="closeMenu()">Lido Marini</a>
-<a href="torre-vado" onclick="closeMenu()">Torre Vado</a>
-<a href="pescoluse" onclick="closeMenu()">Pescoluse</a>
-<a href="eventi-salento" onclick="closeMenu()">Eventi e Tradizioni</a>
-</div>
-</li>
-<li><a href="recensioni" onclick="closeMenu()">⭐ Recensioni</a></li>
-<li><a href="faq" onclick="closeMenu()">FAQ</a></li>
-<li><a href="prenotazione" onclick="closeMenu()">Prenotazione</a></li>
-<li><a href="contatti" onclick="closeMenu()">Contatti</a></li>
-</ul>
-</div>
-</nav>
+  <nav class="navbar">
+    <div class="navbar-container" style="position:relative;">
+      <a href="/" class="navbar-brand">🏝️ Torre Pali Vacanze</a>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Apri menu di navigazione" tabindex="0" style="position:absolute;top:10px;right:10px;z-index:2001;display:flex;">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="navbar-menu" id="navbarMenu">
+        <li><a href="/" onclick="closeMenu()">Home</a></li>
+        <li><a href="torre-pali" onclick="closeMenu()">Torre Pali</a></li>
+        <li><a href="recensioni" onclick="closeMenu()">⭐ Recensioni</a></li>
+        <li><a href="faq" onclick="closeMenu()">FAQ</a></li>
+        <li><a href="prenotazione" onclick="closeMenu()">Prenotazione</a></li>
+        <li><a href="contatti" onclick="closeMenu()">Contatti</a></li>
+      </ul>
+    </div>
+  </nav>
 
 <!-- Main Content -->
 <main id="main-content" role="main">
