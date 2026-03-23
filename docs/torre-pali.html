@@ -102,7 +102,7 @@ body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #333; backgr
 .footer-section p, .footer-section a { color: #bdc3c7; font-size: 0.95em; line-height: 1.8; text-decoration: none; display: block; margin-bottom: 10px; transition: all 0.3s; }
 .footer-section a:hover { color: #f093fb; transform: translateX(5px); }
 .footer-bottom { text-align: center; margin-top: 40px; padding-top: 25px; border-top: 1px solid #4a5568; color: #a0aec0; font-size: 0.9em; }
-.container { max-width: 1200px; margin: 0 auto; padding: 30px; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0px; }
 .back-btn { display: inline-block; background: linear-gradient(135deg, #22577a 0%, #22577a 100%); color: white; padding: 12px 28px; border-radius: 50px; text-decoration: none; margin-bottom: 25px; font-weight: 600; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3); transition: all 0.3s; }
 .back-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 25px rgba(102, 126, 234, 0.5); }
 header { text-align: center; margin-bottom: 50px; padding: 80px 20px; background: linear-gradient(135deg, #22577a 0%, #18304b 100%); color: #fff; border-radius: 30px; box-shadow: 0 20px 60px rgba(34, 87, 122, 0.3); animation: fadeIn 0.8s ease-out; }
@@ -143,7 +143,7 @@ header h1 { font-size: 3.5em; margin-bottom: 15px; font-weight: 700; text-shadow
 .lido-card { transition: all 0.3s ease; cursor: pointer; }
 .lido-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); }
 @media (max-width: 768px) {
-  .container { padding: 15px; }
+  .container { padding: 0px; }
   header h1 { font-size: 2em; }
   .subtitle { font-size: 1.1em; }
   .hero-gallery { grid-template-columns: 1fr; padding: 0; gap: 10px; }
@@ -263,12 +263,8 @@ fetch('cookie-banner')
       <li><a href="#quando" style="color:#22577a; text-decoration:underline;">Quando visitare</a></li>
       <li><a href="#vicino" style="color:#22577a; text-decoration:underline;">Cosa vedere vicino</a></li>
       <li><a href="#servizi" style="color:#22577a; text-decoration:underline;">Servizi</a></li>
-      <li><a href="#gastronomia" style="color:#22577a; text-decoration:underline;">Gastronomia</a></li>
-        <li><a href="#dormire" style="color:#22577a; text-decoration:underline;">Dove dormire</a></li>
+      <li><a href="#dormire" style="color:#22577a; text-decoration:underline;">Dove dormire</a></li>
       <li><a href="#mangiare" style="color:#22577a; text-decoration:underline;">Dove mangiare</a></li>
-      <li><a href="#attivita" style="color:#22577a; text-decoration:underline;">Attività & Sport</a></li>
-      <li><a href="#notte" style="color:#22577a; text-decoration:underline;">Vita notturna</a></li>
-      <li><a href="#prezzi" style="color:#22577a; text-decoration:underline;">Prezzi</a></li>
       <li><a href="#faq" style="color:#22577a; text-decoration:underline;">Domande frequenti</a></li>
       <li><a href="#mappa" style="color:#22577a; text-decoration:underline;">Mappa</a></li>
     </ul>
@@ -904,21 +900,6 @@ Torre Pali è ben coperta dalla rete mobile 4G/5G. La maggior parte di bar, rist
 </div>
 </div>
 
-<div class="content-section">
-<div id="gastronomia"></div>
-<h2>🍽️ Gastronomia e Tradizioni</h2>
-<p>
-Torre Pali offre numerosi ristoranti, trattorie e pizzerie dove gustare i piatti tipici della <strong>cucina salentina</strong>: dalle orecchiette alle cozze alla tarantina, dal pesce freschissimo ai dolci tradizionali come il pasticciotto leccese.
-</p>
-<p>
-Il mercato del pesce locale permette di acquistare direttamente dai pescatori il pescato del giorno, mentre i produttori locali offrono olio extravergine d'oliva, vino primitivo e verdure biologiche a km zero.
-</p>
-
-<h3>🎉 Eventi e Vita Notturna</h3>
-<p>
-Durante l'estate, Torre Pali si anima con sagre, concerti sulla spiaggia, serate danzanti e eventi culturali. La vicinanza a località più grandi come Gallipoli e Lecce permette di combinare il relax diurno in spiaggia con la vivace vita notturna salentina.
-</p>
-
 <h3>🚶 Cosa Fare a Torre Pali</h3>
 <div class="features-list">
 <div class="feature-item">
@@ -951,7 +932,6 @@ Durante l'estate, Torre Pali si anima con sagre, concerti sulla spiaggia, serate
 </div>
 </div>
 </div>
-
 <div class="content-section">
 <p>
 <div id="dormire"></div>
@@ -968,6 +948,47 @@ Torre Pali offre diverse soluzioni per il soggiorno: case vacanze a pochi passi 
 <p>
 <strong>Consiglio:</strong> Scegli alloggi con recensioni verificate e verifica la distanza reale dal mare. Per offerte e disponibilità, consulta la sezione <a href="/" style="color:#22577a; text-decoration:underline;">Appartamenti Disponibili</a> o <a href="contatti" style="color:#22577a; text-decoration:underline;">contattaci</a> per una proposta personalizzata.
 </p>
+
+<p>
+<strong>Soluzioni consigliate:</strong>
+</p>
+<!-- Schede Case Vacanza Proprietario -->
+<div class="properties-grid" id="case-vacanze-grid" style="display: grid; gap: 32px; margin: 36px 0;">
+  <div class="property-card" style="background: #fff; border-radius: 22px; box-shadow: 0 8px 32px rgba(34,87,122,0.10); overflow: hidden; border: 1px solid #e8eaf6;">
+    <div class="property-image" style="height: 180px; background: #e3f6fd; display: flex; align-items: center; justify-content: center;">
+      <img src="img/casa-bella-vista/prospetto-mobile.webp" alt="Casa Bellavista 2 Torre Pali" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+    <div class="property-info" style="padding: 22px 18px 18px 18px;">
+      <h3 class="property-title" style="font-size:1.25em; color:#22577a; font-weight:700; margin-bottom:6px;">Casa Bellavista 2</h3>
+      <div style="font-size:1em; color:#4a5568; margin-bottom:10px;">20m dalla spiaggia Bandiera Blu</div>
+      <div style="font-size:0.98em; color:#4a5568; margin-bottom:12px;">Quadrilocale piano terra, 3 camere, 2 bagni, cortile privato, WiFi, aria condizionata, 2 posti auto.</div>
+      <a href="casa-bellavista-2" class="btn" style="font-size:1em; padding:10px 22px; margin:0 0 8px 0;">Vedi dettagli</a>
+    </div>
+  </div>
+  <div class="property-card" style="background: #fff; border-radius: 22px; box-shadow: 0 8px 32px rgba(34,87,122,0.10); overflow: hidden; border: 1px solid #e8eaf6;">
+    <div class="property-image" style="height: 180px; background: #e3f6fd; display: flex; align-items: center; justify-content: center;">
+      <img src="img/casa-giorgio/prospetto-mobile.webp" alt="Casa Giorgio 4 Torre Pali" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+    <div class="property-info" style="padding: 22px 18px 18px 18px;">
+      <h3 class="property-title" style="font-size:1.25em; color:#22577a; font-weight:700; margin-bottom:6px;">Casa Giorgio 4</h3>
+      <div style="font-size:1em; color:#4a5568; margin-bottom:10px;">40m dalla spiaggia dorata</div>
+      <div style="font-size:0.98em; color:#4a5568; margin-bottom:12px;">Appartamento piano terra, 3 camere, bagno, spazi esterni, climatizzatore, parcheggio.</div>
+      <a href="casa-giorgio-4" class="btn" style="font-size:1em; padding:10px 22px; margin:0 0 8px 0;">Vedi dettagli</a>
+    </div>
+  </div>
+
+<div class="property-card" style="background: #fff; border-radius: 22px; box-shadow: 0 8px 32px rgba(34,87,122,0.10); overflow: hidden; border: 1px solid #e8eaf6;">
+    <div class="property-image" style="height: 180px; background: #e3f6fd; display: flex; align-items: center; justify-content: center;">
+      <img src="img/casa-giorgio2/balcone-mobile.webp" alt="Casa Giorgio 6 Torre Pali" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+    <div class="property-info" style="padding: 22px 18px 18px 18px;">
+      <h3 class="property-title" style="font-size:1.25em; color:#22577a; font-weight:700; margin-bottom:6px;">Casa Giorgio 6 ⭐</h3>
+      <div style="font-size:1em; color:#4a5568; margin-bottom:10px;">Primo piano con vista mare</div>
+      <div style="font-size:0.98em; color:#4a5568; margin-bottom:12px;">90mq, veranda panoramica, 3 camere, vista tramonto, spazi esterni attrezzati.</div>
+      <a href="casa-giorgio-6" class="btn" style="font-size:1em; padding:10px 22px; margin:0 0 8px 0;">Vedi dettagli</a>
+    </div>
+  </div>
+</div>
 
 <div id="mangiare"></div>
 <h2>🍴 Dove Mangiare a Torre Pali</h2>
@@ -1053,200 +1074,6 @@ Torre Pali e dintorni offrono un'eccellente scelta di ristoranti, trattorie e pi
 🧀 <strong>Ricotta Forte</strong> - Formaggio piccante tipico salentino<br>
 🍅 <strong>Pomodorini di Morciano</strong> - Dolci e saporiti, presidio Slow Food<br>
 🌰 <strong>Mandorle di Toritto</strong> - Per dolci tradizionali
-</p>
-</div>
-</div>
-
-<div class="content-section">
-<div id="attivita"></div>
-<h2>🎯 Attività & Sport a Torre Pali</h2>
-<p>
-Oltre al relax in spiaggia, Torre Pali offre numerose attività per chi cerca un po' di avventura e sport durante la vacanza
-</p>
-
-<div class="activities-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin: 30px 0;">
-<div class="activity-card" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.1) 100%); padding: 25px; border-radius: 15px; border: 2px solid rgba(59, 130, 246, 0.2);">
-<div style="font-size: 2.5em; margin-bottom: 10px;">🏄</div>
-<h4 style="color: #2563eb; margin-bottom: 10px;">Sport Acquatici</h4>
-<p style="color: #4a5568; font-size: 0.95em;">
-• SUP (Stand Up Paddle)<br>
-• Kayak e canoa<br>
-• Windsurf e kitesurf<br>
-• Noleggio attrezzatura disponibile a Pescoluse e Torre Vado, a pochi km da Torre Pali
-</p>
-</div>
-
-<div class="activity-card" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.1) 100%); padding: 25px; border-radius: 15px; border: 2px solid rgba(16, 185, 129, 0.2);">
-<div style="font-size: 2.5em; margin-bottom: 10px;">🤿</div>
-<h4 style="color: #059669; margin-bottom: 10px;">Snorkeling & Diving</h4>
-<p style="color: #4a5568; font-size: 0.95em;">
-• Fondali ricchi di vita marina<br>
-• Centri diving certificati<br>
-• Escursioni guidate<br>
-</p>
-</div>
-
-<div class="activity-card" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.1) 100%); padding: 25px; border-radius: 15px; border: 2px solid rgba(245, 158, 11, 0.2);">
-<div style="font-size: 2.5em; margin-bottom: 10px;">🚴</div>
-<h4 style="color: #d97706; margin-bottom: 10px;">Cicloturismo</h4>
-<p style="color: #4a5568; font-size: 0.95em;">
-• Ciclovia dell'Acquedotto Pugliese<br>
-• Percorsi tra masserie e ulivi<br>
-• Tour guidati in e-bike<br>
-• Noleggio bici disponibile
-</p>
-</div>
-
-<div class="activity-card" style="background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(126, 34, 206, 0.1) 100%); padding: 25px; border-radius: 15px; border: 2px solid rgba(168, 85, 247, 0.2);">
-<div style="font-size: 2.5em; margin-bottom: 10px;">⛵</div>
-<h4 style="color: #7e22ce; margin-bottom: 10px;">Escursioni in Barca</h4>
-<p style="color: #4a5568; font-size: 0.95em;">
-• Tour delle grotte marine<br>
-• Gite a Santa Maria di Leuca<br>
-• Tramonto in barca<br>
-• Pesca sportiva
-</p>
-</div>
-
-<div class="activity-card" style="background: linear-gradient(135deg, rgba(236, 72, 153, 0.1) 0%, rgba(219, 39, 119, 0.1) 100%); padding: 25px; border-radius: 15px; border: 2px solid rgba(236, 72, 153, 0.2);">
-<div style="font-size: 2.5em; margin-bottom: 10px;">🧘</div>
-<h4 style="color: #db2777; margin-bottom: 10px;">Wellness & Relax</h4>
-<p style="color: #4a5568; font-size: 0.95em;">
-• Yoga sulla spiaggia<br>
-• Massaggi e trattamenti<br>
-• Pilates e fitness<br>
-• Meditazione al tramonto
-</p>
-</div>
-
-<div class="activity-card" style="background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(220, 38, 38, 0.1) 100%); padding: 25px; border-radius: 15px; border: 2px solid rgba(239, 68, 68, 0.2);">
-<div style="font-size: 2.5em; margin-bottom: 10px;">🏇</div>
-<h4 style="color: #dc2626; margin-bottom: 10px;">Esperienze Uniche</h4>
-<p style="color: #4a5568; font-size: 0.95em;">
-• Passeggiate a cavallo a Torre Vado e Torre San Giovanni<br>
-• Visite a masserie storiche<br>
-• Degustazioni olio e vino<br>
-• Cooking class cucina salentina
-</p>
-</div>
-</div>
-</div>
-
-<div class="content-section">
-<div id="notte"></div>
-<h2>🌙 Vita Notturna & Eventi</h2>
-<p>
-Le serate a Torre Pali offrono il perfetto mix tra tranquillità e divertimento. Ecco cosa puoi trovare durante la tua vacanza.
-</p>
-
-<h3>🎵 Locali e Intrattenimento</h3>
-<div class="features-list">
-<div class="feature-item">
-<div class="feature-item-icon">🍹</div>
-<div>
-<strong>Bar Sulla Spiaggia</strong><br>
-<span style="color: #555;">Aperitivi al tramonto con DJ set, musica lounge e cocktail bar</span>
-</div>
-</div>
-<div class="feature-item">
-<div class="feature-item-icon">🎤</div>
-<div>
-<strong>Musica Live</strong><br>
-<span style="color: #555;">Concerti e serate con band locali nei locali sul lungomare</span>
-</div>
-</div>
-<div class="feature-item">
-<div class="feature-item-icon">🎭</div>
-<div>
-<strong>Eventi Culturali</strong><br>
-<span style="color: #555;">Teatro all'aperto, mostre d'arte, proiezioni cinema sotto le stelle</span>
-</div>
-</div>
-<div class="feature-item">
-<div class="feature-item-icon">🎪</div>
-<div>
-<strong>Sagre e Feste</strong><br>
-<span style="color: #555;">Feste patronali, sagre del pesce, eventi enogastronomici</span>
-</div>
-</div>
-</div>
-
-<h3>📅 Eventi Stagionali 2026</h3>
-<div class="events-timeline" style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(240, 147, 251, 0.05) 100%); padding: 30px; border-radius: 20px; margin: 25px 0;">
-<p style="margin-bottom: 15px;">
-<strong style="color: #22577a;">🌸 Giugno:</strong> Festa di San Pietro e Paolo (29 giugno) - Processione marinara e fuochi d'artificio<br>
-<strong style="color: #f59e0b;">☀️ Luglio:</strong> Sagra del Pesce - Festival gastronomico con specialità ittiche locali<br>
-<strong style="color: #ef4444;">🔥 Agosto:</strong> Festa in onore di Sant'Antonio da Padova e Maria Maris Stella (Stella del Mare), uno dei momenti più sentiti e caratteristici, in cui le statue dei santi vengono portate in processione, spesso con una barca a guidare il corteo in mare<br>
-<strong style="color: #10b981;">🍂 Settembre:</strong> Festa dell'Uva e del Vino - Degustazioni e folklore salentino
-</p>
-</div>
-
-<div class="highlight-box">
-<h3>🚗 Discoteche e Locali Notturni nei Dintorni</h3>
-<p>
-Per chi cerca vita notturna più movimentata, a soli 40-60 km si trovano le famose discoteche di <strong>Gallipoli</strong>: Praia, Lido Zen Beach, Room 26, Paradise Beach Club. Molte organizzano anche <strong>shuttle bus</strong> dalle principali località turistiche.
-</p>
-</div>
-</div>
-
-<div class="content-section">
-<div id="prezzi"></div>
-<h2>💰 Prezzi e Costi Medi</h2>
-<p>
-Torre Pali offre un ottimo rapporto qualità-prezzo rispetto ad altre località turistiche del Salento. Ecco una guida ai costi medi per pianificare il tuo budget vacanza.
-</p>
-
-<div class="price-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin: 30px 0;">
-<div class="price-card" style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-left: 4px solid #22577a;">
-<h4 style="color: #22577a; margin-bottom: 15px;">🏠 Alloggio</h4>
-<p style="color: #4a5568; font-size: 0.95em; line-height: 1.8;">
-<strong>Case vacanze:</strong> €300-1500/settimana<br>
-<strong>B&B:</strong> €40-150/notte a persona<br>
-<strong>Hotel 3*:</strong> €60-150/notte camera doppia<br>
-<strong>Campeggio:</strong> €20-60/notte piazzola
-</p>
-</div>
-
-<div class="price-card" style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-left: 4px solid #48bb78;">
-<h4 style="color: #48bb78; margin-bottom: 15px;">🍽️ Ristorazione</h4>
-<p style="color: #4a5568; font-size: 0.95em; line-height: 1.8;">
-<strong>Colazione bar:</strong> €3-6<br>
-<strong>Pranzo veloce:</strong> €8-15<br>
-<strong>Cena ristorante:</strong> €25-50<br>
-<strong>Gelato artigianale:</strong> €2.50-4
-</p>
-</div>
-
-<div class="price-card" style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-left: 4px solid #f59e0b;">
-<h4 style="color: #f59e0b; margin-bottom: 15px;">🏖️ Spiaggia</h4>
-<p style="color: #4a5568; font-size: 0.95em; line-height: 1.8;">
-<strong>Lettini e ombrellone:</strong> €15-25/giorno<br>
-<strong>Cabina:</strong> €30-50/giorno<br>
-<strong>Spiaggia libera:</strong> Gratuita<br>
-<strong>Docce:</strong> Gratuite
-</p>
-</div>
-
-<div class="price-card" style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-left: 4px solid #ec4899;">
-<h4 style="color: #ec4899; margin-bottom: 15px;">🎯 Attività</h4>
-<p style="color: #4a5568; font-size: 0.95em; line-height: 1.8;">
-<strong>Noleggio bici:</strong> €10-15/giorno<br>
-<strong>Noleggio SUP/kayak:</strong> €15-20/ora<br>
-<strong>Escursione in barca:</strong> €35-60<br>
-<strong>Lezione surf:</strong> €40-60
-</p>
-</div>
-</div>
-
-<div class="highlight-box">
-<h3>💡 Risparmia con Questi Consigli</h3>
-<p style="margin-bottom: 10px;">
-✅ <strong>Prenota in anticipo:</strong> Sconto fino al 20% su case vacanze e hotel<br>
-✅ <strong>Giugno/Settembre:</strong> Prezzi inferiori del 30-40% rispetto ad agosto<br>
-✅ <strong>Spesa al supermercato:</strong> A Torre Pali è presente un supermercato, aperto durante il periodo estivo, che offre prodotti locali e generi di prima necessità, nelle vicinanze, a Presicce, è situato l'Eurospin<br>
-✅ <strong>Spiaggia libera:</strong> Ampi tratti gratuiti, porta ombrellone e sdraio<br>
-✅ <strong>Aperitivi:</strong> Sono presenti diversi bar e locali per aperitivi vista mare<br>
-✅ <strong>Mezzi:</strong> Presenza della linea SalentoInbus per spostamenti economici verso Gallipoli, Lecce, Otranto e altre località del Salento in autobus
 </p>
 </div>
 </div>
@@ -1843,7 +1670,7 @@ document.addEventListener('click', function(event) {
 </style>
 <script>
 // Scroll to Top Button logic
-const scrollBtn = document.getElementById('scrollToTopBtn');
+var scrollBtn = document.getElementById('scrollToTopBtn');
 window.addEventListener('scroll', () => {
   if (window.scrollY > 300) {
     scrollBtn.classList.add('show');
