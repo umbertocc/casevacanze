@@ -7,7 +7,7 @@
 <meta name="language" content="Italian">
 <meta name="author" content="Affitti Torre Pali">
 <link rel="canonical" href="https://torrepalivacanze.it/pescoluse">
-<title>Pescoluse | Maldive del Salento</title>
+<title>Pescoluse, le Maldive del Salento</title>
 <meta name="description" content="Pescoluse, la spiaggia più famosa del Salento: sabbia bianca, mare turchese, stabilimenti attrezzati e natura incontaminata. Info su come arrivare, servizi, foto e consigli per le tue vacanze nelle Maldive del Salento.">
 <meta name="keywords" content="pescoluse, maldive del salento, spiaggia pescoluse, mare pescoluse, sabbia bianca salento, spiaggia tropicale puglia, lido marini, torre pali, salve, salento mare, vacanze pescoluse, maldive puglia, vacanze salento, spiagge puglia, migliori spiagge salento, dove dormire pescoluse, affitti pescoluse, case vacanza pescoluse">
 <!-- Open Graph Tags -->
@@ -108,7 +108,7 @@ header h1 { font-size: 3.5em; margin-bottom: 15px; font-weight: 700; text-shadow
     display: block;
   }
   .info-grid { grid-template-columns: 1fr; }
-  .container { padding: 15px; }
+  .container { padding: 0px; }
   header h1 { font-size: 2em; }
   .subtitle { font-size: 1.1em; }
   .features-list { grid-template-columns: 1fr; }
@@ -192,10 +192,37 @@ fetch('cookie-banner')
   <div style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(34,87,122,0.18) 0%,rgba(24,48,75,0.38) 100%); z-index:1;"></div>
 </section>
 
-<nav aria-label="breadcrumb" style="margin-bottom: 18px; font-size: 1.05em;">
-  <span><a href="/">Home</a> &gt; </span>
-  <span style="color:#06beb6;font-weight:600;">Pescoluse</span>
+  <!-- Breadcrumb -->
+<nav aria-label="breadcrumb" class="breadcrumb-nav" style="margin: 18px auto 0 auto; max-width: 1200px; padding: 0 18px; font-size: 1em;">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList" style="display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; margin: 0;">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/" style="color:#22577a; text-decoration:underline;"><span itemprop="name">Home</span></a>
+      <meta itemprop="position" content="1" />
+    </li>
+    <li style="color:#888;">/</li>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <span itemprop="name" style="color:#888; text-decoration:none; cursor:default; font-weight:600;">Pescoluse</span>
+      <meta itemprop="position" content="2" />
+    </li>
+  </ol>
 </nav>
+
+<!-- Sommario Interattivo -->
+  <nav id="sommario" aria-label="Sommario della pagina" style="margin: 0 auto 28px auto; max-width: 900px; background: rgba(255,255,255,0.93); border-radius: 18px; box-shadow: 0 2px 12px rgba(102,126,234,0.07); padding: 22px 18px 18px 18px;">
+    <strong style="color:#22577a; font-size:1.18em; letter-spacing:0.5px;">Indice rapido:</strong>
+    <ul style="list-style:none; padding:0; margin:12px 0 0 0; display:flex; flex-wrap:wrap; gap:12px 22px; font-size:1.04em;">
+      <li><a href="#dove-si-trova" style="color:#22577a; text-decoration:underline;">Dove si trova</a></li>
+      <li><a href="#le-spiagge" style="color:#22577a; text-decoration:underline;">Le spiagge</a></li>
+      <li><a href="#migliori-lidi" style="color:#22577a; text-decoration:underline;">I migliori lidi</a></li>
+      <li><a href="#come-arrivare" style="color:#22577a; text-decoration:underline;">Come arrivare</a></li>
+      <li><a href="#parco-gigli" style="color:#22577a; text-decoration:underline;">Parco dei Gigli</a></li>
+      <li><a href="#vicino" style="color:#22577a; text-decoration:underline;">Cosa vedere vicino</a></li>
+      <li><a href="#servizi-balneari" style="color:#22577a; text-decoration:underline;">Servizi</a></li>
+      <li><a href="#cosa-fare" style="color:#22577a; text-decoration:underline;">Cosa fare</a></li>
+      <li><a href="#mangiare" style="color:#22577a; text-decoration:underline;">Dove mangiare</a></li>
+    </ul>
+  </nav>
+
 <div class="hero-gallery">
   <img src="img/pescoluse/pescoluse2.jpg" alt="Panorama della spiaggia bianca di Pescoluse, Salento, vista Maldive del Salento" loading="lazy" style="width: 100%; height: 280px; object-fit: cover; cursor: pointer; transition: all 0.4s; border-radius: 15px; box-shadow: 0 4px 15px rgba(6,190,182,0.1);">
   <img src="img/pescoluse/pescoluse3.jpg" alt="Mare turchese e sabbia bianca a Pescoluse, spiaggia Maldive del Salento" loading="lazy" style="width: 100%; height: 280px; object-fit: cover; cursor: pointer; transition: all 0.4s; border-radius: 15px; box-shadow: 0 4px 15px rgba(6,190,182,0.1);">
@@ -237,7 +264,7 @@ Il soprannome "Maldive del Salento" non è casuale: i colori del mare, che vanno
 </div>
 </div>
 
-<h2>📍 Dove si trova Pescoluse</h2>
+<h2 id="dove-si-trova">📍 Dove si trova Pescoluse</h2>
 <div class="pescoluse-coast-mobile">
 <p>
 Pescoluse si trova sulla costa ionica del Salento, tra Torre Pali (3 km) e Torre Vado (2 km). La località fa parte del comune di Salve ed è facilmente raggiungibile dalla strada litoranea SP358. Dista circa <strong>70 km da Lecce</strong>, <strong>12 km da Santa Maria di Leuca</strong> e <strong>120 km dall'aeroporto di Brindisi</strong>.
@@ -246,7 +273,7 @@ Pescoluse si trova sulla costa ionica del Salento, tra Torre Pali (3 km) e Torre
 </div>
 
 <div class="content-section">
-<h2>🏖️ La spiaggia delle Maldive del Salento: cosa vedere e cosa fare</h2>
+<h2 id="le-spiagge">🏖️ La spiaggia delle Maldive del Salento: cosa vedere e cosa fare</h2>
 <p>
 La spiaggia di Pescoluse si estende per circa <strong>4 chilometri</strong> di costa ininterrotta, offrendo ampio spazio sia per chi cerca il comfort degli stabilimenti balneari attrezzati, sia per chi preferisce la spiaggia libera e la natura selvaggia.
 </p>
@@ -404,7 +431,7 @@ Il mare di Pescoluse è famoso per le sue sfumature di colore che variano durant
 </div>
 
 <div style="max-width:1100px;margin:0 auto;">
-  <h3>🏖️ Servizi Balneari</h3>
+  <h3 id="servizi-balneari">🏖️ Servizi Balneari</h3>
   <p>
     Le spiagge di Pescoluse offrono sia <strong>tratti liberi</strong> che <strong>stabilimenti balneari attrezzati</strong> con ombrelloni, lettini, bar, ristoranti, docce, servizi igienici e assistenza bagnanti. Molti lidi organizzano attività sportive, corsi di acquagym, animazione per bambini e serate musicali.
   </p>
@@ -465,7 +492,7 @@ Il mare di Pescoluse è famoso per le sue sfumature di colore che variano durant
 </div>
 
 <div class="content-section">
-<h2>🌺 Parco dei Gigli a Pescoluse</h2>
+<h2 id="parco-gigli">🌺 Parco dei Gigli a Pescoluse</h2>
 <p>
 Il <strong>Parco dei Gigli</strong> è una delle aree naturali più suggestive di Pescoluse, famosa per la presenza dei rari <strong>gigli di mare</strong> (Pancratium maritimum) che fioriscono spontaneamente tra le dune sabbiose durante l'estate. Questo piccolo paradiso naturale si trova a pochi passi dalla spiaggia e offre un paesaggio unico, ideale per chi ama la natura, le passeggiate e la fotografia.
 </p>
@@ -530,7 +557,7 @@ Molti stabilimenti offrono <strong>fasciatoi</strong>, <strong>scaldabiberon</st
 </div>
 
 <div class="content-section">
-<h2>🌅 Cosa Fare a Pescoluse</h2>
+<h2 id="cosa-fare">🌅 Cosa Fare a Pescoluse</h2>
 <p>
 Oltre al relax in spiaggia, Pescoluse e dintorni offrono diverse attività per tutti i gusti.
 </p>
@@ -585,7 +612,7 @@ Durante l'estate, Pescoluse si anima con eventi serali, concerti sulla spiaggia,
 </div>
 
 <div class="content-section">
-<h2>�️ Altre Spiagge da Scoprire</h2>
+<h2 id="vicino">🏝️ Altre Spiagge da Scoprire</h2>
 <p>
 Pescoluse fa parte del bellissimo tratto costiero delle <strong>Marine di Salve</strong>. Scopri anche le altre spiagge vicine, ognuna con le sue caratteristiche uniche!
 </p>
@@ -617,7 +644,7 @@ Pescoluse fa parte del bellissimo tratto costiero delle <strong>Marine di Salve<
 </div>
 
 <div class="content-section">
-<h2>�🍽️ Dove Mangiare</h2>
+<h2 id="mangiare">🍽️ Dove Mangiare</h2>
 <p>
 Pescoluse offre numerosi ristoranti, trattorie e lidi con cucina dove gustare specialità di pesce fresco e piatti tipici salentini.
 </p>
