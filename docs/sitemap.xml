@@ -3,7 +3,7 @@
   <!-- Homepage -->
   <url>
     <loc>https://torrepalivacanze.it</loc>
-      <lastmod>2026-03-01</lastmod>
+      <lastmod>2026-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -11,7 +11,7 @@
   <!-- Casa Bellavista 2 -->
   <url>
     <loc>https://torrepalivacanze.it/casa-bellavista-2</loc>
-      <lastmod>2026-03-01</lastmod>
+      <lastmod>2026-03-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -19,7 +19,7 @@
   <!-- Casa Giorgio 4 -->
   <url>
     <loc>https://torrepalivacanze.it/casa-giorgio-4</loc>
-      <lastmod>2026-03-01</lastmod>
+      <lastmod>2026-03-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -27,7 +27,7 @@
   <!-- Casa Giorgio 6 -->
   <url>
     <loc>https://torrepalivacanze.it/casa-giorgio-6</loc>
-      <lastmod>2026-03-01</lastmod>
+      <lastmod>2026-03-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -35,7 +35,7 @@
   <!-- Recensioni -->
   <url>
     <loc>https://torrepalivacanze.it/recensioni</loc>
-      <lastmod>2026-03-01</lastmod>
+      <lastmod>2026-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -51,7 +51,7 @@
   <!-- Località -->
   <url>
     <loc>https://torrepalivacanze.it/torre-pali</loc>
-      <lastmod>2026-03-01</lastmod>
+      <lastmod>2026-03-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -65,28 +65,28 @@
   
   <url>
     <loc>https://torrepalivacanze.it/torre-vado</loc>
-      <lastmod>2026-03-01</lastmod>
+      <lastmod>2026-03-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://torrepalivacanze.it/pescoluse</loc>
-      <lastmod>2026-03-01</lastmod>
+      <lastmod>2026-03-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://torrepalivacanze.it/lido-marini</loc>
-      <lastmod>2026-03-01</lastmod>
+      <lastmod>2026-03-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://torrepalivacanze.it/spiagge-salento-sud</loc>
-      <lastmod>2026-03-01</lastmod>
+      <lastmod>2026-03-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -94,14 +94,14 @@
   <!-- Guide e Informazioni Salento -->
   <url>
     <loc>https://torrepalivacanze.it/faq-salento</loc>
-      <lastmod>2026-03-01</lastmod>
+      <lastmod>2026-03-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>https://torrepalivacanze.it/eventi-salento</loc>
-      <lastmod>2026-03-01</lastmod>
+      <lastmod>2026-03-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -109,7 +109,7 @@
   <!-- FAQ -->
   <url>
     <loc>https://torrepalivacanze.it/faq</loc>
-      <lastmod>2026-03-01</lastmod>
+      <lastmod>2026-03-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -117,7 +117,7 @@
   <!-- Contatti -->
   <url>
     <loc>https://torrepalivacanze.it/contatti</loc>
-      <lastmod>2026-03-01</lastmod>
+      <lastmod>2026-03-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -125,7 +125,7 @@
   <!-- Privacy -->
   <url>
     <loc>https://torrepalivacanze.it/privacy</loc>
-    <lastmod>2026-03-01</lastmod>
+    <lastmod>2026-03-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
@@ -133,7 +133,7 @@
     <!-- Prenotazione -->
     <url>
       <loc>https://torrepalivacanze.it/prenotazione</loc>
-      <lastmod>2026-03-01</lastmod>
+      <lastmod>2026-03-23</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
     </url>
