@@ -8,7 +8,7 @@
 <meta name="author" content="Affitti Torre Pali">
 <link rel="canonical" href="https://torrepalivacanze.it/pescoluse">
 <title>Pescoluse | Maldive del Salento</title>
-<meta name="description" content="Scopri Pescoluse, la spiaggia più famosa del Salento: sabbia bianca, mare turchese, stabilimenti attrezzati e natura incontaminata. Info su come arrivare, servizi, foto e consigli per le tue vacanze nelle Maldive del Salento.">
+<meta name="description" content="Pescoluse, la spiaggia più famosa del Salento: sabbia bianca, mare turchese, stabilimenti attrezzati e natura incontaminata. Info su come arrivare, servizi, foto e consigli per le tue vacanze nelle Maldive del Salento.">
 <meta name="keywords" content="pescoluse, maldive del salento, spiaggia pescoluse, mare pescoluse, sabbia bianca salento, spiaggia tropicale puglia, lido marini, torre pali, salve, salento mare, vacanze pescoluse, maldive puglia, vacanze salento, spiagge puglia, migliori spiagge salento, dove dormire pescoluse, affitti pescoluse, case vacanza pescoluse">
 <!-- Open Graph Tags -->
 <meta property="og:title" content="Pescoluse | Maldive del Salento">
@@ -97,10 +97,20 @@ header h1 { font-size: 3.5em; margin-bottom: 15px; font-weight: 700; text-shadow
 .btn:hover::before { opacity: 1; }
 .btn span { position: relative; z-index: 1; }
 @media (max-width: 768px) {
+  .hero-gallery { grid-template-columns: 1fr; padding: 0; gap: 22px; display:grid; }
+  .hero-gallery img {
+    height: 250px;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+    background: #e8eaf6;
+    display: block;
+  }
+  .info-grid { grid-template-columns: 1fr; }
   .container { padding: 15px; }
   header h1 { font-size: 2em; }
   .subtitle { font-size: 1.1em; }
-  .info-grid { grid-template-columns: 1fr; }
   .features-list { grid-template-columns: 1fr; }
   .content-section { padding: 30px 20px; }
   .footer-container { grid-template-columns: 1fr; }
@@ -170,19 +180,23 @@ fetch('cookie-banner')
 </a>
 
 <div class="container">
+
+<section class="hero-pescoluse" style="position:relative; min-height:340px; max-width:1200px; margin:0 auto 38px auto; border-radius:32px; overflow:hidden; box-shadow:0 10px 40px rgba(34,87,122,0.13); display:flex; align-items:center; justify-content:center; background:#18304b;">
+  <picture style="width:100%; height:100%; position:absolute; inset:0; z-index:1;">
+    <source srcset="img/pescoluse/pescoluse.jpg" type="image/jpg">
+    <img src="img/pescoluse/pescoluse.jpg" alt="Spiaggia di Pescoluse, Salento, Puglia" style="width:100%; height:100%; object-fit:cover; object-position:center; min-height:340px; filter:brightness(0.72) blur(0px);">
+  </picture>
+  <div style="position:relative; z-index:2; color:#fff; text-align:center; padding:48px 18px 44px 18px; width:100%;">
+    <h1 style="font-size:2em; font-weight:800; letter-spacing:0.5px; text-shadow:0 4px 18px #0007; margin-bottom:12px;">🏝️ Pescoluse - Le Maldive del Salento</h1>
+  </div>
+  <div style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(34,87,122,0.18) 0%,rgba(24,48,75,0.38) 100%); z-index:1;"></div>
+</section>
+
 <nav aria-label="breadcrumb" style="margin-bottom: 18px; font-size: 1.05em;">
   <span><a href="/">Home</a> &gt; </span>
-  <span><a href="spiagge-salento-sud">Spiagge Salento Sud</a> &gt; </span>
   <span style="color:#06beb6;font-weight:600;">Pescoluse</span>
 </nav>
-<a href="/" class="back-btn">← Torna alla homepage</a>
-
-<header>
-<h1>🏝️ Pescoluse - Le Maldive del Salento</h1>
-<p class="subtitle">Sabbia Bianca e Mare Turchese come ai Caraibi</p>
-<p style="margin-top:10px;font-size:1.1em;">Scopri anche: <a href="torre-pali" style="color:#fff !important;">Torre Pali</a> | <a href="lido-marini" style="color:#fff !important;">Lido Marini</a> | <a href="torre-vado" style="color:#fff !important;">Torre Vado</a> | <a href="spiagge-salento-sud" style="color:#fff !important;">Tutte le spiagge</a> | <a href="/#appartamenti" style="color:#fff !important;">Case vacanza</a></p>
-</header>
-<div class="hero-gallery" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin: 30px 0 10px 0; border-radius: 20px; overflow: hidden; padding: 10px; background: rgba(255,255,255,0.6); backdrop-filter: blur(10px);">
+<div class="hero-gallery">
   <img src="img/pescoluse/pescoluse2.jpg" alt="Panorama della spiaggia bianca di Pescoluse, Salento, vista Maldive del Salento" loading="lazy" style="width: 100%; height: 280px; object-fit: cover; cursor: pointer; transition: all 0.4s; border-radius: 15px; box-shadow: 0 4px 15px rgba(6,190,182,0.1);">
   <img src="img/pescoluse/pescoluse3.jpg" alt="Mare turchese e sabbia bianca a Pescoluse, spiaggia Maldive del Salento" loading="lazy" style="width: 100%; height: 280px; object-fit: cover; cursor: pointer; transition: all 0.4s; border-radius: 15px; box-shadow: 0 4px 15px rgba(6,190,182,0.1);">
   <img src="img/pescoluse/pescoluse4.jpg" alt="Spiaggia Maldive del Salento Pescoluse, Salento, Puglia" loading="lazy" style="width: 100%; height: 280px; object-fit: cover; cursor: pointer; transition: all 0.4s; border-radius: 15px; box-shadow: 0 4px 15px rgba(6,190,182,0.1);">
@@ -463,7 +477,7 @@ Il <strong>Parco dei Gigli</strong> è una delle aree naturali più suggestive d
   <li>📸 Ideale per foto naturalistiche e relax lontano dalla folla</li>
 </ul>
 </p>
-<div class="hero-gallery" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin: 30px 0 10px 0; border-radius: 20px; overflow: hidden; padding: 10px; background: rgba(255,255,255,0.6); backdrop-filter: blur(10px);">
+<div class="hero-gallery" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; margin: 30px 0 10px 0; border-radius: 20px; overflow: hidden; padding: 10px; background: rgba(255,255,255,0.6); backdrop-filter: blur(10px);">
   <img src="img/pescoluse/Parcodeigigli1.jpg" alt="Sentiero natura Parco dei Gigli Pescoluse, dune Salento" loading="lazy" style="width: 100%; height: 240px; object-fit: cover; object-position: 0 40%; border-radius: 14px; box-shadow: 0 4px 15px rgba(6,190,182,0.10);">
   <img src="img/pescoluse/Parcodeigigli2.jpg" alt="Fioritura gigli bianchi Parco dei Gigli Pescoluse Salento" loading="lazy" style="width: 100%; height: 240px; object-fit: cover; object-position: 0 40%; border-radius: 14px; box-shadow: 0 4px 15px rgba(6,190,182,0.10);">
   <img src="img/pescoluse/Parcodeigigli3.jpg" alt="Area giochi bambini Parco dei Gigli Pescoluse Salento" loading="lazy" style="width: 100%; height: 220px; object-fit: cover; border-radius: 14px; box-shadow: 0 4px 15px rgba(6,190,182,0.10);">
