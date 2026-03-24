@@ -11,6 +11,11 @@
 <meta name="description" content="Guida completa a Torre Pali, Salento: spiagge Bandiera Blu, Isola della Fanciulla, molo, case vacanze vicino al mare, prezzi, come arrivare, cosa vedere, FAQ e consigli per famiglie. Aggiornato 2026.">
 
 <script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@type": "Place",
+  "name": "Torre Pali",
   "geo": {
     "@type": "GeoCoordinates",
     "latitude": 39.8447,
@@ -19,6 +24,7 @@
   "sameAs": [
     "https://www.facebook.com/profile.php?id=61577506430394"
   ]
+}
 
 </script>
 <meta name="keywords" content="torre pali, case vacanze torre pali, appartamenti torre pali, affitto torre pali, torre pali salento, spiaggia bandiera blu torre pali, isola della fanciulla torre pali, molo torre pali, tramonti torre pali, vacanze torre pali 2026, prezzi torre pali, case vicino mare torre pali, come arrivare torre pali, cosa fare torre pali, dove dormire torre pali, mare cristallino salento, pescoluse, santa maria di leuca, salento ionico, vacanze famiglia salento, last minute torre pali">
@@ -733,9 +739,65 @@ Il periodo migliore per visitare Torre Pali è <strong>settembre</strong>: il ma
 </div>
 </div>
 
-<div class="content-section">
-<div id="vicino"></div>
-<h2>🗺️ Cosa vedere vicino Torre Pali</h2>
+<style>
+.faq-accordion {
+  max-width: 700px;
+  margin: 30px auto 40px auto;
+}
+.faq-item {
+  border-bottom: 1px solid #e2e8f0;
+}
+.faq-question {
+  width: 100%;
+  text-align: left;
+  background: #f7fafc;
+  color: #22577a;
+  font-size: 1.13em;
+  font-weight: 600;
+  padding: 16px 18px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.faq-question:hover, .faq-question.active {
+  background: #e0f2fe;
+}
+.faq-answer {
+  display: none;
+  padding: 0 18px 16px 18px;
+  color: #444;
+  background: #fff;
+  font-size: 1em;
+  line-height: 1.6;
+}
+.faq-answer.open {
+  display: block;
+}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var questions = document.querySelectorAll('.faq-question');
+  questions.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var answer = btn.nextElementSibling;
+      var isOpen = answer.classList.contains('open');
+      // Chiudi tutte le risposte
+      document.querySelectorAll('.faq-answer').forEach(function(a) {
+        a.classList.remove('open');
+      });
+      document.querySelectorAll('.faq-question').forEach(function(q) {
+        q.classList.remove('active');
+      });
+      // Apri solo se non era già aperta
+      if (!isOpen) {
+        answer.classList.add('open');
+        btn.classList.add('active');
+      }
+    });
+  });
+});
+</script>
 <p>
 La posizione strategica di Torre Pali la rende il punto di partenza ideale per esplorare le meraviglie del basso Salento. Ecco le destinazioni imperdibili nelle vicinanze.
 </p>
@@ -1091,66 +1153,51 @@ Torre Pali e dintorni offrono un'eccellente scelta di ristoranti, trattorie e pi
 </div>
 
 <div class="content-section">
-<div id="faq"></div>
-<h2>❓ Domande Frequenti su Torre Pali</h2>
-
-<div class="faq-list" style="margin: 30px 0;">
-<div class="faq-item" style="background: white; padding: 25px; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border-left: 4px solid #22577a;">
-<h4 style="color: #22577a; margin-bottom: 10px; font-size: 1.2em;">🏖️ Torre Pali è adatta alle famiglie con bambini?</h4>
-<p style="color: #4a5568; line-height: 1.7;">
-Assolutamente sì! Torre Pali è perfetta per famiglie: la spiaggia ha fondali bassi e sabbiosi per decine di metri, il mare è calmo e trasparente con Bandiera Blu, ci sono stabilimenti con servizi per bambini, parchi giochi, e il paese è piccolo e sicuro. Ideale per i più piccoli!
-</p>
-</div>
-
-<div class="faq-item" style="background: white; padding: 25px; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border-left: 4px solid #48bb78;">
-<h4 style="color: #48bb78; margin-bottom: 10px; font-size: 1.2em;">🚗 Serve l'auto a Torre Pali?</h4>
-<p style="color: #4a5568; line-height: 1.7;">
-Dipende. Se alloggi vicino al mare e vuoi goderti solo spiaggia e relax, puoi farne a meno: supermercati, ristoranti e bar sono a piedi. Se vuoi esplorare il Salento (Gallipoli, Lecce, Otranto, grotte), l'auto è consigliata. Alternative: noleggio scooter/bici o escursioni organizzate.
-</p>
-</div>
-
-<div class="faq-item" style="background: white; padding: 25px; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border-left: 4px solid #f59e0b;">
-<h4 style="color: #f59e0b; margin-bottom: 10px; font-size: 1.2em;">🌊 Quando è il mare più bello a Torre Pali?</h4>
-<p style="color: #4a5568; line-height: 1.7;">
-Il mare è splendido da maggio a ottobre. L'acqua raggiunge i 25-27°C in luglio-agosto, restando piacevole (22-24°C) anche a settembre-ottobre. Per acqua cristallina e poca folla, prediligi giugno o settembre. Il mare è quasi sempre calmo grazie alla conformazione della costa.
-</p>
-</div>
-
-<div class="faq-item" style="background: white; padding: 25px; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border-left: 4px solid #ec4899;">
-<h4 style="color: #ec4899; margin-bottom: 10px; font-size: 1.2em;">🏝️ L'Isola della Fanciulla è raggiungibile a nuoto?</h4>
-<p style="color: #4a5568; line-height: 1.7;">
-Sì, facilmente! Dista circa 100-150 metri dalla riva ed è raggiungibile a nuoto in 5-10 minuti anche per nuotatori non esperti. Il mare è basso e calmo. In alternativa, puoi usare kayak, SUP o materassino. È uno dei simboli di Torre Pali, bellissima per foto!
-</p>
-</div>
-
-<div class="faq-item" style="background: white; padding: 25px; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border-left: 4px solid #8b5cf6;">
-<h4 style="color: #8b5cf6; margin-bottom: 10px; font-size: 1.2em;">💤 Torre Pali è troppo tranquilla? C'è vita notturna?</h4>
-<p style="color: #4a5568; line-height: 1.7;">
-Torre Pali è perfetta per chi cerca relax ma non è affatto noiosa! Ci sono bar sulla spiaggia con aperitivi e DJ set, ristoranti con musica live, e d'estate eventi e sagre. Per discoteche e vita notturna intensa, Gallipoli è a 40 km (molti locali organizzano shuttle bus).
-</p>
-</div>
-
-<div class="faq-item" style="background: white; padding: 25px; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border-left: 4px solid #06b6d4;">
-<h4 style="color: #06b6d4; margin-bottom: 10px; font-size: 1.2em;">🏠 Meglio Torre Pali o Pescoluse?</h4>
-<p style="color: #4a5568; line-height: 1.7;">
-Entrambe bellissime! Torre Pali è più autentica, meno affollata, con prezzi leggermente inferiori e l'atmosfera di un vero borgo marinaro. Pescoluse (3 km a sud) è più turistica, con più stabilimenti e la famosa spiaggia Maldive del Salento. Puoi visitarle entrambe facilmente!
-</p>
-</div>
-
-<div class="faq-item" style="background: white; padding: 25px; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border-left: 4px solid #f43f5e;">
-<h4 style="color: #f43f5e; margin-bottom: 10px; font-size: 1.2em;">🐕 Posso portare il cane in spiaggia?</h4>
-<p style="color: #4a5568; line-height: 1.7;">
-Sì! Ci sono tratti di spiaggia libera dog-friendly dove i cani sono benvenuti e alcuni stabilimenti attrezzati per ospitare i nostri amici a quattro zampe. Ricorda guinzaglio, museruola quando serve, e rispetta le regole di igiene. Molte case vacanze accettano animali!
-</p>
-</div>
-
-<div class="faq-item" style="background: white; padding: 25px; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border-left: 4px solid #0ea5e9;">
-<h4 style="color: #0ea5e9; margin-bottom: 10px; font-size: 1.2em;">📱 C'è connessione internet e copertura telefonica?</h4>
-<p style="color: #4a5568; line-height: 1.7;">
-Sì, ottima! Torre Pali ha copertura 4G/5G di tutti i principali operatori. Bar, ristoranti e stabilimenti offrono Wi-Fi gratuito. Le case vacanze moderne hanno quasi tutte connessione Wi-Fi inclusa. Puoi tranquillamente lavorare in smart working se necessario!
-</p>
-</div>
-</div>
+<div id="faq">
+<h2 style="margin-top:60px;">❓ Domande frequenti su Torre Pali (FAQ)</h2>
+<div class="faq-accordion">
+  <div class="faq-item">
+    <button class="faq-question">Dove si trova Torre Pali?</button>
+    <div class="faq-answer">
+      Torre Pali è una frazione marina di Salve, in provincia di Lecce, situata sulla costa ionica del basso Salento, tra Pescoluse e Lido Marini.
+    </div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-question">Com'è il mare a Torre Pali?</button>
+    <div class="faq-answer">
+      Il mare è cristallino, con fondali bassi e sabbiosi ideali per famiglie e bambini. La spiaggia è di sabbia fine e dorata, con tratti liberi e stabilimenti attrezzati.
+    </div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-question">Ci sono parcheggi disponibili?</button>
+    <div class="faq-answer">
+      Sì, sono presenti parcheggi gratuiti e a pagamento vicino alle spiagge e nel centro abitato. Gli affittuari di case vacanza ricevono spesso un pass gratuito per le aree riservate.
+    </div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-question">Come si raggiunge Torre Pali?</button>
+    <div class="faq-answer">
+      Si può arrivare in auto (da Lecce, Gallipoli, Santa Maria di Leuca), in treno fino a Lecce e poi con autobus di linea, oppure in aereo atterrando a Brindisi o Bari.
+    </div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-question">Qual è il periodo migliore per visitare Torre Pali?</button>
+    <div class="faq-answer">
+      Da maggio a ottobre, con clima ideale e mare caldo. Settembre è consigliato per tranquillità e prezzi più bassi.
+    </div>
+  </div>
+<div class="faq-item">
+    <button class="faq-question">Meglio Torre Pali o Pescoluse?</button>
+    <div class="faq-answer">
+      Entrambe bellissime! Torre Pali è più autentica, meno affollata, con prezzi leggermente inferiori e l'atmosfera di un vero borgo marinaro. Pescoluse (3 km a sud) è più turistica, con più stabilimenti e la famosa spiaggia Maldive del Salento. Puoi visitarle entrambe facilmente!
+    </div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-question">Posso portare il cane in spiaggia?</button>
+    <div class="faq-answer">
+      Sì, alcune spiagge di Torre Pali sono pet-friendly. È consigliato informarsi sulle regole specifiche di ogni stabilimento e rispettare le norme locali.
+    </div>
+  </div>
 </div>
 
 <div class="content-section">
@@ -1345,42 +1392,42 @@ Esplora la mappa interattiva per scoprire la posizione di Torre Pali, le spiagge
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Torre Pali è adatta alle famiglie con bambini?",
+      "name": "Dove si trova Torre Pali?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Assolutamente sì! Torre Pali è perfetta per famiglie: la spiaggia ha fondali bassi e sabbiosi per decine di metri, il mare è calmo e trasparente con Bandiera Blu, ci sono stabilimenti con servizi per bambini, parchi giochi, e il paese è piccolo e sicuro. Ideale per i più piccoli!"
+        "text": "Torre Pali è una frazione marina di Salve, in provincia di Lecce, situata sulla costa ionica del basso Salento, tra Pescoluse e Lido Marini."
       }
     },
     {
       "@type": "Question",
-      "name": "Serve l'auto a Torre Pali?",
+      "name": "Com'è il mare a Torre Pali?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Dipende. Se alloggi vicino al mare e vuoi goderti solo spiaggia e relax, puoi farne a meno: supermercati, ristoranti e bar sono a piedi. Se vuoi esplorare il Salento (Gallipoli, Lecce, Otranto, grotte), l'auto è consigliata. Alternative: Salentoinbus, attivo da metà giugno a metà settembre, che collega Lecce e le principali località balneari/entroterra con linee dedicate."
+        "text": "Il mare è cristallino, con fondali bassi e sabbiosi ideali per famiglie e bambini. La spiaggia è di sabbia fine e dorata, con tratti liberi e stabilimenti attrezzati."
       }
     },
     {
       "@type": "Question",
-      "name": "Quando è il mare più bello a Torre Pali?",
+      "name": "Ci sono parcheggi disponibili?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Il mare è splendido da maggio a ottobre. L'acqua raggiunge i 25-27°C in luglio-agosto, restando piacevole (22-24°C) anche a settembre-ottobre. Per acqua cristallina e poca folla, prediligi giugno o settembre. Il mare è quasi sempre calmo grazie alla conformazione della costa."
+        "text": "Sì, sono presenti parcheggi gratuiti e a pagamento vicino alle spiagge e nel centro abitato. Gli affittuari di case vacanza ricevono spesso un pass gratuito per le aree riservate."
       }
     },
     {
       "@type": "Question",
-      "name": "L'Isola della Fanciulla è raggiungibile a nuoto?",
+      "name": "Come si raggiunge Torre Pali?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Sì, facilmente! Dista circa 100-150 metri dalla riva ed è raggiungibile a nuoto in 5-10 minuti anche per nuotatori non esperti. Il mare è basso e calmo. In alternativa, puoi usare kayak, SUP o materassino. È uno dei simboli di Torre Pali, bellissima per foto!"
+        "text": "Si può arrivare in auto (da Lecce, Gallipoli, Santa Maria di Leuca), in treno fino a Lecce e poi con autobus di linea, oppure in aereo atterrando a Brindisi o Bari."
       }
     },
     {
       "@type": "Question",
-      "name": "Torre Pali è troppo tranquilla? C'è vita notturna?",
+      "name": "Qual è il periodo migliore per visitare Torre Pali?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Torre Pali è perfetta per chi cerca relax ma non è affatto noiosa! Ci sono bar sulla spiaggia con aperitivi e DJ set, ristoranti con musica live, e d'estate eventi e sagre. Per discoteche e vita notturna intensa, Gallipoli è a 40 km (molti locali organizzano shuttle bus)."
+        "text": "Da maggio a ottobre, con clima ideale e mare caldo. Settembre è consigliato per tranquillità e prezzi più bassi."
       }
     },
     {
@@ -1393,18 +1440,10 @@ Esplora la mappa interattiva per scoprire la posizione di Torre Pali, le spiagge
     },
     {
       "@type": "Question",
-      "name": "Posso portare il cane in spiaggia a Torre Pali?",
+      "name": "Posso portare il cane in spiaggia?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Sì! Ci sono tratti di spiaggia libera dog-friendly dove i cani sono benvenuti e alcuni stabilimenti attrezzati per ospitare i nostri amici a quattro zampe. Ricorda guinzaglio, museruola quando serve, e rispetta le regole di igiene. Molte case vacanze accettano animali!"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "C'è connessione internet e copertura telefonica a Torre Pali?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Sì, ottima! Torre Pali ha copertura 4G/5G di tutti i principali operatori. Bar, ristoranti e stabilimenti offrono Wi-Fi gratuito. Le case vacanze moderne hanno quasi tutte connessione Wi-Fi inclusa. Puoi tranquillamente lavorare in smart working se necessario!"
+        "text": "Sì, alcune spiagge di Torre Pali sono pet-friendly. È consigliato informarsi sulle regole specifiche di ogni stabilimento e rispettare le norme locali."
       }
     }
   ]
