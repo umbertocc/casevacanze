@@ -27,6 +27,11 @@
 <link rel="apple-touch-icon" sizes="180x180" href="https://torrepalivacanze.it/img/logo.png">
 <link rel="shortcut icon" href="https://torrepalivacanze.it/img/logo.png">
 <link rel="manifest" href="/manifest.json">
+<!-- Google Fonts - Caricamento ottimizzato -->
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="style-casa-bellavista-2.css" media="all">
 <!-- Structured Data (Schema.org) -->
 <script type="application/ld+json">
@@ -226,7 +231,7 @@ fetch('cookie-banner')
   <div class="lightbox-counter"><span id="lightbox-current">1</span> / <span id="lightbox-total">20</span></div>
 </div>
 </div>
-<div class="content">
+<div class="content" style="padding: 0px;">
 <div class="location">📍 Torre Pali, Marina di Salve (Sud Salento)</div>
 <div class="highlight-box">
 <strong>CIN:</strong> IT075066C200071293 | <strong>CIS:</strong> LE07506691000031092
@@ -263,8 +268,96 @@ A soli 100 metri si trova la spiaggia sabbiosa di Torre Pali, mentre a pochi pas
 <div class="amenity"><div class="amenity-icon">🧺</div><div class="amenity-text"><strong>Lavatrice</strong></div></div>
 </div>
 </div>
+<!-- Sezione Ubicazione -->
+<div class="map-section">
+  <div style="padding-left:16px; text-align:center;">
+    <h3 style="font-size: 1.8em;">📍 Ubicazione</h3>
+    <p style="font-size:1.15em; color:#22577a; font-weight:500; margin-bottom:10px;"><strong>Viale Colleoni, 55, Torre Pali (LE)</strong></p>
+  </div>
+  <div style="position:relative; width:100%; max-width:100%; height:350px; border-radius:16px; margin-bottom:0;">
+    <div id="map-overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.55);backdrop-filter:blur(2px);z-index:2;display:flex;align-items:center;justify-content:center;cursor:pointer;border-radius:16px;font-weight:600;font-size:1.08em;color:#22577a;transition:background 0.2s;">Clicca sulla mappa per attivare lo zoom e la navigazione</div>
+    <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=18.209%2C39.838%2C18.212%2C39.840&layer=mapnik&marker=39.8392%2C18.2105" id="map" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="border:0;width:100%;height:350px;border-radius:16px;pointer-events:none;filter:grayscale(0.08);" title="Mappa posizione Casa Bellavista 1"></iframe>
+  </div>
+  <div style="text-align:center; margin: 12px 0 24px 0;">
+    <a href="https://maps.app.goo.gl/DTirr6eZY2KYoi4C8" target="_blank" rel="noopener" style="color:#22577a; font-weight:600; text-decoration:underline;">Vedi la casa su Google Maps</a>
+  </div>
+  <script>
+    // Sblocca la mappa solo dopo click sull'overlay
+    document.addEventListener('DOMContentLoaded', function() {
+      var overlay = document.getElementById('map-overlay');
+      var mapFrame = document.getElementById('map');
+      if(overlay && mapFrame) {
+        overlay.addEventListener('click', function() {
+          overlay.style.display = 'none';
+          mapFrame.style.pointerEvents = 'auto';
+          mapFrame.focus();
+        });
+      }
+    });
+  </script>
+</div>
+
+<!-- FAQ Casa Bellavista 1 -->
+<section class="description2" style="margin-top: 40px;">
+  <h2 style="color: #2c3e50; margin-bottom: 15px;">❓ Domande Frequenti (FAQ)</h2>
+  <ul style="margin-left: 20px; line-height: 2;">
+    <li><strong>Come posso prenotare Casa Bellavista 1?</strong><br>Puoi prenotare contattandoci tramite WhatsApp, telefono o compilando il form di prenotazione sul sito. Riceverai tutte le informazioni e la conferma della disponibilità.</li>
+    <li><strong>È richiesta una caparra?</strong><br>Sì, per confermare la prenotazione è richiesta una caparra. L'importo e le modalità ti verranno comunicate al momento della richiesta.</li>
+    <li><strong>Quanto costa l'affitto per una settimana?</strong><br>Il costo esatto dipende dal periodo e dal numero di ospiti. Puoi richiedere un preventivo personalizzato e senza impegno.</li>
+  </ul>
+  <p style="margin-top:18px;font-size:1.08em;">Per ulteriori informazioni consulta la <a href="faq" style="color:#0074d9;text-decoration:underline;">sezione FAQ</a> oppure <a href="contatti" style="color:#0074d9;text-decoration:underline;">compila il form contatti</a>.</p>
+</section>
+
 </main>
-</main>
+<!-- End Main Content -->
+
+
+
+<div style="text-align:center; margin: 40px 0 0 0; font-size:1.15em; padding:15px;">
+Scopri anche <a href="/" style="color: #22577a; font-weight: 600;">le altre nostre case vacanze</a> a Torre Pali, Salento. A pochi passi dalla spiaggia con tutti i comfort.
+</div>
+<!-- Footer -->
+<footer class="footer" aria-label="Footer Torre Pali Salento">
+<div class="footer-container">
+<div class="footer-section">
+<h3>🏝️ Torre Pali Vacanze - Info</h3>
+<p>Case vacanze a Torre Pali, Salento. A pochi passi dalla spiaggia Bandiera Blu con tutti i comfort.</p>
+<p style="margin-top: 15px;">📍 Torre Pali, Lecce (LE)<br>Salento, Puglia</p>
+</div>
+<div class="footer-section">
+<h3>Link utili Torre Pali</h3>
+<a href="/">Home</a>
+<a href="casa-bellavista-2">Casa Bellavista 2</a>
+<a href="casa-giorgio-4">Casa Giorgio 4</a>
+<a href="casa-giorgio-6">Casa Giorgio 6</a>
+<a href="torre-pali">Scopri Torre Pali</a>
+<a href="torre-pali-posizione">Dove si trova Torre Pali</a>
+<a href="molo-torre-pali">Il molo di Torre Pali</a>
+<a href="galleria-torre-pali">Galleria Torre Pali</a>
+<a href="contatti">Contatti</a>
+<a href="privacy">Privacy Policy</a>
+<a href="cookie-policy">Cookie Policy</a>
+<br>
+<h4 style="margin-bottom:8px;font-size:1em;">Link utili località</h4>
+<a href="torre-vado">Torre Vado</a>
+<a href="lido-marini">Lido Marini</a>
+<a href="pescoluse">Pescoluse</a>
+<a href="itinerario-7-giorni-salento">Itinerario 7 giorni Salento</a>
+</div>
+<div class="footer-section">
+<h3>Contatti Torre Pali Vacanze</h3>
+<p> <a href="tel:+393886587080"> 📞+39 388 658 70 80</a></p>
+<p>📧 <strong>info@torrepalivacanze.it</strong></p>
+<p><a href="https://wa.me/393886587080?text=Ciao!%20Vorrei%20informazioni%20sulle%20vostre%20case%20vacanza%20a%20Torre%20Pali" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill="#fff" style="background:#25d366; border-radius:3px;"><path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 7.933-2.127c2.42 1.37 5.173 2.127 8.067 2.127 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.467c-2.482 0-4.908-0.646-7.07-1.87l-0.507-0.292-4.713 1.262 1.262-4.669-0.292-0.508c-1.207-2.100-1.847-4.507-1.847-6.978 0-7.51 6.11-13.619 13.619-13.619s13.619 6.109 13.619 13.619c0 7.51-6.11 13.619-13.619 13.619zM21.789 18.75c-0.214-0.107-1.268-0.625-1.464-0.696s-0.339-0.107-0.482 0.107c-0.143 0.214-0.554 0.696-0.679 0.839s-0.25 0.161-0.464 0.054c-0.214-0.107-0.902-0.333-1.718-1.060-0.635-0.567-1.064-1.268-1.189-1.482s-0.013-0.329 0.094-0.435c0.096-0.096 0.214-0.25 0.321-0.375s0.143-0.214 0.214-0.357 0.036-0.268-0.018-0.375c-0.054-0.107-0.482-1.161-0.661-1.589s-0.349-0.362-0.482-0.369c-0.125-0.007-0.268-0.007-0.411-0.007s-0.375 0.054-0.571 0.268c-0.196 0.214-0.75 0.732-0.75 1.786s0.768 2.071 0.875 2.214c0.107 0.143 1.5 2.357 3.653 3.304 0.51 0.214 0.909 0.343 1.219 0.438 0.512 0.161 0.978 0.139 1.346 0.084 0.411-0.061 1.268-0.518 1.446-1.018s0.179-0.929 0.125-1.018c-0.054-0.089-0.196-0.143-0.411-0.25z"/></svg>WhatsApp</a></p>
+<p><a href="https://www.facebook.com/profile.php?id=61577506430394" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#fff" style="background:#1877f2; border-radius:3px;"><path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.406.595 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.406 24 22.674V1.326C24 .592 23.406 0 22.675 0z"/></svg>Seguici su Facebook</a></p>
+<p style="margin-top: 15px;">Orario: 09:00 - 20:00<br>Risposta entro 1 ora</p>
+</div>
+</div>
+<div class="footer-bottom">
+<p>&copy; 2026 Torre Pali Vacanze. Tutti i diritti riservati.</p>
+</div>
+</footer>
+
 <script src="script-casa-bellavista-2.js"></script>
 </body>
 </html>
