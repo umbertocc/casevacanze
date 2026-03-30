@@ -1,6 +1,111 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+<style>
+  /* Migliorie per la lightbox */
+  .lightbox {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 3000;
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    transition: opacity 0.2s;
+    justify-content: center;
+    align-items: center;
+  }
+  .lightbox.active {
+    display: flex;
+  }
+  .lightbox-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+  }
+  .lightbox-arrow {
+    background: rgba(0,0,0,0.35);
+    border: none;
+    color: #fff;
+    font-size: 2.5em;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    cursor: pointer;
+    margin: 0 18px;
+    transition: background 0.2s;
+    position: static;
+  }
+  .lightbox-arrow:hover {
+    background: rgba(0,0,0,0.55);
+  }
+  #lightbox-img {
+    max-width: 90vw;
+    max-height: 80vh;
+    margin: 0 12px;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.25);
+    border-radius: 12px;
+    display: block;
+    transition: none !important;
+    pointer-events: none;
+    background: #fff;
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 18px;
+    right: 32px;
+    font-size: 2.2em;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+    transition: color 0.2s;
+  }
+  .lightbox-counter {
+    position: absolute;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 1.1em;
+    background: rgba(0,0,0,0.25);
+    padding: 4px 16px;
+    border-radius: 8px;
+    z-index: 5;
+  }
+  @media (max-width: 700px) {
+    .lightbox-content {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    #lightbox-img {
+      max-width: 98vw;
+      max-height: 60vh;
+      margin: 12px 0;
+    }
+    .lightbox-arrow {
+      font-size: 2em;
+      width: 38px;
+      height: 38px;
+      margin: 8px 0;
+    }
+    .lightbox-close {
+      top: 8px;
+      right: 12px;
+      font-size: 1.6em;
+    }
+  }
+</style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow">
