@@ -261,7 +261,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     @media (max-width: 1200px) { .footer-container { grid-template-columns: 1fr; } }
     @media (max-width: 900px) {
-            .container { padding: 15px; }
             .footer-container { grid-template-columns: 1fr !important; }
             .navbar-container { flex-direction: row; justify-content: space-between; align-items: center; padding: 18px 8px; }
             .hamburger { display: flex !important; }
@@ -277,7 +276,6 @@ document.addEventListener('DOMContentLoaded', function() {
             .dropdown-menu a { padding: 10px 0; font-size: 1em; }
           }
           @media (max-width: 768px) {
-            .container { padding: 15px; }
             .footer-container { grid-template-columns: 1fr !important; }
             .navbar-container { flex-direction: row; justify-content: space-between; align-items: center; padding: 18px 30px; }
             .hamburger { display: flex !important; }
@@ -299,7 +297,7 @@ document.addEventListener('DOMContentLoaded', function() {
     .whatsapp-float { position: fixed; top: auto !important; left: auto !important; bottom: 20px !important; right: 20px !important; background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 6px 25px rgba(37,211,102,0.4); z-index: 999; text-decoration: none; transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55); animation: pulse 2s infinite; }
     .whatsapp-float:hover { transform: scale(1.15) rotate(5deg); box-shadow: 0 8px 35px rgba(37,211,102,0.6); animation: none; }
     @keyframes pulse { 0% { box-shadow: 0 6px 25px rgba(37,211,102,0.4); } 50% { box-shadow: 0 6px 25px rgba(37,211,102,0.7), 0 0 0 10px rgba(37,211,102,0.2); } 100% { box-shadow: 0 6px 25px rgba(37,211,102,0.4); } }
-    .container { max-width: 900px; margin: 0 auto; padding: 8px 8px 0 8px; }
+    .container { max-width: 900px; margin: 0 auto;}
     header { text-align: center; margin-top: 20px; margin-bottom: 50px; padding: 60px 20px; color: #2c3e50; border-radius: 30px; box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3); animation: fadeIn 0.8s ease-out; width: 100%; }
     header h1 { font-size: 3em; margin-bottom: 15px; font-weight: 700; text-shadow: 0 4px 10px rgba(0,0,0,0.2); }
     .booking-form-section {

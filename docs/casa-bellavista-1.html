@@ -105,6 +105,11 @@
       font-size: 1.6em;
     }
   }
+  @media (max-width: 768px) {
+    .container {
+        padding: 0px !important;
+    }
+}
 </style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -298,47 +303,41 @@ fetch('cookie-banner')
 <div class="gallery-filters">
 	<button class="filter-btn active" data-filter="all">Tutte</button>
 	<button class="filter-btn" data-filter="esterni">Esterni</button>
+	<button class="filter-btn" data-filter="soggiorno">Soggiorno</button>
 	<button class="filter-btn" data-filter="camere">Camere</button>
-	<button class="filter-btn" data-filter="bagni">Bagni</button>
+	<button class="filter-btn" data-filter="bagni">Bagno</button>
 </div>
 <div class="main-gallery" id="gallery">
   <button class="gallery-arrow arrow-left" onclick="changeImg(-1)">&#10094;</button>
   <button class="gallery-arrow arrow-right" onclick="changeImg(1)">&#10095;</button>
   <div class="photo-counter"><span id="current-photo">1</span> / <span id="total-photos">20</span></div>
-  <img src="img/casa-bella-vista1/prospetto.jpg" alt="Prospetto Casa Bellavista 1" loading="lazy" data-category="esterni">
-  <img src="img/casa-bella-vista1/prospetto2.jpg" alt="Vista esterna" loading="lazy" data-category="esterni">
-  <img src="img/casa-bella-vista1/veranda.jpg" alt="Veranda panoramica" loading="lazy" data-category="esterni">
-  <img src="img/casa-bella-vista1/veranda2.jpg" alt="Veranda attrezzata" loading="lazy" data-category="esterni">
-  <img src="img/casa-bella-vista1/veranda3.jpg" alt="Spazio esterno" loading="lazy" data-category="esterni">
-  <img src="img/casa-bella-vista1/veranda4.jpg" alt="Vista panoramica" loading="lazy" data-category="esterni">
-  <img src="img/casa-bella-vista1/cucina.jpg" alt="Cucina" loading="lazy" data-category="camere">
-  <img src="img/casa-bella-vista1/camera.jpg" alt="Camera matrimoniale" loading="lazy" data-category="camere">
-  <img src="img/casa-bella-vista1/camera2.jpg" alt="Camera matrimoniale 2" loading="lazy" data-category="camere">
-  <img src="img/casa-bella-vista1/camera3.jpg" alt="Camera singola" loading="lazy" data-category="camere">
-  <img src="img/casa-bella-vista1/seconda-camera.jpg" alt="Seconda camera" loading="lazy" data-category="camere">
-  <img src="img/casa-bella-vista1/secondacamera2.jpg" alt="Seconda camera 2" loading="lazy" data-category="camere">
-  <img src="img/casa-bella-vista1/bagno.jpg" alt="Bagno" loading="lazy" data-category="bagni">
-  <img src="img/casa-bella-vista1/bagno2.jpg" alt="Bagno 2" loading="lazy" data-category="bagni">
-  <img src="img/casa-bella-vista1/bagno3.jpg" alt="Bagno 3" loading="lazy" data-category="bagni">
-  <img src="img/casa-bella-vista1/bagno4.jpg" alt="Bagno 4" loading="lazy" data-category="bagni">
-  <img src="img/casa-bella-vista1/balcone.jpg" alt="Balcone" loading="lazy" data-category="esterni">
-  <img src="img/casa-bella-vista1/balcone2.jpg" alt="Balcone 2" loading="lazy" data-category="esterni">
-  <img src="img/casa-bella-vista1/balcone3.jpg" alt="Balcone 3" loading="lazy" data-category="esterni">
-  <img src="img/casa-bella-vista1/corridoio.jpg" alt="Corridoio" loading="lazy" data-category="camere">
-  <div class="dots" id="dots"></div>
+  <picture><img src="img/casa-bella-vista1/prospetto.jpg" alt="Prospetto Casa Bellavista 1" loading="lazy" data-category="esterni"></picture>
+  <picture><img src="img/casa-bella-vista1/prospetto2.jpg" alt="Vista esterna" loading="lazy" data-category="esterni"></picture>
+  <picture><img src="img/casa-bella-vista1/veranda.jpg" alt="Veranda panoramica" loading="lazy" data-category="esterni"></picture>
+  <picture><img src="img/casa-bella-vista1/veranda2.jpg" alt="Veranda attrezzata" loading="lazy" data-category="esterni"></picture>
+  <picture><img src="img/casa-bella-vista1/veranda3.jpg" alt="Spazio esterno" loading="lazy" data-category="esterni"></picture>
+  <picture><img src="img/casa-bella-vista1/veranda4.jpg" alt="Vista panoramica" loading="lazy" data-category="esterni"></picture>
+  <picture><img src="img/casa-bella-vista1/cucina.jpg" alt="Cucina" loading="lazy" data-category="soggiorno"></picture>
+  <picture><img src="img/casa-bella-vista1/camera.jpg" alt="Camera matrimoniale" loading="lazy" data-category="camere"></picture>
+  <picture><img src="img/casa-bella-vista1/camera2.jpg" alt="Camera matrimoniale 2" loading="lazy" data-category="camere"></picture>
+  <picture><img src="img/casa-bella-vista1/camera3.jpg" alt="Camera singola" loading="lazy" data-category="camere"></picture>
+  <picture><img src="img/casa-bella-vista1/seconda-camera.jpg" alt="Seconda camera" loading="lazy" data-category="camere"></picture>
+  <picture><img src="img/casa-bella-vista1/secondacamera2.jpg" alt="Seconda camera 2" loading="lazy" data-category="camere"></picture>
+  <picture><img src="img/casa-bella-vista1/bagno.jpg" alt="Bagno" loading="lazy" data-category="bagni"></picture>
+  <picture><img src="img/casa-bella-vista1/bagno2.jpg" alt="Bagno 2" loading="lazy" data-category="bagni"></picture>
+  <picture><img src="img/casa-bella-vista1/bagno3.jpg" alt="Bagno 3" loading="lazy" data-category="bagni"></picture>
+  <picture><img src="img/casa-bella-vista1/bagno4.jpg" alt="Bagno 4" loading="lazy" data-category="bagni"></picture>
+  <picture><img src="img/casa-bella-vista1/balcone.jpg" alt="Balcone" loading="lazy" data-category="esterni"></picture>
+  <picture><img src="img/casa-bella-vista1/balcone2.jpg" alt="Balcone 2" loading="lazy" data-category="esterni"></picture>
+  <picture><img src="img/casa-bella-vista1/balcone3.jpg" alt="Balcone 3" loading="lazy" data-category="esterni"></picture>
+  <picture><img src="img/casa-bella-vista1/corridoio.jpg" alt="Corridoio" loading="lazy" data-category="soggiorno"></picture>
+  <picture>
+    <source srcset="img/torre-pali/torrepali10.webp" type="image/webp">
+    <img src="img/torre-pali/torrepali10.webp" alt="Vista sulla Torre aragonese di Torre Pali e il mare" loading="lazy" data-category="esterni">
+  </picture>
+<div class="dots" id="dots"></div>
 </div>
-<!-- Lightbox -->
-<div class="lightbox" id="lightbox">
-  <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-  <div class="lightbox-content">
-    <button class="lightbox-arrow arrow-left" onclick="changeLightboxImg(-1)">&#10094;</button>
-    <img id="lightbox-img" src="" alt="">
-    <button class="lightbox-arrow arrow-right" onclick="changeLightboxImg(1)">&#10095;</button>
-    <div class="lightbox-counter"><span id="lightbox-current">1</span> / <span id="lightbox-total">20</span></div>
-  </div>
-</div>
-</div>
-<div class="content" style="padding: 0px;">
+<div class="content" style="padding: 15px;">
 <div class="location">📍 Torre Pali, Marina di Salve (Sud Salento)</div>
 <div class="highlight-box">
 <strong>CIN:</strong> IT075066C200071293 | <strong>CIS:</strong> LE07506691000031092
@@ -493,5 +492,14 @@ Scopri anche <a href="/" style="color: #22577a; font-weight: 600;">le altre nost
 </footer>
 
 <script src="script-casa-bellavista-2.js"></script>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+  <button class="lightbox-arrow arrow-left" onclick="changeLightboxImg(-1)">&#10094;</button>
+  <img id="lightbox-img" src="" alt="">
+  <button class="lightbox-arrow arrow-right" onclick="changeLightboxImg(1)">&#10095;</button>
+  <div class="lightbox-counter"><span id="lightbox-current">1</span> / <span id="lightbox-total">20</span></div>
+</div>
 </body>
 </html>
