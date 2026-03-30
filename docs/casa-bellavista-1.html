@@ -225,10 +225,12 @@ fetch('cookie-banner')
 <!-- Lightbox -->
 <div class="lightbox" id="lightbox">
   <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-  <button class="lightbox-arrow arrow-left" onclick="changeLightboxImg(-1)">&#10094;</button>
-  <img id="lightbox-img" src="" alt="">
-  <button class="lightbox-arrow arrow-right" onclick="changeLightboxImg(1)">&#10095;</button>
-  <div class="lightbox-counter"><span id="lightbox-current">1</span> / <span id="lightbox-total">20</span></div>
+  <div class="lightbox-content">
+    <button class="lightbox-arrow arrow-left" onclick="changeLightboxImg(-1)">&#10094;</button>
+    <img id="lightbox-img" src="" alt="">
+    <button class="lightbox-arrow arrow-right" onclick="changeLightboxImg(1)">&#10095;</button>
+    <div class="lightbox-counter"><span id="lightbox-current">1</span> / <span id="lightbox-total">20</span></div>
+  </div>
 </div>
 </div>
 <div class="content" style="padding: 0px;">
@@ -279,7 +281,7 @@ A soli 100 metri si trova la spiaggia sabbiosa di Torre Pali, mentre a pochi pas
     <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=18.209%2C39.838%2C18.212%2C39.840&layer=mapnik&marker=39.8392%2C18.2105" id="map" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="border:0;width:100%;height:350px;border-radius:16px;pointer-events:none;filter:grayscale(0.08);" title="Mappa posizione Casa Bellavista 1"></iframe>
   </div>
   <div style="text-align:center; margin: 12px 0 24px 0;">
-    <a href="https://maps.app.goo.gl/DTirr6eZY2KYoi4C8" target="_blank" rel="noopener" style="color:#22577a; font-weight:600; text-decoration:underline;">Vedi la casa su Google Maps</a>
+    <a href="https://www.google.com/maps?q=Viale+Colleoni,+55,+Torre+Pali+(LE)" target="_blank" rel="noopener" style="color:#22577a; font-weight:600; text-decoration:underline;">Vedi la casa su Google Maps</a>
   </div>
   <script>
     // Sblocca la mappa solo dopo click sull'overlay
@@ -307,6 +309,33 @@ A soli 100 metri si trova la spiaggia sabbiosa di Torre Pali, mentre a pochi pas
   </ul>
   <p style="margin-top:18px;font-size:1.08em;">Per ulteriori informazioni consulta la <a href="faq" style="color:#0074d9;text-decoration:underline;">sezione FAQ</a> oppure <a href="contatti" style="color:#0074d9;text-decoration:underline;">compila il form contatti</a>.</p>
 </section>
+
+<div class="cta-buttons">
+  <h2 style="color: #2c3e50; margin-bottom: 25px;">Sei Interessato? Contattaci!</h2>
+  <a href="https://wa.me/393886587080?text=Ciao!%20Sono%20interessato%20alla%20Casa%20Bella%20Vista%201%20a%20Torre%20Pali" class="btn" data-tooltip="Invia messaggio WhatsApp">📱 WhatsApp</a>
+  <a href="tel:+393886587080" class="btn">📞 Chiama Ora</a>
+  <div class="price-section">
+    <div class="price"><a href="prenotazione" style="color:inherit;text-decoration:underline;">Richiedi Preventivo</a></div>
+    <div class="price-desc" style="font-size: 1.05em; opacity: 1; margin-top: 15px;">Contattaci per ricevere un preventivo personalizzato</div>
+    <div class="price-desc" style="font-size: 0.95em; opacity: 0.9; margin-top: 10px;">Check-in 15:00 | Check-out 10:00 | Pulizie finali incluse | Caparra 30%</div>
+  </div>
+  <p style="margin-top: 25px; color: #22577a; font-size: 1.1em;">+39 388 658 70 80 • Risposta rapida</p>
+  <div class="social-share">
+    <h3>👍 Condividi questa casa:</h3>
+    <div style="margin-bottom:18px;"></div>
+    <div class="social-buttons">
+      <a href="https://wa.me/?text=Guarda questa casa vacanze a Torre Pali! https://torrepalivacanze.it/casa-bellavista-1" class="social-btn whatsapp" target="_blank" rel="noopener">
+        <span>📲</span> WhatsApp
+      </a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=https://torrepalivacanze.it/casa-bellavista-1" class="social-btn facebook" target="_blank" rel="noopener">
+        <span>f</span> Facebook
+      </a>
+      <a href="mailto:?subject=Casa Bellavista 1 - Torre Pali&body=Guarda questa casa vacanze a Torre Pali: https://torrepalivacanze.it/casa-bellavista-1" class="social-btn email">
+        <span>✉️</span> Email
+      </a>
+    </div>
+  </div>
+</div>
 
 </main>
 <!-- End Main Content -->

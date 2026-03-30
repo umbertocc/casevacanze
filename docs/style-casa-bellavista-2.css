@@ -1,3 +1,93 @@
+.lightbox-content {
+  overflow: hidden;
+}
+.lightbox-content img {
+  pointer-events: none;
+  user-select: none;
+}
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.95);
+  align-items: center;
+  justify-content: center;
+}
+.lightbox.active {
+  display: flex !important;
+}
+.lightbox-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+.lightbox-content img {
+  width: auto;
+  height: auto;
+  max-width: 98vw;
+  max-height: 90vh;
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+  background: #fff;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.45), 0 1.5px 8px rgba(102,126,234,0.10);
+  border-radius: 0;
+  position: relative;
+  z-index: 2;
+}
+.lightbox-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.2);
+  color: white;
+  border: none;
+  font-size: 3em;
+  padding: 20px 30px;
+  cursor: pointer;
+  transition: background 0.3s;
+  z-index: 3;
+}
+.lightbox-arrow.arrow-left { left: 0; border-radius: 0 10px 10px 0; }
+.lightbox-arrow.arrow-right { right: 0; border-radius: 10px 0 0 10px; }
+.lightbox-arrow:hover { background: rgba(255,255,255,0.4); }
+.lightbox-close {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  color: white;
+  font-size: 3em;
+  cursor: pointer;
+  font-weight: bold;
+  background: rgba(0,0,0,0.65);
+  padding: 8px 22px 12px 22px;
+  border-radius: 50px;
+  z-index: 10001;
+  transition: background 0.2s, color 0.2s;
+}
+.lightbox-close:hover {
+  background: rgba(34,87,122,0.95);
+  color: #fff176;
+}
+.lightbox-counter {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.7);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 0;
+  font-size: 1.1em;
+  z-index: 4;
+}
 /* CSS leggibile per Casa Bellavista 2 - copia originale da modificare prima della minificazione */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 /* Tutti i link sottolineati */
@@ -110,16 +200,20 @@ h1 { font-size: 3em; color: #111; margin-bottom: 15px; font-weight: 700; text-sh
 .dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.5); cursor: pointer; transition: background 0.3s; }
 .dot:hover { background: rgba(255,255,255,0.8); }
 .dot.active { background: white; }
-.lightbox { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); }
-/* Forza la lightbox a schermo intero sempre */
-.lightbox.active {
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
   width: 100vw;
   height: 100vh;
-  top: 0;
-  left: 0;
+  background: rgba(0,0,0,0.95);
+  align-items: center;
+  justify-content: center;
+}
+.lightbox.active {
+  display: flex !important;
 }
 .lightbox img {
   width: auto;
@@ -127,11 +221,12 @@ h1 { font-size: 3em; color: #111; margin-bottom: 15px; font-weight: 700; text-sh
   max-width: 98vw;
   max-height: 90vh;
   display: block;
-  margin: auto;
+  margin: 0 auto;
   object-fit: contain;
   background: #fff;
   box-shadow: 0 8px 40px rgba(0,0,0,0.45), 0 1.5px 8px rgba(102,126,234,0.10);
   border-radius: 0;
+  position: relative;
 }
 .lightbox-close {
   position: absolute;
