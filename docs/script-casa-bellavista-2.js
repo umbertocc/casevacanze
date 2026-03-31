@@ -72,6 +72,7 @@ createDots();
 // Funzione per mostrare immagine
 function showImg(i) {
   if (!filteredImages.length) return;
+  if (!filteredImages[i]) return;
   filteredImages.forEach(img => img.classList.remove('active'));
   document.querySelectorAll('.dot').forEach(dot => dot.classList.remove('active'));
   currentImg = i;
