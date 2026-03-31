@@ -47,10 +47,14 @@ filterButtons.forEach(btn => {
 
 // Aggiorna counter
 function updateCounter() {
-  document.getElementById('current-photo').textContent = filteredImages.length > 0 ? (currentImg + 1) : 0;
-  document.getElementById('lightbox-current').textContent = filteredImages.length > 0 ? (currentImg + 1) : 0;
-  document.getElementById('total-photos').textContent = filteredImages.length;
-  document.getElementById('lightbox-total').textContent = filteredImages.length;
+  var currentPhoto = document.getElementById('current-photo');
+  if (currentPhoto) currentPhoto.textContent = filteredImages.length > 0 ? (currentImg + 1) : 0;
+  var lightboxCurrent = document.getElementById('lightbox-current');
+  if (lightboxCurrent) lightboxCurrent.textContent = filteredImages.length > 0 ? (currentImg + 1) : 0;
+  var totalPhotos = document.getElementById('total-photos');
+  if (totalPhotos) totalPhotos.textContent = filteredImages.length;
+  var lightboxTotal = document.getElementById('lightbox-total');
+  if (lightboxTotal) lightboxTotal.textContent = filteredImages.length;
 }
 
 // Crea i dot indicator iniziali
