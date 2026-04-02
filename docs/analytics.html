@@ -18,6 +18,11 @@
       'send_to': 'AW-17941172028/OvpCCP_1jJQcELyegutC',
       'event_callback': callback
     });
+    // Evento personalizzato GA4
+    gtag('event', 'contatto', {
+      'event_category': 'lead',
+      'event_label': url || 'form_submit'
+    });
     return false;
   }
 </script>
