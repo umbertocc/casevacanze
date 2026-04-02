@@ -57,29 +57,4 @@
     <p>Ultimo aggiornamento: 23 febbraio 2026</p>
   </div>
 </body>
-<!-- Cookie Consent Banner -->
-<div id="cookie-banner" style="position:fixed;bottom:0;left:0;width:100%;background:#222;color:#fff;padding:16px 8px;z-index:9999;text-align:center;font-size:16px;box-shadow:0 -2px 8px rgba(0,0,0,0.15);display:none;">
-  Questo sito utilizza cookie tecnici e di terze parti (Google Analytics) per migliorare l'esperienza e analizzare il traffico. <a href="privacy" style="color:#ffd700;text-decoration:underline;">Privacy Policy</a> | <a href="cookie-policy" style="color:#ffd700;text-decoration:underline;">Cookie Policy</a><br>
-  <button id="cookie-accept" style="margin-left:16px;padding:8px 18px;background:#ffd700;color:#222;border:none;border-radius:4px;cursor:pointer;font-weight:bold;">Accetta</button>
-  <button id="cookie-refuse" style="margin-left:8px;padding:8px 18px;background:#888;color:#fff;border:none;border-radius:4px;cursor:pointer;font-weight:bold;">Rifiuta</button>
-</div>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    if (!localStorage.getItem('cookieConsent')) {
-      document.getElementById('cookie-banner').style.display = 'block';
-    }
-    document.getElementById('cookie-accept').onclick = function() {
-      localStorage.setItem('cookieConsent', 'true');
-      document.getElementById('cookie-banner').style.display = 'none';
-    };
-    document.getElementById('cookie-refuse').onclick = function() {
-      localStorage.setItem('cookieConsent', 'refused');
-      document.getElementById('cookie-banner').style.display = 'none';
-      window['ga-disable-G-M0TEME57K0'] = true;
-    };
-    if (localStorage.getItem('cookieConsent') === 'refused') {
-      window['ga-disable-G-M0TEME57K0'] = true;
-    }
-  });
-</script>
 </html>
