@@ -441,23 +441,7 @@ h1 { font-size: 3.5em; margin-bottom: 20px; font-weight: 700; position: relative
   }
 }
 </script>
-
-<!-- Google Analytics/Ads centralizzato -->
-<script>
-  fetch('analytics.html')
-    .then(r => r.text())
-    .then(html => {
-      const div = document.createElement('div');
-      div.innerHTML = html;
-      const scripts = div.querySelectorAll('script');
-      scripts.forEach(s => {
-        const ns = document.createElement('script');
-        if (s.src) { ns.src = s.src; ns.async = true; }
-        else { ns.textContent = s.textContent; }
-        document.head.appendChild(ns);
-      });
-    });
-</script>
+  <script src="analytics.js"></script>
 
 </head>
 <body>
