@@ -19,3 +19,5 @@ function setupCookieBanner() {
 
 // Se il banner viene caricato dinamicamente, esegui subito la funzione
 setupCookieBanner();
+
+

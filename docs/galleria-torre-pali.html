@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+    <!-- Includi Google Analytics centralizzato -->
+    <script>
+      fetch('analytics.html')
+        .then(response => response.text())
+        .then(html => {
+          const temp = document.createElement('div');
+          temp.innerHTML = html;
+          temp.querySelectorAll('script').forEach(script => {
+            const s = document.createElement('script');
+            if (script.src) s.src = script.src;
+            if (script.async) s.async = true;
+            s.textContent = script.textContent;
+            document.head.appendChild(s);
+          });
+        });
+    </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index, follow">
