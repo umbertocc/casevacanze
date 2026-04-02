@@ -586,6 +586,10 @@ document.getElementById('booking-form').addEventListener('submit', function(e) {
     headers: { 'Accept': 'application/json' }
   }).then(function(response) {
     if (response.ok) {
+      // Traccia conversione Google Ads
+      if (typeof gtag_report_conversion === 'function') {
+        gtag_report_conversion();
+      }
       confirmation.style.display = 'block';
       form.reset();
       window.scrollTo({top: 0, behavior: 'smooth'});

@@ -466,6 +466,10 @@ document.addEventListener('DOMContentLoaded', function(){
         body: data
       });
       if (resp.ok) {
+        // Traccia conversione Google Ads
+        if (typeof gtag_report_conversion === 'function') {
+          gtag_report_conversion();
+        }
         success.style.display = 'block';
         success.scrollIntoView({ behavior: 'smooth', block: 'center' });
         form.reset();
