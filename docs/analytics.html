@@ -5,4 +5,18 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'AW-17941172028');
+
+  /* Google Ads Conversion Tracking */
+  function gtag_report_conversion(url) {
+    var callback = function () {
+      if (typeof(url) != 'undefined') {
+        window.location = url;
+      }
+    };
+    gtag('event', 'conversion', {
+      'send_to': 'AW-17941172028/OvpCCP_1jJQcELyegutC',
+      'event_callback': callback
+    });
+    return false;
+  }
 </script>
