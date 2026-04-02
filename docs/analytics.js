@@ -7,9 +7,13 @@ gtag('config', 'AW-17941172028');
 
 /* Google Ads Conversion Tracking */
 function gtag_report_conversion(url) {
+  var called = false;
   var callback = function () {
-    if (typeof(url) != 'undefined') {
-      window.location = url;
+    if (!called) {
+      called = true;
+      if (typeof(url) != 'undefined') {
+        window.location = url;
+      }
     }
   };
   gtag('event', 'conversion', {
@@ -20,5 +24,7 @@ function gtag_report_conversion(url) {
     'event_category': 'lead',
     'event_label': url || 'form_submit'
   });
+  // Fallback: se il callback non viene chiamato entro 1 secondo, naviga comunque
+  setTimeout(callback, 1000);
   return false;
 }
