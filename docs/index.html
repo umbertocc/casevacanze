@@ -164,7 +164,7 @@ header { text-align: center; margin-bottom: 60px; padding-top: 60px; color: blac
 header::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%); animation: rotate 20s linear infinite; }
 @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 h1 { font-size: 3.5em; margin-bottom: 20px; font-weight: 700; position: relative; z-index: 1; text-shadow: 0 4px 15px rgba(0,0,0,0.2); }
-.tagline { font-size: 1.4em; margin-bottom: 25px; color: rgba(25, 22, 22, 0.95); font-weight: 300; position: relative; z-index: 1; padding: 5px }
+.tagline { font-size: 1.4em; margin-bottom: 25px; color: rgba(25, 22, 22, 0.95); font-weight: 300; position: relative; z-index: 1; padding: 15px }
 .hero-section-mare {
   align-items: flex-start;
   }
@@ -724,7 +724,7 @@ if ('serviceWorker' in navigator) {
 <h2>Torre Pali: La Tua Vacanza nel Salento Autentico</h2>
 <p><strong>Torre Pali</strong> offre tutto ciò che serve per una vacanza perfetta nel Salento: spiagge sabbiose dorate con acque cristalline, fondali bassi e sicuri ideali per famiglie con bambini, un'atmosfera autentica e rilassata e una cucina locale genuina a base di pesce fresco. La <strong>torre aragonese del XVI secolo</strong> che domina la costa è un'attrazione storica affascinante, e i tramonti sul mare sono semplicemente spettacolari.</p>
 <p>A pochi metri dalla riva si trova l'<strong>Isola della Fanciulla</strong>, un suggestivo isolotto roccioso circondato da una romantica leggenda d'amore, facilmente raggiungibile a nuoto (circa 50 metri) o in kayak. Un luogo perfetto per fare snorkeling, esplorare la flora marina e scattare fotografie indimenticabili con lo sfondo del Mar Ionio!</p>
-<p><strong>Cosa visitare vicino a Torre Pali:</strong> Le famose <a href="spiagge-salento-sud" style="color: #5a67d8; font-weight: 600; text-decoration: underline;">Maldive del Salento a Pescoluse</a> (3 km), Punta Pizzo con le sue dune (5 km), Santa Maria di Leuca con il faro e il Santuario (15 km), le Grotte di Castro Marina (25 km), Gallipoli (35 km), Otranto (50 km) e la barocca Lecce (60 km). Torre Pali è la base perfetta per esplorare tutto il Salento meridionale!</p>
+<p><strong>Cosa visitare vicino a Torre Pali:</strong> Le famose <a href="spiagge-salento-sud" style="color: #5a67d8; font-weight: 600; text-decoration: underline;">Maldive del Salento a Pescoluse</a> (3 km), Punta Pizzo con le sue dune (5 km), Santa Maria di Leuca con il faro e il Santuario (15 km), le Grotte di Castro Marina (25 km), Gallipoli (35 km), Otranto (50 km) e la barocca Lecce (70 km). Torre Pali è la base perfetta per esplorare tutto il Salento meridionale!</p>
 <p style="text-align: center; margin-top: 25px;"><a href="torre-pali" class="btn">🏝️ Scopri Torre Pali e l'Isola della Fanciulla</a></p>
 <p style="text-align: center; margin-top: 10px;"><a href="spiagge-salento-sud" class="btn">🏖️ Scopri le spiagge del Salento</a></p>
 
@@ -886,6 +886,9 @@ var towerIcon = L.divIcon({
 });
 
 // Markers Case Vacanze - Via Vasco de Gama
+L.marker([39.8400, 18.2105], {icon: houseIcon}).addTo(map)
+  .bindPopup('<b>🏠 Casa Bellavista 1</b><br>Viale Colleoni 55<br>100m dalla spiaggia<br><a href="casa-bellavista-1">Vedi dettagli</a>');
+
 L.marker([39.8393, 18.2105], {icon: houseIcon}).addTo(map)
   .bindPopup('<b>🏠 Casa Bellavista 2</b><br>Via Vasco de Gama 5<br>20m dalla spiaggia<br><a href="casa-bellavista-2">Vedi dettagli</a>');
 
