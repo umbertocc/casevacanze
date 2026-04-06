@@ -1,236 +1,492 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <style>
-    body {
-      background-image: url('img/bg-salento.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-    }
-    header {
-      margin-top: 48px;
-      margin-bottom: 56px;
-    }
-    .properties-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 32px;
-      justify-content: center;
-      margin-bottom: 48px;
-    }
-    .property-card {
-      background: rgba(255,255,255,0.97);
-      border-radius: 18px;
-      box-shadow: 0 4px 24px rgba(67,233,123,0.10), 0 1.5px 8px rgba(0,0,0,0.07);
-      padding: 28px 22px 18px 22px;
-      margin: 0 0 0 0;
-      max-width: 370px;
-      min-width: 270px;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-      transition: box-shadow 0.2s;
-    }
-    .property-card:hover {
-      box-shadow: 0 8px 32px rgba(67,233,123,0.18), 0 3px 16px rgba(0,0,0,0.10);
-    }
-    .property-image {
-      margin-bottom: 18px;
-      border-radius: 12px;
-      overflow: hidden;
-    }
-    .property-image img {
-      border-radius: 12px;
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    .property-title {
-      margin-top: 0;
-      margin-bottom: 8px;
-    }
-    .property-subtitle {
-      margin-bottom: 12px;
-    }
-    .property-features {
-      margin-bottom: 12px;
-    }
-    .property-description {
-      margin-bottom: 18px;
-    }
-    .property-card a {
-      margin-bottom: 14px !important;
-    }
-    .property-card a:last-child {
-      margin-bottom: 0 !important;
-    }
-    .availability-badge {
-      margin-bottom: 10px;
-    }
-    .btn {
-      margin: 0 10px 0 0;
-      padding: 12px 28px;
-      border-radius: 8px;
-      font-size: 1.1em;
-      font-weight: 600;
-      background: #48bb78;
-      color: #fff !important;
-      border: none;
-      box-shadow: 0 2px 8px rgba(67,233,123,0.10);
-      transition: background 0.2s, box-shadow 0.2s;
-      text-decoration: none;
-      display: inline-block;
-    }
-    .btn:hover {
-      background: #38a169;
-      box-shadow: 0 4px 16px rgba(67,233,123,0.18);
-    }
-    .tagline {
-      margin-top: 18px;
-      margin-bottom: 0;
-      font-size: 1.15em;
-    }
-    @media (max-width: 900px) {
-      .properties-grid {
-        flex-direction: column;
-        gap: 24px;
-        margin-bottom: 32px;
-      }
-      .property-card {
-        width: 100vw;
-        max-width: 100vw;
-        min-width: 0;
-        margin-left: -4vw;
-        padding: 18px 4vw 14px 4vw;
-        border-radius: 0;
-      }
-      header {
-        margin-top: 24px;
-        margin-bottom: 32px;
-      }
-      .btn {
-        width: 90vw;
-        margin: 0 0 18px 0;
-        padding: 14px 0;
-        font-size: 1.08em;
-      }
-    }
-    html, body {
-      overflow-x: hidden;
-      max-width: 100vw;
-    }
-    .container, .main, main, .properties-grid, .footer-container {
-      width: 100% !important;
-      max-width: 100% !important;
-      box-sizing: border-box;
-    }
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-    }
-    @media (max-width: 900px) {
-      body, html {
-        overflow-x: hidden !important;
-      }
-      .container, .main, main, .properties-grid, .footer-container {
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box;
-      }
-    }
-  </style>
-    <style>
-      .hamburger {
-        display: none !important;
-      }
-      @media (max-width: 900px) {
-        .hamburger {
-          display: flex !important;
-          position: fixed !important;
-          top: 10px !important;
-          right: 10px !important;
-          z-index: 3000 !important;
-          background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%) !important;
-          border: 2.5px solid #43e68b !important;
-          border-radius: 14px !important;
-          box-shadow: 0 2px 12px rgba(67,233,123,0.13) !important;
-          padding: 8px 8px !important;
-          width: 44px !important;
-          height: 44px !important;
-          align-items: center;
-          justify-content: center;
-        }
-        .hamburger span {
-          width: 24px !important;
-          height: 4px !important;
-          background: #fff !important;
-          margin: 3px 0 !important;
-          border-radius: 3px !important;
-          transition: 0.3s;
-          display: block;
-        }
-        .hamburger:focus {
-          outline: 3px solid #43e68b !important;
-          outline-offset: 2px;
-        }
-      }
-    </style>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Case Vacanza Torre Pali</title>
-  <meta name="description" content="Case vacanza a Torre Pali, Salento. Appartamenti fronte mare a pochi metri dalla spiaggia, ideali per famiglie e gruppi. WiFi, aria condizionata, parcheggio, comfort e assistenza proprietari.">
-  <meta name="keywords" content="case vacanza torre pali, appartamenti torre pali, salento, affitto casa vacanza, Maldive del Salento, spiaggia bandiera blu, casa bellavista, casa giorgio, vacanze salento, vacanze mare puglia, vacanze famiglia, animali ammessi, wifi, aria condizionata, parcheggio, offerte estate salento, vacanze bambini salento, vacanze relax salento, vacanze romantiche salento, vacanze vicino leuca, vacanze vicino gallipoli">
-  <link rel="canonical" href="https://torrepalivacanze.it">
-  <!-- Open Graph / Facebook -->
-  <meta property="og:title" content="Case Vacanza Torre Pali">
-  <meta property="og:description" content="Case vacanza a Torre Pali, Salento. Appartamenti fronte mare a pochi metri dalla spiaggia, ideali per famiglie e gruppi. WiFi, aria condizionata, parcheggio, comfort e assistenza proprietari.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://torrepalivacanze.it">
-  <meta property="og:image" content="https://torrepalivacanze.it/img/casa-bella-vista/prospetto-mobile.jpg">
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Case Vacanza Torre Pali">
-  <meta name="twitter:description" content="Case vacanza a Torre Pali, Salento. Appartamenti fronte mare a pochi metri dalla spiaggia, ideali per famiglie e gruppi. WiFi, aria condizionata, parcheggio, comfort e assistenza proprietari.">
-  <meta name="twitter:image" content="https://torrepalivacanze.it/img/casa-bella-vista/prospetto-mobile.jpg">
-  <!-- Google Fonts -->
+<link rel="preload" as="image" href="img/torre-pali/torrepali-mobile-1.webp" fetchpriority="high">
+<link rel="preload" as="image" href="img/lido-marini/lido-marini.webp" fetchpriority="high">
+<!-- Tag Manager e Google Analytics rimossi per policy privacy: solo cookie tecnici -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<!-- La lingua principale della pagina è impostata tramite lang="it" sull'elemento <html>. -->
+<meta name="author" content="Torre Pali">
+<link rel="canonical" href="https://torrepalivacanze.it">
+<title>Case Vacanze Torre Pali | Spiaggia Bandiera Blu | Salento 2026</title>
+<meta name="description" content="Affitti diretti a Torre Pali, Salento: case vacanze a 20m dalla spiaggia Bandiera Blu. 3 appartamenti per famiglie e gruppi, WiFi, aria condizionata, parcheggio. Prenota la tua vacanza vicino Pescoluse e Leuca!">
+<meta name="keywords" content="case vacanza torre pali, torre pali, maldive del salento, affitto appartamenti salento, casa vacanza spiaggia bandiera blu, vacanze mare puglia, salento ionico, vacanze famiglia, animali ammessi, wifi, aria condizionata, parcheggio, offerte estate salento, vacanze economiche salento, last minute torre pali, giugno luglio agosto settembre salento, vacanze bambini salento, vacanze relax salento, vacanze romantiche salento, vacanze con animali salento, vacanze vicino leuca, vacanze vicino gallipoli">
+<meta name="geo.region" content="IT-LE">
+<meta name="geo.placename" content="Torre Pali, Salve">
+<meta name="geo.position" content="39.8447;18.0789">
+<meta name="ICBM" content="39.8447, 18.0789">
+<meta name="rating" content="general">
+<meta name="revisit-after" content="7 days">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#22577a">
+<!-- Open Graph Tags -->
+<meta property="og:title" content="Torre Pali Salento | Case Vacanza a Torre Pali, Spiaggia Bandiera Blu">
+<meta property="og:description" content="Case vacanza a Torre Pali, Salento: 3 appartamenti a 20 metri dalla spiaggia Bandiera Blu. WiFi, aria condizionata, parcheggio, animali ammessi. Prenota la tua vacanza ideale vicino Pescoluse e Santa Maria di Leuca.">
+<meta property="og:url" content="https://torrepalivacanze.it">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://torrepalivacanze.it/img/prospetto/prospetto_1.jpg">
+<meta property="og:see_also" content="https://www.facebook.com/profile.php?id=61577506430394" />
+<!-- Twitter Card Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Torre Pali Salento | Case Vacanza a Torre Pali, Spiaggia Bandiera Blu">
+<meta name="twitter:description" content="Case vacanza a Torre Pali, Salento: 3 appartamenti a 20 metri dalla spiaggia Bandiera Blu. WiFi, aria condizionata, parcheggio, animali ammessi. Prenota la tua vacanza ideale vicino Pescoluse e Santa Maria di Leuca.">
+<meta name="twitter:image" content="https://torrepalivacanze.it/img/prospetto/prospetto_1.jpg">
+<!-- Favicon e Logo -->
+<link rel="icon" type="image/png" sizes="32x32" href="https://torrepalivacanze.it/img/logo.png">
+<link rel="icon" type="image/png" sizes="192x192" href="https://torrepalivacanze.it/img/logo.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://torrepalivacanze.it/img/logo.png">
+<link rel="shortcut icon" href="https://torrepalivacanze.it/img/logo.png">
+<link rel="manifest" href="/manifest.json">
+<!-- Google Fonts - Strategia ibrida: async + swap + fallback perfetto -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Structured Data JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LodgingBusiness",
-    "name": "Torre Pali Vacanze - Case Vacanza Salento",
-    "url": "https://torrepalivacanze.it",
-    "description": "Case vacanza a Torre Pali, Salento. Appartamenti fronte mare a pochi metri dalla spiaggia, ideali per famiglie e gruppi. WiFi, aria condizionata, parcheggio, comfort e assistenza proprietari.",
-    "image": "https://torrepalivacanze.it/img/casa-bella-vista/prospetto-mobile.jpg",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Via Vasco de Gama",
-      "addressLocality": "Torre Pali",
-      "addressRegion": "LE",
-      "postalCode": "73050",
-      "addressCountry": "IT"
-    },
-    "telephone": "+39-388-658-70-80",
-    "amenityFeature": [
-      {"@type": "LocationFeatureSpecification", "name": "WiFi gratuito", "value": true},
-      {"@type": "LocationFeatureSpecification", "name": "Aria condizionata", "value": true},
-      {"@type": "LocationFeatureSpecification", "name": "Parcheggio", "value": true},
-      {"@type": "LocationFeatureSpecification", "name": "Animali ammessi", "value": true}
-    ],
-    "hasMap": "https://goo.gl/maps/2Qw8v8v8v8v8v8v8A"
+<!-- Async load con display=swap per non bloccare mobile -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
+<!-- Preload immagine LCP - Mobile first (PageSpeed testa sempre mobile) -->
+<link rel="preload" as="image" href="img/casa-bella-vista/prospetto-mobile.webp" fetchpriority="high" imagesrcset="img/casa-bella-vista/prospetto-mobile.webp 800w, img/casa-bella-vista/prospetto.jpg 1200w" imagesizes="(max-width: 768px) 100vw, 800px">
+<style>
+/* Font fallback override per ridurre CLS quando Poppins carica */
+@font-face {
+  font-family: 'Poppins Fallback';
+  src: local('Arial');
+  size-adjust: 107%;
+  ascent-override: 105%;
+  descent-override: 35%;
+  line-gap-override: 0%;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+/* Font stack ottimizzato per zero CLS */
+body { font-family: 'Poppins', 'Poppins Fallback', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; line-height: 1.6; color: #2d3748; background: #e3f6fd; background-attachment: fixed; padding-top: 0; }
+
+/* Animazioni */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.animate-fade-in { animation: fadeIn 0.8s ease-out; }
+.animate-fade-up { animation: fadeInUp 0.8s ease-out; }
+.animate-slide-left { animation: slideInLeft 0.8s ease-out; }
+.animate-slide-left { animation: slideInLeft 0.8s ease-out; }
+
+.navbar { position: fixed; top: 0; left: 0; right: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0,0,0,0.08); z-index: 1000; transition: all 0.3s ease; }
+.navbar:hover { box-shadow: 0 6px 30px rgba(0,0,0,0.12); }
+.navbar-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 18px 30px; }
+.navbar-brand { font-size: 1.4em; font-weight: 700; background: linear-gradient(135deg, #22577a 0%, #22577a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none; transition: transform 0.3s; }
+.navbar-brand:hover { transform: scale(1.05); }
+.navbar-menu { display: flex; gap: 30px; list-style: none; }
+.navbar-menu > li { position: relative; }
+.navbar-menu a { color: #4a5568; text-decoration: none; font-weight: 500; transition: all 0.3s; position: relative; padding: 5px 0; display: block; }
+.navbar-menu a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: linear-gradient(135deg, #22577a 0%, #22577a 100%); transition: width 0.3s; }
+.navbar-menu a:hover { color: #22577a; }
+.navbar-menu a:hover::after { width: 100%; }
+.dropdown { position: relative; }
+.dropdown-toggle { cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 5px 0; }
+.dropdown-toggle::before { content: '\25BC'; font-size: 0.7em; transition: transform 0.3s; }
+.dropdown:hover .dropdown-toggle::before { transform: rotate(180deg); }
+.dropdown-menu { position: absolute; top: 100%; left: 0; background: white; min-width: 220px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border-radius: 15px; padding: 15px 0; margin-top: 10px; opacity: 0; visibility: hidden; transform: translateY(-10px); transition: all 0.3s; z-index: 1000; }
+.dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+.dropdown-menu a { padding: 12px 25px; color: #4a5568; font-weight: 500; white-space: nowrap; }
+.dropdown-menu a::after { display: none; }
+.dropdown-menu a:hover { background: rgba(102, 126, 234, 0.1); color: #22577a; }
+.hamburger { display: none; flex-direction: column; cursor: pointer; z-index: 1001; background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%) !important; border: 2.5px solid #43e68b !important; border-radius: 14px !important; padding: 8px 8px !important; width: 44px !important; height: 44px !important; box-shadow: 0 2px 12px rgba(67,233,123,0.13) !important; }
+.hamburger:focus { outline: 3px solid #43e68b !important; outline-offset: 2px; }
+.hamburger span { width: 24px !important; height: 4px !important; background: #fff !important; margin: 3px 0 !important; border-radius: 3px !important; transition: 0.3s; display: block; }
+
+/* Animazione Pulse per WhatsApp */
+@keyframes pulse {
+  0% { box-shadow: 0 6px 25px rgba(37,211,102,0.4); }
+  50% { box-shadow: 0 6px 25px rgba(37,211,102,0.7), 0 0 0 10px rgba(37,211,102,0.2); }
+  100% { box-shadow: 0 6px 25px rgba(37,211,102,0.4); }
+}
+
+.whatsapp-float { position: fixed; top: auto !important; left: auto !important; bottom: 20px !important; right: 20px !important; background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 6px 25px rgba(37,211,102,0.4); z-index: 999; text-decoration: none; transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55)}
+.whatsapp-float:hover { transform: scale(1.15) rotate(5deg); box-shadow: 0 8px 35px rgba(37,211,102,0.6); animation: none; }
+
+/* Tooltip per pulsanti */
+[data-tooltip] { position: relative; }
+[data-tooltip]::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: rgba(0,0,0,0.9);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+[data-tooltip]::after {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  border: 6px solid transparent;
+  border-top-color: rgba(0,0,0,0.9);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+[data-tooltip]:hover::before,
+[data-tooltip]:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+.footer { background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%); color: white; padding: 50px 30px 25px; margin-top: 60px; position: relative; }
+.footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #22577a 0%, #22577a 50%, #f093fb 100%); }
+.footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px; }
+.footer-section h3 { margin-bottom: 20px; color: #f7fafc; font-weight: 600; font-size: 1.2em; }
+.footer-section p, .footer-section a { color: #cbd5e0; font-size: 0.95em; line-height: 2; text-decoration: none; display: block; margin-bottom: 10px; transition: all 0.3s; }
+.footer-section a:hover { color: #22577a; transform: translateX(5px); }
+.footer-bottom { text-align: center; margin-top: 40px; padding-top: 25px; border-top: 1px solid #4a5568; color: #a0aec0; font-size: 0.9em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 30px; }
+header { text-align: center; margin-bottom: 60px; padding-top: 60px; color: black; position: relative; overflow: hidden; transform-style: preserve-3d; }
+header::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%); animation: rotate 20s linear infinite; }
+@keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+h1 { font-size: 3.5em; margin-bottom: 20px; font-weight: 700; position: relative; z-index: 1; text-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+.tagline { font-size: 1.4em; margin-bottom: 25px; color: rgba(25, 22, 22, 0.95); font-weight: 300; position: relative; z-index: 1; padding: 5px }
+.hero-section-mare {
+  align-items: flex-start;
   }
-  </script>
-  <link rel="stylesheet" href="style-casa-bellavista-2.css">
+
+.hero-section { backdrop-filter: blur(10px); padding: 20px;  margin-bottom: 60px; transition: all 0.5s; }
+.hero-section:hover { transform: translateY(-5px); box-shadow: 0 25px 80px rgba(0,0,0,0.15); }
+.hero-section h2 {
+  font-size: 2.2em;
+  color: #222;
+  font-weight: 800;
+  margin-bottom: 32px;
+  margin-top: 12px;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+.hero-section p { font-size: 1.15em; color: #4a5568; line-height: 1.9; margin-bottom: 18px; }
+.properties-grid { display: grid; grid-template-columns: 1fr; gap: 40px; margin-bottom: 60px; }
+.property-card { background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); border-radius: 30px; box-shadow: 0 15px 50px rgba(0,0,0,0.08); overflow: hidden; transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; border: 1px solid rgba(102, 126, 234, 0.1); }
+.property-card:hover { transform: translateY(-15px) scale(1.02); box-shadow: 0 25px 80px rgba(102, 126, 234, 0.25); }
+.availability-badge { position: absolute; top: 20px; right: 20px; background: linear-gradient(135deg, #48bb78 0%, #38a169 100%); color: white; padding: 10px 20px; border-radius: 25px; font-weight: 600; font-size: 0.9em; z-index: 10; box-shadow: 0 4px 15px rgba(72, 187, 120, 0.4); backdrop-filter: blur(10px); }
+.availability-badge.limited { background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%); box-shadow: 0 4px 15px rgba(237, 137, 54, 0.4); }
+.availability-badge.unavailable { background: linear-gradient(135deg, #f56565 0%, #e53e3e 100%); box-shadow: 0 4px 15px rgba(245, 101, 101, 0.4); }
+.property-image { height: 400px; background: #e3f6fd; display: flex; align-items: center; justify-content: center; color: white; font-size: 3.5em; overflow: hidden; position: relative; }
+.property-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.property-card:hover .property-image img { transform: scale(1.1); }
+.property-info { padding: 40px; }
+.property-title { font-size: 2em; background: linear-gradient(135deg, #22577a 0%, #22577a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 12px; font-weight: 700; }
+.property-subtitle { font-size: 1.15em; color: #5a67d8; margin-bottom: 25px; font-weight: 500; }
+.property-features { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 25px; }
+.feature-badge { background: linear-gradient(135deg, #48bb78 0%, #38a169 100%); color: white; padding: 10px 20px; border-radius: 25px; font-weight: 600; font-size: 0.9em; box-shadow: 0 4px 12px rgba(72, 187, 120, 0.3); transition: all 0.3s; }
+.feature-badge:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(72, 187, 120, 0.4); }
+.property-description { color: #4a5568; margin-bottom: 25px; line-height: 1.9; font-size: 1.05em; }
+.property-price { font-size: 2.5em; background: linear-gradient(135deg, #48bb78 0%, #38a169 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700; margin-bottom: 25px; }
+.btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+  color: #fff;
+  padding: 16px 40px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  margin: 8px;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+.btn:hover {
+  background: linear-gradient(135deg, #128c7e 0%, #25d366 100%);
+  color: #fff;
+}
+.btn::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, #22577a 0%, #22577a 100%); opacity: 0; transition: opacity 0.4s; }
+.btn:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 12px 35px rgba(102, 126, 234, 0.5); }
+.btn:hover { transform: translateY(-4px) scale(1.08); box-shadow: 0 12px 35px rgba(102, 126, 234, 0.5); background: linear-gradient(135deg, #4b3fa2 0%, #3a67ea 100%); color: #fff; }
+.btn:hover::before { opacity: 1; }
+.btn span { position: relative; z-index: 1; }
+.about-torre { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 50px; border-radius: 30px; box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
+.about-torre h2 { font-size: 2.5em; background: linear-gradient(135deg, #22577a 0%, #22577a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 25px; font-weight: 700; }
+.about-torre p { font-size: 1.15em; color: #4a5568; line-height: 1.9; margin-bottom: 18px; }
+.highlights { display: flex; gap: 25px; flex-wrap: wrap; margin-top: 35px; }
+.highlight { flex: 1; min-width: 220px; background: #e3f6fd; color: #22577a; padding: 30px; border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(102, 126, 234, 0.15); transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+.highlight:hover { transform: translateY(-10px) scale(1.05); box-shadow: 0 15px 50px rgba(102, 126, 234, 0.5); }
+.highlight-title { font-size: 1.4em; font-weight: 700; margin-bottom: 12px; }
+.interactive-map-section { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 50px; border-radius: 30px; box-shadow: 0 20px 60px rgba(0,0,0,0.1); margin-bottom: 50px; }
+.interactive-map-section h2 { font-size: 3em; background: linear-gradient(135deg, #22577a 0%, #22577a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 20px; text-align: center; font-weight: 700; }
+.interactive-map-section p { font-size: 1.15em; color: #4a5568; text-align: center; margin-bottom: 35px; }
+#interactive-map { height: 550px; border-radius: 25px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); border: 3px solid rgba(102, 126, 234, 0.2); }
+.map-legend { display: flex; gap: 25px; justify-content: center; flex-wrap: wrap; margin-top: 25px; }
+.legend-item { display: flex; align-items: center; gap: 10px; padding: 12px 20px; background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); border-radius: 25px; font-size: 0.95em; font-weight: 500; transition: all 0.3s; border: 2px solid rgba(102, 126, 234, 0.2); }
+.legend-item:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(102, 126, 234, 0.2); }
+.legend-icon { font-size: 1.4em; }
+.skeleton { background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 8px; }
+@keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+.skeleton-container { display: none; }
+.skeleton-container.active { display: block; }
+.content-loaded { display: none; }
+.content-loaded.active { display: block; }
+.skeleton-card { background: white; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); overflow: hidden; margin-bottom: 30px; }
+.skeleton-image { height: 250px; background: #e0e0e0; }
+.skeleton-content { padding: 30px; }
+.skeleton-title { height: 30px; width: 70%; margin-bottom: 15px; }
+.skeleton-subtitle { height: 20px; width: 50%; margin-bottom: 20px; }
+.skeleton-badges { display: flex; gap: 10px; margin-bottom: 20px; }
+.skeleton-badge { height: 32px; width: 80px; border-radius: 20px; }
+.skeleton-text { height: 16px; margin-bottom: 10px; }
+.skeleton-text.short { width: 60%; }
+.skeleton-price { height: 40px; width: 150px; margin-bottom: 20px; }
+.skeleton-buttons { display: flex; gap: 10px; }
+.skeleton-button { height: 50px; width: 120px; border-radius: 50px; }
+.skeleton { background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 8px; }
+@keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+.skeleton-container { display: none; }
+.skeleton-container.active { display: block; }
+.content-loaded { display: none; }
+.content-loaded.active { display: block; }
+.skeleton-card { background: white; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); overflow: hidden; margin-bottom: 30px; }
+.skeleton-image { height: 250px; background: #e0e0e0; }
+.skeleton-content { padding: 30px; }
+.skeleton-title { height: 30px; width: 70%; margin-bottom: 15px; }
+.skeleton-subtitle { height: 20px; width: 50%; margin-bottom: 20px; }
+.skeleton-badges { display: flex; gap: 10px; margin-bottom: 20px; }
+.skeleton-badge { height: 32px; width: 80px; border-radius: 20px; }
+.skeleton-text { height: 16px; margin-bottom: 10px; }
+.skeleton-text.short { width: 60%; }
+.skeleton-price { height: 40px; width: 150px; margin-bottom: 20px; }
+.skeleton-buttons { display: flex; gap: 10px; }
+.skeleton-button { height: 50px; width: 120px; border-radius: 50px; }
+@media (max-width: 768px) { 
+  .container { padding: 0px; } 
+  h1 { font-size: 2.5em; } 
+  .hero-section h1, .hero-section-mare h1 {
+    font-size: 2em !important;
+    margin-bottom: 12px;
+  }
+  .hero-section p, .hero-section-mare p {
+    font-size: 1em !important;
+    margin-bottom: 18px;
+  }
+  @media (max-width: 768px) {
+  .hero-section {
+    background: none !important;
+  }
+}
+  .about-torre { padding: 35px 25px; }
+  .interactive-map-section { padding: 35px 25px; }
+  .properties-grid { grid-template-columns: 1fr; }
+  .reviews-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+  .highlights { flex-direction: column; }
+  .footer-container { grid-template-columns: 1fr; }
+  .hamburger { display: flex; }
+  .navbar-menu { position: fixed; left: -100%; top: 70px; flex-direction: column; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); width: 80%; max-width: 300px; height: calc(100vh - 70px); padding: 30px 20px; box-shadow: 2px 0 20px rgba(0,0,0,0.1); transition: left 0.3s; gap: 0; }
+  .navbar-menu.active { left: 0; }
+  .navbar-menu li { margin: 0; padding: 0; border-bottom: 1px solid rgba(102, 126, 234, 0.1); width: 100%; }
+  .navbar-menu a { display: block; font-size: 1.15em; padding: 18px 0; }
+  .dropdown-menu { position: static; box-shadow: none; padding: 0 0 0 20px; margin: 0; opacity: 1; visibility: visible; transform: none; max-height: 0; overflow: hidden; transition: max-height 0.3s; }
+  .dropdown.active .dropdown-menu { max-height: 300px; padding: 10px 0 10px 20px; }
+  .dropdown-toggle { padding: 18px 0; font-size: 1.15em; }
+  .dropdown-menu a { padding: 10px 0; font-size: 1em; }
+  .property-image { height: 300px; }
+  .property-title { font-size: 1.6em; }
+  #interactive-map { height: 400px; }
+}
+</style>
+<!-- Structured Data (Schema.org) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LodgingBusiness",
+  "@id": "https://torrepalivacanze.it/#lodging",
+  "name": "Torre Pali Vacanze",
+  "description": "Case vacanza a Torre Pali nel Salento: 3 appartamenti a 20-40m dalla spiaggia Bandiera Blu. WiFi, aria condizionata, parcheggio. Proprietari sul posto disponibili 24/7.",
+  "url": "https://torrepalivacanze.it",
+  "logo": "https://torrepalivacanze.it/img/logo.png",
+  "image": [
+    "https://torrepalivacanze.it/img/prospetto/prospetto_1.jpg",
+    "https://torrepalivacanze.it/img/torrepali.jpg"
+  ],
+  "telephone": "+393886587080",
+  "email": "info@torrepalivacanze.it",
+  "priceRange": "da 300 a 1200 EUR a settimana",
+  "amenityFeature": [
+    { "@type": "LocationFeatureSpecification", "name": "WiFi gratuito", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Aria condizionata", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Parcheggio", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Animali ammessi", "value": true }
+  ],
+  "petsAllowed": true,
+  "checkinTime": "15:00",
+  "checkoutTime": "10:00",
+  "sameAs": [ "https://wa.me/393886587080" ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "reviewCount": "8"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "author": { "@type": "Person", "name": "Alessandra L." },
+      "reviewBody": "Casa molto accogliente con tutti i comfort. Proprietari gentili e disponibili. Mare stupendo!"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "author": { "@type": "Person", "name": "Biagio" },
+      "reviewBody": "Ci siamo tornati per l'ennesima volta! Ottima accoglienza, abitazioni ben rifinite e a poca distanza dal mare."
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "author": { "@type": "Person", "name": "Davide" },
+      "reviewBody": "Posto tranquillo, proprietari gentili. Vicinissimo alle Maldive del Salento, un posto molto bello!"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "author": { "@type": "Person", "name": "Roberta" },
+      "reviewBody": "Vacanza rilassante, paese tranquillo, mare vicino e proprietari gentili. Ci siamo trovati bene e ci ritorneremo!"
+    }
+  ]
+}
+</script>
+<!-- Structured Data: Organization con Logo -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://torrepalivacanze.it/#organization",
+  "name": "Torre Pali Vacanze",
+  "alternateName": "Torre Pali Salento",
+  "url": "https://torrepalivacanze.it",
+  "logo": "https://torrepalivacanze.it/img/logo.png",
+  "description": "Case vacanze a Torre Pali, Salento. A pochi passi dalla spiaggia Bandiera Blu con tutti i comfort.",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+39-388-658-70-80",
+    "contactType": "Customer Service",
+    "availableLanguage": ["Italian"],
+    "areaServed": "IT"
+  },
+  "sameAs": [
+    "https://www.facebook.com/profile.php?id=61577506430394"
+  ]
+}
+
+</script>
+<!-- Structured Data: WebSite con SearchAction -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://torrepalivacanze.it/#website",
+  "name": "Torre Pali Vacanze",
+  "alternateName": "Case Vacanze Torre Pali Salento",
+  "url": "https://torrepalivacanze.it",
+  "description": "Prenota le migliori case vacanze a Torre Pali, Salento. A 20m dalla spiaggia Bandiera Blu.",
+  "inLanguage": "it-IT",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Torre Pali Vacanze",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://torrepalivacanze.it/img/logo.png"
+    }
+  }
+}
+</script>
+<!-- Structured Data: Breadcrumbs -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": "https://torrepalivacanze.it/#breadcrumbs",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "Home",
+    "item": "https://torrepalivacanze.it"
+  }]
+}
+</script>
+<!-- Structured Data: ImageObject per SEO immagini -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ImageObject",
+  "contentUrl": "https://torrepalivacanze.it/img/prospetto/prospetto_1.jpg",
+  "caption": "Case vacanze Torre Pali - Vista esterna degli appartamenti a 20m dalla spiaggia Bandiera Blu",
+  "description": "Prospetto esterno delle case vacanze a Torre Pali, Salento. Appartamenti moderni con WiFi, aria condizionata e parcheggio gratuito.",
+  "author": {
+    "@type": "Organization",
+    "name": "Torre Pali Vacanze"
+  }
+}
+</script>
+
 </head>
 <body>
-    <div id="cookie-banner-container"></div>
+
+<div id="cookie-banner-container"></div>
+<script>
+fetch('cookie-banner')
+  .then(r => r.text())
+  .then(html => {
+    document.getElementById('cookie-banner-container').innerHTML = html;
+    var script = document.createElement('script');
+    script.src = 'cookie-banner.js';
+    document.body.appendChild(script);
+  });
+</script>
+
+<div class="hero-section-mare" style="min-height: 600px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 20px 80px 20px; position:relative; overflow:hidden;">
+  <picture style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;">
+    <source srcset="img/torre-pali/torrepali-mobile-1.webp" type="image/webp" media="(max-width: 768px)" sizes="100vw">
+    <source srcset="img/torre-pali/torrepali.jpg" type="image/jpeg" media="(max-width: 768px)" sizes="100vw">
+    <source srcset="img/lido-marini/lido-marini.webp" type="image/webp" media="(min-width: 769px)" sizes="1080px">
+    <img 
+      src="img/lido-marini/lido-marini.jpg"
+      width="1080" height="2400"
+      alt="Vista panoramica di Lido Marini (desktop) o Torre Pali (mobile), Salento, fronte mare"
+      fetchpriority="high" decoding="async"
+      style="width:100%;height:100%;object-fit:cover;object-position:center;"
+      srcset="img/torre-pali/torrepali-mobile-1.webp 788w, img/torre-pali/torrepali.jpg 1099w, img/lido-marini/lido-marini.jpg 1080w"
+      sizes="(max-width: 768px) 100vw, 1080px"
+    />
+  </picture>
+  <h1 style="font-size: 3.2em; color: white; font-weight: 700; text-shadow: 0 6px 32px rgba(0,0,0,0.35); margin-bottom: 18px; text-align: center; position:relative; z-index:1;">Prenota la tua vacanza a Torre Pali</h1>
+  <p style="font-size: 1.35em; color: #fff; font-weight: 500; text-shadow: 0 2px 12px rgba(0,0,0,0.25); margin-bottom: 32px; text-align: center; position:relative; z-index:1;">Scopri spiagge, comfort e relax nel Salento</p>
+  <a href="tel:+393886587080" class="btn" style="font-size:1.25em; margin-top:10px; position:relative; z-index:1;">📞 Chiama per info</a>
+</div>
+<!-- Service Worker Registration per cache ottimizzata -->
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => console.log('Service Worker registrato'))
+      .catch(err => console.log('Service Worker errore:', err));
+  });
+}
+</script>
+
   <nav class="navbar">
     <div class="navbar-container" style="position:relative;">
       <a href="/" class="navbar-brand">🏝️ Torre Pali Vacanze</a>
@@ -250,196 +506,242 @@
     </div>
   </nav>
 
-  <script>
-  // Carica dinamicamente il cookie banner
-  fetch('cookie-banner.html')
-    .then(r => r.text())
-    .then(html => {
-      document.getElementById('cookie-banner-container').innerHTML = html;
-      var script = document.createElement('script');
-      script.src = 'cookie-banner.js';
-      document.body.appendChild(script);
-    });
-  </script>
+<!-- WhatsApp Flottante -->
+<a href="https://wa.me/393886587080?text=Ciao!%20Vorrei%20informazioni%20sulle%20vostre%20case%20vacanza%20a%20Torre%20Pali" class="whatsapp-float" style="position: fixed !important; bottom: 20px !important; right: 20px !important; top: auto !important; left: auto !important;" target="_blank" aria-label="Contattaci su WhatsApp" data-tooltip="Chatta con noi su WhatsApp">
+<svg viewBox="0 0 32 32" width="32" height="32" fill="white">
+<path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 7.933-2.127c2.42 1.37 5.173 2.127 8.067 2.127 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.467c-2.482 0-4.908-0.646-7.07-1.87l-0.507-0.292-4.713 1.262 1.262-4.669-0.292-0.508c-1.207-2.100-1.847-4.507-1.847-6.978 0-7.51 6.11-13.619 13.619-13.619s13.619 6.109 13.619 13.619c0 7.51-6.11 13.619-13.619 13.619zM21.789 18.75c-0.214-0.107-1.268-0.625-1.464-0.696s-0.339-0.107-0.482 0.107c-0.143 0.214-0.554 0.696-0.679 0.839s-0.25 0.161-0.464 0.054c-0.214-0.107-0.902-0.333-1.718-1.060-0.635-0.567-1.064-1.268-1.189-1.482s-0.013-0.329 0.094-0.435c0.096-0.096 0.214-0.25 0.321-0.375s0.143-0.214 0.214-0.357 0.036-0.268-0.018-0.375c-0.054-0.107-0.482-1.161-0.661-1.589s-0.349-0.362-0.482-0.369c-0.125-0.007-0.268-0.007-0.411-0.007s-0.375 0.054-0.571 0.268c-0.196 0.214-0.75 0.732-0.75 1.786s0.768 2.071 0.875 2.214c0.107 0.143 1.5 2.357 3.653 3.304 0.51 0.214 0.909 0.343 1.219 0.438 0.512 0.161 0.978 0.139 1.346 0.084 0.411-0.061 1.268-0.518 1.446-1.018s0.179-0.929 0.125-1.018c-0.054-0.089-0.196-0.143-0.411-0.25z"/>
+</svg>
+</a>
 
-  <script>
-  // Menu Hamburger
-  function toggleMenu() {
-    const menu = document.getElementById('navbarMenu');
-    menu.classList.toggle('active');
-  }
+<!-- Main Content -->
+<main id="main-content" role="main">
+<div class="container">
+<header>
+<h1>Case Vacanze in Salento: Appartamenti vicino al mare</h1>
+<p class="tagline">Scegli tra 3 appartamenti a pochi passi dalla spiaggia, ideali per famiglie, coppie e amici. WiFi, aria condizionata e parcheggio inclusi.</p>
+</header>
 
-  function closeMenu() {
-    const menu = document.getElementById('navbarMenu');
-    menu.classList.remove('active');
-    // Chiudi tutte le dropdown su mobile
-    if (window.innerWidth <= 768) {
-      const dropdowns = document.querySelectorAll('.dropdown.active');
-      dropdowns.forEach(function(drop) {
-        drop.classList.remove('active');
-      });
-    }
-  }
+<div class="hero-section">
+<h2>Torre Pali, la perla del Salento</h2>
+<p><strong>Torre Pali</strong> è una perla del Salento, una piccola località balneare sulla costa ionica del Salento caratterizzata da spiagge sabbiose dorate e un mare cristallino con <strong>Bandiera Blu 2026</strong>. Situata nella provincia di Lecce, a soli 15 km da Santa Maria di Leuca e 3 km dalle famose Maldive del Salento (Pescoluse), è il luogo perfetto per chi cerca una <strong>vacanza al mare tranquilla e autentica</strong>, lontano dal caos del turismo di massa.</p>
+<p>Offriamo <strong>3 appartamenti in affitto a Torre Pali</strong> posizionati a soli 20-40 metri dalla spiaggia, completamente attrezzati con tutti i comfort moderni: WiFi gratuito, aria condizionata, cucina completa, lavatrice e parcheggio. Le nostre case vacanze sono ideali per <strong>famiglie con bambini</strong>, coppie e gruppi di amici che desiderano trascorrere le loro vacanze estive in Salento in totale relax.</p>
+<p>I <strong>proprietari abitano sul posto</strong> e sono sempre disponibili per fornirvi informazioni, consigli sui migliori ristoranti di pesce, sulle spiagge nascoste da visitare e sugli eventi locali. Affitto settimanale, quindicinale o mensile disponibile da giugno a settembre. Possibilità di soggiorni brevi in bassa stagione.</p>
+</div>
 
-  document.addEventListener('DOMContentLoaded', function() {
-    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-    dropdownToggles.forEach(function(toggle) {
-      toggle.addEventListener('click', function(e) {
-        if (window.innerWidth <= 768) {
-          e.preventDefault();
-          e.stopPropagation();
-          const parentDropdown = this.closest('.dropdown');
-          if (parentDropdown) {
-            parentDropdown.classList.toggle('active');
-          }
-        }
-      });
-      // Supporto touch
-      toggle.addEventListener('touchstart', function(e) {
-        if (window.innerWidth <= 768) {
-          e.preventDefault();
-          e.stopPropagation();
-          const parentDropdown = this.closest('.dropdown');
-          if (parentDropdown) {
-            parentDropdown.classList.toggle('active');
-          }
-        }
-      }, { passive: false });
-    });
-  });
+<h2 style="text-align: center; font-size: 2.5em; color: #2c3e50; margin-bottom: 40px;" id="appartamenti">Case Vacanza di Torre Pali</h2>
 
-  // Chiudi menu quando si clicca fuori
-  document.addEventListener('click', function(event) {
-    const navbar = document.querySelector('.navbar');
-    const menu = document.getElementById('navbarMenu');
-    const dropdown = document.querySelector('.dropdown');
-    if (!navbar.contains(event.target) && menu.classList.contains('active')) {
-      menu.classList.remove('active');
-      if (dropdown) dropdown.classList.remove('active');
-    }
-  });
-  </script>
-  <main class="container">
-    <header style="text-align:center; margin-bottom: 50px;">
-      <h1>Case Vacanza e Appartamenti in affitto a Torre Pali, Salento</h1>
-      <p class="tagline">Appartamenti a pochi passi dalla spiaggia di Torre Pali. Comfort, relax e accoglienza per famiglie, coppie e amici.</p>
-    </header>
-    <div class="properties-grid">
-            <!-- Casa Bellavista 1 -->
-            <div class="property-card">
-              <div class="availability-badge">✔️ Disponibile</div>
-              <div class="property-image">
-                <img src="img/casa-bella-vista1/prospetto.jpg" alt="Casa Bellavista 1 Torre Pali" width="648" height="486">
-              </div>
-              <div class="property-info">
-                <h3 class="property-title">Casa Bellavista 1</h3>
-                <p class="property-subtitle">100m dalla spiaggia di Torre Pali</p>
-                <div class="property-features">
-                  <span class="feature-badge">2 Camere</span>
-                  <span class="feature-badge">1 Bagno</span>
-                  <span class="feature-badge">70m²</span>
-                  <span class="feature-badge">AC • Lavatrice</span>
-                </div>
-                <p class="property-description">Appartamento primo piano con spazio esterno panoramico. 2 camere grandi (5 posti letto), bagno, cucina, aria condizionata, lavatrice, parcheggio gratuito. Ideale per famiglie e relax vicino al mare.</p>
-                <div style="margin-top: 18px; margin-bottom: 10px;">
-                  <a href="prenotazione" style="color: #48bb78; text-decoration: underline; font-weight: 500; display: block; margin-bottom: 10px;">Richiedi Preventivo</a>
-                  <a href="casa-bellavista-1" style="color: #48bb78; text-decoration: underline; font-weight: 500; display: block; margin-bottom: 10px;">📋 Vedi casa</a>
-                  <a href="https://wa.me/393886587080?text=Ciao!%20Sono%20interessato%20alla%20Casa%20Bella%20Vista%201%20a%20Torre%20Pali" style="color: #48bb78; text-decoration: underline; font-weight: 500; display: flex; align-items: center; gap: 7px; margin-bottom: 38px;">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill="#fff" style="background:#25d366; border-radius:3px;"><path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 7.933-2.127c2.42 1.37 5.173 2.127 8.067 2.127 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.467c-2.482 0-4.908-0.646-7.07-1.87l-0.507-0.292-4.713 1.262 1.262-4.669-0.292-0.508c-1.207-2.100-1.847-4.507-1.847-6.978 0-7.51 6.11-13.619 13.619-13.619s13.619 6.109 13.619 13.619c0 7.51-6.11 13.619-13.619 13.619zM21.789 18.75c-0.214-0.107-1.268-0.625-1.464-0.696s-0.339-0.107-0.482 0.107c-0.143 0.214-0.554 0.696-0.679 0.839s-0.25 0.161-0.464 0.054c-0.214-0.107-0.902-0.333-1.718-1.060-0.635-0.567-1.064-1.268-1.189-1.482s-0.013-0.329 0.094-0.435c0.096-0.096 0.214-0.25 0.321-0.375s0.143-0.214 0.214-0.357 0.036-0.268-0.018-0.375c-0.054-0.107-0.482-1.161-0.661-1.589s-0.349-0.362-0.482-0.369c-0.125-0.007-0.268-0.007-0.411-0.007s-0.375 0.054-0.571 0.268c-0.196 0.214-0.75 0.732-0.75 1.786s0.768 2.071 0.875 2.214c0.107 0.143 1.5 2.357 3.653 3.304 0.51 0.214 0.909 0.343 1.219 0.438 0.512 0.161 0.978 0.139 1.346 0.084 0.411-0.061 1.268-0.518 1.446-1.018s0.179-0.929 0.125-1.018c-0.054-0.089-0.196-0.143-0.411-0.25z"/></svg>
-                           WhatsApp
-                  </a>
-                </div>
-              </div>
-            </div>
-      <!-- Casa Bellavista 2 -->
-      <div class="property-card">
-        <div class="availability-badge">✔️ Disponibile</div>
-        <div class="property-image">
-          <img src="img/casa-bella-vista/prospetto-mobile.jpg" alt="Casa Bellavista 2 Torre Pali" width="648" height="486">
-        </div>
-        <div class="property-info">
-          <h3 class="property-title">Casa Bellavista 2</h3>
-          <p class="property-subtitle">20m dalla spiaggia di Torre Pali</p>
-          <div class="property-features">
-            <span class="feature-badge">3 Camere</span>
-            <span class="feature-badge">2 Bagni</span>
-            <span class="feature-badge">90m²</span>
-            <span class="feature-badge">WiFi • AC</span>
-          </div>
-          <p class="property-description">Quadrilocale piano terra con cortile privato. Soggiorno-cucina, 3 camere (matrimoniale+singolo, matrimoniale, tripla), 2 bagni, lavatrice, TV. Ideale per famiglie che desiderano comfort e spazio a pochi passi dal mare.</p>
-          <div style="margin-top: 18px; margin-bottom: 10px;">
-            <a href="prenotazione" style="color: #48bb78; text-decoration: underline; font-weight: 500; display: block; margin-bottom: 10px;">Richiedi Preventivo</a>
-            <a href="casa-bellavista-2" style="color: #48bb78; text-decoration: underline; font-weight: 500; display: block; margin-bottom: 10px;">📋 Vedi casa</a>
-            <a href="https://wa.me/393886587080?text=Ciao!%20Sono%20interessato%20alla%20Casa%20Bella%20Vista%202%20a%20Torre%20Pali" style="color: #48bb78; text-decoration: underline; font-weight: 500; display: flex; align-items: center; gap: 7px; margin-bottom: 38px;">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill="#fff" style="background:#25d366; border-radius:3px;"><path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 7.933-2.127c2.42 1.37 5.173 2.127 8.067 2.127 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.467c-2.482 0-4.908-0.646-7.07-1.87l-0.507-0.292-4.713 1.262 1.262-4.669-0.292-0.508c-1.207-2.100-1.847-4.507-1.847-6.978 0-7.51 6.11-13.619 13.619-13.619s13.619 6.109 13.619 13.619c0 7.51-6.11 13.619-13.619 13.619zM21.789 18.75c-0.214-0.107-1.268-0.625-1.464-0.696s-0.339-0.107-0.482 0.107c-0.143 0.214-0.554 0.696-0.679 0.839s-0.25 0.161-0.464 0.054c-0.214-0.107-0.902-0.333-1.718-1.060-0.635-0.567-1.064-1.268-1.189-1.482s-0.013-0.329 0.094-0.435c0.096-0.096 0.214-0.25 0.321-0.375s0.143-0.214 0.214-0.357 0.036-0.268-0.018-0.375c-0.054-0.107-0.482-1.161-0.661-1.589s-0.349-0.362-0.482-0.369c-0.125-0.007-0.268-0.007-0.411-0.007s-0.375 0.054-0.571 0.268c-0.196 0.214-0.75 0.732-0.75 1.786s0.768 2.071 0.875 2.214c0.107 0.143 1.5 2.357 3.653 3.304 0.51 0.214 0.909 0.343 1.219 0.438 0.512 0.161 0.978 0.139 1.346 0.084 0.411-0.061 1.268-0.518 1.446-1.018s0.179-0.929 0.125-1.018c-0.054-0.089-0.196-0.143-0.411-0.25z"/></svg>
-               WhatsApp
-            </a>
-          </div>
-        </div>
-      </div>
-      <!-- Casa Giorgio 4 -->
-      <div class="property-card">
-        <div class="availability-badge">✔️ Disponibile</div>
-        <div class="property-image">
-          <img src="img/casa-giorgio/prospetto-mobile.jpg" alt="Casa Giorgio 4 Torre Pali" width="800" height="530">
-        </div>
-        <div class="property-info">
-          <h3 class="property-title">Casa Giorgio 4</h3>
-          <p class="property-subtitle">40m dalla spiaggia di Torre Pali</p>
-          <div class="property-features">
-            <span class="feature-badge">3 Camere</span>
-            <span class="feature-badge">1 Bagno</span>
-            <span class="feature-badge">Piano Terra</span>
-            <span class="feature-badge">AC • TV Sat</span>
-          </div>
-          <p class="property-description">Appartamento piano terra con spazi esterni attrezzati. 3 camere (fino a 3 matrimoniali), doccia esterna, zanzariere, climatizzatore. A 50m da tutti i servizi e 100m dal porticciolo.</p>
-          <div style="margin-top: 18px; margin-bottom: 10px;">
-            <a href="prenotazione" style="color: #48bb78; text-decoration: underline; font-weight: 500; display: block; margin-bottom: 10px;">Richiedi Preventivo</a>
-            <a href="casa-giorgio-4" style="color: #48bb78; text-decoration: underline; font-weight: 500; display: block; margin-bottom: 10px;">📋 Vedi casa</a>
-            <a href="https://wa.me/393886587080?text=Ciao!%20Sono%20interessato%20alla%20Casa%20Giorgio%204%20a%20Torre%20Pali" style="color: #48bb78; text-decoration: underline; font-weight: 500; display: flex; align-items: center; gap: 7px; margin-bottom: 38px;">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill="#fff" style="background:#25d366; border-radius:3px;"><path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 7.933-2.127c2.42 1.37 5.173 2.127 8.067 2.127 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.467c-2.482 0-4.908-0.646-7.07-1.87l-0.507-0.292-4.713 1.262 1.262-4.669-0.292-0.508c-1.207-2.100-1.847-4.507-1.847-6.978 0-7.51 6.11-13.619 13.619-13.619s13.619 6.109 13.619 13.619c0 7.51-6.11 13.619-13.619 13.619zM21.789 18.75c-0.214-0.107-1.268-0.625-1.464-0.696s-0.339-0.107-0.482 0.107c-0.143 0.214-0.554 0.696-0.679 0.839s-0.25 0.161-0.464 0.054c-0.214-0.107-0.902-0.333-1.718-1.060-0.635-0.567-1.064-1.268-1.189-1.482s-0.013-0.329 0.094-0.435c0.096-0.096 0.214-0.25 0.321-0.375s0.143-0.214 0.214-0.357 0.036-0.268-0.018-0.375c-0.054-0.107-0.482-1.161-0.661-1.589s-0.349-0.362-0.482-0.369c-0.125-0.007-0.268-0.007-0.411-0.007s-0.375 0.054-0.571 0.268c-0.196 0.214-0.75 0.732-0.75 1.786s0.768 2.071 0.875 2.214c0.107 0.143 1.5 2.357 3.653 3.304 0.51 0.214 0.909 0.343 1.219 0.438 0.512 0.161 0.978 0.139 1.346 0.084 0.411-0.061 1.268-0.518 1.446-1.018s0.179-0.929 0.125-1.018c-0.054-0.089-0.196-0.143-0.411-0.25z"/></svg>
-              WhatsApp
-            </a>
-          </div>
-        </div>
-      </div>
-      <!-- Casa Giorgio 6 -->
-      <div class="property-card">
-        <div class="availability-badge">✔️ Disponibile</div>
-        <div class="property-image">
-          <img src="img/casa-giorgio2/balcone-mobile.jpg" alt="Casa Giorgio 6 Torre Pali" width="800" height="530">
-        </div>
-        <div class="property-info">
-          <h3 class="property-title">Casa Giorgio 6 ⭐</h3>
-          <p class="property-subtitle">🌊 Primo piano con vista mare</p>
-          <div class="property-features">
-            <span class="feature-badge">3 Camere</span>
-            <span class="feature-badge">1 Bagno</span>
-            <span class="feature-badge">90m²</span>
-            <span class="feature-badge">Vista Mare</span>
-          </div>
-          <p class="property-description">Appartamento 90mq al primo piano con veranda vista mare. 3 camere, scala coperta, spazi esterni per pranzi all'aperto. Tramonti mozzafiato sul mare di Torre Pali.</p>
-          <div style="margin-top: 18px; margin-bottom: 10px;">
-            <a href="prenotazione" style="color: #48bb78; text-decoration: underline; font-weight: 500; display: block; margin-bottom: 10px;">Richiedi Preventivo</a>
-            <a href="casa-giorgio-6" style="color: #48bb78; text-decoration: underline; font-weight: 500; display: block; margin-bottom: 10px;">📋 Vedi casa</a>
-            <a href="https://wa.me/393886587080?text=Ciao!%20Sono%20interessato%20alla%20Casa%20Giorgio%206%20a%20Torre%20Pali" style="color: #48bb78; text-decoration: underline; font-weight: 500; display: flex; align-items: center; gap: 7px; margin-bottom: 38px;">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill="#fff" style="background:#25d366; border-radius:3px;"><path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 7.933-2.127c2.42 1.37 5.173 2.127 8.067 2.127 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.467c-2.482 0-4.908-0.646-7.07-1.87l-0.507-0.292-4.713 1.262 1.262-4.669-0.292-0.508c-1.207-2.100-1.847-4.507-1.847-6.978 0-7.51 6.11-13.619 13.619-13.619s13.619 6.109 13.619 13.619c0 7.51-6.11 13.619-13.619 13.619zM21.789 18.75c-0.214-0.107-1.268-0.625-1.464-0.696s-0.339-0.107-0.482 0.107c-0.143 0.214-0.554 0.696-0.679 0.839s-0.25 0.161-0.464 0.054c-0.214-0.107-0.902-0.333-1.718-1.060-0.635-0.567-1.064-1.268-1.189-1.482s-0.013-0.329 0.094-0.435c0.096-0.096 0.214-0.25 0.321-0.375s0.143-0.214 0.214-0.357 0.036-0.268-0.018-0.375c-0.054-0.107-0.482-1.161-0.661-1.589s-0.349-0.362-0.482-0.369c-0.125-0.007-0.268-0.007-0.411-0.007s-0.375 0.054-0.571 0.268c-0.196 0.214-0.75 0.732-0.75 1.786s0.768 2.071 0.875 2.214c0.107 0.143 1.5 2.357 3.653 3.304 0.51 0.214 0.909 0.343 1.219 0.438 0.512 0.161 0.978 0.139 1.346 0.084 0.411-0.061 1.268-0.518 1.446-1.018s0.179-0.929 0.125-1.018c-0.054-0.089-0.196-0.143-0.411-0.25z"/></svg>
-              WhatsApp
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div style="text-align:center; margin-top: 50px;">
-      <a href="prenotazione" class="btn">✉️ Richiedi Disponibilità</a>
-      <a href="https://wa.me/393886587080?text=Ciao!%20Vorrei%20informazioni%20sulle%20vostre%20case%20vacanza%20a%20Torre%20Pali" class="btn">📱 WhatsApp</a>
-    </div>
-  </main>
+
+<!-- Real Content -->
+<div class="properties-grid" id="properties-content">
+<div class="property-card">
+<div class="availability-badge">✔️ Disponibile</div>
+<div class="property-image"><picture>
+<source media="(max-width: 768px)" srcset="img/casa-bella-vista/prospetto-mobile.webp" type="image/webp" width="648" height="486">
+<img src="img/casa-bella-vista/prospetto-mobile.jpg" alt="Casa vacanze Bellavista 2 a Torre Pali Salento: quadrilocale piano terra a 20 metri dalla spiaggia Bandiera Blu, fino a 8 posti letto, 3 camere, 2 bagni, cortile privato, WiFi, aria condizionata, 2 posti auto. Ideale per famiglie numerose." width="648" height="486" fetchpriority="high">
+</picture></div>
+<div class="property-info">
+<h3 class="property-title">Casa Bellavista 2</h3>
+<p class="property-subtitle">20m dalla spiaggia Bandiera Blu</p>
+<div class="property-features">
+<span class="feature-badge">3 Camere</span>
+<span class="feature-badge">2 Bagni</span>
+<span class="feature-badge">90m²</span>
+<span class="feature-badge">WiFi • AC</span>
+</div>
+<p class="property-description">Quadrilocale piano terra con cortile privato in affitto. Soggiorno-cucina, 3 camere (matrimoniale+singolo, matrimoniale, tripla), 2 bagni, lavatrice, TV. Affitto ideale per famiglie che desiderano un'esperienza completa con tutti i comfort.</p>
+<div class="property-price" style="font-size: 1.5em; color: #5a67d8; font-weight: 600; margin-bottom: 20px;"><a href="prenotazione" style="color: #5a67d8; text-decoration: underline;">Richiedi Preventivo</a></div>
+<div>
+<a href="casa-bellavista-2" class="btn" data-tooltip="Visualizza dettagli e foto della casa">📋 Vedi casa</a>
+<a href="https://wa.me/393886587080?text=Ciao!%20Sono%20interessato%20alla%20Casa%20Bella%20Vista%202%20a%20Torre%20Pali" class="btn" data-tooltip="Invia messaggio WhatsApp">💬 Info</a>
+</div>
+</div>
+</div>
+
+<div class="property-card">
+<div class="availability-badge">✔️ Disponibile</div>
+<div class="property-image"><picture>
+  <source media="(max-width: 768px)" srcset="img/casa-giorgio/prospetto-mobile.webp" type="image/webp" width="800" height="530">
+  <img src="img/casa-giorgio/prospetto-mobile.jpg" alt="Casa vacanze Giorgio 4 Torre Pali: piano terra a 40 metri dal mare, 3 camere matrimoniali, bagno, spazi esterni, climatizzatore, parcheggio. Ideale per famiglie e gruppi." width="800" height="530">
+</picture></div>
+<div class="property-info">
+<h3 class="property-title">Casa Giorgio 4</h3>
+<p class="property-subtitle">40m dalla spiaggia dorata</p>
+<div class="property-features">
+<span class="feature-badge">3 Camere</span>
+<span class="feature-badge">1 Bagno</span>
+<span class="feature-badge">Piano Terra</span>
+<span class="feature-badge">AC • TV Sat</span>
+</div>
+<p class="property-description">Appartamento in affitto piano terra con spazi esterni attrezzati. 3 camere (fino a 3 matrimoniali possibili), doccia esterna, zanzariere, climatizzatore. Affitto a 50m da tutti i servizi e 100m dal porticciolo.</p>
+<div class="property-price" style="font-size: 1.5em; color: #48bb78; font-weight: 600; margin-bottom: 20px;"><a href="prenotazione" style="color: #48bb78; text-decoration: underline;">Richiedi Preventivo</a></div>
+<div>
+<a href="casa-giorgio-4" class="btn" data-tooltip="Visualizza dettagli e foto della casa">📋 Vedi casa</a>
+<a href="https://wa.me/393886587080?text=Ciao!%20Sono%20interessato%20alla%20Casa%20Giorgio%204%20a%20Torre%20Pali" class="btn" data-tooltip="Invia messaggio WhatsApp">💬 Info</a>
+</div>
+</div>
+</div>
+
+<div class="property-card">
+<div class="availability-badge">✔️ Disponibile</div>
+<div class="property-image"><picture>
+  <source media="(max-width: 768px)" srcset="img/casa-giorgio2/balcone-mobile.webp" type="image/webp" width="648" height="429">
+  <img src="img/casa-giorgio2/balcone-mobile.jpg" alt="Casa vacanze Giorgio 6 Torre Pali vista mare: primo piano 90mq, veranda panoramica, 3 camere, accesso coperto, vista tramonto sul Mar Ionio. Ideale per vacanze romantiche e famiglie." width="800" height="530">
+</picture></div>
+<div class="property-info">
+<h3 class="property-title">Casa Giorgio 6 ⭐</h3>
+<p class="property-subtitle">🌊 Primo piano con vista mare</p>
+<div class="property-features">
+<span class="feature-badge">3 Camere</span>
+<span class="feature-badge">1 Bagno</span>
+<span class="feature-badge">90m²</span>
+<span class="feature-badge">Vista Mare</span>
+</div>
+<p class="property-description">Appartamento 90mq al primo piano con esclusiva veranda vista mare. 3 camere, scala coperta, spazi esterni attrezzati per pranzi all'aperto. Tramonti mozzafiato sul mare di Torre Pali.</p>
+<div class="property-price" style="font-size: 1.5em; color: #ed8936; font-weight: 600; margin-bottom: 20px;"><a href="prenotazione" style="color: #ed8936; text-decoration: underline;">Richiedi Preventivo</a></div>
+<div>
+<a href="casa-giorgio-6" class="btn" data-tooltip="Visualizza dettagli e foto della casa">📋 Vedi casa</a>
+<a href="https://wa.me/393886587080?text=Ciao!%20Sono%20interessato%20alla%20Casa%20Giorgio%206%20a%20Torre%20Pali" class="btn" data-tooltip="Invia messaggio WhatsApp">💬 Info</a>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<!-- Sezione Recensioni -->
+<div style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 50px; border-radius: 30px; box-shadow: 0 20px 60px rgba(0,0,0,0.1); margin-bottom: 60px;">
+<h2 style="font-size: 2.5em; background: linear-gradient(135deg, #22577a 0%, #22577a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 15px; font-weight: 700; text-align: center;">⭐ Cosa Dicono i Nostri Ospiti</h2>
+<p style="text-align: center; font-size: 1.15em; color: #4a5568; margin-bottom: 40px;">Recensioni autentiche dai nostri clienti soddisfatti</p>
+
+<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-bottom: 35px;" class="reviews-grid">
+<div style="background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-left: 5px solid #22577a; transition: all 0.3s;">
+<div style="color: #fbbf24; font-size: 1.3em; margin-bottom: 10px;">⭐⭐⭐⭐⭐</div>
+<p style="font-size: 1.05em; color: #4a5568; line-height: 1.8; font-style: italic; margin-bottom: 15px;">"Casa molto accogliente con tutti i comfort. Proprietari gentili e disponibili. Mare stupendo!"</p>
+<div style="font-weight: 600; color: #2d3748;">Alessandra L.</div>
+<div style="font-size: 0.9em; color: #4a5568;">Casa Giorgio 6 • Settembre 2025</div>
+</div>
+
+<div style="background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-left: 5px solid #48bb78; transition: all 0.3s;">
+<div style="color: #fbbf24; font-size: 1.3em; margin-bottom: 10px;">⭐⭐⭐⭐⭐</div>
+<p style="font-size: 1.05em; color: #4a5568; line-height: 1.8; font-style: italic; margin-bottom: 15px;">"Ci siamo tornati per l'ennesima volta! Ottima accoglienza, abitazioni ben rifinite e a poca distanza dal mare."</p>
+<div style="font-weight: 600; color: #2d3748;">Biagio</div>
+<div style="font-size: 0.9em; color: #4a5568;">Casa Giorgio 6 • Agosto 2025</div>
+</div>
+
+<div style="background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-left: 5px solid #ed8936; transition: all 0.3s;">
+<div style="color: #fbbf24; font-size: 1.3em; margin-bottom: 10px;">⭐⭐⭐⭐⭐</div>
+<p style="font-size: 1.05em; color: #4a5568; line-height: 1.8; font-style: italic; margin-bottom: 15px;">"Posto tranquillo, proprietari gentili. Vicinissimo alle Maldive del Salento, un posto molto bello!"</p>
+<div style="font-weight: 600; color: #2d3748;">Davide</div>
+<div style="font-size: 0.9em; color: #4a5568;">Casa Giorgio 4 • Settembre 2025</div>
+</div>
+
+<div style="background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-left: 5px solid #ed8936; transition: all 0.3s;">
+<div style="color: #fbbf24; font-size: 1.3em; margin-bottom: 10px;">⭐⭐⭐⭐⭐</div>
+<p style="font-size: 1.05em; color: #4a5568; line-height: 1.8; font-style: italic; margin-bottom: 15px;">Vacanza rilassante, paese tranquillo, mare vicino e proprietari gentili. Ci siamo trovati bene e ci ritorneremo!</p>
+<div style="font-weight: 600; color: #2d3748;">Roberta</div>
+<div style="font-size: 0.9em; color: #4a5568;">Casa Giorgio 4 • Settembre 2025</div>
+</div>
+
+
+</div>
+
+<div style="text-align: center;">
+<a href="recensioni" class="btn">📖 Leggi Tutte le Recensioni</a>
+</div>
+</div>
+
+<div class="interactive-map-section">
+<h2>🗺️ Dove Siamo</h2>
+<p>Esplora la posizione delle nostre case e i punti di interesse nelle vicinanze</p>
+<div id="map-activate-msg" style="margin-bottom:12px;text-align:center;font-size:1.05em;color:#22577a;font-weight:600;">Clicca sulla mappa per attivare lo zoom e la navigazione</div>
+<div id="interactive-map"></div>
+<div style="text-align:center; margin: 18px 0 32px 0;">
+  <a href="https://www.google.com/maps/place/Via+Vasco+de+Gama,+Torre+Pali,+Salve+LE" target="_blank" rel="noopener" style="color:#22577a; font-weight:700; text-decoration:underline; background:#fff; padding:6px 14px; border-radius:8px; box-shadow:0 2px 8px rgba(34,87,122,0.08);">Apri la zona su Google Maps</a>
+</div>
+<div class="map-legend">
+<div class="legend-item"><span class="legend-icon">🏠</span> Case Vacanze</div>
+<div class="legend-item"><span class="legend-icon">🏖️</span> Spiaggia</div>
+<div class="legend-item"><span class="legend-icon">🛒</span> Supermercato</div>
+<div class="legend-item"><span class="legend-icon">🍴</span> Ristoranti</div>
+<div class="legend-item"><span class="legend-icon">🏯</span> Torre Storica</div>
+</div>
+</div>
+
+<!-- Sezione Perché Scegliere Noi -->
+<div style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 50px; border-radius: 30px; box-shadow: 0 20px 60px rgba(0,0,0,0.1); margin-bottom: 60px;">
+<h2 style="font-size: 2.5em; background: linear-gradient(135deg, #22577a 0%, #22577a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 30px; font-weight: 700; text-align: center;">🌟 Perché Scegliere le Nostre Case Vacanze?</h2>
+<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-bottom: 30px;" class="reviews-grid">
+<div style="background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-left: 5px solid #22577a;">
+<div style="font-size: 2.5em; margin-bottom: 15px;">🏖️</div>
+<h3 style="font-size: 1.4em; color: #2d3748; margin-bottom: 15px; font-weight: 700;">Vicinissimi al Mare</h3>
+<p style="color: #4a5568; line-height: 1.8;">Le nostre <strong>case vacanze sono a 20-40 metri dalla spiaggia</strong> di Torre Pali. In 30 secondi a piedi sei già sulla sabbia! Mare cristallino con Bandiera Blu, fondali bassi perfetti per i bambini.</p>
+</div>
+<div style="background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-left: 5px solid #48bb78;">
+<div style="font-size: 2.5em; margin-bottom: 15px;">✅</div>
+<h3 style="font-size: 1.4em; color: #2d3748; margin-bottom: 15px; font-weight: 700;">Tutti i Comfort Inclusi</h3>
+<p style="color: #4a5568; line-height: 1.8;"><strong>WiFi gratuito, aria condizionata, cucina attrezzata, lavatrice, TV</strong> e parcheggio. Le nostre case sono dotate di tutto il necessario: lenzuola, stoviglie, pentole. Devi solo portare telo mare e costume!</p>
+</div>
+<div style="background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-left: 5px solid #ed8936;">
+<div style="font-size: 2.5em; margin-bottom: 15px;">👨‍👩‍👧‍👦</div>
+<h3 style="font-size: 1.4em; color: #2d3748; margin-bottom: 15px; font-weight: 700;">Proprietari Sul Posto</h3>
+<p style="color: #4a5568; line-height: 1.8;">Abitiamo qui! Siamo sempre disponibili per aiutarti, consigliarti i <strong>migliori ristoranti di Torre Pali</strong>, le spiagge da non perdere e risolvere qualsiasi problema. Assistenza 24/7 in italiano.</p>
+</div>
+<div style="background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-left: 5px solid #22577a;">
+<div style="font-size: 2.5em; margin-bottom: 15px;">�</div>
+<h3 style="font-size: 1.4em; color: #2d3748; margin-bottom: 15px; font-weight: 700;">Preventivi Personalizzati</h3>
+<p style="color: #4a5568; line-height: 1.8;">Tariffe flessibili secondo la stagione e durata del soggiorno. <strong>No costi nascosti</strong>: pulizie finali incluse, caparra solo 30%. <a href="contatti" style="color: #5a67d8; font-weight: 600; text-decoration: underline;">Contattaci per un preventivo</a>. Accettiamo animali di piccola taglia.</p>
+</div>
+</div>
+<p style="text-align: center; font-size: 1.15em; color: #4a5568; margin-top: 20px;">Oltre <strong>8 recensioni con 5 stelle</strong> dai nostri ospiti soddisfatti. <a href="recensioni" style="color: #5a67d8; font-weight: 600; text-decoration: underline;">Leggi cosa dicono di noi</a> e scopri perché le nostre case vacanze a Torre Pali sono la scelta ideale per le tue vacanze in Salento.</p>
+</div>
+
+<div class="about-torre">
+<h2>Torre Pali: La Tua Vacanza nel Salento Autentico</h2>
+<p><strong>Torre Pali</strong> offre tutto ciò che serve per una vacanza perfetta nel Salento: spiagge sabbiose dorate con acque cristalline, fondali bassi e sicuri ideali per famiglie con bambini, un'atmosfera autentica e rilassata e una cucina locale genuina a base di pesce fresco. La <strong>torre aragonese del XVI secolo</strong> che domina la costa è un'attrazione storica affascinante, e i tramonti sul mare sono semplicemente spettacolari.</p>
+<p>A pochi metri dalla riva si trova l'<strong>Isola della Fanciulla</strong>, un suggestivo isolotto roccioso circondato da una romantica leggenda d'amore, facilmente raggiungibile a nuoto (circa 50 metri) o in kayak. Un luogo perfetto per fare snorkeling, esplorare la flora marina e scattare fotografie indimenticabili con lo sfondo del Mar Ionio!</p>
+<p><strong>Cosa visitare vicino a Torre Pali:</strong> Le famose <a href="spiagge-salento-sud" style="color: #5a67d8; font-weight: 600; text-decoration: underline;">Maldive del Salento a Pescoluse</a> (3 km), Punta Pizzo con le sue dune (5 km), Santa Maria di Leuca con il faro e il Santuario (15 km), le Grotte di Castro Marina (25 km), Gallipoli (35 km), Otranto (50 km) e la barocca Lecce (60 km). Torre Pali è la base perfetta per esplorare tutto il Salento meridionale!</p>
+<p style="text-align: center; margin-top: 25px;"><a href="torre-pali" class="btn">🏝️ Scopri Torre Pali e l'Isola della Fanciulla</a></p>
+<p style="text-align: center; margin-top: 10px;"><a href="spiagge-salento-sud" class="btn">🏖️ Scopri le spiagge del Salento</a></p>
+
+<div class="highlights">
+<div class="highlight">
+<div class="highlight-title">🏖️ Spiaggia Bandiera Blu</div>
+<p>Mare pulito e controllato, spiaggia sabbiosa a pochi passi dalle nostre case</p>
+</div>
+<div class="highlight">
+<div class="highlight-title">🍝 Cucina Locale</div>
+<p>Ristoranti autentici con piatti tipici salentini a base di pesce fresco</p>
+</div>
+<div class="highlight">
+<div class="highlight-title">🚗 Posizione Strategica</div>
+<p>Vicina a Lecce, Otranto e alle spiagge più belle del Salento</p>
+</div>
+<div class="highlight">
+<div class="highlight-title">🌅 Atmosfera Autentica</div>
+<p>Un borgo tranquillo dove scoprire il vero Salento lontano dal turismo di massa</p>
+</div>
+</div>
+</div>
+
+<div style="text-align: center; margin-top: 50px; padding: 40px; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+<h2 style="color: #2c3e50; margin-bottom: 20px;">Hai domande? Contattaci!</h2>
+<p style="color: #555; margin-bottom: 25px;">Siamo disponibili per rispondere a tutte le tue domande sugli appartamenti e su Torre Pali.</p>
+<a href="https://wa.me/393886587080?text=Ciao!%20Vorrei%20informazioni%20sulle%20vostre%20case%20vacanza%20a%20Torre%20Pali" class="btn" data-tooltip="Chatta con noi ora">📱 WhatsApp</a>
+<a href="tel:+393886587080" class="btn">📞 Chiama</a>
+<a href="contatti" class="btn">✉️ Form Contatti</a>
+<p style="margin-top: 20px; color: #4a5568;">+39 388 658 70 80 • Risposta entro 1h</p>
+<p style="margin-top: 25px; font-size: 0.85em; color: #4a5568;"><a href="privacy" style="color: #5a67d8; text-decoration: underline;">Privacy Policy</a></p>
+</div>
+</div>
+</main>
+<!-- End Main Content -->
+
+<!-- Footer -->
 <footer class="footer" aria-label="Footer Torre Pali Salento">
 <div class="footer-container">
 <div class="footer-section">
 <h3>🏝️ Torre Pali Vacanze - Info</h3>
-<p>Case Vacanza a Torre Pali, Salento. A pochi passi dalla spiaggia di Torre Pali con tutti i comfort.</p>
+<p>Case vacanze a Torre Pali, Salento. A pochi passi dalla spiaggia Bandiera Blu con tutti i comfort.</p>
 <p style="margin-top: 15px;">📍 Torre Pali, Lecce (LE)<br>Salento, Puglia</p>
 </div>
 <div class="footer-section">
@@ -476,6 +778,212 @@
 <p>&copy; 2026 Torre Pali Vacanze. Tutti i diritti riservati.</p>
 </div>
 </footer>
+
+<!-- Leaflet JS - Lazy Loading quando mappa diventa visibile -->
+<script>
+// Carica Leaflet solo quando l'utente vede la mappa (risparmio 41 KiB)
+(function() {
+  let mapLoaded = false;
+  
+  function loadLeaflet() {
+    if (mapLoaded) return;
+    mapLoaded = true;
+    
+    // Carica CSS Leaflet
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+    link.integrity = 'sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=';
+    link.crossOrigin = '';
+    document.head.appendChild(link);
+    
+    // Carica JS Leaflet
+    const script = document.createElement('script');
+    script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+    script.integrity = 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=';
+    script.crossOrigin = '';
+    script.onload = initMap;
+    document.body.appendChild(script);
+  }
+  
+  function initMap() {
+    // Inizializza mappa
+  var map = L.map('interactive-map', {
+    dragging: false,
+    touchZoom: false,
+    scrollWheelZoom: false,
+    doubleClickZoom: false,
+    boxZoom: false,
+    keyboard: false
+  }).setView([39.8391, 18.2105], 15);
+
+// Tile layer OpenStreetMap
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  maxZoom: 19
+}).addTo(map);
+
+// Icone personalizzate
+var houseIcon = L.divIcon({
+  className: 'custom-icon',
+  html: '<div style="font-size: 22px;">🏠</div>',
+  iconSize: [22, 22],
+  iconAnchor: [11, 11]
+});
+
+var beachIcon = L.divIcon({
+  className: 'custom-icon',
+  html: '<div style="font-size: 22px;">🏖️</div>',
+  iconSize: [22, 22],
+  iconAnchor: [11, 11]
+});
+
+var shopIcon = L.divIcon({
+  className: 'custom-icon',
+  html: '<div style="font-size: 22px;">🛒</div>',
+  iconSize: [22, 22],
+  iconAnchor: [11, 11]
+});
+
+var restaurantIcon = L.divIcon({
+  className: 'custom-icon',
+  html: '<div style="font-size: 22px;">🍴</div>',
+  iconSize: [22, 22],
+  iconAnchor: [11, 11]
+});
+
+var towerIcon = L.divIcon({
+  className: 'custom-icon',
+  html: '<div style="font-size: 22px;">🏯</div>',
+  iconSize: [22, 22],
+  iconAnchor: [11, 11]
+});
+
+// Markers Case Vacanze - Via Vasco de Gama
+L.marker([39.8393, 18.2105], {icon: houseIcon}).addTo(map)
+  .bindPopup('<b>🏠 Casa Bellavista 2</b><br>Via Vasco de Gama 5<br>20m dalla spiaggia<br><a href="casa-bellavista-2">Vedi dettagli</a>');
+
+L.marker([39.8392, 18.2106], {icon: houseIcon}).addTo(map)
+  .bindPopup('<b>🏠 Casa Giorgio 4</b><br>Via Vasco de Gama 13<br>40m dalla spiaggia<br><a href="casa-giorgio-4">Vedi dettagli</a>');
+
+L.marker([39.8392, 18.2106], {icon: houseIcon}).addTo(map)
+  .bindPopup('<b>🏠 Casa Giorgio 6</b><br>Via Vasco de Gama 11<br>Vista mare primo piano<br><a href="casa-giorgio-6">Vedi dettagli</a>');
+
+// Punti di interesse
+L.marker([39.8390, 18.2105], {icon: beachIcon}).addTo(map)
+  .bindPopup('<b>🏖️ Spiaggia Torre Pali</b><br>Sabbia fine e mare cristallino<br>Bandiera Blu');
+
+L.marker([39.8372, 18.2085], {icon: shopIcon}).addTo(map)
+  .bindPopup('<b>🛒 Supermercato</b><br>Alimentari e prodotti locali');
+
+L.marker([39.8392, 18.2110], {icon: restaurantIcon}).addTo(map)
+  .bindPopup('<b>🍴 Ristoranti</b><br>Cucina tipica salentina');
+
+L.marker([39.8380, 18.2100], {icon: restaurantIcon}).addTo(map)
+  .bindPopup('<b>🍴 Pizzeria</b><br>Pizza e specialità locali');
+
+L.marker([39.8372, 18.2095], {icon: towerIcon}).addTo(map)
+  .bindPopup('<b>🏰 Torre di Torre Pali</b><br>Torre aragonese XVI secolo<br><a href="torre-pali">Scopri la storia</a>');
+
+// Isola della Fanciulla
+L.marker([39.8372, 18.2085], {icon: L.divIcon({
+  className: 'custom-icon',
+  html: '<div style="font-size: 22px;">🏝️</div>',
+  iconSize: [22, 22],
+  iconAnchor: [11, 11]
+})}).addTo(map)
+  .bindPopup('<b>🏝️ Isola della Fanciulla</b><br>Isolotto roccioso raggiungibile a nuoto<br><a href="torre-pali">Leggi la leggenda</a>');
+// Abilita interazione mappa solo al click
+document.getElementById('interactive-map').addEventListener('click', function() {
+  map.dragging.enable();
+  map.touchZoom.enable();
+  map.scrollWheelZoom.enable();
+  map.doubleClickZoom.enable();
+  map.boxZoom.enable();
+  map.keyboard.enable();
+  var msg = document.getElementById('map-activate-msg');
+  if (msg) msg.style.display = 'none';
+});
+  }
+  
+  // Osserva quando la mappa diventa visibile
+  const mapElement = document.getElementById('interactive-map');
+  if (mapElement && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          loadLeaflet();
+          observer.disconnect();
+        }
+      });
+    }, { rootMargin: '200px' }); // Carica 200px prima che sia visibile
+    
+    observer.observe(mapElement);
+  } else if (mapElement) {
+    // Fallback: carica dopo 3 secondi se browser vecchio
+    setTimeout(loadLeaflet, 3000);
+  }
+})();
+</script>
+
+<script>
+// Menu Hamburger
+function toggleMenu() {
+  const menu = document.getElementById('navbarMenu');
+  menu.classList.toggle('active');
+}
+
+function closeMenu() {
+  const menu = document.getElementById('navbarMenu');
+  menu.classList.remove('active');
+  // Chiudi tutte le dropdown su mobile
+  if (window.innerWidth <= 768) {
+    const dropdowns = document.querySelectorAll('.dropdown.active');
+    dropdowns.forEach(function(drop) {
+      drop.classList.remove('active');
+    });
+  }
+}
+
+// Dropdown mobile
+document.addEventListener('DOMContentLoaded', function() {
+  const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+  dropdownToggles.forEach(function(toggle) {
+    toggle.addEventListener('click', function(e) {
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        e.stopPropagation();
+        const parentDropdown = this.closest('.dropdown');
+        if (parentDropdown) {
+          parentDropdown.classList.toggle('active');
+        }
+      }
+    });
+    // Supporto touch
+    toggle.addEventListener('touchstart', function(e) {
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        e.stopPropagation();
+        const parentDropdown = this.closest('.dropdown');
+        if (parentDropdown) {
+          parentDropdown.classList.toggle('active');
+        }
+      }
+    }, { passive: false });
+  });
+});
+
+// Chiudi menu quando si clicca fuori
+document.addEventListener('click', function(event) {
+  const navbar = document.querySelector('.navbar');
+  const menu = document.getElementById('navbarMenu');
+  const dropdown = document.querySelector('.dropdown');
+  if (!navbar.contains(event.target) && menu.classList.contains('active')) {
+    menu.classList.remove('active');
+    if (dropdown) dropdown.classList.remove('active');
+  }
+});
+</script>
 
 
 </body>
