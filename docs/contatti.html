@@ -245,10 +245,6 @@ header h1 { font-size: 3.2em !important; margin-bottom: 15px; font-weight: 700; 
 
   gtag('config', 'AW-17941172028');
 </script>
-<!-- Event snippet for Contatto conversion page -->
-<script>
-  gtag('event', 'conversion', {'send_to': 'AW-17941172028/OvpCCP_1jJQcELyegutC'});
-</script>
 
 </head>
 <body>
@@ -273,7 +269,6 @@ fetch('cookie-banner')
       </button>
       <ul class="navbar-menu" id="navbarMenu">
         <li><a href="/" onclick="closeMenu()">Home</a></li>
-        <li><a href="case-vacanze" onclick="closeMenu()">Case Vacanza</a></li>
         <li><a href="torre-pali" onclick="closeMenu()">Torre Pali</a></li>
         <li><a href="recensioni" onclick="closeMenu()">⭐ Recensioni</a></li>
         <li><a href="faq" onclick="closeMenu()">FAQ</a></li>
@@ -466,6 +461,7 @@ document.addEventListener('DOMContentLoaded', function(){
         body: data
       });
       if (resp.ok) {
+        gtag('event', 'conversion', {'send_to': 'AW-17941172028/OvpCCP_1jJQcELyegutC'});
         success.style.display = 'block';
         success.scrollIntoView({ behavior: 'smooth', block: 'center' });
         form.reset();
@@ -496,7 +492,6 @@ document.addEventListener('DOMContentLoaded', function(){
 <div class="footer-section">
 <h3>Link utili Torre Pali</h3>
 <a href="/">Home</a>
-<a href="case-vacanze">Case Vacanza</a>
 <a href="casa-bellavista-1">Casa Bellavista 1</a>
 <a href="casa-bellavista-2">Casa Bellavista 2</a>
 <a href="casa-giorgio-4">Casa Giorgio 4</a>

@@ -315,7 +315,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- Event snippet for Contatto conversion page -->
 <script>
-  gtag('event', 'conversion', {'send_to': 'AW-17941172028/OvpCCP_1jJQcELyegutC'});
+    document.getElementById('booking-form').addEventListener('submit', function() {
+    gtag('event', 'conversion', {'send_to': 'AW-17941172028/OvpCCP_1jJQcELyegutC'});
+    });
 </script>
 
 </head>
