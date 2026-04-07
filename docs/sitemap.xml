@@ -16,6 +16,14 @@
     <priority>0.9</priority>
   </url>
 
+  <!-- Casa Bellavista 1 -->
+  <url>
+    <loc>https://torrepalivacanze.it/casa-bellavista-1</loc>
+      <lastmod>2026-04-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
   <!-- Casa Bellavista 2 -->
   <url>
     <loc>https://torrepalivacanze.it/casa-bellavista-2</loc>
