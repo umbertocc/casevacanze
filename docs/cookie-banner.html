@@ -3,3 +3,14 @@
   Questo sito utilizza solo cookie tecnici necessari al funzionamento e non utilizza cookie di profilazione o di terze parti. Per maggiori informazioni leggi la <a href="cookie-policy" style="color:#ffd700;text-decoration:underline;">cookie policy</a>.<br><br>
   <button id="cookie-ok" style="margin-left:16px;padding:8px 18px;background:#ffd700;color:#222;border:none;border-radius:4px;cursor:pointer;font-weight:bold;">OK</button>
 </div>
+
+<script>
+fetch('cookie-banner')
+  .then(r => r.text())
+  .then(html => {
+    document.getElementById('cookie-banner-container').innerHTML = html;
+    var script = document.createElement('script');
+    script.src = 'cookie-banner.js';
+    document.body.appendChild(script);
+  });
+</script>
