@@ -60,18 +60,6 @@ function gtag_report_conversion() {
 </head>                               
 <body>
 
-
-<div id="cookie-banner-container"></div>
-<script>
-fetch('cookie-banner')
-  .then(r => r.text())
-  .then(html => {
-    document.getElementById('cookie-banner-container').innerHTML = html;
-    var script = document.createElement('script');
-    script.src = 'cookie-banner.js';
-    document.body.appendChild(script);
-  });
-</script>
 <div class="container">
 <a href="/" class="back-btn">← Torna alla homepage</a>
 

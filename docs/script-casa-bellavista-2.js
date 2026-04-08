@@ -1,12 +1,3 @@
-// Loader Cookie Banner
-fetch('cookie-banner')
-  .then(r => r.text())
-  .then(html => {
-    document.getElementById('cookie-banner-container').innerHTML = html;
-    var script = document.createElement('script');
-    script.src = 'cookie-banner.js';
-    document.body.appendChild(script);
-  });
 
 // Gallery e Lightbox
 let currentImg = 0;

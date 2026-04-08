@@ -44,7 +44,8 @@ h1 { font-size: 2.5em; margin-bottom: 20px; color: #22577a; }
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-M0TEME57K0');
-</script>                                              </head>                               
+</script>                                             
+ </head>                               
 <body>
 <div class="container">
 <div class="error-code">404</div>
@@ -63,18 +64,17 @@ h1 { font-size: 2.5em; margin-bottom: 20px; color: #22577a; }
 </a>
 </div>
 </div>
-<div id="cookie-banner-container"></div>
 <script>
-fetch('cookie-banner')
-  .then(r => r.text())
-  .then(html => {
-    document.getElementById('cookie-banner-container').innerHTML = html;
-    var script = document.createElement('script');
-    script.src = 'cookie-banner.js';
-    document.body.appendChild(script);
+  // Aggiungi un po' di interattività alle animazioni
+  const errorCode = document.querySelector('.error-code');
+  errorCode.addEventListener('mouseover', () => {
+    errorCode.style.animationPlayState = 'paused';
   });
-</script>
+  errorCode.addEventListener('mouseout', () => {
+    errorCode.style.animationPlayState = 'running';
+  });
 
+</script>
 <div class="help-text">
 <p><strong>Link Utili:</strong></p>
 <p>

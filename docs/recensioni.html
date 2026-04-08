@@ -177,18 +177,6 @@ document.addEventListener('DOMContentLoaded', function() {
 <body>
 <!-- Tag Manager e Google Analytics rimossi per policy privacy: solo cookie tecnici -->
 <!-- Navbar -->
-
-<div id="cookie-banner-container"></div>
-<script>
-fetch('cookie-banner')
-  .then(r => r.text())
-  .then(html => {
-    document.getElementById('cookie-banner-container').innerHTML = html;
-    var script = document.createElement('script');
-    script.src = 'cookie-banner.js';
-    document.body.appendChild(script);
-  });
-</script>
   <nav class="navbar">
     <div class="navbar-container" style="position:relative;">
       <a href="/" class="navbar-brand">🏝️ Torre Pali Vacanze</a>

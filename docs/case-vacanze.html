@@ -301,7 +301,6 @@ function gtag_report_conversion() {
 </script>
 </head>                               
 <body>
-    <div id="cookie-banner-container"></div>
   <nav class="navbar">
     <div class="navbar-container" style="position:relative;">
       <a href="/" class="navbar-brand">🏝️ Torre Pali Vacanze</a>
@@ -321,18 +320,6 @@ function gtag_report_conversion() {
       </ul>
     </div>
   </nav>
-
-  <script>
-  // Carica dinamicamente il cookie banner
-  fetch('cookie-banner.html')
-    .then(r => r.text())
-    .then(html => {
-      document.getElementById('cookie-banner-container').innerHTML = html;
-      var script = document.createElement('script');
-      script.src = 'cookie-banner.js';
-      document.body.appendChild(script);
-    });
-  </script>
 
   <script>
   // Menu Hamburger

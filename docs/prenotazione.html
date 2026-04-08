@@ -340,35 +340,6 @@ function gtag_report_conversion() {
 </script>                                            
 </head>                              
 <body>
-
-
-<div id="cookie-banner-container"></div>
-<script>
-fetch('cookie-banner')
-  .then(r => r.text())
-  .then(html => {
-    document.getElementById('cookie-banner-container').innerHTML = html;
-    var script = document.createElement('script');
-    script.src = 'cookie-banner.js';
-    document.body.appendChild(script);
-  });
-</script>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    if (!localStorage.getItem('cookieConsent')) {
-      document.getElementById('cookie-banner').style.display = 'block';
-    }
-    document.getElementById('cookie-accept').onclick = function() {
-      localStorage.setItem('cookieConsent', 'true');
-      document.getElementById('cookie-banner').style.display = 'none';
-    };
-    document.getElementById('cookie-refuse').onclick = function() {
-      localStorage.setItem('cookieConsent', 'refused');
-      document.getElementById('cookie-banner').style.display = 'none';
-    };
-  });
-</script>
-
   <nav class="navbar">
     <div class="navbar-container" style="position:relative;">
       <a href="/" class="navbar-brand">🏝️ Torre Pali Vacanze</a>
