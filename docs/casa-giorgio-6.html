@@ -664,7 +664,7 @@ function gtag_report_conversion() {
   <div class="photo-counter"><span id="current-photo">1</span> / <span id="total-photos">20</span></div>
   <picture><source srcset="img/casa-giorgio2/prospetto.webp" type="image/webp"><img src="img/casa-giorgio2/prospetto.jpg" alt="Prospetto Casa Giorgio 6" loading="lazy" data-category="esterni"></picture>
   <picture><source srcset="img/casa-giorgio2/prospetto2.webp" type="image/webp"><img src="img/casa-giorgio2/prospetto2.jpg" alt="Vista esterna" loading="lazy" data-category="esterni"></picture>
-    <picture><source srcset="img/casa-giorgio/prospetto3.webp" type="image/webp"><img src="img/casa-giorgio/prospetto3.jpg" alt="Prospetto 3 Casa Giorgio" loading="lazy" data-category="esterni"></picture>
+  <picture><source srcset="img/casa-giorgio2/prospetto3.webp" type="image/webp"><img src="img/casa-giorgio2/prospetto3.jpg" alt="Prospetto 3 Casa Giorgio" loading="lazy" data-category="esterni"></picture>
   <picture><source srcset="img/casa-giorgio2/balcone.webp" type="image/webp"><img src="img/casa-giorgio2/balcone.jpg" alt="Veranda vista mare" loading="lazy" data-category="esterni"></picture>
   <picture><source srcset="img/casa-giorgio2/balcone2.webp" type="image/webp"><img src="img/casa-giorgio2/balcone2.jpg" alt="Veranda attrezzata" loading="lazy" data-category="esterni"></picture>
   <picture><source srcset="img/casa-giorgio2/balcone3.webp" type="image/webp"><img src="img/casa-giorgio2/balcone3.jpg" alt="Balcone con vista" loading="lazy" data-category="esterni"></picture>
@@ -1049,7 +1049,17 @@ if (allImages.length > 0) {
   gallery.addEventListener('click', (e) => {
     if (!e.target.closest('.gallery-arrow') && !e.target.closest('.dot')) {
       lightbox.classList.add('active');
-      lightboxImg.src = filteredImages[currentImg].src;
+      // Trova il <picture> relativo all'immagine corrente
+      const imgEl = filteredImages[currentImg];
+      const picture = imgEl.closest('picture');
+      let webpSrc = null;
+      if (picture) {
+        const source = picture.querySelector('source[type="image/webp"]');
+        if (source && source.srcset) {
+          webpSrc = source.srcset;
+        }
+      }
+      lightboxImg.src = webpSrc || imgEl.src;
       document.body.style.overflow = 'hidden';
     }
   });
@@ -1064,7 +1074,17 @@ if (allImages.length > 0) {
   window.changeLightboxImg = function(direction) {
     let newIndex = (currentImg + direction + filteredImages.length) % filteredImages.length;
     showImg(newIndex);
-    lightboxImg.src = filteredImages[newIndex].src;
+    // Trova il <picture> relativo alla nuova immagine
+    const imgEl = filteredImages[newIndex];
+    const picture = imgEl.closest('picture');
+    let webpSrc = null;
+    if (picture) {
+      const source = picture.querySelector('source[type="image/webp"]');
+      if (source && source.srcset) {
+        webpSrc = source.srcset;
+      }
+    }
+    lightboxImg.src = webpSrc || imgEl.src;
   }
 
   // Chiudi lightbox con ESC
