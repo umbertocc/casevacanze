@@ -78,6 +78,40 @@
     .availability-badge {
       margin-bottom: 10px;
     }
+
+    /* --- Contact Form CSS da contatti.html --- */
+    .contact-info, .contact-form { background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); padding: 45px; border-radius: 25px; box-shadow: 0 15px 50px rgba(0,0,0,0.08); border: 1px solid rgba(102, 126, 234, 0.1); animation: fadeInUp 0.6s ease-out; }
+    .contact-info h2, .contact-form h2 { font-size: 1.8em; background: linear-gradient(135deg, #22577a 0%, #22577a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 25px; font-weight: 700; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #2c3e50; }
+    .form-group input, .form-group textarea { width: 100%; padding: 14px; border: 2px solid rgba(102, 126, 234, 0.2); border-radius: 12px; font-family: 'Poppins', sans-serif; font-size: 1em; transition: all 0.3s; background: rgba(102, 126, 234, 0.02); }
+    .form-group input:focus, .form-group textarea:focus { outline: none; border-color: #22577a; background: white; box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1); }
+    .form-group textarea { resize: vertical; min-height: 150px; }
+    .form-btn {
+      background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+      color: #fff;
+      padding: 16px 40px;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.1em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      width: 100%;
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    .form-btn:hover {
+      background: linear-gradient(135deg, #128c7e 0%, #25d366 100%);
+      color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(102, 126, 234, 0.5);
+    }
+    .success-message { display: none; background: linear-gradient(135deg, rgba(72, 187, 120, 0.1) 0%, rgba(56, 161, 105, 0.1) 100%); color: #38a169; padding: 15px; border-radius: 12px; margin-bottom: 20px; border: 2px solid #48bb78; font-weight: 500; }
+    @media (max-width: 768px) {
+      .contact-info, .contact-form { padding: 18px; }
+    }
     .btn {
       margin: 0 10px 0 0;
       padding: 12px 28px;
@@ -494,12 +528,101 @@ function gtag_report_conversion() {
           </div>
         </div>
       </div>
+
     </div>
     <div style="text-align:center; margin-top: 50px;">
       <a href="prenotazione" class="btn">✉️ Richiedi Disponibilità</a>
       <a href="https://wa.me/393886587080?text=Ciao!%20Vorrei%20informazioni%20sulle%20vostre%20case%20vacanza%20a%20Torre%20Pali" class="btn" onclick="gtag('event','click_whatsapp'); gtag_report_conversion()">📱 WhatsApp</a>
       <a href="tel:+393886587080" class="btn" style="font-size:1.25em; margin-top:10px; position:relative; z-index:1;" onclick="gtag('event','click_telefono'); gtag_report_conversion()">📞 Chiama per info</a>
     </div>
+
+    <!-- Contact Form Inizio -->
+    <div style="max-width:700px; margin:60px auto 0 auto;">
+      <div class="contact-form">
+        <h2>Invia un Messaggio</h2>
+        <div class="success-message" id="successMsg">✅ Messaggio inviato con successo! Ti contatteremo presto.</div>
+        <form id="contactForm" action="https://formspree.io/f/mvzrrpdr" method="POST">
+          <!-- Honeypot anti-spam (nascosto) -->
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+          <div class="form-group">
+            <label for="nome">Nome *</label>
+            <input type="text" id="nome" name="nome" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="telefono">Telefono</label>
+            <input type="tel" id="telefono" name="telefono">
+          </div>
+          <div class="form-group">
+            <label for="appartamento">Quale appartamento ti interessa?</label>
+            <select name="appartamento" id="appartamento" style="width: 100%; padding: 12px; border: 2px solid #ecf0f1; border-radius: 8px; font-family: Arial, sans-serif; font-size: 1em;">
+              <option value="">-- Seleziona --</option>
+              <option value="casa-bellavista-1">Casa Bellavista 1</option>
+              <option value="casa-bellavista-2">Casa Bellavista 2</option>
+              <option value="casa-giorgio-4">Casa Giorgio 4 (Piano terra)</option>
+              <option value="casa-giorgio-6">Casa Giorgio 6 (Vista Mare)</option>
+              <option value="generico">Richiesta Generica</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="messaggio">Messaggio *</label>
+            <textarea id="messaggio" name="messaggio" required placeholder="Raccontaci cosa ti interessa..."></textarea>
+          </div>
+          <button type="submit" class="form-btn">Invia Messaggio</button>
+        </form>
+      </div>
+    </div>
+    <script>
+    // AJAX submission to Formspree to avoid redirect
+    document.addEventListener('DOMContentLoaded', function(){
+      const form = document.getElementById('contactForm');
+      const success = document.getElementById('successMsg');
+      if (!form) return;
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const data = new FormData(form);
+        // Add reply-to so Formspree can send an autoresponse to the user
+        const userEmail = (form.elements['email'] && form.elements['email'].value) || '';
+        const userName = (form.elements['nome'] && form.elements['nome'].value) || 'Cliente';
+        if (userEmail) {
+          data.append('_replyto', userEmail);
+          data.append('_email', userEmail); // Campo aggiuntivo per migliore deliverability
+        }
+        // Subject ottimizzato per evitare spam
+        data.append('_subject', `Nuova Richiesta da ${userName} - Affitti Torre Pali`);
+        // Template HTML per email più professionale
+        data.append('_template', 'box');
+        // Conferma automatica all'utente
+        data.append('_autoresponse', 'Grazie per averci contattato! Abbiamo ricevuto la tua richiesta e ti risponderemo entro 1 ora. - Affitti Torre Pali');
+        try {
+          const resp = await fetch(form.action, {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: data
+          });
+          if (resp.ok) {
+            gtag('event', 'conversion', {'send_to': 'AW-17941172028/OvpCCP_1jJQcELyegutC'});
+            success.style.display = 'block';
+            success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            form.reset();
+            setTimeout(() => { success.style.display = 'none'; }, 7000);
+          } else {
+            const text = await resp.text();
+            console.error('Formspree error', resp.status, text);
+            alert('Si è verificato un errore durante l\'invio. Riprova più tardi.');
+          }
+        } catch (err) {
+          console.error(err);
+          alert('Errore di rete. Riprova più tardi.');
+        }
+      });
+    });
+    </script>
+    <!-- Contact Form Fine -->
+
   </main>
 <footer class="footer" aria-label="Footer Torre Pali Salento">
 <div class="footer-container">
