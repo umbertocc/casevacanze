@@ -470,7 +470,7 @@ document.addEventListener('click', function(event) {
       
     <section class="booking-form-section">
       <div class="success-message" id="confirmation" style="display:none;">✅ Richiesta inviata! Ti risponderemo entro 1 ora via email o WhatsApp.</div>
-      <form id="booking-form" action="https://formspree.io/f/mvzrrpdr" method="POST">
+      <form id="booking-form" action="https://demo-mail-993653817397.europe-west8.run.app/api/email/send" method="POST">
         <!-- Honeypot anti-spam (nascosto) -->
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
         <div class="form-group">
@@ -573,13 +573,42 @@ document.getElementById('booking-form').addEventListener('submit', function(e) {
   e.preventDefault();
   var form = e.target;
   var confirmation = document.getElementById('confirmation');
+  // Raccogli i dati del form
+  var nome = form.nome.value;
+  var email = form.email.value;
+  var telefono = form.telefono.value;
+  var appartamento = form.appartamento.value;
+  var arrivo = form.arrivo.value;
+  var partenza = form.partenza.value;
+  var persone = form.persone.value;
+  var messaggio = form.messaggio.value;
+
+  // Costruisci il testo dell'email
+  var text =
+    'Nome: ' + nome + '\n' +
+    'Email: ' + email + '\n' +
+    'Telefono: ' + telefono + '\n' +
+    'Appartamento: ' + appartamento + '\n' +
+    'Arrivo: ' + arrivo + '\n' +
+    'Partenza: ' + partenza + '\n' +
+    'Persone: ' + persone + '\n' +
+    'Messaggio: ' + messaggio;
+
   fetch(form.action, {
     method: 'POST',
-    body: new FormData(form),
-    headers: { 'Accept': 'application/json' }
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Accept': 'application/json'
+    },
+    body: new URLSearchParams({
+      to: 'info@torrepalivacanze.it',
+      subject: 'richiesta torre pali vacanze',
+      text: text
+    })
   }).then(function(response) {
     if (response.ok) {
       confirmation.style.display = 'block';
+      confirmation.textContent = '✅ Richiesta inviata! Ti risponderemo entro 1 ora via email o WhatsApp.';
       form.reset();
       window.scrollTo({top: 0, behavior: 'smooth'});
     } else {
