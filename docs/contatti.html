@@ -350,7 +350,7 @@ function gtag_report_conversion() {
 <h2>Invia un Messaggio</h2>
 
 <div class="success-message" id="successMsg">✅ Messaggio inviato con successo! Ti contatteremo presto.</div>
-<form id="contactForm" action="https://formspree.io/f/mvzrrpdr" method="POST">
+<form id="contactForm" action="https://demo-mail-993653817397.europe-west8.run.app/api/email/send" method="POST">
 
 <!-- Honeypot anti-spam (nascosto) -->
 <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
@@ -442,48 +442,53 @@ function gtag_report_conversion() {
 }
 </script>
 <script>
-// AJAX submission to Formspree to avoid redirect
+// Invio email come in prenotazione.html
 document.addEventListener('DOMContentLoaded', function(){
   const form = document.getElementById('contactForm');
   const success = document.getElementById('successMsg');
   if (!form) return;
-  form.addEventListener('submit', async (e) => {
+  form.addEventListener('submit', function(e) {
     e.preventDefault();
-    const data = new FormData(form);
-    // Add reply-to so Formspree can send an autoresponse to the user
-    const userEmail = (form.elements['email'] && form.elements['email'].value) || '';
-    const userName = (form.elements['nome'] && form.elements['nome'].value) || 'Cliente';
-    if (userEmail) {
-      data.append('_replyto', userEmail);
-      data.append('_email', userEmail); // Campo aggiuntivo per migliore deliverability
-    }
-    // Subject ottimizzato per evitare spam
-    data.append('_subject', `Nuova Richiesta da ${userName} - Affitti Torre Pali`);
-    // Template HTML per email più professionale
-    data.append('_template', 'box');
-    // Conferma automatica all'utente
-    data.append('_autoresponse', 'Grazie per averci contattato! Abbiamo ricevuto la tua richiesta e ti risponderemo entro 1 ora. - Affitti Torre Pali');
-    try {
-      const resp = await fetch(form.action, {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: data
-      });
-      if (resp.ok) {
+    var nome = form.nome.value;
+    var email = form.email.value;
+    var telefono = form.telefono.value;
+    var appartamento = form.appartamento.value;
+    var messaggio = form.messaggio.value;
+
+    var text =
+      'Nome: ' + nome + '\n' +
+      'Email: ' + email + '\n' +
+      'Telefono: ' + telefono + '\n' +
+      'Appartamento: ' + appartamento + '\n' +
+      'Messaggio: ' + messaggio;
+
+    fetch(form.action, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Accept': 'application/json'
+      },
+      body: new URLSearchParams({
+        to: 'info@torrepalivacanze.it',
+        subject: 'contatto torre pali vacanze',
+        text: text
+      })
+    }).then(function(response) {
+      if (response.ok) {
         gtag('event', 'conversion', {'send_to': 'AW-17941172028/OvpCCP_1jJQcELyegutC'});
         success.style.display = 'block';
-        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        success.textContent = '✅ Messaggio inviato con successo! Ti contatteremo presto.';
         form.reset();
+        window.scrollTo({top: 0, behavior: 'smooth'});
         setTimeout(() => { success.style.display = 'none'; }, 7000);
       } else {
-        const text = await resp.text();
-        console.error('Formspree error', resp.status, text);
-        alert('Si è verificato un errore durante l\'invio. Riprova più tardi.');
+        success.style.display = 'block';
+        success.textContent = 'Errore nell’invio. Riprova o contattaci via WhatsApp.';
       }
-    } catch (err) {
-      console.error(err);
-      alert('Errore di rete. Riprova più tardi.');
-    }
+    }).catch(function() {
+      success.style.display = 'block';
+      success.textContent = 'Errore nell’invio. Riprova o contattaci via WhatsApp.';
+    });
   });
 });
 </script>
