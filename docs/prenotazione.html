@@ -292,7 +292,7 @@ document.addEventListener('DOMContentLoaded', function() {
     .btn:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 12px 35px rgba(102, 126, 234, 0.5); }
     .btn:hover::before { opacity: 1; }
     .btn span { position: relative; z-index: 1; }
-    .confirmation { display: none; background: #48bb78; color: #fff; padding: 16px; border-radius: 8px; margin-bottom: 20px; text-align: center; font-size: 1.1em; }
+    .confirmation { display: none; background: #e6f9ed; color: #188841; border: 2px solid #48bb78; border-radius: 10px; padding: 14px 18px; margin-bottom: 20px; font-weight: 500; font-size: 1.08em; display: flex; align-items: center; gap: 10px; box-shadow: 0 2px 12px rgba(72,187,120,0.08);}
     .privacy-link { display: block; margin-top: 18px; text-align: center; font-size: 0.95em; color: #22577a; text-decoration: underline; }
     .footer { background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%); color: white; padding: 50px 30px 25px; margin-top: 60px; position: relative; }
     .footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #22577a 0%, #22577a 50%, #f093fb 100%); }
@@ -469,7 +469,10 @@ document.addEventListener('click', function(event) {
   <div class="container">
       
     <section class="booking-form-section">
-      <div class="success-message" id="confirmation" style="display:none;">✅ Richiesta inviata! Ti risponderemo entro 1 ora via email o WhatsApp.</div>
+      <div class="success-message" id="confirmation" style="display:none; background: #e6f9ed; color: #188841; border: 2px solid #48bb78; border-radius: 10px; padding: 14px 18px; margin-bottom: 20px; font-weight: 500; font-size: 1.08em; display: flex; align-items: center; gap: 10px; box-shadow: 0 2px 12px rgba(72,187,120,0.08);">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;"><circle cx="12" cy="12" r="12" fill="#48bb78"/><path d="M17 9.5l-5.25 5.25L7 10" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Richiesta inviata! Ti risponderemo entro 1 ora via email o WhatsApp.</span>
+      </div>
       <form id="booking-form" action="https://demo-mail-993653817397.europe-west8.run.app/api/email/send" method="POST">
         <!-- Honeypot anti-spam (nascosto) -->
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
