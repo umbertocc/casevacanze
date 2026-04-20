@@ -610,10 +610,12 @@ document.getElementById('booking-form').addEventListener('submit', function(e) {
     })
   }).then(function(response) {
     if (response.ok) {
-      confirmation.style.display = 'block';
-      confirmation.textContent = '✅ Richiesta inviata! Ti risponderemo entro 1 ora via email o WhatsApp.';
-      form.reset();
-      window.scrollTo({top: 0, behavior: 'smooth'});
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'contatto_inviato' });
+        confirmation.style.display = 'block';
+        confirmation.textContent = '✅ Richiesta inviata! Ti risponderemo entro 1 ora via email o WhatsApp.';
+        form.reset();
+        window.scrollTo({top: 0, behavior: 'smooth'});
     } else {
       confirmation.style.display = 'block';
       confirmation.textContent = 'Errore nell’invio. Riprova o contattaci via WhatsApp.';
