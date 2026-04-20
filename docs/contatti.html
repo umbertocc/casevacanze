@@ -477,7 +477,7 @@ document.addEventListener('DOMContentLoaded', function(){
     }).then(function(response) {
       if (response.ok) {
           window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push({ event: 'contatto_inviato' });
+          window.dataLayer.push({ event: 'invio_email' });
           gtag('event', 'conversion', {'send_to': 'AW-17941172028/OvpCCP_1jJQcELyegutC'});
           success.style.display = 'block';
           success.textContent = '✅ Messaggio inviato con successo! Ti contatteremo presto.';
