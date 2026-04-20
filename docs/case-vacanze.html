@@ -332,34 +332,21 @@
 <!-- Google Ads Click-to-call conversion -->
 <script>
 function gtag_report_conversion(url) {
-  var callback = function () {
-    if (typeof(url) != 'undefined') {
-      window.location = url;
-    }
-  };
   gtag('event', 'conversion', {
       'send_to': 'AW-17941172028/CVqvCL6Ky58cELyegutC',
       'value': 1.0,
-      'currency': 'EUR',
-      'event_callback': callback
+      'currency': 'EUR'
   });
-  return false;
+
 }
 </script>
 <script>
 function gtag_report_whatsapp_conversion(url) {
-  var callback = function () {
-    if (typeof(url) != 'undefined') {
-      window.location = url;
-    }
-  };
   gtag('event', 'conversion', {
       'send_to': 'AW-17941172028/XiRECP_Yz58cELyegutC',
       'value': 1.0,
-      'currency': 'EUR',
-      'event_callback': callback
+      'currency': 'EUR'
   });
-  return false;
 }
 </script>
 </head>                               
