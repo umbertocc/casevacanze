@@ -313,12 +313,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   gtag('config', 'AW-17941172028');
 </script>
-<!-- Event snippet for Contatto conversion page -->
-<script>
-    document.getElementById('booking-form').addEventListener('submit', function() {
-    gtag('event', 'conversion', {'send_to': 'AW-17941172028/OvpCCP_1jJQcELyegutC'});
-    });
-</script>
+
 
 <!-- Google Analytics GA4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-M0TEME57K0"></script>
@@ -610,6 +605,7 @@ document.getElementById('booking-form').addEventListener('submit', function(e) {
     })
   }).then(function(response) {
     if (response.ok) {
+      gtag('event', 'conversion', {'send_to': 'AW-17941172028/OvpCCP_1jJQcELyegutC'});
       confirmation.style.display = 'block';
       confirmation.textContent = '✅ Richiesta inviata! Ti risponderemo entro 1 ora via email o WhatsApp.';
       form.reset();
