@@ -57,9 +57,6 @@ body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #1a202c; bac
 .whatsapp-float { position: fixed; top: auto !important; left: auto !important; bottom: 20px !important; right: 20px !important; background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 6px 25px rgba(37,211,102,0.4); z-index: 999; text-decoration: none; transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55); animation: none; }
 .whatsapp-float:hover { transform: scale(1.15) rotate(5deg); box-shadow: 0 8px 35px rgba(37,211,102,0.6); animation: none; }
 [data-tooltip] { position: relative; }
-[data-tooltip]::before { content: attr(data-tooltip); position: absolute; bottom: 120%; left: 50%; transform: translateX(-50%) translateY(10px); background: rgba(0,0,0,0.9); color: white; padding: 8px 12px; border-radius: 8px; font-size: 13px; white-space: nowrap; opacity: 0; pointer-events: none; transition: all 0.3s ease; z-index: 1000; }
-[data-tooltip]::after { content: ''; position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%) translateY(10px); border: 6px solid transparent; border-top-color: rgba(0,0,0,0.9); opacity: 0; pointer-events: none; transition: all 0.3s ease; }
-[data-tooltip]:hover::before, [data-tooltip]:hover::after { opacity: 1; transform: translateX(-50%) translateY(0); }
 .footer { background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%); color: white; padding: 50px 30px 25px; margin-top: 60px; position: relative; }
 .footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #22577a 0%, #22577a 50%, #f093fb 100%); }
 .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px; }
