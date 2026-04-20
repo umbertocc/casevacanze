@@ -615,7 +615,10 @@ document.getElementById('booking-form').addEventListener('submit', function(e) {
     })
   }).then(function(response) {
     if (response.ok) {
-      gtag('event', 'conversion', {'send_to': 'AW-17941172028/OvpCCP_1jJQcELyegutC'});
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+     'event': 'contatto_inviato'
+      });
       confirmation.style.display = 'block';
       confirmation.textContent = '✅ Richiesta inviata! Ti risponderemo entro 1 ora via email o WhatsApp.';
       form.reset();
