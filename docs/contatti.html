@@ -333,8 +333,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 </div>
 
+<!-- Spinner di caricamento -->
+<div id="loading-spinner" style="display:none;justify-content:center;align-items:center;margin-bottom:18px;">
+  <div style="border:4px solid #f3f3f3;border-top:4px solid #188841;border-radius:50%;width:32px;height:32px;animation:spin 1s linear infinite;margin-right:10px;"></div>
+  <span style="color:#188841;font-weight:500;">Invio in corso...</span>
+</div>
+
 <div class="contact-form">
 <h2>Invia un Messaggio</h2>
+
+<style>
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
 
 <div class="success-message" id="successMsg">✅ Messaggio inviato con successo! Ti contatteremo presto.</div>
 <form id="contactForm" action="https://demo-mail-993653817397.europe-west8.run.app/api/email/send" method="POST">
@@ -436,6 +449,11 @@ document.addEventListener('DOMContentLoaded', function(){
   if (!form) return;
   form.addEventListener('submit', function(e) {
     e.preventDefault();
+    var spinner = document.getElementById('loading-spinner');
+    var success = document.getElementById('successMsg');
+    spinner.style.display = 'flex';
+    success.style.display = 'none';
+
     var nome = form.nome.value;
     var email = form.email.value;
     var telefono = form.telefono.value;
@@ -461,6 +479,7 @@ document.addEventListener('DOMContentLoaded', function(){
         text: text
       })
     }).then(function(response) {
+      spinner.style.display = 'none';
       if (response.ok) {
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
@@ -476,6 +495,7 @@ document.addEventListener('DOMContentLoaded', function(){
         success.textContent = 'Errore nell’invio. Riprova o contattaci via WhatsApp.';
       }
     }).catch(function() {
+      spinner.style.display = 'none';
       success.style.display = 'block';
       success.textContent = 'Errore nell’invio. Riprova o contattaci via WhatsApp.';
     });
