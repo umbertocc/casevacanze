@@ -9,8 +9,8 @@ document.getElementById('booking-form').addEventListener('submit', async functio
         if (!res.ok) throw new Error('Errore nella richiesta');
         const data = await res.json();
         if (Array.isArray(data) && data.length > 0) {
-            resultsDiv.innerHTML = '<h2 style="text-align:center;margin-bottom:32px;">Case disponibili:</h2>' +
-                '<div class="properties-grid">' +
+            resultsDiv.innerHTML = '<h2 id="fadeSlideTitle" class="fade-slide-in" style="text-align:center;margin-top:48px;margin-bottom:32px;">Case disponibili:</h2>' +
+                '<div class="properties-grid fade-slide-in" id="fadeSlideResults">' +
                 data.map(casa => {
                     // Card stile case-vacanze
                     let caratteristiche = casa.caratteristiche;
@@ -40,6 +40,13 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                     </div>
                     `;
                 }).join('') + '</div>';
+            // Attiva animazione fade-slide
+            setTimeout(() => {
+                const el = document.getElementById('fadeSlideResults');
+                if (el) el.classList.add('visible');
+                const title = document.getElementById('fadeSlideTitle');
+                if (title) title.classList.add('visible');
+            }, 50);
         } else {
             resultsDiv.innerHTML = '<p>Nessuna casa disponibile per il periodo selezionato.</p>';
         }

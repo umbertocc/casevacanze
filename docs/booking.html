@@ -46,6 +46,20 @@
     <link rel="manifest" href="/manifest.json">
     <link rel="stylesheet" href="style-casa-bellavista-2.css">
     <style>
+    /* Effetti fade e slide per risultati */
+    .fade-slide-in {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+    }
+    .fade-slide-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    </style>
+    <!-- Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <style>
         .booking-form-section form {
             width: 100%;
             max-width: 420px;
@@ -62,23 +76,42 @@
             display: block;
             letter-spacing: 0.02em;
         }
-        .form-group input[type="date"] {
+        /* Migliora stile input data (flatpickr) */
+        .form-group .date-input {
             width: 100%;
             padding: 14px 44px 14px 18px;
             border: 2px solid #b2f2d7;
             border-radius: 14px;
             font-size: 1.08em;
             font-family: 'Poppins', Arial, sans-serif;
-            background: #f8fffb;
+            background: #f8fffb url('https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_green.svg') no-repeat right 16px center/28px 28px;
             color: #22577a;
             box-shadow: 0 2px 12px rgba(67,233,123,0.07);
             transition: border-color 0.3s, box-shadow 0.3s;
+            cursor: pointer;
         }
-        .form-group input[type="date"]:focus {
+        .form-group .date-input:focus {
             border-color: #25d366;
-            background: #fff;
+            background-color: #fff;
             outline: none;
             box-shadow: 0 4px 18px rgba(37,211,102,0.13);
+        }
+        /* Flatpickr custom theme */
+        .flatpickr-calendar {
+            font-family: 'Poppins', Arial, sans-serif;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(37,211,102,0.13);
+            border: 1.5px solid #b2f2d7;
+        }
+        .flatpickr-day.selected, .flatpickr-day.startRange, .flatpickr-day.endRange, .flatpickr-day.selected.inRange, .flatpickr-day.startRange.inRange, .flatpickr-day.endRange.inRange {
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%) !important;
+            color: #fff !important;
+        }
+        .flatpickr-day.today {
+            border-color: #25d366;
+        }
+        .flatpickr-months .flatpickr-month {
+            color: #22577a;
         }
         .form-group .input-icon {
             position: absolute;
@@ -171,17 +204,17 @@
     <main class="container">
         <header style="text-align:center; margin-bottom: 50px; margin-top: 90px;">
             <h1>Prenota la tua casa vacanza a Torre Pali</h1>
-            <p class="tagline">Compila il modulo per richiedere disponibilità. Risposta rapida via email o WhatsApp.</p>
+            <p class="tagline">Seleziona una data di check-in e una data di check-out per verificare prezzi e disponibilità. Il soggiorno è possibile solo da sabato a sabato, con una permanenza minima di 1 settimana. Riceverai una risposta rapida via email o WhatsApp.</p>
         </header>
         <section class="booking-form-section">
             <form id="booking-form">
                 <div class="form-group">
                     <label for="checkIn">Data Check-in:</label>
-                    <input type="date" id="checkIn" name="checkIn" required>
+                    <input type="text" id="checkIn" name="checkIn" class="date-input" placeholder="Seleziona data check-in" autocomplete="off" required>
                 </div>
                 <div class="form-group">
                     <label for="checkOut">Data Check-out:</label>
-                    <input type="date" id="checkOut" name="checkOut" required>
+                    <input type="text" id="checkOut" name="checkOut" class="date-input" placeholder="Seleziona data check-out" autocomplete="off" required>
                 </div>
                 <button type="submit" class="form-btn">Cerca disponibilità</button>
        
@@ -231,6 +264,50 @@
             <p>&copy; 2026 Torre Pali Vacanze. Tutti i diritti riservati.</p>
         </div>
     </footer>
+    <script>
+    // Permetti solo la selezione dei sabati nei campi data
+    function isSaturday(dateStr) {
+        const d = new Date(dateStr);
+        return d.getDay() === 6;
+    }
+    function restrictToSaturday(input) {
+        input.addEventListener('input', function() {
+            if (this.value && !isSaturday(this.value)) {
+                this.setCustomValidity('Seleziona solo un sabato');
+            } else {
+                this.setCustomValidity('');
+            }
+        });
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        const checkIn = document.getElementById('checkIn');
+        const checkOut = document.getElementById('checkOut');
+        restrictToSaturday(checkIn);
+        restrictToSaturday(checkOut);
+    });
+    </script>
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        function enableOnlySaturday(date) {
+            // 6 = Saturday
+            return (date.getDay() === 6);
+        }
+        flatpickr("#checkIn", {
+            dateFormat: "Y-m-d",
+            locale: "it",
+            disable: [function(date) { return !enableOnlySaturday(date); }],
+            minDate: "today"
+        });
+        flatpickr("#checkOut", {
+            dateFormat: "Y-m-d",
+            locale: "it",
+            disable: [function(date) { return !enableOnlySaturday(date); }],
+            minDate: "today"
+        });
+    });
+    </script>
     <script src="script-booking.js"></script>
 </body>
 </html>
