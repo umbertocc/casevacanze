@@ -294,16 +294,54 @@
             // 6 = Saturday
             return (date.getDay() === 6);
         }
+
+        const checkInInput = document.getElementById('checkIn');
+        const checkOutInput = document.getElementById('checkOut');
+
+        let checkInSelected = null;
+
         flatpickr("#checkIn", {
             dateFormat: "Y-m-d",
             locale: "it",
             disable: [function(date) { return !enableOnlySaturday(date); }],
-            minDate: "today"
+            minDate: "today",
+            onChange: function(selectedDates, dateStr) {
+                checkInSelected = selectedDates && selectedDates[0] ? selectedDates[0] : null;
+                // Aggiorna il calendario di checkOut
+                if (checkOutInput._flatpickr) {
+                    // minDate = giorno dopo il check-in
+                    const minDate = checkInSelected ? new Date(checkInSelected.getTime() + 24*60*60*1000) : "today";
+                    checkOutInput._flatpickr.set('minDate', minDate);
+                    checkOutInput._flatpickr.redraw();
+                    checkOutInput.value = '';
+                    // Forza la vista del calendario sul primo sabato valido dopo il check-in
+                    if (checkInSelected) {
+                        let nextSaturday = new Date(checkInSelected.getTime() + 24*60*60*1000);
+                        // Trova il prossimo sabato
+                        while (nextSaturday.getDay() !== 6) {
+                            nextSaturday.setDate(nextSaturday.getDate() + 1);
+                        }
+                        checkOutInput._flatpickr.jumpToDate(nextSaturday);
+                    }
+                }
+            }
         });
         flatpickr("#checkOut", {
             dateFormat: "Y-m-d",
             locale: "it",
-            disable: [function(date) { return !enableOnlySaturday(date); }],
+            disable: [
+                function(date) {
+                    // Solo sabato
+                    if (!enableOnlySaturday(date)) return true;
+                    // Se checkIn selezionato, disabilita tutte le date <= checkIn
+                    if (checkInInput.value) {
+                        const checkInDate = new Date(checkInInput.value);
+                        // Disabilita se uguale o precedente
+                        if (date <= checkInDate) return true;
+                    }
+                    return false;
+                }
+            ],
             minDate: "today"
         });
     });

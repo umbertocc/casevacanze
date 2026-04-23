@@ -3,6 +3,26 @@ document.getElementById('booking-form').addEventListener('submit', async functio
     const checkIn = document.getElementById('checkIn').value;
     const checkOut = document.getElementById('checkOut').value;
     const resultsDiv = document.getElementById('results');
+    // Validazione campi obbligatori
+    let errorMsg = '';
+    if (!checkIn && !checkOut) {
+        errorMsg = 'Inserisci la data di check-in e check-out.';
+    } else if (!checkIn) {
+        errorMsg = 'Inserisci la data di check-in.';
+    } else if (!checkOut) {
+        errorMsg = 'Inserisci la data di check-out.';
+    }
+    if (errorMsg) {
+        resultsDiv.innerHTML = `<p style=\"color:#b91c1c;font-weight:600;margin-top:18px;\">${errorMsg}</p>`;
+        // Evidenzia input mancanti
+        if (!checkIn) document.getElementById('checkIn').style.borderColor = '#b91c1c';
+        if (!checkOut) document.getElementById('checkOut').style.borderColor = '#b91c1c';
+        setTimeout(() => {
+            if (!checkIn) document.getElementById('checkIn').style.borderColor = '';
+            if (!checkOut) document.getElementById('checkOut').style.borderColor = '';
+        }, 2000);
+        return;
+    }
     resultsDiv.innerHTML = 'Ricerca in corso...';
     try {
         const res = await fetch(`https://demo-mail-993653817397.europe-west8.run.app/api/disponibilita/case?checkIn=${checkIn}&checkOut=${checkOut}`);
@@ -14,10 +34,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                 const modalDiv = document.createElement('div');
                 modalDiv.id = 'prenota-modal';
                 modalDiv.style = 'display:none;position:fixed;z-index:10000;left:0;top:0;width:100vw;height:100vh;background:rgba(0,0,0,0.35);align-items:center;justify-content:center;';
-                modalDiv.innerHTML = `<div id="prenota-modal-content" style="background:#fff;padding:32px 24px 24px 24px;max-width:420px;width:95vw;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.18);position:relative;">
-                    <button id="closePrenotaModal" style="position:absolute;top:10px;right:14px;font-size:1.5em;background:none;border:none;cursor:pointer;">&times;</button>
-                    <div id="prenota-modal-body"></div>
-                </div>`;
+                modalDiv.innerHTML = `<div id=\"prenota-modal-content\" style=\"background:#fff;padding:32px 24px 24px 24px;max-width:420px;width:95vw;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.18);position:relative;\">\n                    <button id=\"closePrenotaModal\" style=\"position:absolute;top:10px;right:14px;font-size:1.5em;background:none;border:none;cursor:pointer;\">&times;</button>\n                    <div id=\"prenota-modal-body\"></div>\n                </div>`;
                 document.body.appendChild(modalDiv);
                 document.getElementById('closePrenotaModal').onclick = () => {
                     modalDiv.style.display = 'none';
