@@ -410,6 +410,12 @@
                 padding: 7px 4px;
                 font-size: 0.97rem;
             }
+            #casaSelect {
+                width: 90% !important;
+            }
+            .btn.add-prenotazione-mobile {
+                margin-right: 40px !important;
+            }
         }
     </style>
 </head>
@@ -425,7 +431,7 @@
             <h2>Prenotazioni per Casa</h2>
             <label for="casaSelect">Seleziona una casa:</label>
             <select id="casaSelect" style="margin-bottom:20px; width:100%; padding:8px;"></select>
-            <button class="btn" style="margin-bottom:18px; float:right;" onclick="openNewPrenotazioneModal()">+ Aggiungi Prenotazione</button>
+            <button class="btn add-prenotazione-mobile" style="margin-bottom:18px; float:right;" onclick="openNewPrenotazioneModal()">+ Aggiungi Prenotazione</button>
             <table class="requests-table" id="prenotazioniTable">
                 <thead>
                     <tr>
