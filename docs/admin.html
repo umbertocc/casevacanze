@@ -73,13 +73,55 @@
                             <td>${p.caparra ?? ''}</td>
                             <td>${p.note ?? ''}</td>
                             <td>${p.createdAt ? new Date(p.createdAt).toLocaleString() : ''}</td>
-                            <td><button class="btn" style="padding:4px 10px;font-size:0.95rem;" onclick='openEditModal(${JSON.stringify(p)})'>Modifica</button></td>
+                            <td>
+                                <button class="btn" style="padding:4px 10px;font-size:0.95rem;" onclick='openEditModal(${JSON.stringify(p)})'>Modifica</button>
+                                <button class="btn" style="padding:4px 10px;font-size:0.95rem;background:#e74c3c;" onclick='deletePrenotazione("${p.id}")'>Elimina</button>
+                            </td>
                         `;
                         body.appendChild(tr);
                     });
                 })
                 .catch(() => showNotification('Errore nel caricamento prenotazioni.'));
-        }
+            }
+
+                // Elimina prenotazione
+                function deletePrenotazione(id) {
+                    if (!confirm('Sei sicuro di voler eliminare questa prenotazione?')) return;
+                    fetch(`${API_BASE}/admin/prenotazioni/${id}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            ...(adminToken ? { 'Authorization': 'Bearer ' + adminToken } : {})
+                        }
+                    })
+                    .then(res => {
+                        if(res.ok) {
+                            showNotification('Prenotazione eliminata!');
+                            // Ricarica prenotazioni per la casa selezionata
+                            const select = document.getElementById('casaSelect');
+                            if(select) loadPrenotazioni(select.value);
+                        } else {
+                            showNotification('Errore nell\'eliminazione.');
+                        }
+                    })
+                    .catch(() => showNotification('Errore di rete.'));
+                }
+
+        
+                   // Modale nuova prenotazione
+                function openNewPrenotazioneModal() {
+                         document.getElementById('editId').value = '';
+                         document.getElementById('editCheckIn').value = '';
+                         document.getElementById('editCheckOut').value = '';
+                         document.getElementById('editOspiteNome').value = '';
+                         document.getElementById('editEmailOspite').value = '';
+                         document.getElementById('editTelefonoOspite').value = '';
+                         document.getElementById('editPrezzoTotale').value = '';
+                         document.getElementById('editCaparra').value = '';
+                         document.getElementById('editNote').value = '';
+                         document.getElementById('newPrenotazioneModal').style.display = 'flex';
+                }
+                 
 
         // --- Gestione modale modifica ---
         function openEditModal(prenotazione) {
@@ -97,6 +139,10 @@
 
         function closeEditModal() {
             document.getElementById('editModal').style.display = 'none';
+        }
+
+        function closeNewPrenotazioneModal() {
+            document.getElementById('newPrenotazioneModal').style.display = 'none';
         }
 
         // Salva la modifica
@@ -145,10 +191,59 @@
             }
         });
 
+                // Salva la modifica
+        document.addEventListener('DOMContentLoaded', function() {
+            const newPrenotazioneForm = document.getElementById('newPrenotazioneForm');
+            if (newPrenotazioneForm) {
+                newPrenotazioneForm.onsubmit = function(e) {
+                    e.preventDefault();
+                    const id = document.getElementById('newPrenotazioneId').value;
+                    // Adatta i dati per PrenotazioneDTO
+                    const checkIn = document.getElementById('newCheckIn').value;
+                    const checkOut = document.getElementById('newCheckOut').value;
+                    const prezzoTotale = document.getElementById('newPrezzoTotale').value;
+                    const caparra = document.getElementById('newCaparra').value;
+                    const casaSelect = document.getElementById('casaSelect');
+                    const data = {
+                        casaId: casaSelect ? casaSelect.value : null,
+                        checkIn: checkIn ? checkIn : null, // yyyy-MM-dd
+                        checkOut: checkOut ? checkOut : null,
+                        ospiteNome: document.getElementById('newOspiteNome').value || null,
+                        emailOspite: document.getElementById('newEmailOspite').value || null,
+                        telefonoOspite: document.getElementById('newTelefonoOspite').value || null,
+                        prezzoTotale: prezzoTotale !== '' ? parseFloat(prezzoTotale) : null,
+                        caparra: caparra !== '' ? parseFloat(caparra) : null,
+                        note: document.getElementById('newNote').value || null
+                    };
+                    fetch(`${API_BASE}/admin/prenotazioni/${id}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            ...(adminToken ? { 'Authorization': 'Bearer ' + adminToken } : {})
+                        },
+                        body: JSON.stringify(data)
+                    })
+                    .then(res => {
+                        if(res.ok) {
+                            showNotification('Prenotazione creata!');
+                            closeNewPrenotazioneModal();
+                            // Ricarica prenotazioni per la casa selezionata
+                            const select = document.getElementById('casaSelect');
+                            if(select) loadPrenotazioni(select.value);
+                        } else {
+                            showNotification('Errore nel salvataggio.');
+                        }
+                    })
+                    .catch(() => showNotification('Errore di rete.'));
+                }
+            }
+        });
+
         // Espone le funzioni globali
         window.loginAdmin = loginAdmin;
         window.openEditModal = openEditModal;
-        window.closeEditModal = closeEditModal;
+        window.closeNewPrenotazioneModal = closeNewPrenotazioneModal;
+        window.deletePrenotazione = deletePrenotazione;
 
         // Cambia casa selezionata
         document.addEventListener('DOMContentLoaded', function() {
@@ -327,6 +422,7 @@
             <h2>Prenotazioni per Casa</h2>
             <label for="casaSelect">Seleziona una casa:</label>
             <select id="casaSelect" style="margin-bottom:20px; width:100%; padding:8px;"></select>
+            <button class="btn" style="margin-bottom:18px; float:right;" onclick="openNewPrenotazioneModal()">+ Aggiungi Prenotazione</button>
             <table class="requests-table" id="prenotazioniTable">
                 <thead>
                     <tr>
@@ -349,50 +445,127 @@
             </table>
         </div>
         <!-- Modale modifica prenotazione -->
-        <div id="editModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(44,62,80,0.25); z-index:1000; align-items:center; justify-content:center; overflow:auto;">
-            <div style="background:#fff; padding:32px 24px 18px 24px; border-radius:12px; max-width:400px; width:95vw; margin:auto; box-shadow:0 8px 32px rgba(60,80,120,0.18); position:relative; max-height:90vh; overflow-y:auto;">
-                <h3 style="margin-top:0;">Modifica Prenotazione</h3>
-                <form id="editForm">
+        <div id="editModal" class="modal-fade" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(44,62,80,0.25); z-index:1000; align-items:center; justify-content:center; overflow:auto;">
+            <div class="modal-content-pro" style="background:#fff; padding:0 0 18px 0; border-radius:16px; max-width:420px; width:96vw; margin:auto; box-shadow:0 8px 32px rgba(44,62,80,0.18), 0 1.5px 8px rgba(0,0,0,0.08); position:relative; max-height:92vh; overflow-y:auto; border:1.5px solid #e3e9f7; animation: modalFadeIn 0.25s; display:flex; flex-direction:column;">
+                <div style="display:flex; align-items:center; justify-content:space-between; padding:22px 28px 0 28px; border-radius:16px 16px 0 0; background:linear-gradient(90deg,#f7fafd 60%,#e3e9f7 100%); border-bottom:1px solid #e3e9f7;">
+                    <div style="display:flex; align-items:center; gap:10px;">
+                        <span style="font-size:1.5rem; color:#007bff;">&#9998;</span>
+                        <h3 style="margin:0; font-size:1.18rem; font-weight:600; color:#2d3a4a;">Modifica Prenotazione</h3>
+                    </div>
+                    <button type="button" onclick="closeEditModal()" style="background:none; border:none; font-size:1.5rem; color:#b0b8c9; cursor:pointer; margin-left:8px;" title="Chiudi">&times;</button>
+                </div>
+                <form id="editForm" style="padding:22px 28px 0 28px;">
                     <input type="hidden" id="editId"/>
-                    <div style="margin-bottom:12px;">
-                        <label>Check-in</label>
-                        <input type="date" id="editCheckIn" style="width:100%;padding:8px;"/>
+                    <div style="margin-bottom:16px;">
+                        <label style="margin-bottom:4px;">Check-in</label>
+                        <input type="date" id="editCheckIn" style="width:100%;padding:10px; border-radius:7px; border:1px solid #cfd8dc;"/>
                     </div>
-                    <div style="margin-bottom:12px;">
-                        <label>Check-out</label>
-                        <input type="date" id="editCheckOut" style="width:100%;padding:8px;"/>
+                    <div style="margin-bottom:16px;">
+                        <label style="margin-bottom:4px;">Check-out</label>
+                        <input type="date" id="editCheckOut" style="width:100%;padding:10px; border-radius:7px; border:1px solid #cfd8dc;"/>
                     </div>
-                    <div style="margin-bottom:12px;">
-                        <label>Ospite</label>
-                        <input type="text" id="editOspiteNome" style="width:100%;padding:8px;"/>
+                    <div style="margin-bottom:16px;">
+                        <label style="margin-bottom:4px;">Ospite</label>
+                        <input type="text" id="editOspiteNome" style="width:100%;padding:10px; border-radius:7px; border:1px solid #cfd8dc;"/>
                     </div>
-                    <div style="margin-bottom:12px;">
-                        <label>Email</label>
-                        <input type="email" id="editEmailOspite" style="width:100%;padding:8px;"/>
+                    <div style="margin-bottom:16px;">
+                        <label style="margin-bottom:4px;">Email</label>
+                        <input type="email" id="editEmailOspite" style="width:100%;padding:10px; border-radius:7px; border:1px solid #cfd8dc;"/>
                     </div>
-                    <div style="margin-bottom:12px;">
-                        <label>Telefono</label>
-                        <input type="text" id="editTelefonoOspite" style="width:100%;padding:8px;"/>
+                    <div style="margin-bottom:16px;">
+                        <label style="margin-bottom:4px;">Telefono</label>
+                        <input type="text" id="editTelefonoOspite" style="width:100%;padding:10px; border-radius:7px; border:1px solid #cfd8dc;"/>
                     </div>
-                    <div style="margin-bottom:12px;">
-                        <label>Prezzo</label>
-                        <input type="number" id="editPrezzoTotale" style="width:100%;padding:8px;"/>
+                    <div style="margin-bottom:16px;">
+                        <label style="margin-bottom:4px;">Prezzo</label>
+                        <input type="number" id="editPrezzoTotale" style="width:100%;padding:10px; border-radius:7px; border:1px solid #cfd8dc;"/>
                     </div>
-                    <div style="margin-bottom:12px;">
-                        <label>Caparra</label>
-                        <input type="number" id="editCaparra" style="width:100%;padding:8px;"/>
+                    <div style="margin-bottom:16px;">
+                        <label style="margin-bottom:4px;">Caparra</label>
+                        <input type="number" id="editCaparra" style="width:100%;padding:10px; border-radius:7px; border:1px solid #cfd8dc;"/>
                     </div>
-                    <div style="margin-bottom:12px;">
-                        <label>Note</label>
-                        <textarea id="editNote" style="width:100%;padding:8px;"></textarea>
+                    <div style="margin-bottom:16px;">
+                        <label style="margin-bottom:4px;">Note</label>
+                        <textarea id="editNote" style="width:100%;padding:10px; border-radius:7px; border:1px solid #cfd8dc; min-height:60px;"></textarea>
                     </div>
-                    <div style="text-align:right;">
+                    <div style="text-align:right; margin-top:10px;">
                         <button type="button" class="btn" onclick="closeEditModal()" style="background:#b0b8c9; margin-right:8px;">Annulla</button>
                         <button type="submit" class="btn">Salva</button>
                     </div>
                 </form>
             </div>
         </div>
+
+
+        <!-- Modale nuova prenotazione -->
+         <div id="newPrenotazioneModal" class="modal-fade" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(44,62,80,0.25); z-index:1000; align-items:center; justify-content:center; overflow:auto;">
+           
+       
+            <div class="modal-content-pro" style="background:#fff; padding:0 0 18px 0; border-radius:16px; max-width:420px; width:96vw; margin:auto; box-shadow:0 8px 32px rgba(44,62,80,0.18), 0 1.5px 8px rgba(0,0,0,0.08); position:relative; max-height:92vh; overflow-y:auto; border:1.5px solid #e3e9f7; animation: modalFadeIn 0.25s; display:flex; flex-direction:column;">
+                <div style="display:flex; align-items:center; justify-content:space-between; padding:22px 28px 0 28px; border-radius:16px 16px 0 0; background:linear-gradient(90deg,#f7fafd 60%,#e3e9f7 100%); border-bottom:1px solid #e3e9f7;">
+                    <div style="display:flex; align-items:center; gap:10px;">
+                        <span style="font-size:1.5rem; color:#007bff;">&#9998;</span>
+                        <h3 style="margin:0; font-size:1.18rem; font-weight:600; color:#2d3a4a;">Nuova Prenotazione</h3>
+                    </div>
+                    <button type="button" onclick="closeNewPrenotazioneModal()" style="background:none; border:none; font-size:1.5rem; color:#b0b8c9; cursor:pointer; margin-left:8px;" title="Chiudi">&times;</button>
+                </div>
+                <form id="newPrenotazioneForm" style="padding:22px 28px 0 28px;">
+                    <input type="hidden" id="newPrenotazioneId"/>
+                    <div style="margin-bottom:16px;">
+                        <label style="margin-bottom:4px;">Check-in</label>
+                        <input type="date" id="newPrenotazioneCheckIn" style="width:100%;padding:10px; border-radius:7px; border:1px solid #cfd8dc;"/>
+                    </div>
+                    <div style="margin-bottom:16px;">
+                        <label style="margin-bottom:4px;">Check-out</label>
+                        <input type="date" id="newPrenotazioneCheckOut" style="width:100%;padding:10px; border-radius:7px; border:1px solid #cfd8dc;"/>
+                    </div>
+                    <div style="margin-bottom:16px;">
+                        <label style="margin-bottom:4px;">Ospite</label>
+                        <input type="text" id="newPrenotazioneOspiteNome" style="width:100%;padding:10px; border-radius:7px; border:1px solid #cfd8dc;"/>
+                    </div>
+                    <div style="margin-bottom:16px;">
+                        <label style="margin-bottom:4px;">Email</label>
+                        <input type="email" id="newPrenotazioneEmailOspite" style="width:100%;padding:10px; border-radius:7px; border:1px solid #cfd8dc;"/>
+                    </div>
+                    <div style="margin-bottom:16px;">
+                        <label style="margin-bottom:4px;">Telefono</label>
+                        <input type="text" id="newPrenotazioneTelefonoOspite" style="width:100%;padding:10px; border-radius:7px; border:1px solid #cfd8dc;"/>
+                    </div>
+                    <div style="margin-bottom:16px;">
+                        <label style="margin-bottom:4px;">Prezzo</label>
+                        <input type="number" id="newPrenotazionePrezzoTotale" style="width:100%;padding:10px; border-radius:7px; border:1px solid #cfd8dc;"/>
+                    </div>
+                    <div style="margin-bottom:16px;">
+                        <label style="margin-bottom:4px;">Caparra</label>
+                        <input type="number" id="newPrenotazioneCaparra" style="width:100%;padding:10px; border-radius:7px; border:1px solid #cfd8dc;"/>
+                    </div>
+                    <div style="margin-bottom:16px;">
+                        <label style="margin-bottom:4px;">Note</label>
+                        <textarea id="newPrenotazioneNote" style="width:100%;padding:10px; border-radius:7px; border:1px solid #cfd8dc; min-height:60px;"></textarea>
+                    </div>
+                    <div style="text-align:right; margin-top:10px;">
+                        <button type="button" class="btn" onclick="closeNewPrenotazioneModal()" style="background:#b0b8c9; margin-right:8px;">Annulla</button>
+                        <button type="submit" class="btn">Salva</button>
+                    </div>
+                </form>
+        </div>
+        <style>
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(30px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .modal-fade[style*="display: flex"] {
+            animation: modalFadeIn 0.25s;
+        }
+        .modal-content-pro::-webkit-scrollbar {
+            width: 7px;
+            background: #f0f4fa;
+        }
+        .modal-content-pro::-webkit-scrollbar-thumb {
+            background: #e3e9f7;
+            border-radius: 8px;
+        }
+        </style>
     </div>
 </body>
 </html>
