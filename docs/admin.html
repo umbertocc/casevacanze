@@ -110,15 +110,15 @@
         
                    // Modale nuova prenotazione
                 function openNewPrenotazioneModal() {
-                         document.getElementById('editId').value = '';
-                         document.getElementById('editCheckIn').value = '';
-                         document.getElementById('editCheckOut').value = '';
-                         document.getElementById('editOspiteNome').value = '';
-                         document.getElementById('editEmailOspite').value = '';
-                         document.getElementById('editTelefonoOspite').value = '';
-                         document.getElementById('editPrezzoTotale').value = '';
-                         document.getElementById('editCaparra').value = '';
-                         document.getElementById('editNote').value = '';
+                         document.getElementById('newPrenotazioneId').value = '';
+                         document.getElementById('newPrenotazioneCheckIn').value = '';
+                         document.getElementById('newPrenotazioneCheckOut').value = '';
+                         document.getElementById('newPrenotazioneOspiteNome').value = '';
+                         document.getElementById('newPrenotazioneEmailOspite').value = '';
+                         document.getElementById('newPrenotazioneTelefonoOspite').value = '';
+                         document.getElementById('newPrenotazionePrezzoTotale').value = '';
+                         document.getElementById('newPrenotazioneCaparra').value = '';
+                         document.getElementById('newPrenotazioneNote').value = '';
                          document.getElementById('newPrenotazioneModal').style.display = 'flex';
                 }
                  
@@ -199,21 +199,21 @@
                     e.preventDefault();
                     const id = document.getElementById('newPrenotazioneId').value;
                     // Adatta i dati per PrenotazioneDTO
-                    const checkIn = document.getElementById('newCheckIn').value;
-                    const checkOut = document.getElementById('newCheckOut').value;
-                    const prezzoTotale = document.getElementById('newPrezzoTotale').value;
-                    const caparra = document.getElementById('newCaparra').value;
+                    const checkIn = document.getElementById('newPrenotazioneCheckIn').value;
+                    const checkOut = document.getElementById('newPrenotazioneCheckOut').value;
+                    const prezzoTotale = document.getElementById('newPrenotazionePrezzoTotale').value;
+                    const caparra = document.getElementById('newPrenotazioneCaparra').value;
                     const casaSelect = document.getElementById('casaSelect');
                     const data = {
                         casaId: casaSelect ? casaSelect.value : null,
                         checkIn: checkIn ? checkIn : null, // yyyy-MM-dd
                         checkOut: checkOut ? checkOut : null,
-                        ospiteNome: document.getElementById('newOspiteNome').value || null,
-                        emailOspite: document.getElementById('newEmailOspite').value || null,
-                        telefonoOspite: document.getElementById('newTelefonoOspite').value || null,
+                        ospiteNome: document.getElementById('newPrenotazioneOspiteNome').value || null,
+                        emailOspite: document.getElementById('newPrenotazioneEmailOspite').value || null,
+                        telefonoOspite: document.getElementById('newPrenotazioneTelefonoOspite').value || null,
                         prezzoTotale: prezzoTotale !== '' ? parseFloat(prezzoTotale) : null,
                         caparra: caparra !== '' ? parseFloat(caparra) : null,
-                        note: document.getElementById('newNote').value || null
+                        note: document.getElementById('newPrenotazioneNote').value || null
                     };
                     fetch(`${API_BASE}/admin/prenotazioni/${id}`, {
                         method: 'POST',
