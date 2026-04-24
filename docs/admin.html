@@ -121,7 +121,7 @@
                         caparra: caparra !== '' ? parseFloat(caparra) : null,
                         note: document.getElementById('editNote').value || null
                     };
-                    fetch(`${API_BASE}/api/prenotazioni/${id}`, {
+                    fetch(`${API_BASE}/admin/prenotazioni/${id}`, {
                         method: 'PUT',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(data)
