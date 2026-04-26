@@ -433,9 +433,8 @@
                 if (dataInizio && dataFine && !isNaN(prezzoNotte)) {
                     const inizio = new Date(dataInizio);
                     const fine = new Date(dataFine);
-                    // Calcola giorni (inclusivo, escludendo il giorno di fine)
-                    const diffTime = fine.getTime() - inizio.getTime();
-                    let giorni = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                    // Calcola giorni inclusivi (sia inizio che fine)
+                    let giorni = Math.ceil((fine.getTime() - inizio.getTime()) / (1000 * 60 * 60 * 24)) + 1;
                     if (giorni < 1) giorni = 1;
                     totaleField.value = (giorni * prezzoNotte).toFixed(2);
                 } else {
@@ -451,7 +450,8 @@
                 if (dataInizio && dataFine && !isNaN(prezzoNotte)) {
                     const inizio = new Date(dataInizio);
                     const fine = new Date(dataFine);
-                    let giorni = Math.ceil((fine.getTime() - inizio.getTime()) / (1000 * 60 * 60 * 24));
+                    // Calcola giorni inclusivi (sia inizio che fine)
+                    let giorni = Math.ceil((fine.getTime() - inizio.getTime()) / (1000 * 60 * 60 * 24)) + 1;
                     if (giorni < 1) giorni = 1;
                     totale = (giorni * prezzoNotte).toFixed(2);
                 }
