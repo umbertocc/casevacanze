@@ -48,6 +48,7 @@
                     });
                     if (caseList.length > 0) {
                         loadPrenotazioni(caseList[0].id);
+                        loadPrezzi(caseList[0].id);
                     }
                 })
                 .catch(() => showNotification('Errore nel caricamento delle case.'));
@@ -122,6 +123,61 @@
                          document.getElementById('newPrenotazioneModal').style.display = 'flex';
                 }
                  
+
+        // Carica i prezzi per la casa selezionata
+        function loadPrezzi(casaId) {
+            fetch(`${API_BASE}/admin/prezzi-case?casaId=${casaId}`, {
+                headers: {
+                    ...(adminToken ? { 'Authorization': 'Bearer ' + adminToken } : {})
+                }
+            })
+                .then(res => res.json())
+                .then(prezzi => {
+                    const body = document.getElementById('prezziBody');
+                    body.innerHTML = '';
+                    prezzi.forEach(p => {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td>${p.dataInizio}</td>
+                            <td>${p.dataFine}</td>
+                            <td>${p.prezzoNotte}</td>
+                            <td>${p.prezzoTotale}</td>
+                            <td><button class="btn" style="padding:4px 10px;font-size:0.95rem;" onclick='openEditPrezzoModal(${JSON.stringify(p)})'>Modifica</button></td>
+                        `;
+                        body.appendChild(tr);
+                    });
+                })
+                .catch(() => showNotification('Errore nel caricamento prezzi.'));
+        }
+
+        // Aggiungi funzione per modificare un prezzo
+        function openEditPrezzoModal(prezzo) {
+            console.log('Apro modale prezzo per:', prezzo);
+            const modal = document.getElementById('editPrezzoModal');
+            if (!modal) {
+                console.error('Modale editPrezzoModal non trovata nel DOM!');
+                return;
+            }
+            // Debug: logga lo stile e la posizione
+            console.log('Modale trovata:', modal, 'Bounding:', modal.getBoundingClientRect(), 'Display:', getComputedStyle(modal).display);
+            modal.style.display = 'flex';
+            modal.style.visibility = 'visible';
+            modal.style.opacity = '1';
+            document.getElementById('editPrezzoId').value = prezzo.id;
+            document.getElementById('editPrezzoDataInizio').value = prezzo.dataInizio || '';
+            document.getElementById('editPrezzoDataFine').value = prezzo.dataFine || '';
+            document.getElementById('editPrezzoTotale').value = prezzo.prezzoTotale || '';
+            document.getElementById('editPrezzoNotte').value = prezzo.prezzoNotte || '';
+            setTimeout(() => {
+                const input = document.getElementById('editPrezzoDataInizio');
+                if(input) input.focus();
+                // Debug: logga se il campo è visibile
+                if(input) console.log('Campo data inizio visibile:', getComputedStyle(input).display, input.getBoundingClientRect());
+            }, 100);
+        }
+        function closeEditPrezzoModal() {
+            document.getElementById('editPrezzoModal').style.display = 'none';
+        }
 
         // --- Gestione modale modifica ---
         function openEditModal(prenotazione) {
@@ -244,6 +300,8 @@
         window.openEditModal = openEditModal;
         window.closeNewPrenotazioneModal = closeNewPrenotazioneModal;
         window.deletePrenotazione = deletePrenotazione;
+        window.loadPrezzi = loadPrezzi;
+        window.openEditPrezzoModal = openEditPrezzoModal;
 
         // Cambia casa selezionata
         document.addEventListener('DOMContentLoaded', function() {
@@ -251,6 +309,7 @@
             if (select) {
                 select.addEventListener('change', function() {
                     loadPrenotazioni(this.value);
+                    loadPrezzi(this.value);
                 });
             }
         });
@@ -452,6 +511,22 @@
                     <!-- Prenotazioni caricate qui -->
                 </tbody>
             </table>
+
+            <h2 style="margin-top:40px;">Prezzi per Casa</h2>
+            <table class="requests-table" id="prezziTable">
+                <thead>
+                    <tr>
+                        <th>Data Inizio</th>
+                        <th>Data Fine</th>
+                        <th>Prezzo Notte</th>
+                        <th>Prezzo Totale</th>
+                        <th>Modifica</th>
+                    </tr>
+                </thead>
+                <tbody id="prezziBody">
+                    <!-- Prezzi caricati qui -->
+                </tbody>
+            </table>
         </div>
         <!-- Modale modifica prenotazione -->
         <div id="editModal" class="modal-fade" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(44,62,80,0.25); z-index:1000; align-items:center; justify-content:center; overflow:auto;">
@@ -558,6 +633,43 @@
                     </div>
                 </form>
         </div>
+
+       
+        </div>
+         <!-- Modale modifica prezzo -->
+        <div id="editPrezzoModal" class="modal-fade" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(44,62,80,0.25); z-index:1000; align-items:center; justify-content:center; overflow:auto;">
+            <div class="modal-content-pro" style="background:#fff; padding:0 0 18px 0; border-radius:16px; max-width:420px; width:96vw; margin:auto; box-shadow:0 8px 32px rgba(44,62,80,0.18), 0 1.5px 8px rgba(0,0,0,0.08); position:relative; max-height:92vh; overflow-y:auto; border:1.5px solid #e3e9f7; animation: modalFadeIn 0.25s; display:flex; flex-direction:column;">
+                <div style="display:flex; align-items:center; justify-content:space-between; padding:22px 28px 0 28px; border-radius:16px 16px 0 0; background:linear-gradient(90deg,#f7fafd 60%,#e3e9f7 100%); border-bottom:1px solid #e3e9f7;">
+                    <div style="display:flex; align-items:center; gap:10px;">
+                        <span style="font-size:1.5rem; color:#007bff;">&#9998;</span>
+                        <h3 style="margin:0; font-size:1.18rem; font-weight:600; color:#2d3a4a;">Modifica Prezzo</h3>
+                    </div>
+                    <button type="button" onclick="closeEditPrezzoModal()" style="background:none; border:none; font-size:1.5rem; color:#b0b8c9; cursor:pointer; margin-left:8px;" title="Chiudi">&times;</button>
+                </div>
+                <form id="editPrezzoForm" style="padding:22px 28px 0 28px;">
+                    <input type="hidden" id="editPrezzoId"/>
+                    <div style="margin-bottom:16px;">
+                        <label for="editPrezzoDataInizio" style="margin-bottom:4px;">Data Inizio</label>
+                        <input type="date" id="editPrezzoDataInizio" required style="width:100%;padding:10px; border-radius:7px; border:1px solid #cfd8dc;"/>
+                    </div>
+                    <div style="margin-bottom:16px;">
+                        <label for="editPrezzoDataFine" style="margin-bottom:4px;">Data Fine</label>
+                        <input type="date" id="editPrezzoDataFine" required style="width:100%;padding:10px; border-radius:7px; border:1px solid #cfd8dc;"/>
+                    </div>
+                    <div style="margin-bottom:16px;">
+                        <label for="editPrezzoNotte" style="margin-bottom:4px;">Prezzo Notte</label>
+                        <input type="number" id="editPrezzoNotte" min="0" required style="width:100%;padding:10px; border-radius:7px; border:1px solid #cfd8dc;"/>
+                    </div>
+                    <div style="margin-bottom:16px;">
+                        <label for="editPrezzoTotale" style="margin-bottom:4px;">Prezzo Totale</label>
+                        <input type="number" id="editPrezzoTotale" min="0" required style="width:100%;padding:10px; border-radius:7px; border:1px solid #cfd8dc;"/>
+                    </div>
+                    <div style="text-align:right; margin-top:10px;">
+                        <button type="button" class="btn" onclick="closeEditPrezzoModal()" style="background:#b0b8c9; margin-right:8px;">Annulla</button>
+                        <button type="submit" class="btn">Salva</button>
+                    </div>
+                </form>
+            </div>
         <style>
         @keyframes modalFadeIn {
             from { opacity: 0; transform: translateY(30px) scale(0.98); }
