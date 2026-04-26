@@ -168,12 +168,6 @@
             document.getElementById('editPrezzoDataFine').value = prezzo.dataFine || '';
             document.getElementById('editPrezzoTotale').value = prezzo.prezzoTotale || '';
             document.getElementById('editPrezzoNotte').value = prezzo.prezzoNotte || '';
-            setTimeout(() => {
-                const input = document.getElementById('editPrezzoDataInizio');
-                if(input) input.focus();
-                // Debug: logga se il campo è visibile
-                if(input) console.log('Campo data inizio visibile:', getComputedStyle(input).display, input.getBoundingClientRect());
-            }, 100);
         }
         function closeEditPrezzoModal() {
             document.getElementById('editPrezzoModal').style.display = 'none';
