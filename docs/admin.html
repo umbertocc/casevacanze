@@ -142,13 +142,38 @@
                             <td>${p.dataFine}</td>
                             <td>${p.prezzoNotte}</td>
                             <td>${p.prezzoTotale}</td>
-                            <td><button class="btn" style="padding:4px 10px;font-size:0.95rem;" onclick='openEditPrezzoModal(${JSON.stringify(p)})'>Modifica</button></td>
+                            <td><button class="btn" style="padding:4px 10px;font-size:0.95rem;" onclick='openEditPrezzoModal(${JSON.stringify(p)})'>Modifica</button>
+                                <button class="btn" style="padding:4px 10px;font-size:0.95rem;background:#e74c3c;" onclick='deletePrezzo("${p.id}")'>Elimina</button></td>
+                            
                         `;
                         body.appendChild(tr);
                     });
                 })
                 .catch(() => showNotification('Errore nel caricamento prezzi.'));
         }
+
+        //elimina prezzo
+        function deletePrezzo(id) {
+            if (!confirm('Sei sicuro di voler eliminare questo prezzo?')) return;
+               fetch(`${API_BASE}/admin/prezzi-case/${id}`, {
+               method: 'DELETE',
+               headers: {
+                 'Content-Type': 'application/json',
+                ...(adminToken ? { 'Authorization': 'Bearer ' + adminToken } : {})
+            }
+         })
+            .then(res => {
+            if(res.ok) {
+            showNotification('Prezzo eliminato!');
+            const select = document.getElementById('casaSelect');
+            if(select) loadPrezzi(select.value);
+        } else {
+            showNotification('Errore nell\'eliminazione prezzo.');
+          }
+         })
+            .catch(() => showNotification('Errore di rete.'));
+        }
+
 
         // Aggiungi funzione per modificare un prezzo
         function openEditPrezzoModal(prezzo) {
@@ -168,6 +193,9 @@
             document.getElementById('editPrezzoDataFine').value = prezzo.dataFine || '';
             document.getElementById('editPrezzoTotale').value = prezzo.prezzoTotale || '';
             document.getElementById('editPrezzoNotte').value = prezzo.prezzoNotte || '';
+
+            // Calcola il prezzo totale in automatico
+            calcolaPrezzoTotale();
         }
         function closeEditPrezzoModal() {
             document.getElementById('editPrezzoModal').style.display = 'none';
@@ -194,6 +222,18 @@
         function closeNewPrenotazioneModal() {
             document.getElementById('newPrenotazioneModal').style.display = 'none';
         }
+
+          function openNewPrezzoModal() {
+              document.getElementById('newPrezzoDataInizio').value = '';
+              document.getElementById('newPrezzoDataFine').value = '';
+              document.getElementById('newPrezzoNotte').value = '';
+              // Mostra la modale
+              document.getElementById('newPrezzoModal').style.display = 'flex';
+          }
+
+          function closeNewPrezzoModal() {
+              document.getElementById('newPrezzoModal').style.display = 'none';
+          }
 
         // Salva la modifica
         document.addEventListener('DOMContentLoaded', function() {
@@ -330,6 +370,50 @@
             }
         });
 
+                // Salva la modifica
+        document.addEventListener('DOMContentLoaded', function() {
+            const newPrezzoForm = document.getElementById('newPrezzoForm');
+            if (newPrezzoForm) {
+                newPrezzoForm.onsubmit = function(e) {
+                    e.preventDefault();
+                    const id = document.getElementById('newPrezzoId').value;
+                    const dataInizio = document.getElementById('newPrezzoDataInizio').value;
+                    const dataFine = document.getElementById('newPrezzoDataFine').value;
+                    const prezzoTotale = calcolaPrezzoTotaleNuovo(); // Calcola il prezzo totale in automatico
+                    const prezzoNotte = document.getElementById('newPrezzoNotte').value;
+                    const casaSelect = document.getElementById('casaSelect');
+                    const casaId = casaSelect ? casaSelect.value : null;
+                    const data = {
+                        casaId: casaId,
+                        dataInizio: dataInizio,
+                        dataFine: dataFine,
+                        prezzoTotale: prezzoTotale !== '' ? parseFloat(prezzoTotale) : null,
+                        prezzoNotte: prezzoNotte !== '' ? parseFloat(prezzoNotte) : null
+                    };
+                    fetch(`${API_BASE}/admin/prezzi-case`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            ...(adminToken ? { 'Authorization': 'Bearer ' + adminToken } : {})
+                        },
+                        body: JSON.stringify(data)
+                    })
+                    .then(res => {
+                        if(res.ok) {
+                            showNotification('Prezzo aggiornato!');
+                            closeNewPrezzoModal();
+                            // Ricarica prezzi per la casa selezionata
+                            const select = document.getElementById('casaSelect');
+                            if(select) loadPrezzi(select.value);
+                        } else {
+                            showNotification('Errore nel salvataggio prezzo.');
+                        }
+                    })
+                    .catch(() => showNotification('Errore di rete.'));
+                }
+            }
+        });
+
         // Espone le funzioni globali
         window.loginAdmin = loginAdmin;
         window.openEditModal = openEditModal;
@@ -337,6 +421,56 @@
         window.deletePrenotazione = deletePrenotazione;
         window.loadPrezzi = loadPrezzi;
         window.openEditPrezzoModal = openEditPrezzoModal;
+        window.openNewPrezzoModal = openNewPrezzoModal;
+        window.closeNewPrezzoModal = closeNewPrezzoModal;
+
+            // --- Calcolo automatico Prezzo Totale nella modale prezzi ---
+            function calcolaPrezzoTotale() {
+                const dataInizio = document.getElementById('editPrezzoDataInizio').value;
+                const dataFine = document.getElementById('editPrezzoDataFine').value;
+                const prezzoNotte = parseFloat(document.getElementById('editPrezzoNotte').value);
+                const totaleField = document.getElementById('editPrezzoTotale');
+                if (dataInizio && dataFine && !isNaN(prezzoNotte)) {
+                    const inizio = new Date(dataInizio);
+                    const fine = new Date(dataFine);
+                    // Calcola giorni inclusivi (sia inizio che fine)
+                    let giorni = Math.ceil((fine.getTime() - inizio.getTime()) / (1000 * 60 * 60 * 24)) + 1;
+                    if (giorni < 1) giorni = 1;
+                    totaleField.value = (giorni * prezzoNotte).toFixed(2);
+                } else {
+                    totaleField.value = '';
+                }
+            }
+
+            function calcolaPrezzoTotaleNuovo() {
+                const dataInizio = document.getElementById('newPrezzoDataInizio').value;
+                const dataFine = document.getElementById('newPrezzoDataFine').value;
+                const prezzoNotte = parseFloat(document.getElementById('newPrezzoNotte').value);
+                let totale = '';
+                if (dataInizio && dataFine && !isNaN(prezzoNotte)) {
+                    const inizio = new Date(dataInizio);
+                    const fine = new Date(dataFine);
+                    // Calcola giorni inclusivi (sia inizio che fine)
+                    let giorni = Math.ceil((fine.getTime() - inizio.getTime()) / (1000 * 60 * 60 * 24)) + 1;
+                    if (giorni < 1) giorni = 1;
+                    totale = (giorni * prezzoNotte).toFixed(2);
+                }
+                // Aggiorna il campo se esiste (per l'utente)
+                const totaleField = document.getElementById('newPrezzoTotale');
+                if (totaleField) totaleField.value = totale;
+                return totale;
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                const dataInizio = document.getElementById('editPrezzoDataInizio');
+                const dataFine = document.getElementById('editPrezzoDataFine');
+                const prezzoNotte = document.getElementById('editPrezzoNotte');
+                if (dataInizio && dataFine && prezzoNotte) {
+                    dataInizio.addEventListener('change', calcolaPrezzoTotale);
+                    dataFine.addEventListener('change', calcolaPrezzoTotale);
+                    prezzoNotte.addEventListener('input', calcolaPrezzoTotale);
+                }
+            });
 
         // Cambia casa selezionata
         document.addEventListener('DOMContentLoaded', function() {
@@ -548,6 +682,7 @@
             </table>
 
             <h2 style="margin-top:40px;">Prezzi per Casa</h2>
+                    <button class="btn" style="margin-top:18px; float:right;" onclick="openNewPrezzoModal()">+ Aggiungi Prezzo</button>
             <table class="requests-table" id="prezziTable">
                 <thead>
                     <tr>
@@ -555,7 +690,7 @@
                         <th>Data Fine</th>
                         <th>Prezzo Notte</th>
                         <th>Prezzo Totale</th>
-                        <th>Modifica</th>
+                        <th>Azioni</th>
                     </tr>
                 </thead>
                 <tbody id="prezziBody">
@@ -668,16 +803,50 @@
                     </div>
                 </form>
         </div>
+         </div>
+
+             <!-- Modale nuovo prezzo -->
+         <div id="newPrezzoModal" class="modal-fade" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(44,62,80,0.25); z-index:1000; align-items:center; justify-content:center; overflow:auto;">
+            <div class="modal-content-pro" style="background:#fff; padding:0 0 18px 0; border-radius:16px; max-width:420px; width:96vw; margin:auto; box-shadow:0 8px 32px rgba(44,62,80,0.18), 0 1.5px 8px rgba(0,0,0,0.08); position:relative; max-height:92vh; overflow-y:auto; border:1.5px solid #e3e9f7; animation: modalFadeIn 0.25s; display:flex; flex-direction:column;">
+                <div style="display:flex; align-items:center; justify-content:space-between; padding:22px 28px 0 28px; border-radius:16px 16px 0 0; background:linear-gradient(90deg,#f7fafd 60%,#e3e9f7 100%); border-bottom:1px solid #e3e9f7;">
+                    <div style="display:flex; align-items:center; gap:10px;">
+                        <span style="font-size:1.5rem; color:#007bff;">&#9998;</span>
+                        <h3 style="margin:0; font-size:1.18rem; font-weight:600; color:#2d3a4a;">Nuovo Prezzo</h3>
+                                
+                    </div>
+                    <button type="button" onclick="closeNewPrezzoModal()" style="background:none; border:none; font-size:1.5rem; color:#b0b8c9; cursor:pointer; margin-left:8px;" title="Chiudi">&times;</button>
+                </div>
+                <form id="newPrezzoForm" style="padding:22px 28px 0 28px;">
+                    <input type="hidden" id="newPrezzoId"/>
+                    <div style="margin-bottom:16px;">
+                        <label for="newPrezzoDataInizio" style="margin-bottom:4px;">Data Inizio</label>
+                        <input type="date" id="newPrezzoDataInizio" required style="width:100%;padding:10px; border-radius:7px; border:1px solid #cfd8dc;"/>
+                    </div>
+                    <div style="margin-bottom:16px;">
+                        <label for="newPrezzoDataFine" style="margin-bottom:4px;">Data Fine</label>
+                        <input type="date" id="newPrezzoDataFine" required style="width:100%;padding:10px; border-radius:7px; border:1px solid #cfd8dc;"/>
+                    </div>
+                    <div style="margin-bottom:16px;">
+                        <label for="newPrezzoNotte" style="margin-bottom:4px;">Prezzo Notte</label>
+                        <input type="number" id="newPrezzoNotte" min="0" required style="width:100%;padding:10px; border-radius:7px; border:1px solid #cfd8dc;"/>
+                    </div>
+                    <div style="text-align:right; margin-top:10px;">
+                        <button type="button" class="btn" onclick="closeNewPrezzoModal()" style="background:#b0b8c9; margin-right:8px;">Annulla</button>
+                        <button type="submit" class="btn">Salva</button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
        
-        </div>
-         <!-- Modale modifica prezzo -->
+        <!-- Modale modifica prezzo -->
         <div id="editPrezzoModal" class="modal-fade" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(44,62,80,0.25); z-index:1000; align-items:center; justify-content:center; overflow:auto;">
             <div class="modal-content-pro" style="background:#fff; padding:0 0 18px 0; border-radius:16px; max-width:420px; width:96vw; margin:auto; box-shadow:0 8px 32px rgba(44,62,80,0.18), 0 1.5px 8px rgba(0,0,0,0.08); position:relative; max-height:92vh; overflow-y:auto; border:1.5px solid #e3e9f7; animation: modalFadeIn 0.25s; display:flex; flex-direction:column;">
                 <div style="display:flex; align-items:center; justify-content:space-between; padding:22px 28px 0 28px; border-radius:16px 16px 0 0; background:linear-gradient(90deg,#f7fafd 60%,#e3e9f7 100%); border-bottom:1px solid #e3e9f7;">
                     <div style="display:flex; align-items:center; gap:10px;">
                         <span style="font-size:1.5rem; color:#007bff;">&#9998;</span>
                         <h3 style="margin:0; font-size:1.18rem; font-weight:600; color:#2d3a4a;">Modifica Prezzo</h3>
+                                
                     </div>
                     <button type="button" onclick="closeEditPrezzoModal()" style="background:none; border:none; font-size:1.5rem; color:#b0b8c9; cursor:pointer; margin-left:8px;" title="Chiudi">&times;</button>
                 </div>
@@ -695,16 +864,14 @@
                         <label for="editPrezzoNotte" style="margin-bottom:4px;">Prezzo Notte</label>
                         <input type="number" id="editPrezzoNotte" min="0" required style="width:100%;padding:10px; border-radius:7px; border:1px solid #cfd8dc;"/>
                     </div>
-                    <div style="margin-bottom:16px;">
-                        <label for="editPrezzoTotale" style="margin-bottom:4px;">Prezzo Totale</label>
-                        <input type="number" id="editPrezzoTotale" min="0" required style="width:100%;padding:10px; border-radius:7px; border:1px solid #cfd8dc;"/>
-                    </div>
                     <div style="text-align:right; margin-top:10px;">
                         <button type="button" class="btn" onclick="closeEditPrezzoModal()" style="background:#b0b8c9; margin-right:8px;">Annulla</button>
                         <button type="submit" class="btn">Salva</button>
                     </div>
                 </form>
             </div>
+        </div>
+
         <style>
         @keyframes modalFadeIn {
             from { opacity: 0; transform: translateY(30px) scale(0.98); }
