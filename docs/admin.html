@@ -295,6 +295,47 @@
             }
         });
 
+                // Salva la modifica
+        document.addEventListener('DOMContentLoaded', function() {
+            const editPrezzoForm = document.getElementById('editPrezzoForm');
+            if (editPrezzoForm) {
+                editPrezzoForm.onsubmit = function(e) {
+                    e.preventDefault();
+                    const id = document.getElementById('editPrezzoId').value;
+                    const dataInizio = document.getElementById('editPrezzoDataInizio').value;
+                    const dataFine = document.getElementById('editPrezzoDataFine').value;
+                    const prezzoTotale = document.getElementById('editPrezzoTotale').value;
+                    const prezzoNotte = document.getElementById('editPrezzoNotte').value;
+                    const data = {
+                        dataInizio: dataInizio,
+                        dataFine: dataFine,
+                        prezzoTotale: prezzoTotale !== '' ? parseFloat(prezzoTotale) : null,
+                        prezzoNotte: prezzoNotte !== '' ? parseFloat(prezzoNotte) : null
+                    };
+                    fetch(`${API_BASE}/admin/prezzi-case/${id}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            ...(adminToken ? { 'Authorization': 'Bearer ' + adminToken } : {})
+                        },
+                        body: JSON.stringify(data)
+                    })
+                    .then(res => {
+                        if(res.ok) {
+                            showNotification('Prezzo aggiornato!');
+                            closeEditPrezzoModal();
+                            // Ricarica prezzi per la casa selezionata
+                            const select = document.getElementById('casaSelect');
+                            if(select) loadPrezzi(select.value);
+                        } else {
+                            showNotification('Errore nel salvataggio prezzo.');
+                        }
+                    })
+                    .catch(() => showNotification('Errore di rete.'));
+                }
+            }
+        });
+
         // Espone le funzioni globali
         window.loginAdmin = loginAdmin;
         window.openEditModal = openEditModal;
