@@ -153,6 +153,14 @@
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
     </url>
+  
+      <!-- Preventivo -->
+    <url>
+      <loc>https://torrepalivacanze.it/preventivo</loc>
+      <lastmod>2026-04-07</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+    </url>
 
   <!-- Molo Torre Pali -->
   <url>
