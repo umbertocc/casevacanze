@@ -49,6 +49,7 @@
                     if (caseList.length > 0) {
                         loadPrenotazioni(caseList[0].id);
                         loadPrezzi(caseList[0].id);
+                        loadCalendar(caseList[0].id);
                     }
                 })
                 .catch(() => showNotification('Errore nel caricamento delle case.'));
@@ -414,8 +415,94 @@
             }
         });
 
+        // ---- CALENDARIO PRENOTAZIONI ----
+        let calendarPrenotazioni = [];
+        let calendarYear = new Date().getFullYear();
+        let calendarMonth = new Date().getMonth();
+
+        function loadCalendar(casaId) {
+            fetch(`${API_BASE}/api/prenotazioni/casa/${casaId}`)
+                .then(res => res.json())
+                .then(data => {
+                    calendarPrenotazioni = Array.isArray(data) ? data : [];
+                    renderCalendar();
+                })
+                .catch(() => { calendarPrenotazioni = []; renderCalendar(); });
+        }
+
+        function renderCalendar() {
+            const grid = document.getElementById('calendarGrid');
+            const titleEl = document.getElementById('calendarTitle');
+            if (!grid || !titleEl) return;
+            const monthNames = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno',
+                                'Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
+            titleEl.textContent = monthNames[calendarMonth] + ' ' + calendarYear;
+
+            const firstDay = new Date(calendarYear, calendarMonth, 1).getDay();
+            const startOffset = (firstDay === 0) ? 6 : firstDay - 1;
+            const daysInMonth = new Date(calendarYear, calendarMonth + 1, 0).getDate();
+
+            // Build booked days map
+            const bookedDays = {};
+            calendarPrenotazioni.forEach(p => {
+                if (!p.checkIn || !p.checkOut) return;
+                const start = new Date(p.checkIn);
+                const end = new Date(p.checkOut);
+                for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+                    const key = d.toISOString().slice(0, 10);
+                    bookedDays[key] = p;
+                }
+            });
+
+            const dayLabels = ['Lun','Mar','Mer','Gio','Ven','Sab','Dom'];
+            let html = '<table class="cal-table"><thead><tr>';
+            dayLabels.forEach(d => { html += `<th class="cal-header">${d}</th>`; });
+            html += '</tr></thead><tbody><tr>';
+
+            let col = 0;
+            for (let i = 0; i < startOffset; i++) {
+                html += '<td class="cal-empty"></td>'; col++;
+            }
+
+            const today = new Date();
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dateStr = `${calendarYear}-${String(calendarMonth + 1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+                const booked = bookedDays[dateStr];
+                const isToday = today.getFullYear() === calendarYear && today.getMonth() === calendarMonth && today.getDate() === day;
+
+                let cls = 'cal-day';
+                let titleAttr = '';
+                if (booked) {
+                    cls += ' cal-booked';
+                    const guest = (booked.ospiteNome || '').replace(/"/g, '&quot;');
+                    titleAttr = `title="${guest} (${booked.checkIn} → ${booked.checkOut})"`;
+                }
+                if (isToday) cls += ' cal-today';
+
+                html += `<td class="${cls}" ${titleAttr}>${day}${booked ? `<div class="cal-guest">${booked.ospiteNome || ''}</div>` : ''}</td>`;
+                col++;
+                if (col % 7 === 0 && day < daysInMonth) html += '</tr><tr>';
+            }
+            while (col % 7 !== 0) { html += '<td class="cal-empty"></td>'; col++; }
+            html += '</tr></tbody></table>';
+            grid.innerHTML = html;
+        }
+
+        function calendarPrev() {
+            calendarMonth--;
+            if (calendarMonth < 0) { calendarMonth = 11; calendarYear--; }
+            renderCalendar();
+        }
+        function calendarNext() {
+            calendarMonth++;
+            if (calendarMonth > 11) { calendarMonth = 0; calendarYear++; }
+            renderCalendar();
+        }
+
         // Espone le funzioni globali
         window.loginAdmin = loginAdmin;
+        window.calendarPrev = calendarPrev;
+        window.calendarNext = calendarNext;
         window.openEditModal = openEditModal;
         window.closeNewPrenotazioneModal = closeNewPrenotazioneModal;
         window.deletePrenotazione = deletePrenotazione;
@@ -479,6 +566,7 @@
                 select.addEventListener('change', function() {
                     loadPrenotazioni(this.value);
                     loadPrezzi(this.value);
+                    loadCalendar(this.value);
                 });
             }
         });
@@ -620,6 +708,17 @@
             display: none;
             font-size: 1rem;
         }
+        /* Calendario */
+        .cal-table { width: 100%; border-collapse: collapse; margin-top: 12px; table-layout: fixed; }
+        .cal-header { background: #f0f4fa; color: #2d3a4a; font-weight: 600; padding: 8px 4px; text-align: center; border: 1px solid #e3e9f7; font-size: 0.92rem; }
+        .cal-day { padding: 8px 4px 6px 4px; text-align: center; border: 1px solid #e3e9f7; vertical-align: top; font-size: 0.97rem; cursor: default; }
+        .cal-day:hover { background: #e3e9f7; }
+        .cal-empty { border: 1px solid #f0f4fa; background: #fafbfd; }
+        .cal-booked { background: #fde8e8; color: #b91c1c; font-weight: 600; }
+        .cal-booked:hover { background: #fbd5d5; }
+        .cal-today { box-shadow: inset 0 0 0 2px #007bff; }
+        .cal-guest { font-size: 0.68rem; color: #7f1d1d; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin: 2px auto 0 auto; }
+
         @media (max-width: 1100px) {
             .requests-table {
                 width: 99vw;
@@ -697,6 +796,20 @@
                     <!-- Prezzi caricati qui -->
                 </tbody>
             </table>
+
+            <h2 style="margin-top:40px;">Calendario Prenotazioni</h2>
+            <div style="width:100%; max-width:900px; margin:0 auto 32px auto; background:#fff; border-radius:12px; box-shadow:0 2px 8px rgba(60,80,120,0.07); padding:18px 24px;">
+                <div style="display:flex; align-items:center; justify-content:center; gap:18px; margin-bottom:8px;">
+                    <button class="btn" style="padding:5px 16px; font-size:1.3rem; line-height:1;" onclick="calendarPrev()">&#8249;</button>
+                    <span id="calendarTitle" style="font-size:1.15rem; font-weight:600; color:#2d3a4a; min-width:190px; text-align:center;"></span>
+                    <button class="btn" style="padding:5px 16px; font-size:1.3rem; line-height:1;" onclick="calendarNext()">&#8250;</button>
+                </div>
+                <div id="calendarGrid"></div>
+                <div style="margin-top:12px; display:flex; gap:18px; font-size:0.9rem;">
+                    <span><span style="display:inline-block;width:14px;height:14px;background:#fde8e8;border:1px solid #b91c1c;border-radius:3px;vertical-align:middle;margin-right:4px;"></span>Prenotato</span>
+                    <span><span style="display:inline-block;width:14px;height:14px;box-shadow:inset 0 0 0 2px #007bff;border-radius:3px;vertical-align:middle;margin-right:4px;"></span>Oggi</span>
+                </div>
+            </div>
         </div>
         <!-- Modale modifica prenotazione -->
         <div id="editModal" class="modal-fade" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(44,62,80,0.25); z-index:1000; align-items:center; justify-content:center; overflow:auto;">
