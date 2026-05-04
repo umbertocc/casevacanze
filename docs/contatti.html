@@ -374,6 +374,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <option value="casa-bellavista-2">Casa Bellavista 2</option>
 <option value="casa-giorgio-4">Casa Giorgio 4 (Piano terra)</option>
 <option value="casa-giorgio-6">Casa Giorgio 6 (Vista Mare)</option>
+<option value="respiro-di-mare">Respiro di Mare</option>
 <option value="generico">Richiesta Generica</option>
 </select>
 </div>
@@ -461,6 +462,17 @@ document.addEventListener('DOMContentLoaded', function(){
     var telefono = form.telefono.value;
     var appartamento = form.appartamento.value;
     var messaggio = form.messaggio.value;
+
+    // Enhanced conversions - set user data for Google Ads
+    var userDataPayload = { "email": email };
+    if (telefono) {
+      var phoneE164 = telefono.trim().replace(/[\s\-().]/g, '');
+      if (!phoneE164.startsWith('+')) {
+        phoneE164 = '+39' + phoneE164.replace(/^0/, '');
+      }
+      userDataPayload["phone_number"] = phoneE164;
+    }
+    gtag('set', 'user_data', userDataPayload);
 
     var text =
       'Nome: ' + nome + '\n' +
