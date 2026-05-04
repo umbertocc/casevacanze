@@ -463,7 +463,7 @@ document.addEventListener('DOMContentLoaded', function(){
     var appartamento = form.appartamento.value;
     var messaggio = form.messaggio.value;
 
-    // Enhanced conversions - set user data for Google Ads
+    // Enhanced conversions - push user data to dataLayer for GTM/Google Ads
     var userDataPayload = { "email": email };
     if (telefono) {
       var phoneE164 = telefono.trim().replace(/[\s\-().]/g, '');
@@ -472,7 +472,8 @@ document.addEventListener('DOMContentLoaded', function(){
       }
       userDataPayload["phone_number"] = phoneE164;
     }
-    gtag('set', 'user_data', userDataPayload);
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ "user_data": userDataPayload });
 
     var text =
       'Nome: ' + nome + '\n' +
