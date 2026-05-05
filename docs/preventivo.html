@@ -608,6 +608,14 @@ document.getElementById('booking-form').addEventListener('submit', function(e) {
     userDataPayload["phone_number"] = phoneE164;
   }
   gtag('set', 'user_data', userDataPayload);
+
+  // Costruisci il testo dell'email
+  var text =
+    'Nome: ' + nome + '\n' +
+    'Email: ' + email + '\n' +
+    'Telefono: ' + telefono + '\n' +
+    'Appartamento: ' + appartamento + '\n' +
+    'Arrivo: ' + arrivo + '\n' +
     'Partenza: ' + partenza + '\n' +
     'Persone: ' + persone + '\n' +
     'Messaggio: ' + messaggio;
