@@ -118,6 +118,14 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                 const email = form.email.value;
                                 const telefono = form.telefono.value;
                                 const persone = form.persone.value;
+                                // Enhanced conversions - gtag set user_data (Tag Google method)
+                                const userDataPayload = { email: email };
+                                if (telefono) {
+                                    let phoneE164 = telefono.trim().replace(/[\s\-().]/g, '');
+                                    if (!phoneE164.startsWith('+')) phoneE164 = '+39' + phoneE164.replace(/^0/, '');
+                                    userDataPayload.phone_number = phoneE164;
+                                }
+                                if (typeof gtag === 'function') gtag('set', 'user_data', userDataPayload);
                                 const messaggio = form.messaggio.value;
                                 const casa = form.casa.value;
                                 const checkIn = form.checkIn.value;
@@ -150,7 +158,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                         if (typeof gtag === 'function') {
                                             gtag('event', 'conversion', { 'send_to': 'AW-17941172028/OvpCCP_1jJQcELyegutC' });
                                         }
-                                        modalBody.innerHTML = `<div style=\"text-align:center;padding:32px 0;\"><h2 style=\"color:#2d7a46;\">Richiesta inviata!</h2><p>Grazie per aver richiesto il preventivo.<br>Ti ricontatteremo al più presto.</p><button id=\"closePrenotaModal2\" style=\"margin-top:18px;background:#2d7a46;color:#fff;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;\">Chiudi</button></div>`;
+                                            modalBody.innerHTML = `<div style=\"text-align:center;padding:32px 0;\"><h2 style=\"color:#2d7a46;\">Richiesta inviata!</h2><p>Grazie per aver richiesto il preventivo.<br>Ti ricontatteremo al più presto.</p><button id=\"closePrenotaModal2\" style=\"margin-top:18px;background:#2d7a46;color:#fff;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;\">Chiudi</button></div>`;
                                         document.getElementById('closePrenotaModal2').onclick = () => {
                                             modal.style.display = 'none';
                                         };

@@ -462,8 +462,7 @@ document.addEventListener('DOMContentLoaded', function(){
       }
       userDataPayload["phone_number"] = phoneE164;
     }
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ "user_data": userDataPayload });
+    gtag('set', 'user_data', userDataPayload);
 
     var text =
       'Nome: ' + nome + '\n' +
