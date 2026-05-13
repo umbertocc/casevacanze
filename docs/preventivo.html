@@ -599,7 +599,11 @@ document.getElementById('booking-form').addEventListener('submit', function(e) {
   var messaggio = form.messaggio.value;
 
   // Enhanced conversions - push user data to dataLayer for GTM/Google Ads
-  var userDataPayload = { "email": email };
+  var userDataPayload = { 
+    email: email,
+    first_name: nome,
+    last_name: nome
+  };
   if (telefono) {
     var phoneE164 = telefono.trim().replace(/[\s\-().]/g, '');
     if (!phoneE164.startsWith('+')) {
