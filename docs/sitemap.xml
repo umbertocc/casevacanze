@@ -32,6 +32,13 @@
     <priority>0.9</priority>
   </url>
   
+  <!-- Pagina Registrazione Struttura -->
+  <url>
+    <loc>https://torrepalivacanze.it/registra-struttura.html</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
   <!-- Casa Giorgio 4 -->
   <url>
     <loc>https://torrepalivacanze.it/casa-giorgio-4</loc>
