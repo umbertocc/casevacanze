@@ -118,14 +118,31 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                 const email = form.email.value;
                                 const telefono = form.telefono.value;
                                 const persone = form.persone.value;
-                                // Enhanced conversions - gtag set user_data (Tag Google method)
-                                const userDataPayload = { email: email };
-                                if (telefono) {
-                                    let phoneE164 = telefono.trim().replace(/[\s\-().]/g, '');
-                                    if (!phoneE164.startsWith('+')) phoneE164 = '+39' + phoneE164.replace(/^0/, '');
-                                    userDataPayload.phone_number = phoneE164;
+                                // Enhanced conversions - Google Ads Advanced Conversions
+                                // Funzione per hashare in SHA256
+                                async function sha256(str) {
+                                    const encoder = new TextEncoder();
+                                    const data = encoder.encode(str);
+                                    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+                                    const hashArray = Array.from(new Uint8Array(hashBuffer));
+                                    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
                                 }
-                                if (typeof gtag === 'function') gtag('set', 'user_data', userDataPayload);
+
+                                (async function() {
+                                    const userDataPayload = {};
+                                    if (email) {
+                                        const emailNorm = email.trim().toLowerCase();
+                                        userDataPayload.email = await sha256(emailNorm);
+                                    }
+                                    if (telefono) {
+                                        let phoneE164 = telefono.trim().replace(/[\s\-().]/g, '');
+                                        if (!phoneE164.startsWith('+')) phoneE164 = '+39' + phoneE164.replace(/^0/, '');
+                                        userDataPayload.phone_number = await sha256(phoneE164);
+                                    }
+                                    if ((userDataPayload.email || userDataPayload.phone_number) && typeof gtag === 'function') {
+                                        gtag('set', 'user_data', userDataPayload);
+                                    }
+                                })();
                                 const messaggio = form.messaggio.value;
                                 const casa = form.casa.value;
                                 const checkIn = form.checkIn.value;
