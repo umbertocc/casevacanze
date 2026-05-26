@@ -1,9 +1,24 @@
+        function logoutAdmin() {
+            adminToken = null;
+            localStorage.removeItem('adminToken');
+            document.getElementById('adminPanel').style.display = 'none';
+            document.getElementById('loginForm').style.display = 'block';
+        }
 <!DOCTYPE html>
 <html lang="it">
 <head>
         <script>
         const API_BASE = 'https://demo-mail-993653817397.europe-west8.run.app'; // URL reale backend Java
         let adminToken = null;
+        // Recupera il token dal localStorage all'avvio
+        if (localStorage.getItem('adminToken')) {
+            adminToken = localStorage.getItem('adminToken');
+            window.addEventListener('DOMContentLoaded', () => {
+                document.getElementById('loginForm').style.display = 'none';
+                document.getElementById('adminPanel').style.display = 'block';
+                loadCase();
+            });
+        }
 
         function showNotification(msg) {
             const n = document.getElementById('notification');
@@ -24,6 +39,7 @@
             .then(data => {
                 if (data.token) {
                     adminToken = data.token;
+                    localStorage.setItem('adminToken', data.token);
                     document.getElementById('loginForm').style.display = 'none';
                     document.getElementById('adminPanel').style.display = 'block';
                     loadCase();
@@ -512,6 +528,7 @@
 
         // Espone le funzioni globali
         window.loginAdmin = loginAdmin;
+        window.logoutAdmin = logoutAdmin;
         window.calendarPrev = calendarPrev;
         window.calendarNext = calendarNext;
         window.openEditModal = openEditModal;
@@ -823,6 +840,7 @@
             <button class="btn" onclick="loginAdmin()">Accedi</button>
         </div>
         <div class="admin-panel" id="adminPanel" style="display:none;">
+            <button class="btn" style="float:right; margin-bottom:18px; background:#e74c3c;" onclick="logoutAdmin()">Logout</button>
             <h2>Prenotazioni per Casa</h2>
             <label for="casaSelect">Seleziona una casa:</label>
             <select id="casaSelect" style="margin-bottom:20px; width:100%; padding:8px;"></select>
