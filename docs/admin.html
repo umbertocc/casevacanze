@@ -1,4 +1,4 @@
-        function logoutAdmin() {
+function logoutAdmin() {
             adminToken = null;
             localStorage.removeItem('adminToken');
             document.getElementById('adminPanel').style.display = 'none';
@@ -48,6 +48,13 @@
                 }
             })
             .catch(() => showNotification('Errore di connessione.'));
+        }
+
+        function logoutAdmin() {
+            adminToken = null;
+            localStorage.removeItem('adminToken');
+            document.getElementById('adminPanel').style.display = 'none';
+            document.getElementById('loginForm').style.display = 'block';
         }
 
         // Carica la lista delle case e popola il dropdown
