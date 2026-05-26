@@ -36,7 +36,11 @@
 
         // Carica la lista delle case e popola il dropdown
         function loadCase() {
-            fetch(`${API_BASE}/api/case`)
+            fetch(`${API_BASE}/api/case`, {
+                headers: {
+                    ...(adminToken ? { 'Authorization': 'Bearer ' + adminToken } : {})
+                }
+            })
                 .then(res => res.json())
                 .then(caseList => {
                     const select = document.getElementById('casaSelect');
@@ -58,7 +62,13 @@
 
         // Carica le prenotazioni per la casa selezionata
         function loadPrenotazioni(casaId) {
-            fetch(`${API_BASE}/api/prenotazioni/casa/${casaId}`)
+            fetch(`${API_BASE}/api/prenotazioni/casa/${casaId}`,
+                {
+                    headers: {
+                        ...(adminToken ? { 'Authorization': 'Bearer ' + adminToken } : {})
+                    }
+                }
+            )
                 .then(res => res.json())
                 .then(prenotazioni => {
                     const body = document.getElementById('prenotazioniBody');
