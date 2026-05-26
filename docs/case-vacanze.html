@@ -497,7 +497,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.addEventListener('DOMContentLoaded', async function() {
       const grid = document.getElementById('properties-grid');
       try {
-        const res = await fetch('https://demo-mail-993653817397.europe-west8.run.app/api/case');
+        const res = await fetch('https://demo-mail-993653817397.europe-west8.run.app/api/case/public');
         const houses = await res.json();
         grid.innerHTML = '';
 
