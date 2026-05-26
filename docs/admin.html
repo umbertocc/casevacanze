@@ -13,11 +13,12 @@
         }
 
         function loginAdmin() {
+            const email = document.getElementById('adminEmail').value;
             const pwd = document.getElementById('adminPassword').value;
             fetch(`${API_BASE}/admin/login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ password: pwd })
+                body: JSON.stringify({ email: email, password: pwd })
             })
             .then(res => res.json())
             .then(data => {
@@ -807,6 +808,7 @@
         <h1>Area Admin</h1>
         <div class="notification" id="notification"></div>
         <div class="login-form" id="loginForm">
+            <input type="email" id="adminEmail" placeholder="Email admin">
             <input type="password" id="adminPassword" placeholder="Password admin">
             <button class="btn" onclick="loginAdmin()">Accedi</button>
         </div>
