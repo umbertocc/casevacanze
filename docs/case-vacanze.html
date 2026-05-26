@@ -521,7 +521,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           return allDates;
         }
 
-        houses.forEach(async (house, idx) => {
+        // Funzione per formattare periodo
+        function formatPeriodo(dal, al) {
+          const opts = { day: '2-digit', month: '2-digit' };
+          const dDal = new Date(dal);
+          const dAl = new Date(al);
+          if (dal === al) return dDal.toLocaleDateString('it-IT', opts);
+          return dDal.toLocaleDateString('it-IT', opts) + ' - ' + dAl.toLocaleDateString('it-IT', opts);
+        }
+
+        // Carica tutte le prenotazioni in parallelo e mostra i CTA solo dopo
+        await Promise.all(houses.map(async (house, idx) => {
           const card = document.createElement('div');
           card.className = 'property-card';
 
@@ -612,27 +622,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           setTimeout(() => {
             card.classList.add('fade-in');
           }, 80 * idx);
-        });
+        }));
 
-        // Funzione per formattare periodo
-        function formatPeriodo(dal, al) {
-          const opts = { day: '2-digit', month: '2-digit' };
-          const dDal = new Date(dal);
-          const dAl = new Date(al);
-          if (dal === al) return dDal.toLocaleDateString('it-IT', opts);
-          return dDal.toLocaleDateString('it-IT', opts) + ' - ' + dAl.toLocaleDateString('it-IT', opts);
-        }
+        // Solo ora mostra i CTA
+        const cta = document.getElementById('cta-buttons');
+        cta.style.opacity = '1';
+        cta.style.pointerEvents = 'auto';
       } catch (e) {
         grid.innerHTML = '<div style="color:red">Errore nel caricamento delle case vacanza.</div>';
       }
     });
     </script>
-    <div style="text-align:center; margin-top: 50px;">
-      <!-- <a href="prenotazione" class="btn">✉️ Disponibilità e prezzi</a> -->
-      <a href="preventivo" class="btn">✉️ Richiedi un preventivo</a>
-      <a href="prenotazione" class="btn">✉️ Verifica disponibilità</a>
-      <a href="https://wa.me/393886587080?text=Ciao!%20Vorrei%20informazioni%20sulle%20vostre%20case%20vacanza%20a%20Torre%20Pali" onclick="gtag('event','click_whatsapp'); return gtag_report_conversion('https://wa.me/393886587080?text=Ciao!%20Vorrei%20informazioni%20sulle%20vostre%20case%20vacanza%20a%20Torre%20Pali');" class="btn">📱 WhatsApp</a>
-    </div>
+<div id="cta-buttons" style="text-align:center; margin-top: 50px; opacity:0; pointer-events:none; transition:opacity 0.5s;">
+  <!-- <a href="prenotazione" class="btn">✉️ Disponibilità e prezzi</a> -->
+  <a href="preventivo" class="btn">✉️ Richiedi un preventivo</a>
+  <a href="prenotazione" class="btn">✉️ Verifica disponibilità</a>
+  <a href="https://wa.me/393886587080?text=Ciao!%20Vorrei%20informazioni%20sulle%20vostre%20case%20vacanza%20a%20Torre%20Pali" onclick="gtag('event','click_whatsapp'); return gtag_report_conversion('https://wa.me/393886587080?text=Ciao!%20Vorrei%20informazioni%20sulle%20vostre%20case%20vacanza%20a%20Torre%20Pali');" class="btn">📱 WhatsApp</a>
+</div>
 <!-- 
   
     <div style="max-width:700px; margin:60px auto 0 auto;">
