@@ -49,6 +49,9 @@
             localStorage.removeItem('adminToken');
             document.getElementById('adminPanel').style.display = 'none';
             document.getElementById('loginForm').style.display = 'block';
+            // Pulisci i campi email e password
+            document.getElementById('adminEmail').value = '';
+            document.getElementById('adminPassword').value = '';
         }
 
         // Carica la lista delle case e popola il dropdown
