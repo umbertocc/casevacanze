@@ -525,7 +525,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           let bookedDates = new Set();
           try {
             const resP = await fetch(`https://demo-mail-993653817397.europe-west8.run.app/api/prenotazioni/casa/${house.id}`);
-            const prenotazioni = await resP.json();
+            const prenotazioni = await resP.json(); 
             prenotazioni.forEach(p => {
               if (!p.checkIn || !p.checkOut) return;
               let d = new Date(Date.UTC(
