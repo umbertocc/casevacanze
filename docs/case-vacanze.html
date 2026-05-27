@@ -1,3 +1,54 @@
+<!-- Flatpickr CSS per date simili a prenotazione.html -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <style>
+    .date-filter-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px;
+    }
+    .date-filter-label {
+      font-weight: 600;
+      color: #22577a;
+      margin-bottom: 0;
+      margin-right: 6px;
+      letter-spacing: 0.02em;
+    }
+    .date-filter-input {
+      width: 160px;
+      padding: 12px 40px 12px 16px;
+      border: 2px solid #b2f2d7;
+      border-radius: 14px;
+      font-size: 1.08em;
+      font-family: 'Poppins', Arial, sans-serif;
+      background: #f8fffb url('https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_green.svg') no-repeat right 12px center/28px 28px;
+      color: #22577a;
+      box-shadow: 0 2px 12px rgba(67,233,123,0.07);
+      transition: border-color 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+    .date-filter-input:focus {
+      border-color: #25d366;
+      background-color: #fff;
+      outline: none;
+      box-shadow: 0 4px 18px rgba(37,211,102,0.13);
+    }
+    .date-filter-icon {
+      position: absolute;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      color: #25d366;
+      font-size: 1.3em;
+      opacity: 0.85;
+    }
+    @media (max-width: 600px) {
+      .date-filter-input { width: 100%; min-width: 0; }
+    }
+  </style>
 <!DOCTYPE html>
 <html lang="it">
 <head>     <!-- Google Tag Manager -->
@@ -498,11 +549,241 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <header style="text-align:center; margin-bottom: 50px;">
       <h1>Case Vacanza e Appartamenti in affitto a Torre Pali, Salento</h1>
       <p class="tagline">Appartamenti a pochi passi dalla spiaggia di Torre Pali. Comfort, relax e accoglienza per famiglie, coppie e amici.</p>
+          <!-- FILTRO DATE INIZIO -->
+          <div id="date-filter-container" style="margin: 28px 0 0 0;">
+            <div style="display:flex; justify-content:center; width:100%;">
+              <button id="show-date-filter" class="btn" type="button" style="margin-bottom: 12px; margin-left:auto; margin-right:auto; display:block; min-width:180px;">🔍 Filtra per date</button>
+            </div>
+            <form id="date-filter-form" style="display:none;" onsubmit="return false;">
+              <div class="date-filter-group">
+                <div style="position:relative;">
+                  <label for="checkin" class="date-filter-label">Check-in:</label>
+                  <input type="text" id="checkin" name="checkin" class="date-filter-input" placeholder="Seleziona data" autocomplete="off">
+                  <span class="date-filter-icon">📅</span>
+                </div>
+                <div style="position:relative;">
+                  <label for="checkout" class="date-filter-label" style="margin-left:10px;">Check-out:</label>
+                  <input type="text" id="checkout" name="checkout" class="date-filter-input" placeholder="Seleziona data" autocomplete="off">
+                  <span class="date-filter-icon">📅</span>
+                </div>
+                <button type="submit" class="btn" style="margin-left:16px;">Cerca</button>
+              </div>
+            </form>
+          </div>
+          <script>
+          // Filtro date collegato alle case vacanza, stile e UX come prenotazione.html
+          document.addEventListener('DOMContentLoaded', function() {
+            var showBtn = document.getElementById('show-date-filter');
+            var form = document.getElementById('date-filter-form');
+            var checkinInput = document.getElementById('checkin');
+            var checkoutInput = document.getElementById('checkout');
+            if (showBtn && form) {
+              showBtn.addEventListener('click', function() {
+                form.style.display = (form.style.display === 'none' || form.style.display === '') ? 'block' : 'none';
+              });
+            }
+
+            // Flatpickr per UX calendario come prenotazione.html
+            function enableOnlySaturday(date) { return (date.getDay() === 6); }
+            let checkInSelected = null;
+            if (window.flatpickr) {
+              flatpickr(checkinInput, {
+                dateFormat: "Y-m-d",
+                locale: "it",
+                disable: [function(date) { return !enableOnlySaturday(date); }],
+                minDate: "today",
+                onChange: function(selectedDates, dateStr) {
+                  checkInSelected = selectedDates && selectedDates[0] ? selectedDates[0] : null;
+                  // Aggiorna il calendario di checkOut
+                  if (checkoutInput._flatpickr) {
+                    const minDate = checkInSelected ? new Date(checkInSelected.getTime() + 24*60*60*1000) : "today";
+                    checkoutInput._flatpickr.set('minDate', minDate);
+                    checkoutInput._flatpickr.redraw();
+                    checkoutInput.value = '';
+                    // Forza la vista del calendario sul primo sabato valido dopo il check-in
+                    if (checkInSelected) {
+                      let nextSaturday = new Date(checkInSelected.getTime() + 24*60*60*1000);
+                      while (nextSaturday.getDay() !== 6) {
+                        nextSaturday.setDate(nextSaturday.getDate() + 1);
+                      }
+                      checkoutInput._flatpickr.jumpToDate(nextSaturday);
+                    }
+                  }
+                }
+              });
+              flatpickr(checkoutInput, {
+                dateFormat: "Y-m-d",
+                locale: "it",
+                disable: [
+                  function(date) {
+                    if (!enableOnlySaturday(date)) return true;
+                    if (checkinInput.value) {
+                      const checkInDate = new Date(checkinInput.value);
+                      if (date <= checkInDate) return true;
+                    }
+                    return false;
+                  }
+                ],
+                minDate: "today"
+              });
+            }
+
+            // Salva i dati delle case e prenotazioni per il filtro
+            window._caseVacanzaData = { houses: [], bookings: {} };
+
+            // Intercetta submit del filtro
+            form && form.addEventListener('submit', function(e) {
+              e.preventDefault();
+              var checkin = checkinInput.value;
+              var checkout = checkoutInput.value;
+              if (!checkin || !checkout || checkout <= checkin) {
+                alert('Inserisci date valide (check-out dopo check-in)');
+                return;
+              }
+              var houses = window._caseVacanzaData.houses;
+              var bookingsMap = window._caseVacanzaData.bookings;
+              var fullyAvailable = [];
+              var partiallyAvailable = [];
+              houses.forEach(function(house) {
+                var bookings = bookingsMap[house.id] || [];
+                if (!bookings.length) {
+                  fullyAvailable.push(house);
+                  return;
+                }
+                // Trova se la casa è libera per tutto il periodo
+                var isFree = true;
+                for (var i=0; i<bookings.length; i++) {
+                  var b = bookings[i];
+                  if (!(checkout <= b.checkIn || checkin >= b.checkOut)) {
+                    isFree = false;
+                    break;
+                  }
+                }
+                if (isFree) {
+                  fullyAvailable.push(house);
+                  return;
+                }
+                // Trova periodi parziali disponibili all'interno del range richiesto
+                var freeRanges = [];
+                var rangeStart = new Date(checkin);
+                var rangeEnd = new Date(checkout);
+                // Crea array di giorni occupati
+                var occupied = [];
+                bookings.forEach(function(b) {
+                  var d1 = new Date(b.checkIn);
+                  var d2 = new Date(b.checkOut);
+                  for (var d = new Date(d1); d < d2; d.setDate(d.getDate() + 1)) {
+                    occupied.push(d.toISOString().slice(0,10));
+                  }
+                });
+                // Trova i periodi liberi all'interno del range richiesto
+                var current = null;
+                for (var d = new Date(rangeStart); d <= rangeEnd; d.setDate(d.getDate() + 1)) {
+                  var ds = d.toISOString().slice(0,10);
+                  if (occupied.indexOf(ds) === -1) {
+                    if (!current) current = { dal: ds, al: ds };
+                    else current.al = ds;
+                  } else {
+                    // Se il giorno occupato è il check-in di una prenotazione ed è compreso nel periodo richiesto, includilo come libero
+                    var isCheckIn = bookings.some(function(b) { return b.checkIn === ds && ds >= checkin && ds <= checkout; });
+                    if (isCheckIn) {
+                      if (!current) current = { dal: ds, al: ds };
+                      else current.al = ds;
+                    } else {
+                      if (current) {
+                        freeRanges.push({ dal: current.dal, al: current.al });
+                        current = null;
+                      }
+                    }
+                  }
+                }
+                if (current) freeRanges.push(current);
+                // Se almeno un periodo libero di almeno 3 giorni consecutivi, aggiungi a parziali
+                var minConsecutiveDays = 3;
+                var validRanges = freeRanges.filter(function(p) {
+                  var start = new Date(p.dal);
+                  var end = new Date(p.al);
+                  // Calcola giorni inclusivi
+                  var days = Math.floor((end - start) / (1000*60*60*24)) + 1;
+                  return days >= minConsecutiveDays;
+                });
+                if (validRanges.length > 0) {
+                  house._partialFree = validRanges;
+                  partiallyAvailable.push(house);
+                }
+              });
+              // Rendering
+              var grid = window._caseVacanzaGrid || document.getElementById('properties-grid');
+              grid.innerHTML = '';
+              if (fullyAvailable.length > 0) {
+                var title = document.createElement('h2');
+                title.textContent = 'Case disponibili per tutto il periodo selezionato:';
+                title.style = 'width:100%;text-align:center;margin:32px 0 18px 0;color:#128c7e;font-size:1.2em;';
+                grid.appendChild(title);
+                fullyAvailable.forEach(function(house) {
+                  var card = document.createElement('div');
+                  card.className = 'property-card fade-in';
+                  card.innerHTML = house._cardHtml;
+                  grid.appendChild(card);
+                });
+              }
+              if (partiallyAvailable.length > 0) {
+                var title2 = document.createElement('h2');
+                title2.textContent = 'Case con disponibilità parziale nel periodo selezionato:';
+                title2.style = 'width:100%;text-align:center;margin:32px 0 18px 0;color:#b8860b;font-size:1.1em;';
+                grid.appendChild(title2);
+                partiallyAvailable.forEach(function(house) {
+                  var card = document.createElement('div');
+                  card.className = 'property-card fade-in';
+                  card.innerHTML = house._cardHtml;
+                  // Evidenzia i periodi liberi parziali
+                  var periodiDiv = card.querySelector('.periodi-disponibili > div');
+                  if (periodiDiv && house._partialFree) {
+                    periodiDiv.innerHTML = house._partialFree.map(function(p) {
+                      var opts = { day: '2-digit', month: '2-digit' };
+                      var dDal = new Date(p.dal);
+                      var dAl = new Date(p.al);
+                      if (p.dal === p.al) return `<span class='periodo-badge' style='background:#fffbe6;color:#b8860b;border:1.5px solid #ffe066;'>${dDal.toLocaleDateString('it-IT', opts)}</span>`;
+                      return `<span class='periodo-badge' style='background:#fffbe6;color:#b8860b;border:1.5px solid #ffe066;'>${dDal.toLocaleDateString('it-IT', opts)} - ${dAl.toLocaleDateString('it-IT', opts)}</span>`;
+                    }).join('');
+                  }
+                  grid.appendChild(card);
+                });
+              }
+              if (fullyAvailable.length === 0 && partiallyAvailable.length === 0) {
+                grid.innerHTML = '<div style="color:#b00;font-size:1.2em;margin:32px auto;">Nessuna casa disponibile per le date selezionate.</div>';
+              }
+            });
+
+            function renderPropertiesGrid(houses) {
+              if (!window._caseVacanzaGrid) {
+                window._caseVacanzaGrid = document.getElementById('properties-grid');
+              }
+              var grid = window._caseVacanzaGrid;
+              if (!grid) return;
+              grid.innerHTML = '';
+              if (!houses.length) {
+                grid.innerHTML = '<div style="color:#b00;font-size:1.2em;margin:32px auto;">Nessuna casa disponibile per le date selezionate.</div>';
+                return;
+              }
+              houses.forEach(function(house, idx) {
+                var card = document.createElement('div');
+                card.className = 'property-card fade-in';
+                card.innerHTML = house._cardHtml;
+                grid.appendChild(card);
+              });
+            }
+          });
+          // Flatpickr JS CDN
+          </script>
+          <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+          </script>
+          <!-- FILTRO DATE FINE -->
     </header>
     <div id="properties-grid" class="properties-grid"></div>
     <script>
     document.addEventListener('DOMContentLoaded', async function() {
-      const grid = document.getElementById('properties-grid');
+      let grid = document.getElementById('properties-grid');
       try {
         const res = await fetch('https://demo-mail-993653817397.europe-west8.run.app/api/case/public');
         const houses = await res.json();
@@ -531,18 +812,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
 
         // Carica tutte le prenotazioni in parallelo e mostra i CTA solo dopo
+        // Salva anche le prenotazioni per il filtro
+        let allBookings = {};
         await Promise.all(houses.map(async (house, idx) => {
-          const card = document.createElement('div');
-          card.className = 'property-card';
-
           // Ottieni tutte le date della stagione (nuovo array per ogni casa)
           let allDates = getAllSeasonDates();
 
           // Fetch prenotazioni per la casa
           let bookedDates = new Set();
+          let prenotazioni = [];
           try {
             const resP = await fetch(`https://demo-mail-993653817397.europe-west8.run.app/api/prenotazioni/casa/${house.id}`);
-            const prenotazioni = await resP.json();
+            prenotazioni = await resP.json();
             prenotazioni.forEach(p => {
               if (!p.checkIn || !p.checkOut) return;
               let d = new Date(Date.UTC(
@@ -587,7 +868,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           }
           periodiDisponibili = periodiDisponibili.filter(p => !is31Maggio(p.dal) && !is31Maggio(p.al));
 
-          card.innerHTML = `
+          // Salva HTML della card per riuso nel filtro
+          house._cardHtml = `
             <div class="availability-badge">${house.disponibile ? '✔️ Disponibile' : '❌ Non disponibile'}</div>
             <div class="property-image">
               <img src="${house.immagine || 'img/default.webp'}" alt="${house.nome}" width="648" height="486">
@@ -617,12 +899,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
           `;
-          grid.appendChild(card);
-          // Fade-in animazione
-          setTimeout(() => {
-            card.classList.add('fade-in');
-          }, 80 * idx);
+          // Salva le prenotazioni per il filtro
+          allBookings[house.id] = prenotazioni;
         }));
+
+        // Salva dati globali per il filtro
+        window._caseVacanzaData = { houses: houses, bookings: allBookings };
+
+        // Mostra tutte le case all’inizio
+        grid.innerHTML = '';
+        houses.forEach(function(house, idx) {
+          var card = document.createElement('div');
+          card.className = 'property-card fade-in';
+          card.innerHTML = house._cardHtml;
+          grid.appendChild(card);
+        });
 
         // Solo ora mostra i CTA
         const cta = document.getElementById('cta-buttons');
