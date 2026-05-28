@@ -720,7 +720,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         var rect = btn.getBoundingClientRect();
                         var scrollY = window.scrollY || window.pageYOffset;
                         var targetY = rect.bottom + scrollY - 10; // 10px sotto il bottone
-                        window.scrollTo({ top: targetY, behavior: 'smooth' });
+                        // Scroll lento custom (durata 900ms)
+                        var startY = window.scrollY || window.pageYOffset;
+                        var distance = targetY - startY;
+                        var duration = 900;
+                        var startTime = null;
+                        function animateScroll(currentTime) {
+                          if (!startTime) startTime = currentTime;
+                          var timeElapsed = currentTime - startTime;
+                          var progress = Math.min(timeElapsed / duration, 1);
+                          var ease = progress < 0.5 ? 2*progress*progress : -1+(4-2*progress)*progress;
+                          window.scrollTo(0, startY + distance * ease);
+                          if (progress < 1) {
+                            requestAnimationFrame(animateScroll);
+                          }
+                        }
+                        requestAnimationFrame(animateScroll);
                       }
                     }, 120);
               var houses = window._caseVacanzaData.houses;
