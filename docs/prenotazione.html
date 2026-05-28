@@ -700,19 +700,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                       return false;
                     }
                     if (checkout <= checkin) {
-                      checkoutInput.classList.add('error');
-                      checkoutInput.value = '';
-                      checkoutInput.placeholder = 'Check-out dopo check-in';
-                      resultsDiv.innerHTML = `<p style=\"color:#b91c1c;font-weight:600;margin-top:18px;\">La data di check-out deve essere dopo il check-in</p>`;
-                      setTimeout(() => {
-                        checkoutInput.classList.remove('error');
-                        resultsDiv.innerHTML = '';
-                      }, 2000);
-                      e.preventDefault();
-                      return false;
+                        checkoutInput.classList.add('error');
+                        checkoutInput.value = '';
+                        checkoutInput.placeholder = 'Check-out dopo check-in';
+                        resultsDiv.innerHTML = `<p style=\"color:#b91c1c;font-weight:600;margin-top:18px;\">La data di check-out deve essere dopo il check-in</p>`;
+                        setTimeout(() => {
+                            checkoutInput.classList.remove('error');
+                            resultsDiv.innerHTML = '';
+                        }, 2000);
+                        e.preventDefault();
+                        return false;
                     }
                     // Se tutto ok, svuota errori
                     resultsDiv.innerHTML = '';
+                    // Scrolla sotto il pulsante Cerca
+                    setTimeout(function() {
+                      var btn = form.querySelector('.btn-cerca-date');
+                      if (btn) {
+                        var rect = btn.getBoundingClientRect();
+                        var scrollY = window.scrollY || window.pageYOffset;
+                        var targetY = rect.bottom + scrollY - 10; // 10px sotto il bottone
+                        window.scrollTo({ top: targetY, behavior: 'smooth' });
+                      }
+                    }, 120);
               var houses = window._caseVacanzaData.houses;
               var bookingsMap = window._caseVacanzaData.bookings;
               var fullyAvailable = [];
