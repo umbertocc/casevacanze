@@ -1,42 +1,53 @@
+
 <!-- Flatpickr CSS per date simili a prenotazione.html -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <style>
-    .date-filter-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      justify-content: center;
-      align-items: center;
-      margin-top: 10px;
+    .form-group label {
+        font-weight: 600;
+        color: #22577a;
+        margin-bottom: 8px;
+        display: block;
+        letter-spacing: 0.02em;
     }
-    .date-filter-label {
-      font-weight: 600;
-      color: #22577a;
-      margin-bottom: 0;
-      margin-right: 6px;
-      letter-spacing: 0.02em;
-    }
-    .date-filter-input {
-      padding: 12px 40px 12px 16px;
+    .form-group .date-input {
+      width: 100%;
+      max-width: 420px;
+      padding: 14px 44px 14px 18px;
       border: 2px solid #b2f2d7;
       border-radius: 14px;
       font-size: 1.08em;
       font-family: 'Poppins', Arial, sans-serif;
-      background: #f8fffb url('https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_green.svg') no-repeat right 12px center/28px 28px;
+      background: #f8fffb url('https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_green.svg') no-repeat right 16px center/28px 28px;
       color: #22577a;
       box-shadow: 0 2px 12px rgba(67,233,123,0.07);
       transition: border-color 0.3s, box-shadow 0.3s;
       cursor: pointer;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
-    .date-filter-input:focus {
-      border-color: #25d366;
-      background-color: #fff;
-      outline: none;
-      box-shadow: 0 4px 18px rgba(37,211,102,0.13);
+    .form-group .date-input:focus {
+        border-color: #25d366;
+        background-color: #fff;
+        outline: none;
+        box-shadow: 0 4px 18px rgba(37,211,102,0.13);
     }
-    .date-filter-icon {
+    .flatpickr-calendar {
+        font-family: 'Poppins', Arial, sans-serif;
+        border-radius: 16px;
+        box-shadow: 0 8px 32px rgba(37,211,102,0.13);
+        border: 1.5px solid #b2f2d7;
+    }
+    .flatpickr-day.selected, .flatpickr-day.startRange, .flatpickr-day.endRange, .flatpickr-day.selected.inRange, .flatpickr-day.startRange.inRange, .flatpickr-day.endRange.inRange {
+        background: linear-gradient(135deg, #25d366 0%, #128c7e 100%) !important;
+        color: #fff !important;
+    }
+    .flatpickr-day.today {
+        border-color: #25d366;
+    }
+    .form-group .input-icon {
       position: absolute;
-      right: 18px;
+      right: 2px;
       top: 50%;
       transform: translateY(-50%);
       pointer-events: none;
@@ -45,7 +56,37 @@
       opacity: 0.85;
     }
     @media (max-width: 600px) {
-      .date-filter-input { width: 100%; min-width: 0; }
+      .form-group .date-input {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+      }
+    }
+    .btn-cerca-date {
+      display: block;
+      width: 100%;
+      max-width: 320px;
+      margin: 18px auto 0 auto;
+      font-size: 1.08em;
+      padding-left: 0;
+      padding-right: 0;
+      cursor: pointer;
+      transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+    }
+    .btn-cerca-date:hover, .btn-cerca-date:focus {
+      background: linear-gradient(135deg, #128c7e 0%, #25d366 100%) !important;
+      box-shadow: 0 12px 35px rgba(37,211,102,0.28);
+      transform: translateY(-2px) scale(1.03);
+      outline: none;
+    }
+              @media (max-width: 600px) {
+                .btn-cerca-date {
+                  max-width: 100%;
+                }
+              }
+    .date-input.error {
+      border-color: #e74c3c !important;
+      box-shadow: 0 0 0 2px #e74c3c33;
     }
   </style>
 <!DOCTYPE html> 
@@ -74,7 +115,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       background-attachment: fixed;
     }
     header {
-      margin-top: 48px;
+      margin-top: 5px;
       margin-bottom: 56px;
     }
     .properties-grid {
@@ -203,7 +244,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .contact-info, .contact-form { background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); padding: 45px; border-radius: 25px; box-shadow: 0 15px 50px rgba(0,0,0,0.08); border: 1px solid rgba(102, 126, 234, 0.1); animation: fadeInUp 0.6s ease-out; }
     .contact-info h2, .contact-form h2 { font-size: 1.8em; background: linear-gradient(135deg, #22577a 0%, #22577a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 25px; font-weight: 700; }
     .form-group { margin-bottom: 20px; }
-    .form-group label { display: block; font-size: 12px; margin-bottom: 8px; font-weight: 600; color: #2c3e50; }
+   .form-group label {font-weight: 600; color: #22577a; margin-bottom: 8px;display: block;letter-spacing: 0.02em;
+}
     .form-group input, .form-group textarea { width: 100%; padding: 10px; border: 2px solid rgba(102, 126, 234, 0.2); border-radius: 12px; font-family: 'Poppins', sans-serif; font-size: 1em; transition: all 0.3s; background: rgba(102, 126, 234, 0.02); }
     .form-group input:focus, .form-group textarea:focus { outline: none; border-color: #22577a; background: white; box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1); }
     .form-group textarea { resize: vertical; min-height: 150px; }
@@ -546,28 +588,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </script>
   <main class="container">
     <header style="text-align:center; margin-bottom: 50px;">
-      <h1>Case Vacanza e Appartamenti in affitto a Torre Pali, Salento</h1>
-      <p class="tagline">Appartamenti a pochi passi dalla spiaggia di Torre Pali. Comfort, relax e accoglienza per famiglie, coppie e amici.</p>
+          <h1>Prenota la tua casa vacanza a Torre Pali</h1>
+            <p class="tagline">Seleziona una data di check-in e una data di check-out per verificare le disponibilità. Il soggiorno è possibile solo da sabato a sabato, con una permanenza minima di 1 settimana.</p>
           <!-- FILTRO DATE INIZIO -->
-         <div id="date-filter-container" style="margin: 28px 0 0 0;">
-            <div style="display:flex; justify-content:center; width:100%;">
-              <button id="show-date-filter" class="btn" type="button" style="margin-bottom: 12px; margin-left:auto; margin-right:auto; display:block; min-width:180px;">🔍 Filtra per date</button>
-            </div>
-            <form id="date-filter-form" style="display:none;" onsubmit="return false;">
-              <div class="date-filter-group">
-                <div style="position:relative;">
-                  <label for="checkin" class="date-filter-label">Check-in:</label>
-                  <input type="text" id="checkin" name="checkin" class="date-filter-input" placeholder="Seleziona data" autocomplete="off">
-                  <span class="date-filter-icon">📅</span>
-                </div>
-                <div style="position:relative;">
-                  <label for="checkout" class="date-filter-label" style="margin-left:10px;">Check-out:</label>
-                  <input type="text" id="checkout" name="checkout" class="date-filter-input" placeholder="Seleziona data" autocomplete="off">
-                  <span class="date-filter-icon">📅</span>
-                </div>
-                <button type="submit" class="btn" style="margin-left:16px;">Cerca</button>
+        <div id="date-filter-container" style="margin: 28px 0 0 0;">
+          <form id="date-filter-form" onsubmit="return false;">
+              <div class="form-group" style="margin-bottom: 30px; position:relative;">
+                <label for="checkin">Data Check-in:</label>
+                <input type="text" id="checkin" name="checkin" class="date-input" placeholder="Seleziona data check-in" autocomplete="off" required>
+                
               </div>
+              <div class="form-group" style="margin-bottom: 16px; position:relative;">
+                <label for="checkout">Data Check-out:</label>
+                <input type="text" id="checkout" name="checkout" class="date-input" placeholder="Seleziona data check-out" autocomplete="off" required>
+                
+              </div>
+              <button type="submit" class="btn btn-cerca-date">Cerca</button>
             </form>
+            <div id="results" style="min-height:28px;text-align:center;"></div>
           </div> 
           <script>
           // Filtro date collegato alle case vacanza, stile e UX come prenotazione.html
@@ -632,13 +670,49 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
             // Intercetta submit del filtro
             form && form.addEventListener('submit', function(e) {
-              e.preventDefault();
-              var checkin = checkinInput.value;
-              var checkout = checkoutInput.value;
-              if (!checkin || !checkout || checkout <= checkin) {
-                alert('Inserisci date valide (check-out dopo check-in)');
-                return;
-              }
+                  var checkin = checkinInput.value;
+                  var checkout = checkoutInput.value;
+                    let errorMsg = '';
+                    const resultsDiv = document.getElementById('results');
+                    // Reset error style
+                    checkinInput.classList.remove('error');
+                    checkoutInput.classList.remove('error');
+
+                    if (!checkin && !checkout) {
+                      errorMsg = 'Inserisci la data di check-in e check-out.';
+                      checkinInput.classList.add('error');
+                      checkoutInput.classList.add('error');
+                    } else if (!checkin) {
+                      errorMsg = 'Inserisci la data di check-in.';
+                      checkinInput.classList.add('error');
+                    } else if (!checkout) {
+                      errorMsg = 'Inserisci la data di check-out.';
+                      checkoutInput.classList.add('error');
+                    }
+                    if (errorMsg) {
+                      resultsDiv.innerHTML = `<p style=\"color:#b91c1c;font-weight:600;margin-top:18px;\">${errorMsg}</p>`;
+                      setTimeout(() => {
+                        checkinInput.classList.remove('error');
+                        checkoutInput.classList.remove('error');
+                        resultsDiv.innerHTML = '';
+                      }, 4000);
+                      e.preventDefault();
+                      return false;
+                    }
+                    if (checkout <= checkin) {
+                      checkoutInput.classList.add('error');
+                      checkoutInput.value = '';
+                      checkoutInput.placeholder = 'Check-out dopo check-in';
+                      resultsDiv.innerHTML = `<p style=\"color:#b91c1c;font-weight:600;margin-top:18px;\">La data di check-out deve essere dopo il check-in</p>`;
+                      setTimeout(() => {
+                        checkoutInput.classList.remove('error');
+                        resultsDiv.innerHTML = '';
+                      }, 2000);
+                      e.preventDefault();
+                      return false;
+                    }
+                    // Se tutto ok, svuota errori
+                    resultsDiv.innerHTML = '';
               var houses = window._caseVacanzaData.houses;
               var bookingsMap = window._caseVacanzaData.bookings;
               var fullyAvailable = [];
