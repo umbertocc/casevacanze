@@ -1004,7 +1004,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
               <p class="property-description">${house.descrizione || ''}</p>
               <div class="periodi-disponibili">
-                <strong><span class="calendar-icon">📅</span>Periodi disponibili (giugno–settembre):</strong>
+                <strong><span class="calendar-icon">📅</span>Periodi disponibili:</strong>
                 <div>
                   ${periodiDisponibili.length > 0
                     ? periodiDisponibili.map(p => `<span class='periodo-badge'>${formatPeriodo(p.dal, p.al)}</span>`).join('')
