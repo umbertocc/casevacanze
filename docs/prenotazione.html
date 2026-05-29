@@ -1,4 +1,3 @@
-
 <!-- Flatpickr CSS per date simili a prenotazione.html -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <style>
@@ -703,7 +702,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         checkoutInput.classList.add('error');
                         checkoutInput.value = '';
                         checkoutInput.placeholder = 'Check-out dopo check-in';
-                        resultsDiv.innerHTML = `<p style=\"color:#b91c1c;font-weight:600;margin-top:18px;\">La data di check-out deve essere dopo il check-in</p>`;
+                        resultsDiv.innerHTML = `<p style="color:#b91c1c;font-weight:600;margin-top:18px;">La data di check-out deve essere dopo il check-in</p>`;
                         setTimeout(() => {
                             checkoutInput.classList.remove('error');
                             resultsDiv.innerHTML = '';
@@ -822,6 +821,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                   var card = document.createElement('div');
                   card.className = 'property-card fade-in';
                   card.innerHTML = house._cardHtml;
+                  // Rimuovi la sezione periodi-disponibili solo per le fullyAvailable
+                  var periodi = card.querySelector('.periodi-disponibili');
+                  if (periodi) periodi.remove();
                   grid.appendChild(card);
                 });
               }
@@ -875,6 +877,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           // Flatpickr JS CDN
           </script>
           <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+          <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/it.js"></script>
           </script>
           <!-- FILTRO DATE FINE -->
     </header>

@@ -89,15 +89,15 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                         btn.onclick = (e) => { e.preventDefault();
                             const modal = document.getElementById('prenota-modal');
                             const modalBody = document.getElementById('prenota-modal-body');
+                            // Modale senza precompilazione date
                             modalBody.innerHTML = `
                                 <h2 style=\"margin-top:0;margin-bottom:18px;font-size:1.2em;color:#2d7a46;\">Richiesta preventivo</h2>
                                 <div style=\"margin-bottom:10px;\"><b>${casa.nome || casa.id || 'Casa'}</b></div>
-                                <div style=\"margin-bottom:10px;\">Periodo: <b>${document.getElementById('checkIn').value}</b> - <b>${document.getElementById('checkOut').value}</b></div>
                                 <form id=\"prenotaForm\">
                                     <input type=\"hidden\" name=\"casa\" value=\"${casa.nome || casa.id || ''}\">
-                                    <input type=\"hidden\" name=\"checkIn\" value=\"${document.getElementById('checkIn').value}\">
-                                    <input type=\"hidden\" name=\"checkOut\" value=\"${document.getElementById('checkOut').value}\">
                                     <input type=\"hidden\" name=\"prezzoTotale\" value=\"${prezzoTotale !== null ? prezzoTotale : ''}\">
+                                    <div style=\"margin-bottom:10px;\"><input required name=\"checkIn\" type=\"date\" placeholder=\"Data di Arrivo\" style=\"width:100%;padding:8px;margin-bottom:6px;border-radius:5px;border:1px solid #ccc;\"></div>
+                                    <div style=\"margin-bottom:10px;\"><input required name=\"checkOut\" type=\"date\" placeholder=\"Data di Partenza\" style=\"width:100%;padding:8px;margin-bottom:6px;border-radius:5px;border:1px solid #ccc;\"></div>
                                     <div style=\"margin-bottom:10px;\"><input required name=\"nome\" type=\"text\" placeholder=\"Nome e Cognome\" style=\"width:100%;padding:8px;margin-bottom:6px;border-radius:5px;border:1px solid #ccc;\"></div>
                                     <div style=\"margin-bottom:10px;\"><input required name=\"email\" type=\"email\" placeholder=\"Email\" style=\"width:100%;padding:8px;margin-bottom:6px;border-radius:5px;border:1px solid #ccc;\"></div>
                                     <div style=\"margin-bottom:10px;\"><input required name=\"telefono\" type=\"tel\" placeholder=\"Telefono\" style=\"width:100%;padding:8px;margin-bottom:6px;border-radius:5px;border:1px solid #ccc;\"></div>
