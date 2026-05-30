@@ -1340,6 +1340,11 @@ document.addEventListener('DOMContentLoaded', function() {
             })
           });
           if (response.ok) {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({ event: 'contatto_inviato' });
+            if (typeof gtag === 'function') {
+              gtag('event', 'conversion', { 'send_to': 'AW-17941172028/OvpCCP_1jJQcELyegutC' });
+            }
             modalBody.innerHTML = `<div style="text-align:center;padding:32px 0;><h2 style="color:#2d7a46;">Richiesta inviata!</h2><p>Grazie per aver richiesto il preventivo.<br>Ti ricontatteremo al più presto.</p><button id="closePrenotaModal2" style="margin-top:18px;background:#2d7a46;color:#fff;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;">Chiudi</button></div>`;
             document.getElementById('closePrenotaModal2').onclick = () => {
               modal.style.display = 'none';
