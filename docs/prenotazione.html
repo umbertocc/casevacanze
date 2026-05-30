@@ -1426,13 +1426,6 @@ document.addEventListener('DOMContentLoaded', function() {
       // RIMOSSO: flatpickr per i campi data nella modale
       // Gestione submit form
       document.getElementById('prenotaForm').onsubmit = async function(ev) {
-        // Evento Analytics form_submit
-        if (window.gtag) {
-          gtag('event', 'form_submit', {
-            'event_category': 'Preventivo',
-            'event_label': casaNome
-          });
-        }
         ev.preventDefault();
         const form = ev.target;
         const arrivo = form.arrivo.value.trim();
@@ -1510,7 +1503,9 @@ document.addEventListener('DOMContentLoaded', function() {
                   if(window.gtag) {
                     gtag('event', 'search', {
                       'event_category': 'Filtro Prenotazione',
-                      'event_label': `Check-in: ${checkin} | Check-out: ${checkout}`
+                      'event_label': `Check-in: ${checkin} | Check-out: ${checkout}`,
+                      'checkin': checkin,
+                      'checkout': checkout
                     });
                   }
                 });
