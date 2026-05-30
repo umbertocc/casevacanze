@@ -1252,12 +1252,10 @@ document.addEventListener('DOMContentLoaded', function() {
           <form id="prenotaForm">
             <input type="hidden" name="casa" value="Richiesta Generica">
             <div class="form-group">
-              <label for="arrivo">Data di Arrivo *</label>
-              <input type="date" id="arrivo" name="arrivo" required style="font-size:0.7em;">
+              <input type="date" id="arrivo" name="arrivo" required placeholder="Data di Arrivo *" style="font-size:0.7em;">
             </div>
             <div class="form-group">
-              <label for="partenza">Data di Partenza *</label>
-              <input type="date" id="partenza" name="partenza" required style="font-size:0.7em;">
+              <input type="date" id="partenza" name="partenza" required placeholder="Data di Partenza *" style="font-size:0.7em;">
             </div>
             <div style="margin-bottom:10px;"><input required name="nome" type="text" placeholder="Nome *" style="width:100%;padding:10px;margin-bottom:6px;border-radius:5px;border:1px solid #ccc;"></div>
             <div style="margin-bottom:10px;"><input required name="email" type="email" placeholder="Email *" style="width:100%;padding:10px;margin-bottom:6px;border-radius:5px;border:1px solid #ccc;"></div>
@@ -1411,12 +1409,10 @@ document.addEventListener('DOMContentLoaded', function() {
         <form id="prenotaForm">
           <input type="hidden" name="casa" value="${casaNome}">
           <div class="form-group">
-            <label for="arrivo">Data di Arrivo *</label>
-            <input type="date" id="arrivo" name="arrivo" required style="font-size:0.7em;">
+            <input type="date" id="arrivo" name="arrivo" required placeholder="Data di Arrivo" onfocus="this.type='date'" onblur="if(!this.value)this.type='text'" style="font-size:0.7em;" autocomplete="off">
           </div>
           <div class="form-group">
-            <label for="partenza">Data di Partenza *</label>
-            <input type="date" id="partenza" name="partenza" required style="font-size:0.7em;">
+            <input type="date" id="partenza" name="partenza" required placeholder="Data di Partenza" onfocus="this.type='date'" onblur="if(!this.value)this.type='text'" style="font-size:0.7em;" autocomplete="off">
           </div>
           <div style="margin-bottom:10px;"><input required name="nome" type="text" placeholder="Nome *" style="width:100%;padding:10px;margin-bottom:6px;border-radius:5px;border:1px solid #ccc;"></div>
           <div style="margin-bottom:10px;"><input required name="email" type="email" placeholder="Email *" style="width:100%;padding:10px;margin-bottom:6px;border-radius:5px;border:1px solid #ccc;"></div>
@@ -1495,3 +1491,22 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 <!-- MODALE PREVENTIVO FINE -->
+
+            <script>
+            // Tracciamento evento Analytics su click "Cerca"
+            document.addEventListener('DOMContentLoaded', function() {
+              var form = document.getElementById('date-filter-form');
+              if(form) {
+                form.addEventListener('submit', function() {
+                  var checkin = document.getElementById('checkin')?.value || '';
+                  var checkout = document.getElementById('checkout')?.value || '';
+                  if(window.gtag) {
+                    gtag('event', 'search', {
+                      'event_category': 'Filtro Prenotazione',
+                      'event_label': `Check-in: ${checkin} | Check-out: ${checkout}`
+                    });
+                  }
+                });
+              }
+            });
+            </script>
