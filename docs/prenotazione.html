@@ -1210,7 +1210,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             body: data
           });
           if (resp.ok) {
-            gtag('event', 'conversion', {'send_to': 'AW-17941172028/OvpCCP_1jJQcELyegutC'});
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({ event: 'contatto_inviato' });
+            if (typeof gtag === 'function') {
+              gtag('event', 'conversion', { 'send_to': 'AW-17941172028/OvpCCP_1jJQcELyegutC' });
+            }
             success.style.display = 'block';
             success.scrollIntoView({ behavior: 'smooth', block: 'center' });
             form.reset();
