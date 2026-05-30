@@ -1426,6 +1426,13 @@ document.addEventListener('DOMContentLoaded', function() {
       // RIMOSSO: flatpickr per i campi data nella modale
       // Gestione submit form
       document.getElementById('prenotaForm').onsubmit = async function(ev) {
+        // Evento Analytics form_submit
+        if (window.gtag) {
+          gtag('event', 'form_submit', {
+            'event_category': 'Preventivo',
+            'event_label': casaNome
+          });
+        }
         ev.preventDefault();
         const form = ev.target;
         const arrivo = form.arrivo.value.trim();
