@@ -686,12 +686,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         #prenota-modal-content input[type="email"],
         #prenota-modal-content input[type="tel"],
         #prenota-modal-content input[type="number"],
-        #prenota-modal-content input[type="date"],
         #prenota-modal-content textarea,
         #prenota-modal-content select {
           width: 100%;
-          padding: 16px 14px;
-          font-size: 1.18em;
+          padding: 10px 12px;
+          font-size: 1.13em;
           border-radius: 8px;
           border: 2px solid #b7e0c7;
           margin-bottom: 10px;
@@ -699,6 +698,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           box-sizing: border-box;
           background: #f8fcfa;
           transition: border-color 0.18s, box-shadow 0.18s;
+        }
+        #prenota-modal-content input[type="date"] {
+          width: 70%;
+          min-width: 180px;
+          max-width: 320px;
+          display: block;
         }
         #prenota-modal-content input[type="text"]:focus,
         #prenota-modal-content input[type="email"]:focus,
