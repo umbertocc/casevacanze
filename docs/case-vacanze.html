@@ -679,6 +679,52 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 
   document.addEventListener('DOMContentLoaded', function() {
+      // Stile per input grandi nella modale preventivo
+      const styleInputs = document.createElement('style');
+      styleInputs.innerHTML = `
+        #prenota-modal-content input[type="text"],
+        #prenota-modal-content input[type="email"],
+        #prenota-modal-content input[type="tel"],
+        #prenota-modal-content input[type="number"],
+        #prenota-modal-content input[type="date"],
+        #prenota-modal-content textarea,
+        #prenota-modal-content select {
+          width: 100%;
+          padding: 16px 14px;
+          font-size: 1.18em;
+          border-radius: 8px;
+          border: 2px solid #b7e0c7;
+          margin-bottom: 10px;
+          font-family: inherit;
+          box-sizing: border-box;
+          background: #f8fcfa;
+          transition: border-color 0.18s, box-shadow 0.18s;
+        }
+        #prenota-modal-content input[type="text"]:focus,
+        #prenota-modal-content input[type="email"]:focus,
+        #prenota-modal-content input[type="tel"]:focus,
+        #prenota-modal-content input[type="number"]:focus,
+        #prenota-modal-content input[type="date"]:focus,
+        #prenota-modal-content textarea:focus,
+        #prenota-modal-content select:focus {
+          border-color: #2d7a46;
+          outline: none;
+          box-shadow: 0 0 0 2px #b7e0c7;
+        }
+        #prenota-modal-content textarea {
+          min-height: 80px;
+          resize: vertical;
+        }
+        @media (max-width: 700px) {
+          #prenota-modal-content input,
+          #prenota-modal-content textarea,
+          #prenota-modal-content select {
+            font-size: 1.05em;
+            padding: 13px 10px;
+          }
+        }
+      `;
+      document.head.appendChild(styleInputs);
     const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
     dropdownToggles.forEach(function(toggle) {
       toggle.addEventListener('click', function(e) {
@@ -720,27 +766,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <header style="text-align:center; margin-bottom: 50px;">
       <h1>Case Vacanza e Appartamenti in affitto a Torre Pali, Salento</h1>
       <p class="tagline">Appartamenti a pochi passi dalla spiaggia di Torre Pali. Comfort, relax e accoglienza per famiglie, coppie e amici.</p>
-          <!-- FILTRO DATE INIZIO -->
-          <!-- <div id="date-filter-container" style="margin: 28px 0 0 0;">
-            <div style="display:flex; justify-content:center; width:100%;">
-              <button id="show-date-filter" class="btn" type="button" style="margin-bottom: 12px; margin-left:auto; margin-right:auto; display:block; min-width:180px;">🔍 Filtra per date</button>
-            </div>
-            <form id="date-filter-form" style="display:none;" onsubmit="return false;">
-              <div class="date-filter-group">
-                <div style="position:relative;">
-                  <label for="checkin" class="date-filter-label">Check-in:</label>
-                  <input type="text" id="checkin" name="checkin" class="date-filter-input" placeholder="Seleziona data" autocomplete="off">
-                  <span class="date-filter-icon">📅</span>
-                </div>
-                <div style="position:relative;">
-                  <label for="checkout" class="date-filter-label" style="margin-left:10px;">Check-out:</label>
-                  <input type="text" id="checkout" name="checkout" class="date-filter-input" placeholder="Seleziona data" autocomplete="off">
-                  <span class="date-filter-icon">📅</span>
-                </div>
-                <button type="submit" class="btn" style="margin-left:16px;">Cerca</button>
-              </div>
-            </form>
-          </div> -->
           <script>
           // Filtro date collegato alle case vacanza, stile e UX come prenotazione.html
           document.addEventListener('DOMContentLoaded', function() {
@@ -1313,11 +1338,31 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalDiv = document.createElement('div');
     modalDiv.id = 'prenota-modal';
     modalDiv.style = 'display:none;position:fixed;z-index:10000;left:0;top:0;width:100vw;height:100vh;background:rgba(0,0,0,0.35);align-items:center;justify-content:center;';
-    modalDiv.innerHTML = `<div id=\"prenota-modal-content\" style=\"background:#fff;padding:32px 24px 24px 24px;max-width:420px;width:95vw;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.18);position:relative;\">\n      <button id=\"closePrenotaModal\" style=\"position:absolute;top:10px;right:14px;font-size:1.5em;background:none;border:none;cursor:pointer;\">&times;</button>\n      <div id=\"prenota-modal-body\"></div>\n    </div>`;
+    modalDiv.innerHTML = `<div id=\"prenota-modal-content\" style=\"background:#fff;padding:32px 24px 24px 24px;max-width:520px;width:98vw;height:98vh;max-height:98vh;min-height:420px;display:flex;flex-direction:column;justify-content:flex-start;overflow-y:auto;border-radius:18px;box-shadow:0 8px 32px rgba(0,0,0,0.18);position:relative;\">\n      <button id=\"closePrenotaModal\" style=\"position:absolute;top:10px;right:14px;font-size:1.5em;background:none;border:none;cursor:pointer;z-index:10;\">&times;</button>\n      <div id=\"prenota-modal-body\" style=\"flex:1 1 auto;overflow-y:auto;\"></div>\n    </div>`;
     document.body.appendChild(modalDiv);
     document.getElementById('closePrenotaModal').onclick = () => {
       modalDiv.style.display = 'none';
     };
+    // Responsive: modale sempre alta
+    const style = document.createElement('style');
+    style.innerHTML = `
+      #prenota-modal-content {
+        height: 98vh !important;
+        max-height: 98vh !important;
+        min-height: 420px;
+      }
+      @media (max-width: 700px) {
+        #prenota-modal-content {
+          width: 99vw !important;
+          max-width: 99vw !important;
+          height: 99vh !important;
+          max-height: 99vh !important;
+          min-height: 320px;
+          border-radius: 0 !important;
+        }
+      }
+    `;
+    document.head.appendChild(style);
   }
   // Event delegation per tutti i bottoni .prenota-btn
   document.body.addEventListener('click', function(e) {
@@ -1339,21 +1384,31 @@ document.addEventListener('DOMContentLoaded', function() {
           <input type="hidden" name="casa" value="${casaNome}">
           <div class="form-group">
             <label for="arrivo">Data di Arrivo *</label>
-            <input type="date" id="arrivo" name="arrivo" required style="font-size:0.7em;">
+            <input type="date" id="arrivo" name="arrivo" required placeholder="Data check-in">
           </div>
           <div class="form-group">
             <label for="partenza">Data di Partenza *</label>
-            <input type="date" id="partenza" name="partenza" required style="font-size:0.7em;">
+            <input type="date" id="partenza" name="partenza" required placeholder="Data check-out">
           </div>
-          <div style="margin-bottom:10px;"><input required name="nome" type="text" placeholder="Nome *" style="width:100%;padding:10px;margin-bottom:6px;border-radius:5px;border:1px solid #ccc;"></div>
-          <div style="margin-bottom:10px;"><input required name="email" type="email" placeholder="Email *" style="width:100%;padding:10px;margin-bottom:6px;border-radius:5px;border:1px solid #ccc;"></div>
-          <div style="margin-bottom:10px;"><input name="telefono" type="tel" placeholder="Telefono" style="width:100%;padding:10px;margin-bottom:6px;border-radius:5px;border:1px solid #ccc;"></div>
-          <div style="margin-bottom:10px;"><input required name="persone" type="number" min="1" max="20" placeholder="Numero di Persone *" style="width:100%;padding:10px;margin-bottom:6px;border-radius:5px;border:1px solid #ccc;"></div>
-          <div style="margin-bottom:10px;"><textarea name="messaggio" placeholder="Messaggio (opzionale)" style="width:100%;padding:10px;border-radius:5px;border:1px solid #ccc;min-height:60px;"></textarea></div>
-          <button type="submit" style="background:#2d7a46;color:#fff;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;">Invia richiesta</button>
+          <div style="margin-bottom:10px;"><input required name="nome" type="text" placeholder="Nome *"></div>
+          <div style="margin-bottom:10px;"><input required name="email" type="email" placeholder="Email *"></div>
+          <div style="margin-bottom:10px;"><input name="telefono" type="tel" placeholder="Telefono"></div>
+          <div style="margin-bottom:10px;"><input required name="persone" type="number" min="1" max="20" placeholder="Numero di Persone *"></div>
+          <div style="margin-bottom:10px;"><textarea name="messaggio" placeholder="Messaggio (opzionale)"></textarea></div>
+          <div style="display:flex;gap:12px;justify-content:flex-end;margin-top:18px;">
+            <button type="button" id="annullaPrenotaModal" style="background:#e0e0e0;color:#2d7a46;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;">Annulla</button>
+            <button type="submit" style="background:#2d7a46;color:#fff;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;">Invia richiesta</button>
+          </div>
         </form>
       `;
       modal.style.display = 'flex';
+            // Tasto annulla chiude la modale
+            setTimeout(function() {
+              var annullaBtn = document.getElementById('annullaPrenotaModal');
+              if (annullaBtn) {
+                annullaBtn.onclick = function() { modal.style.display = 'none'; };
+              }
+            }, 50);
       // Gestione submit form
       document.getElementById('prenotaForm').onsubmit = async function(ev) {
         ev.preventDefault();
@@ -1365,6 +1420,11 @@ document.addEventListener('DOMContentLoaded', function() {
           return;
         }
         modalBody.innerHTML = `<div style="text-align:center;padding:32px 0;><div style="border:4px solid #f3f3f3;border-top:4px solid #188841;border-radius:50%;width:32px;height:32px;animation:spin 1s linear infinite;margin:0 auto 18px auto;"></div><span style="color:#188841;font-weight:500;">Invio in corso...</span></div>`;
+                // Tasto annulla anche durante invio
+                setTimeout(function() {
+                  var closeBtn = document.getElementById('closePrenotaModal');
+                  if (closeBtn) closeBtn.onclick = function() { modal.style.display = 'none'; };
+                }, 50);
         const nome = form.nome.value;
         const email = form.email.value;
         const telefono = form.telefono.value;
@@ -1400,11 +1460,21 @@ document.addEventListener('DOMContentLoaded', function() {
               gtag('event', 'conversion', { 'send_to': 'AW-17941172028/OvpCCP_1jJQcELyegutC' });
             }
             modalBody.innerHTML = `<div style="text-align:center;padding:32px 0;><h2 style="color:#2d7a46;">Richiesta inviata!</h2><p>Grazie per aver richiesto il preventivo.<br>Ti ricontatteremo al più presto.</p><button id="closePrenotaModal2" style="margin-top:18px;background:#2d7a46;color:#fff;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;">Chiudi</button></div>`;
+                    // Tasto annulla anche dopo invio
+                    setTimeout(function() {
+                      var closeBtn = document.getElementById('closePrenotaModal2');
+                      if (closeBtn) closeBtn.onclick = function() { modal.style.display = 'none'; };
+                    }, 50);
             document.getElementById('closePrenotaModal2').onclick = () => {
               modal.style.display = 'none';
             };
           } else {
             modalBody.innerHTML = `<div style="text-align:center;padding:32px 0;><h2 style="color:#b91c1c;">Errore nell'invio</h2><p>Si è verificato un errore nell'invio della richiesta.<br>Riprova o contattaci via WhatsApp.</p><button id="closePrenotaModal2" style="margin-top:18px;background:#b91c1c;color:#fff;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;">Chiudi</button></div>`;
+                    // Tasto annulla anche dopo errore
+                    setTimeout(function() {
+                      var closeBtn = document.getElementById('closePrenotaModal2');
+                      if (closeBtn) closeBtn.onclick = function() { modal.style.display = 'none'; };
+                    }, 50);
             document.getElementById('closePrenotaModal2').onclick = () => {
               modal.style.display = 'none';
             };
