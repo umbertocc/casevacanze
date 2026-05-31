@@ -1106,11 +1106,65 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     });
     </script>
 <div id="cta-buttons" style="text-align:center; margin-top: 50px; opacity:0; pointer-events:none; transition:opacity 0.5s;">
-  <!-- <a href="prenotazione" class="btn">✉️ Disponibilità e prezzi</a> -->
+  <style>
+    .cta-btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      justify-content: center;
+      margin-bottom: 22px;
+      margin-top: 16px;
+    }
+    .cta-btn-row .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 1.18em;
+      font-weight: 600;
+      padding: 16px 32px;
+      border-radius: 32px;
+      background: linear-gradient(90deg, #2d7a46 0%, #1abc9c 100%);
+      color: #fff;
+      box-shadow: 0 4px 18px rgba(34,87,122,0.13), 0 1.5px 6px rgba(34,87,122,0.09);
+      border: none;
+      transition: background 0.18s, box-shadow 0.18s, transform 0.13s;
+      cursor: pointer;
+      text-decoration: none;
+      outline: none;
+      min-width: 220px;
+      justify-content: center;
+    }
+    .cta-btn-row .btn:hover, .cta-btn-row .btn:focus {
+      background: linear-gradient(90deg, #188841 0%, #16a085 100%);
+      box-shadow: 0 6px 24px rgba(34,87,122,0.18), 0 2px 8px rgba(34,87,122,0.13);
+      transform: translateY(-2px) scale(1.03);
+      color: #fff;
+      text-decoration: none;
+    }
+    .cta-btn-row .btn .cta-icon {
+      font-size: 1.45em;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+    }
+    @media (max-width: 700px) {
+      .cta-btn-row {
+        flex-direction: column;
+        gap: 14px;
+        align-items: stretch;
+      }
+      .cta-btn-row .btn {
+        width: 100%;
+        min-width: 0;
+        font-size: 1.08em;
+        padding: 14px 0;
+      }
+    }
+  </style>
   <div class="cta-btn-row">
-    <button type="button" class="btn prenota-btn">✉️ Richiedi un preventivo</button>
-    <a href="prenotazione" class="btn">🔍 Cerca disponibilità</a>
-    <a href="tel:+393886587080" class="btn" style="font-size:1.25em; position:relative; z-index:1;" onclick="gtag('event','click_telefono'); gtag_report_conversion()">📞 Chiama per info</a>
+    <a href="#" class="btn prenota-btn" aria-label="Richiedi un preventivo" tabindex="0"><span class="cta-icon">✉️</span> Richiedi un preventivo</a>
+    <a href="prenotazione" class="btn" aria-label="Cerca disponibilità" tabindex="0"><span class="cta-icon">🔍</span> Cerca disponibilità</a>
+    <a href="tel:+393886587080" class="btn" aria-label="Chiama per info" tabindex="0" onclick="gtag('event','click_telefono'); gtag_report_conversion()"><span class="cta-icon">📞</span> Chiama per info</a>
   </div>
  
 </div>
