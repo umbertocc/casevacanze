@@ -289,6 +289,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       margin-bottom: 12px;
       /* Evidenziato se richiesto */
     }
+    .property-compliance {
+      margin: -2px 0 12px 0;
+      font-size: 0.86em;
+      color: #23587a;
+      line-height: 1.45;
+      background: #f3fbff;
+      border: 1px solid #d4eef9;
+      border-radius: 8px;
+      padding: 6px 10px;
+      word-break: break-word;
+    }
+    .property-compliance strong {
+      color: #184d70;
+      font-weight: 700;
+    }
     .property-subtitle-evidenziata {
       background: linear-gradient(90deg, #7a222200 60%, #38a3d100 100%);
       color: green;
@@ -1109,6 +1124,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
           const waText = encodeURIComponent(`Ciao! Vorrei informazioni per ${house.nome} a Torre Pali.`);
 
+          const complianceByLink = {
+            'casa-bellavista-1': { cin: 'IT075066C200071293', cis: 'LE07506691000031092' },
+            'casa-bellavista-2': { cin: 'IT075066C200071298', cis: 'LE07506691000031096' },
+            'casa-giorgio-4': { cin: 'IT075066C200123457', cis: 'LE07506691000075733' },
+            'casa-giorgio-6': { cin: 'IT075066C200123459', cis: 'LE07506691000075734' },
+            'respiro-di-mare': { cin: 'IT075066C200123490', cis: 'LE07506691000075753' }
+          };
+          const detailLink = (house.link_dettaglio || '').toLowerCase();
+          let fallbackCompliance = null;
+          Object.keys(complianceByLink).some(function(key) {
+            if (detailLink.indexOf(key) !== -1) {
+              fallbackCompliance = complianceByLink[key];
+              return true;
+            }
+            return false;
+          });
+          const cinValue = house.cin || (fallbackCompliance && fallbackCompliance.cin) || '';
+          const cisValue = house.cis || (fallbackCompliance && fallbackCompliance.cis) || '';
+          const complianceHtml = (cinValue || cisValue)
+            ? `<p class="property-compliance"><strong>CIN:</strong> ${cinValue || '-'}<br><strong>CIS:</strong> ${cisValue || '-'}</p>`
+            : '';
+
           // Galleria immagini per ogni casa (come pagina prenotazione)
           let galleryImages = [];
           let folder = '';
@@ -1161,6 +1198,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="property-info">
               <h3 class="property-title">${house.nome}</h3>
               <p class="property-subtitle">${house.sottotitolo || ''}</p>
+              ${complianceHtml}
               <div class="property-features">
                 ${(house.caratteristiche ? house.caratteristiche.split(',').map(f => `<span class='feature-badge'>${f.trim()}</span>`).join(' ') : '')}
               </div>
