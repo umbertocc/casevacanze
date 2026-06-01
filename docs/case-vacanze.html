@@ -1109,14 +1109,54 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
           const waText = encodeURIComponent(`Ciao! Vorrei informazioni per ${house.nome} a Torre Pali.`);
 
+          // Galleria immagini per ogni casa (come pagina prenotazione)
+          let galleryImages = [];
+          let folder = '';
+          const idToFolder = {
+            1: 'img/casa-bella-vista',
+            2: 'img/casa-giorgio',
+            3: 'img/casa-giorgio2',
+            4: 'img/casa-bella-vista1',
+            5: 'img/respirodimare'
+          };
+          folder = idToFolder[house.id];
+          if (folder) {
+            if (house.id == 1) {
+              galleryImages = ['prospetto-mobile.webp', 'giardino_1.webp', 'giardino_2.webp', 'soggiorno_2.webp', 'cucina.webp', 'prima_camera_1.webp', 'prima_camera_2.webp', 'prima_camera_3.webp', 'seconda_camera.webp', 'seconda_camera_2.webp', 'seconda_camera_5.webp', 'primo_bagno.webp', 'secondo_bagno.webp'];
+            } else if (house.id == 2) {
+              galleryImages = ['prospetto.webp', 'soggiorno.webp', 'cucina.webp', 'cortileinterno.webp', 'cortileinterno1.webp', 'camera.webp', 'camera2.webp', 'camera3.webp', 'camera4.webp', 'camera5.webp', 'camera6.webp', 'camera6.webp', 'bagno1.webp'];
+            } else if (house.id == 3) {
+              galleryImages = ['prospetto3.webp', 'prospetto_mare.webp', 'balcone.webp', 'soggiorno.webp', 'camera.webp', 'camera2.webp', 'camera3.webp', 'camera4.webp', 'camera5.webp', 'camera6.webp', 'bagno.webp', 'soggiorno.webp', 'soggiorno2.webp', 'bagno.webp'];
+            } else if (house.id == 4) {
+              galleryImages = ['prospetto.jpg', 'veranda.jpg', 'veranda2.jpg', 'balcone.jpg', 'cucina.jpg', 'camera.jpg', 'camera2.jpg', 'camera3.jpg', 'seconda-camera.jpg', 'secondacamera2.jpg', 'bagno.jpg'];
+            } else if (house.id == 5) {
+              galleryImages = ['prospetto.webp', 'soggiorno.webp', 'camera.webp', 'camera2.webp', 'camera3.webp', 'cucina.webp', 'bagno.webp', 'cucina.webp'];
+            }
+            galleryImages = galleryImages.map(img => `${folder}/${img}`);
+          } else {
+            galleryImages = [house.immagine || 'img/default.webp'];
+          }
+
+          let galleryHtml = '';
+          if (galleryImages.length > 0) {
+            galleryHtml = `<div class="property-gallery">`;
+            galleryHtml += `<a data-fancybox="gallery-${idx}" href="${galleryImages[0]}" class="image-link-casa" style="display:block;position:relative;overflow:hidden;">` +
+              `<img src="${galleryImages[0]}" alt="${house.nome}" width="648" height="486" style="cursor:pointer;transition:transform 0.25s;display:block;width:100%;height:100%;object-fit:cover;">` +
+              `<span class="image-overlay-label">Vedi foto</span>` +
+            `</a>`;
+            if (galleryImages.length > 1) {
+              galleryImages.slice(1).forEach(img => {
+                galleryHtml += `<a data-fancybox="gallery-${idx}" href="${img}" style="display:none"></a>`;
+              });
+            }
+            galleryHtml += `</div>`;
+          }
+
           // Salva HTML della card per riuso nel filtro
           house._cardHtml = `
             <div class="availability-badge">${house.disponibile ? '✔️ Disponibile' : '❌ Non disponibile'}</div>
             <div class="property-image">
-              <a href="${house.link_dettaglio || '#'}" class="image-link-casa" style="display:block;position:relative;overflow:hidden;">
-                <img src="${house.immagine || 'img/default.webp'}" alt="${house.nome}" width="648" height="486" style="cursor:pointer;transition:transform 0.25s;display:block;width:100%;height:100%;object-fit:cover;">
-                <span class="image-overlay-label">Vedi dettagli</span>
-              </a>
+              ${galleryHtml}
             </div>
             <div class="property-info">
               <h3 class="property-title">${house.nome}</h3>
@@ -1133,6 +1173,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     : '<span style="color:#888">Nessun periodo disponibile</span>'}
                 </div>
                 <div class="periodi-cta-row">
+                  <a href="${house.link_dettaglio || '#'}" class="periodi-cta-btn" aria-label="Vedi la pagina di ${house.nome}">
+                    <span aria-hidden="true">🏠</span> Vedi casa
+                  </a>
                   <a href="#" class="periodi-cta-btn prenota-btn" data-casa="${house.nome}" aria-label="Richiedi preventivo per ${house.nome}">
                     <span aria-hidden="true">✉️</span> Richiedi preventivo
                   </a>
@@ -1183,6 +1226,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       observer.observe(grid, { childList: true, subtree: true });
     });
     </script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
 <div id="cta-buttons" style="text-align:center; margin-top: 50px; opacity:0; pointer-events:none; transition:opacity 0.5s;">
   <style>
     .cta-btn-row {
