@@ -1191,12 +1191,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
           // Salva HTML della card per riuso nel filtro
           house._cardHtml = `
-            <div class="availability-badge">${house.disponibile ? '✔️ Disponibile' : '❌ Non disponibile'}</div>
+            <h3 class="property-title">${house.nome}</h3>
             <div class="property-image">
               ${galleryHtml}
             </div>
             <div class="property-info">
-              <h3 class="property-title">${house.nome}</h3>
               <p class="property-subtitle">${house.sottotitolo || ''}</p>
               ${complianceHtml}
               <div class="property-features">
