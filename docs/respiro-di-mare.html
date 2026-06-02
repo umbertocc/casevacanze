@@ -943,7 +943,9 @@ document.addEventListener('DOMContentLoaded', function() {
       const start = parseIsoDate(p.checkIn);
       const end = parseIsoDate(p.checkOut);
       if (!start || !end) return;
-      for (let d = new Date(start); d < end; d.setDate(d.getDate() + 1)) {
+      const occupiedStart = new Date(start);
+      occupiedStart.setDate(occupiedStart.getDate() + 1);
+      for (let d = occupiedStart; d < end; d.setDate(d.getDate() + 1)) {
         booked[toKey(d)] = true;
       }
     });

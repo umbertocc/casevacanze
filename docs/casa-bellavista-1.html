@@ -524,8 +524,10 @@ document.addEventListener('DOMContentLoaded', function() {
       const start = parseIsoDate(p.checkIn);
       const end = parseIsoDate(p.checkOut);
       if (!start || !end) return;
-      // Giorno check-out considerato libero.
-      for (let d = new Date(start); d < end; d.setDate(d.getDate() + 1)) {
+      // Giorno check-in e check-out considerati liberi.
+      const occupiedStart = new Date(start);
+      occupiedStart.setDate(occupiedStart.getDate() + 1);
+      for (let d = occupiedStart; d < end; d.setDate(d.getDate() + 1)) {
         booked[toKey(d)] = true;
       }
     });
