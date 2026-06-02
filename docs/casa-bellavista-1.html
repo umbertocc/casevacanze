@@ -520,15 +520,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function buildBookedMap() {
     const booked = {};
+    const checkInDays = {};
+    const checkOutDays = {};
     prenotazioni.forEach(function(p) {
       const start = parseIsoDate(p.checkIn);
       const end = parseIsoDate(p.checkOut);
       if (!start || !end) return;
+      const checkInKey = toKey(start);
+      const checkOutKey = toKey(end);
+      checkInDays[checkInKey] = (checkInDays[checkInKey] || 0) + 1;
+      checkOutDays[checkOutKey] = (checkOutDays[checkOutKey] || 0) + 1;
       // Giorno check-in e check-out considerati liberi.
       const occupiedStart = new Date(start);
       occupiedStart.setDate(occupiedStart.getDate() + 1);
       for (let d = occupiedStart; d < end; d.setDate(d.getDate() + 1)) {
         booked[toKey(d)] = true;
+      }
+    });
+    Object.keys(checkInDays).forEach(function(dayKey) {
+      if (checkOutDays[dayKey]) {
+        booked[dayKey] = true;
       }
     });
     return booked;
