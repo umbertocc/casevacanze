@@ -881,11 +881,171 @@ L'appartamento dispone di <strong>area parcheggio antistante</strong>, comodo ac
  <section class="calendar-section" style="margin: 60px auto 30px auto; max-width: 900px; text-align: center;">
   <h2 style="color: #2c3e50; margin-bottom: 18px;">📅 Disponibilità Respiro di Mare</h2>
   <div style="font-size:1.13em; color:#22577a; margin-bottom:18px;">
-    I giorni senza eventi sono disponibili per la prenotazione.<br>
-    Contattaci per bloccare la tua data!
+    Disponibilità aggiornata in tempo reale dal nostro sistema prenotazioni.<br>
+    I giorni in rosso sono occupati.
   </div>
-  <iframe src="https://calendar.google.com/calendar/embed?src=4df7e14a6b7d5b5df6eca6421169e82c4b210134c7257bba74e5e119a84f03fb%40group.calendar.google.com&ctz=Europe%2FRome" style="border: 0; width: 100%; min-height: 600px; max-width: 800px; margin: auto;" frameborder="0" scrolling="no" allowfullscreen title="Disponibilità Respiro di Mare"></iframe>
+  <div id="internal-calendar-wrapper" style="max-width:820px;margin:0 auto;background:#fff;border:1px solid #e3e9f7;border-radius:14px;box-shadow:0 6px 22px rgba(34,87,122,0.08);padding:14px 10px;">
+    <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:10px;">
+      <button type="button" id="calendarPrevBtn" style="border:none;background:#22577a;color:#fff;border-radius:8px;padding:7px 12px;cursor:pointer;font-size:1.1em;line-height:1;">&#8249;</button>
+      <div id="calendarMonthLabel" style="min-width:150px;font-size:1.02em;font-weight:700;color:#22577a;"></div>
+      <button type="button" id="calendarNextBtn" style="border:none;background:#22577a;color:#fff;border-radius:8px;padding:7px 12px;cursor:pointer;font-size:1.1em;line-height:1;">&#8250;</button>
+    </div>
+    <div style="overflow-x:auto;padding-bottom:2px;">
+      <table id="availabilityCalendar" style="width:100%;border-collapse:collapse;table-layout:fixed;"></table>
+    </div>
+    <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:10px;font-size:0.88em;color:#3c4b5f;">
+      <span><span style="display:inline-block;width:12px;height:12px;background:#fff;border:1px solid #d7e5f5;border-radius:3px;vertical-align:middle;margin-right:5px;"></span>Disponibile</span>
+      <span><span style="display:inline-block;width:12px;height:12px;background:#fde8e8;border:1px solid #b91c1c;border-radius:3px;vertical-align:middle;margin-right:5px;"></span>Occupato</span>
+      <span><span style="display:inline-block;width:12px;height:12px;background:#fff;border:2px solid #22577a;border-radius:3px;vertical-align:middle;margin-right:5px;"></span>Oggi</span>
+    </div>
+    <div id="availabilityCalendarMessage" style="margin-top:12px;color:#22577a;font-size:0.95em;"></div>
+  </div>
 </section> 
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const API_BASE = 'https://demo-mail-993653817397.europe-west8.run.app';
+  const CASA_ID = 5;
+  const monthLabel = document.getElementById('calendarMonthLabel');
+  const table = document.getElementById('availabilityCalendar');
+  const msg = document.getElementById('availabilityCalendarMessage');
+  const prevBtn = document.getElementById('calendarPrevBtn');
+  const nextBtn = document.getElementById('calendarNextBtn');
+
+  if (!monthLabel || !table || !msg || !prevBtn || !nextBtn) return;
+
+  let currentMonth = new Date().getMonth();
+  let currentYear = new Date().getFullYear();
+  let prenotazioni = [];
+
+  function pad(v) {
+    return String(v).padStart(2, '0');
+  }
+
+  function toKey(d) {
+    return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+  }
+
+  function parseIsoDate(isoDate) {
+    if (!isoDate || typeof isoDate !== 'string') return null;
+    const parts = isoDate.split('-');
+    if (parts.length !== 3) return null;
+    const y = parseInt(parts[0], 10);
+    const m = parseInt(parts[1], 10) - 1;
+    const d = parseInt(parts[2], 10);
+    if (Number.isNaN(y) || Number.isNaN(m) || Number.isNaN(d)) return null;
+    return new Date(y, m, d);
+  }
+
+  function buildBookedMap() {
+    const booked = {};
+    prenotazioni.forEach(function(p) {
+      const start = parseIsoDate(p.checkIn);
+      const end = parseIsoDate(p.checkOut);
+      if (!start || !end) return;
+      for (let d = new Date(start); d < end; d.setDate(d.getDate() + 1)) {
+        booked[toKey(d)] = true;
+      }
+    });
+    return booked;
+  }
+
+  function renderCalendar() {
+    const isMobile = window.matchMedia('(max-width: 640px)').matches;
+    const monthNames = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
+    const dayLabels = isMobile ? ['Lu','Ma','Me','Gi','Ve','Sa','Do'] : ['Lun','Mar','Mer','Gio','Ven','Sab','Dom'];
+    monthLabel.textContent = monthNames[currentMonth] + ' ' + currentYear;
+    monthLabel.style.fontSize = isMobile ? '0.94em' : '1.02em';
+    monthLabel.style.minWidth = isMobile ? '128px' : '150px';
+    table.style.minWidth = isMobile ? '0' : '640px';
+
+    const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+    const startOffset = firstDay === 0 ? 6 : firstDay - 1;
+    const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+    const booked = buildBookedMap();
+    const today = new Date();
+
+    let html = '<thead><tr>';
+    dayLabels.forEach(function(d) {
+      html += '<th style="padding:' + (isMobile ? '7px 2px' : '8px 6px') + ';background:#f0f6fb;border:1px solid #dbe7f2;color:#2f4258;font-size:' + (isMobile ? '0.73em' : '0.9em') + ';">' + d + '</th>';
+    });
+    html += '</tr></thead><tbody><tr>';
+
+    let col = 0;
+    for (let i = 0; i < startOffset; i++) {
+      html += '<td style="border:1px solid #eef3f8;background:#fafcff;height:' + (isMobile ? '42px' : '64px') + ';"></td>';
+      col++;
+    }
+
+    for (let day = 1; day <= daysInMonth; day++) {
+      const d = new Date(currentYear, currentMonth, day);
+      const key = toKey(d);
+      const isBooked = !!booked[key];
+      const isToday = d.getFullYear() === today.getFullYear() && d.getMonth() === today.getMonth() && d.getDate() === today.getDate();
+
+      let style = 'border:1px solid #e4edf6;height:' + (isMobile ? '42px' : '64px') + ';text-align:center;vertical-align:middle;font-weight:600;color:#27415a;background:#fff;font-size:' + (isMobile ? '0.82em' : '0.98em') + ';';
+      if (isBooked) {
+        style += 'background:#fde8e8;color:#b91c1c;';
+      }
+      if (isToday) {
+        style += 'box-shadow:inset 0 0 0 2px #22577a;';
+      }
+      html += '<td style="' + style + '">' + day + '</td>';
+
+      col++;
+      if (col % 7 === 0 && day < daysInMonth) {
+        html += '</tr><tr>';
+      }
+    }
+
+    while (col % 7 !== 0) {
+      html += '<td style="border:1px solid #eef3f8;background:#fafcff;height:' + (isMobile ? '42px' : '64px') + ';"></td>';
+      col++;
+    }
+    html += '</tr></tbody>';
+    table.innerHTML = html;
+  }
+
+  prevBtn.addEventListener('click', function() {
+    currentMonth--;
+    if (currentMonth < 0) {
+      currentMonth = 11;
+      currentYear--;
+    }
+    renderCalendar();
+  });
+
+  nextBtn.addEventListener('click', function() {
+    currentMonth++;
+    if (currentMonth > 11) {
+      currentMonth = 0;
+      currentYear++;
+    }
+    renderCalendar();
+  });
+
+  window.addEventListener('resize', function() {
+    renderCalendar();
+  });
+
+  msg.textContent = 'Caricamento disponibilità...';
+
+  fetch(API_BASE + '/api/prenotazioni/casa/' + CASA_ID)
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      prenotazioni = Array.isArray(data) ? data : [];
+      renderCalendar();
+      msg.textContent = prenotazioni.length
+        ? 'Date occupate sincronizzate con il gestionale.'
+        : 'Al momento non risultano prenotazioni registrate.';
+    })
+    .catch(function() {
+      prenotazioni = [];
+      renderCalendar();
+      msg.textContent = 'Impossibile caricare la disponibilità in tempo reale. Riprova tra poco o contattaci.';
+    });
+});
+</script>
 <div class="description" style="margin-top: 30px;">
 <h3 style="color: #2c3e50; margin-bottom: 15px;">🌊 Perché Scegliere Respiro di Mare?</h3>
 <ul style="margin-left: 20px; line-height: 2;">
