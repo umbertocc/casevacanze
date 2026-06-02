@@ -479,7 +479,10 @@
                 if (!p.checkIn || !p.checkOut) return;
                 const start = new Date(p.checkIn);
                 const end = new Date(p.checkOut);
-                for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+                // Giorno di check-in e check-out considerati liberi.
+                const occupiedStart = new Date(start);
+                occupiedStart.setDate(occupiedStart.getDate() + 1);
+                for (let d = occupiedStart; d < end; d.setDate(d.getDate() + 1)) {
                     const key = d.toISOString().slice(0, 10);
                     bookedDays[key] = p;
                 }
