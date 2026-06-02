@@ -88,11 +88,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     border-radius: 8px;
     z-index: 5;
   }
-  .cin-cis {
+  .highlight-box.cin-cis {
     display: flex;
     align-items: center;
     gap: 14px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+  }
+  .highlight-box strong {
+    color: #856404;
   }
   @media (max-width: 700px) {
     .lightbox-content {
@@ -118,7 +121,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
   }
   @media (max-width: 768px) {
-    .cin-cis {
+    .highlight-box.cin-cis {
       flex-direction: column;
       align-items: flex-start;
       gap: 6px;
@@ -379,14 +382,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </picture>
 <div class="dots" id="dots"></div>
 </div>
-<div class="content" style="padding: 0px;">
-<div class="location" style="padding: 15px;">📍 Torre Pali, Marina di Salve (Sud Salento)</div>
+<div class="content">
+<div class="location">📍 Torre Pali, Marina di Salve (Sud Salento)</div>
 <div class="highlight-box cin-cis">
 <span><strong>CIN:</strong> IT075066C200071293</span>
 <span><strong>CIS:</strong> LE07506691000031092</span>
 </div>
 <div class="info-grid">
-<div class="info-section" style="padding: 15px;">
+<div class="info-section">
 <h2>📊 Caratteristiche</h2>
 <div class="features">
 <span class="feature">2 Camere</span>
