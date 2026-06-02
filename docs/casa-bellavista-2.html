@@ -6,7 +6,7 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-5FP79B56');</script>
-<!-- End Google Tag Manager -->                                                             <script type="text/javascript" charset="UTF-8" src="//cdn.cookie-script.com/s/9087d0590c9fc1b6da95bcf76a164ed6.js"></script>
+<!-- End Google Tag Manager -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow">
@@ -986,6 +986,99 @@ Scopri anche <a href="/case-vacanze" style="color: #22577a; font-weight: 600;">l
 
 
 <script src="script-casa-bellavista-2.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const galleryEl = document.getElementById('gallery');
+  const lightboxEl = document.getElementById('lightbox');
+  if (!galleryEl || typeof window.changeImg !== 'function') return;
+
+  function getVisibleImages() {
+    return Array.from(galleryEl.querySelectorAll('img')).filter(function (img) {
+      return img && img.offsetParent !== null;
+    });
+  }
+
+  function getCurrentIndex() {
+    const currentPhotoEl = document.getElementById('current-photo');
+    const idx = currentPhotoEl ? parseInt(currentPhotoEl.textContent, 10) - 1 : 0;
+    return Number.isFinite(idx) && idx >= 0 ? idx : 0;
+  }
+
+  function preloadAroundCurrent() {
+    const images = getVisibleImages();
+    if (images.length < 2) return;
+    const current = getCurrentIndex();
+    const next = (current + 1) % images.length;
+    const prev = (current - 1 + images.length) % images.length;
+
+    [next, prev].forEach(function (i) {
+      const src = images[i] && images[i].src;
+      if (src) {
+        const pre = new Image();
+        pre.src = src;
+      }
+    });
+  }
+
+  function addSwipeSupport(target, onSwipeLeft, onSwipeRight) {
+    if (!target) return;
+    let startX = 0;
+    let startY = 0;
+
+    target.addEventListener('touchstart', function (e) {
+      const t = e.changedTouches && e.changedTouches[0];
+      if (!t) return;
+      startX = t.clientX;
+      startY = t.clientY;
+    }, { passive: true });
+
+    target.addEventListener('touchend', function (e) {
+      const t = e.changedTouches && e.changedTouches[0];
+      if (!t) return;
+      const dx = t.clientX - startX;
+      const dy = t.clientY - startY;
+      if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
+
+      if (dx < 0) {
+        onSwipeLeft();
+      } else {
+        onSwipeRight();
+      }
+
+      requestAnimationFrame(preloadAroundCurrent);
+    }, { passive: true });
+  }
+
+  addSwipeSupport(galleryEl, function () {
+    window.changeImg(1);
+  }, function () {
+    window.changeImg(-1);
+  });
+
+  addSwipeSupport(lightboxEl, function () {
+    if (lightboxEl.classList.contains('active') && typeof window.changeLightboxImg === 'function') {
+      window.changeLightboxImg(1);
+    }
+  }, function () {
+    if (lightboxEl.classList.contains('active') && typeof window.changeLightboxImg === 'function') {
+      window.changeLightboxImg(-1);
+    }
+  });
+
+  galleryEl.addEventListener('click', function () {
+    requestAnimationFrame(preloadAroundCurrent);
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+      requestAnimationFrame(preloadAroundCurrent);
+    }
+  });
+
+  preloadAroundCurrent();
+});
+</script>
 
 </body>
 </html>

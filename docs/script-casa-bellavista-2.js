@@ -119,12 +119,32 @@ document.addEventListener('keydown', (e) => {
 // Mostra prima immagine
 if (filteredImages.length) showImg(0);
 
-// Auto-rotate ogni 5 secondi
+// Auto-rotate: pausa temporanea dopo interazione utente
+let lastInteractionTs = Date.now();
+const ROTATE_INTERVAL_MS = 5000;
+const PAUSE_AFTER_INTERACTION_MS = 12000;
+
+function markGalleryInteraction() {
+  lastInteractionTs = Date.now();
+}
+
+if (gallery) {
+  gallery.addEventListener('click', markGalleryInteraction);
+  gallery.addEventListener('touchstart', markGalleryInteraction, { passive: true });
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowRight' || e.key === 'Escape') {
+    markGalleryInteraction();
+  }
+});
+
 let autoRotate = setInterval(() => {
-  if (!lightbox.classList.contains('active') && filteredImages.length > 1) {
+  const isRecentlyInteracted = (Date.now() - lastInteractionTs) < PAUSE_AFTER_INTERACTION_MS;
+  if (!isRecentlyInteracted && !lightbox.classList.contains('active') && filteredImages.length > 1) {
     showImg((currentImg + 1) % filteredImages.length);
   }
-}, 5000);
+}, ROTATE_INTERVAL_MS);
 
 // Menu Hamburger
 function toggleMenu() {
