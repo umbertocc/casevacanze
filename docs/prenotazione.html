@@ -1,141 +1,5 @@
-<!-- Flatpickr CSS per date simili a prenotazione.html -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-  <style>
-    .form-group label {
-        font-weight: 700;
-        color: #183153;
-        margin-bottom: 10px;
-        display: block;
-        letter-spacing: 0.02em;
-        font-size: 1.08em;
-        background: none;
-        position: relative;
-        z-index: 2;
-    }
-    .form-group .date-input {
-      width: 100%;
-      max-width: 420px;
-      padding: 14px 44px 14px 18px;
-      border: 2px solid #b2f2d7;
-      border-radius: 14px;
-      font-size: 1.08em;
-      font-family: 'Poppins', Arial, sans-serif;
-      background: #f8fffb url('https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_green.svg') no-repeat right 16px center/28px 28px;
-      color: #22577a;
-      box-shadow: 0 2px 12px rgba(67,233,123,0.07);
-      transition: border-color 0.3s, box-shadow 0.3s;
-      cursor: pointer;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .form-group .date-input:focus {
-        border-color: #25d366;
-        background-color: #fff;
-        outline: none;
-        box-shadow: 0 4px 18px rgba(37,211,102,0.13);
-    }
-    .flatpickr-calendar {
-        font-family: 'Poppins', Arial, sans-serif;
-        border-radius: 16px;
-        box-shadow: 0 8px 32px rgba(37,211,102,0.13);
-        border: 1.5px solid #b2f2d7;
-    }
-    .flatpickr-day.selected, .flatpickr-day.startRange, .flatpickr-day.endRange, .flatpickr-day.selected.inRange, .flatpickr-day.startRange.inRange, .flatpickr-day.endRange.inRange {
-        background: linear-gradient(135deg, #25d366 0%, #128c7e 100%) !important;
-        color: #fff !important;
-    }
-    .flatpickr-day.today {
-        border-color: #25d366;
-    }
-    .form-group .input-icon {
-      position: absolute;
-      right: 2px;
-      top: 50%;
-      transform: translateY(-50%);
-      pointer-events: none;
-      color: #25d366;
-      font-size: 1.3em;
-      opacity: 0.85;
-    }
-    @media (max-width: 600px) {
-      .form-group .date-input {
-        width: 100%;
-        min-width: 0;
-        max-width: 100%;
-      }
-    }
-    .btn-cerca-date {
-      display: block;
-      width: 100%;
-      max-width: 320px;
-      margin: 18px auto 0 auto;
-      font-size: 1.08em;
-      padding-left: 0;
-      padding-right: 0;
-      cursor: pointer;
-      transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
-    }
-    .btn-cerca-date:hover, .btn-cerca-date:focus {
-      background: linear-gradient(135deg, #128c7e 0%, #25d366 100%) !important;
-      box-shadow: 0 12px 35px rgba(37,211,102,0.28);
-      transform: translateY(-2px) scale(1.03);
-      outline: none;
-    }
-              @media (max-width: 600px) {
-                .btn-cerca-date {
-                  max-width: 100%;
-                }
-              }
-    .date-input.error {
-      border-color: #e74c3c !important;
-      box-shadow: 0 0 0 2px #e74c3c33;
-    }
-  </style>
-    <style>
-      .main-thumb {
-        position: relative;
-        display: block;
-        overflow: hidden;
-      }
-      .main-thumb img {
-        transition: transform 0.25s;
-      }
-      .main-thumb:hover img {
-        transform: scale(1.06);
-        filter: brightness(0.97);
-      }
-      .image-overlay-label {
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(0deg, rgba(34,87,122,0.82) 70%, rgba(34,87,122,0.12) 100%);
-        color: #fff;
-        font-size: 1.08em;
-        font-weight: 600;
-        text-align: center;
-        padding: 12px 0 7px 0;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.2s;
-        border-bottom-left-radius: 12px;
-        border-bottom-right-radius: 12px;
-        letter-spacing: 0.5px;
-        z-index: 2;
-      }
-      .main-thumb:hover .image-overlay-label {
-        opacity: 1;
-      }
-      @media (max-width: 900px) {
-        .image-overlay-label {
-          opacity: 1 !important;
-          font-size: 1em;
-          padding: 10px 0 6px 0;
-        }
-      }
-    </style>
-<!DOCTYPE html> 
+
+<!DOCTYPE html>
 <html lang="it">
 <head>     <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -143,1403 +7,526 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-5FP79B56');</script>
-<!-- End Google Tag Manager -->                                                            
+<!-- End Google Tag Manager -->
 <script type="text/javascript" charset="UTF-8" src="//cdn.cookie-script.com/s/9087d0590c9fc1b6da95bcf76a164ed6.js"></script>
-  <meta charset="UTF-8">
-  <!-- Favicon e Logo -->
-  <link rel="icon" type="image/png" sizes="32x32" href="https://torrepalivacanze.it/img/logo.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="https://torrepalivacanze.it/img/logo.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="https://torrepalivacanze.it/img/logo.png">
-  <link rel="shortcut icon" href="https://torrepalivacanze.it/img/logo.png">
-  <link rel="manifest" href="/manifest.json">
-  <style>
-    body {
-      background-image: url('img/bg-salento.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-    }
-    header {
-      margin-top: 5px;
-      margin-bottom: 56px;
-    }
-    .properties-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 32px;
-      justify-content: center;
-      margin-bottom: 48px;
-    }
-    .property-card {
-      background: rgba(255,255,255,0.97);
-      border-radius: 18px;
-      box-shadow: 0 4px 24px rgba(67,233,123,0.10), 0 1.5px 8px rgba(0,0,0,0.07);
-      padding: 28px 22px 18px 22px;
-      margin: 0 0 0 0;
-      max-width: 370px;
-      min-width: 270px;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-      transition: box-shadow 0.2s;
-      opacity: 0;
-      transform: translateY(24px);
-      transition: box-shadow 0.2s, opacity 0.5s, transform 0.5s;
-    }
-    .property-card:hover {
-      box-shadow: 0 8px 32px rgba(67,233,123,0.18), 0 3px 16px rgba(0,0,0,0.10);
-    }
-    .property-card.fade-in {
-      opacity: 1 !important;
-      transform: translateY(0) !important;
-    }
-    .property-image {
-      margin-bottom: 18px;
-      border-radius: 12px;
-      overflow: hidden;
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      background: #f6f6f6;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 190px;
-      max-height: 260px;
-    }
-    .property-image img {
-      border-radius: 12px;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      aspect-ratio: 4 / 3;
-      min-height: 180px;
-      max-height: 260px;
-    }
-    .property-title {
-      margin-top: 0;
-      margin-bottom: 8px;
-    }
-    .property-subtitle {
-      margin-bottom: 12px;
-    }
-    .property-features {
-      margin-bottom: 12px;
-    }
-    .property-description {
-      margin-bottom: 18px;
-    }
-    .property-card a {
-      margin-bottom: 14px !important;
-    }
-    .property-card a:last-child {
-      margin-bottom: 0 !important;
-    }
-    .availability-badge {
-      margin-bottom: 10px;
-    }
-    .periodi-disponibili {
-      margin-top: 18px;
-      margin-bottom: 0;
-      font-size: 1.08em;
-      font-weight: 500;
-      color: #22577a;
-    }
-    .periodi-disponibili .periodo-badge {
-      display: inline-block;
-      background: linear-gradient(135deg, #e0ffe6 0%, #b2f7c1 100%);
-      color: #22577a;
-      border-radius: 16px;
-      padding: 6px 16px;
-      margin: 4px 6px 4px 0;
-      font-size: 1em;
-      font-weight: 600;
-      box-shadow: 0 1px 4px rgba(67,233,123,0.10);
-      border: 1px solid #b2f7c1;
-      transition: background 0.2s;
-    }
-    .periodi-disponibili .periodo-badge:hover {
-      background: linear-gradient(135deg, #b2f7c1 0%, #e0ffe6 100%);
-      color: #128c7e;
-    }
-    .periodi-disponibili strong {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      font-size: 1.08em;
-      margin-bottom: 6px;
-    }
-    .periodi-disponibili .calendar-icon {
-      width: 1.2em;
-      height: 1.2em;
-      vertical-align: middle;
-      margin-right: 2px;
-      color: #128c7e;
-    }
-    @media (max-width: 600px) {
-      .periodi-disponibili .periodo-badge {
-        display: block;
-        margin: 6px 0;
-        width: fit-content;
-      }
-    }
-
-    /* --- Contact Form CSS da contatti.html --- */
-    .contact-info, .contact-form { background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); padding: 45px; border-radius: 25px; box-shadow: 0 15px 50px rgba(0,0,0,0.08); border: 1px solid rgba(102, 126, 234, 0.1); animation: fadeInUp 0.6s ease-out; }
-    .contact-info h2, .contact-form h2 { font-size: 1.8em; background: linear-gradient(135deg, #22577a 0%, #22577a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 25px; font-weight: 700; }
-    .form-group { margin-bottom: 20px; }
-   .form-group label {font-weight: 600; color: #22577a; margin-bottom: 8px;display: block;letter-spacing: 0.02em;
-}
-    .form-group input, .form-group textarea { width: 100%; padding: 10px; border: 2px solid rgba(102, 126, 234, 0.2); border-radius: 12px; font-family: 'Poppins', sans-serif; font-size: 1em; transition: all 0.3s; background: rgba(102, 126, 234, 0.02); }
-    .form-group input:focus, .form-group textarea:focus { outline: none; border-color: #22577a; background: white; box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1); }
-    .form-group textarea { resize: vertical; min-height: 150px; }
-    .form-btn {
-      background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
-      color: #fff;
-      padding: 16px 40px;
-      border: none;
-      border-radius: 50px;
-      font-size: 1.1em;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s;
-      width: 100%;
-      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
-      position: relative;
-      overflow: hidden;
-    }
-    .form-btn:hover {
-      background: linear-gradient(135deg, #128c7e 0%, #25d366 100%);
-      color: #fff;
-      transform: translateY(-3px);
-      box-shadow: 0 12px 35px rgba(102, 126, 234, 0.5);
-    }
-    .success-message { display: none; background: linear-gradient(135deg, rgba(72, 187, 120, 0.1) 0%, rgba(56, 161, 105, 0.1) 100%); color: #38a169; padding: 15px; border-radius: 12px; margin-bottom: 20px; border: 2px solid #48bb78; font-weight: 500; }
-    @media (max-width: 768px) {
-      .contact-info, .contact-form { padding: 18px; }
-    }
-    .btn {
-      margin: 0 10px 0 0;
-      padding: 12px 28px;
-      border-radius: 8px;
-      font-size: 1.1em;
-      font-weight: 600;
-      background: #48bb78;
-      color: #fff !important;
-      border: none;
-      box-shadow: 0 2px 8px rgba(67,233,123,0.10);
-      transition: background 0.2s, box-shadow 0.2s;
-      text-decoration: none;
-      display: inline-block;
-    }
-    .btn:hover {
-      background: #38a169;
-      box-shadow: 0 4px 16px rgba(67,233,123,0.18);
-    }
-    .tagline {
-      margin-top: 18px;
-      margin-bottom: 0;
-      font-size: 1.15em;
-    }
-    @media (max-width: 900px) {
-      .properties-grid {
-        flex-direction: column;
-        gap: 24px;
-        margin-bottom: 32px;
-      }
-      .property-card {
-        width: 100vw;
-        max-width: 100vw;
-        min-width: 0;
-        margin-left: -4vw;
-        padding: 18px 4vw 14px 4vw;
-        border-radius: 0;
-      }
-      header {
-        margin-top: 84px;
-        margin-bottom: 32px;
-      }
-      .btn {
-        width: 90vw;
-        margin: 0 0 18px 0;
-        padding: 14px 0;
-        font-size: 1.08em;
-      }
-    }
-    html, body {
-      overflow-x: hidden;
-      max-width: 100vw;
-    }
-    .container, .main, main, .properties-grid, .footer-container {
-      width: 100% !important;
-      max-width: 100% !important;
-      box-sizing: border-box;
-    }
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-    }
-    @media (max-width: 900px) {
-      body, html {
-        overflow-x: hidden !important;
-      }
-      .container, .main, main, .properties-grid, .footer-container {
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box;
-      }
-    }
-  </style>
+        <style>
+            .form-btn {
+                background: linear-gradient(135deg, #25d366 0%, #128c7e 100%) !important;
+                color: #fff !important;
+                border: none;
+                border-radius: 50px;
+                font-size: 1.18em;
+                font-weight: 700;
+                padding: 16px 48px 16px 48px;
+                margin-top: 18px;
+                margin-bottom: 0;
+                box-shadow: 0 8px 25px rgba(37,211,102,0.18);
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+            }
+            .form-btn:hover, .form-btn:focus {
+                background: linear-gradient(135deg, #128c7e 0%, #25d366 100%) !important;
+                box-shadow: 0 12px 35px rgba(37,211,102,0.28);
+                transform: translateY(-2px) scale(1.03);
+                outline: none;
+            }
+            .form-btn .btn-icon {
+                display: inline-flex;
+                align-items: center;
+                font-size: 1.2em;
+                margin-right: 2px;
+            }
+        </style>
+        <meta charset="UTF-8">
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17941172028"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'GT-WKR8HJQ3');
+            gtag('config', 'AW-17941172028');
+            gtag('config', 'G-M0TEME57K0');
+        </script>
+        <!-- Google Ads Click-to-call conversion -->
+        <script>
+        function gtag_report_conversion(url) {
+            gtag('event', 'conversion', {
+                    'send_to': 'AW-17941172028/CVqvCL6Ky58cELyegutC',
+                    'value': 1.0,
+                    'currency': 'EUR'
+            });
+        }
+        </script>
+        <!-- Event snippet for Whatsapp conversion page -->
+        <script>
+        function gtag_report_whatsapp_conversion() {
+            gtag('event', 'conversion', {
+                    'send_to': 'AW-17941172028/XiRECP_Yz58cELyegutC',
+                    'value': 1.0,
+                    'currency': 'EUR'
+            });
+        }
+        </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://torrepalivacanze.it/prenotazione">
+    <title>Prenotazione Case Vacanza Torre Pali</title>
+    <meta name="description" content="Prenota la tua casa vacanza a Torre Pali, Salento. Compila il modulo per richiedere disponibilità e ricevere conferma.">
+    <meta name="keywords" content="prenotazione case vacanza torre pali, affitto salento, booking, spiaggia bandiera blu">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://torrepalivacanze.it/img/logo.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="https://torrepalivacanze.it/img/logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://torrepalivacanze.it/img/logo.png">
+    <link rel="shortcut icon" href="https://torrepalivacanze.it/img/logo.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="style-casa-bellavista-2.css">
     <style>
-      .hamburger {
-        display: none !important;
-      }
-      @media (max-width: 900px) {
-        .hamburger {
-          display: flex !important;
-          position: fixed !important;
-          top: 10px !important;
-          right: 10px !important;
-          z-index: 3000 !important;
-          background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%) !important;
-          border: 2.5px solid #43e68b !important;
-          border-radius: 14px !important;
-          box-shadow: 0 2px 12px rgba(67,233,123,0.13) !important;
-          padding: 8px 8px !important;
-          width: 44px !important;
-          height: 44px !important;
-          align-items: center;
-          justify-content: center;
-        }
-        .hamburger span {
-          width: 24px !important;
-          height: 4px !important;
-          background: #fff !important;
-          margin: 3px 0 !important;
-          border-radius: 3px !important;
-          transition: 0.3s;
-          display: block;
-        }
-        .hamburger:focus {
-          outline: 3px solid #43e68b !important;
-          outline-offset: 2px;
-        }
-      }
-    </style>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prenotazione Case Vacanza Torre Pali - Ricerca Disponibilità</title>
-  <meta name="description" content="Prenotazione Case vacanza a Torre Pali, Salento. Appartamenti fronte mare a pochi metri dalla spiaggia, ideali per famiglie e gruppi. WiFi, aria condizionata, parcheggio, comfort e assistenza proprietari.">
-  <meta name="keywords" content="Prenotazione case vacanza torre pali, ricerca disponibilità Salento, appartamenti torre pali, salento, affitto casa vacanza, Maldive del Salento, spiaggia bandiera blu, casa bellavista, casa giorgio, vacanze salento, vacanze mare puglia, vacanze famiglia, animali ammessi, wifi, aria condizionata, parcheggio, offerte estate salento, vacanze bambini salento, vacanze relax salento, vacanze romantiche salento, vacanze vicino leuca, vacanze vicino gallipoli">
-  <link rel="canonical" href="https://torrepalivacanze.it/prenotazione">
-  <!-- Open Graph / Facebook -->
-  <meta property="og:title" content="Prenotazione Case Vacanza Torre Pali - Ricerca Disponibilità">
-  <meta property="og:description" content="Prenotazione Case vacanza a Torre Pali, Salento. Appartamenti fronte mare a pochi metri dalla spiaggia, ideali per famiglie e gruppi. WiFi, aria condizionata, parcheggio, comfort e assistenza proprietari.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://torrepalivacanze.it/prenotazione">
-  <meta property="og:image" content="https://torrepalivacanze.it/img/casa-bella-vista/prospetto-mobile.webp">
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Prenotazione Case Vacanza Torre Pali - Ricerca Disponibilità">
-  <meta name="twitter:description" content="Prenotazione Case vacanza a Torre Pali, Salento. Appartamenti fronte mare a pochi metri dalla spiaggia, ideali per famiglie e gruppi. WiFi, aria condizionata, parcheggio, comfort e assistenza proprietari.">
-  <meta name="twitter:image" content="https://torrepalivacanze.it/img/casa-bella-vista/prospetto-mobile.webp">
-  <!-- Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Structured Data JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LodgingBusiness",
-    "name": "Torre Pali Vacanze - Case Vacanza Salento",
-    "url": "https://torrepalivacanze.it",
-    "description": "Prenotazione Case vacanza a Torre Pali, Salento. Appartamenti fronte mare a pochi metri dalla spiaggia, ideali per famiglie e gruppi. WiFi, aria condizionata, parcheggio, comfort e assistenza proprietari.",
-    "image": "https://torrepalivacanze.it/img/casa-bella-vista/prospetto-mobile.webp",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Via Vasco de Gama",
-      "addressLocality": "Torre Pali",
-      "addressRegion": "LE",
-      "postalCode": "73050",
-      "addressCountry": "IT"
-    },
-    "telephone": "+39-388-658-70-80",
-    "amenityFeature": [
-      {"@type": "LocationFeatureSpecification", "name": "WiFi gratuito", "value": true},
-      {"@type": "LocationFeatureSpecification", "name": "Aria condizionata", "value": true},
-      {"@type": "LocationFeatureSpecification", "name": "Parcheggio", "value": true},
-      {"@type": "LocationFeatureSpecification", "name": "Animali ammessi", "value": true}
-    ],
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 39.8408,
-      "longitude": 18.2194
+    /* Effetti fade e slide per risultati */
+    .fade-slide-in {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
     }
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "Case Vacanza a Torre Pali",
-    "numberOfItems": 4,
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "url": "https://torrepalivacanze.it/casa-bellavista-1",
-        "name": "Casa Bellavista 1 - 100m dalla spiaggia",
-        "description": "Prenotazione Appartamento primo piano con spazio esterno panoramico. 2 camere, 5 posti letto, aria condizionata, lavatrice, parcheggio."
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "url": "https://torrepalivacanze.it/casa-bellavista-2",
-        "name": "Casa Bellavista 2 - 20m dalla spiaggia",
-        "description": "Prenotazione Quadrilocale piano terra con cortile privato. 3 camere, 2 bagni, WiFi, aria condizionata."
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "url": "https://torrepalivacanze.it/casa-giorgio-4",
-        "name": "Casa Giorgio 4 - 40m dalla spiaggia",
-        "description": "Prenotazione Appartamento piano terra con spazi esterni attrezzati. 3 camere, climatizzatore, TV satellitare."
-      },
-      {
-        "@type": "ListItem",
-        "position": 4,
-        "url": "https://torrepalivacanze.it/casa-giorgio-6",
-        "name": "Casa Giorgio 6 - Vista mare primo piano",
-        "description": "Prenotazione Appartamento 90mq al primo piano con veranda vista mare. 3 camere, spazi esterni per pranzi all'aperto."
-      }
-    ]
-  }
-  </script>
-  <link rel="stylesheet" href="style-casa-bellavista-2.css">
-<!-- Google tag (gtag.js) -->
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17941172028"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'GT-WKR8HJQ3');
-  gtag('config', 'AW-17941172028');
-  gtag('config', 'G-M0TEME57K0');
-</script>
-<!-- Google Ads Click-to-call conversion -->
-<script>
-function gtag_report_conversion(url) {
-  gtag('event', 'conversion', {
-      'send_to': 'AW-17941172028/CVqvCL6Ky58cELyegutC',
-      'value': 1.0,
-      'currency': 'EUR'
-  });
-
-}
-</script>
-<script>
-function gtag_report_whatsapp_conversion(url) {
-  gtag('event', 'conversion', {
-      'send_to': 'AW-17941172028/XiRECP_Yz58cELyegutC',
-      'value': 1.0,
-      'currency': 'EUR'
-  });
-}
-</script>
-</head>                               
+    .fade-slide-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    </style>
+    <!-- Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <style>
+        .booking-form-section form {
+            width: 100%;
+            max-width: 420px;
+            margin: 0 auto;
+        }
+        .form-group {
+            position: relative;
+            margin-bottom: 28px;
+        }
+        .form-group label {
+            font-weight: 600;
+            color: #22577a;
+            margin-bottom: 8px;
+            display: block;
+            letter-spacing: 0.02em;
+        }
+        /* Migliora stile input data (flatpickr) */
+        .form-group .date-input {
+            width: 100%;
+            padding: 14px 44px 14px 18px;
+            border: 2px solid #b2f2d7;
+            border-radius: 14px;
+            font-size: 1.08em;
+            font-family: 'Poppins', Arial, sans-serif;
+            background: #f8fffb url('https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_green.svg') no-repeat right 16px center/28px 28px;
+            color: #22577a;
+            box-shadow: 0 2px 12px rgba(67,233,123,0.07);
+            transition: border-color 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .form-group .date-input:focus {
+            border-color: #25d366;
+            background-color: #fff;
+            outline: none;
+            box-shadow: 0 4px 18px rgba(37,211,102,0.13);
+        }
+        /* Flatpickr custom theme */
+        .flatpickr-calendar {
+            font-family: 'Poppins', Arial, sans-serif;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(37,211,102,0.13);
+            border: 1.5px solid #b2f2d7;
+        }
+        .flatpickr-day.selected, .flatpickr-day.startRange, .flatpickr-day.endRange, .flatpickr-day.selected.inRange, .flatpickr-day.startRange.inRange, .flatpickr-day.endRange.inRange {
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%) !important;
+            color: #fff !important;
+        }
+        .flatpickr-day.today {
+            border-color: #25d366;
+        }
+        .flatpickr-day.calendar-day-available {
+            background: #ecfdf3;
+            border-color: #34d399;
+            color: #166534;
+            font-weight: 700;
+        }
+        .flatpickr-day.calendar-day-unavailable {
+            background: #fef2f2;
+            border-color: #fca5a5;
+            color: #991b1b;
+            opacity: 0.88;
+        }
+        .flatpickr-day.calendar-day-checkout-available {
+            background: #dcfce7;
+            border-color: #22c55e;
+            color: #14532d;
+            font-weight: 800;
+        }
+        .flatpickr-months .flatpickr-month {
+            color: #22577a;
+        }
+        .form-group .input-icon {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            color: #25d366;
+            font-size: 1.3em;
+            opacity: 0.85;
+        }
+        .form-btn {
+            margin-top: 10px;
+        }
+        /* Uniforma la dimensione immagini nelle card risultati */
+        #fadeSlideResults .property-image,
+        #fadeSlideResults .property-gallery,
+        #fadeSlideResults .property-gallery .image-link-casa {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        #fadeSlideResults .property-gallery img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            display: block;
+        }
+        @media (min-width: 992px) {
+            #fadeSlideResults .property-image {
+                width: 50%;
+                margin: 0 auto;
+            }
+        }
+        #fadeSlideResults .property-subtitle {
+            font-size: 1.02rem;
+            font-weight: 700;
+            color: #14532d;
+            background: #ecfdf5;
+            border-left: 4px solid #34d399;
+            padding: 8px 10px;
+            border-radius: 8px;
+            margin: 8px 0 14px 0;
+            line-height: 1.45;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
 <body>  <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FP79B56"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-  <nav class="navbar" style="position:fixed !important">
-    <div class="navbar-container">
-      <a href="/" class="navbar-brand">🏝️ Torre Pali Vacanze</a>
-      <button class="hamburger" onclick="toggleMenu()" aria-label="Apri menu di navigazione" tabindex="0" style="position:absolute;top:10px;right:10px;z-index:2001;display:flex;">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <ul class="navbar-menu" id="navbarMenu">
-        <li><a href="/" onclick="closeMenu()">Home</a></li>
-        <li><a href="case-vacanze" onclick="closeMenu()">Case Vacanza</a></li>
-        <li><a href="torre-pali" onclick="closeMenu()">Torre Pali</a></li>
-        <li><a href="recensioni" onclick="closeMenu()">⭐ Recensioni</a></li>
-        <li><a href="faq" onclick="closeMenu()">FAQ</a></li>
-        <li><a href="prenotazione" onclick="closeMenu()">Prenotazione</a></li>
-        <li><a href="contatti" onclick="closeMenu()">Contatti</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <script>
-  // Menu Hamburger
-  function toggleMenu() {
-    const menu = document.getElementById('navbarMenu');
-    menu.classList.toggle('active');
-  }
-
-  function closeMenu() {
-    const menu = document.getElementById('navbarMenu');
-    menu.classList.remove('active');
-    // Chiudi tutte le dropdown su mobile
-    if (window.innerWidth <= 768) {
-      const dropdowns = document.querySelectorAll('.dropdown.active');
-      dropdowns.forEach(function(drop) {
-        drop.classList.remove('active');
-      });
-    }
-  }
-
-  document.addEventListener('DOMContentLoaded', function() {
-    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-    dropdownToggles.forEach(function(toggle) {
-      toggle.addEventListener('click', function(e) {
-        if (window.innerWidth <= 768) {
-          e.preventDefault();
-          e.stopPropagation();
-          const parentDropdown = this.closest('.dropdown');
-          if (parentDropdown) {
-            parentDropdown.classList.toggle('active');
-          }
+    <!-- Navbar -->
+    <nav class="navbar" style="position:fixed !important">
+        <div class="navbar-container">
+            <a href="/" class="navbar-brand">🏝️ Torre Pali Vacanze</a>
+            <button class="hamburger" onclick="toggleMenu()" aria-label="Apri menu di navigazione" tabindex="0" style="position:absolute;top:10px;right:10px;z-index:2001;display:flex;">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="navbar-menu" id="navbarMenu">
+                <li><a href="/" onclick="closeMenu()">Home</a></li>
+                <li><a href="case-vacanze" onclick="closeMenu()">Case Vacanza</a></li>
+                <li><a href="torre-pali" onclick="closeMenu()">Torre Pali</a></li>
+                <li><a href="recensioni" onclick="closeMenu()">⭐ Recensioni</a></li>
+                <li><a href="faq" onclick="closeMenu()">FAQ</a></li>
+                <li><a href="prenotazione" onclick="closeMenu()">Prenotazione</a></li>
+                <li><a href="contatti" onclick="closeMenu()">Contatti</a></li>
+            </ul>
+        </div>
+    </nav>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('navbarMenu');
+            menu.classList.toggle('active');
         }
-      });
-      // Supporto touch
-      toggle.addEventListener('touchstart', function(e) {
-        if (window.innerWidth <= 768) {
-          e.preventDefault();
-          e.stopPropagation();
-          const parentDropdown = this.closest('.dropdown');
-          if (parentDropdown) {
-            parentDropdown.classList.toggle('active');
-          }
+        function closeMenu() {
+            const menu = document.getElementById('navbarMenu');
+            menu.classList.remove('active');
+            if (window.innerWidth <= 768) {
+                const dropdowns = document.querySelectorAll('.dropdown.active');
+                dropdowns.forEach(function(drop) { drop.classList.remove('active'); });
+            }
         }
-      }, { passive: false });
-    });
-  });
-
-  // Chiudi menu quando si clicca fuori
-  document.addEventListener('click', function(event) {
-    const navbar = document.querySelector('.navbar');
-    const menu = document.getElementById('navbarMenu');
-    const dropdown = document.querySelector('.dropdown');
-    if (!navbar.contains(event.target) && menu.classList.contains('active')) {
-      menu.classList.remove('active');
-      if (dropdown) dropdown.classList.remove('active');
-    }
-  });
-  </script>
-  <main class="container">
-    <header style="text-align:center; margin-bottom: 0px;">
-          <h1>Prenota la tua casa vacanza a Torre Pali</h1>
-            <p class="tagline">Seleziona una data di check-in e una data di check-out per verificare le disponibilità. Il soggiorno è possibile solo da sabato a sabato, con una permanenza minima di 1 settimana.</p>
-          <!-- FILTRO DATE INIZIO -->
-        <div id="date-filter-container" style="margin: 28px 0 0 0;">
-          <form id="date-filter-form" onsubmit="return false;">
-              <div class="form-group" style="margin-bottom: 22px; position:relative;">
-                <label for="checkin">Data di Arrivo *</label>
-                <input type="text" id="checkin" name="checkin" class="date-input" placeholder="Seleziona data di arrivo" autocomplete="off" required>
-              </div>
-              <div class="form-group" style="margin-bottom: 22px; position:relative;">
-                <label for="checkout">Data di Partenza *</label>
-                <input type="text" id="checkout" name="checkout" class="date-input" placeholder="Seleziona data di partenza" autocomplete="off" required>
-              </div>
-              <button type="submit" class="btn btn-cerca-date">Cerca</button>
-            </form>
-            <div id="results" style="min-height:28px;text-align:center;"></div>
-          </div> 
-          <script>
-          // Filtro date collegato alle case vacanza, stile e UX come prenotazione.html
-          document.addEventListener('DOMContentLoaded', function() {
-            var showBtn = document.getElementById('show-date-filter');
-            var form = document.getElementById('date-filter-form');
-            var checkinInput = document.getElementById('checkin');
-            var checkoutInput = document.getElementById('checkout');
-            if (showBtn && form) {
-              showBtn.addEventListener('click', function() {
-                form.style.display = (form.style.display === 'none' || form.style.display === '') ? 'block' : 'none';
-              });
-            }
-
-            // Flatpickr per UX calendario come prenotazione.html
-            function enableOnlySaturday(date) { return (date.getDay() === 6); }
-            let checkInSelected = null;
-            if (window.flatpickr) {
-              flatpickr(checkinInput, {
-                dateFormat: "Y-m-d",
-                locale: "it",
-                disable: [function(date) { return !enableOnlySaturday(date); }],
-                minDate: "today",
-                onChange: function(selectedDates, dateStr) {
-                  checkInSelected = selectedDates && selectedDates[0] ? selectedDates[0] : null;
-                  // Aggiorna il calendario di checkOut
-                  if (checkoutInput._flatpickr) {
-                    const minDate = checkInSelected ? new Date(checkInSelected.getTime() + 24*60*60*1000) : "today";
-                    checkoutInput._flatpickr.set('minDate', minDate);
-                    checkoutInput._flatpickr.redraw();
-                    checkoutInput.value = '';
-                    // Forza la vista del calendario sul primo sabato valido dopo il check-in
-                    if (checkInSelected) {
-                      let nextSaturday = new Date(checkInSelected.getTime() + 24*60*60*1000);
-                      while (nextSaturday.getDay() !== 6) {
-                        nextSaturday.setDate(nextSaturday.getDate() + 1);
-                      }
-                      checkoutInput._flatpickr.jumpToDate(nextSaturday);
-                    }
-                  }
-                }
-              });
-              flatpickr(checkoutInput, {
-                dateFormat: "Y-m-d",
-                locale: "it",
-                disable: [
-                  function(date) {
-                    if (!enableOnlySaturday(date)) return true;
-                    if (checkinInput.value) {
-                      const checkInDate = new Date(checkinInput.value);
-                      if (date <= checkInDate) return true;
-                    }
-                    return false;
-                  }
-                ],
-                minDate: "today"
-              });
-            }
-
-            // Salva i dati delle case e prenotazioni per il filtro
-            window._caseVacanzaData = { houses: [], bookings: {} };
-
-            // Intercetta submit del filtro
-            form && form.addEventListener('submit', function(e) {
-                  var checkin = checkinInput.value;
-                  var checkout = checkoutInput.value;
-                    let errorMsg = '';
-                    const resultsDiv = document.getElementById('results');
-                    // Reset error style
-                    checkinInput.classList.remove('error');
-                    checkoutInput.classList.remove('error');
-
-                    if (!checkin && !checkout) {
-                      errorMsg = 'Inserisci la data di check-in e check-out.';
-                      checkinInput.classList.add('error');
-                      checkoutInput.classList.add('error');
-                    } else if (!checkin) {
-                      errorMsg = 'Inserisci la data di check-in.';
-                      checkinInput.classList.add('error');
-                    } else if (!checkout) {
-                      errorMsg = 'Inserisci la data di check-out.';
-                      checkoutInput.classList.add('error');
-                    }
-                    if (errorMsg) {
-                      resultsDiv.innerHTML = `<p style="color:#b91c1c;font-weight:600;margin-top:18px;">${errorMsg}</p>`;
-                      setTimeout(() => {
-                        checkinInput.classList.remove('error');
-                        checkoutInput.classList.remove('error');
-                        resultsDiv.innerHTML = '';
-                      }, 4000);
-                      e.preventDefault();
-                      return false;
-                    }
-                    if (checkout <= checkin) {
-                        checkoutInput.classList.add('error');
-                        checkoutInput.value = '';
-                        checkoutInput.placeholder = 'Check-out dopo check-in';
-                        resultsDiv.innerHTML = `<p style="color:#b91c1c;font-weight:600;margin-top:18px;">La data di check-out deve essere dopo il check-in</p>`;
-                        setTimeout(() => {
-                            checkoutInput.classList.remove('error');
-                            resultsDiv.innerHTML = '';
-                        }, 2000);
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+            dropdownToggles.forEach(function(toggle) {
+                toggle.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
                         e.preventDefault();
-                        return false;
-                    }
-                    // Se tutto ok, svuota errori
-                    resultsDiv.innerHTML = '';
-                    // Scrolla sotto il pulsante Cerca
-                    setTimeout(function() {
-                      var btn = form.querySelector('.btn-cerca-date');
-                      if (btn) {
-                        var rect = btn.getBoundingClientRect();
-                        var scrollY = window.scrollY || window.pageYOffset;
-                        var targetY = rect.bottom + scrollY - 10; // 10px sotto il bottone
-                        // Scroll lento custom (durata 900ms)
-                        var startY = window.scrollY || window.pageYOffset;
-                        var distance = targetY - startY;
-                        var duration = 900;
-                        var startTime = null;
-                        function animateScroll(currentTime) {
-                          if (!startTime) startTime = currentTime;
-                          var timeElapsed = currentTime - startTime;
-                          var progress = Math.min(timeElapsed / duration, 1);
-                          var ease = progress < 0.5 ? 2*progress*progress : -1+(4-2*progress)*progress;
-                          window.scrollTo(0, startY + distance * ease);
-                          if (progress < 1) {
-                            requestAnimationFrame(animateScroll);
-                          }
+                        e.stopPropagation();
+                        const parentDropdown = this.closest('.dropdown');
+                        if (parentDropdown) {
+                            parentDropdown.classList.toggle('active');
                         }
-                        requestAnimationFrame(animateScroll);
-                      }
-                    }, 120);
-              var houses = window._caseVacanzaData.houses;
-              var bookingsMap = window._caseVacanzaData.bookings;
-              var fullyAvailable = [];
-              var partiallyAvailable = [];
-              houses.forEach(function(house) {
-                var bookings = bookingsMap[house.id] || [];
-                if (!bookings.length) {
-                  fullyAvailable.push(house);
-                  return;
-                }
-                // Trova se la casa è libera per tutto il periodo
-                var isFree = true;
-                for (var i=0; i<bookings.length; i++) {
-                  var b = bookings[i];
-                  if (!(checkout <= b.checkIn || checkin >= b.checkOut)) {
-                    isFree = false;
-                    break;
-                  }
-                }
-                if (isFree) {
-                  fullyAvailable.push(house);
-                  return;
-                }
-                // Trova periodi parziali disponibili all'interno del range richiesto
-                var freeRanges = [];
-                var rangeStart = new Date(checkin);
-                var rangeEnd = new Date(checkout);
-                // Crea array di giorni occupati
-                var occupied = [];
-                bookings.forEach(function(b) {
-                  var d1 = new Date(b.checkIn);
-                  var d2 = new Date(b.checkOut);
-                  for (var d = new Date(d1); d < d2; d.setDate(d.getDate() + 1)) {
-                    occupied.push(d.toISOString().slice(0,10));
-                  }
-                });
-                // Trova i periodi liberi all'interno del range richiesto
-                var current = null;
-                for (var d = new Date(rangeStart); d <= rangeEnd; d.setDate(d.getDate() + 1)) {
-                  var ds = d.toISOString().slice(0,10);
-                  if (occupied.indexOf(ds) === -1) {
-                    if (!current) current = { dal: ds, al: ds };
-                    else current.al = ds;
-                  } else {
-                    // Se il giorno occupato è il check-in di una prenotazione ed è compreso nel periodo richiesto, includilo come libero
-                    var isCheckIn = bookings.some(function(b) { return b.checkIn === ds && ds >= checkin && ds <= checkout; });
-                    if (isCheckIn) {
-                      if (!current) current = { dal: ds, al: ds };
-                      else current.al = ds;
-                    } else {
-                      if (current) {
-                        freeRanges.push({ dal: current.dal, al: current.al });
-                        current = null;
-                      }
                     }
-                  }
-                }
-                if (current) freeRanges.push(current);
-                // Se almeno un periodo libero di almeno 3 giorni consecutivi, aggiungi a parziali
-                var minConsecutiveDays = 3;
-                var validRanges = freeRanges.filter(function(p) {
-                  var start = new Date(p.dal);
-                  var end = new Date(p.al);
-                  // Calcola giorni inclusivi
-                  var days = Math.floor((end - start) / (1000*60*60*24)) + 1;
-                  return days >= minConsecutiveDays;
                 });
-                if (validRanges.length > 0) {
-                  house._partialFree = validRanges;
-                  partiallyAvailable.push(house);
-                }
-              });
-              // Rendering
-              var grid = window._caseVacanzaGrid || document.getElementById('properties-grid');
-              grid.innerHTML = '';
-              if (fullyAvailable.length > 0) {
-                var title = document.createElement('h2');
-                title.textContent = 'Case disponibili per tutto il periodo selezionato:';
-                title.style = 'width:100%;text-align:center;margin:32px 0 18px 0;color:#128c7e;font-size:1.2em;';
-                grid.appendChild(title);
-                fullyAvailable.forEach(function(house) {
-                  var card = document.createElement('div');
-                  card.className = 'property-card fade-in';
-                  card.innerHTML = house._cardHtml;
-                  // Rimuovi la sezione periodi-disponibili solo per le fullyAvailable
-                  var periodi = card.querySelector('.periodi-disponibili');
-                  if (periodi) periodi.remove();
-                  grid.appendChild(card);
-                });
-              }
-              if (partiallyAvailable.length > 0) {
-                var title2 = document.createElement('h2');
-                title2.textContent = 'Case con disponibilità parziale nel periodo selezionato:';
-                title2.style = 'width:100%;text-align:center;margin:32px 0 18px 0;color:#b8860b;font-size:1.1em;';
-                grid.appendChild(title2);
-                partiallyAvailable.forEach(function(house) {
-                  var card = document.createElement('div');
-                  card.className = 'property-card fade-in';
-                  card.innerHTML = house._cardHtml;
-                  // Evidenzia i periodi liberi parziali
-                  var periodiDiv = card.querySelector('.periodi-disponibili > div');
-                  if (periodiDiv && house._partialFree) {
-                    periodiDiv.innerHTML = house._partialFree.map(function(p) {
-                      var opts = { day: '2-digit', month: '2-digit' };
-                      var dDal = new Date(p.dal);
-                      var dAl = new Date(p.al);
-                      if (p.dal === p.al) return `<span class='periodo-badge' style='background:#fffbe6;color:#b8860b;border:1.5px solid #ffe066;'>${dDal.toLocaleDateString('it-IT', opts)}</span>`;
-                      return `<span class='periodo-badge' style='background:#fffbe6;color:#b8860b;border:1.5px solid #ffe066;'>${dDal.toLocaleDateString('it-IT', opts)} - ${dAl.toLocaleDateString('it-IT', opts)}</span>`;
-                    }).join('');
-                  }
-                  grid.appendChild(card);
-                });
-              }
-              if (fullyAvailable.length === 0 && partiallyAvailable.length === 0) {
-                grid.innerHTML = '<div style="color:#b00;font-size:1.2em;margin:32px auto;">Nessuna casa disponibile per le date selezionate.</div>';
-              }
+                toggle.addEventListener('touchstart', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        const parentDropdown = this.closest('.dropdown');
+                        if (parentDropdown) {
+                            parentDropdown.classList.toggle('active');
+                        }
+                    }
+                }, { passive: false });
             });
-
-            function renderPropertiesGrid(houses) {
-              if (!window._caseVacanzaGrid) {
-                window._caseVacanzaGrid = document.getElementById('properties-grid');
-              }
-              var grid = window._caseVacanzaGrid;
-              if (!grid) return;
-              grid.innerHTML = '';
-              if (!houses.length) {
-                grid.innerHTML = '<div style="color:#b00;font-size:1.2em;margin:32px auto;">Nessuna casa disponibile per le date selezionate.</div>';
-                return;
-              }
-              houses.forEach(function(house, idx) {
-                var card = document.createElement('div');
-                card.className = 'property-card fade-in';
-                card.innerHTML = house._cardHtml;
-                grid.appendChild(card);
-              });
+        });
+        document.addEventListener('click', function(event) {
+            const navbar = document.querySelector('.navbar');
+            const menu = document.getElementById('navbarMenu');
+            const dropdown = document.querySelector('.dropdown');
+            if (!navbar.contains(event.target) && menu.classList.contains('active')) {
+                menu.classList.remove('active');
+                if (dropdown) dropdown.classList.remove('active');
             }
-          });
-          // Flatpickr JS CDN
-          </script>
-          <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-          <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/it.js"></script>
-          </script>
-          <!-- FILTRO DATE FINE -->
-    </header>
-    <div id="properties-grid" class="properties-grid"></div>
+        });
+    </script>
+
+    <main class="container">
+        <header style="text-align:center; margin-bottom: 50px; margin-top: 90px;">
+            <h1>Prenota la tua casa vacanza a Torre Pali</h1>
+            <p class="tagline">Seleziona le date per verificare le disponibilità. Il soggiorno è possibile solo da sabato a sabato, con una permanenza minima di 1 settimana. I giorni prenotabili sono evidenziati in verde nel calendario.</p>
+          <!-- FILTRO DATE INIZIO --></p>
+        </header>
+        <section class="booking-form-section">
+            <form id="booking-form">
+                <div class="form-group">
+                    <label for="checkIn">Data Check-in:</label>
+                    <input type="text" id="checkIn" name="checkIn" class="date-input" placeholder="Seleziona data check-in" autocomplete="off" required>
+                </div>
+                <div class="form-group">
+                    <label for="checkOut">Data Check-out:</label>
+                    <input type="text" id="checkOut" name="checkOut" class="date-input" placeholder="Seleziona data check-out" autocomplete="off" required>
+                </div>
+                <button type="submit" class="form-btn">Cerca disponibilità</button>
+       
+            </form>
+            <div id="results"></div>
+        </section>
+    </main>
+    <footer class="footer" aria-label="Footer Torre Pali Salento">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>🏝️ Torre Pali Vacanze - Info</h3>
+                <p>Case Vacanza a Torre Pali, Salento. A pochi passi dalla spiaggia di Torre Pali con tutti i comfort.</p>
+                <p style="margin-top: 15px;">📍 Torre Pali, Lecce (LE)<br>Salento, Puglia</p>
+            </div>
+            <div class="footer-section">
+                <h3>Link utili Torre Pali</h3>
+                <a href="/">Home</a>
+                <a href="case-vacanze">Case Vacanza</a>
+                <a href="casa-bellavista-1">Casa Bellavista 1</a>
+                <a href="casa-bellavista-2">Casa Bellavista 2</a>
+                <a href="casa-giorgio-4">Casa Giorgio 4</a>
+                <a href="casa-giorgio-6">Casa Giorgio 6</a>
+                <a href="torre-pali">Scopri Torre Pali</a>
+                <a href="torre-pali-posizione">Dove si trova Torre Pali</a>
+                <a href="molo-torre-pali">Il molo di Torre Pali</a>
+                <a href="galleria-torre-pali">Galleria Torre Pali</a>
+                <a href="contatti">Contatti</a>
+                <a href="privacy">Privacy Policy</a>
+                <a href="cookie-policy">Cookie Policy</a>
+<!-- <a href="registra-struttura.html">Registra la tua struttura</a> -->
+                <br>
+                <h4 style="margin-bottom:8px;font-size:1em;">Link utili località</h4>   <a href="spiagge-salento-sud">Guida Spiagge</a>
+                <a href="torre-vado">Torre Vado</a>
+                <a href="lido-marini">Lido Marini</a>
+                <a href="pescoluse">Pescoluse</a>
+                <a href="itinerario-7-giorni-salento">Itinerario 7 giorni Salento</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contatti Torre Pali Vacanze</h3>
+                <p> <a href="tel:+393886587080" onclick="gtag('event','click_telefono'); return gtag_report_conversion('tel:+393886587080');"> 📞+39 388 658 70 80</a></p>
+                <p>📧 <strong>info@torrepalivacanze.it</strong></p>
+                <p><a href="https://wa.me/393886587080?text=Ciao!%20Vorrei%20informazioni%20sulle%20vostre%20case%20vacanza%20a%20Torre%20Pali" onclick="gtag('event','click_whatsapp'); gtag_report_conversion()" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill="#fff" style="background:#25d366; border-radius:3px;"><path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 7.933-2.127c2.42 1.37 5.173 2.127 8.067 2.127 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.467c-2.482 0-4.908-0.646-7.07-1.87l-0.507-0.292-4.713 1.262 1.262-4.669-0.292-0.508c-1.207-2.100-1.847-4.507-1.847-6.978 0-7.51 6.11-13.619 13.619-13.619s13.619 6.109 13.619 13.619c0 7.51-6.11 13.619-13.619 13.619zM21.789 18.75c-0.214-0.107-1.268-0.625-1.464-0.696s-0.339-0.107-0.482 0.107c-0.143 0.214-0.554 0.696-0.679 0.839s-0.25 0.161-0.464 0.054c-0.214-0.107-0.902-0.333-1.718-1.060-0.635-0.567-1.064-1.268-1.189-1.482s-0.013-0.329 0.094-0.435c0.096-0.096 0.214-0.25 0.321-0.375s0.143-0.214 0.214-0.357 0.036-0.268-0.018-0.375c-0.054-0.107-0.482-1.161-0.661-1.589s-0.349-0.362-0.482-0.369c-0.125-0.007-0.268-0.007-0.411-0.007s-0.375 0.054-0.571 0.268c-0.196 0.214-0.75 0.732-0.75 1.786s0.768 2.071 0.875 2.214c0.107 0.143 1.5 2.357 3.653 3.304 0.51 0.214 0.909 0.343 1.219 0.438 0.512 0.161 0.978 0.139 1.346 0.084 0.411-0.061 1.268-0.518 1.446-1.018s0.179-0.929 0.125-1.018c-0.054-0.089-0.196-0.143-0.411-0.25z"/></svg>WhatsApp</a></p>
+                <p><a href="https://www.facebook.com/profile.php?id=61577506430394" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#fff" style="background:#1877f2; border-radius:3px;"><path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.406.595 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.406 24 22.674V1.326C24 .592 23.406 0 22.675 0z"/></svg>Seguici su Facebook</a></p>
+                <p style="margin-top: 15px;">Orario: 09:00 - 20:00<br>Risposta entro 1 ora</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Torre Pali Vacanze. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+    <script>
+    // Permetti solo la selezione dei sabati nei campi data
+    function isSaturday(dateStr) {
+        const d = new Date(dateStr);
+        return d.getDay() === 6;
+    }
+    function restrictToSaturday(input) {
+        input.addEventListener('input', function() {
+            if (this.value && !isSaturday(this.value)) {
+                this.setCustomValidity('Seleziona solo un sabato');
+            } else {
+                this.setCustomValidity('');
+            }
+        });
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        const checkIn = document.getElementById('checkIn');
+        const checkOut = document.getElementById('checkOut');
+        restrictToSaturday(checkIn);
+        restrictToSaturday(checkOut);
+    });
+    </script>
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/it.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', async function() {
-      let grid = document.getElementById('properties-grid');
-      try {
-        const res = await fetch('https://demo-mail-993653817397.europe-west8.run.app/api/case/public');
-        const houses = await res.json();
-        grid.innerHTML = '';
-
-        // Funzione per generare tutte le date della stagione (1 giugno - 30 settembre)
-        function getAllSeasonDates() {
-          const startSeason = new Date(Date.UTC(new Date().getFullYear(), 5, 1)); // 1 giugno UTC
-          const endSeason = new Date(Date.UTC(new Date().getFullYear(), 8, 30)); // 30 settembre UTC
-          let allDates = [];
-          let d = new Date(startSeason);
-          while (d <= endSeason) {
-            allDates.push(d.toISOString().slice(0,10));
-            d.setUTCDate(d.getUTCDate() + 1);
-          }
-          return allDates;
+        function enableOnlySaturday(date) {
+            return (date.getDay() === 6);
         }
 
-        // Funzione per formattare periodo
-        function formatPeriodo(dal, al) {
-          const opts = { day: '2-digit', month: '2-digit' };
-          const dDal = new Date(dal);
-          const dAl = new Date(al);
-          if (dal === al) return dDal.toLocaleDateString('it-IT', opts);
-          return dDal.toLocaleDateString('it-IT', opts) + ' - ' + dAl.toLocaleDateString('it-IT', opts);
+        function toDateKey(date) {
+            const y = date.getFullYear();
+            const m = String(date.getMonth() + 1).padStart(2, '0');
+            const d = String(date.getDate()).padStart(2, '0');
+            return `${y}-${m}-${d}`;
         }
 
-        // Carica tutte le prenotazioni in parallelo e mostra i CTA solo dopo
-        // Salva anche le prenotazioni per il filtro
-        let allBookings = {};
-        await Promise.all(houses.map(async (house, idx) => {
-          // Ottieni tutte le date della stagione (nuovo array per ogni casa)
-          let allDates = getAllSeasonDates();
+        function addDays(date, days) {
+            const copy = new Date(date.getTime());
+            copy.setDate(copy.getDate() + days);
+            return copy;
+        }
 
-          // Fetch prenotazioni per la casa
-          let bookedDates = new Set();
-          let prenotazioni = [];
-          try {
-            const resP = await fetch(`https://demo-mail-993653817397.europe-west8.run.app/api/prenotazioni/casa/${house.id}`);
-            prenotazioni = await resP.json();
-            prenotazioni.forEach(p => {
-              if (!p.checkIn || !p.checkOut) return;
-              let d = new Date(Date.UTC(
-                parseInt(p.checkIn.slice(0,4)),
-                parseInt(p.checkIn.slice(5,7))-1,
-                parseInt(p.checkIn.slice(8,10))
-              ));
-              const end = new Date(Date.UTC(
-                parseInt(p.checkOut.slice(0,4)),
-                parseInt(p.checkOut.slice(5,7))-1,
-                parseInt(p.checkOut.slice(8,10))
-              ));
-              while (d < end) { // il giorno di checkOut NON è occupato
-                const key = d.toISOString().slice(0,10);
-                bookedDates.add(key);
-                d.setUTCDate(d.getUTCDate() + 1);
-              }
+        const checkInInput = document.getElementById('checkIn');
+        const checkOutInput = document.getElementById('checkOut');
+        const API_BASE = 'https://demo-mail-993653817397.europe-west8.run.app';
+
+        let checkInSelected = null;
+        let houseIds = [];
+        let bookingsByHouse = {};
+
+        function hasAnyHouseAvailable(checkInKey, checkOutKey) {
+            if (!houseIds.length) return true;
+            return houseIds.some(function(houseId) {
+                const bookings = bookingsByHouse[houseId] || [];
+                for (let i = 0; i < bookings.length; i++) {
+                    const booking = bookings[i];
+                    if (!(checkOutKey <= booking.checkIn || checkInKey >= booking.checkOut)) {
+                        return false;
+                    }
+                }
+                return true;
             });
-          } catch {}
-          // Calcola periodi disponibili continui
-          let periodiDisponibili = [];
-          let periodoInCorso = null;
-          allDates.forEach((date, idx) => {
-            if (!bookedDates.has(date)) {
-              if (!periodoInCorso) periodoInCorso = { dal: date, al: date };
-              else periodoInCorso.al = date;
-            } else {
-              if (periodoInCorso) {
-                // Chiudi il periodo includendo anche il giorno prenotato
-                periodiDisponibili.push({ dal: periodoInCorso.dal, al: date });
-                periodoInCorso = null;
-              }
-            }
-            if (idx === allDates.length-1 && periodoInCorso) {
-              periodiDisponibili.push(periodoInCorso);
-            }
-          });
+        }
 
-          // Filtro: escludi periodi che iniziano o finiscono il 31/05
-          function is31Maggio(dateStr) {
-            return dateStr.endsWith('-05-31');
-          }
-          periodiDisponibili = periodiDisponibili.filter(p => !is31Maggio(p.dal) && !is31Maggio(p.al));
-
-          // Salva HTML della card per riuso nel filtro
-          // Galleria immagini per ogni casa
-          let galleryImages = [];
-          let folder = '';
-          const idToFolder = {
-            1: 'img/casa-bella-vista',
-            2: 'img/casa-giorgio',
-            3: 'img/casa-giorgio2',
-            4: 'img/casa-bella-vista1',
-            5: 'img/respirodimare'
-          };
-          folder = idToFolder[house.id];
-          if (folder) {
-            if (house.id == 1) {
-              galleryImages = ['prospetto-mobile.webp', 'giardino_1.webp', 'giardino_2.webp', 'soggiorno_2.webp', 'cucina.webp', 'prima_camera_1.webp', 'prima_camera_2.webp', 'prima_camera_3.webp', 'seconda_camera.webp', 'seconda_camera_2.webp', 'seconda_camera_5.webp', 'primo_bagno.webp', 'secondo_bagno.webp'];
-            } else if (house.id == 2) {
-              galleryImages = ['prospetto.webp', 'soggiorno.webp', 'cucina.webp', 'cortileinterno.webp', 'cortileinterno1.webp', 'camera.webp', 'camera2.webp', 'camera3.webp', 'camera4.webp', 'camera5.webp', 'camera6.webp', 'camera6.webp', 'bagno1.webp'];
-            } else if (house.id == 3) {
-              galleryImages = [
-                'prospetto3.webp',
-                'prospetto_mare.webp',
-                'balcone.webp',
-                'soggiorno.webp',
-                'camera.webp',
-                'camera2.webp',
-                'camera3.webp',
-                'camera4.webp',
-                'camera5.webp',
-                'camera6.webp',
-                'bagno.webp',
-                'soggiorno.webp',
-                'soggiorno2.webp',
-                'bagno.webp'
-              ];
-            } else if (house.id == 4) {
-              galleryImages = ['prospetto.jpg', 'veranda.jpg', 'veranda2.jpg', 'balcone.jpg', 'cucina.jpg','camera.jpg', 'camera2.jpg', 'camera3.jpg', 'seconda-camera.jpg', 'secondacamera2.jpg', 'bagno.jpg'];
-            } else if (house.id == 5) {
-              galleryImages = [
-                'prospetto.webp',
-                'soggiorno.webp',
-                'camera.webp',
-                'camera2.webp',
-                'camera3.webp',
-                'cucina.webp',
-                'bagno.webp',
-                'cucina.webp'
-              ];
+        try {
+            const housesRes = await fetch(`${API_BASE}/api/case/public`);
+            if (housesRes.ok) {
+                const houses = await housesRes.json();
+                houseIds = Array.isArray(houses) ? houses.map(function(h) { return h.id; }).filter(Boolean) : [];
+                const bookingResponses = await Promise.all(
+                    houseIds.map(function(houseId) {
+                        return fetch(`${API_BASE}/api/prenotazioni/casa/${houseId}`)
+                            .then(function(r) { return r.ok ? r.json() : []; })
+                            .catch(function() { return []; });
+                    })
+                );
+                bookingsByHouse = {};
+                houseIds.forEach(function(houseId, idx) {
+                    bookingsByHouse[houseId] = Array.isArray(bookingResponses[idx]) ? bookingResponses[idx] : [];
+                });
             }
-            galleryImages = galleryImages.map(img => `${folder}/${img}`);
-          } else {
-            galleryImages = [house.immagine || 'img/default.webp'];
-          }
-          // HTML gallery: solo immagine principale cliccabile, Fancybox slide se più immagini
-          let galleryHtml = '';
-          if (galleryImages.length > 0) {
-            galleryHtml = `<div class="property-gallery">`;
-            // Link principale con overlay "Vedi dettagli"
-            galleryHtml += `<a data-fancybox="gallery-${idx}" href="${galleryImages[0]}" class="main-thumb" style="display:block;position:relative;overflow:hidden;">` +
-              `<img src="${galleryImages[0]}" alt="${house.nome || 'Casa'}" style="width:100%;height:220px;object-fit:cover;border-radius:10px;box-shadow:0 2px 12px #0001;margin-bottom:7px;">` +
-              `<span class="image-overlay-label">Vedi foto</span>` +
-            `</a>`;
-            // Se ci sono altre immagini, aggiungi solo i link hidden per Fancybox (no miniature)
-            if (galleryImages.length > 1) {
-              galleryImages.slice(1).forEach(img => {
-                galleryHtml += `<a data-fancybox="gallery-${idx}" href="${img}" style="display:none"></a>`;
-              });
+        } catch (err) {
+            console.warn('Impossibile caricare le prenotazioni per il calendario dinamico:', err);
+        }
+
+        flatpickr(checkInInput, {
+            dateFormat: "Y-m-d",
+            locale: flatpickr.l10ns.it,
+            disable: [function(date) {
+                if (!enableOnlySaturday(date)) return true;
+                const checkInKey = toDateKey(date);
+                const checkOutKey = toDateKey(addDays(date, 7));
+                return !hasAnyHouseAvailable(checkInKey, checkOutKey);
+            }],
+            minDate: "today",
+            onDayCreate: function(dObj, dStr, fp, dayElem) {
+                const dayDate = dayElem.dateObj;
+                if (!enableOnlySaturday(dayDate)) return;
+                const dayKey = toDateKey(dayDate);
+                const plusWeekKey = toDateKey(addDays(dayDate, 7));
+                if (hasAnyHouseAvailable(dayKey, plusWeekKey)) {
+                    dayElem.classList.add('calendar-day-available');
+                } else {
+                    dayElem.classList.add('calendar-day-unavailable');
+                }
+            },
+            onChange: function(selectedDates, dateStr) {
+                checkInSelected = selectedDates && selectedDates[0] ? selectedDates[0] : null;
+                if (checkOutInput._flatpickr) {
+                    const minDate = checkInSelected ? new Date(checkInSelected.getTime() + 24*60*60*1000) : "today";
+                    checkOutInput._flatpickr.set('minDate', minDate);
+                    checkOutInput._flatpickr.redraw();
+                    checkOutInput.value = '';
+                    if (checkInSelected) {
+                        let nextSaturday = new Date(checkInSelected.getTime() + 24*60*60*1000);
+                        while (nextSaturday.getDay() !== 6) {
+                            nextSaturday.setDate(nextSaturday.getDate() + 1);
+                        }
+                        checkOutInput._flatpickr.jumpToDate(nextSaturday);
+                    }
+                }
             }
-            galleryHtml += `</div>`;
-          }
-          house._cardHtml = `
-            <div class="availability-badge">${house.disponibile ? '✔️ Disponibile' : '❌ Non disponibile'}</div>
-            <div class="property-image">${galleryHtml}</div>
-            <div class="property-info">
-              <h3 class="property-title">${house.nome}</h3>
-              <p class="property-subtitle">${house.sottotitolo || ''}</p>
-              <div class="property-features">
-                ${(house.caratteristiche ? house.caratteristiche.split(',').map(f => `<span class='feature-badge'>${f.trim()}</span>`).join(' ') : '')}
-              </div>
-              <p class="property-description">${house.descrizione || ''}</p>
-              <div class="periodi-disponibili">
-                <strong><span class="calendar-icon">📅</span>Periodi disponibili:</strong>
-                <div>
-                  ${periodiDisponibili.length > 0
-                    ? periodiDisponibili.map(p => `<span class='periodo-badge'>${formatPeriodo(p.dal, p.al)}</span>`).join('')
-                    : '<span style="color:#888">Nessun periodo disponibile</span>'}
-                </div>
-              </div>
-              <div style="margin-top: 18px; margin-bottom: 10px;">
-                <a href="preventivo" class="prenota-btn" style="color: #48bb78; text-decoration: underline; font-weight: 500; display: block; margin-bottom: 10px; font-size: 18px;">Richiedi Preventivo</a>
-                <a href="${house.link_whatsapp || 'https://wa.me/393886587080'}" style="color: #48bb78; text-decoration: underline; font-weight: 500; display: flex; align-items: center; gap: 7px; margin-bottom: 38px; font-size: 18px;" onclick="gtag_report_whatsapp_conversion()">
-                  WhatsApp
-                </a>
-              </div>
-            </div>
-          `;
-          // Salva le prenotazioni per il filtro
-          allBookings[house.id] = prenotazioni;
-        }));
-
-        // Salva dati globali per il filtro
-        window._caseVacanzaData = { houses: houses, bookings: allBookings };
-
-        // Mostra tutte le case all’inizio
-        grid.innerHTML = '';
-        houses.forEach(function(house, idx) {
-          var card = document.createElement('div');
-          card.className = 'property-card fade-in';
-          card.innerHTML = house._cardHtml;
-          grid.appendChild(card);
         });
+        flatpickr("#checkOut", {
+            dateFormat: "Y-m-d",
+            locale: flatpickr.l10ns.it,
+            onDayCreate: function(dObj, dStr, fp, dayElem) {
+                const dayDate = dayElem.dateObj;
+                if (!enableOnlySaturday(dayDate)) return;
+                if (!checkInInput.value) return;
 
-        // Solo ora mostra i CTA
-        const cta = document.getElementById('cta-buttons');
-        cta.style.opacity = '1';
-        cta.style.pointerEvents = 'auto';
-      } catch (e) {
-        grid.innerHTML = '<div style="color:red">Errore nel caricamento delle case vacanza.</div>';
-      }
+                const checkInDate = new Date(checkInInput.value);
+                if (dayDate <= checkInDate) return;
+
+                const checkInKey = toDateKey(checkInDate);
+                const checkOutKey = toDateKey(dayDate);
+                if (hasAnyHouseAvailable(checkInKey, checkOutKey)) {
+                    dayElem.classList.add('calendar-day-checkout-available');
+                }
+            },
+            disable: [
+                function(date) {
+                    if (!enableOnlySaturday(date)) return true;
+                    if (checkInInput.value) {
+                        const checkInDate = new Date(checkInInput.value);
+                        if (date <= checkInDate) return true;
+                        const checkInKey = toDateKey(checkInDate);
+                        const checkOutKey = toDateKey(date);
+                        if (!hasAnyHouseAvailable(checkInKey, checkOutKey)) return true;
+                    }
+                    return false;
+                }
+            ],
+            minDate: "today"
+        });
     });
     </script>
-    <!-- Fancybox CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
-<div id="cta-buttons" style="text-align:center; margin-top: 50px; opacity:0; pointer-events:none; transition:opacity 0.5s;">
-  <style>
-    .cta-btn-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px;
-      justify-content: center;
-      margin-bottom: 22px;
-      margin-top: 16px;
-    }
-    .cta-btn-row .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 11px;
-      font-size: 1.18em;
-      font-weight: 600;
-      padding: 16px 32px;
-      border-radius: 32px;
-      background: linear-gradient(90deg, #2d7a46 0%, #1abc9c 100%);
-      color: #fff;
-      box-shadow: 0 4px 18px rgba(34,87,122,0.13), 0 1.5px 6px rgba(34,87,122,0.09);
-      border: none;
-      transition: background 0.18s, box-shadow 0.18s, transform 0.13s;
-      cursor: pointer;
-      text-decoration: none;
-      outline: none;
-      min-width: 220px;
-      justify-content: center;
-    }
-    .cta-btn-row .btn:hover, .cta-btn-row .btn:focus {
-      background: linear-gradient(90deg, #188841 0%, #16a085 100%);
-      box-shadow: 0 6px 24px rgba(34,87,122,0.18), 0 2px 8px rgba(34,87,122,0.13);
-      transform: translateY(-2px) scale(1.03);
-      color: #fff;
-      text-decoration: none;
-    }
-    .cta-btn-row .btn .cta-icon {
-      font-size: 1.45em;
-      line-height: 1;
-      display: flex;
-      align-items: center;
-    }
-    @media (max-width: 700px) {
-      .cta-btn-row {
-        flex-direction: column;
-        gap: 14px;
-        align-items: stretch;
-      }
-      .cta-btn-row .btn {
-        width: 100%;
-        min-width: 0;
-        font-size: 1.08em;
-        padding: 14px 0;
-      }
-    }
-  </style>
-  <div class="cta-btn-row">
-    <button id="cta-preventivo-btn" class="btn prenota-btn" type="button" aria-label="Richiedi un preventivo" tabindex="0"><span class="cta-icon">✉️</span> Richiedi un preventivo</button>
-    <a href="prenotazione" class="btn" aria-label="Cerca disponibilità" tabindex="0"><span class="cta-icon">🔍</span> Cerca disponibilità</a>
-    <a href="https://wa.me/393886587080?text=Ciao!%20Vorrei%20informazioni%20sulle%20vostre%20case%20vacanza%20a%20Torre%20Pali" onclick="gtag('event','click_whatsapp'); return gtag_report_conversion('https://wa.me/393886587080?text=Ciao!%20Vorrei%20informazioni%20sulle%20vostre%20case%20vacanza%20a%20Torre%20Pali');" class="btn" aria-label="WhatsApp" tabindex="0"><span class="cta-icon">📱</span> WhatsApp</a>
-  </div>
-</div>
-<!-- 
-  
-    <div style="max-width:700px; margin:60px auto 0 auto;">
-      <div class="contact-form">
-        <h2>Invia un Messaggio</h2>
-        <div class="success-message" id="successMsg">✅ Messaggio inviato con successo! Ti contatteremo presto.</div>
-        <form id="contactForm" action="https://formspree.io/f/mvzrrpdr" method="POST">
-          
-          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-          <div class="form-group">
-            <label for="nome">Nome *</label>
-            <input type="text" id="nome" name="nome" required>
-          </div>
-          <div class="form-group">
-            <label for="email">Email *</label>
-            <input type="email" id="email" name="email" required>
-          </div>
-          <div class="form-group">
-            <label for="telefono">Telefono</label>
-            <input type="tel" id="telefono" name="telefono">
-          </div>
-          <div class="form-group">
-            <label for="appartamento">Quale appartamento ti interessa?</label>
-            <select name="appartamento" id="appartamento" style="width: 100%; padding: 12px; border: 2px solid #ecf0f1; border-radius: 8px; font-family: Arial, sans-serif; font-size: 1em;">
-              <option value="">-- Seleziona --</option>
-              <option value="casa-bellavista-1">Casa Bellavista 1</option>
-              <option value="casa-bellavista-2">Casa Bellavista 2</option>
-              <option value="casa-giorgio-4">Casa Giorgio 4 (Piano terra)</option>
-              <option value="casa-giorgio-6">Casa Giorgio 6 (Vista Mare)</option>
-              <option value="generico">Richiesta Generica</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="messaggio">Messaggio *</label>
-            <textarea id="messaggio" name="messaggio" required placeholder="Raccontaci cosa ti interessa..."></textarea>
-          </div>
-          <button type="submit" class="form-btn">Invia Messaggio</button>
-        </form>
-      </div>
-    </div>
-    <script>
-    // AJAX submission to Formspree to avoid redirect
-    document.addEventListener('DOMContentLoaded', function(){
-      const form = document.getElementById('contactForm');
-      const success = document.getElementById('successMsg');
-      if (!form) return;
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const data = new FormData(form);
-        // Add reply-to so Formspree can send an autoresponse to the user
-        const userEmail = (form.elements['email'] && form.elements['email'].value) || '';
-        const userName = (form.elements['nome'] && form.elements['nome'].value) || 'Cliente';
-        if (userEmail) {
-          data.append('_replyto', userEmail);
-          data.append('_email', userEmail); // Campo aggiuntivo per migliore deliverability
-        }
-        // Subject ottimizzato per evitare spam
-        data.append('_subject', `Nuova Richiesta da ${userName} - Affitti Torre Pali`);
-        // Template HTML per email più professionale
-        data.append('_template', 'box');
-        // Conferma automatica all'utente
-        data.append('_autoresponse', 'Grazie per averci contattato! Abbiamo ricevuto la tua richiesta e ti risponderemo entro 1 ora. - Affitti Torre Pali');
-        try {
-          const resp = await fetch(form.action, {
-            method: 'POST',
-            headers: { 'Accept': 'application/json' },
-            body: data
-          });
-          if (resp.ok) {
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({ event: 'contatto_inviato' });
-            if (typeof gtag === 'function') {
-              gtag('event', 'conversion', { 'send_to': 'AW-17941172028/OvpCCP_1jJQcELyegutC' });
-            }
-            success.style.display = 'block';
-            success.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            form.reset();
-            setTimeout(() => { success.style.display = 'none'; }, 7000);
-          } else {
-            const text = await resp.text();
-            console.error('Formspree error', resp.status, text);
-            alert('Si è verificato un errore durante l\'invio. Riprova più tardi.');
-          }
-        } catch (err) {
-          console.error(err);
-          alert('Errore di rete. Riprova più tardi.');
-        }
-      });
-    });
-    </script>
+    <script src="script-booking.js"></script>
+</main>
 
-      -->
-
-  </main>
-<footer class="footer" aria-label="Footer Torre Pali Salento">
-<script>
-// Bottone CTA "Richiedi un preventivo" apre la modale generica
-document.addEventListener('DOMContentLoaded', function() {
-  var ctaBtn = document.getElementById('cta-preventivo-btn');
-  if (ctaBtn) {
-    ctaBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      // Mostra la modale senza nome casa
-      var modal = document.getElementById('prenota-modal');
-      var modalBody = document.getElementById('prenota-modal-body');
-      if (modal && modalBody) {
-        modalBody.innerHTML = `
-          <h2 style="margin-top:0;margin-bottom:18px;font-size:1.2em;color:#2d7a46;">Richiesta preventivo</h2>
-          <form id="prenotaForm">
-            <input type="hidden" name="casa" value="Richiesta Generica">
-            <div class="form-group">
-              <label for="arrivo">Data di Arrivo *</label>
-              <input type="date" id="arrivo" name="arrivo" required style="font-size:0.7em;">
-            </div>
-            <div class="form-group">
-              <label for="partenza">Data di Partenza *</label>
-              <input type="date" id="partenza" name="partenza" required style="font-size:0.7em;">
-            </div>
-            <div style="margin-bottom:10px;"><input required name="nome" type="text" placeholder="Nome *" style="width:100%;padding:10px;margin-bottom:6px;border-radius:5px;border:1px solid #ccc;"></div>
-            <div style="margin-bottom:10px;"><input required name="email" type="email" placeholder="Email *" style="width:100%;padding:10px;margin-bottom:6px;border-radius:5px;border:1px solid #ccc;"></div>
-            <div style="margin-bottom:10px;"><input name="telefono" type="tel" placeholder="Telefono" style="width:100%;padding:10px;margin-bottom:6px;border-radius:5px;border:1px solid #ccc;"></div>
-            <div style="margin-bottom:10px;"><input required name="persone" type="number" min="1" max="20" placeholder="Numero di Persone *" style="width:100%;padding:10px;margin-bottom:6px;border-radius:5px;border:1px solid #ccc;"></div>
-            <div style="margin-bottom:10px;"><textarea name="messaggio" placeholder="Messaggio (opzionale)" style="width:100%;padding:10px;border-radius:5px;border:1px solid #ccc;min-height:60px;"></textarea></div>
-            <button type="submit" style="background:#2d7a46;color:#fff;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;">Invia richiesta</button>
-          </form>
-        `;
-        modal.style.display = 'flex';
-        document.getElementById('prenotaForm').onsubmit = async function(ev) {
-          ev.preventDefault();
-          const form = ev.target;
-          const arrivo = form.arrivo.value.trim();
-          const partenza = form.partenza.value.trim();
-          if (!arrivo || !partenza) {
-            alert('Compila sia la data di arrivo che di partenza!');
-            return;
-          }
-          modalBody.innerHTML = `<div style="text-align:center;padding:32px 0;"><div style="border:4px solid #f3f3f3;border-top:4px solid #188841;border-radius:50%;width:32px;height:32px;animation:spin 1s linear infinite;margin:0 auto 18px auto;"></div><span style="color:#188841;font-weight:500;">Invio in corso...</span></div>`;
-          const nome = form.nome.value;
-          const email = form.email.value;
-          const telefono = form.telefono.value;
-          const persone = form.persone.value;
-          const messaggio = form.messaggio.value;
-          const casa = form.casa.value;
-          const text =
-            'Nome: ' + nome + '\n' +
-            'Email: ' + email + '\n' +
-            'Telefono: ' + telefono + '\n' +
-            'Persone: ' + persone + '\n' +
-            'Casa: ' + casa + '\n' +
-            'Check-in: ' + arrivo + '\n' +
-            'Check-out: ' + partenza + '\n' +
-            'Messaggio: ' + messaggio;
-          try {
-            const response = await fetch('https://demo-mail-993653817397.europe-west8.run.app/api/email/send', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'Accept': 'application/json'
-              },
-              body: new URLSearchParams({
-                to: 'info@torrepalivacanze.it',
-                subject: 'info torre pali vacanze',
-                text: text
-              })
-            });
-            if (response.ok) {
-              modalBody.innerHTML = `<div style=\"text-align:center;padding:32px 0;\"><h2 style=\"color:#2d7a46;\">Richiesta inviata!</h2><p>Grazie per aver richiesto il preventivo.<br>Ti ricontatteremo al più presto.</p><button id=\"closePrenotaModal2\" style=\"margin-top:18px;background:#2d7a46;color:#fff;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;\">Chiudi</button></div>`;
-              document.getElementById('closePrenotaModal2').onclick = () => {
-                modal.style.display = 'none';
-              };
-            } else {
-              modalBody.innerHTML = `<div style=\"text-align:center;padding:32px 0;\"><h2 style=\"color:#b91c1c;\">Errore nell'invio</h2><p>Si è verificato un errore nell'invio della richiesta.<br>Riprova o contattaci via WhatsApp.</p><button id=\"closePrenotaModal2\" style=\"margin-top:18px;background:#b91c1c;color:#fff;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;\">Chiudi</button></div>`;
-              document.getElementById('closePrenotaModal2').onclick = () => {
-                modal.style.display = 'none';
-              };
-            }
-          } catch (err) {
-            modalBody.innerHTML = `<div style=\"text-align:center;padding:32px 0;\"><h2 style=\"color:#b91c1c;\">Errore nell'invio</h2><p>Si è verificato un errore nell'invio della richiesta.<br>Riprova o contattaci via WhatsApp.</p><button id=\"closePrenotaModal2\" style=\"margin-top:18px;background:#b91c1c;color:#fff;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;\">Chiudi</button></div>`;
-            document.getElementById('closePrenotaModal2').onclick = () => {
-              modal.style.display = 'none';
-            };
-          }
-        };
-      }
-    });
-  }
-});
-</script>
-<div class="footer-container">
-<div class="footer-section">
-<h3>🏝️ Torre Pali Vacanze - Info</h3>
-<p>Case Vacanza a Torre Pali, Salento. A pochi passi dalla spiaggia di Torre Pali con tutti i comfort.</p>
-<p style="margin-top: 15px;">📍 Torre Pali, Lecce (LE)<br>Salento, Puglia</p>
-</div>
-<div class="footer-section">
-<h3>Link utili Torre Pali</h3>
-<a href="/">Home</a>
-<a href="case-vacanze">Case Vacanza</a>
-<a href="casa-bellavista-1">Casa Bellavista 1</a>
-<a href="casa-bellavista-2">Casa Bellavista 2</a>
-<a href="casa-giorgio-4">Casa Giorgio 4</a>
-<a href="casa-giorgio-6">Casa Giorgio 6</a>
-<a href="torre-pali">Scopri Torre Pali</a>
-<a href="torre-pali-posizione">Dove si trova Torre Pali</a>
-<a href="molo-torre-pali">Il molo di Torre Pali</a>
-<a href="galleria-torre-pali">Galleria Torre Pali</a>
-<a href="contatti">Contatti</a>
-<a href="privacy">Privacy Policy</a>
- <a href="cookie-policy">Cookie Policy</a>
-<!-- <a href="registra-struttura.html">Registra la tua struttura</a> -->
-<br>
-<h4 style="margin-bottom:8px;font-size:1em;">Link utili località</h4>   <a href="spiagge-salento-sud">Guida Spiagge</a>
-<a href="torre-vado">Torre Vado</a>
-<a href="lido-marini">Lido Marini</a>
-<a href="pescoluse">Pescoluse</a>
-<a href="itinerario-7-giorni-salento">Itinerario 7 giorni Salento</a>
-</div>
-<div class="footer-section">
-<h3>Contatti Torre Pali Vacanze</h3>
-<p> <a href="tel:+393886587080" onclick="gtag('event','click_telefono'); return gtag_report_conversion('tel:+393886587080');"> 📞+39 388 658 70 80</a></p>
-<p>📧 <strong>info@torrepalivacanze.it</strong></p>
-<p><a href="https://wa.me/393886587080?text=Ciao!%20Vorrei%20informazioni%20sulle%20vostre%20case%20vacanza%20a%20Torre%20Pali" onclick="gtag('event','click_whatsapp'); gtag_report_conversion()" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill="#fff" style="background:#25d366; border-radius:3px;"><path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 7.933-2.127c2.42 1.37 5.173 2.127 8.067 2.127 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.467c-2.482 0-4.908-0.646-7.07-1.87l-0.507-0.292-4.713 1.262 1.262-4.669-0.292-0.508c-1.207-2.100-1.847-4.507-1.847-6.978 0-7.51 6.11-13.619 13.619-13.619s13.619 6.109 13.619 13.619c0 7.51-6.11 13.619-13.619 13.619zM21.789 18.75c-0.214-0.107-1.268-0.625-1.464-0.696s-0.339-0.107-0.482 0.107c-0.143 0.214-0.554 0.696-0.679 0.839s-0.25 0.161-0.464 0.054c-0.214-0.107-0.902-0.333-1.718-1.060-0.635-0.567-1.064-1.268-1.189-1.482s-0.013-0.329 0.094-0.435c0.096-0.096 0.214-0.25 0.321-0.375s0.143-0.214 0.214-0.357 0.036-0.268-0.018-0.375c-0.054-0.107-0.482-1.161-0.661-1.589s-0.349-0.362-0.482-0.369c-0.125-0.007-0.268-0.007-0.411-0.007s-0.375 0.054-0.571 0.268c-0.196 0.214-0.75 0.732-0.75 1.786s0.768 2.071 0.875 2.214c0.107 0.143 1.5 2.357 3.653 3.304 0.51 0.214 0.909 0.343 1.219 0.438 0.512 0.161 0.978 0.139 1.346 0.084 0.411-0.061 1.268-0.518 1.446-1.018s0.179-0.929 0.125-1.018c-0.054-0.089-0.196-0.143-0.411-0.25z"/></svg>WhatsApp</a></p>
-<p><a href="https://www.facebook.com/profile.php?id=61577506430394" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#fff" style="background:#1877f2; border-radius:3px;"><path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.406.595 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.406 24 22.674V1.326C24 .592 23.406 0 22.675 0z"/></svg>Seguici su Facebook</a></p>
-<p style="margin-top: 15px;">Orario: 09:00 - 20:00<br>Risposta entro 1 ora</p>
-</div>
-</div>
-<div class="footer-bottom">
-<p>&copy; 2026 Torre Pali Vacanze. Tutti i diritti riservati.</p>
-</div>
-</footer>
-
+<!-- WhatsApp Flottante -->
+<a href="https://wa.me/393886587080?text=Ciao!%20Vorrei%20informazioni%20sulle%20case%20vacanza%20a%20Torre%20Pali" class="whatsapp-float" onclick="gtag('event','click_whatsapp'); gtag_report_whatsapp_conversion()" style="position: fixed !important; bottom: 20px !important; right: 20px !important; top: auto !important; left: auto !important; z-index:9999;" target="_blank" aria-label="Contattaci su WhatsApp" data-tooltip="Chatta con noi su WhatsApp">
+<svg viewBox="0 0 32 32" width="32" height="32" fill="white">
+<path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 7.933-2.127c2.42 1.37 5.173 2.127 8.067 2.127 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.467c-2.482 0-4.908-0.646-7.07-1.87l-0.507-0.292-4.713 1.262 1.262-4.669-0.292-0.508c-1.207-2.100-1.847-4.507-1.847-6.978 0-7.51 6.11-13.619 13.619-13.619s13.619 6.109 13.619 13.619c0 7.51-6.11 13.619-13.619 13.619zM21.789 18.75c-0.214-0.107-1.268-0.625-1.464-0.696s-0.339-0.107-0.482 0.107c-0.143 0.214-0.554 0.696-0.679 0.839s-0.25 0.161-0.464 0.054c-0.214-0.107-0.902-0.333-1.718-1.060-0.635-0.567-1.064-1.268-1.189-1.482s-0.013-0.329 0.094-0.435c0.096-0.096 0.214-0.25 0.321-0.375s0.143-0.214 0.214-0.357 0.036-0.268-0.018-0.375c-0.054-0.107-0.482-1.161-0.661-1.589s-0.349-0.362-0.482-0.369c-0.125-0.007-0.268-0.007-0.411-0.007s-0.375 0.054-0.571 0.268c-0.196 0.214-0.75 0.732-0.75 1.786s0.768 2.071 0.875 2.214c0.107 0.143 1.5 2.357 3.653 3.304 0.51 0.214 0.909 0.343 1.219 0.438 0.512 0.161 0.978 0.139 1.346 0.084 0.411-0.061 1.268-0.518 1.446-1.018s0.179-0.929 0.125-1.018c-0.054-0.089-0.196-0.143-0.411-0.25z"/>
+</svg>
+</a>
 
 </body>
 </html>
-<!-- MODALE PREVENTIVO INIZIO -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Crea la modale se non esiste
-  if (!document.getElementById('prenota-modal')) {
-    const modalDiv = document.createElement('div');
-    modalDiv.id = 'prenota-modal';
-    modalDiv.style = 'display:none;position:fixed;z-index:10000;left:0;top:0;width:100vw;height:100vh;background:rgba(0,0,0,0.35);align-items:center;justify-content:center;';
-    modalDiv.innerHTML = `<div id=\"prenota-modal-content\" style=\"background:#fff;padding:32px 24px 24px 24px;max-width:420px;width:95vw;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.18);position:relative;\">\n      <button id=\"closePrenotaModal\" style=\"position:absolute;top:10px;right:14px;font-size:1.5em;background:none;border:none;cursor:pointer;\">&times;</button>\n      <div id=\"prenota-modal-body\"></div>\n    </div>`;
-    document.body.appendChild(modalDiv);
-    document.getElementById('closePrenotaModal').onclick = () => {
-      modalDiv.style.display = 'none';
-    };
-  }
-  // Event delegation per tutti i bottoni .prenota-btn
-  document.body.addEventListener('click', function(e) {
-    if (e.target.classList && e.target.classList.contains('prenota-btn')) {
-      e.preventDefault();
-      // Recupera dati casa dalla card
-      const card = e.target.closest('.property-card');
-      const casaNome = card.querySelector('.property-title')?.textContent || '';
-      const checkIn = '';
-      const checkOut = '';
-      const modal = document.getElementById('prenota-modal');
-      const modalBody = document.getElementById('prenota-modal-body');
-      modalBody.innerHTML = `
-        <h2 style="margin-top:0;margin-bottom:18px;font-size:1.2em;color:#2d7a46;">Richiesta preventivo</h2>
-        <div style="margin-bottom:10px;"><b>${casaNome}</b></div>
-        <form id="prenotaForm">
-          <input type="hidden" name="casa" value="${casaNome}">
-          <div class="form-group">
-            <label for="arrivo">Data di Arrivo *</label>
-            <input type="date" id="arrivo" name="arrivo" required style="font-size:0.7em;">
-          </div>
-          <div class="form-group">
-            <label for="partenza">Data di Partenza *</label>
-            <input type="date" id="partenza" name="partenza" required style="font-size:0.7em;">
-          </div>
-          <div style="margin-bottom:10px;"><input required name="nome" type="text" placeholder="Nome *" style="width:100%;padding:10px;margin-bottom:6px;border-radius:5px;border:1px solid #ccc;"></div>
-          <div style="margin-bottom:10px;"><input required name="email" type="email" placeholder="Email *" style="width:100%;padding:10px;margin-bottom:6px;border-radius:5px;border:1px solid #ccc;"></div>
-          <div style="margin-bottom:10px;"><input name="telefono" type="tel" placeholder="Telefono" style="width:100%;padding:10px;margin-bottom:6px;border-radius:5px;border:1px solid #ccc;"></div>
-          <div style="margin-bottom:10px;"><input required name="persone" type="number" min="1" max="20" placeholder="Numero di Persone *" style="width:100%;padding:10px;margin-bottom:6px;border-radius:5px;border:1px solid #ccc;"></div>
-          <div style="margin-bottom:10px;"><textarea name="messaggio" placeholder="Messaggio (opzionale)" style="width:100%;padding:10px;border-radius:5px;border:1px solid #ccc;min-height:60px;"></textarea></div>
-          <button type="submit" style="background:#2d7a46;color:#fff;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;">Invia richiesta</button>
-        </form>
-      `;
-      modal.style.display = 'flex';
-      // RIMOSSO: flatpickr per i campi data nella modale
-      // Gestione submit form
-      document.getElementById('prenotaForm').onsubmit = async function(ev) {
-        ev.preventDefault();
-        const form = ev.target;
-        const arrivo = form.arrivo.value.trim();
-        const partenza = form.partenza.value.trim();
-        if (!arrivo || !partenza) {
-          alert('Compila sia la data di arrivo che di partenza!');
-          return;
-        }
-        modalBody.innerHTML = `<div style="text-align:center;padding:32px 0;><div style="border:4px solid #f3f3f3;border-top:4px solid #188841;border-radius:50%;width:32px;height:32px;animation:spin 1s linear infinite;margin:0 auto 18px auto;"></div><span style="color:#188841;font-weight:500;">Invio in corso...</span></div>`;
-        const nome = form.nome.value;
-        const email = form.email.value;
-        const telefono = form.telefono.value;
-        const persone = form.persone.value;
-        const messaggio = form.messaggio.value;
-        const casa = form.casa.value;
-        const text =
-          'Nome: ' + nome + '\n' +
-          'Email: ' + email + '\n' +
-          'Telefono: ' + telefono + '\n' +
-          'Persone: ' + persone + '\n' +
-          'Casa: ' + casa + '\n' +
-          'Check-in: ' + arrivo + '\n' +
-          'Check-out: ' + partenza + '\n' +
-          'Messaggio: ' + messaggio;
-        try {
-          const response = await fetch('https://demo-mail-993653817397.europe-west8.run.app/api/email/send', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/x-www-form-urlencoded',
-              'Accept': 'application/json'
-            },
-            body: new URLSearchParams({
-              to: 'info@torrepalivacanze.it',
-              subject: 'info torre pali vacanze',
-              text: text
-            })
-          });
-          if (response.ok) {
-            modalBody.innerHTML = `<div style="text-align:center;padding:32px 0;><h2 style="color:#2d7a46;">Richiesta inviata!</h2><p>Grazie per aver richiesto il preventivo.<br>Ti ricontatteremo al più presto.</p><button id="closePrenotaModal2" style="margin-top:18px;background:#2d7a46;color:#fff;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;">Chiudi</button></div>`;
-            document.getElementById('closePrenotaModal2').onclick = () => {
-              modal.style.display = 'none';
-            };
-          } else {
-            modalBody.innerHTML = `<div style="text-align:center;padding:32px 0;><h2 style="color:#b91c1c;">Errore nell'invio</h2><p>Si è verificato un errore nell'invio della richiesta.<br>Riprova o contattaci via WhatsApp.</p><button id="closePrenotaModal2" style="margin-top:18px;background:#b91c1c;color:#fff;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;">Chiudi</button></div>`;
-            document.getElementById('closePrenotaModal2').onclick = () => {
-              modal.style.display = 'none';
-            };
-          }
-        } catch (err) {
-          modalBody.innerHTML = `<div style="text-align:center;padding:32px 0;><h2 style="color:#b91c1c;">Errore nell'invio</h2><p>Si è verificato un errore nell'invio della richiesta.<br>Riprova o contattaci via WhatsApp.</p><button id="closePrenotaModal2" style="margin-top:18px;background:#b91c1c;color:#fff;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;">Chiudi</button></div>`;
-          document.getElementById('closePrenotaModal2').onclick = () => {
-            modal.style.display = 'none';
-          };
-        }
-      };
-    }
-  });
-});
-</script>
-<!-- MODALE PREVENTIVO FINE -->
