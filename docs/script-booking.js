@@ -157,7 +157,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                     ${prezzoTotale !== null ? `<div style=\"text-align:right;color:#166534;font-weight:700;font-size:1.05em;\">${formatEuro(prezzoTotale)}</div>` : ''}
                                 </div>
                                 
-                                <p style=\"margin-bottom:12px; font-size: 1em; color: #4b5563; line-height:1.2;\">Ti ricontatteremo in breve tempo via telefono o email per confermare e fornire le istruzioni di prenotazione.</p>
+                                <p style=\"margin-bottom:12px; font-size: 1em; color: #4b5563; line-height:1.2;\">Ti ricontatteremo in breve tempo via telefono o email per confermare e fornire ulteriori info.</p>
                                 
                                 <div style=\"margin-bottom:10px; font-weight:600; font-size:0.95em;\">${casa.nome || casa.id || 'Casa'}</div>
 
