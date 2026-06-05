@@ -121,7 +121,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                         </div>
                         <div class="property-info">
                             <p class="property-subtitle">${casa.sottotitolo || ''}</p>
-                            ${prezzoTotale !== null ? `<p style="margin:8px 0 14px 0;font-size:1.05em;color:#166534;font-weight:700;">Prezzo totale: ${formatEuro(prezzoTotale)}</p>` : ''}
+                            ${prezzoTotale !== null ? `<p style="margin:8px 0 14px 0;font-size:1.05em;color:#166534;font-weight:700;">Prezzo stimato: ${formatEuro(prezzoTotale)}</p>` : ''}
                             <div class="property-features">
                                 ${caratteristiche.map(f => `<span class="feature-badge">${f}</span>`).join(' ')}
                             </div>
@@ -154,7 +154,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                             modalBody.innerHTML = `
                                 <div style=\"margin-bottom:12px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px; margin-top: 30px;\">
                                     <h2 style=\"margin:0;font-size:1.15em;color:#2d7a46;\">Richiesta prenotazione</h2>
-                                    ${prezzoTotale !== null ? `<div style=\"text-align:right;color:#166534;font-weight:700;font-size:1.05em;\">${formatEuro(prezzoTotale)}</div>` : ''}
+                                    ${prezzoTotale == '1' ? `<div style=\"text-align:right;color:#166534;font-weight:700;font-size:1.05em;\">Prezzo stimato: ${formatEuro(prezzoTotale)}</div>` : ''}
                                 </div>
                                 
                                 <p style=\"margin-bottom:12px; font-size: 1em; color: #4b5563; line-height:1.2;\">Ti ricontatteremo in breve tempo via telefono o email per confermare la disponibilità e fornire ulteriori info.</p>
@@ -174,8 +174,13 @@ document.getElementById('booking-form').addEventListener('submit', async functio
 
                                     <div style=\"margin-bottom:10px;\">
                                         <input required name=\"nome\" type=\"text\" placeholder=\"Nome e Cognome *\" style=\"width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;\">
-                                        <input required name=\"email\" type=\"email\" placeholder=\"Email *\" style=\"width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;\">
-                                        <input required name=\"telefono\" type=\"tel\" placeholder=\"Telefono *\" style=\"width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;\">
+                                        <input name=\"email\" type=\"email\" placeholder=\"Email\" style=\"width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;\">
+                                        <input name=\"telefono\" type=\"tel\" placeholder=\"Telefono\" style=\"width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;\">
+                                        <select required name=\"preferenza_ricontatto\" style=\"width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;background:#fff;\">
+                                            <option value=\"\" selected disabled>Come preferisci essere ricontattato? *</option>
+                                            <option value=\"telefono\">Telefono</option>
+                                            <option value=\"email\">Email</option>
+                                        </select>
                                         <input required name=\"persone\" type=\"number\" min=\"1\" max=\"20\" placeholder=\"Numero di Persone *\" style=\"width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;\">
                                     </div>
 
@@ -194,16 +199,54 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                     modal.style.display = 'none';
                                 };
                             }
+
+                            const prenotaFormEl = document.getElementById('prenotaForm');
+                            const preferenzaSelect = prenotaFormEl.querySelector('select[name="preferenza_ricontatto"]');
+                            const emailInput = prenotaFormEl.querySelector('input[name="email"]');
+                            const telefonoInput = prenotaFormEl.querySelector('input[name="telefono"]');
+
+                            function applyContactPreference() {
+                                const pref = preferenzaSelect.value;
+                                emailInput.required = pref === 'email';
+                                telefonoInput.required = pref === 'telefono';
+
+                                emailInput.placeholder = pref === 'email' ? 'Email *' : 'Email';
+                                telefonoInput.placeholder = pref === 'telefono' ? 'Telefono *' : 'Telefono';
+
+                                if (pref === 'email') {
+                                    telefonoInput.setCustomValidity('');
+                                } else if (pref === 'telefono') {
+                                    emailInput.setCustomValidity('');
+                                }
+                            }
+
+                            preferenzaSelect.addEventListener('change', applyContactPreference);
+                            applyContactPreference();
+
                             // Gestione submit form
                             document.getElementById('prenotaForm').onsubmit = async function(ev) {
                                 ev.preventDefault();
+                                const form = ev.target;
+                                const pref = form.preferenza_ricontatto.value;
+                                if (pref === 'email' && !form.email.value.trim()) {
+                                    form.email.setCustomValidity('Inserisci l\'email per essere ricontattato via email.');
+                                    form.email.reportValidity();
+                                    return;
+                                }
+                                if (pref === 'telefono' && !form.telefono.value.trim()) {
+                                    form.telefono.setCustomValidity('Inserisci il telefono per essere ricontattato via telefono.');
+                                    form.telefono.reportValidity();
+                                    return;
+                                }
+                                form.email.setCustomValidity('');
+                                form.telefono.setCustomValidity('');
                                 // Mostra spinner
                                 modalBody.innerHTML = `<div style=\"text-align:center;padding:32px 0;\"><div style=\"border:4px solid #f3f3f3;border-top:4px solid #188841;border-radius:50%;width:32px;height:32px;animation:spin 1s linear infinite;margin:0 auto 18px auto;\"></div><span style=\"color:#188841;font-weight:500;\">Invio in corso...</span></div>`;
                                 // Raccogli dati
-                                const form = ev.target;
                                 const nome = form.nome.value;
                                 const email = form.email.value;
                                 const telefono = form.telefono.value;
+                                const preferenzaRicontatto = form.preferenza_ricontatto.value;
                                 const persone = form.persone.value;
                                 // Enhanced conversions - Google Ads Advanced Conversions
                                 // Funzione per hashare in SHA256
@@ -240,11 +283,12 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                     'Nome: ' + nome + '\n' +
                                     'Email: ' + email + '\n' +
                                     'Telefono: ' + telefono + '\n' +
+                                    'Preferenza ricontatto: ' + preferenzaRicontatto + '\n' +
                                     'Persone: ' + persone + '\n' +
                                     'Casa: ' + casa + '\n' +
                                     'Check-in: ' + checkIn + '\n' +
                                     'Check-out: ' + checkOut + '\n' +
-                                    (prezzoTotale !== '' ? 'Prezzo totale: ' + formatEuro(prezzoTotale) + '\n' : '') +
+                                    (prezzoTotale !== '' ? 'Prezzo stimato: ' + formatEuro(prezzoTotale) + '\n' : '') +
                                     'Messaggio: ' + messaggio;
                                 try {
                                     const response = await fetch('https://demo-mail-993653817397.europe-west8.run.app/api/email/send', {
