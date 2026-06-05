@@ -157,7 +157,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                     ${prezzoTotale == '1' ? `<div style=\"text-align:right;color:#166534;font-weight:700;font-size:1.05em;\">Prezzo stimato: ${formatEuro(prezzoTotale)}</div>` : ''}
                                 </div>
                                 
-                                <p style=\"margin-bottom:12px; font-size: 1em; color: #4b5563; line-height:1.2;\">Ti ricontatteremo in breve tempo via telefono o email per confermare la disponibilità e fornire ulteriori info.</p>
+                                <p style=\"margin-bottom:12px; font-size: 1em; color: #4b5563; line-height:1.2;\">Ti ricontatteremo in breve tempo via telefono, email o WhatsApp per confermare la disponibilità e fornire ulteriori info.</p>
                                 
                                 <div style=\"margin-bottom:10px; font-weight:600; font-size:0.95em;\">${casa.nome || casa.id || 'Casa'}</div>
 
@@ -180,6 +180,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                             <option value=\"\" selected disabled>Come preferisci essere ricontattato? *</option>
                                             <option value=\"telefono\">Telefono</option>
                                             <option value=\"email\">Email</option>
+                                            <option value=\"whatsapp\">WhatsApp</option>
                                         </select>
                                         <input required name=\"persone\" type=\"number\" min=\"1\" max=\"20\" placeholder=\"Numero di Persone *\" style=\"width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;\">
                                     </div>
@@ -208,10 +209,10 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                             function applyContactPreference() {
                                 const pref = preferenzaSelect.value;
                                 emailInput.required = pref === 'email';
-                                telefonoInput.required = pref === 'telefono';
+                                telefonoInput.required = pref === 'telefono' || pref === 'whatsapp';
 
                                 emailInput.placeholder = pref === 'email' ? 'Email *' : 'Email';
-                                telefonoInput.placeholder = pref === 'telefono' ? 'Telefono *' : 'Telefono';
+                                telefonoInput.placeholder = (pref === 'telefono' || pref === 'whatsapp') ? 'Telefono *' : 'Telefono';
 
                                 if (pref === 'email') {
                                     telefonoInput.setCustomValidity('');
@@ -233,8 +234,9 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                     form.email.reportValidity();
                                     return;
                                 }
-                                if (pref === 'telefono' && !form.telefono.value.trim()) {
-                                    form.telefono.setCustomValidity('Inserisci il telefono per essere ricontattato via telefono.');
+                                if ((pref === 'telefono' || pref === 'whatsapp') && !form.telefono.value.trim()) {
+                                    const channelLabel = pref === 'whatsapp' ? 'WhatsApp' : 'Telefono';
+                                    form.telefono.setCustomValidity('Inserisci il telefono per essere ricontattato via ' + channelLabel + '.');
                                     form.telefono.reportValidity();
                                     return;
                                 }
@@ -247,6 +249,11 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                 const email = form.email.value;
                                 const telefono = form.telefono.value;
                                 const preferenzaRicontatto = form.preferenza_ricontatto.value;
+                                const preferenzaRicontattoLabel =
+                                    preferenzaRicontatto === 'whatsapp' ? 'WhatsApp' :
+                                    preferenzaRicontatto === 'telefono' ? 'Telefono' :
+                                    preferenzaRicontatto === 'email' ? 'Email' :
+                                    preferenzaRicontatto;
                                 const persone = form.persone.value;
                                 // Enhanced conversions - Google Ads Advanced Conversions
                                 // Funzione per hashare in SHA256
@@ -283,7 +290,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                     'Nome: ' + nome + '\n' +
                                     'Email: ' + email + '\n' +
                                     'Telefono: ' + telefono + '\n' +
-                                    'Preferenza ricontatto: ' + preferenzaRicontatto + '\n' +
+                                    'Preferenza ricontatto: ' + preferenzaRicontattoLabel + '\n' +
                                     'Persone: ' + persone + '\n' +
                                     'Casa: ' + casa + '\n' +
                                     'Check-in: ' + checkIn + '\n' +
