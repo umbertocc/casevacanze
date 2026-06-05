@@ -2,6 +2,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
     e.preventDefault();
     const checkIn = document.getElementById('checkIn').value;
     const checkOut = document.getElementById('checkOut').value;
+    const ospiti = document.getElementById('ospiti').value;
     const resultsDiv = document.getElementById('results');
     // Validazione campi obbligatori
     let errorMsg = '';
@@ -11,15 +12,19 @@ document.getElementById('booking-form').addEventListener('submit', async functio
         errorMsg = 'Inserisci la data di check-in.';
     } else if (!checkOut) {
         errorMsg = 'Inserisci la data di check-out.';
+    } else if (!ospiti) {
+        errorMsg = 'Inserisci il numero di ospiti.';
     }
     if (errorMsg) {
         resultsDiv.innerHTML = `<p style=\"color:#b91c1c;font-weight:600;margin-top:18px;\">${errorMsg}</p>`;
         // Evidenzia input mancanti
         if (!checkIn) document.getElementById('checkIn').style.borderColor = '#b91c1c';
         if (!checkOut) document.getElementById('checkOut').style.borderColor = '#b91c1c';
+        if (!ospiti) document.getElementById('ospiti').style.borderColor = '#b91c1c';
         setTimeout(() => {
             if (!checkIn) document.getElementById('checkIn').style.borderColor = '';
             if (!checkOut) document.getElementById('checkOut').style.borderColor = '';
+            if (!ospiti) document.getElementById('ospiti').style.borderColor = '';
         }, 2000);
         return;
     }
@@ -68,7 +73,12 @@ document.getElementById('booking-form').addEventListener('submit', async functio
             });
         }
 
-        const res = await fetch(`https://demo-mail-993653817397.europe-west8.run.app/api/disponibilita/case?checkIn=${checkIn}&checkOut=${checkOut}`);
+        const queryParams = new URLSearchParams({
+            checkIn: checkIn,
+            checkOut: checkOut,
+            ospiti: ospiti
+        });
+        const res = await fetch(`https://demo-mail-993653817397.europe-west8.run.app/api/disponibilita/case?${queryParams.toString()}`);
         if (!res.ok) throw new Error('Errore nella richiesta');
         const data = await res.json();
         if (Array.isArray(data) && data.length > 0) {
@@ -182,7 +192,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                             <option value=\"email\">Email</option>
                                             <option value=\"whatsapp\">WhatsApp</option>
                                         </select>
-                                        <input required name=\"persone\" type=\"number\" min=\"1\" max=\"20\" placeholder=\"Numero di Persone *\" style=\"width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;\">
+                                        <input required name=\"persone\" type=\"number\" min=\"1\" max=\"8\" placeholder=\"Numero di Persone *\" style=\"width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;\">
                                     </div>
 
                                     <textarea name=\"messaggio\" placeholder=\"Messaggio (opzionale)\" style=\"width:100%;padding:10px;border-radius:5px;border:1px solid #ccc;min-height:50px;max-height:80px;font-size:0.9em;margin-bottom:12px;box-sizing:border-box;display:block;\"></textarea>
