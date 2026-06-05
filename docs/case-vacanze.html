@@ -1125,6 +1125,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           }
           periodiDisponibili = periodiDisponibili.filter(p => !is31Maggio(p.dal) && !is31Maggio(p.al));
 
+          // Salva il totale giorni disponibili per ordinare le case (piu' giorni prima)
+          house._giorniDisponibili = Math.max(0, allDates.length - bookedDates.size);
+
           const waText = encodeURIComponent(`Ciao! Vorrei informazioni per ${house.nome} a Torre Pali.`);
 
           const complianceByLink = {
@@ -1229,6 +1232,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           // Salva le prenotazioni per il filtro
           allBookings[house.id] = prenotazioni;
         }));
+
+        // Ordina le case per disponibilita' (decrescente), poi per nome
+        houses.sort(function(a, b) {
+          const giorniA = Number(a._giorniDisponibili || 0);
+          const giorniB = Number(b._giorniDisponibili || 0);
+          if (giorniB !== giorniA) return giorniB - giorniA;
+          return String(a.nome || '').localeCompare(String(b.nome || ''), 'it', { sensitivity: 'base' });
+        });
 
         // Salva dati globali per il filtro
         window._caseVacanzaData = { houses: houses, bookings: allBookings };
