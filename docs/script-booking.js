@@ -158,7 +158,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                 </div>
                                 
                                 <p style=\"margin-bottom:12px; font-size: 1em; color: #4b5563; line-height:1.2;\">Ti ricontatteremo in breve tempo via telefono, email o WhatsApp per confermare la disponibilità e fornire ulteriori info.</p>
-                                
+                                 
                                 <div style=\"margin-bottom:10px; font-weight:600; font-size:0.95em;\">${casa.nome || casa.id || 'Casa'}</div>
 
                                 <form id=\"prenotaForm\" style=\"margin-bottom:0;\">
