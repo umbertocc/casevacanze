@@ -332,7 +332,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="hero-section-mare" style="min-height: 400px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 20px 80px 20px; position:relative; overflow:hidden; background: linear-gradient(135deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 100%), url('img/torre-pali/torre_pali11.jpg') center/cover no-repeat;">
   <h1 style="font-size: 3.2em; color: white; font-weight: 700; text-shadow: 0 6px 32px rgba(0,0,0,0.35); margin-bottom: 18px; text-align: center; position:relative; z-index:1;">Prenota la tua vacanza a Torre Pali</h1>
   <p style="font-size: 1.35em; color: #fff; font-weight: 500; text-shadow: 0 2px 12px rgba(0,0,0,0.25); margin-bottom: 32px; text-align: center; position:relative; z-index:1;">Scopri i dettagli delle nostre case vacanze </p>
-  <a href="tel:+393886587080" class="btn" style="font-size:1.25em; margin-top:10px; position:relative; z-index:1;" onclick="gtag('event','click_telefono'); gtag_report_conversion()">📞 Chiama per info</a>
 </div>
 <main id="main-content" role="main">
 <div class="breadcrumb">
@@ -348,8 +347,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="container">
 <header>
 <h1>🏠 Casa Bella Vista 1 - Torre Pali Salento</h1>
-<p class="subtitle">Appartamento a 100m dalla spiaggia</p>
+<p class="subtitle">Appartamento a 100m dalla spiaggia • 5 posti letto • parcheggio gratuito</p>
 </header>
+<section aria-label="Azioni rapide" style="margin: 14px 0 26px 0; padding: 16px; border-radius: 12px; background: #f7fbff; border: 1px solid #dbe7f5; box-shadow: 0 2px 10px rgba(34,87,122,0.06); text-align:center;">
+  <p style="margin:0 0 10px 0; color:#22577a; font-weight:600; font-size:1.02em;">Prenota in modo semplice e veloce</p>
+  <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:10px;">
+    <a href="https://wa.me/393886587080?text=Ciao!%20Sono%20interessato%20alla%20Casa%20Bella%20Vista%201" class="btn" onclick="gtag('event','click_whatsapp'); gtag_report_whatsapp_conversion()" style="min-width:180px;">📱 WhatsApp</a>
+    <a href="tel:+393886587080" class="btn" onclick="gtag('event','click_telefono'); gtag_report_conversion()" style="min-width:180px;">📞 Chiama ora</a>
+    <a href="#calendar" class="btn btn-secondary" style="min-width:180px;">📅 Verifica disponibilità</a>
+  </div>
+  <p style="margin:0; color:#22577a; font-size:0.96em;">Prezzi indicativi: <strong>da 350€ a 900€ / settimana</strong> • Risposta media entro 1 ora</p>
+</section>
 <div class="property">
 <div class="gallery-filters">
 	<button class="filter-btn active" data-filter="all">Tutte</button>
@@ -362,7 +370,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <button class="gallery-arrow arrow-left" onclick="changeImg(-1)">&#10094;</button>
   <button class="gallery-arrow arrow-right" onclick="changeImg(1)">&#10095;</button>
   <div class="photo-counter"><span id="current-photo">1</span> / <span id="total-photos">20</span></div>
-  <picture><img src="img/casa-bella-vista1/prospetto.jpg" alt="Prospetto Casa Bella Vista 1" loading="lazy" data-category="esterni"></picture>
+  <picture><img src="img/casa-bella-vista1/prospetto.jpg" alt="Prospetto Casa Bella Vista 1" loading="eager" fetchpriority="high" decoding="async" data-category="esterni"></picture>
   <picture><img src="img/casa-bella-vista1/prospetto2.jpg" alt="Vista esterna" loading="lazy" data-category="esterni"></picture>
   <picture><img src="img/casa-bella-vista1/veranda.jpg" alt="Veranda panoramica" loading="lazy" data-category="esterni"></picture>
   <picture><img src="img/casa-bella-vista1/veranda2.jpg" alt="Veranda attrezzata" loading="lazy" data-category="esterni"></picture>
@@ -408,6 +416,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="description">
 <strong>Casa Bellavista 1</strong> è un appartamento al primo piano, in pieno centro, a soli <strong>100 metri dalla spiaggia sabbiosa di Torre Pali</strong> e a 3 minuti in auto dalle <strong>Maldive del Salento</strong>. In zona tranquilla, è composto da: ampio vano scala, vano cottura, due camere grandi con 2 letti matrimoniali e uno singolo (totale 5 posti letto), spazio esterno panoramico attrezzato (tavolo, sedie, divano, TV SAT) dove pranzare e cenare all'aperto, bagno con doccia, climatizzatore, microonde, lavatrice, pass per parcheggiare gratuitamente sotto casa.
 </div>
+<div style="margin:16px 0 10px 0; padding:14px 16px; background:#f8fafc; border-left:4px solid #22577a; border-radius:8px; color:#27415a; font-size:1.02em;">
+  <strong>Ideale per:</strong> famiglie e coppie che cercano una casa comoda, centrale e vicina al mare, con tutti i servizi raggiungibili a piedi.
+</div>
 <div class="description">
 <h3>🌊 Vantaggi della Posizione</h3>
 A soli 100 metri si trova la spiaggia sabbiosa di Torre Pali, mentre a pochi passi sono disponibili tutti i servizi: bar, ristoranti, macelleria, pasticceria, gelateria, edicola, tabacchi, market, porticciolo per escursioni, giochi per bambini.
@@ -436,9 +447,9 @@ A soli 100 metri si trova la spiaggia sabbiosa di Torre Pali, mentre a pochi pas
     <div id="map-overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.55);backdrop-filter:blur(2px);z-index:2;display:flex;align-items:center;justify-content:center;cursor:pointer;border-radius:16px;font-weight:600;font-size:1.08em;color:#22577a;transition:background 0.2s;">Clicca sulla mappa per attivare lo zoom e la navigazione</div>
     <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=18.209%2C39.838%2C18.212%2C39.840&layer=mapnik&marker=39.8396%2C18.2109" id="map" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="border:0;width:100%;height:350px;border-radius:16px;pointer-events:none;filter:grayscale(0.08);" title="Mappa posizione Casa Bellavista 1"></iframe>
   </div>
-  <!-- <div style="text-align:center; margin: 12px 0 24px 0;">
-    <a href="https://www.google.com/maps?q=Viale+Colleoni,+55,+Torre+Pali+(LE)" target="_blank" rel="noopener" style="color:#22577a; font-weight:600; text-decoration:underline;">Vedi la casa su Google Maps</a>
-  </div> -->
+  <div style="text-align:center; margin: 12px 0 24px 0;">
+    <a href="https://www.google.com/maps?q=Viale+Colleoni,+55,+Torre+Pali+(LE)" target="_blank" rel="noopener" style="color:#22577a; font-weight:600; text-decoration:underline;">Apri la posizione su Google Maps</a>
+  </div>
   <script>
     // Sblocca la mappa solo dopo click sull'overlay
     document.addEventListener('DOMContentLoaded', function() {
@@ -480,7 +491,7 @@ A soli 100 metri si trova la spiaggia sabbiosa di Torre Pali, mentre a pochi pas
   </section>
 -->
 
-<section class="calendar-section" style="margin: 60px auto 30px auto; max-width: 900px; text-align: center;">
+<section id="calendar" class="calendar-section" style="margin: 60px auto 30px auto; max-width: 900px; text-align: center;">
   <h2 style="color: #2c3e50; margin-bottom: 18px;">📅 Disponibilità Casa Bella Vista 1</h2>
   <div style="font-size:1.13em; color:#22577a; margin-bottom:18px;">
     I giorni in rosso sono occupati.
@@ -671,6 +682,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <li><strong>Come posso prenotare Casa Bellavista 1?</strong><br>Puoi prenotare contattandoci tramite WhatsApp, telefono o compilando il form di prenotazione sul sito. Riceverai tutte le informazioni e la conferma della disponibilità.</li>
     <li><strong>È richiesta una caparra?</strong><br>Sì, per confermare la prenotazione è richiesta una caparra. L'importo e le modalità ti verranno comunicate al momento della richiesta.</li>
     <li><strong>Quanto costa l'affitto per una settimana?</strong><br>Il costo esatto dipende dal periodo e dal numero di ospiti. Puoi richiedere un preventivo personalizzato e senza impegno.</li>
+    <li><strong>In quanto tempo ricevo risposta?</strong><br>Generalmente rispondiamo entro 1 ora negli orari 09:00 - 20:00, via WhatsApp o telefono.</li>
   </ul>
   <p style="margin-top:18px;font-size:1.08em;">Per ulteriori informazioni consulta la <a href="faq" style="color:#0074d9;text-decoration:underline;">sezione FAQ</a> oppure <a href="contatti" style="color:#0074d9;text-decoration:underline;">compila il form contatti</a>.</p>
 </section>
