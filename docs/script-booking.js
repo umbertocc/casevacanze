@@ -131,7 +131,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                         </div>
                         <div class="property-info">
                             <p class="property-subtitle">${casa.sottotitolo || ''}</p>
-                            ${prezzoTotale !== null ? `<p style="margin:8px 0 14px 0;font-size:1.05em;color:#166534;font-weight:700;">Prezzo stimato: ${formatEuro(prezzoTotale)}</p>` : ''}
+                            ${prezzoTotale !== null ? `<p style="margin:8px 0 14px 0;font-size:1.05em;color:#166534;font-weight:700;">Prezzo totale: ${formatEuro(prezzoTotale)}</p>` : ''}
                             <div class="property-features">
                                 ${caratteristiche.map(f => `<span class="feature-badge">${f}</span>`).join(' ')}
                             </div>
