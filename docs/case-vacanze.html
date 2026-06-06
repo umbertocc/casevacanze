@@ -103,6 +103,34 @@
   transform: scale(1.15) rotate(5deg);
   box-shadow: 0 8px 35px rgba(37,211,102,0.6);
 }
+.call-float {
+  position: fixed !important;
+  right: 20px !important;
+  left: auto !important;
+  bottom: 95px !important;
+  top: auto !important;
+  z-index: 9998;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #188841 0%, #0f766e 100%);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.98em;
+  box-shadow: 0 8px 26px rgba(15, 118, 110, 0.38);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.call-float:hover,
+.call-float:focus {
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(15, 118, 110, 0.45);
+}
 @media (max-width: 600px) {
   .whatsapp-float {
     right: 10px !important;
@@ -110,6 +138,13 @@
     width: 54px;
     height: 54px;
     font-size: 26px;
+  }
+  .call-float {
+    right: 10px !important;
+    left: auto !important;
+    bottom: 38px !important;
+    padding: 10px 13px;
+    font-size: 0.9em;
   }
 }
 [data-tooltip] { position: relative; }
@@ -1473,6 +1508,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p>&copy; 2026 Torre Pali Vacanze. Tutti i diritti riservati.</p>
 </div>
 </footer>
+
+<a href="tel:+393886587080" class="call-float" aria-label="Chiama ora Torre Pali Vacanze" onclick="gtag('event','click_telefono'); return gtag_report_conversion('tel:+393886587080');">
+  <span aria-hidden="true">📞</span>
+  Chiama per info
+</a>
 
 
 </body>
