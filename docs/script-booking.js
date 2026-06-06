@@ -164,7 +164,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                             modalBody.innerHTML = `
                                 <div style=\"margin-bottom:12px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px; margin-top: 30px;\">
                                     <h2 style=\"margin:0;font-size:1.15em;color:#2d7a46;\">Richiesta prenotazione</h2>
-                                    ${prezzoTotale == '1' ? `<div style=\"text-align:right;color:#166534;font-weight:700;font-size:1.05em;\">Prezzo stimato: ${formatEuro(prezzoTotale)}</div>` : ''}
+                                    ${prezzoTotale != null ? `<div style=\"text-align:right;color:#166534;font-weight:700;font-size:1.05em;\">Prezzo totale: ${formatEuro(prezzoTotale)}</div>` : ''}
                                 </div>
                                 
                                 <p style=\"margin-bottom:12px; font-size: 1em; color: #4b5563; line-height:1.2;\">Ti ricontatteremo in breve tempo via telefono, email o WhatsApp per confermare la disponibilità e fornire ulteriori info.</p>
