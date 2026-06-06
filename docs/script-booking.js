@@ -305,7 +305,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                     'Casa: ' + casa + '\n' +
                                     'Check-in: ' + checkIn + '\n' +
                                     'Check-out: ' + checkOut + '\n' +
-                                    (prezzoTotale !== '' ? 'Prezzo stimato: ' + formatEuro(prezzoTotale) + '\n' : '') +
+                                    (prezzoTotale !== '' ? 'Prezzo totale: ' + formatEuro(prezzoTotale) + '\n' : '') +
                                     'Messaggio: ' + messaggio;
                                 try {
                                     const response = await fetch('https://demo-mail-993653817397.europe-west8.run.app/api/email/send', {
