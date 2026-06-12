@@ -171,8 +171,8 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                             ${galleryHtml}
                         </div>
                         <div class="property-info">
-                            ${prezzoTotale !== null ? `<p style="margin:8px 0 8px 0;font-size:1.05em;color:#166534;font-weight:700;">Prezzo totale: ${formatEuro(prezzoTotale)}</p>` : ''}
-                            <p style="margin:0 0 14px 0;font-size:0.9em;line-height:1.4;color:#374151;background:#f8fafc;border:1px solid #dbeafe;border-radius:8px;padding:10px 12px;"><strong>Info costi:</strong> include tutti i servizi: aria condizionata, registrazione ospiti, pulizie e pass parcheggio. <strong>Non effettuiamo</strong> il cambio biancheria. <strong>Caparra:</strong> 20% dell'importo totale.</p>
+                          <!--  ${prezzoTotale !== null ? `<p style="margin:8px 0 8px 0;font-size:1.05em;color:#166534;font-weight:700;">Prezzo totale: ${formatEuro(prezzoTotale)}</p>` : ''} 
+                            <p style="margin:0 0 14px 0;font-size:0.9em;line-height:1.4;color:#374151;background:#f8fafc;border:1px solid #dbeafe;border-radius:8px;padding:10px 12px;"><strong>Info costi:</strong> include tutti i servizi: aria condizionata, registrazione ospiti, pulizie e pass parcheggio. <strong>Non effettuiamo</strong> il cambio biancheria. <strong>Caparra:</strong> 20% dell'importo totale.</p> -->
                             <div class="property-features">
                                 ${caratteristiche.map(f => `<span class="feature-badge">${f}</span>`).join(' ')}
                             </div>
@@ -204,10 +204,10 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                             const modalBody = document.getElementById('prenota-modal-body');
                             // Modale con date precompilate dalla ricerca (non modificabili)
                             modalBody.innerHTML = `
-                                <div style=\"margin-bottom:12px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px; margin-top: 30px;\">
+                              <!--  <div style=\"margin-bottom:12px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px; margin-top: 30px;\">
                                     <h2 style=\"margin:0;font-size:1.15em;color:#2d7a46;\">Richiesta prenotazione</h2>
                                     ${prezzoTotale != null ? `<div style=\"text-align:right;color:#166534;font-weight:700;font-size:1.05em;\">Prezzo totale: ${formatEuro(prezzoTotale)}</div>` : ''}
-                                </div>
+                                </div> -->
                                 
                                 <p style=\"margin-bottom:8px; font-size: 1em; color: #4b5563; line-height:1.2;\">Ti ricontatteremo in breve tempo via telefono, email o WhatsApp per confermare la disponibilità e fornire ulteriori info.</p>
                                  
