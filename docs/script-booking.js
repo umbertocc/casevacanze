@@ -507,7 +507,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                         },
                                         body: new URLSearchParams({
                                             to: 'info@torrepalivacanze.it',
-                                            subject: 'prenotazione online torre pali vacanze',
+                                            subject: 'richiesta online torre pali vacanze',
                                             text: text
                                         })
                                     });
