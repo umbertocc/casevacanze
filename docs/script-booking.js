@@ -171,7 +171,8 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                             ${galleryHtml}
                         </div>
                         <div class="property-info">
-                            ${prezzoTotale !== null ? `<p style="margin:8px 0 14px 0;font-size:1.05em;color:#166534;font-weight:700;">Prezzo totale: ${formatEuro(prezzoTotale)}</p>` : ''}
+                            ${prezzoTotale !== null ? `<p style="margin:8px 0 8px 0;font-size:1.05em;color:#166534;font-weight:700;">Prezzo totale: ${formatEuro(prezzoTotale)}</p>` : ''}
+                            <p style="margin:0 0 14px 0;font-size:0.9em;line-height:1.4;color:#374151;background:#f8fafc;border:1px solid #dbeafe;border-radius:8px;padding:10px 12px;"><strong>Info costi:</strong> include tutti i servizi: aria condizionata, registrazione ospiti, pulizie e pass parcheggio. <strong>Non effettuiamo</strong> il cambio biancheria. <strong>Caparra:</strong> 20% dell'importo totale.</p>
                             <div class="property-features">
                                 ${caratteristiche.map(f => `<span class="feature-badge">${f}</span>`).join(' ')}
                             </div>
@@ -208,7 +209,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                     ${prezzoTotale != null ? `<div style=\"text-align:right;color:#166534;font-weight:700;font-size:1.05em;\">Prezzo totale: ${formatEuro(prezzoTotale)}</div>` : ''}
                                 </div>
                                 
-                                <p style=\"margin-bottom:12px; font-size: 1em; color: #4b5563; line-height:1.2;\">Ti ricontatteremo in breve tempo via telefono, email o WhatsApp per confermare la disponibilità e fornire ulteriori info.</p>
+                                <p style=\"margin-bottom:8px; font-size: 1em; color: #4b5563; line-height:1.2;\">Ti ricontatteremo in breve tempo via telefono, email o WhatsApp per confermare la disponibilità e fornire ulteriori info.</p>
                                  
                                 <div style=\"margin-bottom:10px; font-weight:600; font-size:0.95em;\">${casa.nome || casa.id || 'Casa'}</div>
 
@@ -240,7 +241,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                     
                                     <div style="display:flex;gap:10px;padding-bottom:10px;flex-wrap:wrap;">
                                         <button type="submit" style="flex:2;background:#2d7a46;color:#fff;padding:12px;border:none;border-radius:6px;font-size:1em;font-weight:600;cursor:pointer;">Invia richiesta</button>
-                                    <!--    <button type="button" id="prenotaOnlineBtn" style="flex:2;background:#188841;color:#fff;padding:12px;border:none;border-radius:6px;font-size:1em;font-weight:600;cursor:pointer;">Prenota online</button> -->
+                                       <!-- <button type="button" id="prenotaOnlineBtn" style="flex:2;background:#188841;color:#fff;padding:12px;border:none;border-radius:6px;font-size:1em;font-weight:600;cursor:pointer;">Prenota online</button> -->
                                         <button type="button" id="cancelPrenotaBtn" style="flex:1;background:#f3f4f6;color:#1f2937;padding:12px;border:1px solid #d1d5db;border-radius:6px;font-size:1em;cursor:pointer;">Annulla</button>
                                     </div>
                                 </form>
@@ -276,7 +277,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
 
                                     const renderPaymentRedirect = (paymentSession) => {
                                         const redirectDelaySeconds = 5;
-                                        modalBody.innerHTML = `<div style="text-align:center;padding:32px 0;"><h2 style="color:#2d7a46;">Prenotazione creata!</h2><p>Importo caparra: <strong>${formatEuro(paymentSession.importoCaparra)}</strong></p><p>Reindirizzamento al pagamento tra <strong><span id="paymentRedirectCountdown">${redirectDelaySeconds}</span>s</strong>.</p><button id="goToPaymentNow" style="margin-top:12px;background:#188841;color:#fff;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;">Paga ora</button><p style="margin-top:12px;font-size:0.95em;color:#555;">Se non vieni reindirizzato, usa il pulsante oppure <a id="paymentFallbackLink" href="${paymentSession.paymentUrl}" target="_blank" rel="noopener">apri il pagamento in una nuova scheda</a>.</p></div>`;
+                                        modalBody.innerHTML = `<div style="text-align:center;padding:32px 0;"><h2 style="color:#2d7a46;">Prenotazione creata!</h2><p>Importo caparra (20% del totale): <strong>${formatEuro(paymentSession.importoCaparra)}</strong></p><p>Reindirizzamento al pagamento tra <strong><span id="paymentRedirectCountdown">${redirectDelaySeconds}</span>s</strong>.</p><button id="goToPaymentNow" style="margin-top:12px;background:#188841;color:#fff;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;">Paga ora</button><p style="margin-top:12px;font-size:0.95em;color:#555;">Se non vieni reindirizzato, usa il pulsante oppure <a id="paymentFallbackLink" href="${paymentSession.paymentUrl}" target="_blank" rel="noopener">apri il pagamento in una nuova scheda</a>.</p></div>`;
                                         const goToPaymentNow = document.getElementById('goToPaymentNow');
                                         const paymentRedirectCountdown = document.getElementById('paymentRedirectCountdown');
                                         let countdown = redirectDelaySeconds;
