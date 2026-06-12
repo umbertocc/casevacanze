@@ -114,16 +114,12 @@
   <main class="card" role="main">
     <section class="top">
       <h1>Pagamento completato con successo</h1>
-      <p>La tua caparra e stata registrata. Grazie per la prenotazione.</p>
+      <p>Abbiamo ricevuto la tua caparra. Grazie, la prenotazione è in carico.</p>
     </section>
 
     <section class="content">
-      <div class="badge">Conferma definitiva tramite verifica webhook lato server.</div>
-      <p>Riceverai una conferma via email appena la prenotazione viene elaborata.</p>
-
-      <div id="sessionBox" class="session" hidden>
-        ID sessione Stripe: <strong id="sessionId"></strong>
-      </div>
+      <div class="badge">Riceverai una conferma via email a breve.</div>
+      <p>Se non la trovi entro pochi minuti, controlla la posta indesiderata oppure scrivici su WhatsApp.</p>
 
       <div class="actions">
         <a class="btn btn-primary" href="/">Torna alla homepage</a>
@@ -131,17 +127,5 @@
       </div>
     </section>
   </main>
-
-  <script>
-    (function () {
-      var params = new URLSearchParams(window.location.search);
-      var sessionId = params.get("session_id");
-      if (!sessionId) return;
-      var box = document.getElementById("sessionBox");
-      var span = document.getElementById("sessionId");
-      span.textContent = sessionId;
-      box.hidden = false;
-    })();
-  </script>
 </body>
 </html>
