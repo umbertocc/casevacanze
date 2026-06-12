@@ -100,7 +100,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                 1: ['prospetto-mobile.webp', 'giardino_1.webp', 'giardino_2.webp', 'soggiorno_2.webp', 'cucina.webp', 'prima_camera_1.webp', 'prima_camera_2.webp', 'prima_camera_3.webp', 'seconda_camera.webp', 'seconda_camera_2.webp', 'seconda_camera_5.webp', 'primo_bagno.webp', 'secondo_bagno.webp'],
                 2: ['prospetto.webp', 'soggiorno.webp', 'cucina.webp', 'cortileinterno.webp', 'cortileinterno1.webp', 'camera.webp', 'camera2.webp', 'camera3.webp', 'camera4.webp', 'camera5.webp', 'camera6.webp', 'bagno1.webp'],
                 3: ['prospetto3.webp', 'prospetto_mare.webp', 'balcone.webp', 'soggiorno.webp', 'camera.webp', 'camera2.webp', 'camera3.webp', 'camera4.webp', 'camera5.webp', 'camera6.webp', 'bagno.webp', 'soggiorno2.webp'],
-                4: ['prospetto.jpg', 'veranda.jpg', 'veranda2.jpg', 'balcone.jpg', 'cucina.jpg', 'camera.jpg', 'camera2.jpg', 'camera3.jpg', 'seconda-camera.jpg', 'secondacamera2.jpg', 'bagno.jpg'],
+                4: ['prospetto.jpg', 'veranda.jpg', 'veranda2.jpg', 'corridoio.jpg', 'corridoio1.jpg', 'cucina.jpg', 'camera.jpg', 'camera2.jpg', 'camera3.jpg', 'seconda-camera.jpg', 'secondacamera2.jpg', 'bagno.jpg'],
                 5: ['prospetto.webp', 'soggiorno.webp', 'camera.webp', 'camera2.webp', 'camera3.webp', 'cucina.webp', 'bagno.webp']
             };
 
