@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Pagamento Riuscito | Torre Pali Vacanze</title>
+  <style>
+    :root {
+      --bg-1: #0f3957;
+      --bg-2: #2d6f95;
+      --card: #ffffff;
+      --text: #123;
+      --muted: #5f7385;
+      --ok: #177245;
+      --ok-soft: #e9f8f0;
+      --accent: #0b5f8a;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at 20% 20%, #3e95c4 0%, transparent 40%),
+                  linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 100%);
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .card {
+      width: min(760px, 100%);
+      background: var(--card);
+      border-radius: 20px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+      overflow: hidden;
+    }
+
+    .top {
+      background: linear-gradient(135deg, #0f7d55 0%, #2ea36a 100%);
+      color: #fff;
+      padding: 30px 24px;
+      text-align: center;
+    }
+
+    .top h1 {
+      margin: 0;
+      font-size: clamp(1.5rem, 2.3vw, 2rem);
+      letter-spacing: 0.3px;
+    }
+
+    .top p {
+      margin: 10px 0 0;
+      opacity: 0.95;
+    }
+
+    .content {
+      padding: 26px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .badge {
+      background: var(--ok-soft);
+      color: var(--ok);
+      border: 1px solid #ccefdc;
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-weight: 600;
+    }
+
+    .session {
+      background: #f3f7fa;
+      border: 1px dashed #b3c5d3;
+      border-radius: 10px;
+      padding: 12px 14px;
+      color: var(--muted);
+      word-break: break-all;
+      font-size: 0.95rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-weight: 600;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-outline {
+      color: var(--accent);
+      border-color: #9bc0d6;
+      background: #f5fbff;
+    }
+  </style>
+</head>
+<body>
+  <main class="card" role="main">
+    <section class="top">
+      <h1>Pagamento completato con successo</h1>
+      <p>La tua caparra e stata registrata. Grazie per la prenotazione.</p>
+    </section>
+
+    <section class="content">
+      <div class="badge">Conferma definitiva tramite verifica webhook lato server.</div>
+      <p>Riceverai una conferma via email appena la prenotazione viene elaborata.</p>
+
+      <div id="sessionBox" class="session" hidden>
+        ID sessione Stripe: <strong id="sessionId"></strong>
+      </div>
+
+      <div class="actions">
+        <a class="btn btn-primary" href="/">Torna alla homepage</a>
+        <a class="btn btn-outline" href="/contatti">Contattaci</a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var sessionId = params.get("session_id");
+      if (!sessionId) return;
+      var box = document.getElementById("sessionBox");
+      var span = document.getElementById("sessionId");
+      span.textContent = sessionId;
+      box.hidden = false;
+    })();
+  </script>
+</body>
+</html>
