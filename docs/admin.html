@@ -209,6 +209,8 @@
             const casaSelezionata = caseListCache.find(c => String(c.id) === String(casaId));
             const linkDettaglio = casaSelezionata ? (casaSelezionata.link_dettaglio || casaSelezionata.linkDettaglio || '') : '';
             const descrizioneCasa = casaSelezionata ? (casaSelezionata.descrizione || casaSelezionata.description || '') : '';
+            const cinCasa = casaSelezionata ? (casaSelezionata.cin || casaSelezionata.CIN || casaSelezionata.codiceCin || casaSelezionata.codice_cin || '') : '';
+            const cisCasa = casaSelezionata ? (casaSelezionata.cis || casaSelezionata.CIS || casaSelezionata.codiceCis || casaSelezionata.codice_cis || '') : '';
             const linkDettaglioAssoluto = toAbsoluteDetailUrl(linkDettaglio);
 
             if (!prezzo) {
@@ -246,6 +248,8 @@ Di seguito il preventivo del soggiorno e le informazioni utili.
 - È ammesso al massimo 1 animale domestico
 - Check-in: dalle 15:00 alle 20:00
 - Check-out: entro le 10:00;
+- CIN: ${cinCasa || 'non disponibile'}
+- CIS: ${cisCasa || 'non disponibile'}
 - Dettagli casa: ${linkDettaglioAssoluto || 'non disponibile'}
 - Descrizione casa: ${descrizioneCasa || 'non disponibile'}
 - Per qualsiasi informazione o dubbio puoi contattarci al 3886587080, oppure rispondere a questa email.
