@@ -13,6 +13,7 @@
                 document.getElementById('loginForm').style.display = 'none';
                 document.getElementById('adminPanel').style.display = 'block';
                 loadCase();
+                loadPreventivi();
             });
         }
 
@@ -21,6 +22,52 @@
             n.textContent = msg;
             n.style.display = 'block';
             setTimeout(() => n.style.display = 'none', 3000);
+        }
+
+        function loadPreventivi() {
+            const esc = (v) => String(v ?? '')
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+
+            fetch(`${API_BASE}/admin/preventivi`, {
+                headers: {
+                    ...(adminToken ? { 'Authorization': 'Bearer ' + adminToken } : {})
+                }
+            })
+            .then(res => {
+                if (!res.ok) throw new Error('Errore caricamento preventivi');
+                return res.json();
+            })
+            .then(preventivi => {
+                const body = document.getElementById('preventiviBody');
+                if (!body) return;
+                body.innerHTML = '';
+
+                if (!Array.isArray(preventivi) || preventivi.length === 0) {
+                    body.innerHTML = '<tr><td colspan="9" style="text-align:center;color:#6b7280;">Nessuna richiesta preventivo</td></tr>';
+                    return;
+                }
+
+                preventivi.forEach(p => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${esc(p.createdAt ? new Date(p.createdAt).toLocaleString() : '')}</td>
+                        <td>${esc(p.nome)}</td>
+                        <td>${esc(p.email)}</td>
+                        <td>${esc(p.telefono)}</td>
+                        <td>${esc(p.appartamento)}</td>
+                        <td>${esc(p.checkIn)}</td>
+                        <td>${esc(p.checkOut)}</td>
+                        <td>${esc(p.persone)}</td>
+                        <td style="max-width:280px;white-space:pre-wrap;">${esc(p.messaggio)}</td>
+                    `;
+                    body.appendChild(tr);
+                });
+            })
+            .catch(() => showNotification('Errore nel caricamento richieste preventivo.'));
         }
 
         function toAbsoluteDetailUrl(url) {
@@ -184,6 +231,7 @@ Torre Pali Vacanze
                     document.getElementById('loginForm').style.display = 'none';
                     document.getElementById('adminPanel').style.display = 'block';
                     loadCase();
+                    loadPreventivi();
                 } else {
                     showNotification('Credenziali errate!');
                 }
@@ -1099,6 +1147,24 @@ Torre Pali Vacanze
                     <span><span style="display:inline-block;width:14px;height:14px;box-shadow:inset 0 0 0 2px #007bff;border-radius:3px;vertical-align:middle;margin-right:4px;"></span>Oggi</span>
                 </div>
             </div>
+
+            <h2 style="margin-top:40px;">Richieste Preventivo</h2>
+            <table class="requests-table" id="preventiviTable">
+                <thead>
+                    <tr>
+                        <th>Ricevuto il</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Telefono</th>
+                        <th>Appartamento</th>
+                        <th>Check-in</th>
+                        <th>Check-out</th>
+                        <th>Persone</th>
+                        <th>Messaggio</th>
+                    </tr>
+                </thead>
+                <tbody id="preventiviBody"></tbody>
+            </table>
 
             <div class="email-tools" style="margin-top: 30px;">
                 <h3 style="margin:0 0 12px 0; font-size:1.08rem; color:#2d3a4a;">Invio email preventivo</h3>
