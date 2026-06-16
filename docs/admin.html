@@ -6,6 +6,7 @@
         const SITE_BASE = 'https://torrepalivacanze.it';
         let adminToken = null;
         let caseListCache = [];
+        let selectedPreventivoForEmail = null;
         // Recupera il token dal localStorage all'avvio
         if (localStorage.getItem('adminToken')) {
             adminToken = localStorage.getItem('adminToken');
@@ -22,6 +23,76 @@
             n.textContent = msg;
             n.style.display = 'block';
             setTimeout(() => n.style.display = 'none', 3000);
+        }
+
+        function normalizeText(value) {
+            return String(value || '')
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .toLowerCase()
+                .trim();
+        }
+
+        function findCasaIdByName(appartamento) {
+            const target = normalizeText(appartamento);
+            if (!target) return '';
+            const match = (caseListCache || []).find(c => {
+                const nome = normalizeText(c && c.nome);
+                return nome && (nome.includes(target) || target.includes(nome));
+            });
+            return match ? String(match.id) : '';
+        }
+
+        function buildPreventivoReferenceBlock(preventivo) {
+            if (!preventivo) return '';
+            return `Riferimento richiesta preventivo\n` +
+                `- Nome: ${preventivo.nome || ''}\n` +
+                `- Appartamento: ${preventivo.appartamento || ''}\n` +
+                `- Check-in: ${preventivo.checkIn || ''}\n` +
+                `- Check-out: ${preventivo.checkOut || ''}\n` +
+                `- Persone: ${preventivo.persone || ''}\n\n` +
+                `Messaggio ricevuto:\n${preventivo.messaggio || ''}`;
+        }
+
+        function appendPreventivoReferenceToEmail(text) {
+            const raw = String(text || '').trim();
+            if (!selectedPreventivoForEmail) return raw;
+
+            const marker = 'Riferimento richiesta preventivo';
+            if (raw.includes(marker)) return raw;
+
+            const block = buildPreventivoReferenceBlock(selectedPreventivoForEmail);
+            if (!block) return raw;
+            return `${raw}\n\n${block}`;
+        }
+
+        function prefillEmailFromPreventivo(preventivo) {
+            selectedPreventivoForEmail = preventivo || null;
+            const toInput = document.getElementById('generatedEmailTo');
+            const casaInput = document.getElementById('generatedEmailCasaId');
+            const checkInInput = document.getElementById('generatedEmailCheckIn');
+            const checkOutInput = document.getElementById('generatedEmailCheckOut');
+            const bodyInput = document.getElementById('generatedEmailBody');
+            const prezzoInput = document.getElementById('generatedEmailPrezzo');
+
+            if (toInput) toInput.value = preventivo.email || '';
+            if (checkInInput) checkInInput.value = preventivo.checkIn || '';
+            if (checkOutInput) checkOutInput.value = preventivo.checkOut || '';
+
+            const casaId = findCasaIdByName(preventivo.appartamento);
+            if (casaInput && casaId) casaInput.value = casaId;
+
+            if (bodyInput) {
+                bodyInput.value = buildPreventivoReferenceBlock(preventivo);
+            }
+
+            if (prezzoInput && !prezzoInput.value) {
+                prezzoInput.focus();
+            }
+
+            const emailSection = document.querySelector('.email-tools');
+            if (emailSection) emailSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            showNotification('Campi email precompilati dal preventivo selezionato.');
         }
 
         function loadPreventivi() {
@@ -47,7 +118,7 @@
                 body.innerHTML = '';
 
                 if (!Array.isArray(preventivi) || preventivi.length === 0) {
-                    body.innerHTML = '<tr><td colspan="9" style="text-align:center;color:#6b7280;">Nessuna richiesta preventivo</td></tr>';
+                    body.innerHTML = '<tr><td colspan="10" style="text-align:center;color:#6b7280;">Nessuna richiesta preventivo</td></tr>';
                     return;
                 }
 
@@ -63,7 +134,14 @@
                         <td>${esc(p.checkOut)}</td>
                         <td>${esc(p.persone)}</td>
                         <td style="max-width:280px;white-space:pre-wrap;">${esc(p.messaggio)}</td>
+                        <td><button class="btn" style="padding:6px 10px;font-size:0.9rem;" type="button">Precompila email</button></td>
                     `;
+                    const prefillBtn = tr.querySelector('button');
+                    if (prefillBtn) {
+                        prefillBtn.addEventListener('click', function() {
+                            prefillEmailFromPreventivo(p);
+                        });
+                    }
                     body.appendChild(tr);
                 });
             })
@@ -139,7 +217,7 @@
                 return;
             }
 
-            body.value = `Grazie per averci contattato.
+            const generatedText = `Grazie per averci contattato.
 Di seguito il preventivo del soggiorno e le informazioni utili.
 
 
@@ -160,7 +238,9 @@ Di seguito il preventivo del soggiorno e le informazioni utili.
 
 Cordiali saluti,
 Torre Pali Vacanze
-3886587080`
+3886587080`;
+
+            body.value = appendPreventivoReferenceToEmail(generatedText);
             showNotification('Testo email generato.');
         }
 
@@ -171,7 +251,7 @@ Torre Pali Vacanze
             if (!toInput || !bodyInput) return;
 
             const to = (toInput.value || '').trim();
-            const text = (bodyInput.value || '').trim();
+            const text = appendPreventivoReferenceToEmail(bodyInput.value || '');
             const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(to);
 
             if (!emailOk) {
@@ -182,6 +262,8 @@ Torre Pali Vacanze
                 showNotification('Genera o scrivi prima il testo della email.');
                 return;
             }
+
+            bodyInput.value = text;
 
             if (sendBtn) {
                 sendBtn.disabled = true;
@@ -1161,6 +1243,7 @@ Torre Pali Vacanze
                         <th>Check-out</th>
                         <th>Persone</th>
                         <th>Messaggio</th>
+                        <th>Azioni</th>
                     </tr>
                 </thead>
                 <tbody id="preventiviBody"></tbody>
