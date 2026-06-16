@@ -299,9 +299,9 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                             ${galleryHtml}
                         </div>
                         <div class="property-info">
-                          ${prezzoTotale !== null ? `<p style="margin:8px 0 8px 0;font-size:1.05em;color:#166534;font-weight:700;">Prezzo totale: ${formatEuro(prezzoTotale)}</p>` : ''} 
+                       <!--   ${prezzoTotale !== null ? `<p style="margin:8px 0 8px 0;font-size:1.05em;color:#166534;font-weight:700;">Prezzo totale: ${formatEuro(prezzoTotale)}</p>` : ''} 
                                                         <p style="margin:0 0 10px 0;font-size:0.9em;line-height:1.4;color:#334155;background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:8px 10px;"><strong>CIN:</strong> ${cin || '-'}<br><strong>CIS:</strong> ${cis || '-'}</p>
-                            <p style="margin:0 0 14px 0;font-size:0.9em;line-height:1.4;color:#374151;background:#f8fafc;border:1px solid #dbeafe;border-radius:8px;padding:10px 12px;"><strong>Info costi:</strong> include tutti i servizi: aria condizionata, registrazione ospiti, pulizie e pass parcheggio. <strong>Caparra:</strong> 20% dell'importo totale.</p> 
+                            <p style="margin:0 0 14px 0;font-size:0.9em;line-height:1.4;color:#374151;background:#f8fafc;border:1px solid #dbeafe;border-radius:8px;padding:10px 12px;"><strong>Info costi:</strong> include tutti i servizi: aria condizionata, registrazione ospiti, pulizie e pass parcheggio. <strong>Caparra:</strong> 20% dell'importo totale.</p> -->
                             <div class="property-features">
                                 ${caratteristiche.map(f => `<span class="feature-badge">${f}</span>`).join(' ')}
                             </div>
@@ -335,7 +335,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                             modalBody.innerHTML = `
                                 <div style=\"margin-bottom:12px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px; margin-top: 30px;\">
                                     <h2 style=\"margin:0;font-size:1.15em;color:#2d7a46;\">Richiesta prenotazione</h2>
-                                    ${prezzoTotale != null ? `<div style=\"text-align:right;color:#166534;font-weight:700;font-size:1.05em;\">Prezzo totale: ${formatEuro(prezzoTotale)}</div>` : ''}
+                                <!--    ${prezzoTotale != null ? `<div style=\"text-align:right;color:#166534;font-weight:700;font-size:1.05em;\">Prezzo totale: ${formatEuro(prezzoTotale)}</div>` : ''}  -->
                                 </div>
                                 
                                 <p style=\"margin-bottom:8px; font-size: 1em; color: #4b5563; line-height:1.2;\">Ti ricontatteremo in breve tempo via telefono, email o WhatsApp per confermare la disponibilità e fornire ulteriori info.</p>
