@@ -86,8 +86,16 @@
                 bodyInput.value = buildPreventivoReferenceBlock(preventivo);
             }
 
-            if (prezzoInput && !prezzoInput.value) {
-                prezzoInput.focus();
+            if (prezzoInput) {
+                const hasPrezzo = preventivo && preventivo.prezzo !== null && preventivo.prezzo !== undefined && String(preventivo.prezzo).trim() !== '';
+                if (hasPrezzo) {
+                    const prezzoNumber = Number(preventivo.prezzo);
+                    prezzoInput.value = Number.isFinite(prezzoNumber)
+                        ? prezzoNumber.toLocaleString('it-IT', { style: 'currency', currency: 'EUR' })
+                        : String(preventivo.prezzo);
+                } else if (!prezzoInput.value) {
+                    prezzoInput.focus();
+                }
             }
 
             const emailSection = document.querySelector('.email-tools');
@@ -118,11 +126,16 @@
                 body.innerHTML = '';
 
                 if (!Array.isArray(preventivi) || preventivi.length === 0) {
-                    body.innerHTML = '<tr><td colspan="10" style="text-align:center;color:#6b7280;">Nessuna richiesta preventivo</td></tr>';
+                    body.innerHTML = '<tr><td colspan="11" style="text-align:center;color:#6b7280;">Nessuna richiesta preventivo</td></tr>';
                     return;
                 }
 
                 preventivi.forEach(p => {
+                    const prezzoRaw = p.prezzo;
+                    const prezzoNumber = Number(prezzoRaw);
+                    const prezzoDisplay = Number.isFinite(prezzoNumber)
+                        ? prezzoNumber.toLocaleString('it-IT', { style: 'currency', currency: 'EUR' })
+                        : esc(prezzoRaw);
                     const tr = document.createElement('tr');
                     tr.innerHTML = `
                         <td>${esc(p.createdAt ? new Date(p.createdAt).toLocaleString() : '')}</td>
@@ -133,6 +146,7 @@
                         <td>${esc(p.checkIn)}</td>
                         <td>${esc(p.checkOut)}</td>
                         <td>${esc(p.persone)}</td>
+                        <td>${prezzoDisplay}</td>
                         <td style="max-width:280px;white-space:pre-wrap;">${esc(p.messaggio)}</td>
                         <td><button class="btn" style="padding:6px 10px;font-size:0.9rem;" type="button">Precompila email</button></td>
                     `;
@@ -1242,6 +1256,7 @@ Torre Pali Vacanze
                         <th>Check-in</th>
                         <th>Check-out</th>
                         <th>Persone</th>
+                        <th>Prezzo</th>
                         <th>Messaggio</th>
                         <th>Azioni</th>
                     </tr>
