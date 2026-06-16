@@ -3,7 +3,9 @@
 <head>
         <script>
         const API_BASE = 'https://demo-mail-993653817397.europe-west8.run.app'; // URL reale backend Java
+        const SITE_BASE = 'https://torrepalivacanze.it';
         let adminToken = null;
+        let caseListCache = [];
         // Recupera il token dal localStorage all'avvio
         if (localStorage.getItem('adminToken')) {
             adminToken = localStorage.getItem('adminToken');
@@ -19,6 +21,147 @@
             n.textContent = msg;
             n.style.display = 'block';
             setTimeout(() => n.style.display = 'none', 3000);
+        }
+
+        function toAbsoluteDetailUrl(url) {
+            const raw = (url || '').trim();
+            if (!raw) return '';
+            if (/^https?:\/\//i.test(raw)) return raw;
+            if (raw.startsWith('/')) return `${SITE_BASE}${raw}`;
+            return `${SITE_BASE}/${raw}`;
+        }
+
+        function parseEuroAmount(value) {
+            const raw = String(value || '').trim();
+            if (!raw) return NaN;
+
+            const sanitized = raw.replace(/[^0-9,\.]/g, '');
+            if (!sanitized) return NaN;
+
+            const hasComma = sanitized.includes(',');
+            const hasDot = sanitized.includes('.');
+            let normalized = sanitized;
+
+            if (hasComma && hasDot) {
+                normalized = sanitized.replace(/\./g, '').replace(',', '.');
+            } else if (hasComma) {
+                normalized = sanitized.replace(',', '.');
+            }
+
+            return Number(normalized);
+        }
+
+        function generateSaldoEmailText() {
+            const body = document.getElementById('generatedEmailBody');
+            const prezzoInput = document.getElementById('generatedEmailPrezzo');
+            const casaInput = document.getElementById('generatedEmailCasaId');
+            const checkInInput = document.getElementById('generatedEmailCheckIn');
+            const checkOutInput = document.getElementById('generatedEmailCheckOut');
+            if (!body) return;
+
+            const prezzo = prezzoInput ? (prezzoInput.value || '').trim() : '';
+            const casaId = casaInput ? (casaInput.value || '').trim() : '';
+            const checkIn = checkInInput ? (checkInInput.value || '').trim() : '';
+            const checkOut = checkOutInput ? (checkOutInput.value || '').trim() : '';
+            const prezzoNumerico = parseEuroAmount(prezzo);
+            const sommaBlocco = Number.isFinite(prezzoNumerico)
+                ? Math.ceil((prezzoNumerico * 0.2) / 10) * 10
+                : NaN;
+            const casaSelezionata = caseListCache.find(c => String(c.id) === String(casaId));
+            const linkDettaglio = casaSelezionata ? (casaSelezionata.link_dettaglio || casaSelezionata.linkDettaglio || '') : '';
+            const descrizioneCasa = casaSelezionata ? (casaSelezionata.descrizione || casaSelezionata.description || '') : '';
+            const linkDettaglioAssoluto = toAbsoluteDetailUrl(linkDettaglio);
+
+            if (!prezzo) {
+                showNotification('Inserisci prima il prezzo da comunicare.');
+                return;
+            }
+
+            if (!casaSelezionata) {
+                showNotification('Seleziona una casa per inserire il link di dettaglio.');
+                return;
+            }
+
+            if (!checkIn || !checkOut) {
+                showNotification('Inserisci sia la data di check-in che la data di check-out.');
+                return;
+            }
+
+            if (!Number.isFinite(sommaBlocco)) {
+                showNotification('Inserisci un prezzo numerico valido per calcolare la somma da versare.');
+                return;
+            }
+
+            body.value = `Grazie per averci contattato.
+Di seguito il preventivo del soggiorno e le informazioni utili.
+
+
+- Data check-in: ${checkIn}
+- Data check-out: ${checkOut}
+- Prezzo del soggiorno: ${prezzo}
+- Per bloccare la prenotazione e previsto il versamento della somma di EUR ${sommaBlocco}.
+- Il prezzo include pulizia finale, registrazione ospiti, supporto all'arrivo, pass parcheggio, spese di consumo.
+- Prima del vostro arrivo la casa viene accuratamente pulita e sanificata; la consegna avviene senza lenzuola, salvo specifica richiesta.
+- L'appartamento e completamente attrezzato con cucina, stoviglie e tutto il necessario per il soggiorno.
+- All'arrivo degli ospiti siamo presenti in struttura per accoglienza, consegna chiavi e tutte le informazioni utili sul soggiorno e sulla zona.
+- E ammesso al massimo 1 animale domestico
+- Check-in: dalle 15:00 alle 20:00
+- Check-out: entro le 10:00;
+- Dettagli casa: ${linkDettaglioAssoluto || 'non disponibile'}
+- Descrizione casa: ${descrizioneCasa || 'non disponibile'}
+- Per qualsiasi informazione o dubbio puoi contattarci al 3886587080, oppure rispondere a questa email.`
+            showNotification('Testo email generato.');
+        }
+
+        function sendGeneratedSaldoEmail() {
+            const toInput = document.getElementById('generatedEmailTo');
+            const bodyInput = document.getElementById('generatedEmailBody');
+            const sendBtn = document.getElementById('sendGeneratedEmailBtn');
+            if (!toInput || !bodyInput) return;
+
+            const to = (toInput.value || '').trim();
+            const text = (bodyInput.value || '').trim();
+            const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(to);
+
+            if (!emailOk) {
+                showNotification('Inserisci un indirizzo email valido.');
+                return;
+            }
+            if (!text) {
+                showNotification('Genera o scrivi prima il testo della email.');
+                return;
+            }
+
+            if (sendBtn) {
+                sendBtn.disabled = true;
+                sendBtn.textContent = 'Invio in corso...';
+            }
+
+            fetch(`${API_BASE}/api/email/send`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Accept': 'application/json'
+                },
+                body: new URLSearchParams({
+                    to: to,
+                    subject: 'Richiesta info Appartamenti Torre Pali',
+                    text: text
+                })
+            })
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error('Invio non riuscito.');
+                }
+                showNotification('Email inviata con successo.');
+            })
+            .catch(() => showNotification('Errore nell\'invio email.'))
+            .finally(() => {
+                if (sendBtn) {
+                    sendBtn.disabled = false;
+                    sendBtn.textContent = 'Invia';
+                }
+            });
         }
 
         function loginAdmin() {
@@ -63,18 +206,28 @@
             })
                 .then(res => res.json())
                 .then(caseList => {
+                    caseListCache = Array.isArray(caseList) ? caseList : [];
                     const select = document.getElementById('casaSelect');
+                    const emailCasaSelect = document.getElementById('generatedEmailCasaId');
                     select.innerHTML = '';
-                    caseList.forEach(casa => {
+                    if (emailCasaSelect) emailCasaSelect.innerHTML = '<option value="">Seleziona casa</option>';
+                    caseListCache.forEach(casa => {
                         const opt = document.createElement('option');
                         opt.value = casa.id;
                         opt.textContent = casa.nome;
                         select.appendChild(opt);
+
+                        if (emailCasaSelect) {
+                            const emailOpt = document.createElement('option');
+                            emailOpt.value = casa.id;
+                            emailOpt.textContent = casa.nome;
+                            emailCasaSelect.appendChild(emailOpt);
+                        }
                     });
-                    if (caseList.length > 0) {
-                        loadPrenotazioni(caseList[0].id);
-                        loadPrezzi(caseList[0].id);
-                        loadCalendar(caseList[0].id);
+                    if (caseListCache.length > 0) {
+                        loadPrenotazioni(caseListCache[0].id);
+                        loadPrezzi(caseListCache[0].id);
+                        loadCalendar(caseListCache[0].id);
                     }
                 })
                 .catch(() => showNotification('Errore nel caricamento delle case.'));
@@ -556,6 +709,8 @@
         window.openEditPrezzoModal = openEditPrezzoModal;
         window.openNewPrezzoModal = openNewPrezzoModal;
         window.closeNewPrezzoModal = closeNewPrezzoModal;
+        window.generateSaldoEmailText = generateSaldoEmailText;
+        window.sendGeneratedSaldoEmail = sendGeneratedSaldoEmail;
 
             // --- Calcolo automatico Prezzo Totale nella modale prezzi ---
             function calcolaPrezzoTotale() {
@@ -773,6 +928,31 @@
         .requests-table tr:hover {
             background: #e3e9f7;
         }
+        .email-tools {
+            width: 100%;
+            max-width: 1100px;
+            margin: 16px auto 24px auto;
+            padding: 16px;
+            border: 1px solid #e3e9f7;
+            border-radius: 10px;
+            background: #f7fafd;
+            box-sizing: border-box;
+        }
+        .email-tools input,
+        .email-tools select,
+        .email-tools textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            border: 1px solid #cfd8dc;
+            border-radius: 6px;
+            background: #fff;
+            font-size: 0.98rem;
+        }
+        .email-tools textarea {
+            min-height: 92px;
+            resize: vertical;
+        }
         .actions button {
             margin-right: 6px;
         }
@@ -862,6 +1042,7 @@
             <h2>Prenotazioni per Casa</h2>
             <label for="casaSelect">Seleziona una casa:</label>
             <select id="casaSelect" style="margin-bottom:20px; width:100%; padding:8px;"></select>
+
             <button class="btn add-prenotazione-mobile" style="margin-bottom:18px; float:left; margin-bottom:20px;" onclick="openNewPrenotazioneModal()">+ Aggiungi Prenotazione</button>
             <table class="requests-table" id="prenotazioniTable">
                 <thead>
@@ -912,6 +1093,34 @@
                 <div style="margin-top:12px; display:flex; gap:18px; font-size:0.9rem;">
                     <span><span style="display:inline-block;width:14px;height:14px;background:#fde8e8;border:1px solid #b91c1c;border-radius:3px;vertical-align:middle;margin-right:4px;"></span>Prenotato</span>
                     <span><span style="display:inline-block;width:14px;height:14px;box-shadow:inset 0 0 0 2px #007bff;border-radius:3px;vertical-align:middle;margin-right:4px;"></span>Oggi</span>
+                </div>
+            </div>
+
+            <div class="email-tools" style="margin-top: 30px;">
+                <h3 style="margin:0 0 12px 0; font-size:1.08rem; color:#2d3a4a;">Invio email saldo</h3>
+                <label for="generatedEmailTo">Email destinatario</label>
+                <input type="email" id="generatedEmailTo" placeholder="esempio@email.com" style="margin-bottom:12px;">
+
+                <label for="generatedEmailPrezzo">Prezzo soggiorno</label>
+                <input type="text" id="generatedEmailPrezzo" placeholder="Es. 950 euro" style="margin-bottom:12px;">
+
+                <label for="generatedEmailCasaId">Casa da inserire in email</label>
+                <select id="generatedEmailCasaId" style="margin-bottom:12px;">
+                    <option value="">Seleziona casa</option>
+                </select>
+
+                <label for="generatedEmailCheckIn">Data check-in</label>
+                <input type="date" id="generatedEmailCheckIn" style="margin-bottom:12px;">
+
+                <label for="generatedEmailCheckOut">Data check-out</label>
+                <input type="date" id="generatedEmailCheckOut" style="margin-bottom:12px;">
+
+                <label for="generatedEmailBody">Testo email</label>
+                <textarea id="generatedEmailBody" placeholder="Premi Genera email oppure scrivi un testo personalizzato" style="margin-bottom:12px;"></textarea>
+
+                <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                    <button type="button" class="btn" onclick="generateSaldoEmailText()">Genera email</button>
+                    <button type="button" class="btn" id="sendGeneratedEmailBtn" onclick="sendGeneratedSaldoEmail()">Invia</button>
                 </div>
             </div>
         </div>
