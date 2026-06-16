@@ -129,17 +129,21 @@ function openPreventivoRequestModal(appartamento) {
             try {
                 const response = await fetch('https://demo-mail-993653817397.europe-west8.run.app/api/preventivi/public', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'Accept': 'application/json'
+                    },
+                    body: new URLSearchParams({
                         nome: form.nome.value,
                         email: form.email.value,
                         telefono: form.telefono.value,
-                        checkIn: null,
-                        checkOut: null,
-                        persone: Number(form.persone.value),
+                        checkIn: '',
+                        checkOut: '',
+                        persone: String(Number(form.persone.value)),
                         messaggio: form.messaggio.value,
                         preferenzaRicontatto: preferenzaRicontattoLabel,
                         appartamento: form.appartamento.value,
+                        prezzo: '',
                         source: 'booking-static-modal-1'
                     })
                 });
@@ -625,6 +629,8 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                             appartamento: casa,
                                             checkIn: checkIn,
                                             checkOut: checkOut,
+                                            prezzo: prezzoTotale,
+                                            prezzoTotale: prezzoTotale,
                                             messaggio: messaggio,
                                             source: 'booking-modal-1'
                                         })
