@@ -38,12 +38,143 @@ async function getPublicPaymentSession(prenotazioneId) {
     return response.json();
 }
 
+function ensurePrenotaModalContainer() {
+    let modalDiv = document.getElementById('prenota-modal');
+    if (modalDiv) return modalDiv;
+
+    modalDiv = document.createElement('div');
+    modalDiv.id = 'prenota-modal';
+    modalDiv.style = 'display:none;position:fixed;z-index:10000;left:0;top:0;right:0;bottom:0;background:rgba(0,0,0,0.5);align-items:stretch;justify-content:stretch;';
+    modalDiv.innerHTML = `<div id="prenota-modal-content" style="background:#fff;padding:48px 20px 20px 20px;width:100%;height:100%;position:relative;overflow-y:auto;box-sizing:border-box;">
+                    <button id="closePrenotaModal" style="position:fixed;top:10px;right:12px;font-size:2.2em;line-height:1;background:#fff;border:1px solid #ccc;border-radius:50%;width:44px;height:44px;cursor:pointer;z-index:10001;color:#333;display:flex;align-items:center;justify-content:center;">&times;</button>
+                    <div id="prenota-modal-body" style="max-width:600px;margin:0 auto;"></div>
+                </div>`;
+    document.body.appendChild(modalDiv);
+    document.getElementById('closePrenotaModal').onclick = () => {
+        modalDiv.style.display = 'none';
+    };
+
+    return modalDiv;
+}
+
+function openPreventivoRequestModal(appartamento) {
+    const modalDiv = ensurePrenotaModalContainer();
+    const modalBody = document.getElementById('prenota-modal-body');
+
+    modalBody.innerHTML = `
+        <div style="margin:10px 0 12px 0;display:flex;justify-content:space-between;align-items:center;gap:10px;">
+            <h2 style="margin:0;font-size:1.2em;color:#2d7a46;">Richiedi preventivo</h2>
+        </div>
+        <p style="margin:0 0 12px 0;color:#4b5563;font-size:0.95em;">Compila il form e ti ricontatteremo in breve tempo.</p>
+        <div style="margin-bottom:10px;font-weight:600;font-size:0.95em;">${appartamento || 'Richiesta generica'}</div>
+        <form id="quickPreventivoForm" style="margin-bottom:0;">
+            <input type="hidden" name="appartamento" value="${appartamento || ''}">
+            <div style="margin-bottom:10px;">
+                <input required name="nome" type="text" placeholder="Nome e Cognome *" style="width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;">
+                <input name="email" type="email" placeholder="Email" style="width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;">
+                <input name="telefono" type="tel" placeholder="Telefono" style="width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;">
+                <select required name="preferenza_ricontatto" style="width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;background:#fff;">
+                    <option value="" selected disabled>Come preferisci essere ricontattato? *</option>
+                    <option value="telefono">Telefono</option>
+                    <option value="email">Email</option>
+                    <option value="whatsapp">WhatsApp</option>
+                </select>
+                <input required name="persone" type="number" min="1" max="8" placeholder="Numero di Persone *" style="width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;">
+            </div>
+            <textarea name="messaggio" placeholder="Messaggio (opzionale)" style="width:100%;padding:10px;border-radius:5px;border:1px solid #ccc;min-height:60px;max-height:120px;font-size:0.9em;margin-bottom:12px;box-sizing:border-box;display:block;"></textarea>
+            <div style="display:flex;gap:10px;padding-bottom:10px;flex-wrap:wrap;">
+                <button type="submit" style="flex:2;background:#2d7a46;color:#fff;padding:12px;border:none;border-radius:6px;font-size:1em;font-weight:600;cursor:pointer;">Invia richiesta</button>
+                <button type="button" id="cancelQuickPreventivoBtn" style="flex:1;background:#f3f4f6;color:#1f2937;padding:12px;border:1px solid #d1d5db;border-radius:6px;font-size:1em;cursor:pointer;">Annulla</button>
+            </div>
+        </form>
+    `;
+
+    modalDiv.style.display = 'flex';
+
+    const cancelBtn = document.getElementById('cancelQuickPreventivoBtn');
+    if (cancelBtn) {
+        cancelBtn.onclick = function() {
+            modalDiv.style.display = 'none';
+        };
+    }
+
+    const quickForm = document.getElementById('quickPreventivoForm');
+    if (quickForm) {
+        quickForm.onsubmit = async function(ev) {
+            ev.preventDefault();
+            const form = ev.currentTarget;
+            const pref = form.preferenza_ricontatto.value;
+
+            if (pref === 'email' && !form.email.value.trim()) {
+                form.email.setCustomValidity('Inserisci l\'email per essere ricontattato via email.');
+                form.email.reportValidity();
+                return;
+            }
+            if ((pref === 'telefono' || pref === 'whatsapp') && !form.telefono.value.trim()) {
+                const channelLabel = pref === 'whatsapp' ? 'WhatsApp' : 'Telefono';
+                form.telefono.setCustomValidity('Inserisci il telefono per essere ricontattato via ' + channelLabel + '.');
+                form.telefono.reportValidity();
+                return;
+            }
+            form.email.setCustomValidity('');
+            form.telefono.setCustomValidity('');
+
+            const preferenzaRicontatto = form.preferenza_ricontatto.value;
+            const preferenzaRicontattoLabel =
+                preferenzaRicontatto === 'whatsapp' ? 'WhatsApp' :
+                preferenzaRicontatto === 'telefono' ? 'Telefono' :
+                preferenzaRicontatto === 'email' ? 'Email' :
+                preferenzaRicontatto;
+
+            try {
+                const response = await fetch('https://demo-mail-993653817397.europe-west8.run.app/api/preventivi/public', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        nome: form.nome.value,
+                        email: form.email.value,
+                        telefono: form.telefono.value,
+                        checkIn: null,
+                        checkOut: null,
+                        persone: Number(form.persone.value),
+                        messaggio: form.messaggio.value,
+                        preferenzaRicontatto: preferenzaRicontattoLabel,
+                        appartamento: form.appartamento.value,
+                        source: 'booking-static-modal'
+                    })
+                });
+
+                if (!response.ok) throw new Error('Errore invio richiesta preventivo');
+
+                modalBody.innerHTML = `<div style="text-align:center;padding:32px 0;"><h2 style="color:#2d7a46;">Richiesta inviata!</h2><p>Grazie per aver richiesto il preventivo.<br>Ti ricontatteremo al più presto.</p><button id="closePrenotaModal2" style="margin-top:18px;background:#2d7a46;color:#fff;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;">Chiudi</button></div>`;
+                const closeBtn = document.getElementById('closePrenotaModal2');
+                if (closeBtn) closeBtn.onclick = function() { modalDiv.style.display = 'none'; };
+            } catch (err) {
+                modalBody.innerHTML = `<div style="text-align:center;padding:32px 0;color:#b91c1c;"><h2>Errore</h2><p>Si e verificato un errore durante l'invio.<br>Riprova più tardi.</p><button id="closePrenotaModal2" style="margin-top:18px;background:#f3f4f6;color:#1f2937;padding:10px 22px;border:1px solid #d1d5db;border-radius:6px;font-size:1em;cursor:pointer;">Chiudi</button></div>`;
+                const closeBtn = document.getElementById('closePrenotaModal2');
+                if (closeBtn) closeBtn.onclick = function() { modalDiv.style.display = 'none'; };
+            }
+        };
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const links = document.querySelectorAll('.open-preventivo-modal');
+    links.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            openPreventivoRequestModal(link.dataset.appartamento || '');
+        });
+    });
+});
+
 document.getElementById('booking-form').addEventListener('submit', async function(e) {
     e.preventDefault();
     const checkIn = document.getElementById('checkIn').value;
     const checkOut = document.getElementById('checkOut').value;
     const ospiti = document.getElementById('ospiti').value;
     const resultsDiv = document.getElementById('results');
+    const staticHomesList = document.getElementById('staticHomesList');
     // Validazione campi obbligatori
     let errorMsg = '';
     if (!checkIn && !checkOut) {
@@ -67,6 +198,9 @@ document.getElementById('booking-form').addEventListener('submit', async functio
             if (!ospiti) document.getElementById('ospiti').style.borderColor = '';
         }, 2000);
         return;
+    }
+    if (staticHomesList) {
+        staticHomesList.style.display = 'none';
     }
     resultsDiv.innerHTML = 'Ricerca in corso...';
     try {
@@ -122,19 +256,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
         if (!res.ok) throw new Error('Errore nella richiesta');
         const data = await res.json();
         if (Array.isArray(data) && data.length > 0) {
-            // Inserisce il contenitore del modal se non esiste
-            if (!document.getElementById('prenota-modal')) {
-                const modalDiv = document.createElement('div');
-                modalDiv.id = 'prenota-modal';
-                modalDiv.style = 'display:none;position:fixed;z-index:10000;left:0;top:0;right:0;bottom:0;background:rgba(0,0,0,0.5);align-items:stretch;justify-content:stretch;';
-                modalDiv.innerHTML = `<div id=\"prenota-modal-content\" style=\"background:#fff;padding:48px 20px 20px 20px;width:100%;height:100%;position:relative;overflow-y:auto;box-sizing:border-box;\">\n                    <button id=\"closePrenotaModal\" style=\"position:fixed;top:10px;right:12px;font-size:2.2em;line-height:1;background:#fff;border:1px solid #ccc;border-radius:50%;width:44px;height:44px;cursor:pointer;z-index:10001;color:#333;display:flex;align-items:center;justify-content:center;\">&times;</button>
-                    <div id=\"prenota-modal-body\" style=\"max-width:600px;margin:0 auto;\"></div>
-                </div>`;
-                document.body.appendChild(modalDiv);
-                document.getElementById('closePrenotaModal').onclick = () => {
-                    modalDiv.style.display = 'none';
-                };
-            }
+            ensurePrenotaModalContainer();
             resultsDiv.innerHTML = '<h2 id="fadeSlideTitle" class="fade-slide-in" style="text-align:center;margin-top:48px;margin-bottom:32px;">Case disponibili:</h2>' +
                 '<div class="properties-grid fade-slide-in" id="fadeSlideResults">' +
                 data.map((item, idx) => {
