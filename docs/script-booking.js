@@ -487,29 +487,24 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                 const checkIn = form.checkIn.value;
                                 const checkOut = form.checkOut.value;
                                 const prezzoTotale = form.prezzoTotale.value;
-                                // Costruisci testo email
-                                const text =
-                                    'Nome: ' + nome + '\n' +
-                                    'Email: ' + email + '\n' +
-                                    'Telefono: ' + telefono + '\n' +
-                                    'Preferenza ricontatto: ' + preferenzaRicontattoLabel + '\n' +
-                                    'Persone: ' + persone + '\n' +
-                                    'Casa: ' + casa + '\n' +
-                                    'Check-in: ' + checkIn + '\n' +
-                                    'Check-out: ' + checkOut + '\n' +
-                                    (prezzoTotale !== '' ? 'Prezzo totale: ' + formatEuro(prezzoTotale) + '\n' : '') +
-                                    'Messaggio: ' + messaggio;
                                 try {
-                                    const response = await fetch('https://demo-mail-993653817397.europe-west8.run.app/api/email/send', {
+                                    const response = await fetch('https://demo-mail-993653817397.europe-west8.run.app/api/preventivi/public', {
                                         method: 'POST',
                                         headers: {
                                             'Content-Type': 'application/x-www-form-urlencoded',
                                             'Accept': 'application/json'
                                         },
                                         body: new URLSearchParams({
-                                            to: 'info@torrepalivacanze.it',
-                                            subject: 'richiesta online torre pali vacanze',
-                                            text: text
+                                            nome: nome,
+                                            email: email,
+                                            telefono: telefono,
+                                            preferenzaRicontatto: preferenzaRicontattoLabel,
+                                            persone: persone,
+                                            appartamento: casa,
+                                            checkIn: checkIn,
+                                            checkOut: checkOut,
+                                            messaggio: messaggio,
+                                            source: 'booking-modal'
                                         })
                                     });
                                     if (response.ok) {

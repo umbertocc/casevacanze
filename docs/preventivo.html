@@ -474,7 +474,7 @@ document.addEventListener('click', function(event) {
         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;"><circle cx="12" cy="12" r="12" fill="#48bb78"/><path d="M17 9.5l-5.25 5.25L7 10" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <span>Richiesta inviata! Ti risponderemo entro 1 ora via email o WhatsApp.</span>
       </div>
-      <form id="booking-form" action="https://demo-mail-993653817397.europe-west8.run.app/api/email/send" method="POST">
+      <form id="booking-form" action="https://demo-mail-993653817397.europe-west8.run.app/api/preventivi/public" method="POST">
         <!-- Honeypot anti-spam (nascosto) -->
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
         <div class="form-group">
@@ -629,17 +629,6 @@ document.getElementById('booking-form').addEventListener('submit', function(e) {
     }
   })();
 
-  // Costruisci il testo dell'email
-  var text =
-    'Nome: ' + nome + '\n' +
-    'Email: ' + email + '\n' +
-    'Telefono: ' + telefono + '\n' +
-    'Appartamento: ' + appartamento + '\n' +
-    'Arrivo: ' + arrivo + '\n' +
-    'Partenza: ' + partenza + '\n' +
-    'Persone: ' + persone + '\n' +
-    'Messaggio: ' + messaggio;
-
   fetch(form.action, {
     method: 'POST',
     headers: {
@@ -647,9 +636,15 @@ document.getElementById('booking-form').addEventListener('submit', function(e) {
       'Accept': 'application/json'
     },
     body: new URLSearchParams({
-      to: 'info@torrepalivacanze.it',
-      subject: 'richiesta torre pali vacanze',
-      text: text
+      nome: nome,
+      email: email,
+      telefono: telefono,
+      appartamento: appartamento,
+      arrivo: arrivo,
+      partenza: partenza,
+      persone: persone,
+      messaggio: messaggio,
+      source: 'preventivo-page'
     })
   }).then(function(response) {
     spinner.style.display = 'none';
