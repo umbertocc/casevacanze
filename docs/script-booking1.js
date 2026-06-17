@@ -82,10 +82,6 @@ function openPreventivoRequestModal(appartamento) {
                 <input required name="persone" type="number" min="1" max="8" placeholder="Numero di Persone *" style="width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;">
             </div>
             <textarea name="messaggio" placeholder="Messaggio (opzionale)" style="width:100%;padding:10px;border-radius:5px;border:1px solid #ccc;min-height:60px;max-height:120px;font-size:0.9em;margin-bottom:12px;box-sizing:border-box;display:block;"></textarea>
-            <label style="display:flex;align-items:flex-start;gap:8px;margin:0 0 12px 0;font-size:0.88em;color:#374151;line-height:1.35;">
-                <input type="checkbox" name="privacy_policy" required style="margin-top:2px;">
-                <span>Ho letto e accetto la <a href="privacy" target="_blank" rel="noopener" style="color:#0f766e;text-decoration:underline;">Privacy Policy</a> *</span>
-            </label>
             <div style="display:flex;gap:10px;padding-bottom:10px;flex-wrap:wrap;">
                 <button type="submit" style="flex:2;background:#2d7a46;color:#fff;padding:12px;border:none;border-radius:6px;font-size:1em;font-weight:600;cursor:pointer;">Invia richiesta</button>
                 <button type="button" id="cancelQuickPreventivoBtn" style="flex:1;background:#f3f4f6;color:#1f2937;padding:12px;border:1px solid #d1d5db;border-radius:6px;font-size:1em;cursor:pointer;">Annulla</button>
@@ -372,11 +368,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                     </div>
 
                                     <textarea name=\"messaggio\" placeholder=\"Messaggio (opzionale)\" style=\"width:100%;padding:10px;border-radius:5px;border:1px solid #ccc;min-height:50px;max-height:80px;font-size:0.9em;margin-bottom:12px;box-sizing:border-box;display:block;\"></textarea>
-                                    <label style=\"display:flex;align-items:flex-start;gap:8px;margin:0 0 12px 0;font-size:0.88em;color:#374151;line-height:1.35;\">
-                                        <input type=\"checkbox\" name=\"privacy_policy\" required style=\"margin-top:2px;\">
-                                        <span>Ho letto e accetto la <a href=\"privacy\" target=\"_blank\" rel=\"noopener\" style=\"color:#0f766e;text-decoration:underline;\">Privacy Policy</a> *</span>
-                                    </label>
-                                    
+
                                     <div style="display:flex;gap:10px;padding-bottom:10px;flex-wrap:wrap;">
                                         <button type="submit" style="flex:2;background:#2d7a46;color:#fff;padding:12px;border:none;border-radius:6px;font-size:1em;font-weight:600;cursor:pointer;">Invia richiesta</button>
                                         <button type="button" id="prenotaOnlineBtn" style="flex:2;background:#188841;color:#fff;padding:12px;border:none;border-radius:6px;font-size:1em;font-weight:600;cursor:pointer;">Prenota online</button> 
@@ -398,15 +390,6 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                     const form = document.getElementById('prenotaForm');
                                     let prenotazioneId = null;
                                     const pref = form.preferenza_ricontatto.value;
-                                    const privacyPolicy = form.querySelector('input[name="privacy_policy"]');
-                                    if (privacyPolicy && !privacyPolicy.checked) {
-                                        privacyPolicy.setCustomValidity('Devi accettare la Privacy Policy per continuare.');
-                                        privacyPolicy.reportValidity();
-                                        return;
-                                    }
-                                    if (privacyPolicy) {
-                                        privacyPolicy.setCustomValidity('');
-                                    }
                                     if (pref === 'email' && !form.email.value.trim()) {
                                         form.email.setCustomValidity('Inserisci l\'email per essere ricontattato via email.');
                                         form.email.reportValidity();
@@ -578,15 +561,6 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                 ev.preventDefault();
                                 const form = ev.target;
                                 const pref = form.preferenza_ricontatto.value;
-                                const privacyPolicy = form.querySelector('input[name="privacy_policy"]');
-                                if (privacyPolicy && !privacyPolicy.checked) {
-                                    privacyPolicy.setCustomValidity('Devi accettare la Privacy Policy per continuare.');
-                                    privacyPolicy.reportValidity();
-                                    return;
-                                }
-                                if (privacyPolicy) {
-                                    privacyPolicy.setCustomValidity('');
-                                }
                                 if (pref === 'email' && !form.email.value.trim()) {
                                     form.email.setCustomValidity('Inserisci l\'email per essere ricontattato via email.');
                                     form.email.reportValidity();
