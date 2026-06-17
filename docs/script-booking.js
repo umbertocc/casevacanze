@@ -70,7 +70,7 @@ function openPreventivoRequestModal(appartamento) {
         <form id="quickPreventivoForm" style="margin-bottom:0;">
             <input type="hidden" name="appartamento" value="${appartamento || ''}">
             <div style="margin-bottom:10px;">
-                <input required name="nome" type="text" placeholder="Nome *" style="width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;">
+                <input required name="nome" type="text" placeholder="Nome e Cognome *" style="width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;">
                 <input name="email" type="email" placeholder="Email" style="width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;">
                 <input name="telefono" type="tel" placeholder="Telefono" style="width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;">
                 <select required name="preferenza_ricontatto" style="width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;background:#fff;">
