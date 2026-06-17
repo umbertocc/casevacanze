@@ -156,6 +156,70 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         border-radius: 12px;
     }
 
+    #staticHomesList .image-main-wrap {
+        position: relative;
+    }
+
+    #staticHomesList .gallery-trigger {
+        position: absolute;
+        right: 12px;
+        bottom: 12px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 10px 16px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #0f766e 0%, #166534 100%);
+        color: #ffffff;
+        font-size: 0.92rem;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        text-decoration: none;
+        border: 2px solid #ffffff;
+        box-shadow: 0 10px 22px rgba(6, 95, 70, 0.42), 0 0 0 2px rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+        transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+        animation: galleryPulse 2s ease-in-out infinite;
+    }
+
+    #staticHomesList .gallery-trigger:hover,
+    #staticHomesList .gallery-trigger:focus {
+        transform: translateY(-2px) scale(1.03);
+        background: linear-gradient(135deg, #065f46 0%, #14532d 100%);
+        box-shadow: 0 14px 26px rgba(6, 95, 70, 0.5), 0 0 0 3px rgba(255, 255, 255, 0.45);
+        color: #ffffff;
+    }
+
+    @keyframes galleryPulse {
+        0% {
+            box-shadow: 0 10px 22px rgba(6, 95, 70, 0.42), 0 0 0 2px rgba(255, 255, 255, 0.4);
+        }
+        50% {
+            box-shadow: 0 12px 24px rgba(6, 95, 70, 0.5), 0 0 0 4px rgba(255, 255, 255, 0.28);
+        }
+        100% {
+            box-shadow: 0 10px 22px rgba(6, 95, 70, 0.42), 0 0 0 2px rgba(255, 255, 255, 0.4);
+        }
+    }
+
+    #staticHomesList a.gallery-link-hidden {
+        display: none !important;
+    }
+
+    #staticHomesList .property-compliance-static {
+        margin: 0 0 10px 0;
+        font-size: 0.9rem;
+        line-height: 1.4;
+        color: #334155;
+        background: #f8fafc;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        padding: 8px 10px;
+    }
+
     #staticHomesList .property-info {
         padding: 14px 16px 18px 16px;
     }
@@ -184,7 +248,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
 
     #staticHomesList .open-preventivo-modal,
-    #staticHomesList a[href*="casa-"] {
+    #staticHomesList .property-detail-link {
         display: inline-flex;
         align-items: center;
         gap: 6px;
@@ -195,7 +259,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
 
     #staticHomesList .open-preventivo-modal:hover,
-    #staticHomesList a[href*="casa-"]:hover {
+    #staticHomesList .property-detail-link:hover {
         color: #065f46;
     }
 
@@ -505,47 +569,82 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div style="display:grid; grid-template-columns:1fr; gap:18px; width:100%;">
                     <article style="background:#fff; border:1px solid #dbe3ee; border-radius:10px; padding:12px;">
                         <h4 style="margin:0 0 6px 0; color:#0f172a;">Casa Bellavista 1</h4>
-                        <img src="img/casa-bella-vista1/prospetto.webp" alt="Casa Bellavista 1" loading="lazy" style="width:100%; height:400px; object-fit:cover; border-radius:8px; margin-bottom:10px;">
+                        <div class="image-main-wrap" style="margin-bottom:10px;">
+                            <img src="img/casa-bella-vista1/prospetto.webp" alt="Casa Bellavista 1" loading="lazy" style="width:100%; height:400px; object-fit:cover; border-radius:8px; margin-bottom:0;">
+                            <a href="img/casa-bella-vista1/prospetto.webp" class="gallery-trigger" data-fancybox="gallery-bellavista-1" data-caption="Casa Bellavista 1 - Prospetto">Vedi foto</a>
+                        </div>
+                        <a href="img/casa-bella-vista1/veranda.jpg" class="gallery-link-hidden" data-fancybox="gallery-bellavista-1" data-caption="Casa Bellavista 1 - Veranda" aria-hidden="true" tabindex="-1">Veranda</a>
+                        <a href="img/casa-bella-vista1/cucina.jpg" class="gallery-link-hidden" data-fancybox="gallery-bellavista-1" data-caption="Casa Bellavista 1 - Cucina" aria-hidden="true" tabindex="-1">Cucina</a>
+                        <a href="img/casa-bella-vista1/camera.jpg" class="gallery-link-hidden" data-fancybox="gallery-bellavista-1" data-caption="Casa Bellavista 1 - Camera" aria-hidden="true" tabindex="-1">Camera</a>
+                        <a href="img/casa-bella-vista1/bagno.jpg" class="gallery-link-hidden" data-fancybox="gallery-bellavista-1" data-caption="Casa Bellavista 1 - Bagno" aria-hidden="true" tabindex="-1">Bagno</a>
+                        <p class="property-compliance-static"><strong>CIN:</strong> IT075066C200071293<br><strong>CIS:</strong> LE07506691000031092</p>
                         <p style="margin:0 0 8px 0; color:#0f766e; font-weight:600; font-size:0.92rem;">100m dalla spiaggia</p>
                         <p style="margin:0 0 8px 0; color:#334155; font-size:0.9rem;">Primo piano con spazio esterno panoramico, 2 camere grandi e cucina attrezzata.</p>
                         <p style="margin:0 0 8px 0; color:#1f2937; font-size:0.86rem;">2 camere - 1 bagno - 70mq - AC - Lavatrice</p>
-                        <a href="casa-bellavista-1" style="color:#0f766e; text-decoration:none; font-weight:600;">Vedi dettagli</a>
                     </article>
 
                     <article style="background:#fff; border:1px solid #dbe3ee; border-radius:10px; padding:12px;">
                         <h4 style="margin:0 0 6px 0; color:#0f172a;">Casa Bellavista 2</h4>
-                        <img src="img/casa-bella-vista/prospetto-mobile.webp" alt="Casa Bellavista 2" loading="lazy" style="width:100%; height:400px; object-fit:cover; border-radius:8px; margin-bottom:10px;">
+                        <div class="image-main-wrap" style="margin-bottom:10px;">
+                            <img src="img/casa-bella-vista/prospetto-mobile.webp" alt="Casa Bellavista 2" loading="lazy" style="width:100%; height:400px; object-fit:cover; border-radius:8px; margin-bottom:0;">
+                            <a href="img/casa-bella-vista/prospetto-mobile.webp" class="gallery-trigger" data-fancybox="gallery-bellavista-2" data-caption="Casa Bellavista 2 - Prospetto">Vedi foto</a>
+                        </div>
+                        <a href="img/casa-bella-vista/soggiorno_1.webp" class="gallery-link-hidden" data-fancybox="gallery-bellavista-2" data-caption="Casa Bellavista 2 - Soggiorno" aria-hidden="true" tabindex="-1">Soggiorno</a>
+                        <a href="img/casa-bella-vista/cucina.webp" class="gallery-link-hidden" data-fancybox="gallery-bellavista-2" data-caption="Casa Bellavista 2 - Cucina" aria-hidden="true" tabindex="-1">Cucina</a>
+                        <a href="img/casa-bella-vista/prima_camera_1.webp" class="gallery-link-hidden" data-fancybox="gallery-bellavista-2" data-caption="Casa Bellavista 2 - Camera" aria-hidden="true" tabindex="-1">Camera</a>
+                        <a href="img/casa-bella-vista/secondo_bagno.webp" class="gallery-link-hidden" data-fancybox="gallery-bellavista-2" data-caption="Casa Bellavista 2 - Bagno" aria-hidden="true" tabindex="-1">Bagno</a>
+                        <p class="property-compliance-static"><strong>CIN:</strong> IT075066C200071298<br><strong>CIS:</strong> LE07506691000031096</p>
                         <p style="margin:0 0 8px 0; color:#0f766e; font-weight:600; font-size:0.92rem;">20m dalla spiaggia</p>
                         <p style="margin:0 0 8px 0; color:#334155; font-size:0.9rem;">Quadrilocale piano terra con cortile privato, ideale per famiglie e gruppi.</p>
                         <p style="margin:0 0 8px 0; color:#1f2937; font-size:0.86rem;">3 camere - 2 bagni - 90mq - WiFi - AC</p>
-                        <a href="casa-bellavista-2" style="color:#0f766e; text-decoration:none; font-weight:600;">Vedi dettagli</a>
                     </article>
 
                     <article style="background:#fff; border:1px solid #dbe3ee; border-radius:10px; padding:12px;">
                         <h4 style="margin:0 0 6px 0; color:#0f172a;">Casa Giorgio 4</h4>
-                        <img src="img/casa-giorgio/prospetto-mobile.webp" alt="Casa Giorgio 4" loading="lazy" style="width:100%; height:400px; object-fit:cover; border-radius:8px; margin-bottom:10px;">
+                        <div class="image-main-wrap" style="margin-bottom:10px;">
+                            <img src="img/casa-giorgio/prospetto-mobile.webp" alt="Casa Giorgio 4" loading="lazy" style="width:100%; height:400px; object-fit:cover; border-radius:8px; margin-bottom:0;">
+                            <a href="img/casa-giorgio/prospetto-mobile.webp" class="gallery-trigger" data-fancybox="gallery-giorgio-4" data-caption="Casa Giorgio 4 - Prospetto">Vedi foto</a>
+                        </div>
+                        <a href="img/casa-giorgio/soggiorno.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-4" data-caption="Casa Giorgio 4 - Soggiorno" aria-hidden="true" tabindex="-1">Soggiorno</a>
+                        <a href="img/casa-giorgio/cucina.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-4" data-caption="Casa Giorgio 4 - Cucina" aria-hidden="true" tabindex="-1">Cucina</a>
+                        <a href="img/casa-giorgio/camera.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-4" data-caption="Casa Giorgio 4 - Camera" aria-hidden="true" tabindex="-1">Camera</a>
+                        <a href="img/casa-giorgio/bagno1.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-4" data-caption="Casa Giorgio 4 - Bagno" aria-hidden="true" tabindex="-1">Bagno</a>
+                        <p class="property-compliance-static"><strong>CIN:</strong> IT075066C200123457<br><strong>CIS:</strong> LE07506691000075733</p>
                         <p style="margin:0 0 8px 0; color:#0f766e; font-weight:600; font-size:0.92rem;">40m dalla spiaggia</p>
                         <p style="margin:0 0 8px 0; color:#334155; font-size:0.9rem;">Piano terra con spazi esterni attrezzati e servizi raggiungibili a piedi.</p>
                         <p style="margin:0 0 8px 0; color:#1f2937; font-size:0.86rem;">3 camere - 1 bagno - Piano terra - AC - TV Sat</p>
-                        <a href="casa-giorgio-4" style="color:#0f766e; text-decoration:none; font-weight:600;">Vedi dettagli</a>
                     </article>
 
                     <article style="background:#fff; border:1px solid #dbe3ee; border-radius:10px; padding:12px;">
                         <h4 style="margin:0 0 6px 0; color:#0f172a;">Casa Giorgio 6</h4>
-                        <img src="img/casa-giorgio2/prospetto_mare.webp" alt="Casa Giorgio 6" loading="lazy" style="width:100%; height:400px; object-fit:cover; border-radius:8px; margin-bottom:10px;">
+                        <div class="image-main-wrap" style="margin-bottom:10px;">
+                            <img src="img/casa-giorgio2/prospetto_mare.webp" alt="Casa Giorgio 6" loading="lazy" style="width:100%; height:400px; object-fit:cover; border-radius:8px; margin-bottom:0;">
+                            <a href="img/casa-giorgio2/prospetto_mare.webp" class="gallery-trigger" data-fancybox="gallery-giorgio-6" data-caption="Casa Giorgio 6 - Vista mare">Vedi foto</a>
+                        </div>
+                        <a href="img/casa-giorgio2/soggiorno.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-6" data-caption="Casa Giorgio 6 - Soggiorno" aria-hidden="true" tabindex="-1">Soggiorno</a>
+                        <a href="img/casa-giorgio2/camera.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-6" data-caption="Casa Giorgio 6 - Camera" aria-hidden="true" tabindex="-1">Camera</a>
+                        <a href="img/casa-giorgio2/bagno.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-6" data-caption="Casa Giorgio 6 - Bagno" aria-hidden="true" tabindex="-1">Bagno</a>
+                        <a href="img/casa-giorgio2/balcone.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-6" data-caption="Casa Giorgio 6 - Balcone" aria-hidden="true" tabindex="-1">Balcone</a>
+                        <p class="property-compliance-static"><strong>CIN:</strong> IT075066C200123459<br><strong>CIS:</strong> LE07506691000075734</p>
                         <p style="margin:0 0 8px 0; color:#0f766e; font-weight:600; font-size:0.92rem;">Primo piano vista mare</p>
                         <p style="margin:0 0 8px 0; color:#334155; font-size:0.9rem;">Veranda panoramica e ambienti ampi per una vacanza rilassante a Torre Pali.</p>
                         <p style="margin:0 0 8px 0; color:#1f2937; font-size:0.86rem;">3 camere - 1 bagno - 90mq - Vista mare</p>
-                        <a href="casa-giorgio-6" style="color:#0f766e; text-decoration:none; font-weight:600;">Vedi dettagli</a>
                     </article>
 
                     <article style="background:#fff; border:1px solid #dbe3ee; border-radius:10px; padding:12px;">
                         <h4 style="margin:0 0 6px 0; color:#0f172a;">Respiro di Mare</h4>
-                        <img src="img/respirodimare/prospetto4.webp" alt="Respiro di Mare" loading="lazy" style="width:100%; height:400px; object-fit:cover; border-radius:8px; margin-bottom:10px;">
+                        <div class="image-main-wrap" style="margin-bottom:10px;">
+                            <img src="img/respirodimare/prospetto4.webp" alt="Respiro di Mare" loading="lazy" style="width:100%; height:400px; object-fit:cover; border-radius:8px; margin-bottom:0;">
+                            <a href="img/respirodimare/prospetto4.webp" class="gallery-trigger" data-fancybox="gallery-respiro" data-caption="Respiro di Mare - Prospetto">Vedi foto</a>
+                        </div>
+                        <a href="img/respirodimare/soggiorno.webp" class="gallery-link-hidden" data-fancybox="gallery-respiro" data-caption="Respiro di Mare - Soggiorno" aria-hidden="true" tabindex="-1">Soggiorno</a>
+                        <a href="img/respirodimare/cucina.webp" class="gallery-link-hidden" data-fancybox="gallery-respiro" data-caption="Respiro di Mare - Cucina" aria-hidden="true" tabindex="-1">Cucina</a>
+                        <a href="img/respirodimare/camera.webp" class="gallery-link-hidden" data-fancybox="gallery-respiro" data-caption="Respiro di Mare - Camera" aria-hidden="true" tabindex="-1">Camera</a>
+                        <a href="img/respirodimare/bagno.webp" class="gallery-link-hidden" data-fancybox="gallery-respiro" data-caption="Respiro di Mare - Bagno" aria-hidden="true" tabindex="-1">Bagno</a>
+                        <p class="property-compliance-static"><strong>CIN:</strong> IT075066C200123490<br><strong>CIS:</strong> LE07506691000075753</p>
                         <p style="margin:0 0 8px 0; color:#0f766e; font-weight:600; font-size:0.92rem;">Veranda con vista mare</p>
                         <p style="margin:0 0 8px 0; color:#334155; font-size:0.9rem;">Appartamento luminoso con spazi esterni attrezzati e vista sul tramonto.</p>
                         <p style="margin:0 0 8px 0; color:#1f2937; font-size:0.86rem;">3 camere - 1 bagno - 90mq - Vista mare</p>
-                        <a href="respiro-di-mare" style="color:#0f766e; text-decoration:none; font-weight:600;">Vedi dettagli</a>
                     </article>
                 </div>
             </div>
@@ -844,6 +943,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.Fancybox) {
+            Fancybox.bind('[data-fancybox]', {
+                animated: true,
+                showClass: 'fancybox-fadeIn',
+                hideClass: 'fancybox-fadeOut'
+            });
+        }
+    });
+    </script>
     <script src="script-booking.js"></script>
 </main>
 
