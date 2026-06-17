@@ -261,6 +261,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
         const data = await res.json();
         if (Array.isArray(data) && data.length > 0) {
             ensurePrenotaModalContainer();
+
             resultsDiv.innerHTML = '<h2 id="fadeSlideTitle" class="fade-slide-in" style="text-align:center;margin-top:48px;margin-bottom:32px;">Case disponibili:</h2>' +
                 '<div class="properties-grid fade-slide-in" id="fadeSlideResults">' +
                 data.map((item, idx) => {

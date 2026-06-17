@@ -261,6 +261,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
         const data = await res.json();
         if (Array.isArray(data) && data.length > 0) {
             ensurePrenotaModalContainer();
+
             resultsDiv.innerHTML = '<h2 id="fadeSlideTitle" class="fade-slide-in" style="text-align:center;margin-top:48px;margin-bottom:32px;">Case disponibili:</h2>' +
                 '<div class="properties-grid fade-slide-in" id="fadeSlideResults">' +
                 data.map((item, idx) => {
@@ -299,6 +300,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                             ${galleryHtml}
                         </div>
                         <div class="property-info">
+                            <p style="margin:0 0 10px 0;font-size:0.9em;line-height:1.4;color:#334155;background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:8px 10px;"><strong>CIN:</strong> ${cin || '-'}<br><strong>CIS:</strong> ${cis || '-'}</p>
                        <!--   ${prezzoTotale !== null ? `<p style="margin:8px 0 8px 0;font-size:1.05em;color:#166534;font-weight:700;">Prezzo totale: ${formatEuro(prezzoTotale)}</p>` : ''} 
                                                         <p style="margin:0 0 10px 0;font-size:0.9em;line-height:1.4;color:#334155;background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:8px 10px;"><strong>CIN:</strong> ${cin || '-'}<br><strong>CIS:</strong> ${cis || '-'}</p>
                             <p style="margin:0 0 14px 0;font-size:0.9em;line-height:1.4;color:#374151;background:#f8fafc;border:1px solid #dbeafe;border-radius:8px;padding:10px 12px;"><strong>Info costi:</strong> include tutti i servizi: aria condizionata, registrazione ospiti, pulizie e pass parcheggio. <strong>Caparra:</strong> 20% dell'importo totale.</p> -->
@@ -334,7 +336,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                             // Modale con date precompilate dalla ricerca (non modificabili)
                             modalBody.innerHTML = `
                                 <div style=\"margin-bottom:12px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px; margin-top: 30px;\">
-                                    <h2 style=\"margin:0;font-size:1.15em;color:#2d7a46;\">Richiesta prenotazione</h2>
+                                    <h2 style=\"margin:0;font-size:1.15em;color:#2d7a46;\">Richiesta preventivo</h2>
                                 <!--    ${prezzoTotale != null ? `<div style=\"text-align:right;color:#166534;font-weight:700;font-size:1.05em;\">Prezzo totale: ${formatEuro(prezzoTotale)}</div>` : ''}  -->
                                 </div>
                                 
