@@ -95,6 +95,33 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         transform: translateY(0);
     }
 
+    html {
+        scroll-behavior: smooth;
+    }
+
+    #booking-form {
+        scroll-margin-top: 110px;
+    }
+
+    #booking-form:target .date-input,
+    #booking-form:target .ospiti-stepper {
+        animation: bookingFocusPulse 1.2s ease;
+        border-color: #25d366;
+        box-shadow: 0 0 0 4px rgba(37, 211, 102, 0.14), 0 8px 22px rgba(37, 211, 102, 0.12);
+    }
+
+    @keyframes bookingFocusPulse {
+        0% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-1px);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+
     /* Restyling sezione case statiche */
     #staticHomesList {
         margin-top: 40px;
@@ -218,6 +245,32 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         border: 1px solid #cbd5e1;
         border-radius: 8px;
         padding: 8px 10px;
+    }
+
+    #staticHomesList .property-availability-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 6px;
+        padding: 11px 16px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+        color: #ffffff;
+        font-size: 0.9rem;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+        text-decoration: none;
+        box-shadow: 0 10px 20px rgba(18, 140, 126, 0.24);
+        transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+    }
+
+    #staticHomesList .property-availability-link:hover,
+    #staticHomesList .property-availability-link:focus {
+        transform: translateY(-1px);
+        box-shadow: 0 14px 26px rgba(18, 140, 126, 0.3);
+        filter: brightness(1.02);
+        color: #ffffff;
     }
 
     #staticHomesList .property-info {
@@ -594,6 +647,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <p style="margin:0 0 8px 0; color:#0f766e; font-weight:600; font-size:0.92rem;">100m dalla spiaggia</p>
                         <p style="margin:0 0 8px 0; color:#334155; font-size:0.9rem;">Primo piano con spazio esterno panoramico, 2 camere grandi e cucina attrezzata.</p>
                         <p style="margin:0 0 8px 0; color:#1f2937; font-size:0.86rem;">2 camere - 1 bagno - 70mq - AC - Lavatrice</p>
+                        <a href="#booking-form" class="property-availability-link">Verifica disponibilità</a>
                     </article>
 
                     <article style="background:#fff; border:1px solid #dbe3ee; border-radius:10px; padding:12px;">
@@ -627,6 +681,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <p style="margin:0 0 8px 0; color:#0f766e; font-weight:600; font-size:0.92rem;">20m dalla spiaggia</p>
                         <p style="margin:0 0 8px 0; color:#334155; font-size:0.9rem;">Quadrilocale piano terra con cortile privato, ideale per famiglie e gruppi.</p>
                         <p style="margin:0 0 8px 0; color:#1f2937; font-size:0.86rem;">3 camere - 2 bagni - 90mq - WiFi - AC</p>
+                        <a href="#booking-form" class="property-availability-link">Verifica disponibilità</a>
                     </article>
 
                     <article style="background:#fff; border:1px solid #dbe3ee; border-radius:10px; padding:12px;">
@@ -659,6 +714,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <p style="margin:0 0 8px 0; color:#0f766e; font-weight:600; font-size:0.92rem;">40m dalla spiaggia</p>
                         <p style="margin:0 0 8px 0; color:#334155; font-size:0.9rem;">Piano terra con spazi esterni attrezzati e servizi raggiungibili a piedi.</p>
                         <p style="margin:0 0 8px 0; color:#1f2937; font-size:0.86rem;">3 camere - 1 bagno - Piano terra - AC - TV Sat</p>
+                        <a href="#booking-form" class="property-availability-link">Verifica disponibilità</a>
                     </article>
 
                     <article style="background:#fff; border:1px solid #dbe3ee; border-radius:10px; padding:12px;">
@@ -688,6 +744,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <p style="margin:0 0 8px 0; color:#0f766e; font-weight:600; font-size:0.92rem;">Primo piano vista mare</p>
                         <p style="margin:0 0 8px 0; color:#334155; font-size:0.9rem;">Veranda panoramica e ambienti ampi per una vacanza rilassante a Torre Pali.</p>
                         <p style="margin:0 0 8px 0; color:#1f2937; font-size:0.86rem;">3 camere - 1 bagno - 90mq - Vista mare</p>
+                        <a href="#booking-form" class="property-availability-link">Verifica disponibilità</a>
                     </article>
 
                     <article style="background:#fff; border:1px solid #dbe3ee; border-radius:10px; padding:12px;">
@@ -716,6 +773,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <p style="margin:0 0 8px 0; color:#0f766e; font-weight:600; font-size:0.92rem;">Veranda con vista mare</p>
                         <p style="margin:0 0 8px 0; color:#334155; font-size:0.9rem;">Appartamento luminoso con spazi esterni attrezzati e vista sul tramonto.</p>
                         <p style="margin:0 0 8px 0; color:#1f2937; font-size:0.86rem;">3 camere - 1 bagno - 90mq - Vista mare</p>
+                        <a href="#booking-form" class="property-availability-link">Verifica disponibilità</a>
                     </article>
                 </div>
             </div>
