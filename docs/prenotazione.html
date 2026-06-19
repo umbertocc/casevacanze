@@ -592,7 +592,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <main class="container">
         <header style="text-align:center; margin-bottom: 50px; margin-top: 90px;">
             <h1>Prenota la tua casa vacanza a Torre Pali</h1>
-            <p class="tagline">Seleziona le date e il numero di ospiti per verificare le disponibilità. Il soggiorno è possibile solo da sabato a sabato, con una permanenza minima di 1 settimana, i giorni prenotabili sono evidenziati in verde nel calendario.</p>
+            <p class="tagline">Seleziona le date e il numero di ospiti per verificare le disponibilità. Nel calendario sono prenotabili i sabati e i giorni di turnover realmente disponibili (check-out/check-in), anche per soggiorni inferiori a 1 settimana quando c'è una finestra libera.</p>
           <!-- FILTRO DATE INIZIO --></p>
         </header>
         <section class="booking-form-section">
@@ -824,7 +824,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </footer>
     <script>
-    // Permetti solo la selezione dei sabati nei campi data
+    // Validazioni base per i campi data
     function isSaturday(dateStr) {
         const d = new Date(dateStr);
         return d.getDay() === 6;
@@ -861,8 +861,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 this.setCustomValidity('Non puoi selezionare una data passata');
             } else if (this.value && isWinterBlockedDate(this.value)) {
                 this.setCustomValidity('Date non prenotabili dal 1 novembre al 31 marzo');
-            } else if (this.value && !isSaturday(this.value)) {
-                this.setCustomValidity('Seleziona solo un sabato');
             } else {
                 this.setCustomValidity('');
             }
@@ -954,6 +952,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         let checkInSelected = null;
         let houseIds = [];
         let bookingsByHouse = {};
+        let turnoverCheckInDates = new Set();
+        let turnoverCheckOutDates = new Set();
 
         function hasAnyHouseAvailable(checkInKey, checkOutKey) {
             if (!houseIds.length) return true;
@@ -967,6 +967,49 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 }
                 return true;
             });
+        }
+
+        function isAllowedCheckInDate(date) {
+            const key = toDateKey(date);
+            return enableOnlySaturday(date) || turnoverCheckInDates.has(key);
+        }
+
+        function isAllowedCheckOutDate(date) {
+            const key = toDateKey(date);
+            return enableOnlySaturday(date) || turnoverCheckOutDates.has(key);
+        }
+
+        function hasAnyHouseWithAvailableStayFrom(checkInDate) {
+            if (!checkInDate) return false;
+            const checkInKey = toDateKey(checkInDate);
+
+            // Regola: è sufficiente trovare un checkout valido successivo al check-in
+            // (sabato o giorno turnover) senza sovrapposizione.
+            for (let i = 1; i <= 60; i++) {
+                const candidate = addDays(checkInDate, i);
+                if (isWinterBlocked(candidate)) continue;
+                if (!isAllowedCheckOutDate(candidate)) continue;
+
+                const candidateKey = toDateKey(candidate);
+                if (hasAnyHouseAvailable(checkInKey, candidateKey)) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        function findFirstAvailableCheckInDate(maxDaysAhead) {
+            const limit = Number.isFinite(maxDaysAhead) ? maxDaysAhead : 365;
+            for (let i = 0; i <= limit; i++) {
+                const candidate = addDays(today, i);
+                if (isWinterBlocked(candidate)) continue;
+                if (!isAllowedCheckInDate(candidate)) continue;
+                if (hasAnyHouseWithAvailableStayFrom(candidate)) {
+                    return candidate;
+                }
+            }
+            return null;
         }
 
         try {
@@ -985,10 +1028,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 houseIds.forEach(function(houseId, idx) {
                     bookingsByHouse[houseId] = Array.isArray(bookingResponses[idx]) ? bookingResponses[idx] : [];
                 });
+
+                turnoverCheckInDates = new Set();
+                turnoverCheckOutDates = new Set();
+                houseIds.forEach(function(houseId) {
+                    const bookings = bookingsByHouse[houseId] || [];
+                    bookings.forEach(function(booking) {
+                        if (booking && booking.checkOut) {
+                            turnoverCheckInDates.add(String(booking.checkOut));
+                        }
+                        if (booking && booking.checkIn) {
+                            turnoverCheckOutDates.add(String(booking.checkIn));
+                        }
+                    });
+                });
             }
         } catch (err) {
             console.warn('Impossibile caricare le prenotazioni per il calendario dinamico:', err);
         }
+
+        const firstAvailableCheckInDate = findFirstAvailableCheckInDate(540);
 
         flatpickr(checkInInput, {
             dateFormat: "Y-m-d",
@@ -996,20 +1055,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             disable: [function(date) {
                 if (date < today) return true;
                 if (isWinterBlocked(date)) return true;
-                if (!enableOnlySaturday(date)) return true;
-                const checkInKey = toDateKey(date);
-                const checkOutKey = toDateKey(addDays(date, 7));
-                return !hasAnyHouseAvailable(checkInKey, checkOutKey);
+                if (!isAllowedCheckInDate(date)) return true;
+                return !hasAnyHouseWithAvailableStayFrom(date);
             }],
             minDate: "today",
+            onReady: function(selectedDates, dateStr, fp) {
+                if (firstAvailableCheckInDate) {
+                    fp.jumpToDate(firstAvailableCheckInDate);
+                }
+            },
             onDayCreate: function(dObj, dStr, fp, dayElem) {
                 const dayDate = dayElem.dateObj;
                 if (dayDate < today) return;
                 if (isWinterBlocked(dayDate)) return;
-                if (!enableOnlySaturday(dayDate)) return;
-                const dayKey = toDateKey(dayDate);
-                const plusWeekKey = toDateKey(addDays(dayDate, 7));
-                if (hasAnyHouseAvailable(dayKey, plusWeekKey)) {
+                if (!isAllowedCheckInDate(dayDate)) return;
+                if (hasAnyHouseWithAvailableStayFrom(dayDate)) {
                     dayElem.classList.add('calendar-day-available');
                 } else {
                     dayElem.classList.add('calendar-day-unavailable');
@@ -1039,7 +1099,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 const dayDate = dayElem.dateObj;
                 if (dayDate < today) return;
                 if (isWinterBlocked(dayDate)) return;
-                if (!enableOnlySaturday(dayDate)) return;
+                if (!isAllowedCheckOutDate(dayDate)) return;
                 if (!checkInInput.value) return;
 
                 const checkInDate = new Date(checkInInput.value);
@@ -1055,7 +1115,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 function(date) {
                     if (date < today) return true;
                     if (isWinterBlocked(date)) return true;
-                    if (!enableOnlySaturday(date)) return true;
+                    if (!isAllowedCheckOutDate(date)) return true;
                     if (checkInInput.value) {
                         const checkInDate = new Date(checkInInput.value);
                         if (date <= checkInDate) return true;
