@@ -1418,6 +1418,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <label for="messaggio">Messaggio *</label>
             <textarea id="messaggio" name="messaggio" required placeholder="Raccontaci cosa ti interessa..."></textarea>
           </div>
+          <div class="form-group" style="margin-bottom:16px;">
+            <label style="display:flex;align-items:flex-start;gap:8px;font-size:0.88em;color:#374151;cursor:pointer;line-height:1.5;font-weight:normal;">
+              <input type="checkbox" name="accettaPrivacy" required style="margin-top:3px;width:16px;height:16px;accent-color:#22577a;flex-shrink:0;">
+              <span>Ho letto e accetto la <a href="/privacy.html" target="_blank" rel="noopener" style="color:#22577a;text-decoration:underline;">privacy policy</a>.</span>
+            </label>
+          </div>
           <button type="submit" class="form-btn">Invia Messaggio</button>
         </form>
       </div>
@@ -1584,6 +1590,10 @@ document.addEventListener('DOMContentLoaded', function() {
           <div style="margin-bottom:10px;"><input name="telefono" type="tel" placeholder="Telefono"></div>
           <div style="margin-bottom:10px;"><input required name="persone" type="number" min="1" max="20" placeholder="Numero di Persone *"></div>
           <div style="margin-bottom:10px;"><textarea name="messaggio" placeholder="Messaggio (opzionale)"></textarea></div>
+          <label style="display:flex;align-items:flex-start;gap:8px;margin-bottom:14px;font-size:0.88em;color:#374151;cursor:pointer;line-height:1.5;">
+            <input type="checkbox" name="accettaPrivacy" required style="margin-top:3px;width:16px;height:16px;accent-color:#2d7a46;flex-shrink:0;">
+            <span>Ho letto e accetto la <a href="/privacy.html" target="_blank" rel="noopener" style="color:#166534;text-decoration:underline;">privacy policy</a>.</span>
+          </label>
           <div style="display:flex;gap:12px;justify-content:flex-end;margin-top:18px;">
             <button type="button" id="annullaPrenotaModal" style="background:#e0e0e0;color:#2d7a46;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;">Annulla</button>
             <button type="submit" style="background:#2d7a46;color:#fff;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;">Invia richiesta</button>
