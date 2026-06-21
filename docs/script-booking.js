@@ -310,8 +310,22 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                     ${prezzoTotale != null ? `<div style=\"text-align:right;color:grey;font-weight:700;font-size:1.0em;\">Prezzo totale: ${formatEuro(prezzoTotale)}<br><span style=\"color:grey;font-weight:700;font-size:1.0em;\">Importo caparra: ${formatEuro(prezzoTotale * 0.2)}</span></div>` : ''}  
                                 </div>
                                 
-                                <p style=\"margin-bottom:8px; font-size: 1em; color: #4b5563; line-height:1.2;\">Inserisci i tuoi dati per procedere con la prenotazione. Caparra rimborsabile fino a 90 giorni prima della prenotazione.</p>
-                                 
+                                <div style=\"margin-bottom:12px; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:8px; padding:12px 14px;\">
+                                    <p style=\"margin:0; font-size:0.85em; color:#374151; line-height:1.6;\"><strong style=\"color:#166534;\">Politica cancellazione:</strong> la caparra è rimborsata integralmente solo per cancellazioni comunicate almeno 90 giorni prima del check-in; oltre tale termine la caparra non è rimborsabile.</p>
+                                </div>
+
+                                <div style=\"margin-bottom:12px; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:8px; padding:12px 14px;\">
+                                    <p style=\"margin:0 0 8px 0; font-weight:700; font-size:0.92em; color:#166534;\">Info soggiorno essenziali</p>
+                                    <ul style=\"margin:0; padding-left:18px; font-size:0.85em; color:#374151; line-height:1.6;\">
+                                        <li>Il prezzo include pulizia finale, cambio biancheria, registrazione ospiti, supporto all'arrivo, pass parcheggio, spese di consumo.</li>
+                                        <li>Al vostro arrivo saremo presenti in struttura per accoglienza, consegna chiavi e tutte le informazioni utili sul soggiorno e sulla zona.</li>
+                                        <li>Al termine della prenotazione riceverai una email di riepilogo con tutte le informazioni utili per il soggiorno.</li>
+                                        <li>È ammesso al massimo 1 animale domestico per soggiorno: ti chiediamo di indicarlo nel campo messaggio qui sotto.</li>
+                                        <li><strong>Check-in:</strong> dalle 15:00 alle 20:00</li>
+                                        <li><strong>Check-out:</strong> entro le 10:00</li>
+                                    </ul>
+                                </div>
+
                                 <div style=\"margin-bottom:10px; font-weight:600; font-size:0.95em;\">${casa.nome || casa.id || 'Casa'}</div>
 
                                 <form id=\"prenotaForm\" style=\"margin-bottom:0;\">
