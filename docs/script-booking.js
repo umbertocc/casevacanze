@@ -307,7 +307,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                             modalBody.innerHTML = `
                                 <div style=\"margin-bottom:12px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px; margin-top: 30px;\">
                                     <h2 style=\"margin:0;font-size:1.15em;color:#2d7a46;\">Dati prenotazione</h2>
-                                    ${prezzoTotale != null ? `<div style=\"text-align:right;color:grey;font-weight:700;font-size:1.0em;\">Prezzo totale: ${formatEuro(prezzoTotale)}<br><span style=\"color:#166534;font-weight:700;font-size:1.05em;\">Importo caparra: ${formatEuro(prezzoTotale * 0.2)}</span></div>` : ''}  
+                                    ${prezzoTotale != null ? `<div style=\"text-align:right;color:grey;font-weight:700;font-size:1.0em;\">Prezzo totale: ${formatEuro(prezzoTotale)}<br><span style=\"color:grey;font-weight:700;font-size:1.0em;\">Importo caparra: ${formatEuro(prezzoTotale * 0.2)}</span></div>` : ''}  
                                 </div>
                                 
                                 <p style=\"margin-bottom:8px; font-size: 1em; color: #4b5563; line-height:1.2;\">Inserisci i tuoi dati per procedere con la prenotazione. Caparra rimborsabile fino a 90 giorni prima della prenotazione.</p>
