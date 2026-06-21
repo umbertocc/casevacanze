@@ -231,6 +231,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 }
 </script>
 <style>
+  body {
+    padding-bottom: 110px;
+  }
   @media (max-width:900px){
   .property {
     width: 100vw !important;
@@ -290,6 +293,70 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       align-items: flex-start;
       gap: 6px;
     }
+    body {
+      padding-bottom: 120px;
+    }
+    .whatsapp-float {
+      bottom: 92px !important;
+    }
+    .sticky-booking-cta-inner {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
+    }
+    .sticky-booking-cta-text {
+      text-align: center;
+      font-size: 0.92em;
+    }
+    .sticky-booking-cta-link {
+      width: auto;
+      min-width: 240px;
+      max-width: 320px;
+    }
+  }
+
+  .sticky-booking-cta {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1100;
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(34, 87, 122, 0.12);
+    box-shadow: 0 -8px 28px rgba(0,0,0,0.12);
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .sticky-booking-cta-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+  }
+
+  .sticky-booking-cta-text {
+    color: #22577a;
+    font-size: 0.98em;
+    font-weight: 600;
+  }
+
+  .sticky-booking-cta-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #27ae60, #229954);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 14px 20px;
+    border-radius: 999px;
+    white-space: nowrap;
+    box-shadow: 0 8px 22px rgba(39, 174, 96, 0.25);
+    min-width: 250px;
+    margin: 0 auto;
   }
 
 </style>
@@ -958,6 +1025,14 @@ document.addEventListener('DOMContentLoaded', function() {
 <script>
 </script>
 </main>
+
+<div class="sticky-booking-cta">
+  <div class="sticky-booking-cta-inner">
+    <div class="sticky-booking-cta-text">Ti interessa questa casa? Controlla subito date e disponibilita.</div>
+    <a href="/prenotazione" class="sticky-booking-cta-link">Verifica disponibilita</a>
+  </div>
+</div>
+
 <!-- End Main Content -->
 
 <div style="text-align:center; margin: 40px 0 0 0; font-size:1.15em; padding:15px;">

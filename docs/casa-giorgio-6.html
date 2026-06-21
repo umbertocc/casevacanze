@@ -59,7 +59,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     margin-top: 70px;
     text-align: center;
   }
-body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #1a202c; background: #e3f6fd; background-attachment: fixed; padding-top: 70px; }
+body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #1a202c; background: #e3f6fd; background-attachment: fixed; padding-top: 70px; padding-bottom: 110px; }
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 .navbar { position: fixed; top: 0; left: 0; right: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0,0,0,0.08); z-index: 1000; transition: all 0.3s ease; }
@@ -246,6 +246,46 @@ h1 { font-size: 3em; color: #111; margin-bottom: 15px; font-weight: 700; text-sh
   border: none;
   box-shadow: 0 4px 15px rgba(39, 174, 96, 0.18);
 }
+.sticky-booking-cta {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1100;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(34, 87, 122, 0.12);
+  box-shadow: 0 -8px 28px rgba(0,0,0,0.12);
+  padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
+}
+.sticky-booking-cta-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+.sticky-booking-cta-text {
+  color: #22577a;
+  font-size: 0.98em;
+  font-weight: 600;
+}
+.sticky-booking-cta-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #27ae60, #229954);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 14px 20px;
+  border-radius: 999px;
+  white-space: nowrap;
+  box-shadow: 0 8px 22px rgba(39, 174, 96, 0.25);
+  min-width: 250px;
+  margin: 0 auto;
+}
 .social-btn.facebook { background: #1877f2; }
 .social-btn.email { background: #34495e; }
 .highlight-box { background: #fff3cd; border-left: 4px solid #ffc107; padding: 20px; border-radius: 10px; margin: 30px 0; }
@@ -283,6 +323,11 @@ h1 { font-size: 3em; color: #111; margin-bottom: 15px; font-weight: 700; text-sh
   .price-section { padding: 25px 20px; margin: 0; }
   .price { font-size: 2em; }
   .price-desc { font-size: 0.95em; }
+  body { padding-bottom: 120px; }
+  .whatsapp-float { bottom: 92px !important; }
+  .sticky-booking-cta-inner { flex-direction: column; align-items: stretch; gap: 10px; }
+  .sticky-booking-cta-text { text-align: center; font-size: 0.92em; }
+  .sticky-booking-cta-link { width: auto; min-width: 240px; max-width: 320px; }
 }
 </style>
 <!-- Structured Data (Schema.org) -->
@@ -1436,6 +1481,13 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 </main>
+
+<div class="sticky-booking-cta">
+  <div class="sticky-booking-cta-inner">
+    <div class="sticky-booking-cta-text">Ti interessa questa casa? Controlla subito date e disponibilita.</div>
+    <a href="/prenotazione" class="sticky-booking-cta-link">Verifica disponibilita</a>
+  </div>
+</div>
 
 </div>
 <div style="text-align:center; margin: 10px 0 0 0; font-size:1.15em; padding:15px;">

@@ -350,7 +350,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                     
                                     <div style="display:flex;gap:10px;padding-bottom:10px;flex-wrap:wrap;">
                                      <!--   <button type="submit" style="flex:2;background:#2d7a46;color:#fff;padding:12px;border:none;border-radius:6px;font-size:1em;font-weight:600;cursor:pointer;">Invia richiesta</button> -->
-                                        <button type="button" id="prenotaOnlineBtn" style="flex:2;background:#188841;color:#fff;padding:12px;border:none;border-radius:6px;font-size:1em;font-weight:600;cursor:pointer;">Vai al pagamento</button> 
+                                        <button type="button" id="prenotaOnlineBtn" style="flex:2;background:#188841;color:#fff;padding:12px;border:none;border-radius:6px;font-size:1em;font-weight:600;cursor:pointer;">Procedi al pagamento</button> 
                                         <button type="button" id="cancelPrenotaBtn" style="flex:1;background:#f3f4f6;color:#1f2937;padding:12px;border:1px solid #d1d5db;border-radius:6px;font-size:1em;cursor:pointer;">Annulla</button>
                                     </div>
                                 </form>
