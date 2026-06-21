@@ -63,27 +63,21 @@ function openPreventivoRequestModal(appartamento) {
 
     modalBody.innerHTML = `
         <div style="margin:10px 0 12px 0;display:flex;justify-content:space-between;align-items:center;gap:10px;">
-            <h2 style="margin:0;font-size:1.2em;color:#2d7a46;">Richiedi preventivo</h2>
+            <h2 style="margin:0;font-size:1.2em;color:#2d7a46;">Prenota</h2>
         </div>
-        <p style="margin:0 0 12px 0;color:#4b5563;font-size:0.95em;">Compila il form e ti ricontatteremo in breve tempo.</p>
+        <p style="margin:0 0 12px 0;color:#4b5563;font-size:0.95em;">Conferma i tuoi dati per completare la prenotazione.</p>
         <div style="margin-bottom:10px;font-weight:600;font-size:0.95em;">${appartamento || 'Richiesta generica'}</div>
         <form id="quickPreventivoForm" style="margin-bottom:0;">
             <input type="hidden" name="appartamento" value="${appartamento || ''}">
             <div style="margin-bottom:10px;">
                 <input required name="nome" type="text" placeholder="Nome *" style="width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;">
-                <input name="email" type="email" placeholder="Email" style="width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;">
-                <input name="telefono" type="tel" placeholder="Telefono" style="width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;">
-                <select required name="preferenza_ricontatto" style="width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;background:#fff;">
-                    <option value="" selected disabled>Come preferisci essere ricontattato? *</option>
-                    <option value="telefono">Telefono</option>
-                    <option value="email">Email</option>
-                    <option value="whatsapp">WhatsApp</option>
-                </select>
+                <input required name="email" type="email" placeholder="Email *" style="width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;">
+                <input required name="telefono" type="tel" placeholder="Telefono *" style="width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;">
                 <input required name="persone" type="number" min="1" max="8" placeholder="Numero di Persone *" style="width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;">
             </div>
             <textarea name="messaggio" placeholder="Messaggio (opzionale)" style="width:100%;padding:10px;border-radius:5px;border:1px solid #ccc;min-height:60px;max-height:120px;font-size:0.9em;margin-bottom:12px;box-sizing:border-box;display:block;"></textarea>
             <div style="display:flex;gap:10px;padding-bottom:10px;flex-wrap:wrap;">
-                <button type="submit" style="flex:2;background:#2d7a46;color:#fff;padding:12px;border:none;border-radius:6px;font-size:1em;font-weight:600;cursor:pointer;">Invia richiesta</button>
+                <button type="submit" style="flex:2;background:#2d7a46;color:#fff;padding:12px;border:none;border-radius:6px;font-size:1em;font-weight:600;cursor:pointer;">Vai al pagamento</button>
                 <button type="button" id="cancelQuickPreventivoBtn" style="flex:1;background:#f3f4f6;color:#1f2937;padding:12px;border:1px solid #d1d5db;border-radius:6px;font-size:1em;cursor:pointer;">Annulla</button>
             </div>
         </form>
@@ -103,28 +97,6 @@ function openPreventivoRequestModal(appartamento) {
         quickForm.onsubmit = async function(ev) {
             ev.preventDefault();
             const form = ev.currentTarget;
-            const pref = form.preferenza_ricontatto.value;
-
-            if (pref === 'email' && !form.email.value.trim()) {
-                form.email.setCustomValidity('Inserisci l\'email per essere ricontattato via email.');
-                form.email.reportValidity();
-                return;
-            }
-            if ((pref === 'telefono' || pref === 'whatsapp') && !form.telefono.value.trim()) {
-                const channelLabel = pref === 'whatsapp' ? 'WhatsApp' : 'Telefono';
-                form.telefono.setCustomValidity('Inserisci il telefono per essere ricontattato via ' + channelLabel + '.');
-                form.telefono.reportValidity();
-                return;
-            }
-            form.email.setCustomValidity('');
-            form.telefono.setCustomValidity('');
-
-            const preferenzaRicontatto = form.preferenza_ricontatto.value;
-            const preferenzaRicontattoLabel =
-                preferenzaRicontatto === 'whatsapp' ? 'WhatsApp' :
-                preferenzaRicontatto === 'telefono' ? 'Telefono' :
-                preferenzaRicontatto === 'email' ? 'Email' :
-                preferenzaRicontatto;
 
             try {
                 const response = await fetch('https://demo-mail-993653817397.europe-west8.run.app/api/preventivi/public', {
@@ -141,7 +113,6 @@ function openPreventivoRequestModal(appartamento) {
                         checkOut: '',
                         persone: String(Number(form.persone.value)),
                         messaggio: form.messaggio.value,
-                        preferenzaRicontatto: preferenzaRicontattoLabel,
                         appartamento: form.appartamento.value,
                         prezzo: '',
                         source: 'booking-static-modal'
@@ -299,18 +270,17 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                         <div class="property-image">
                             ${galleryHtml}
                         </div>
-                        <div class="property-info">
+                        <div class="property-info">                            
+                            ${prezzoTotale !== null ? `<p style="margin:8px 0 8px 0;font-size:1.05em;color:#166534;font-weight:700;">Prezzo totale: ${formatEuro(prezzoTotale)}</p>` : ''} 
                             <p style="margin:0 0 10px 0;font-size:0.9em;line-height:1.4;color:#334155;background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:8px 10px;"><strong>CIN:</strong> ${cin || '-'}<br><strong>CIS:</strong> ${cis || '-'}</p>
-                       <!--   ${prezzoTotale !== null ? `<p style="margin:8px 0 8px 0;font-size:1.05em;color:#166534;font-weight:700;">Prezzo totale: ${formatEuro(prezzoTotale)}</p>` : ''} 
-                                                        <p style="margin:0 0 10px 0;font-size:0.9em;line-height:1.4;color:#334155;background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:8px 10px;"><strong>CIN:</strong> ${cin || '-'}<br><strong>CIS:</strong> ${cis || '-'}</p>
-                            <p style="margin:0 0 14px 0;font-size:0.9em;line-height:1.4;color:#374151;background:#f8fafc;border:1px solid #dbeafe;border-radius:8px;padding:10px 12px;"><strong>Info costi:</strong> include tutti i servizi: aria condizionata, registrazione ospiti, pulizie e pass parcheggio. <strong>Caparra:</strong> 20% dell'importo totale.</p> -->
+                            <p style="margin:0 0 14px 0;font-size:0.9em;line-height:1.4;color:#374151;background:#f8fafc;border:1px solid #dbeafe;border-radius:8px;padding:10px 12px;"><strong>Info costi:</strong> include tutti i servizi: aria condizionata, registrazione ospiti, pulizie e pass parcheggio. <strong>Caparra:</strong> 20% dell'importo totale.</p> 
                             <div class="property-features">
                                 ${caratteristiche.map(f => `<span class="feature-badge">${f}</span>`).join(' ')}
                             </div>
                             <p class="property-description">${casa.descrizione || ''}</p>
                             <div style="margin-top: 18px; margin-bottom: 10px;">
-                                <a href="#" class="prenota-btn" id="${btnId}" style="color: #48bb78; text-decoration: underline; font-weight: 500; display: block; margin-bottom: 10px;">📋 Invia richiesta</a>
-                                <!-- <a href="#" class="prenota-online-btn" id="${onlineBtnId}" style="color: #188841; text-decoration: underline; font-weight: 700; display: block; margin-bottom: 10px;">✨ Prenota online</a> -->
+                            <!--    <a href="#" class="prenota-btn" id="${btnId}" style="color: #48bb78; text-decoration: underline; font-weight: 500; display: block; margin-bottom: 10px;">📋 Invia richiesta</a> -->
+                                <a href="#" class="prenota-online-btn" id="${onlineBtnId}" style="color: #48bb78; text-decoration: underline; font-weight: 500; display: block; margin-bottom: 10px;">✨ Prenota </a>
                                 ${casa.link_dettaglio ? `<a href="${casa.link_dettaglio}" style="color: #48bb78; text-decoration: underline; font-weight: 500; display: block; margin-bottom: 10px;">📋 Vedi casa</a>` : ''}
                                 ${casa.link_whatsapp ? `<a href="${casa.link_whatsapp}" target="_blank" style="color: #48bb78; text-decoration: underline; font-weight: 500; display: flex; align-items: center; gap: 7px; margin-bottom: 38px;"> <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 32 32\" fill=\"#fff\" style=\"background:#25d366; border-radius:3px;\"><path d=\"M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 7.933-2.127c2.42 1.37 5.173 2.127 8.067 2.127 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.467c-2.482 0-4.908-0.646-7.07-1.87l-0.507-0.292-4.713 1.262 1.262-4.669-0.292-0.508c-1.207-2.100-1.847-4.507-1.847-6.978 0-7.51 6.11-13.619 13.619-13.619s13.619 6.109 13.619 13.619c0 7.51-6.11 13.619-13.619 13.619zM21.789 18.75c-0.214-0.107-1.268-0.625-1.464-0.696s-0.339-0.107-0.482 0.107c-0.143 0.214-0.554 0.696-0.679 0.839s-0.25 0.161-0.464 0.054c-0.214-0.107-0.902-0.333-1.718-1.060-0.635-0.567-1.064-1.268-1.189-1.482s-0.013-0.329 0.094-0.435c0.096-0.096 0.214-0.25 0.321-0.375s0.143-0.214 0.214-0.357 0.036-0.268-0.018-0.375c-0.054-0.107-0.482-1.161-0.661-1.589s-0.349-0.362-0.482-0.369c-0.125-0.007-0.268-0.007-0.411-0.007s-0.375 0.054-0.571 0.268c-0.196 0.214-0.75 0.732-0.75 1.786s0.768 2.071 0.875 2.214c0.107 0.143 1.5 2.357 3.653 3.304 0.51 0.214 0.909 0.343 1.219 0.438 0.512 0.161 0.978 0.139 1.346 0.084 0.411-0.061 1.268-0.518 1.446-1.018s0.179-0.929 0.125-1.018c-0.054-0.089-0.196-0.143-0.411-0.25z\"/></svg> WhatsApp</a>` : ''}
                             </div>
@@ -336,11 +306,11 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                             // Modale con date precompilate dalla ricerca (non modificabili)
                             modalBody.innerHTML = `
                                 <div style=\"margin-bottom:12px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px; margin-top: 30px;\">
-                                    <h2 style=\"margin:0;font-size:1.15em;color:#2d7a46;\">Richiesta preventivo</h2>
-                                <!--    ${prezzoTotale != null ? `<div style=\"text-align:right;color:#166534;font-weight:700;font-size:1.05em;\">Prezzo totale: ${formatEuro(prezzoTotale)}</div>` : ''}  -->
+                                    <h2 style=\"margin:0;font-size:1.15em;color:#2d7a46;\">Dati prenotazione</h2>
+                                    ${prezzoTotale != null ? `<div style=\"text-align:right;color:#166534;font-weight:700;font-size:1.05em;\">Prezzo totale: ${formatEuro(prezzoTotale)}<br><span style=\"color:#166534;font-weight:700;font-size:1.05em;\">Importo caparra: ${formatEuro(prezzoTotale * 0.2)}</span></div>` : ''}  
                                 </div>
                                 
-                                <p style=\"margin-bottom:8px; font-size: 1em; color: #4b5563; line-height:1.2;\">Ti ricontatteremo in breve tempo via telefono, email o WhatsApp per confermare la disponibilità e fornire ulteriori info.</p>
+                                <p style=\"margin-bottom:8px; font-size: 1em; color: #4b5563; line-height:1.2;\">Inserisci i tuoi dati per procedere con la prenotazione. Caparra rimborsabile fino a 90 giorni prima della prenotazione.</p>
                                  
                                 <div style=\"margin-bottom:10px; font-weight:600; font-size:0.95em;\">${casa.nome || casa.id || 'Casa'}</div>
 
@@ -356,23 +326,17 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                     </div>
 
                                     <div style=\"margin-bottom:10px;\">
-                                        <input required name=\"nome\" type=\"text\" placeholder=\"Nome *\" style=\"width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;\">
-                                        <input name=\"email\" type=\"email\" placeholder=\"Email\" style=\"width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;\">
-                                        <input name=\"telefono\" type=\"tel\" placeholder=\"Telefono\" style=\"width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;\">
-                                        <select required name=\"preferenza_ricontatto\" style=\"width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;background:#fff;\">
-                                            <option value=\"\" selected disabled>Come preferisci essere ricontattato? *</option>
-                                            <option value=\"telefono\">Telefono</option>
-                                            <option value=\"email\">Email</option>
-                                            <option value=\"whatsapp\">WhatsApp</option>
-                                        </select>
-                                        <input required name=\"persone\" type=\"number\" min=\"1\" max=\"8\" placeholder=\"Numero di Persone *\" style=\"width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;\">
+                                        <input required name=\"nome\" type=\"text\" placeholder=\"Nome e Cognome *\" style=\"width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;\">
+                                        <input required name=\"email\" type=\"email\" placeholder=\"Email *\" style=\"width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;\">
+                                        <input required name=\"telefono\" type=\"tel\" placeholder=\"Telefono *\" style=\"width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;\">
+                                        <input required name=\"persone\" type=\"number\" min=\"1\" max=\"8\" value=\"${ospiti || ''}\" placeholder=\"Numero di Persone *\" style=\"width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;\">
                                     </div>
 
                                     <textarea name=\"messaggio\" placeholder=\"Messaggio (opzionale)\" style=\"width:100%;padding:10px;border-radius:5px;border:1px solid #ccc;min-height:50px;max-height:80px;font-size:0.9em;margin-bottom:12px;box-sizing:border-box;display:block;\"></textarea>
                                     
                                     <div style="display:flex;gap:10px;padding-bottom:10px;flex-wrap:wrap;">
-                                        <button type="submit" style="flex:2;background:#2d7a46;color:#fff;padding:12px;border:none;border-radius:6px;font-size:1em;font-weight:600;cursor:pointer;">Invia richiesta</button>
-                                       <!-- <button type="button" id="prenotaOnlineBtn" style="flex:2;background:#188841;color:#fff;padding:12px;border:none;border-radius:6px;font-size:1em;font-weight:600;cursor:pointer;">Prenota online</button> -->
+                                     <!--   <button type="submit" style="flex:2;background:#2d7a46;color:#fff;padding:12px;border:none;border-radius:6px;font-size:1em;font-weight:600;cursor:pointer;">Invia richiesta</button> -->
+                                        <button type="button" id="prenotaOnlineBtn" style="flex:2;background:#188841;color:#fff;padding:12px;border:none;border-radius:6px;font-size:1em;font-weight:600;cursor:pointer;">Vai al pagamento</button> 
                                         <button type="button" id="cancelPrenotaBtn" style="flex:1;background:#f3f4f6;color:#1f2937;padding:12px;border:1px solid #d1d5db;border-radius:6px;font-size:1em;cursor:pointer;">Annulla</button>
                                     </div>
                                 </form>
@@ -390,20 +354,6 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                 prenotaOnlineBtn.onclick = async function() {
                                     const form = document.getElementById('prenotaForm');
                                     let prenotazioneId = null;
-                                    const pref = form.preferenza_ricontatto.value;
-                                    if (pref === 'email' && !form.email.value.trim()) {
-                                        form.email.setCustomValidity('Inserisci l\'email per essere ricontattato via email.');
-                                        form.email.reportValidity();
-                                        return;
-                                    }
-                                    if ((pref === 'telefono' || pref === 'whatsapp') && !form.telefono.value.trim()) {
-                                        const channelLabel = pref === 'whatsapp' ? 'WhatsApp' : 'Telefono';
-                                        form.telefono.setCustomValidity('Inserisci il telefono per essere ricontattato via ' + channelLabel + '.');
-                                        form.telefono.reportValidity();
-                                        return;
-                                    }
-                                    form.email.setCustomValidity('');
-                                    form.telefono.setCustomValidity('');
                                     modalBody.innerHTML = `<div style="text-align:center;padding:32px 0;"><div style="border:4px solid #f3f3f3;border-top:4px solid #188841;border-radius:50%;width:32px;height:32px;animation:spin 1s linear infinite;margin:0 auto 18px auto;"></div><span style="color:#188841;font-weight:500;">Prenotazione in corso...</span></div>`;
 
                                     const renderPaymentRedirect = (paymentSession) => {
@@ -491,8 +441,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                             checkOut: form.checkOut.value,
                                             emailOspite: form.email.value.trim() || null,
                                             note: [
-                                                form.messaggio.value.trim(),
-                                                `Preferenza ricontatto: ${pref}`
+                                                form.messaggio.value.trim()
                                             ].filter(Boolean).join('\n'),
                                             telefonoOspite: form.telefono.value.trim() || null,
                                             prezzoTotale: form.prezzoTotale.value !== '' ? Number(form.prezzoTotale.value) : null,
@@ -534,59 +483,16 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                 };
                             }
 
-                            const prenotaFormEl = document.getElementById('prenotaForm');
-                            const preferenzaSelect = prenotaFormEl.querySelector('select[name="preferenza_ricontatto"]');
-                            const emailInput = prenotaFormEl.querySelector('input[name="email"]');
-                            const telefonoInput = prenotaFormEl.querySelector('input[name="telefono"]');
-
-                            function applyContactPreference() {
-                                const pref = preferenzaSelect.value;
-                                emailInput.required = pref === 'email';
-                                telefonoInput.required = pref === 'telefono' || pref === 'whatsapp';
-
-                                emailInput.placeholder = pref === 'email' ? 'Email *' : 'Email';
-                                telefonoInput.placeholder = (pref === 'telefono' || pref === 'whatsapp') ? 'Telefono *' : 'Telefono';
-
-                                if (pref === 'email') {
-                                    telefonoInput.setCustomValidity('');
-                                } else if (pref === 'telefono') {
-                                    emailInput.setCustomValidity('');
-                                }
-                            }
-
-                            preferenzaSelect.addEventListener('change', applyContactPreference);
-                            applyContactPreference();
-
                             // Gestione submit form
                             document.getElementById('prenotaForm').onsubmit = async function(ev) {
                                 ev.preventDefault();
                                 const form = ev.target;
-                                const pref = form.preferenza_ricontatto.value;
-                                if (pref === 'email' && !form.email.value.trim()) {
-                                    form.email.setCustomValidity('Inserisci l\'email per essere ricontattato via email.');
-                                    form.email.reportValidity();
-                                    return;
-                                }
-                                if ((pref === 'telefono' || pref === 'whatsapp') && !form.telefono.value.trim()) {
-                                    const channelLabel = pref === 'whatsapp' ? 'WhatsApp' : 'Telefono';
-                                    form.telefono.setCustomValidity('Inserisci il telefono per essere ricontattato via ' + channelLabel + '.');
-                                    form.telefono.reportValidity();
-                                    return;
-                                }
-                                form.email.setCustomValidity('');
-                                form.telefono.setCustomValidity('');
                                 // Mostra spinner
                                 modalBody.innerHTML = `<div style=\"text-align:center;padding:32px 0;\"><div style=\"border:4px solid #f3f3f3;border-top:4px solid #188841;border-radius:50%;width:32px;height:32px;animation:spin 1s linear infinite;margin:0 auto 18px auto;\"></div><span style=\"color:#188841;font-weight:500;\">Invio in corso...</span></div>`;
                                 // Raccogli dati
                                 const nome = form.nome.value;
                                 const email = form.email.value;
                                 const telefono = form.telefono.value;
-                                const preferenzaRicontatto = form.preferenza_ricontatto.value;
-                                const preferenzaRicontattoLabel =
-                                    preferenzaRicontatto === 'whatsapp' ? 'WhatsApp' :
-                                    preferenzaRicontatto === 'telefono' ? 'Telefono' :
-                                    preferenzaRicontatto === 'email' ? 'Email' :
-                                    preferenzaRicontatto;
                                 const persone = form.persone.value;
                                 // Enhanced conversions - Google Ads Advanced Conversions
                                 // Funzione per hashare in SHA256
@@ -629,7 +535,6 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                             nome: nome,
                                             email: email,
                                             telefono: telefono,
-                                            preferenzaRicontatto: preferenzaRicontattoLabel,
                                             persone: persone,
                                             appartamento: casa,
                                             checkIn: checkIn,
