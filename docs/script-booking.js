@@ -75,7 +75,7 @@ function openPreventivoRequestModal(appartamento) {
                 <input required name="telefono" type="tel" placeholder="Telefono *" style="width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;">
                 <input required name="persone" type="number" min="1" max="8" placeholder="Numero di Persone *" style="width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;">
             </div>
-            <textarea name="messaggio" placeholder="Messaggio (opzionale)" style="width:100%;padding:10px;border-radius:5px;border:1px solid #ccc;min-height:60px;max-height:120px;font-size:0.9em;margin-bottom:12px;box-sizing:border-box;display:block;"></textarea>
+            <textarea name="messaggio" placeholder="Messaggio (opzionale)" style="width:100%;padding:10px;border-radius:5px;border:1px solid #ccc;min-height:60px;max-height:120px;font-size:0.92em;margin-bottom:12px;box-sizing:border-box;display:block;"></textarea>
             <div style="display:flex;gap:10px;padding-bottom:10px;flex-wrap:wrap;">
                 <button type="submit" style="flex:2;background:#2d7a46;color:#fff;padding:12px;border:none;border-radius:6px;font-size:1em;font-weight:600;cursor:pointer;">Vai al pagamento</button>
                 <button type="button" id="cancelQuickPreventivoBtn" style="flex:1;background:#f3f4f6;color:#1f2937;padding:12px;border:1px solid #d1d5db;border-radius:6px;font-size:1em;cursor:pointer;">Annulla</button>
@@ -317,7 +317,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                 <div style=\"margin-bottom:12px; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:8px; padding:12px 14px;\">
                                     <p style=\"margin:0 0 8px 0; font-weight:700; font-size:0.98em; color:#166534;\">Info soggiorno essenziali</p>
                                     <ul style=\"margin:0; padding-left:18px; font-size:0.9em; color:#374151; line-height:1.6;\">
-                                        <li>Il prezzo include pulizia finale, cambio biancheria, registrazione ospiti, supporto all'arrivo, pass parcheggio, spese di consumo.</li>
+                                        <li>Il prezzo include pulizia finale, cambio biancheria, registrazione ospiti, supporto all'arrivo, pass parcheggio, spese di consumo. Non sono previste altre spese aggiuntive.</li>
                                         <li>Al vostro arrivo saremo presenti in struttura per accoglienza, consegna chiavi e tutte le informazioni utili sul soggiorno e sulla zona.</li>
                                         <li>Al termine della prenotazione riceverai una email di riepilogo con tutte le informazioni utili per il soggiorno.</li>
                                         <li>È ammesso al massimo 1 animale domestico per soggiorno: ti chiediamo di indicarlo nel campo messaggio qui sotto.</li>
@@ -346,7 +346,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                         <input required name=\"persone\" type=\"number\" min=\"1\" max=\"8\" value=\"${ospiti || ''}\" placeholder=\"Numero di Persone *\" style=\"width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;\">
                                     </div>
 
-                                    <textarea name=\"messaggio\" placeholder=\"Messaggio (opzionale)\" style=\"width:100%;padding:10px;border-radius:5px;border:1px solid #ccc;min-height:50px;max-height:80px;font-size:0.9em;margin-bottom:12px;box-sizing:border-box;display:block;\"></textarea>
+                                    <textarea name=\"messaggio\" placeholder=\"Messaggio (opzionale)\" style=\"width:100%;padding:10px;border-radius:5px;border:1px solid #ccc;min-height:50px;max-height:80px;font-size:0.92em;margin-bottom:12px;box-sizing:border-box;display:block;\"></textarea>
                                     
                                     <div style="display:flex;gap:10px;padding-bottom:10px;flex-wrap:wrap;">
                                      <!--   <button type="submit" style="flex:2;background:#2d7a46;color:#fff;padding:12px;border:none;border-radius:6px;font-size:1em;font-weight:600;cursor:pointer;">Invia richiesta</button> -->
