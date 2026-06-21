@@ -345,6 +345,20 @@ h1 { font-size: 3em; color: #111; margin-bottom: 15px; font-weight: 700; text-sh
 .giorgio-booking-grid .full {
   width: 100%;
 }
+.giorgio-booking-step {
+  display: none;
+}
+.giorgio-booking-step.is-active {
+  display: block;
+}
+.giorgio-booking-step-indicator {
+  margin-bottom: 14px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #0f4c5c;
+  text-transform: uppercase;
+}
 .giorgio-booking-field label {
   display: block;
   margin-bottom: 6px;
@@ -403,6 +417,21 @@ h1 { font-size: 3em; color: #111; margin-bottom: 15px; font-weight: 700; text-sh
 .giorgio-booking-status.error {
   color: #b91c1c;
 }
+.giorgio-booking-recap {
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid #d6e8f4;
+  font-size: 0.92rem;
+  color: #1f2937;
+}
+.giorgio-booking-recap p {
+  margin: 0 0 6px;
+}
+.giorgio-booking-recap p:last-child {
+  margin-bottom: 0;
+}
 .giorgio-booking-actions {
   display: flex;
   gap: 12px;
@@ -425,12 +454,26 @@ h1 { font-size: 3em; color: #111; margin-bottom: 15px; font-weight: 700; text-sh
   box-shadow: 0 10px 24px rgba(15, 118, 110, 0.25);
 }
 .giorgio-booking-actions .secondary {
-  background: #eef2f7;
-  color: #1f2937;
+  background: #dbe7f0;
+  color: #0f3449;
+  border: 1px solid #9bb9cc;
+  box-shadow: 0 4px 12px rgba(15, 52, 73, 0.12);
+}
+.giorgio-booking-actions .secondary:hover {
+  background: #cfe0ec;
 }
 .giorgio-booking-actions .primary:disabled {
   opacity: 0.55;
   cursor: not-allowed;
+}
+@media (max-width: 768px) {
+  #giorgioPrevStep2 {
+    margin-left: 58px;
+  }
+
+  #giorgioPrevStep3 {
+    margin-left: 0;
+  }
 }
 .highlight-box, .feature-badge, .vista-mare-badge {
   background: linear-gradient(135deg, #27ae60, #229954);
@@ -1658,51 +1701,78 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
     <div class="giorgio-booking-modal-body">
       <form id="giorgioBookingForm" novalidate>
-        <div class="giorgio-booking-grid">
-          <div class="giorgio-booking-field">
-            <label for="giorgioCheckIn">Check-in</label>
-            <input type="text" id="giorgioCheckIn" name="checkIn" placeholder="Seleziona data di arrivo" autocomplete="off" required>
-          </div>
-          <div class="giorgio-booking-field">
-            <label for="giorgioCheckOut">Check-out</label>
-            <input type="text" id="giorgioCheckOut" name="checkOut" placeholder="Seleziona data di partenza" autocomplete="off" required>
-          </div>
-          <div class="giorgio-booking-field full">
-            <label for="giorgioOspiti">Numero ospiti</label>
-            <input type="number" id="giorgioOspiti" name="ospiti" min="1" max="6" value="2" required>
-          </div>
-          <div class="giorgio-booking-field">
-            <label for="giorgioNome">Nome e cognome</label>
-            <input type="text" id="giorgioNome" name="nome" placeholder="Inserisci nome e cognome" required>
-          </div>
-          <div class="giorgio-booking-field">
-            <label for="giorgioEmail">Email</label>
-            <input type="email" id="giorgioEmail" name="email" placeholder="Inserisci email" required>
-          </div>
-          <div class="giorgio-booking-field full">
-            <label for="giorgioTelefono">Telefono</label>
-            <input type="tel" id="giorgioTelefono" name="telefono" placeholder="Inserisci numero di telefono" required>
-          </div>
-          <div class="giorgio-booking-field full">
-            <label for="giorgioNote">Messaggio</label>
-            <textarea id="giorgioNote" name="note" rows="3" placeholder="Messaggio opzionale"></textarea>
-          </div>
-        </div>
+        <div class="giorgio-booking-step-indicator" id="giorgioStepIndicator">Passo 1 di 3 - Date e ospiti</div>
 
-        <label style="display:flex;align-items:flex-start;gap:8px;margin-top:14px;font-size:0.9em;color:#374151;line-height:1.5;cursor:pointer;">
-          <input type="checkbox" id="giorgioPrivacy" name="privacy" required style="margin-top:3px;width:16px;height:16px;accent-color:#0f766e;flex-shrink:0;">
-          <span>Ho letto e accetto la <a href="/privacy.html" target="_blank" rel="noopener" style="color:#166534;text-decoration:underline;">privacy policy</a>, le condizioni di cancellazione e le informazioni sul soggiorno.</span>
-        </label>
-
-        <div class="giorgio-booking-summary">
+        <div class="giorgio-booking-summary" style="margin-top:0; margin-bottom:14px;">
           <div><strong>Prezzo totale:</strong> <span id="giorgioQuotePrice">-</span></div>
           <div style="margin-top:6px;"><strong>Caparra:</strong> <span id="giorgioQuoteDeposit">-</span></div>
-          <div class="giorgio-booking-status" id="giorgioBookingStatus">Seleziona check-in, check-out e ospiti per vedere la disponibilità.</div>
+          <div class="giorgio-booking-status" id="giorgioBookingStatus" style="margin-top:10px;">Seleziona check-in, check-out e ospiti per vedere la disponibilità.</div>
         </div>
 
-        <div class="giorgio-booking-actions">
-          <button type="button" class="primary" id="giorgioProceedBtn" disabled>Procedi al pagamento</button>
-          <button type="button" class="secondary" id="giorgioResetBtn">Azzera</button>
+        <div class="giorgio-booking-step is-active" id="giorgioStep1" data-step="1">
+          <div class="giorgio-booking-grid">
+            <div class="giorgio-booking-field">
+              <label for="giorgioCheckIn">Check-in</label>
+              <input type="text" id="giorgioCheckIn" name="checkIn" placeholder="Seleziona data di arrivo" autocomplete="off" required>
+            </div>
+            <div class="giorgio-booking-field">
+              <label for="giorgioCheckOut">Check-out</label>
+              <input type="text" id="giorgioCheckOut" name="checkOut" placeholder="Seleziona data di partenza" autocomplete="off" required>
+            </div>
+            <div class="giorgio-booking-field full">
+              <label for="giorgioOspiti">Numero ospiti</label>
+              <input type="number" id="giorgioOspiti" name="ospiti" min="1" max="6" value="2" required>
+            </div>
+          </div>
+
+          <div class="giorgio-booking-actions">
+            <button type="button" class="primary" id="giorgioNextStep1">Continua</button>
+          </div>
+        </div>
+
+        <div class="giorgio-booking-step" id="giorgioStep2" data-step="2">
+          <div class="giorgio-booking-grid">
+            <div class="giorgio-booking-field">
+              <label for="giorgioNome">Nome e cognome</label>
+              <input type="text" id="giorgioNome" name="nome" placeholder="Inserisci nome e cognome" required>
+            </div>
+            <div class="giorgio-booking-field">
+              <label for="giorgioEmail">Email</label>
+              <input type="email" id="giorgioEmail" name="email" placeholder="Inserisci email" required>
+            </div>
+            <div class="giorgio-booking-field full">
+              <label for="giorgioTelefono">Telefono</label>
+              <input type="tel" id="giorgioTelefono" name="telefono" placeholder="Inserisci numero di telefono" required>
+            </div>
+            <div class="giorgio-booking-field full">
+              <label for="giorgioNote">Messaggio</label>
+              <textarea id="giorgioNote" name="note" rows="3" placeholder="Messaggio opzionale"></textarea>
+            </div>
+          </div>
+
+          <label style="display:flex;align-items:flex-start;gap:8px;margin-top:14px;font-size:0.9em;color:#374151;line-height:1.5;cursor:pointer;">
+            <input type="checkbox" id="giorgioPrivacy" name="privacy" required style="margin-top:3px;width:16px;height:16px;accent-color:#0f766e;flex-shrink:0;">
+            <span>Ho letto e accetto la <a href="/privacy.html" target="_blank" rel="noopener" style="color:#166534;text-decoration:underline;">privacy policy</a>, le condizioni di cancellazione e le informazioni sul soggiorno.</span>
+          </label>
+
+          <div class="giorgio-booking-actions">
+            <button type="button" class="secondary" id="giorgioPrevStep2">Indietro</button>
+            <button type="button" class="primary" id="giorgioNextStep2">Continua</button>
+          </div>
+        </div>
+
+        <div class="giorgio-booking-step" id="giorgioStep3" data-step="3">
+          <div class="giorgio-booking-recap" id="giorgioBookingRecap">
+            <p><strong>Check-in:</strong> <span id="giorgioRecapCheckIn">-</span></p>
+            <p><strong>Check-out:</strong> <span id="giorgioRecapCheckOut">-</span></p>
+            <p><strong>Ospiti:</strong> <span id="giorgioRecapOspiti">-</span></p>
+            <p><strong>Contatto:</strong> <span id="giorgioRecapContatto">-</span></p>
+          </div>
+
+          <div class="giorgio-booking-actions">
+            <button type="button" class="secondary" id="giorgioPrevStep3">Indietro</button>
+            <button type="button" class="primary" id="giorgioProceedBtn" disabled>Procedi al pagamento</button>
+          </div>
         </div>
       </form>
     </div>
@@ -1840,13 +1910,23 @@ document.addEventListener('DOMContentLoaded', function() {
   const priceEl = document.getElementById('giorgioQuotePrice');
   const depositEl = document.getElementById('giorgioQuoteDeposit');
   const statusEl = document.getElementById('giorgioBookingStatus');
+  const stepIndicatorEl = document.getElementById('giorgioStepIndicator');
+  const stepEls = form ? form.querySelectorAll('.giorgio-booking-step') : [];
+  const nextStep1Btn = document.getElementById('giorgioNextStep1');
+  const prevStep2Btn = document.getElementById('giorgioPrevStep2');
+  const nextStep2Btn = document.getElementById('giorgioNextStep2');
+  const prevStep3Btn = document.getElementById('giorgioPrevStep3');
   const privacyInput = document.getElementById('giorgioPrivacy');
   const nomeInput = document.getElementById('giorgioNome');
   const emailInput = document.getElementById('giorgioEmail');
   const telefonoInput = document.getElementById('giorgioTelefono');
   const noteInput = document.getElementById('giorgioNote');
+  const recapCheckInEl = document.getElementById('giorgioRecapCheckIn');
+  const recapCheckOutEl = document.getElementById('giorgioRecapCheckOut');
+  const recapOspitiEl = document.getElementById('giorgioRecapOspiti');
+  const recapContattoEl = document.getElementById('giorgioRecapContatto');
 
-  if (!bookingModal || !bookingCta || !closeBtn || !resetBtn || !proceedBtn || !form || !bookingModalBody || !checkInInput || !checkOutInput || !ospitiInput || !priceEl || !depositEl || !statusEl || !privacyInput || !nomeInput || !emailInput || !telefonoInput || !noteInput || !window.flatpickr) {
+  if (!bookingModal || !bookingCta || !closeBtn || !proceedBtn || !form || !bookingModalBody || !checkInInput || !checkOutInput || !ospitiInput || !priceEl || !depositEl || !statusEl || !privacyInput || !nomeInput || !emailInput || !telefonoInput || !noteInput || !stepIndicatorEl || !nextStep1Btn || !prevStep2Btn || !nextStep2Btn || !prevStep3Btn || !recapCheckInEl || !recapCheckOutEl || !recapOspitiEl || !recapContattoEl || !window.flatpickr) {
     return;
   }
 
@@ -1859,6 +1939,7 @@ document.addEventListener('DOMContentLoaded', function() {
   let turnoverCheckOutDates = new Set();
   let quote = null;
   let quoteRequestToken = 0;
+  let currentStep = 1;
   let checkInPicker = null;
   let checkOutPicker = null;
   let paymentCountdownInterval = null;
@@ -1970,6 +2051,14 @@ document.addEventListener('DOMContentLoaded', function() {
   function setStatus(message, isError) {
     statusEl.textContent = message;
     statusEl.classList.toggle('error', !!isError);
+  }
+
+  function setConfirmedStatusByStep() {
+    if (currentStep === 3) {
+      setStatus('Disponibilità confermata, controlla i dati e procedi al pagamento della caparra.', false);
+      return;
+    }
+    setStatus('Disponibilità confermata. Completa i dati di contatto e procedi al pagamento della caparra.', false);
   }
 
   function clearPaymentTimers() {
@@ -2150,6 +2239,10 @@ document.addEventListener('DOMContentLoaded', function() {
       priceEl.textContent = '-';
       depositEl.textContent = '-';
       proceedBtn.disabled = true;
+      recapCheckInEl.textContent = checkInInput.value || '-';
+      recapCheckOutEl.textContent = checkOutInput.value || '-';
+      recapOspitiEl.textContent = ospitiInput.value || '-';
+      recapContattoEl.textContent = nomeInput.value.trim() || '-';
       return;
     }
 
@@ -2158,6 +2251,71 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const requiredFieldsFilled = checkInInput.value && checkOutInput.value && ospitiInput.value && nomeInput.value.trim() && emailInput.value.trim() && telefonoInput.value.trim() && privacyInput.checked;
     proceedBtn.disabled = !(quote.available && requiredFieldsFilled);
+    recapCheckInEl.textContent = checkInInput.value || '-';
+    recapCheckOutEl.textContent = checkOutInput.value || '-';
+    recapOspitiEl.textContent = ospitiInput.value || '-';
+    recapContattoEl.textContent = nomeInput.value.trim() ? (nomeInput.value.trim() + ' - ' + emailInput.value.trim()) : '-';
+  }
+
+  function setCurrentStep(step) {
+    currentStep = Math.max(1, Math.min(3, Number(step) || 1));
+    stepEls.forEach(function(el) {
+      const stepNum = Number(el.getAttribute('data-step'));
+      el.classList.toggle('is-active', stepNum === currentStep);
+    });
+
+    if (currentStep === 1) {
+      stepIndicatorEl.textContent = 'Passo 1 di 3 - Date e ospiti';
+    } else if (currentStep === 2) {
+      stepIndicatorEl.textContent = 'Passo 2 di 3 - Dati di contatto';
+    } else {
+      stepIndicatorEl.textContent = 'Passo 3 di 3 - Riepilogo e pagamento';
+      updateSummary();
+    }
+
+    if (quote && quote.available) {
+      setConfirmedStatusByStep();
+    }
+  }
+
+  function validateStep1() {
+    if (!checkInInput.value) {
+      checkInInput.reportValidity();
+      return false;
+    }
+    if (!checkOutInput.value) {
+      checkOutInput.reportValidity();
+      return false;
+    }
+    if (!ospitiInput.value || Number(ospitiInput.value) < 1) {
+      ospitiInput.reportValidity();
+      return false;
+    }
+    if (!quote || !quote.available) {
+      setStatus('Verifica prima disponibilità e prezzo nel passo 1.', true);
+      return false;
+    }
+    return true;
+  }
+
+  function validateStep2() {
+    if (!nomeInput.checkValidity()) {
+      nomeInput.reportValidity();
+      return false;
+    }
+    if (!emailInput.checkValidity()) {
+      emailInput.reportValidity();
+      return false;
+    }
+    if (!telefonoInput.checkValidity()) {
+      telefonoInput.reportValidity();
+      return false;
+    }
+    if (!privacyInput.checked) {
+      privacyInput.reportValidity();
+      return false;
+    }
+    return true;
   }
 
   function resetQuote() {
@@ -2281,7 +2439,7 @@ document.addEventListener('DOMContentLoaded', function() {
         available: true
       };
 
-      setStatus('Disponibilità confermata. Completa i dati di contatto e procedi al pagamento della caparra.', false);
+      setConfirmedStatusByStep();
       updateSummary();
     } catch (err) {
       if (currentToken !== quoteRequestToken) return;
@@ -2295,6 +2453,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function openModal() {
     hideResultPanel();
+    setCurrentStep(1);
     bookingModal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
   }
@@ -2352,17 +2511,42 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  resetBtn.addEventListener('click', function() {
-    form.reset();
-    if (checkInPicker) checkInPicker.clear();
-    if (checkOutPicker) checkOutPicker.clear();
-    resetQuote();
-    if (checkInPicker) {
-      const firstAvailable = firstAvailableCheckInDate(365);
-      if (firstAvailable) {
-        checkInPicker.setDate(firstAvailable, true);
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function() {
+      form.reset();
+      if (checkInPicker) checkInPicker.clear();
+      if (checkOutPicker) checkOutPicker.clear();
+      resetQuote();
+      if (checkInPicker) {
+        const firstAvailable = firstAvailableCheckInDate(365);
+        if (firstAvailable) {
+          checkInPicker.setDate(firstAvailable, true);
+        }
       }
+      setCurrentStep(1);
+    });
+  }
+
+  nextStep1Btn.addEventListener('click', function() {
+    if (!validateStep1()) {
+      return;
     }
+    setCurrentStep(2);
+  });
+
+  prevStep2Btn.addEventListener('click', function() {
+    setCurrentStep(1);
+  });
+
+  nextStep2Btn.addEventListener('click', function() {
+    if (!validateStep2()) {
+      return;
+    }
+    setCurrentStep(3);
+  });
+
+  prevStep3Btn.addEventListener('click', function() {
+    setCurrentStep(2);
   });
 
   [checkInInput, checkOutInput, ospitiInput, nomeInput, emailInput, telefonoInput, noteInput, privacyInput].forEach(function(el) {
