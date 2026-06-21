@@ -349,12 +349,12 @@ h1 { font-size: 3em; color: #111; margin-bottom: 15px; font-weight: 700; text-sh
   padding: 20px 22px 22px 22px;
 }
 .respiro-booking-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 14px;
 }
 .respiro-booking-grid .full {
-  grid-column: 1 / -1;
+  width: 100%;
 }
 .respiro-booking-field label {
   display: block;
@@ -394,8 +394,8 @@ h1 { font-size: 3em; color: #111; margin-bottom: 15px; font-weight: 700; text-sh
   background: linear-gradient(180deg, #f8fbff 0%, #eef7ff 100%);
 }
 .respiro-booking-info-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 12px;
 }
 .respiro-booking-info-item {
@@ -460,10 +460,10 @@ h1 { font-size: 3em; color: #111; margin-bottom: 15px; font-weight: 700; text-sh
     max-height: 94vh;
   }
   .respiro-booking-info-grid {
-    grid-template-columns: 1fr;
+    gap: 10px;
   }
   .respiro-booking-grid {
-    grid-template-columns: 1fr;
+    gap: 12px;
   }
   .respiro-booking-modal-header,
   .respiro-booking-modal-body {

@@ -438,13 +438,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
 
   .bellavista2-booking-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: flex;
+    flex-direction: column;
     gap: 14px;
   }
 
   .bellavista2-booking-grid .full {
-    grid-column: 1 / -1;
+    width: 100%;
   }
 
   .bellavista2-booking-field label {
@@ -490,7 +490,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
 
   .bellavista2-booking-info-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: flex;
+    flex-direction: column;
     gap: 12px;
   }
 
