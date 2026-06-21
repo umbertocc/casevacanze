@@ -39,6 +39,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <style>
 /* Tutte le immagini della lightbox riempiono tutta la larghezza e altezza disponibili */
 .lightbox img {
@@ -286,6 +287,189 @@ h1 { font-size: 3em; color: #111; margin-bottom: 15px; font-weight: 700; text-sh
   box-shadow: 0 8px 22px rgba(39, 174, 96, 0.25);
   min-width: 250px;
   margin: 0 auto;
+}
+.respiro-booking-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  background: rgba(9, 18, 31, 0.68);
+  backdrop-filter: blur(8px);
+}
+.respiro-booking-modal.open {
+  display: flex;
+}
+.respiro-booking-modal[aria-hidden="false"] {
+  display: flex !important;
+}
+.respiro-booking-modal-card {
+  width: min(760px, 100%);
+  max-height: min(92vh, 960px);
+  overflow: auto;
+  background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+  border-radius: 24px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.22);
+  border: 1px solid rgba(34, 87, 122, 0.12);
+  position: relative;
+}
+.respiro-booking-modal-header {
+  padding: 20px 22px 14px 22px;
+  border-bottom: 1px solid rgba(34, 87, 122, 0.08);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.respiro-booking-modal-title {
+  margin: 0;
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  color: #0f4c5c;
+  line-height: 1.15;
+}
+.respiro-booking-modal-subtitle {
+  margin: 8px 0 0 0;
+  color: #4b5563;
+  font-size: 0.96rem;
+}
+.respiro-booking-modal-close {
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 50%;
+  background: #eff6fb;
+  color: #0f4c5c;
+  font-size: 1.4rem;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.respiro-booking-modal-body {
+  padding: 20px 22px 22px 22px;
+}
+.respiro-booking-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.respiro-booking-grid .full {
+  grid-column: 1 / -1;
+}
+.respiro-booking-field label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #23475d;
+}
+.respiro-booking-field input,
+.respiro-booking-field textarea {
+  width: 100%;
+  padding: 12px 13px;
+  border: 1px solid #cfe0ea;
+  border-radius: 12px;
+  font: inherit;
+  color: #102231;
+  background: #fff;
+}
+.respiro-booking-field input:focus,
+.respiro-booking-field textarea:focus {
+  outline: none;
+  border-color: #22577a;
+  box-shadow: 0 0 0 4px rgba(34, 87, 122, 0.12);
+}
+.respiro-booking-summary {
+  margin-top: 16px;
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid #cfe8d5;
+  background: linear-gradient(180deg, #f0fdf4 0%, #ecfeff 100%);
+}
+.respiro-booking-info {
+  margin-bottom: 16px;
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid #d7e6f2;
+  background: linear-gradient(180deg, #f8fbff 0%, #eef7ff 100%);
+}
+.respiro-booking-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.respiro-booking-info-item {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(34, 87, 122, 0.08);
+  border-radius: 12px;
+  padding: 12px 13px;
+}
+.respiro-booking-info-item strong {
+  display: block;
+  color: #0f4c5c;
+  margin-bottom: 4px;
+  font-size: 0.95rem;
+}
+.respiro-booking-info-item span {
+  color: #475569;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+.respiro-booking-summary strong {
+  color: #14532d;
+}
+.respiro-booking-status {
+  margin-top: 10px;
+  font-size: 0.94rem;
+  color: #475569;
+}
+.respiro-booking-status.error {
+  color: #b91c1c;
+}
+.respiro-booking-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+.respiro-booking-actions button,
+.respiro-booking-actions a {
+  border: none;
+  border-radius: 999px;
+  padding: 14px 20px;
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+.respiro-booking-actions .primary {
+  background: linear-gradient(135deg, #0f766e 0%, #166534 100%);
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(15, 118, 110, 0.25);
+}
+.respiro-booking-actions .secondary {
+  background: #eef2f7;
+  color: #1f2937;
+}
+.respiro-booking-actions .primary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+@media (max-width: 720px) {
+  .respiro-booking-modal-card {
+    max-height: 94vh;
+  }
+  .respiro-booking-info-grid {
+    grid-template-columns: 1fr;
+  }
+  .respiro-booking-grid {
+    grid-template-columns: 1fr;
+  }
+  .respiro-booking-modal-header,
+  .respiro-booking-modal-body {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 }
 .social-btn.facebook { background: #1877f2; }
 .social-btn.email { background: #34495e; }
@@ -582,23 +766,31 @@ h1 { font-size: 3em; color: #111; margin-bottom: 15px; font-weight: 700; text-sh
       "name": "Come posso prenotare l'appartamento Respiro di Mare?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Puoi prenotare contattandoci tramite WhatsApp, telefono o compilando il form di prenotazione sul sito. Riceverai tutte le informazioni e la conferma della disponibilità."
+          "text": "Puoi prenotare direttamente dalla pagina dell'appartamento, oppure su WhatsApp o chiamandoci al 3886587080: verifica prima la disponibilità, inserisci i dati richiesti e procedi al pagamento della caparra. Dopo l'invio riceverai una email di conferma con i dettagli della prenotazione."
       }
     },
     {
       "@type": "Question",
-      "name": "È richiesta una caparra?",
+      "name": "Quali sono gli orari di check-in e check-out?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Sì, per confermare la prenotazione è richiesta una caparra pari al 20% dell'importo totale del soggiorno."
+        "text": "Il check-in è previsto dalle 15:00 e il check-out entro le 10:00. All'arrivo saremo presenti in struttura per la consegna delle chiavi e per eventuali informazioni utili."
       }
     },
     {
       "@type": "Question",
-      "name": "Quanto costa l'affitto per una settimana?",
+      "name": "Cosa include il prezzo della prenotazione?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Il costo esatto dipende dal periodo e dal numero di ospiti. Puoi richiedere un preventivo personalizzato e senza impegno."
+        "text": "Il prezzo mostrato include il soggiorno per le date selezionate. La caparra richiesta è pari al 20% del totale e le pulizie finali sono incluse."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Qual è la politica di cancellazione?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La cancellazione è gratuita fino a 90 giorni prima del check-in, con rimborso integrale della caparra. Oltre questo termine, di norma non è previsto rimborso."
       }
     }
   ]
@@ -1129,9 +1321,10 @@ document.addEventListener('DOMContentLoaded', function() {
 <section class="description" style="margin-top: 40px;">
   <h2 style="color: #2c3e50; margin-bottom: 15px;">❓ Domande Frequenti (FAQ)</h2>
   <ul style="margin-left: 20px; line-height: 2;">
-    <li><strong>Come posso prenotare l'appartamento Respiro di Mare?</strong><br>Puoi prenotare contattandoci tramite WhatsApp, telefono o compilando il form di prenotazione sul sito. Riceverai tutte le informazioni e la conferma della disponibilità.</li>
-    <li><strong>È richiesta una caparra?</strong><br>Sì, per confermare la prenotazione è richiesta una caparra pari al 20% dell'importo totale del soggiorno.</li>
-    <li><strong>Quanto costa l'affitto per una settimana?</strong><br>Il costo esatto dipende dal periodo e dal numero di ospiti. Puoi richiedere un preventivo personalizzato e senza impegno.</li>
+    <li><strong>Come posso prenotare l'appartamento Respiro di Mare?</strong><br>Puoi prenotare contattandoci al 3886587080, oppure direttamente dal sito: verifica  la disponibilità, inserisci i dati richiesti e procedi al pagamento della caparra. Dopo l'invio riceverai una email di conferma con i dettagli della prenotazione.</li>
+    <li><strong>Quali sono gli orari di check-in e check-out?</strong><br>Il check-in è previsto dalle 15:00 e il check-out entro le 10:00. All'arrivo saremo presenti in struttura per la consegna delle chiavi e per eventuali informazioni utili.</li>
+    <li><strong>Cosa include il prezzo della prenotazione?</strong><br>Il prezzo mostrato include il soggiorno per le date selezionate. La caparra richiesta è pari al 20% del totale e le pulizie finali sono incluse.</li>
+    <li><strong>Qual è la politica di cancellazione?</strong><br>La cancellazione è gratuita fino a 90 giorni prima del check-in, con rimborso integrale della caparra. Oltre questo termine, di norma non è previsto rimborso.</li>
   </ul>
   <p style="margin-top:18px;font-size:1.08em;">Per ulteriori informazioni consulta la <a href="faq" style="color:#0074d9;text-decoration:underline;">sezione FAQ</a> oppure <a href="contatti" style="color:#0074d9;text-decoration:underline;">compila il form contatti</a>.</p>
 </section>
@@ -1494,8 +1687,89 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <div class="sticky-booking-cta">
   <div class="sticky-booking-cta-inner">
-    <div class="sticky-booking-cta-text">Ti interessa questa casa? Controlla subito date e disponibilita.</div>
-    <a href="/prenotazione" class="sticky-booking-cta-link">Verifica disponibilita</a>
+    <a href="/prenotazione" class="sticky-booking-cta-link" id="respiroBookingCta">Prenota</a>
+  </div>
+</div>
+
+<div id="respiroBookingModal" class="respiro-booking-modal" aria-hidden="true">
+  <div class="respiro-booking-modal-card" role="dialog" aria-modal="true" aria-labelledby="respiroBookingModalTitle">
+    <div class="respiro-booking-modal-header">
+      <div>
+        <h2 id="respiroBookingModalTitle" class="respiro-booking-modal-title">Prenota Respiro di Mare</h2>
+        <p class="respiro-booking-modal-subtitle">Seleziona date disponibili, ospiti e dati di contatto.</p>
+      </div>
+      <button type="button" class="respiro-booking-modal-close" id="respiroBookingModalClose" aria-label="Chiudi modale">&times;</button>
+    </div>
+    <div class="respiro-booking-modal-body">
+      <div class="respiro-booking-info" aria-label="Informazioni prenotazione">
+        <div class="respiro-booking-info-grid">
+          <div class="respiro-booking-info-item">
+            <strong>Check-in / check-out</strong>
+            <span>Arrivo dalle 15:00 e partenza entro le 10:00.</span>
+          </div>
+          <div class="respiro-booking-info-item">
+            <strong>Cosa include il prezzo</strong>
+            <span>Il totale mostrato include il soggiorno per le date selezionate, nessuna spesa aggiuntiva; la caparra è pari al 20% del totale.</span>
+          </div>
+          <div class="respiro-booking-info-item">
+            <strong>Cancellazione</strong>
+            <span>Cancellazione gratuita fino a 90 giorni prima del check-in, con rimborso integrale della caparra. Oltre questo termine, di norma non è previsto rimborso.</span>
+          </div>
+          <div class="respiro-booking-info-item">
+            <strong>Note utili</strong>
+            <span>Al vostro arrivo saremo presenti in struttura per la consegna delle chiavi e per fornirvi tutte le informazioni utili. Dopo la prenotazione riceverai una email di conferma con tutti i dettagli della prenotazione.</span>
+          </div>
+        </div>
+      </div>
+      <form id="respiroBookingForm" novalidate>
+        <div class="respiro-booking-grid">
+          <div class="respiro-booking-field">
+            <label for="respiroCheckIn">Check-in</label>
+            <input type="text" id="respiroCheckIn" name="checkIn" placeholder="Seleziona data di arrivo" autocomplete="off" required>
+          </div>
+          <div class="respiro-booking-field">
+            <label for="respiroCheckOut">Check-out</label>
+            <input type="text" id="respiroCheckOut" name="checkOut" placeholder="Seleziona data di partenza" autocomplete="off" required>
+          </div>
+          <div class="respiro-booking-field full">
+            <label for="respiroOspiti">Numero ospiti</label>
+            <input type="number" id="respiroOspiti" name="ospiti" min="1" max="6" value="2" required>
+          </div>
+          <div class="respiro-booking-field">
+            <label for="respiroNome">Nome e cognome</label>
+            <input type="text" id="respiroNome" name="nome" placeholder="Inserisci nome e cognome" required>
+          </div>
+          <div class="respiro-booking-field">
+            <label for="respiroEmail">Email</label>
+            <input type="email" id="respiroEmail" name="email" placeholder="Inserisci email" required>
+          </div>
+          <div class="respiro-booking-field full">
+            <label for="respiroTelefono">Telefono</label>
+            <input type="tel" id="respiroTelefono" name="telefono" placeholder="Inserisci numero di telefono" required>
+          </div>
+          <div class="respiro-booking-field full">
+            <label for="respiroNote">Messaggio</label>
+            <textarea id="respiroNote" name="note" rows="3" placeholder="Messaggio opzionale"></textarea>
+          </div>
+        </div>
+
+        <label style="display:flex;align-items:flex-start;gap:8px;margin-top:14px;font-size:0.9em;color:#374151;line-height:1.5;cursor:pointer;">
+          <input type="checkbox" id="respiroPrivacy" name="privacy" required style="margin-top:3px;width:16px;height:16px;accent-color:#0f766e;flex-shrink:0;">
+          <span>Ho letto e accetto la <a href="/privacy.html" target="_blank" rel="noopener" style="color:#166534;text-decoration:underline;">privacy policy</a>, le condizioni di cancellazione e le informazioni sul soggiorno.</span>
+        </label>
+
+        <div class="respiro-booking-summary">
+          <div><strong>Prezzo totale:</strong> <span id="respiroQuotePrice">-</span></div>
+          <div style="margin-top:6px;"><strong>Caparra:</strong> <span id="respiroQuoteDeposit">-</span></div>
+          <div class="respiro-booking-status" id="respiroBookingStatus">Seleziona check-in, check-out e ospiti per vedere la disponibilità.</div>
+        </div>
+
+        <div class="respiro-booking-actions">
+          <button type="button" class="primary" id="respiroProceedBtn" disabled>Procedi al pagamento</button>
+          <button type="button" class="secondary" id="respiroResetBtn">Azzera</button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
 
@@ -1611,6 +1885,666 @@ document.addEventListener('click', function(event) {
   if (!navbar.contains(event.target) && menu.classList.contains('active')) {
     menu.classList.remove('active');
   }
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/it.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const API_BASE = 'https://demo-mail-993653817397.europe-west8.run.app';
+  const CASA_ID = 5;
+  const SUCCESS_PAGE_URL = window.location.origin + '/pagamento-successo.html';
+  const CANCEL_PAGE_URL = window.location.origin + '/pagamento-annullato.html';
+  const bookingModal = document.getElementById('respiroBookingModal');
+  const bookingCta = document.getElementById('respiroBookingCta');
+  const closeBtn = document.getElementById('respiroBookingModalClose');
+  const resetBtn = document.getElementById('respiroResetBtn');
+  const proceedBtn = document.getElementById('respiroProceedBtn');
+  const form = document.getElementById('respiroBookingForm');
+  const bookingInfo = bookingModal.querySelector('.respiro-booking-info');
+  const bookingModalBody = bookingModal.querySelector('.respiro-booking-modal-body');
+  const checkInInput = document.getElementById('respiroCheckIn');
+  const checkOutInput = document.getElementById('respiroCheckOut');
+  const ospitiInput = document.getElementById('respiroOspiti');
+  const priceEl = document.getElementById('respiroQuotePrice');
+  const depositEl = document.getElementById('respiroQuoteDeposit');
+  const statusEl = document.getElementById('respiroBookingStatus');
+  const privacyInput = document.getElementById('respiroPrivacy');
+  const nomeInput = document.getElementById('respiroNome');
+  const emailInput = document.getElementById('respiroEmail');
+  const telefonoInput = document.getElementById('respiroTelefono');
+  const noteInput = document.getElementById('respiroNote');
+
+  if (!bookingModal || !bookingCta || !closeBtn || !resetBtn || !proceedBtn || !form || !bookingInfo || !bookingModalBody || !checkInInput || !checkOutInput || !ospitiInput || !priceEl || !depositEl || !statusEl || !privacyInput || !nomeInput || !emailInput || !telefonoInput || !noteInput || !window.flatpickr) {
+    return;
+  }
+
+  if (bookingModal.parentElement !== document.body) {
+    document.body.appendChild(bookingModal);
+  }
+
+  let bookedRanges = [];
+  let turnoverCheckInDates = new Set();
+  let turnoverCheckOutDates = new Set();
+  let quote = null;
+  let quoteRequestToken = 0;
+  let checkInPicker = null;
+  let checkOutPicker = null;
+  let paymentCountdownInterval = null;
+  let paymentRedirectTimeout = null;
+  const resultPanel = document.createElement('div');
+  resultPanel.style.display = 'none';
+  bookingModalBody.appendChild(resultPanel);
+
+  function formatEuro(value) {
+    const num = Number(value);
+    if (!Number.isFinite(num)) return '-';
+    return num.toLocaleString('it-IT', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
+  }
+
+  function parseDate(value) {
+    if (!value || typeof value !== 'string') return null;
+    const parts = value.split('-');
+    if (parts.length !== 3) return null;
+    const year = Number(parts[0]);
+    const month = Number(parts[1]) - 1;
+    const day = Number(parts[2]);
+    const date = new Date(year, month, day);
+    return Number.isNaN(date.getTime()) ? null : date;
+  }
+
+  function toKey(date) {
+    return date.getFullYear() + '-' + String(date.getMonth() + 1).padStart(2, '0') + '-' + String(date.getDate()).padStart(2, '0');
+  }
+
+  function addDays(date, days) {
+    const result = new Date(date.getTime());
+    result.setDate(result.getDate() + days);
+    return result;
+  }
+
+  function enableOnlySaturday(date) {
+    return date.getDay() === 6;
+  }
+
+  function isWinterBlocked(date) {
+    const month = date.getMonth() + 1;
+    return month === 11 || month === 12 || month === 1 || month === 2 || month === 3;
+  }
+
+  function isCancelledBooking(booking) {
+    const state = String(booking && booking.stato ? booking.stato : '').toUpperCase();
+    return state.includes('ANNULL') || state.includes('CANCEL');
+  }
+
+  function isDateOccupied(date) {
+    return bookedRanges.some(function(range) {
+      return date >= range.start && date < range.end;
+    });
+  }
+
+  function isAllowedCheckInDate(date) {
+    if (isWinterBlocked(date)) return false;
+    return enableOnlySaturday(date) || turnoverCheckInDates.has(toKey(date));
+  }
+
+  function isAllowedCheckOutDate(date) {
+    if (isWinterBlocked(date)) return false;
+    return enableOnlySaturday(date) || turnoverCheckOutDates.has(toKey(date));
+  }
+
+  function isStayAvailable(checkInDate, checkOutDate) {
+    if (!checkInDate || !checkOutDate || checkOutDate <= checkInDate) return false;
+    for (let day = new Date(checkInDate.getTime()); day < checkOutDate; day = addDays(day, 1)) {
+      if (isDateOccupied(day)) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  function hasAvailableStayFrom(checkInDate) {
+    if (!checkInDate) return false;
+    for (let i = 1; i <= 60; i++) {
+      const checkOutDate = addDays(checkInDate, i);
+      if (isWinterBlocked(checkOutDate)) {
+        continue;
+      }
+      if (!isAllowedCheckOutDate(checkOutDate)) {
+        continue;
+      }
+      if (isStayAvailable(checkInDate, checkOutDate)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  function firstAvailableCheckInDate(limitDays) {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const limit = Number.isFinite(limitDays) ? limitDays : 365;
+    for (let i = 0; i <= limit; i++) {
+      const candidate = addDays(today, i);
+      if (!isAllowedCheckInDate(candidate)) {
+        continue;
+      }
+      if (!isDateOccupied(candidate) && hasAvailableStayFrom(candidate)) {
+        return candidate;
+      }
+    }
+    return null;
+  }
+
+  function setStatus(message, isError) {
+    statusEl.textContent = message;
+    statusEl.classList.toggle('error', !!isError);
+  }
+
+  function clearPaymentTimers() {
+    if (paymentCountdownInterval) {
+      clearInterval(paymentCountdownInterval);
+      paymentCountdownInterval = null;
+    }
+    if (paymentRedirectTimeout) {
+      clearTimeout(paymentRedirectTimeout);
+      paymentRedirectTimeout = null;
+    }
+  }
+
+  function showResultPanel(html) {
+    bookingInfo.style.display = 'none';
+    form.style.display = 'none';
+    resultPanel.innerHTML = html;
+    resultPanel.style.display = 'block';
+  }
+
+  function hideResultPanel() {
+    clearPaymentTimers();
+    resultPanel.style.display = 'none';
+    resultPanel.innerHTML = '';
+    bookingInfo.style.display = '';
+    form.style.display = '';
+  }
+
+  function showBookingError(message) {
+    showResultPanel(
+      '<div style="text-align:center;padding:18px 6px;">' +
+      '<h3 style="color:#b91c1c;margin-bottom:10px;">Prenotazione non completata</h3>' +
+      '<p style="color:#475569;line-height:1.6;">' + message + '</p>' +
+      '<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px;">' +
+      '<button type="button" id="respiroRetryBookingBtn" class="secondary" style="border:none;border-radius:999px;padding:12px 18px;font-weight:700;cursor:pointer;background:#0f766e;color:#fff;">Riprova</button>' +
+      '<button type="button" id="respiroCloseErrorBtn" class="secondary" style="border:none;border-radius:999px;padding:12px 18px;font-weight:700;cursor:pointer;background:#eef2f7;color:#1f2937;">Chiudi</button>' +
+      '</div>' +
+      '</div>'
+    );
+
+    const retryBtn = document.getElementById('respiroRetryBookingBtn');
+    const closeErrorBtn = document.getElementById('respiroCloseErrorBtn');
+    if (retryBtn) {
+      retryBtn.addEventListener('click', function() {
+        hideResultPanel();
+        proceedBtn.disabled = false;
+        proceedBtn.textContent = 'Procedi al pagamento';
+        setStatus('Verifica completata. Riprova quando vuoi.', false);
+      });
+    }
+    if (closeErrorBtn) {
+      closeErrorBtn.addEventListener('click', closeModal);
+    }
+  }
+
+  async function getPublicPaymentSession(prenotazioneId) {
+    const params = new URLSearchParams({
+      successUrl: SUCCESS_PAGE_URL,
+      cancelUrl: CANCEL_PAGE_URL
+    });
+
+    const response = await fetch(API_BASE + '/api/prenotazioni/public/' + encodeURIComponent(prenotazioneId) + '/payment-session?' + params.toString(), {
+      method: 'GET',
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (!response.ok) {
+      const details = await response.text().catch(function() { return ''; });
+      const err = new Error(details || 'Impossibile avviare il pagamento Stripe');
+      err.status = response.status;
+      throw err;
+    }
+
+    return response.json();
+  }
+
+  function showPaymentRedirect(paymentSession, prenotazioneId) {
+    const importoCaparra = paymentSession && paymentSession.importoCaparra != null
+      ? paymentSession.importoCaparra
+      : (quote && quote.importoCaparra != null ? quote.importoCaparra : null);
+    let countdown = 6;
+
+    showResultPanel(
+      '<div style="text-align:center;padding:18px 6px;">' +
+      '<h3 style="color:#166534;margin-bottom:10px;">Prenotazione creata!</h3>' +
+      '<p style="color:#475569;line-height:1.6;">Importo caparra (20%): <strong>' + formatEuro(importoCaparra) + '</strong></p>' +
+      '<p style="color:#475569;line-height:1.6;">Reindirizzamento al checkout Stripe tra <strong><span id="respiroPaymentCountdown">' + countdown + '</span>s</strong>.</p>' +
+      '<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px;">' +
+      '<button type="button" id="respiroGoToPaymentNow" style="border:none;border-radius:999px;padding:12px 18px;font-weight:700;cursor:pointer;background:#0f766e;color:#fff;">Paga ora</button>' +
+      '<button type="button" id="respiroCloseSuccessBtn" style="border:none;border-radius:999px;padding:12px 18px;font-weight:700;cursor:pointer;background:#eef2f7;color:#1f2937;">Chiudi</button>' +
+      '</div>' +
+      '<p style="margin-top:10px;color:#64748b;font-size:0.92em;">Se non parte il redirect, usa il pulsante oppure <a href="' + paymentSession.paymentUrl + '" target="_blank" rel="noopener">apri Stripe</a>.</p>' +
+      '</div>'
+    );
+
+    const redirectNow = function() {
+      window.location.href = paymentSession.paymentUrl;
+    };
+
+    const payNowBtn = document.getElementById('respiroGoToPaymentNow');
+    const closeSuccessBtn = document.getElementById('respiroCloseSuccessBtn');
+    if (payNowBtn) {
+      payNowBtn.addEventListener('click', redirectNow);
+    }
+    if (closeSuccessBtn) {
+      closeSuccessBtn.addEventListener('click', closeModal);
+    }
+
+    clearPaymentTimers();
+    paymentCountdownInterval = setInterval(function() {
+      countdown -= 1;
+      const countdownEl = document.getElementById('respiroPaymentCountdown');
+      if (countdownEl) {
+        countdownEl.textContent = String(Math.max(0, countdown));
+      }
+    }, 1000);
+
+    paymentRedirectTimeout = setTimeout(function() {
+      clearPaymentTimers();
+      redirectNow();
+    }, countdown * 1000);
+  }
+
+  function showPaymentRetry(prenotazioneId) {
+    showResultPanel(
+      '<div style="text-align:center;padding:18px 6px;">' +
+      '<h3 style="color:#b45309;margin-bottom:10px;">Prenotazione creata</h3>' +
+      '<p style="color:#475569;line-height:1.6;">La prenotazione è stata registrata, ma non siamo riusciti ad avviare il pagamento Stripe.</p>' +
+      '<p style="color:#64748b;font-size:0.92em;">Codice prenotazione: <strong>' + prenotazioneId + '</strong></p>' +
+      '<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px;">' +
+      '<button type="button" id="respiroRetryPaymentBtn" style="border:none;border-radius:999px;padding:12px 18px;font-weight:700;cursor:pointer;background:#0f766e;color:#fff;">Riprova pagamento</button>' +
+      '<button type="button" id="respiroCloseRetryBtn" style="border:none;border-radius:999px;padding:12px 18px;font-weight:700;cursor:pointer;background:#eef2f7;color:#1f2937;">Chiudi</button>' +
+      '</div>' +
+      '<p id="respiroRetryPaymentError" style="display:none;margin-top:10px;color:#b91c1c;font-size:0.92em;">Pagamento non disponibile in questo momento. Riprova tra poco.</p>' +
+      '</div>'
+    );
+
+    const retryBtn = document.getElementById('respiroRetryPaymentBtn');
+    const closeRetryBtn = document.getElementById('respiroCloseRetryBtn');
+    const retryError = document.getElementById('respiroRetryPaymentError');
+
+    if (retryBtn) {
+      retryBtn.addEventListener('click', async function() {
+        retryBtn.disabled = true;
+        retryBtn.textContent = 'Riprovo...';
+        if (retryError) {
+          retryError.style.display = 'none';
+        }
+        try {
+          const paymentSession = await getPublicPaymentSession(prenotazioneId);
+          if (!paymentSession || !paymentSession.paymentUrl) {
+            throw new Error('Sessione pagamento non disponibile');
+          }
+          showPaymentRedirect(paymentSession, prenotazioneId);
+        } catch (retryErr) {
+          retryBtn.disabled = false;
+          retryBtn.textContent = 'Riprova pagamento';
+          if (retryError) {
+            retryError.style.display = 'block';
+          }
+        }
+      });
+    }
+
+    if (closeRetryBtn) {
+      closeRetryBtn.addEventListener('click', closeModal);
+    }
+  }
+
+  function updateSummary() {
+    if (!quote) {
+      priceEl.textContent = '-';
+      depositEl.textContent = '-';
+      proceedBtn.disabled = true;
+      return;
+    }
+
+    priceEl.textContent = formatEuro(quote.prezzoTotale);
+    depositEl.textContent = formatEuro(quote.importoCaparra);
+
+    const requiredFieldsFilled = checkInInput.value && checkOutInput.value && ospitiInput.value && nomeInput.value.trim() && emailInput.value.trim() && telefonoInput.value.trim() && privacyInput.checked;
+    proceedBtn.disabled = !(quote.available && requiredFieldsFilled);
+  }
+
+  function resetQuote() {
+    quote = null;
+    priceEl.textContent = '-';
+    depositEl.textContent = '-';
+    setStatus('Seleziona check-in, check-out e ospiti per vedere la disponibilità.', false);
+    updateSummary();
+  }
+
+  async function loadBookings() {
+    const response = await fetch(API_BASE + '/api/prenotazioni/casa/' + CASA_ID);
+    if (!response.ok) {
+      throw new Error('Impossibile caricare le prenotazioni esistenti');
+    }
+
+    const bookings = await response.json();
+    turnoverCheckInDates = new Set();
+    turnoverCheckOutDates = new Set();
+    bookedRanges = Array.isArray(bookings)
+      ? bookings.filter(function(booking) {
+          return booking && booking.checkIn && booking.checkOut && !isCancelledBooking(booking);
+        }).map(function(booking) {
+          turnoverCheckInDates.add(String(booking.checkOut));
+          turnoverCheckOutDates.add(String(booking.checkIn));
+          return {
+            start: parseDate(String(booking.checkIn)),
+            end: parseDate(String(booking.checkOut))
+          };
+        }).filter(function(range) {
+          return range.start && range.end;
+        })
+      : [];
+  }
+
+  function rebuildCheckOutPicker() {
+    if (checkOutPicker) {
+      checkOutPicker.destroy();
+    }
+
+    checkOutPicker = flatpickr(checkOutInput, {
+      dateFormat: 'Y-m-d',
+      locale: flatpickr.l10ns.it,
+      minDate: checkInInput.value ? addDays(parseDate(checkInInput.value), 1) : 'today',
+      disable: [function(date) {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        if (date < today) return true;
+        if (isWinterBlocked(date)) return true;
+        if (!checkInInput.value) return isDateOccupied(date) || !isAllowedCheckOutDate(date);
+        const checkInDate = parseDate(checkInInput.value);
+        if (!checkInDate) return true;
+        if (date <= checkInDate) return true;
+        if (!isAllowedCheckOutDate(date)) return true;
+        return !isStayAvailable(checkInDate, date);
+      }],
+      onChange: function() {
+        refreshQuote();
+      }
+    });
+  }
+
+  async function refreshQuote() {
+    const checkIn = checkInInput.value;
+    const checkOut = checkOutInput.value;
+    const ospiti = Number(ospitiInput.value);
+
+    quoteRequestToken += 1;
+    const currentToken = quoteRequestToken;
+
+    if (!checkIn || !checkOut || !Number.isFinite(ospiti) || ospiti < 1) {
+      resetQuote();
+      return;
+    }
+
+    const checkInDate = parseDate(checkIn);
+    const checkOutDate = parseDate(checkOut);
+    if (!checkInDate || !checkOutDate || checkOutDate <= checkInDate) {
+      resetQuote();
+      return;
+    }
+
+    setStatus('Verifica disponibilità e prezzo in corso...', false);
+    proceedBtn.disabled = true;
+
+    try {
+      const params = new URLSearchParams({
+        checkIn: checkIn,
+        checkOut: checkOut,
+        ospiti: String(ospiti)
+      });
+
+      const response = await fetch(API_BASE + '/api/disponibilita/case?' + params.toString());
+      if (!response.ok) {
+        throw new Error('Impossibile verificare la disponibilità');
+      }
+
+      const items = await response.json();
+      if (currentToken !== quoteRequestToken) return;
+
+      const selectedHouse = Array.isArray(items)
+        ? items.find(function(item) {
+            return item && item.casa && Number(item.casa.id) === CASA_ID;
+          })
+        : null;
+
+      if (!selectedHouse || selectedHouse.prezzoTotale === null || selectedHouse.prezzoTotale === undefined) {
+        quote = null;
+        priceEl.textContent = '-';
+        depositEl.textContent = '-';
+        setStatus('La casa non è disponibile per il periodo e il numero di ospiti selezionati. Prova a cambiare i parametri di ricerca.', true);
+        proceedBtn.disabled = true;
+        return;
+      }
+
+      const prezzoTotale = Number(selectedHouse.prezzoTotale);
+      const importoCaparra = prezzoTotale * 0.2;
+      quote = {
+        prezzoTotale: prezzoTotale,
+        importoCaparra: importoCaparra,
+        available: true
+      };
+
+      setStatus('Disponibilità confermata. Completa i dati di contatto e procedi al pagamento della caparra.', false);
+      updateSummary();
+    } catch (err) {
+      if (currentToken !== quoteRequestToken) return;
+      quote = null;
+      priceEl.textContent = '-';
+      depositEl.textContent = '-';
+      setStatus(err && err.message ? err.message : 'Errore durante la verifica disponibilità', true);
+      proceedBtn.disabled = true;
+    }
+  }
+
+  function openModal() {
+    hideResultPanel();
+    bookingModal.classList.add('open');
+    bookingModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    hideResultPanel();
+    bookingModal.classList.remove('open');
+    bookingModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    proceedBtn.textContent = 'Procedi al pagamento';
+    updateSummary();
+  }
+
+  async function initPickersAndData() {
+    if (checkInPicker || checkOutPicker) return;
+
+    await loadBookings();
+
+    const firstAvailable = firstAvailableCheckInDate(365);
+
+    checkInPicker = flatpickr(checkInInput, {
+      dateFormat: 'Y-m-d',
+      locale: flatpickr.l10ns.it,
+      minDate: 'today',
+      defaultDate: firstAvailable || null,
+      disable: [function(date) {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        return date < today || isWinterBlocked(date) || isDateOccupied(date) || !isAllowedCheckInDate(date) || !hasAvailableStayFrom(date);
+      }],
+      onChange: function(selectedDates) {
+        if (selectedDates && selectedDates[0]) {
+          const checkInDate = selectedDates[0];
+          if (checkOutPicker) {
+            checkOutPicker.set('minDate', addDays(checkInDate, 1));
+            checkOutPicker.clear();
+          }
+          resetQuote();
+        }
+      },
+      onReady: function(selectedDates, dateStr, fp) {
+        if (firstAvailable) {
+          fp.setDate(firstAvailable, true);
+        }
+      }
+    });
+
+    rebuildCheckOutPicker();
+  }
+
+  bookingCta.addEventListener('click', function(e) {
+    e.preventDefault();
+    openModal();
+    initPickersAndData().then(function() {
+      updateSummary();
+    }).catch(function(err) {
+      setStatus(err && err.message ? err.message : 'Impossibile inizializzare la modale', true);
+    });
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+  bookingModal.addEventListener('click', function(e) {
+    if (e.target === bookingModal) {
+      closeModal();
+    }
+  });
+
+  resetBtn.addEventListener('click', function() {
+    form.reset();
+    if (checkInPicker) checkInPicker.clear();
+    if (checkOutPicker) checkOutPicker.clear();
+    resetQuote();
+    if (checkInPicker) {
+      const firstAvailable = firstAvailableCheckInDate(365);
+      if (firstAvailable) {
+        checkInPicker.setDate(firstAvailable, true);
+      }
+    }
+  });
+
+  [checkInInput, checkOutInput, ospitiInput, nomeInput, emailInput, telefonoInput, noteInput, privacyInput].forEach(function(el) {
+    el.addEventListener('input', function() {
+      updateSummary();
+    });
+    el.addEventListener('change', function() {
+      updateSummary();
+    });
+  });
+
+  checkInInput.addEventListener('change', function() {
+    if (checkInPicker) {
+      rebuildCheckOutPicker();
+    }
+    refreshQuote();
+  });
+
+  checkOutInput.addEventListener('change', function() {
+    refreshQuote();
+  });
+
+  ospitiInput.addEventListener('change', function() {
+    refreshQuote();
+  });
+
+  proceedBtn.addEventListener('click', async function() {
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    if (!quote || !quote.available) {
+      setStatus('Seleziona un periodo disponibile prima di procedere.', true);
+      return;
+    }
+
+    proceedBtn.disabled = true;
+    proceedBtn.textContent = 'Prenotazione in corso...';
+    setStatus('Creo la prenotazione e apro Stripe...', false);
+
+    let prenotazioneId = null;
+    try {
+      const payload = {
+        casaId: CASA_ID,
+        ospiteNome: nomeInput.value.trim(),
+        checkIn: checkInInput.value,
+        checkOut: checkOutInput.value,
+        emailOspite: emailInput.value.trim(),
+        telefonoOspite: telefonoInput.value.trim(),
+        numOspiti: Number(ospitiInput.value),
+        stato: 'IN_ATTESA_CAPARRA',
+        prezzoTotale: quote.prezzoTotale,
+        caparra: null,
+        note: noteInput.value.trim(),
+        successUrl: SUCCESS_PAGE_URL,
+        cancelUrl: CANCEL_PAGE_URL,
+        createdAt: null
+      };
+
+      const bookingResponse = await fetch(API_BASE + '/api/prenotazioni/public', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (!bookingResponse.ok) {
+        const details = await bookingResponse.text().catch(function() { return ''; });
+        throw new Error(details || 'Prenotazione non completata');
+      }
+
+      const bookingData = await bookingResponse.json();
+      prenotazioneId = bookingData && (bookingData.prenotazioneId || bookingData.id);
+      if (!prenotazioneId) {
+        throw new Error('Prenotazione creata ma identificativo mancante');
+      }
+
+      const paymentSession = await getPublicPaymentSession(prenotazioneId);
+      if (!paymentSession || !paymentSession.paymentUrl) {
+        throw new Error('URL di pagamento non disponibile');
+      }
+
+      setStatus('Prenotazione completata. Reindirizzamento a Stripe...', false);
+      showPaymentRedirect(paymentSession, prenotazioneId);
+    } catch (err) {
+      if (prenotazioneId) {
+        showPaymentRetry(prenotazioneId);
+        return;
+      }
+
+      let errorMessage = 'Non è stato possibile registrare la prenotazione online. Riprova tra poco.';
+      if (err && err.status === 400) {
+        errorMessage = 'I dati inseriti non sono validi. Controlla date, ospiti e recapiti e riprova.';
+      } else if (err && err.status === 409) {
+        errorMessage = 'Le date selezionate non sono più disponibili. Scegli un altro periodo.';
+      } else if (err && err.status === 429) {
+        errorMessage = 'Hai effettuato troppi tentativi in poco tempo. Attendi qualche minuto e riprova.';
+      } else if (err && err.message) {
+        errorMessage = err.message;
+      }
+
+      setStatus(errorMessage, true);
+      showBookingError(errorMessage);
+    }
+  });
 });
 </script>
 
