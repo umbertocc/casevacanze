@@ -75,7 +75,7 @@ function openPreventivoRequestModal(appartamento) {
                 <input required name="telefono" type="tel" placeholder="Telefono *" style="width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;">
                 <input required name="persone" type="number" min="1" max="8" placeholder="Numero di Persone *" style="width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;">
             </div>
-            <textarea name="messaggio" placeholder="Messaggio (opzionale)" style="width:100%;padding:10px;border-radius:5px;border:1px solid #ccc;min-height:60px;max-height:120px;font-size:0.92em;margin-bottom:12px;box-sizing:border-box;display:block;"></textarea>
+            <textarea name="messaggio" placeholder="Messaggio (opzionale)" style="width:100%;padding:10px;border-radius:5px;border:1px solid #ccc;min-height:60px;max-height:120px;font-size:0.95em;margin-bottom:12px;box-sizing:border-box;display:block;"></textarea>
             <div style="display:flex;gap:10px;padding-bottom:10px;flex-wrap:wrap;">
                 <button type="submit" style="flex:2;background:#2d7a46;color:#fff;padding:12px;border:none;border-radius:6px;font-size:1em;font-weight:600;cursor:pointer;">Vai al pagamento</button>
                 <button type="button" id="cancelQuickPreventivoBtn" style="flex:1;background:#f3f4f6;color:#1f2937;padding:12px;border:1px solid #d1d5db;border-radius:6px;font-size:1em;cursor:pointer;">Annulla</button>
@@ -346,7 +346,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                         <input required name=\"persone\" type=\"number\" min=\"1\" max=\"8\" value=\"${ospiti || ''}\" placeholder=\"Numero di Persone *\" style=\"width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;\">
                                     </div>
 
-                                    <textarea name=\"messaggio\" placeholder=\"Messaggio (opzionale)\" style=\"width:100%;padding:10px;border-radius:5px;border:1px solid #ccc;min-height:50px;max-height:80px;font-size:0.92em;margin-bottom:12px;box-sizing:border-box;display:block;\"></textarea>
+                                    <textarea name=\"messaggio\" placeholder=\"Messaggio (opzionale)\" style=\"width:100%;padding:10px;border-radius:5px;border:1px solid #ccc;min-height:50px;max-height:80px;font-size:0.95em;margin-bottom:12px;box-sizing:border-box;display:block;\"></textarea>
                                     
                                     <div style="display:flex;gap:10px;padding-bottom:10px;flex-wrap:wrap;">
                                      <!--   <button type="submit" style="flex:2;background:#2d7a46;color:#fff;padding:12px;border:none;border-radius:6px;font-size:1em;font-weight:600;cursor:pointer;">Invia richiesta</button> -->
