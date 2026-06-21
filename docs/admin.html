@@ -7,6 +7,8 @@
         let adminToken = null;
         let caseListCache = [];
         let selectedPreventivoForEmail = null;
+        let prenotazioniCheckInSortDirection = 'desc';
+        let prezziDataInizioSortDirection = 'desc';
         // Recupera il token dal localStorage all'avvio
         if (localStorage.getItem('adminToken')) {
             adminToken = localStorage.getItem('adminToken');
@@ -31,6 +33,38 @@
                 .replace(/[\u0300-\u036f]/g, '')
                 .toLowerCase()
                 .trim();
+        }
+
+        function updatePrenotazioniSortArrow() {
+            const arrow = document.getElementById('prenotazioniSortArrow');
+            if (arrow) {
+                arrow.textContent = prenotazioniCheckInSortDirection === 'desc' ? '↓' : '↑';
+            }
+        }
+
+        function togglePrenotazioniCheckInSort() {
+            prenotazioniCheckInSortDirection = prenotazioniCheckInSortDirection === 'desc' ? 'asc' : 'desc';
+            updatePrenotazioniSortArrow();
+            const select = document.getElementById('casaSelect');
+            if (select && select.value) {
+                loadPrenotazioni(select.value);
+            }
+        }
+
+        function updatePrezziSortArrow() {
+            const arrow = document.getElementById('prezziSortArrow');
+            if (arrow) {
+                arrow.textContent = prezziDataInizioSortDirection === 'desc' ? '↓' : '↑';
+            }
+        }
+
+        function togglePrezziDataInizioSort() {
+            prezziDataInizioSortDirection = prezziDataInizioSortDirection === 'desc' ? 'asc' : 'desc';
+            updatePrezziSortArrow();
+            const select = document.getElementById('casaSelect');
+            if (select && select.value) {
+                loadPrezzi(select.value);
+            }
         }
 
         function findCasaIdByName(appartamento) {
@@ -397,8 +431,15 @@ Torre Pali Vacanze
                 .then(res => res.json())
                 .then(prenotazioni => {
                     const body = document.getElementById('prenotazioniBody');
+                    const prenotazioniOrdinate = Array.isArray(prenotazioni)
+                        ? [...prenotazioni].sort((a, b) => {
+                            const aTime = new Date(a && a.checkIn ? a.checkIn : 0).getTime();
+                            const bTime = new Date(b && b.checkIn ? b.checkIn : 0).getTime();
+                            return prenotazioniCheckInSortDirection === 'desc' ? bTime - aTime : aTime - bTime;
+                        })
+                        : [];
                     body.innerHTML = '';
-                    prenotazioni.forEach(p => {
+                    prenotazioniOrdinate.forEach(p => {
                         const tr = document.createElement('tr');
                         tr.innerHTML = `
                             <td>${p.id}</td>
@@ -418,6 +459,7 @@ Torre Pali Vacanze
                         `;
                         body.appendChild(tr);
                     });
+                    updatePrenotazioniSortArrow();
                 })
                 .catch(() => showNotification('Errore nel caricamento prenotazioni.'));
             }
@@ -471,8 +513,15 @@ Torre Pali Vacanze
                 .then(res => res.json())
                 .then(prezzi => {
                     const body = document.getElementById('prezziBody');
+                    const prezziOrdinati = Array.isArray(prezzi)
+                        ? [...prezzi].sort((a, b) => {
+                            const aTime = new Date(a && a.dataInizio ? a.dataInizio : 0).getTime();
+                            const bTime = new Date(b && b.dataInizio ? b.dataInizio : 0).getTime();
+                            return prezziDataInizioSortDirection === 'desc' ? bTime - aTime : aTime - bTime;
+                        })
+                        : [];
                     body.innerHTML = '';
-                    prezzi.forEach(p => {
+                    prezziOrdinati.forEach(p => {
                         const tr = document.createElement('tr');
                         tr.innerHTML = `
                             <td>${p.dataInizio}</td>
@@ -485,6 +534,7 @@ Torre Pali Vacanze
                         `;
                         body.appendChild(tr);
                     });
+                    updatePrezziSortArrow();
                 })
                 .catch(() => showNotification('Errore nel caricamento prezzi.'));
         }
@@ -1200,7 +1250,7 @@ Torre Pali Vacanze
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Check-in</th>
+                        <th onclick="togglePrenotazioniCheckInSort()" style="cursor:pointer; user-select:none;">Check-in <span id="prenotazioniSortArrow" aria-hidden="true">&darr;</span></th>
                         <th>Check-out</th>
                         <th>Ospite</th>
                         <th>Email</th>
@@ -1222,7 +1272,7 @@ Torre Pali Vacanze
             <table class="requests-table" id="prezziTable">
                 <thead>
                     <tr>
-                        <th>Data Inizio</th>
+                        <th onclick="togglePrezziDataInizioSort()" style="cursor:pointer; user-select:none;">Data Inizio <span id="prezziSortArrow" aria-hidden="true">&darr;</span></th>
                         <th>Data Fine</th>
                         <th>Prezzo Notte</th>
                         <th>Prezzo Totale</th>

@@ -311,12 +311,12 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                 </div>
                                 
                                 <div style=\"margin-bottom:12px; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:8px; padding:12px 14px;\">
-                                    <p style=\"margin:0; font-size:0.85em; color:#374151; line-height:1.6;\"><strong style=\"color:#166534;\">Politica cancellazione:</strong> la caparra è rimborsata integralmente solo per cancellazioni comunicate almeno 90 giorni prima del check-in; oltre tale termine la caparra non è rimborsabile.</p>
+                                    <p style=\"margin:0; font-size:0.92em; color:#374151; line-height:1.6;\"><strong style=\"color:#166534;\">Politica cancellazione:</strong> la caparra è rimborsata integralmente solo per cancellazioni comunicate almeno 90 giorni prima del check-in; oltre tale termine la caparra non è rimborsabile.</p>
                                 </div>
 
                                 <div style=\"margin-bottom:12px; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:8px; padding:12px 14px;\">
-                                    <p style=\"margin:0 0 8px 0; font-weight:700; font-size:0.92em; color:#166534;\">Info soggiorno essenziali</p>
-                                    <ul style=\"margin:0; padding-left:18px; font-size:0.85em; color:#374151; line-height:1.6;\">
+                                    <p style=\"margin:0 0 8px 0; font-weight:700; font-size:0.98em; color:#166534;\">Info soggiorno essenziali</p>
+                                    <ul style=\"margin:0; padding-left:18px; font-size:0.92em; color:#374151; line-height:1.6;\">
                                         <li>Il prezzo include pulizia finale, cambio biancheria, registrazione ospiti, supporto all'arrivo, pass parcheggio, spese di consumo.</li>
                                         <li>Al vostro arrivo saremo presenti in struttura per accoglienza, consegna chiavi e tutte le informazioni utili sul soggiorno e sulla zona.</li>
                                         <li>Al termine della prenotazione riceverai una email di riepilogo con tutte le informazioni utili per il soggiorno.</li>
@@ -368,6 +368,10 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                 prenotaOnlineBtn.onclick = async function() {
                                     const form = document.getElementById('prenotaForm');
                                     let prenotazioneId = null;
+                                    if (!form.checkValidity()) {
+                                        form.reportValidity();
+                                        return;
+                                    }
                                     modalBody.innerHTML = `<div style="text-align:center;padding:32px 0;"><div style="border:4px solid #f3f3f3;border-top:4px solid #188841;border-radius:50%;width:32px;height:32px;animation:spin 1s linear infinite;margin:0 auto 18px auto;"></div><span style="color:#188841;font-weight:500;">Prenotazione in corso...</span></div>`;
 
                                     const renderPaymentRedirect = (paymentSession) => {
