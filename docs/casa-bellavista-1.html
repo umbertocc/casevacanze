@@ -243,42 +243,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     border-color: #22577a;
     box-shadow: 0 0 0 4px rgba(34, 87, 122, 0.12);
   }
-  .bellavista1-booking-summary {
-    margin-top: 16px;
-    padding: 16px;
-    border-radius: 16px;
-    border: 1px solid #cfe8d5;
-    background: linear-gradient(180deg, #f0fdf4 0%, #ecfeff 100%);
-  }
-  .bellavista1-booking-info {
-    margin-bottom: 16px;
-    padding: 16px;
-    border-radius: 16px;
-    border: 1px solid #d7e6f2;
-    background: linear-gradient(180deg, #f8fbff 0%, #eef7ff 100%);
-  }
-  .bellavista1-booking-info-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .bellavista1-booking-info-item {
-    background: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(34, 87, 122, 0.08);
-    border-radius: 12px;
-    padding: 12px 13px;
-  }
-  .bellavista1-booking-info-item strong {
-    display: block;
-    color: #0f4c5c;
-    margin-bottom: 4px;
-    font-size: 0.95rem;
-  }
-  .bellavista1-booking-info-item span {
-    color: #475569;
-    font-size: 0.92rem;
-    line-height: 1.5;
-  }
   .bellavista1-booking-contact {
     display: flex;
     gap: 8px;
@@ -1012,26 +976,6 @@ document.addEventListener('DOMContentLoaded', function() {
       <button type="button" class="bellavista1-booking-modal-close" id="bellavista1BookingModalClose" aria-label="Chiudi modale">&times;</button>
     </div>
     <div class="bellavista1-booking-modal-body">
-      <div class="bellavista1-booking-info" aria-label="Informazioni prenotazione">
-        <div class="bellavista1-booking-info-grid">
-          <div class="bellavista1-booking-info-item">
-            <strong>Check-in / check-out</strong>
-            <span>Arrivo dalle 15:00 e partenza entro le 10:00.</span>
-          </div>
-          <div class="bellavista1-booking-info-item">
-            <strong>Cosa include il prezzo</strong>
-            <span>Il totale mostrato include il soggiorno per le date selezionate, nessuna spesa aggiuntiva; la caparra è pari al 20% del totale.</span>
-          </div>
-          <div class="bellavista1-booking-info-item">
-            <strong>Cancellazione</strong>
-            <span>Cancellazione gratuita fino a 90 giorni prima del check-in, con rimborso integrale della caparra. Oltre questo termine, di norma non è previsto rimborso.</span>
-          </div>
-          <div class="bellavista1-booking-info-item">
-            <strong>Note utili</strong>
-            <span>Al vostro arrivo saremo presenti in struttura per la consegna delle chiavi e per fornirvi tutte le informazioni utili. Dopo la prenotazione riceverai una email di conferma con tutti i dettagli della prenotazione.</span>
-          </div>
-        </div>
-      </div>
       <form id="bellavista1BookingForm" novalidate>
         <div class="bellavista1-booking-grid">
           <div class="bellavista1-booking-field">
@@ -1254,7 +1198,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const resetBtn = document.getElementById('bellavista1ResetBtn');
   const proceedBtn = document.getElementById('bellavista1ProceedBtn');
   const form = document.getElementById('bellavista1BookingForm');
-  const bookingInfo = bookingModal ? bookingModal.querySelector('.bellavista1-booking-info') : null;
   const bookingModalBody = bookingModal ? bookingModal.querySelector('.bellavista1-booking-modal-body') : null;
   const checkInInput = document.getElementById('bellavista1CheckIn');
   const checkOutInput = document.getElementById('bellavista1CheckOut');
@@ -1268,7 +1211,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const telefonoInput = document.getElementById('bellavista1Telefono');
   const noteInput = document.getElementById('bellavista1Note');
 
-  if (!bookingModal || !bookingCta || !closeBtn || !resetBtn || !proceedBtn || !form || !bookingInfo || !bookingModalBody || !checkInInput || !checkOutInput || !ospitiInput || !priceEl || !depositEl || !statusEl || !privacyInput || !nomeInput || !emailInput || !telefonoInput || !noteInput || !window.flatpickr) {
+  if (!bookingModal || !bookingCta || !closeBtn || !resetBtn || !proceedBtn || !form || !bookingModalBody || !checkInInput || !checkOutInput || !ospitiInput || !priceEl || !depositEl || !statusEl || !privacyInput || !nomeInput || !emailInput || !telefonoInput || !noteInput || !window.flatpickr) {
     return;
   }
 
@@ -1406,7 +1349,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function showResultPanel(html) {
-    bookingInfo.style.display = 'none';
     form.style.display = 'none';
     resultPanel.innerHTML = html;
     resultPanel.style.display = 'block';
@@ -1416,7 +1358,6 @@ document.addEventListener('DOMContentLoaded', function() {
     clearPaymentTimers();
     resultPanel.style.display = 'none';
     resultPanel.innerHTML = '';
-    bookingInfo.style.display = '';
     form.style.display = '';
   }
 

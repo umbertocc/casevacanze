@@ -375,35 +375,6 @@ h1 { font-size: 3em; color: #111; margin-bottom: 15px; font-weight: 700; text-sh
   border: 1px solid #cfe8d5;
   background: linear-gradient(180deg, #f0fdf4 0%, #ecfeff 100%);
 }
-.giorgio-booking-info {
-  margin-bottom: 16px;
-  padding: 16px;
-  border-radius: 16px;
-  border: 1px solid #d7e6f2;
-  background: linear-gradient(180deg, #f8fbff 0%, #eef7ff 100%);
-}
-.giorgio-booking-info-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.giorgio-booking-info-item {
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(34, 87, 122, 0.08);
-  border-radius: 12px;
-  padding: 12px 13px;
-}
-.giorgio-booking-info-item strong {
-  display: block;
-  color: #0f4c5c;
-  margin-bottom: 4px;
-  font-size: 0.95rem;
-}
-.giorgio-booking-info-item span {
-  color: #475569;
-  font-size: 0.92rem;
-  line-height: 1.5;
-}
 .giorgio-booking-contact {
   display: flex;
   gap: 8px;
@@ -525,9 +496,6 @@ h1 { font-size: 3em; color: #111; margin-bottom: 15px; font-weight: 700; text-sh
   .sticky-booking-cta-inner { flex-direction: column; align-items: stretch; gap: 10px; }
   .sticky-booking-cta-text { text-align: center; font-size: 0.92em; }
   .sticky-booking-cta-link { width: auto; min-width: 240px; max-width: 320px; }
-  .giorgio-booking-info-grid {
-    gap: 10px;
-  }
   .giorgio-booking-grid {
     gap: 12px;
   }
@@ -1689,30 +1657,6 @@ document.addEventListener('DOMContentLoaded', function () {
       <button type="button" class="giorgio-booking-modal-close" id="giorgioBookingModalClose" aria-label="Chiudi modale">&times;</button>
     </div>
     <div class="giorgio-booking-modal-body">
-      <div class="giorgio-booking-info" aria-label="Informazioni prenotazione">
-        <div class="giorgio-booking-info-grid">
-          <div class="giorgio-booking-info-item">
-            <strong>Check-in / check-out</strong>
-            <span>Arrivo dalle 15:00 e partenza entro le 10:00.</span>
-          </div>
-          <div class="giorgio-booking-info-item">
-            <strong>Cosa include il prezzo</strong>
-            <span>Il totale mostrato include il soggiorno per le date selezionate, nessuna spesa aggiuntiva; la caparra è pari al 20% del totale.</span>
-          </div>
-          <div class="giorgio-booking-info-item">
-            <strong>Cancellazione</strong>
-            <span>Cancellazione gratuita fino a 90 giorni prima del check-in, con rimborso integrale della caparra. Oltre questo termine, di norma non è previsto rimborso.</span>
-          </div>
-          <div class="giorgio-booking-info-item">
-            <strong>Note utili</strong>
-            <span>Al vostro arrivo saremo presenti in struttura per la consegna delle chiavi e per fornirvi tutte le informazioni utili. Dopo la prenotazione riceverai una email di conferma con tutti i dettagli della prenotazione.</span>
-          </div>
-        </div>
-        <div class="giorgio-booking-contact">
-          <a href="tel:+393886587080">Chiama: +39 388 658 70 80</a>
-          <a href="https://wa.me/393886587080?text=Ciao!%20Vorrei%20prenotare%20Casa%20Giorgio%204" target="_blank" rel="noopener">WhatsApp rapido</a>
-        </div>
-      </div>
       <form id="giorgioBookingForm" novalidate>
         <div class="giorgio-booking-grid">
           <div class="giorgio-booking-field">
@@ -1889,7 +1833,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const resetBtn = document.getElementById('giorgioResetBtn');
   const proceedBtn = document.getElementById('giorgioProceedBtn');
   const form = document.getElementById('giorgioBookingForm');
-  const bookingInfo = bookingModal ? bookingModal.querySelector('.giorgio-booking-info') : null;
   const bookingModalBody = bookingModal ? bookingModal.querySelector('.giorgio-booking-modal-body') : null;
   const checkInInput = document.getElementById('giorgioCheckIn');
   const checkOutInput = document.getElementById('giorgioCheckOut');
@@ -1903,7 +1846,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const telefonoInput = document.getElementById('giorgioTelefono');
   const noteInput = document.getElementById('giorgioNote');
 
-  if (!bookingModal || !bookingCta || !closeBtn || !resetBtn || !proceedBtn || !form || !bookingInfo || !bookingModalBody || !checkInInput || !checkOutInput || !ospitiInput || !priceEl || !depositEl || !statusEl || !privacyInput || !nomeInput || !emailInput || !telefonoInput || !noteInput || !window.flatpickr) {
+  if (!bookingModal || !bookingCta || !closeBtn || !resetBtn || !proceedBtn || !form || !bookingModalBody || !checkInInput || !checkOutInput || !ospitiInput || !priceEl || !depositEl || !statusEl || !privacyInput || !nomeInput || !emailInput || !telefonoInput || !noteInput || !window.flatpickr) {
     return;
   }
 
@@ -2041,7 +1984,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function showResultPanel(html) {
-    bookingInfo.style.display = 'none';
     form.style.display = 'none';
     resultPanel.innerHTML = html;
     resultPanel.style.display = 'block';
@@ -2051,7 +1993,6 @@ document.addEventListener('DOMContentLoaded', function() {
     clearPaymentTimers();
     resultPanel.style.display = 'none';
     resultPanel.innerHTML = '';
-    bookingInfo.style.display = '';
     form.style.display = '';
   }
 

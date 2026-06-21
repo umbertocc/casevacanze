@@ -393,35 +393,6 @@ h1 { font-size: 3em; color: #111; margin-bottom: 15px; font-weight: 700; text-sh
   border: 1px solid #cfe8d5;
   background: linear-gradient(180deg, #f0fdf4 0%, #ecfeff 100%);
 }
-.giorgio6-booking-info {
-  margin-bottom: 16px;
-  padding: 16px;
-  border-radius: 16px;
-  border: 1px solid #d7e6f2;
-  background: linear-gradient(180deg, #f8fbff 0%, #eef7ff 100%);
-}
-.giorgio6-booking-info-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.giorgio6-booking-info-item {
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(34, 87, 122, 0.08);
-  border-radius: 12px;
-  padding: 12px 13px;
-}
-.giorgio6-booking-info-item strong {
-  display: block;
-  color: #0f4c5c;
-  margin-bottom: 4px;
-  font-size: 0.95rem;
-}
-.giorgio6-booking-info-item span {
-  color: #475569;
-  font-size: 0.92rem;
-  line-height: 1.5;
-}
 .giorgio6-booking-contact {
   display: flex;
   gap: 8px;
@@ -521,9 +492,6 @@ h1 { font-size: 3em; color: #111; margin-bottom: 15px; font-weight: 700; text-sh
   .sticky-booking-cta-inner { flex-direction: column; align-items: stretch; gap: 10px; }
   .sticky-booking-cta-text { text-align: center; font-size: 0.92em; }
   .sticky-booking-cta-link { width: auto; min-width: 240px; max-width: 320px; }
-  .giorgio6-booking-info-grid {
-    gap: 10px;
-  }
   .giorgio6-booking-grid {
     gap: 12px;
   }
@@ -1711,26 +1679,6 @@ document.addEventListener('DOMContentLoaded', function () {
       <button type="button" class="giorgio6-booking-modal-close" id="giorgio6BookingModalClose" aria-label="Chiudi modale">&times;</button>
     </div>
     <div class="giorgio6-booking-modal-body">
-      <div class="giorgio6-booking-info" aria-label="Informazioni prenotazione">
-        <div class="giorgio6-booking-info-grid">
-          <div class="giorgio6-booking-info-item">
-            <strong>Check-in / check-out</strong>
-            <span>Arrivo dalle 15:00 e partenza entro le 10:00.</span>
-          </div>
-          <div class="giorgio6-booking-info-item">
-            <strong>Cosa include il prezzo</strong>
-            <span>Il totale mostrato include il soggiorno per le date selezionate, nessuna spesa aggiuntiva; la caparra è pari al 20% del totale.</span>
-          </div>
-          <div class="giorgio6-booking-info-item">
-            <strong>Cancellazione</strong>
-            <span>Cancellazione gratuita fino a 90 giorni prima del check-in, con rimborso integrale della caparra. Oltre questo termine, di norma non è previsto rimborso.</span>
-          </div>
-          <div class="giorgio6-booking-info-item">
-            <strong>Note utili</strong>
-            <span>Al vostro arrivo saremo presenti in struttura per la consegna delle chiavi e per fornirvi tutte le informazioni utili. Dopo la prenotazione riceverai una email di conferma con tutti i dettagli della prenotazione.</span>
-          </div>
-        </div>
-      </div>
       <form id="giorgio6BookingForm" novalidate>
         <div class="giorgio6-booking-grid">
           <div class="giorgio6-booking-field">
@@ -1911,7 +1859,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const resetBtn = document.getElementById('giorgio6ResetBtn');
   const proceedBtn = document.getElementById('giorgio6ProceedBtn');
   const form = document.getElementById('giorgio6BookingForm');
-  const bookingInfo = bookingModal ? bookingModal.querySelector('.giorgio6-booking-info') : null;
   const bookingModalBody = bookingModal ? bookingModal.querySelector('.giorgio6-booking-modal-body') : null;
   const checkInInput = document.getElementById('giorgio6CheckIn');
   const checkOutInput = document.getElementById('giorgio6CheckOut');
@@ -1925,7 +1872,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const telefonoInput = document.getElementById('giorgio6Telefono');
   const noteInput = document.getElementById('giorgio6Note');
 
-  if (!bookingModal || !bookingCta || !closeBtn || !resetBtn || !proceedBtn || !form || !bookingInfo || !bookingModalBody || !checkInInput || !checkOutInput || !ospitiInput || !priceEl || !depositEl || !statusEl || !privacyInput || !nomeInput || !emailInput || !telefonoInput || !noteInput || !window.flatpickr) {
+  if (!bookingModal || !bookingCta || !closeBtn || !resetBtn || !proceedBtn || !form || !bookingModalBody || !checkInInput || !checkOutInput || !ospitiInput || !priceEl || !depositEl || !statusEl || !privacyInput || !nomeInput || !emailInput || !telefonoInput || !noteInput || !window.flatpickr) {
     return;
   }
 
@@ -2063,7 +2010,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function showResultPanel(html) {
-    bookingInfo.style.display = 'none';
     form.style.display = 'none';
     resultPanel.innerHTML = html;
     resultPanel.style.display = 'block';
@@ -2073,7 +2019,6 @@ document.addEventListener('DOMContentLoaded', function() {
     clearPaymentTimers();
     resultPanel.style.display = 'none';
     resultPanel.innerHTML = '';
-    bookingInfo.style.display = '';
     form.style.display = '';
   }
 
