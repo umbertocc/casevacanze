@@ -311,12 +311,12 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                 </div>
                                 
                                 <div style=\"margin-bottom:12px; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:8px; padding:12px 14px;\">
-                                    <p style=\"margin:0; font-size:0.92em; color:#374151; line-height:1.6;\"><strong style=\"color:#166534;\">Politica cancellazione:</strong> la caparra è rimborsata integralmente solo per cancellazioni comunicate almeno 90 giorni prima del check-in; oltre tale termine la caparra non è rimborsabile.</p>
+                                    <p style=\"margin:0; font-size:0.9em; color:#374151; line-height:1.6;\"><strong style=\"color:#166534;\">Politica cancellazione:</strong> la caparra è rimborsata integralmente solo per cancellazioni comunicate almeno 90 giorni prima del check-in; oltre tale termine la caparra non è rimborsabile.</p>
                                 </div>
 
                                 <div style=\"margin-bottom:12px; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:8px; padding:12px 14px;\">
                                     <p style=\"margin:0 0 8px 0; font-weight:700; font-size:0.98em; color:#166534;\">Info soggiorno essenziali</p>
-                                    <ul style=\"margin:0; padding-left:18px; font-size:0.92em; color:#374151; line-height:1.6;\">
+                                    <ul style=\"margin:0; padding-left:18px; font-size:0.9em; color:#374151; line-height:1.6;\">
                                         <li>Il prezzo include pulizia finale, cambio biancheria, registrazione ospiti, supporto all'arrivo, pass parcheggio, spese di consumo.</li>
                                         <li>Al vostro arrivo saremo presenti in struttura per accoglienza, consegna chiavi e tutte le informazioni utili sul soggiorno e sulla zona.</li>
                                         <li>Al termine della prenotazione riceverai una email di riepilogo con tutte le informazioni utili per il soggiorno.</li>
