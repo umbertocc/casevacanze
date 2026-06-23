@@ -1762,7 +1762,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
           <label style="display:flex;align-items:flex-start;gap:8px;margin-top:14px;font-size:0.9em;color:#374151;line-height:1.5;cursor:pointer;">
             <input type="checkbox" id="respiroPrivacy" name="privacy" required style="margin-top:3px;width:16px;height:16px;accent-color:#0f766e;flex-shrink:0;">
-            <span>Ho letto e accetto la <a href="/privacy.html" target="_blank" rel="noopener" style="color:#166534;text-decoration:underline;">privacy policy</a> e le condizioni di cancellazione sul soggiorno.</span>
+            <span>Ho letto e accetto la <a href="/privacy.html" target="_blank" rel="noopener" style="color:#166534;text-decoration:underline;">privacy policy</a>.</span>
           </label>
 
           <div class="respiro-booking-actions">
@@ -1777,6 +1777,44 @@ document.addEventListener('DOMContentLoaded', function () {
             <p><strong>Check-out:</strong> <span id="respiroRecapCheckOut">-</span></p>
             <p><strong>Ospiti:</strong> <span id="respiroRecapOspiti">-</span></p>
             <p><strong>Contatto:</strong> <span id="respiroRecapContatto">-</span></p>
+          </div>
+
+          <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid #e0e0e0;">
+            <h4 style="color: #22577a; margin-bottom: 15px; font-size: 1.1em;">📋 Informazioni Importanti</h4>
+            
+            <div style="margin-bottom: 18px; padding: 12px; background: #f0f7ff; border-left: 4px solid #22577a; border-radius: 4px;">
+              <p style="margin-bottom: 8px;"><strong style="color: #22577a;">⏰ Check-in / Check-out</strong></p>
+              <ul style="margin-left: 20px; font-size: 0.95em; color: #555;">
+                <li><strong>Check-in:</strong> dalle 15:00 (consegna chiavi in struttura, proprietari presenti)</li>
+                <li><strong>Check-out:</strong> entro le 10:00 (restituzione chiavi, appartamento in ordine)</li>
+              </ul>
+            </div>
+
+            <div style="margin-bottom: 18px; padding: 12px; background: #fff0f5; border-left: 4px solid #e74c3c; border-radius: 4px;">
+              <p style="margin-bottom: 8px;"><strong style="color: #e74c3c;">💳 Pagamento</strong></p>
+              <ul style="margin-left: 20px; font-size: 0.95em; color: #555;">
+                <li><strong>Caparra:</strong> 20% all'atto della prenotazione</li>
+                <li><strong>Saldo:</strong> 80% al momento del check-in</li>
+              </ul>
+            </div>
+
+            <div style="margin-bottom: 18px; padding: 12px; background: #f0fff4; border-left: 4px solid #22a084; border-radius: 4px;">
+              <p style="margin-bottom: 8px;"><strong style="color: #22a084;">🚫 Condizioni di Cancellazione</strong></p>
+              <ul style="margin-left: 20px; font-size: 0.95em; color: #555;">
+                <li><strong>Fino a 90 giorni prima del check-in:</strong> Rimborso integrale della caparra</li>
+                <li><strong>Meno di 90 giorni:</strong> Nessun rimborso</li>
+              </ul>
+            </div>
+
+            <div style="margin-bottom: 18px; padding: 12px; background: #fffbf0; border-left: 4px solid #f39c12; border-radius: 4px;">
+              <p style="margin-bottom: 8px;"><strong style="color: #f39c12;">🧹 Pulizia</strong></p>
+              <ul style="margin-left: 20px; font-size: 0.95em; color: #555;">
+                <li><strong>✅ Pulizia inclusa</strong> nel prezzo della prenotazione</li>
+                <li><strong>Nessun costo aggiuntivo</strong> è previsto</li>
+              </ul>
+            </div>
+
+            <p style="font-size: 0.9em; color: #666; margin-top: 15px; text-align: center;">Proseguendo, confermi di avere letto e compreso le informazioni sopra.</p>
           </div>
 
           <div class="respiro-booking-actions">
@@ -2246,6 +2284,7 @@ document.addEventListener('DOMContentLoaded', function() {
       priceEl.textContent = '-';
       depositEl.textContent = '-';
       proceedBtn.disabled = true;
+      proceedBtn.textContent = 'Paga';
       recapCheckInEl.textContent = checkInInput.value || '-';
       recapCheckOutEl.textContent = checkOutInput.value || '-';
       recapOspitiEl.textContent = ospitiInput.value || '-';
@@ -2255,6 +2294,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     priceEl.textContent = formatEuro(quote.prezzoTotale);
     depositEl.textContent = formatEuro(quote.importoCaparra);
+    proceedBtn.textContent = 'Paga ' + formatEuro(quote.importoCaparra);
 
     const requiredFieldsFilled = checkInInput.value && checkOutInput.value && ospitiInput.value && nomeInput.value.trim() && emailInput.value.trim() && telefonoInput.value.trim() && privacyInput.checked;
     proceedBtn.disabled = !(quote.available && requiredFieldsFilled);
