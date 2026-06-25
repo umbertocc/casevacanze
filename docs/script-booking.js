@@ -349,7 +349,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                     <textarea name=\"messaggio\" placeholder=\"Messaggio (opzionale)\" style=\"width:100%;padding:10px;border-radius:5px;border:1px solid #ccc;min-height:50px;max-height:80px;font-size:0.95em;margin-bottom:12px;box-sizing:border-box;display:block;\"></textarea>
                                                                         <label style="display:flex;align-items:flex-start;gap:8px;margin-bottom:14px;font-size:0.88em;color:#374151;cursor:pointer;line-height:1.5;">
                                         <input type="checkbox" name="accettaPolicy" required style="margin-top:3px;width:16px;height:16px;accent-color:#188841;flex-shrink:0;">
-                                        <span>Prendo atto dell'informativa sul trattamento dei dati personali e delle condizioni di cancellazione.</span>
+                                        <span>Prendo atto dell'informativa sul trattamento dei dati personali.</span>
                                     </label>
                                     <div style="display:flex;gap:10px;padding-bottom:10px;flex-wrap:wrap;">
                                      <!--   <button type="submit" style="flex:2;background:#2d7a46;color:#fff;padding:12px;border:none;border-radius:6px;font-size:1em;font-weight:600;cursor:pointer;">Invia richiesta</button> -->
