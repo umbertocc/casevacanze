@@ -580,6 +580,52 @@ document.addEventListener('click', function(event) {
 </footer>
 </body>
 <script>
+function preselectApartmentFromSource() {
+  var appartamentoSelect = document.getElementById('appartamento');
+  if (!appartamentoSelect) return;
+
+  var allowed = {
+    'casa-bellavista-1': true,
+    'casa-bellavista-2': true,
+    'casa-giorgio-4': true,
+    'casa-giorgio-6': true,
+    'respiro-di-mare': true
+  };
+
+  function normalize(value) {
+    return String(value || '')
+      .toLowerCase()
+      .trim()
+      .replace(/\.html$/, '')
+      .replace(/\/+$/, '');
+  }
+
+  var params = new URLSearchParams(window.location.search);
+  var fromQuery = normalize(params.get('casa') || params.get('appartamento'));
+
+  if (allowed[fromQuery]) {
+    appartamentoSelect.value = fromQuery;
+    return;
+  }
+
+  if (!document.referrer) return;
+
+  var slug = '';
+  try {
+    var refUrl = new URL(document.referrer);
+    var parts = normalize(refUrl.pathname).split('/').filter(Boolean);
+    slug = normalize(parts[parts.length - 1]);
+  } catch (e) {
+    slug = '';
+  }
+
+  if (allowed[slug]) {
+    appartamentoSelect.value = slug;
+  }
+}
+
+preselectApartmentFromSource();
+
 document.getElementById('booking-form').addEventListener('submit', function(e) {
   e.preventDefault();
   var form = e.target;
