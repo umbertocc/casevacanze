@@ -5,6 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <title>Pagamento Riuscito | Torre Pali Vacanze</title>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-5FP79B56');</script>
+  <!-- End Google Tag Manager -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17941172028"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17941172028');
+    gtag('config', 'G-M0TEME57K0');
+  </script>
+  <script>
+    (function() {
+      var params = new URLSearchParams(window.location.search);
+      var transactionId = params.get('transaction_id') || params.get('session_id') || '';
+      var rawValue = params.get('value') || params.get('valore') || params.get('caparra') || '';
+      var parsedValue = parseFloat((rawValue || '').replace(',', '.'));
+      var conversionValue = Number.isFinite(parsedValue) && parsedValue > 0 ? parsedValue : 1.0;
+      var fireKey = 'invio_caparra_' + (transactionId || 'no_tid');
+
+      if (sessionStorage.getItem(fireKey)) {
+        return;
+      }
+
+      gtag('event', 'conversion', {
+        'send_to': 'AW-17941172028/LzYZCLC60L8cELyegutC',
+        'value': conversionValue,
+        'currency': 'EUR',
+        'transaction_id': transactionId
+      });
+
+      window.dataLayer.push({
+        event: 'invio_caparra',
+        transaction_id: transactionId,
+        value: conversionValue,
+        currency: 'EUR'
+      });
+
+      sessionStorage.setItem(fireKey, '1');
+    })();
+  </script>
   <style>
     :root {
       --bg-1: #0f3957;
@@ -111,6 +157,10 @@
   </style>
 </head>
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FP79B56"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
   <main class="card" role="main">
     <section class="top">
       <h1>Pagamento completato con successo</h1>
