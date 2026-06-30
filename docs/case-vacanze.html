@@ -1470,7 +1470,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             body: data
           });
           if (resp.ok) {
-            gtag('event', 'conversion', {'send_to': 'AW-17941172028/OvpCCP_1jJQcELyegutC'});
+            if (typeof sendEnhancedLeadConversion === 'function') {
+              await sendEnhancedLeadConversion(
+                userEmail,
+                (form.elements['telefono'] && form.elements['telefono'].value) || ''
+              );
+            } else {
+              gtag('event', 'conversion', {'send_to': 'AW-17941172028/OvpCCP_1jJQcELyegutC'});
+            }
             success.style.display = 'block';
             success.scrollIntoView({ behavior: 'smooth', block: 'center' });
             form.reset();
@@ -1541,6 +1548,56 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- MODALE PREVENTIVO INIZIO -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  function normalizeEmail(value) {
+    return String(value || '').trim().toLowerCase();
+  }
+
+  function normalizePhoneIT(value) {
+    var digits = String(value || '').replace(/\D+/g, '');
+    if (!digits) return '';
+    if (digits.indexOf('39') === 0) return '+' + digits;
+    if (digits.indexOf('0') === 0 || digits.indexOf('3') === 0) return '+39' + digits;
+    return '+' + digits;
+  }
+
+  function toHex(buffer) {
+    var bytes = new Uint8Array(buffer);
+    var hex = '';
+    for (var i = 0; i < bytes.length; i++) {
+      var h = bytes[i].toString(16);
+      hex += h.length === 1 ? '0' + h : h;
+    }
+    return hex;
+  }
+
+  async function sha256(value) {
+    if (!value || !window.crypto || !window.crypto.subtle) return '';
+    var data = new TextEncoder().encode(value);
+    var digest = await window.crypto.subtle.digest('SHA-256', data);
+    return toHex(digest);
+  }
+
+  async function sendEnhancedLeadConversion(rawEmail, rawPhone) {
+    if (typeof gtag !== 'function') return;
+    var email = normalizeEmail(rawEmail);
+    var phone = normalizePhoneIT(rawPhone);
+
+    var emailSha256 = await sha256(email);
+    var phoneSha256 = await sha256(phone);
+
+    var userData = {};
+    if (emailSha256) userData.email = emailSha256;
+    if (phoneSha256) userData.phone_number = phoneSha256;
+
+    if (Object.keys(userData).length > 0) {
+      gtag('set', 'user_data', userData);
+    }
+
+    gtag('event', 'conversion', {
+      'send_to': 'AW-17941172028/OvpCCP_1jJQcELyegutC'
+    });
+  }
+
   // Crea la modale se non esiste
   if (!document.getElementById('prenota-modal')) {
     const modalDiv = document.createElement('div');
@@ -1666,9 +1723,7 @@ document.addEventListener('DOMContentLoaded', function() {
           if (response.ok) {
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({ event: 'contatto_inviato' });
-            if (typeof gtag === 'function') {
-              gtag('event', 'conversion', { 'send_to': 'AW-17941172028/OvpCCP_1jJQcELyegutC' });
-            }
+            await sendEnhancedLeadConversion(email, telefono);
             modalBody.innerHTML = `<div style="text-align:center;padding:32px 0;><h2 style="color:#2d7a46;">Richiesta inviata!</h2><p>Grazie per aver richiesto il preventivo.<br>Ti ricontatteremo al più presto.</p><button id="closePrenotaModal2" style="margin-top:18px;background:#2d7a46;color:#fff;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;">Chiudi</button></div>`;
                     // Tasto annulla anche dopo invio
                     setTimeout(function() {
