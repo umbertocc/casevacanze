@@ -1452,6 +1452,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         const data = new FormData(form);
         // Add reply-to so Formspree can send an autoresponse to the user
         const userEmail = (form.elements['email'] && form.elements['email'].value) || '';
+        const userPhone = (form.elements['telefono'] && form.elements['telefono'].value) || '';
         const userName = (form.elements['nome'] && form.elements['nome'].value) || 'Cliente';
         if (userEmail) {
           data.append('_replyto', userEmail);
@@ -1463,6 +1464,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         data.append('_template', 'box');
         // Conferma automatica all'utente
         data.append('_autoresponse', 'Grazie per averci contattato! Abbiamo ricevuto la tua richiesta e ti risponderemo entro 1 ora. - Affitti Torre Pali');
+        // Enhanced conversions - Setup user_data BEFORE fetch (aligned with script-booking.js)
+        if (typeof setupEnhancedUserData === 'function' && userEmail) {
+          await setupEnhancedUserData(userEmail, userPhone);
+        }
         try {
           const resp = await fetch(form.action, {
             method: 'POST',
@@ -1471,12 +1476,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           });
           if (resp.ok) {
             if (typeof sendEnhancedLeadConversion === 'function') {
-              await sendEnhancedLeadConversion(
-                userEmail,
-                (form.elements['telefono'] && form.elements['telefono'].value) || ''
-              );
-            } else {
-              gtag('event', 'conversion', {'send_to': 'AW-17941172028/OvpCCP_1jJQcELyegutC'});
+              sendEnhancedLeadConversion();
             }
             success.style.display = 'block';
             success.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -1577,7 +1577,7 @@ document.addEventListener('DOMContentLoaded', function() {
     return toHex(digest);
   }
 
-  async function sendEnhancedLeadConversion(rawEmail, rawPhone) {
+  async function setupEnhancedUserData(rawEmail, rawPhone) {
     if (typeof gtag !== 'function') return;
     var email = normalizeEmail(rawEmail);
     var phone = normalizePhoneIT(rawPhone);
@@ -1592,10 +1592,14 @@ document.addEventListener('DOMContentLoaded', function() {
     if (Object.keys(userData).length > 0) {
       gtag('set', 'user_data', userData);
     }
+  }
 
-    gtag('event', 'conversion', {
-      'send_to': 'AW-17941172028/OvpCCP_1jJQcELyegutC'
-    });
+  function sendEnhancedLeadConversion() {
+    if (typeof gtag === 'function') {
+      gtag('event', 'conversion', {
+        'send_to': 'AW-17941172028/OvpCCP_1jJQcELyegutC'
+      });
+    }
   }
 
   // Crea la modale se non esiste
@@ -1701,6 +1705,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const persone = form.persone.value;
         const messaggio = form.messaggio.value;
         const casa = form.casa.value;
+        // Enhanced conversions - Setup user_data BEFORE fetch (aligned with script-booking.js)
+        await setupEnhancedUserData(email, telefono);
         try {
           const response = await fetch('https://demo-mail-993653817397.europe-west8.run.app/api/preventivi/public', {
             method: 'POST',
@@ -1723,7 +1729,7 @@ document.addEventListener('DOMContentLoaded', function() {
           if (response.ok) {
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({ event: 'contatto_inviato' });
-            await sendEnhancedLeadConversion(email, telefono);
+            sendEnhancedLeadConversion();
             modalBody.innerHTML = `<div style="text-align:center;padding:32px 0;><h2 style="color:#2d7a46;">Richiesta inviata!</h2><p>Grazie per aver richiesto il preventivo.<br>Ti ricontatteremo al più presto.</p><button id="closePrenotaModal2" style="margin-top:18px;background:#2d7a46;color:#fff;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;">Chiudi</button></div>`;
                     // Tasto annulla anche dopo invio
                     setTimeout(function() {
