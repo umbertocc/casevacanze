@@ -304,7 +304,13 @@ Francesco
 
             const to = (toInput.value || '').trim();
             const text = appendPreventivoReferenceToEmail(bodyInput.value || '');
-            const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(to);
+            const threadKey = selectedPreventivoForEmail && selectedPreventivoForEmail.id
+                ? String(selectedPreventivoForEmail.id).trim().toLowerCase()
+                : '';
+            const subject = threadKey
+                ? 'Richiesta ricevuta - Torre Pali Vacanze'
+                : 'Richiesta info Appartamenti Torre Pali';
+            const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(to); 
 
             if (!emailOk) {
                 showNotification('Inserisci un indirizzo email valido.');
@@ -330,8 +336,9 @@ Francesco
                 },
                 body: new URLSearchParams({
                     to: to,
-                    subject: 'Richiesta info Appartamenti Torre Pali',
-                    text: text
+                    subject: subject,
+                    text: text,
+                    threadKey: threadKey
                 })
             })
             .then(res => {
