@@ -224,6 +224,26 @@
             return Number(normalized);
         }
 
+        function escapeHtml(value) {
+            return String(value || '')
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function buildGeneratedSaldoEmailHtml(plainText, detailUrl) {
+            const escapedText = escapeHtml(plainText).replace(/\n/g, '<br>');
+            const hasDetailUrl = Boolean(detailUrl && String(detailUrl).trim());
+            const safeUrl = hasDetailUrl ? escapeHtml(detailUrl) : '';
+            const buttonHtml = hasDetailUrl
+                ? `<p style="margin:0 0 18px 0;"><a href="${safeUrl}" target="_blank" rel="noopener" style="display:inline-block;background:#0f766e;color:#ffffff;text-decoration:none;font-weight:700;padding:10px 16px;border-radius:999px;">Vedi la struttura</a></p>`
+                : '';
+
+            return `<!doctype html><html lang="it"><body style="margin:0;padding:20px;background:#f8fafc;font-family:Arial,sans-serif;color:#1f2937;"><div style="max-width:700px;margin:0 auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:12px;padding:20px;line-height:1.6;font-size:14px;">${buttonHtml}<p style="margin:0;">${escapedText}</p></div></body></html>`;
+        }
+
         function generateSaldoEmailText() {
             const body = document.getElementById('generatedEmailBody');
             const prezzoInput = document.getElementById('generatedEmailPrezzo');
@@ -294,11 +314,17 @@ Francesco`;
         function sendGeneratedSaldoEmail() {
             const toInput = document.getElementById('generatedEmailTo');
             const bodyInput = document.getElementById('generatedEmailBody');
+            const casaInput = document.getElementById('generatedEmailCasaId');
             const sendBtn = document.getElementById('sendGeneratedEmailBtn');
             if (!toInput || !bodyInput) return;
 
             const to = (toInput.value || '').trim();
             const text = appendPreventivoReferenceToEmail(bodyInput.value || '');
+            const casaId = casaInput ? (casaInput.value || '').trim() : '';
+            const casaSelezionata = caseListCache.find(c => String(c.id) === String(casaId));
+            const linkDettaglio = casaSelezionata ? (casaSelezionata.link_dettaglio || casaSelezionata.linkDettaglio || '') : '';
+            const linkDettaglioAssoluto = toAbsoluteDetailUrl(linkDettaglio);
+            const html = buildGeneratedSaldoEmailHtml(text, linkDettaglioAssoluto);
             const threadKey = selectedPreventivoForEmail && selectedPreventivoForEmail.id
                 ? String(selectedPreventivoForEmail.id).trim().toLowerCase()
                 : '';
@@ -333,6 +359,7 @@ Francesco`;
                     to: to,
                     subject: subject,
                     text: text,
+                    html: html,
                     threadKey: threadKey
                 })
             })
