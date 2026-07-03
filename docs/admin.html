@@ -224,6 +224,36 @@
             return Number(normalized);
         }
 
+        function detectEnglishRequest(preventivo) {
+            const text = [
+                preventivo && preventivo.messaggio,
+                preventivo && preventivo.preferenzaRicontatto,
+                preventivo && preventivo.appartamento
+            ].filter(Boolean).join(' ').toLowerCase();
+
+            if (!text) return false;
+
+            const englishPatterns = [
+                /\bhello\b/, /\bhi\b/, /\bthank you\b/, /\bthanks\b/, /\bavailable\b/, /\bavailability\b/,
+                /\bprice\b/, /\bquote\b/, /\bbooking\b/, /\bstay\b/, /\bapartment\b/, /\bhouse\b/,
+                /\bcheck in\b/, /\bcheck out\b/, /\bfrom\b/, /\bto\b/, /\badults\b/, /\bchildren\b/,
+                /\bcan i\b/, /\bcan we\b/, /\bwe are\b/, /\bi would like\b/, /\bplease\b/
+            ];
+
+            return englishPatterns.some(function(pattern) {
+                return pattern.test(text);
+            });
+        }
+
+        function resolveGeneratedEmailLanguage() {
+            const languageSelect = document.getElementById('generatedEmailLanguage');
+            const selected = languageSelect ? String(languageSelect.value || 'auto').toLowerCase() : 'auto';
+            if (selected === 'it' || selected === 'en') {
+                return selected;
+            }
+            return detectEnglishRequest(selectedPreventivoForEmail) ? 'en' : 'it';
+        }
+
         function escapeHtml(value) {
             return String(value || '')
                 .replace(/&/g, '&amp;')
@@ -233,12 +263,13 @@
                 .replace(/'/g, '&#39;');
         }
 
-        function buildGeneratedSaldoEmailHtml(plainText, detailUrl) {
+        function buildGeneratedSaldoEmailHtml(plainText, detailUrl, language) {
             const escapedText = escapeHtml(plainText).replace(/\n/g, '<br>');
             const hasDetailUrl = Boolean(detailUrl && String(detailUrl).trim());
             const safeUrl = hasDetailUrl ? escapeHtml(detailUrl) : '';
+            const buttonLabel = language === 'en' ? 'View the property' : 'Vedi la struttura';
             const buttonHtml = hasDetailUrl
-                ? `<p style="margin:0 0 18px 0;"><a href="${safeUrl}" target="_blank" rel="noopener" style="display:inline-block;background:#0f766e;color:#ffffff;text-decoration:none;font-weight:700;padding:10px 16px;border-radius:999px;">Vedi la struttura</a></p>`
+                ? `<p style="margin:0 0 18px 0;"><a href="${safeUrl}" target="_blank" rel="noopener" style="display:inline-block;background:#0f766e;color:#ffffff;text-decoration:none;font-weight:700;padding:10px 16px;border-radius:999px;">${buttonLabel}</a></p>`
                 : '';
 
             return `<!doctype html><html lang="it"><body style="margin:0;padding:20px;background:#f8fafc;font-family:Arial,sans-serif;color:#1f2937;"><div style="max-width:700px;margin:0 auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:12px;padding:20px;line-height:1.6;font-size:14px;">${buttonHtml}<p style="margin:0;">${escapedText}</p></div></body></html>`;
@@ -288,6 +319,7 @@
                 return;
             }
 
+            const language = resolveGeneratedEmailLanguage();
             const generatedText = `Ciao,
 
 ti confermo il preventivo del soggiorno:
@@ -307,7 +339,25 @@ Cellulare: 3886587080
 Un saluto,
 Francesco`;
 
-            body.value = appendPreventivoReferenceToEmail(generatedText);
+            const generatedTextEn = `Hello,
+
+I am confirming your quote for the stay:
+
+- Property: ${nomeCasa || 'not available'} 
+- Check-in: ${checkIn}
+- Check-out: ${checkOut}
+- Total price: ${prezzo}
+- Deposit (20%): EUR ${sommaBlocco}
+
+The price includes final cleaning, guest registration, arrival support, parking pass and utilities.
+Check-in: 3:00 PM - 8:00 PM, check-out by 10:00 AM.
+
+Mobile: 3886587080
+
+Kind regards,
+Francesco`;
+
+            body.value = appendPreventivoReferenceToEmail(language === 'en' ? generatedTextEn : generatedText);
             showNotification('Testo email generato.');
         }
 
@@ -324,7 +374,8 @@ Francesco`;
             const casaSelezionata = caseListCache.find(c => String(c.id) === String(casaId));
             const linkDettaglio = casaSelezionata ? (casaSelezionata.link_dettaglio || casaSelezionata.linkDettaglio || '') : '';
             const linkDettaglioAssoluto = toAbsoluteDetailUrl(linkDettaglio);
-            const html = buildGeneratedSaldoEmailHtml(text, linkDettaglioAssoluto);
+            const language = resolveGeneratedEmailLanguage();
+            const html = buildGeneratedSaldoEmailHtml(text, linkDettaglioAssoluto, language);
             const threadKey = selectedPreventivoForEmail && selectedPreventivoForEmail.id
                 ? String(selectedPreventivoForEmail.id).trim().toLowerCase()
                 : ''; 
@@ -1360,6 +1411,13 @@ Francesco`;
                 <label for="generatedEmailCasaId">Casa da inserire in email</label>
                 <select id="generatedEmailCasaId" style="margin-bottom:12px;">
                     <option value="">Seleziona casa</option>
+                </select>
+
+                <label for="generatedEmailLanguage">Lingua email</label>
+                <select id="generatedEmailLanguage" style="margin-bottom:12px;">
+                    <option value="auto">Auto</option>
+                    <option value="it">Italiano</option>
+                    <option value="en">English</option>
                 </select>
 
                 <label for="generatedEmailCheckIn">Data check-in</label>
