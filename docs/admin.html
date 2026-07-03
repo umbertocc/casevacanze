@@ -242,7 +242,8 @@
                 : NaN;
             const casaSelezionata = caseListCache.find(c => String(c.id) === String(casaId));
             const linkDettaglio = casaSelezionata ? (casaSelezionata.link_dettaglio || casaSelezionata.linkDettaglio || '') : '';
-            const descrizioneCasa = casaSelezionata ? (casaSelezionata.descrizione || casaSelezionata.description || '') : '';
+            const nomeCasa = casaSelezionata ? (casaSelezionata.nome || casaSelezionata.name || '') : '';
+            const indirizzoCasa = casaSelezionata ? (casaSelezionata.indirizzo || casaSelezionata.address || '') : '';
             const cinCasa = casaSelezionata ? (casaSelezionata.cin || casaSelezionata.CIN || casaSelezionata.codiceCin || casaSelezionata.codice_cin || '') : '';
             const cisCasa = casaSelezionata ? (casaSelezionata.cis || casaSelezionata.CIS || casaSelezionata.codiceCis || casaSelezionata.codice_cis || '') : '';
             const linkDettaglioAssoluto = toAbsoluteDetailUrl(linkDettaglio);
@@ -267,30 +268,34 @@
                 return;
             }
 
-            const generatedText = `Grazie per averci contattato.
-Di seguito il preventivo del soggiorno e le informazioni utili.
+            const generatedText = `Ciao,
 
+ti confermo il preventivo richiesto con il riepilogo completo del soggiorno:
 
-- Data check-in: ${checkIn}
-- Data check-out: ${checkOut}
-- Prezzo del soggiorno: ${prezzo}
-- Per bloccare la prenotazione è previsto il versamento della somma di EUR ${sommaBlocco} da versare tramite bonifico bancario, comunicheremo gli estremi in caso di conferma del preventivo.
-- Il prezzo totale include pulizia finale, registrazione ospiti, supporto all'arrivo, pass parcheggio, spese di consumo, nessuna spesa aggiuntiva.
-- Prima del vostro arrivo la casa viene accuratamente pulita e sanificata; la consegna avviene senza biancheria da letto, salvo specifica richiesta.
-- L'appartamento è dotato di aria condizionata, cucina attrezzata, TV, lavatrice, spazi esterni attrezzati e tutto il necessario per un soggiorno confortevole.
-- All'arrivo degli ospiti siamo presenti in struttura per accoglienza, consegna chiavi e tutte le informazioni utili sul soggiorno e sulla zona.
-- È ammesso al massimo 1 animale domestico
-- Check-in: dalle 15:00 alle 20:00
-- Check-out: entro le 10:00;
+- Struttura: ${nomeCasa || 'non disponibile'}
+- Indirizzo: ${indirizzoCasa || 'non disponibile'}
+- Check-in: ${checkIn}
+- Check-out: ${checkOut}
+- Prezzo totale soggiorno: ${prezzo}
+- Caparra richiesta (20%): EUR ${sommaBlocco}
 - CIN: ${cinCasa || 'non disponibile'}
 - CIS: ${cisCasa || 'non disponibile'}
-- Dettagli casa: ${linkDettaglioAssoluto || 'non disponibile'}
-- Descrizione casa: ${descrizioneCasa || 'non disponibile'}
-- Per qualsiasi informazione o dubbio puoi contattarci al 3886587080, oppure rispondere a questa email.
+- Dettagli struttura: ${linkDettaglioAssoluto || 'non disponibile'}
 
-Ciao,
+Il prezzo include pulizia finale, registrazione ospiti, supporto all'arrivo, pass parcheggio e spese di consumo.
+L'appartamento viene consegnato pulito e sanificato.
+E ammesso al massimo 1 animale domestico.
+Orari soggiorno: check-in dalle 15:00 alle 20:00, check-out entro le 10:00.
+
+Per confermare la prenotazione puoi rispondere a questa email e ti invieremo subito i dettagli per il pagamento della caparra.
+
+Contatti:
+Cellulare: 3886587080
+WhatsApp: https://wa.me/393886587080
+
+Un saluto,
 Francesco
-3886587080`;
+Torre Pali Vacanze`;
 
             body.value = appendPreventivoReferenceToEmail(generatedText);
             showNotification('Testo email generato.');
