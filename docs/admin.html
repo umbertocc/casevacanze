@@ -327,7 +327,7 @@ Francesco`;
             const html = buildGeneratedSaldoEmailHtml(text, linkDettaglioAssoluto);
             const threadKey = selectedPreventivoForEmail && selectedPreventivoForEmail.id
                 ? String(selectedPreventivoForEmail.id).trim().toLowerCase()
-                : '';
+                : ''; 
             const subject = threadKey
                 ? 'Richiesta ricevuta - Torre Pali Vacanze'
                 : 'Richiesta info Appartamenti Torre Pali';
