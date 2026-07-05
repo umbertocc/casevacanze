@@ -70,9 +70,19 @@
         function findCasaIdByName(appartamento) {
             const target = normalizeText(appartamento);
             if (!target) return '';
+
+            const exactIdMatch = (caseListCache || []).find(c => String(c && c.id) === target);
+            if (exactIdMatch) {
+                return String(exactIdMatch.id);
+            }
+
             const match = (caseListCache || []).find(c => {
                 const nome = normalizeText(c && c.nome);
-                return nome && (nome.includes(target) || target.includes(nome));
+                const link = normalizeText(c && (c.link_dettaglio || c.linkDettaglio));
+                const slugFromName = normalizeText((c && c.nome ? c.nome : '').replace(/\s+/g, '-'));
+                return [nome, link, slugFromName].some(function(value) {
+                    return value && (value.includes(target) || target.includes(value));
+                });
             });
             return match ? String(match.id) : '';
         }

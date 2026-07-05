@@ -493,11 +493,11 @@ document.addEventListener('click', function(event) {
           <label for="appartamento">Quale appartamento ti interessa?</label>
           <select name="appartamento" id="appartamento" style="width: 100%; padding: 12px; border: 2px solid #ecf0f1; border-radius: 8px; font-family: Arial, sans-serif; font-size: 1em;">
             <option value="">-- Seleziona --</option>
-            <option value="casa-bellavista-1">Casa Bellavista 1</option>
-            <option value="casa-bellavista-2">Casa Bellavista 2</option>
-            <option value="casa-giorgio-4">Casa Giorgio 4 (Piano terra)</option>
-            <option value="casa-giorgio-6">Casa Giorgio 6 (Vista Mare)</option>
-            <option value="respiro-di-mare">Respiro di Mare</option>
+            <option value="4">Casa Bellavista 1</option>
+            <option value="1">Casa Bellavista 2</option>
+            <option value="2">Casa Giorgio 4 (Piano terra)</option>
+            <option value="3">Casa Giorgio 6 (Vista Mare)</option>
+            <option value="5">Respiro di Mare</option>
             <option value="generico" selected>Richiesta Generica</option>
           </select>
         </div>
@@ -586,11 +586,19 @@ function preselectApartmentFromSource() {
   if (!appartamentoSelect) return;
 
   var allowed = {
-    'casa-bellavista-1': true,
-    'casa-bellavista-2': true,
-    'casa-giorgio-4': true,
-    'casa-giorgio-6': true,
-    'respiro-di-mare': true
+    '1': true,
+    '2': true,
+    '3': true,
+    '4': true,
+    '5': true
+  };
+
+  var slugToId = {
+    'casa-bellavista-1': '4',
+    'casa-bellavista-2': '1',
+    'casa-giorgio-4': '2',
+    'casa-giorgio-6': '3',
+    'respiro-di-mare': '5'
   };
 
   function normalize(value) {
@@ -603,6 +611,10 @@ function preselectApartmentFromSource() {
 
   var params = new URLSearchParams(window.location.search);
   var fromQuery = normalize(params.get('casa') || params.get('appartamento'));
+
+  if (slugToId[fromQuery]) {
+    fromQuery = slugToId[fromQuery];
+  }
 
   if (allowed[fromQuery]) {
     appartamentoSelect.value = fromQuery;
@@ -622,6 +634,11 @@ function preselectApartmentFromSource() {
 
   if (allowed[slug]) {
     appartamentoSelect.value = slug;
+    return;
+  }
+
+  if (slugToId[slug]) {
+    appartamentoSelect.value = slugToId[slug];
   }
 }
 

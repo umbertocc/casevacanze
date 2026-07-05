@@ -1274,7 +1274,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                   <a href="${house.link_dettaglio || '#'}" class="periodi-cta-btn" aria-label="Vedi la pagina di ${house.nome}">
                     <span aria-hidden="true">🏠</span> Vedi casa
                   </a>
-                  <a href="#" class="periodi-cta-btn prenota-btn" data-casa="${house.nome}" aria-label="Richiedi preventivo per ${house.nome}">
+                  <a href="#" class="periodi-cta-btn prenota-btn" data-casa-id="${house.id}" data-casa-nome="${house.nome}" aria-label="Richiedi preventivo per ${house.nome}">
                     <span aria-hidden="true">✉️</span> Richiedi preventivo
                   </a>
                   <a href="https://wa.me/393886587080?text=${waText}" class="periodi-cta-btn periodi-whatsapp-btn" aria-label="Contatta su WhatsApp per ${house.nome}" target="_blank" rel="noopener" onclick="gtag('event','click_whatsapp'); return gtag_report_whatsapp_conversion(this.href);">
@@ -1643,11 +1643,13 @@ document.addEventListener('DOMContentLoaded', function() {
     if (prenotaTrigger) {
       e.preventDefault();
       // Recupera dati casa dalla card, se esiste
-      let casaNome = prenotaTrigger.dataset && prenotaTrigger.dataset.casa ? prenotaTrigger.dataset.casa : '';
+          let casaId = prenotaTrigger.dataset && prenotaTrigger.dataset.casaId ? prenotaTrigger.dataset.casaId : '';
+          let casaNome = prenotaTrigger.dataset && prenotaTrigger.dataset.casaNome ? prenotaTrigger.dataset.casaNome : '';
       const card = prenotaTrigger.closest('.property-card');
       if (card) {
         const titleEl = card.querySelector('.property-title');
-        casaNome = titleEl ? titleEl.textContent : casaNome;
+            casaId = card.dataset && card.dataset.casaId ? card.dataset.casaId : casaId;
+            casaNome = card.dataset && card.dataset.casaNome ? card.dataset.casaNome : (titleEl ? titleEl.textContent : casaNome);
       }
       const modal = document.getElementById('prenota-modal');
       const modalBody = document.getElementById('prenota-modal-body');
@@ -1655,7 +1657,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <h2 style="margin-top:0;margin-bottom:18px;font-size:1.2em;color:#2d7a46;">Richiesta preventivo</h2>
         ${casaNome ? `<div style='margin-bottom:10px;'><b>${casaNome}</b></div>` : ''}
         <form id="prenotaForm">
-          <input type="hidden" name="casa" value="${casaNome}">
+          <input type="hidden" name="casa" value="${casaId || casaNome}">
           <div class="form-group">
             <label for="arrivo">Data di Arrivo *</label>
             <input type="date" id="arrivo" name="arrivo" required placeholder="Data check-in">
