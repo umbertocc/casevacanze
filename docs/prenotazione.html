@@ -99,6 +99,194 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         scroll-behavior: smooth;
     }
 
+    :root {
+        --sea-900: #0f3d4c;
+        --sea-700: #1f5f73;
+        --sea-600: #0f766e;
+        --sea-500: #10908a;
+        --mint-500: #25d366;
+        --mint-700: #128c7e;
+        --sand-100: #f7fbfa;
+        --sand-200: #eef6f3;
+        --ink-900: #102027;
+        --ink-700: #334e57;
+        --ink-500: #5b7680;
+        --border-soft: #d6e8e2;
+        --shadow-soft: 0 14px 36px rgba(15, 76, 92, 0.12);
+        --shadow-card: 0 10px 24px rgba(16, 72, 89, 0.09);
+        --radius-xl: 24px;
+        --radius-lg: 16px;
+        --radius-md: 12px;
+    }
+
+    body.booking-page {
+        background:
+            radial-gradient(1200px 480px at 18% -12%, rgba(56, 178, 172, 0.15), rgba(56, 178, 172, 0)),
+            radial-gradient(900px 420px at 95% 10%, rgba(37, 211, 102, 0.1), rgba(37, 211, 102, 0)),
+            linear-gradient(180deg, #edf8ff 0%, #e8f4f4 42%, #e9f4f0 100%);
+        color: var(--ink-900);
+    }
+
+    .booking-hero {
+        text-align: center;
+        margin-top: 88px;
+        margin-bottom: 30px;
+        padding: 28px 20px 20px 20px;
+        border-radius: var(--radius-xl);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.88) 0%, rgba(244, 252, 250, 0.88) 100%);
+        border: 1px solid var(--border-soft);
+        box-shadow: var(--shadow-soft);
+    }
+
+    .booking-hero h1 {
+        color: var(--sea-900);
+        font-size: clamp(1.95rem, 5.6vw, 2.85rem);
+        line-height: 1.2;
+        margin-bottom: 12px;
+        text-wrap: balance;
+    }
+
+    .booking-hero .tagline {
+        color: var(--ink-700);
+        font-size: clamp(1rem, 2.7vw, 1.18rem);
+        max-width: 56ch;
+        margin: 0 auto;
+        line-height: 1.55;
+    }
+
+    .booking-form-section {
+        width: min(100%, 1040px);
+        margin: 0 auto;
+    }
+
+    .booking-photo-strip {
+        margin: 0 auto 18px auto;
+        padding: 14px;
+        border-radius: var(--radius-lg);
+        border: 1px solid #d5e8e2;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(241, 251, 247, 0.9) 100%);
+        box-shadow: var(--shadow-card);
+    }
+
+    .booking-photo-strip h2 {
+        margin: 0 0 6px 0;
+        color: var(--sea-900);
+        text-align: center;
+        font-size: clamp(1.05rem, 2.4vw, 1.3rem);
+    }
+
+    .booking-photo-strip p {
+        margin: 0 0 12px 0;
+        text-align: center;
+        color: var(--ink-700);
+        font-size: 0.9rem;
+    }
+
+    .booking-photo-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .booking-photo-item {
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        aspect-ratio: 4 / 3;
+        border: 1px solid #d7e8e2;
+    }
+
+    .booking-photo-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.35s ease;
+    }
+
+    .booking-photo-item:hover img {
+        transform: scale(1.04);
+    }
+
+    .booking-photo-label {
+        position: absolute;
+        left: 8px;
+        bottom: 8px;
+        background: rgba(16, 32, 39, 0.68);
+        color: #ffffff;
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 4px 8px;
+        border-radius: 999px;
+    }
+
+    .booking-benefits {
+        margin-top: 16px;
+        padding: 18px 14px;
+        border: 1px solid #cfe5dd;
+        border-radius: var(--radius-lg);
+        background: linear-gradient(180deg, #ffffff 0%, #f4fcf8 100%);
+        box-shadow: var(--shadow-card);
+    }
+
+    .booking-benefits h3 {
+        margin: 0 0 10px 0;
+        text-align: center;
+        font-size: 1.08rem;
+        color: var(--sea-900);
+    }
+
+    .booking-benefits-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .booking-benefits-list li {
+        padding: 9px 10px;
+        border-radius: 10px;
+        border: 1px solid #d7e9e2;
+        background: #ffffff;
+        color: var(--ink-700);
+        font-size: 0.9rem;
+        font-weight: 600;
+        line-height: 1.35;
+    }
+
+    .homes-toggle-wrap {
+        display: flex;
+        justify-content: center;
+        margin-top: 12px;
+        margin-bottom: 6px;
+    }
+
+    .homes-toggle-btn {
+        border: 1px solid #b9ddd0;
+        background: linear-gradient(180deg, #ffffff 0%, #f1fbf7 100%);
+        color: var(--sea-900);
+        font-weight: 700;
+        font-size: 0.92rem;
+        padding: 10px 16px;
+        border-radius: 999px;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .homes-toggle-btn:hover,
+    .homes-toggle-btn:focus {
+        transform: translateY(-1px);
+        border-color: #96cdbb;
+        box-shadow: 0 6px 16px rgba(16, 72, 89, 0.12);
+        outline: none;
+    }
+
+    #staticHomesList[hidden] {
+        display: none !important;
+    }
+
     #booking-form {
         scroll-margin-top: 110px;
     }
@@ -131,6 +319,119 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             radial-gradient(1200px 260px at 10% -10%, rgba(15, 118, 110, 0.12), rgba(15, 118, 110, 0)),
             linear-gradient(180deg, #f8fffc 0%, #f1f8f5 100%);
         border: 1px solid #d9efe7;
+    }
+
+    #staticHomesList {
+        margin-top: 26px !important;
+        padding: 22px 14px 18px 14px !important;
+        border-radius: var(--radius-xl) !important;
+        width: 100% !important;
+        background:
+            radial-gradient(1100px 220px at 12% -16%, rgba(16, 185, 129, 0.13), rgba(16, 185, 129, 0)),
+            linear-gradient(180deg, #f8fdfa 0%, #eff8f4 100%) !important;
+        border: 1px solid var(--border-soft) !important;
+        box-shadow: var(--shadow-soft);
+    }
+
+    #staticHomesList > h3 {
+        margin: 0 0 14px 0 !important;
+        padding: 14px 16px !important;
+        color: var(--sea-900) !important;
+        font-size: clamp(1.2rem, 3.7vw, 1.7rem) !important;
+        text-align: center;
+        border-radius: var(--radius-lg);
+        background: linear-gradient(90deg, #ecfdf5 0%, #e9f6ff 100%) !important;
+        border: 1px solid #cde9df;
+        letter-spacing: 0.01em;
+    }
+
+    .homes-subtitle {
+        text-align: center;
+        color: var(--ink-700);
+        font-size: 0.94rem;
+        margin: 2px 0 18px 0;
+    }
+
+    #staticHomesList > div {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 16px !important;
+        width: 100% !important;
+        align-items: stretch;
+    }
+
+    #staticHomesList .image-main-wrap {
+        margin-bottom: 10px !important;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    #staticHomesList .image-main-wrap img {
+        width: 100% !important;
+        margin-bottom: 0 !important;
+        transition: transform 0.35s ease;
+    }
+
+    #staticHomesList > div > article:hover .image-main-wrap img {
+        transform: scale(1.03);
+    }
+
+    #staticHomesList > div > article {
+        background: #ffffff !important;
+        border: 1px solid #d7e8e1 !important;
+        border-radius: var(--radius-lg) !important;
+        padding: 14px !important;
+        box-shadow: var(--shadow-card);
+        transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    #staticHomesList > div > article:hover {
+        transform: translateY(-3px);
+        border-color: #bad9ce !important;
+        box-shadow: 0 14px 28px rgba(16, 72, 89, 0.14);
+    }
+
+    #staticHomesList article h4 {
+        margin: 0 0 10px 0 !important;
+        color: var(--sea-900) !important;
+        font-size: 1.14rem;
+        line-height: 1.25;
+    }
+
+    #staticHomesList article p {
+        line-height: 1.5;
+    }
+
+    #staticHomesList article p.property-compliance-static + p {
+        margin: 4px 0 9px 0 !important;
+        display: inline-flex;
+        align-items: center;
+        padding: 6px 10px;
+        background: #e7faf3;
+        color: #0f766e !important;
+        border: 1px solid #bde9d7;
+        border-radius: 999px;
+        font-weight: 700 !important;
+        font-size: 0.8rem !important;
+    }
+
+    #staticHomesList article p.property-compliance-static + p + p {
+        margin: 0 0 10px 0 !important;
+        color: var(--ink-700) !important;
+        font-size: 0.92rem !important;
+    }
+
+    #staticHomesList article p.property-compliance-static + p + p + p {
+        margin: 0 0 10px 0 !important;
+        color: #1864ab !important;
+        font-size: 0.83rem !important;
+        font-weight: 700;
+    }
+
+    #staticHomesList .property-availability-link {
+        width: 100%;
+        margin-top: 4px;
+        min-height: 44px;
     }
 
     #staticHomesList h2 {
@@ -346,6 +647,97 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             gap: 24px;
             grid-template-columns: 1fr;
         }
+
+        .booking-hero {
+            margin-top: 76px;
+            margin-bottom: 18px;
+            padding: 22px 14px 18px 14px;
+            border-radius: 18px;
+        }
+
+        .booking-hero h1 {
+            font-size: clamp(1.62rem, 7.1vw, 2.1rem);
+            margin-bottom: 10px;
+        }
+
+        .booking-hero .tagline {
+            font-size: 0.94rem;
+        }
+
+        .booking-benefits {
+            padding: 14px 10px;
+            border-radius: 14px;
+        }
+
+        .booking-photo-strip {
+            padding: 10px;
+            border-radius: 14px;
+            margin-bottom: 14px;
+        }
+
+        .booking-photo-strip h2 {
+            font-size: 1rem;
+        }
+
+        .booking-photo-strip p {
+            font-size: 0.84rem;
+            margin-bottom: 10px;
+        }
+
+        .booking-photo-grid {
+            grid-template-columns: 1fr;
+            gap: 8px;
+        }
+
+        .booking-photo-item {
+            aspect-ratio: 16 / 9;
+        }
+
+        .booking-benefits-list {
+            grid-template-columns: 1fr;
+        }
+
+        .booking-benefits-list li {
+            font-size: 0.88rem;
+            padding: 8px 9px;
+        }
+
+        .homes-toggle-btn {
+            width: 100%;
+            max-width: 340px;
+        }
+
+        #staticHomesList {
+            padding: 18px 10px 14px 10px !important;
+            border-radius: 18px !important;
+        }
+
+        #staticHomesList > h3 {
+            font-size: 1.1rem !important;
+            padding: 10px 10px !important;
+            margin-bottom: 10px !important;
+        }
+
+        .homes-subtitle {
+            font-size: 0.88rem;
+            margin-bottom: 14px;
+        }
+
+        #staticHomesList > div {
+            gap: 12px !important;
+            grid-template-columns: 1fr !important;
+        }
+
+        #staticHomesList > div > article {
+            padding: 12px !important;
+            border-radius: 14px !important;
+        }
+    }
+
+    @media (min-width: 1100px) {
+        #staticHomesList > div {
+            grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        }
     }
     </style>
     <!-- Flatpickr CSS -->
@@ -355,29 +747,35 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             width: 100%;
             max-width: 420px;
             margin: 0 auto;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(243, 252, 248, 0.97) 100%);
+            border: 1px solid var(--border-soft);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-soft);
+            padding: 22px 16px 16px 16px;
         }
         .form-group {
             position: relative;
-            margin-bottom: 28px;
+            margin-bottom: 18px;
         }
         .form-group label {
             font-weight: 600;
-            color: #22577a;
-            margin-bottom: 8px;
+            color: var(--sea-900);
+            margin-bottom: 7px;
             display: block;
             letter-spacing: 0.02em;
+            font-size: 0.88rem;
         }
         /* Migliora stile input data (flatpickr) */
         .form-group .date-input {
             width: 100%;
-            padding: 14px 44px 14px 18px;
-            border: 2px solid #b2f2d7;
-            border-radius: 14px;
-            font-size: 1.08em;
+            padding: 13px 44px 13px 16px;
+            border: 1.5px solid #bde9d7;
+            border-radius: 12px;
+            font-size: 1em;
             font-family: 'Poppins', Arial, sans-serif;
             background: #f8fffb url('https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_green.svg') no-repeat right 16px center/28px 28px;
-            color: #22577a;
-            box-shadow: 0 2px 12px rgba(67,233,123,0.07);
+            color: var(--ink-900);
+            box-shadow: 0 1px 8px rgba(67,233,123,0.06);
             transition: border-color 0.3s, box-shadow 0.3s;
             cursor: pointer;
         }
@@ -387,30 +785,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             align-items: center;
             gap: 8px;
             padding: 6px;
-            border: 2px solid #b2f2d7;
-            border-radius: 14px;
+            border: 1.5px solid #bde9d7;
+            border-radius: 12px;
             background: #f8fffb;
-            box-shadow: 0 2px 12px rgba(67,233,123,0.07);
+            box-shadow: 0 1px 8px rgba(67,233,123,0.06);
             transition: border-color 0.3s, box-shadow 0.3s;
         }
         .form-group .date-input:focus {
-            border-color: #25d366;
+            border-color: var(--mint-500);
             background-color: #fff;
             outline: none;
-            box-shadow: 0 4px 18px rgba(37,211,102,0.13);
+            box-shadow: 0 0 0 4px rgba(37, 211, 102, 0.11), 0 6px 18px rgba(37, 211, 102, 0.12);
         }
         .form-group .ospiti-stepper:focus-within {
-            border-color: #25d366;
+            border-color: var(--mint-500);
             background-color: #fff;
-            box-shadow: 0 4px 18px rgba(37,211,102,0.13);
+            box-shadow: 0 0 0 4px rgba(37, 211, 102, 0.11), 0 6px 18px rgba(37, 211, 102, 0.12);
         }
         .form-group .ospiti-stepper input[type="number"] {
             flex: 1;
             border: none;
             background: transparent;
-            color: #22577a;
+            color: var(--ink-900);
             text-align: center;
-            font-size: 1.08em;
+            font-size: 1em;
             font-family: 'Poppins', Arial, sans-serif;
             padding: 8px 4px;
             min-width: 0;
@@ -429,13 +827,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             -moz-appearance: textfield;
         }
         .ospiti-btn {
-            width: 40px;
-            height: 40px;
+            width: 34px;
+            height: 34px;
             border: none;
-            border-radius: 11px;
+            border-radius: 10px;
             background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
             color: #fff;
-            font-size: 1.45em;
+            font-size: 1.2em;
             line-height: 1;
             font-weight: 700;
             cursor: pointer;
@@ -497,7 +895,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             opacity: 0.85;
         }
         .form-btn {
-            margin-top: 10px;
+            width: 100%;
+            margin-top: 6px;
+            padding: 14px 18px !important;
+            font-size: 1rem !important;
+            border-radius: 14px !important;
+            letter-spacing: 0.01em;
         }
         /* Uniforma la dimensione immagini nelle card risultati */
         #fadeSlideResults .property-image,
@@ -536,7 +939,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>  <!-- Google Tag Manager (noscript) -->
+<body class="booking-page">  <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FP79B56"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
@@ -609,12 +1012,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         });
     </script>
 
-    <main class="container">
-        <header style="text-align:center; margin-bottom: 50px; margin-top: 90px;">
+        <main class="container">
+                <header class="booking-hero">
             <h1>Prenota la tua casa vacanza a Torre Pali</h1>
-            <p class="tagline">Seleziona le date e il numero di ospiti per verificare le disponibilità. Le date disponibili sono evidenziate in verde nel calendario.</p>
-          <!-- FILTRO DATE INIZIO --></p>
+            <p class="tagline">Offriamo 5 appartamenti a pochi passi dal mare di Torre Pali, con tutti i comfort per famiglie e coppie. Vivi la tua vacanza perfetta nel Salento e verifica ora la disponibilita inserendo le tue date.</p>
+                    <!-- FILTRO DATE INIZIO -->
         </header>
+
+        <section class="booking-photo-strip" aria-label="Foto Torre Pali e case vacanza">
+            <h2>Torre Pali, un'oasi di relax e bellezza</h2>
+            <p>Alcune immagini di Torre Pali.</p>
+            <div class="booking-photo-grid">
+                <figure class="booking-photo-item">
+                    <img src="img/torre-pali/torrepali-mobile.webp" alt="Spiaggia di Torre Pali" width="1200" height="900" loading="eager" decoding="async">
+                    <figcaption class="booking-photo-label">Spiaggia di Torre Pali</figcaption>
+                </figure>
+                <figure class="booking-photo-item">
+                    <img src="img/torre-pali/molo3.jpg" alt="Molo di Torre Pali al tramonto" width="1200" height="900" loading="lazy" decoding="async">
+                    <figcaption class="booking-photo-label">Il molo al tramonto</figcaption>
+                </figure>
+                <figure class="booking-photo-item">
+                    <img src="img/torre-pali/torrepali10.webp" alt="Mare cristallino a Torre Pali" width="1200" height="900" loading="lazy" decoding="async">
+                    <figcaption class="booking-photo-label">Mare cristallino</figcaption>
+                </figure>
+            </div>
+        </section>
+
         <section class="booking-form-section">
             <form id="booking-form">
                 <div class="form-group">
@@ -636,10 +1059,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <button type="submit" class="form-btn">Cerca disponibilità</button>
        
             </form>
-            <div id="staticHomesList" style="margin-top:22px; padding:0px; border:1px solid #e5e7eb; border-radius:12px; background:#f8fafc; width:100%;">
-                <h3 style="margin:0 0 10px 0; color:#1f2937; font-size:1.45rem; text-align:center; background:lightgray">Le nostre case vacanza</h3>
+            <section class="booking-benefits" aria-label="Vantaggi case vacanza">
+                <h3>Perche scegliere le nostre case a Torre Pali</h3>
+                <ul class="booking-benefits-list">
+                    <li>Posizioni strategiche vicino al mare e ai servizi</li>
+                    <li>Parcheggio e comfort pensati per famiglie</li>
+                    <li>Assistenza rapida via WhatsApp tutti i giorni</li>
+                    <li>Prezzi chiari e disponibilita aggiornata</li>
+                </ul>
+            </section>
 
-                <div style="display:grid; grid-template-columns:1fr; gap:18px; width:100%;">
+            <div class="homes-toggle-wrap">
+                <button type="button" id="toggleStaticHomes" class="homes-toggle-btn" aria-controls="staticHomesList" aria-expanded="false">Vedi tutte le case vacanza</button>
+            </div>
+
+            <div id="staticHomesList" hidden>
+                <h3>Le nostre case vacanza</h3>
+                <p class="homes-subtitle">Scegli la casa che preferisci e verifica subito la disponibilità.</p>
+
+                <div>
                     <article style="background:#fff; border:1px solid #dbe3ee; border-radius:10px; padding:12px;">
                         <h4 style="margin:0 0 6px 0; color:#0f172a;">Casa Bellavista 1</h4>
                         <div class="image-main-wrap" style="margin-bottom:10px;">
@@ -1160,6 +1598,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 animated: true,
                 showClass: 'fancybox-fadeIn',
                 hideClass: 'fancybox-fadeOut'
+            });
+        }
+
+        const staticHomesList = document.getElementById('staticHomesList');
+        const toggleStaticHomesBtn = document.getElementById('toggleStaticHomes');
+
+        if (staticHomesList && toggleStaticHomesBtn) {
+            toggleStaticHomesBtn.addEventListener('click', function() {
+                const isHidden = staticHomesList.hasAttribute('hidden');
+
+                if (isHidden) {
+                    staticHomesList.removeAttribute('hidden');
+                    this.textContent = 'Nascondi elenco case';
+                    this.setAttribute('aria-expanded', 'true');
+                    staticHomesList.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } else {
+                    staticHomesList.setAttribute('hidden', '');
+                    this.textContent = 'Vedi tutte le case vacanza';
+                    this.setAttribute('aria-expanded', 'false');
+                }
             });
         }
     });
