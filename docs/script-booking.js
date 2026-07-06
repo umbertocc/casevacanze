@@ -57,7 +57,7 @@ function ensurePrenotaModalContainer() {
     return modalDiv;
 }
 
-function openPreventivoRequestModal(appartamento, prezzoTotale, checkIn, checkOut) {
+function openPreventivoRequestModal(appartamento, prezzoTotale, checkIn, checkOut, casaId) {
     const modalDiv = ensurePrenotaModalContainer();
     const modalBody = document.getElementById('prenota-modal-body');
     const prezzoNumerico = Number(prezzoTotale);
@@ -86,6 +86,7 @@ function openPreventivoRequestModal(appartamento, prezzoTotale, checkIn, checkOu
         </div>
         <form id="quickPreventivoForm" style="margin-bottom:0;">
             <input type="hidden" name="appartamento" value="${appartamento || ''}">
+            <input type="hidden" name="casaId" value="${casaId || ''}">
             <input type="hidden" name="prezzo" value="${prezzoValido ? prezzoNumerico : ''}">
             <input type="hidden" name="checkIn" value="${checkIn || ''}">
             <input type="hidden" name="checkOut" value="${checkOut || ''}">
@@ -141,7 +142,32 @@ function openPreventivoRequestModal(appartamento, prezzoTotale, checkIn, checkOu
 
                 if (!response.ok) throw new Error('Errore invio richiesta preventivo');
 
-                modalBody.innerHTML = `<div style="text-align:center;padding:32px 0;"><h2 style="color:#2d7a46;">Richiesta inviata!</h2><p>Grazie per aver richiesto il preventivo.<br>Ti ricontatteremo al più presto.</p><button id="closePrenotaModal2" style="margin-top:18px;background:#2d7a46;color:#fff;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;">Chiudi</button></div>`;
+                let bookingCreationNote = '';
+                const casaIdNum = Number(form.casaId.value || Number(appartamento));
+                const checkInValue = String(form.checkIn.value || '').trim();
+                const checkOutValue = String(form.checkOut.value || '').trim();
+                const personeValue = Number(form.persone.value);
+                const hasBookingData = Number.isFinite(casaIdNum) && casaIdNum > 0 && checkInValue && checkOutValue && Number.isFinite(personeValue) && personeValue > 0;
+
+                if (hasBookingData) {
+                    try {
+                        await eseguiPrenotazioneOnline({
+                            casaId: casaIdNum,
+                            ospiteNome: String(form.nome.value || '').trim(),
+                            checkIn: checkInValue,
+                            checkOut: checkOutValue,
+                            emailOspite: String(form.email.value || '').trim(),
+                            telefonoOspite: String(form.telefono.value || '').trim() || null,
+                            numOspiti: personeValue,
+                            note: String(form.messaggio.value || '').trim() || null
+                        });
+                        bookingCreationNote = '<p style="margin:10px 0 0 0;color:#166534;font-size:0.95em;">Abbiamo registrato anche una richiesta di prenotazione con queste date.</p>';
+                    } catch (bookingErr) {
+                        bookingCreationNote = '<p style="margin:10px 0 0 0;color:#92400e;font-size:0.95em;">La richiesta è stata salvata; la prenotazione verrà confermata dal nostro team.</p>';
+                    }
+                }
+
+                modalBody.innerHTML = `<div style="text-align:center;padding:32px 0;"><h2 style="color:#2d7a46;">Richiesta inviata!</h2><p>Grazie per aver richiesto il preventivo.<br>Ti ricontatteremo al più presto.</p>${bookingCreationNote}<button id="closePrenotaModal2" style="margin-top:18px;background:#2d7a46;color:#fff;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;">Chiudi</button></div>`;
                 const closeBtn = document.getElementById('closePrenotaModal2');
                 if (closeBtn) closeBtn.onclick = function() { modalDiv.style.display = 'none'; };
             } catch (err) {
@@ -158,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function() {
     links.forEach(function(link) {
         link.addEventListener('click', function(e) {
             e.preventDefault();
-            openPreventivoRequestModal(link.dataset.appartamento || '');
+            openPreventivoRequestModal(link.dataset.appartamento || '', '', '', '', link.dataset.casaId || '');
         });
     });
 });
@@ -611,7 +637,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                     if (btn) {
                         btn.onclick = function(e) {
                             e.preventDefault();
-                            openPreventivoRequestModal(casa.nome || casa.id || 'Richiesta generica', prezzoTotale, checkIn, checkOut);
+                            openPreventivoRequestModal(casa.nome || casa.id || 'Richiesta generica', prezzoTotale, checkIn, checkOut, casa.id || '');
                         };
                     }
                     if (onlineBtn) {
