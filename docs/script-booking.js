@@ -57,18 +57,38 @@ function ensurePrenotaModalContainer() {
     return modalDiv;
 }
 
-function openPreventivoRequestModal(appartamento) {
+function openPreventivoRequestModal(appartamento, prezzoTotale, checkIn, checkOut) {
     const modalDiv = ensurePrenotaModalContainer();
     const modalBody = document.getElementById('prenota-modal-body');
+    const prezzoNumerico = Number(prezzoTotale);
+    const prezzoValido = Number.isFinite(prezzoNumerico);
+    const prezzoFormattato = prezzoValido
+        ? prezzoNumerico.toLocaleString('it-IT', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 })
+        : '';
+    const formatDateLabel = function(value) {
+        if (!value || !/^\d{4}-\d{2}-\d{2}$/.test(value)) {
+            return value || '-';
+        }
+        const parts = value.split('-');
+        return parts[2] + '/' + parts[1] + '/' + parts[0];
+    };
 
     modalBody.innerHTML = `
         <div style="margin:10px 0 12px 0;display:flex;justify-content:space-between;align-items:center;gap:10px;">
-            <h2 style="margin:0;font-size:1.2em;color:#2d7a46;">Prenota</h2>
+            <h2 style="margin:0;font-size:1.2em;color:#2d7a46;">Invia richiesta</h2>
         </div>
-        <p style="margin:0 0 12px 0;color:#4b5563;font-size:0.95em;">Conferma i tuoi dati per completare la prenotazione.</p>
+        <p style="margin:0 0 12px 0;color:#4b5563;font-size:0.95em;">Compila i dati per inviare la richiesta di disponibilita.</p>
         <div style="margin-bottom:10px;font-weight:600;font-size:0.95em;">${appartamento || 'Richiesta generica'}</div>
+        ${prezzoValido ? `<div style="margin-bottom:10px;padding:8px 10px;border-radius:8px;background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;font-weight:700;font-size:0.95em;">Prezzo totale: ${prezzoFormattato}</div>` : ''}
+        <div style="margin-bottom:10px;display:grid;grid-template-columns:1fr;gap:6px;">
+            <div style="padding:8px 10px;border-radius:8px;background:#f8fafc;border:1px solid #dbeafe;color:#1e3a8a;font-size:0.9em;"><strong>Check-in:</strong> ${formatDateLabel(checkIn)}</div>
+            <div style="padding:8px 10px;border-radius:8px;background:#f8fafc;border:1px solid #dbeafe;color:#1e3a8a;font-size:0.9em;"><strong>Check-out:</strong> ${formatDateLabel(checkOut)}</div>
+        </div>
         <form id="quickPreventivoForm" style="margin-bottom:0;">
             <input type="hidden" name="appartamento" value="${appartamento || ''}">
+            <input type="hidden" name="prezzo" value="${prezzoValido ? prezzoNumerico : ''}">
+            <input type="hidden" name="checkIn" value="${checkIn || ''}">
+            <input type="hidden" name="checkOut" value="${checkOut || ''}">
             <div style="margin-bottom:10px;">
                 <input required name="nome" type="text" placeholder="Nome *" style="width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;">
                 <input required name="email" type="email" placeholder="Email *" style="width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;">
@@ -77,7 +97,7 @@ function openPreventivoRequestModal(appartamento) {
             </div>
             <textarea name="messaggio" placeholder="Messaggio (opzionale)" style="width:100%;padding:10px;border-radius:5px;border:1px solid #ccc;min-height:60px;max-height:120px;font-size:0.95em;margin-bottom:12px;box-sizing:border-box;display:block;"></textarea>
             <div style="display:flex;gap:10px;padding-bottom:10px;flex-wrap:wrap;">
-                <button type="submit" style="flex:2;background:#2d7a46;color:#fff;padding:12px;border:none;border-radius:6px;font-size:1em;font-weight:600;cursor:pointer;">Vai al pagamento</button>
+                <button type="submit" style="flex:2;background:#2d7a46;color:#fff;padding:12px;border:none;border-radius:6px;font-size:1em;font-weight:600;cursor:pointer;">Invia richiesta</button>
                 <button type="button" id="cancelQuickPreventivoBtn" style="flex:1;background:#f3f4f6;color:#1f2937;padding:12px;border:1px solid #d1d5db;border-radius:6px;font-size:1em;cursor:pointer;">Annulla</button>
             </div>
         </form>
@@ -109,12 +129,12 @@ function openPreventivoRequestModal(appartamento) {
                         nome: form.nome.value,
                         email: form.email.value,
                         telefono: form.telefono.value,
-                        checkIn: '',
-                        checkOut: '',
+                        checkIn: form.checkIn.value || '',
+                        checkOut: form.checkOut.value || '',
                         persone: String(Number(form.persone.value)),
                         messaggio: form.messaggio.value,
                         appartamento: form.appartamento.value,
-                        prezzo: '',
+                        prezzo: form.prezzo.value || '',
                         source: 'booking-static-modal'
                     })
                 });
@@ -279,9 +299,9 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                             </div>
                             <p class="property-description">${casa.descrizione || ''}</p>
                             <div style="margin-top: 18px; margin-bottom: 10px;">
-                            <!--    <a href="#" class="prenota-btn" id="${btnId}" style="color: #48bb78; text-decoration: underline; font-weight: 500; display: block; margin-bottom: 10px;">📋 Invia richiesta</a> -->
+                               <a href="#" class="prenota-btn" id="${btnId}" style="color: #48bb78; text-decoration: underline; font-weight: 500; display: block; margin-bottom: 10px;">📋 Invia richiesta</a> 
                                 ${casa.link_dettaglio ? `<a href="${casa.link_dettaglio}" style="color: #48bb78; text-decoration: underline; font-weight: 500; font-size: 1.24em; display: block; margin-bottom: 10px;">📋 Vedi casa</a>` : ''}
-                                <a href="#" class="prenota-online-btn" id="${onlineBtnId}" style="color: #48bb78; text-decoration: underline; font-weight: 500; font-size: 1.24em; display: block; margin-bottom: 10px;">✨ Prenota </a>
+                            <!--    <a href="#" class="prenota-online-btn" id="${onlineBtnId}" style="color: #48bb78; text-decoration: underline; font-weight: 500; font-size: 1.24em; display: block; margin-bottom: 10px;">✨ Prenota </a> -->
                                 ${casa.link_whatsapp ? `<a href="${casa.link_whatsapp}" target="_blank" style="color: #48bb78; text-decoration: underline; font-weight: 500; font-size: 1.24em; display: flex; align-items: center; gap: 7px; margin-bottom: 38px;"> <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 32 32\" fill=\"#fff\" style=\"background:#25d366; border-radius:3px;\"><path d=\"M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 7.933-2.127c2.42 1.37 5.173 2.127 8.067 2.127 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.467c-2.482 0-4.908-0.646-7.07-1.87l-0.507-0.292-4.713 1.262 1.262-4.669-0.292-0.508c-1.207-2.100-1.847-4.507-1.847-6.978 0-7.51 6.11-13.619 13.619-13.619s13.619 6.109 13.619 13.619c0 7.51-6.11 13.619-13.619 13.619zM21.789 18.75c-0.214-0.107-1.268-0.625-1.464-0.696s-0.339-0.107-0.482 0.107c-0.143 0.214-0.554 0.696-0.679 0.839s-0.25 0.161-0.464 0.054c-0.214-0.107-0.902-0.333-1.718-1.060-0.635-0.567-1.064-1.268-1.189-1.482s-0.013-0.329 0.094-0.435c0.096-0.096 0.214-0.25 0.321-0.375s0.143-0.214 0.214-0.357 0.036-0.268-0.018-0.375c-0.054-0.107-0.482-1.161-0.661-1.589s-0.349-0.362-0.482-0.369c-0.125-0.007-0.268-0.007-0.411-0.007s-0.375 0.054-0.571 0.268c-0.196 0.214-0.75 0.732-0.75 1.786s0.768 2.071 0.875 2.214c0.107 0.143 1.5 2.357 3.653 3.304 0.51 0.214 0.909 0.343 1.219 0.438 0.512 0.161 0.978 0.139 1.346 0.084 0.411-0.061 1.268-0.518 1.446-1.018s0.179-0.929 0.125-1.018c-0.054-0.089-0.196-0.143-0.411-0.25z\"/></svg> WhatsApp</a>` : ''}
                             </div>
                         </div>
@@ -589,7 +609,10 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                             };
                     };
                     if (btn) {
-                        btn.onclick = openModal;
+                        btn.onclick = function(e) {
+                            e.preventDefault();
+                            openPreventivoRequestModal(casa.nome || casa.id || 'Richiesta generica', prezzoTotale, checkIn, checkOut);
+                        };
                     }
                     if (onlineBtn) {
                         onlineBtn.onclick = openModal;
