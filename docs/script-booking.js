@@ -142,8 +142,7 @@ function openPreventivoRequestModal(appartamento, prezzoTotale, checkIn, checkOu
 
                 if (!response.ok) throw new Error('Errore invio richiesta preventivo');
 
-                const contactNote = '<p style="margin:10px 0 0 0;color:#92400e;font-size:0.95em;">La prenotazione viene gestita telefonicamente o via WhatsApp dal nostro team.</p>';
-                modalBody.innerHTML = `<div style="text-align:center;padding:32px 0;"><h2 style="color:#2d7a46;">Richiesta inviata!</h2><p>Grazie per aver richiesto il preventivo.<br>Ti ricontatteremo al più presto.</p>${contactNote}<button id="closePrenotaModal2" style="margin-top:18px;background:#2d7a46;color:#fff;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;">Chiudi</button></div>`;
+                modalBody.innerHTML = `<div style="text-align:center;padding:32px 0;"><h2 style="color:#2d7a46;">Richiesta inviata!</h2><p>Grazie per aver richiesto il preventivo.<br>Ti ricontatteremo al più presto.</p><button id="closePrenotaModal2" style="margin-top:18px;background:#2d7a46;color:#fff;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;">Chiudi</button></div>`;
                 const closeBtn = document.getElementById('closePrenotaModal2');
                 if (closeBtn) closeBtn.onclick = function() { modalDiv.style.display = 'none'; };
             } catch (err) {
