@@ -110,6 +110,15 @@
             return `${raw}\n\n${block}`;
         }
 
+        function isBookingFlowSource(source) {
+            const normalized = String(source || '').trim().toLowerCase();
+            return normalized.startsWith('booking');
+        }
+
+        function normalizeGeneratedEmailFlow(value) {
+            return String(value || '').trim().toLowerCase() === 'booking' ? 'booking' : 'preventivo';
+        }
+
         function prefillEmailFromPreventivo(preventivo) {
             selectedPreventivoForEmail = preventivo || null;
             const toInput = document.getElementById('generatedEmailTo');
@@ -118,6 +127,8 @@
             const checkOutInput = document.getElementById('generatedEmailCheckOut');
             const bodyInput = document.getElementById('generatedEmailBody');
             const prezzoInput = document.getElementById('generatedEmailPrezzo');
+            const threadKeyInput = document.getElementById('generatedEmailThreadKey');
+            const flowInput = document.getElementById('generatedEmailFlow');
 
             if (toInput) toInput.value = preventivo.email || '';
             if (checkInInput) checkInInput.value = preventivo.checkIn || '';
@@ -140,6 +151,14 @@
                 } else if (!prezzoInput.value) {
                     prezzoInput.focus();
                 }
+            }
+            if (threadKeyInput) {
+                threadKeyInput.value = preventivo && preventivo.id
+                    ? String(preventivo.id).trim().toLowerCase()
+                    : '';
+            }
+            if (flowInput) {
+                flowInput.value = isBookingFlowSource(preventivo && preventivo.source) ? 'booking' : 'preventivo';
             }
 
             const emailSection = document.querySelector('.email-tools');
@@ -291,6 +310,7 @@
             const casaInput = document.getElementById('generatedEmailCasaId');
             const checkInInput = document.getElementById('generatedEmailCheckIn');
             const checkOutInput = document.getElementById('generatedEmailCheckOut');
+            const flowInput = document.getElementById('generatedEmailFlow');
             if (!body) return;
 
             const prezzo = prezzoInput ? (prezzoInput.value || '').trim() : '';
@@ -368,6 +388,7 @@ Kind regards,
 Francesco`;
 
             body.value = appendPreventivoReferenceToEmail(language === 'en' ? generatedTextEn : generatedText);
+            if (flowInput) flowInput.value = 'preventivo';
             showNotification('Testo email generato.');
         }
 
@@ -377,6 +398,7 @@ Francesco`;
             const checkInInput = document.getElementById('generatedEmailCheckIn');
             const checkOutInput = document.getElementById('generatedEmailCheckOut');
             const casaInput = document.getElementById('generatedEmailCasaId');
+            const flowInput = document.getElementById('generatedEmailFlow');
             if (!body) return;
             if (!selectedPreventivoForEmail) {
                 showNotification('Precompila prima i campi da una riga del preventivo.');
@@ -416,6 +438,7 @@ Francesco`;
                 `Kind regards,\nFrancesco`;
 
             body.value = appendPreventivoReferenceToEmail(language === 'en' ? generatedTextEn : generatedText);
+            if (flowInput) flowInput.value = 'booking';
             showNotification('Email prenotazione generata.');
         }
 
@@ -423,6 +446,8 @@ Francesco`;
             const toInput = document.getElementById('generatedEmailTo');
             const bodyInput = document.getElementById('generatedEmailBody');
             const casaInput = document.getElementById('generatedEmailCasaId');
+            const threadKeyInput = document.getElementById('generatedEmailThreadKey');
+            const flowInput = document.getElementById('generatedEmailFlow');
             const sendBtn = document.getElementById('sendGeneratedEmailBtn');
             if (!toInput || !bodyInput) return;
 
@@ -434,11 +459,20 @@ Francesco`;
             const linkDettaglioAssoluto = toAbsoluteDetailUrl(linkDettaglio);
             const language = resolveGeneratedEmailLanguage();
             const html = buildGeneratedSaldoEmailHtml(text, linkDettaglioAssoluto, language);
-            const threadKey = selectedPreventivoForEmail && selectedPreventivoForEmail.id
+            const selectedThreadKey = selectedPreventivoForEmail && selectedPreventivoForEmail.id
                 ? String(selectedPreventivoForEmail.id).trim().toLowerCase()
                 : '';
+            const formThreadKey = threadKeyInput ? String(threadKeyInput.value || '').trim().toLowerCase() : '';
+            const threadKey = selectedThreadKey || formThreadKey;
+            const selectedFlow = selectedPreventivoForEmail && isBookingFlowSource(selectedPreventivoForEmail.source)
+                ? 'booking'
+                : 'preventivo';
+            const formFlow = normalizeGeneratedEmailFlow(flowInput ? flowInput.value : '');
+            const flow = formFlow || selectedFlow;
             const subject = threadKey
-                ? 'Richiesta di prenotazione - Torre Pali Vacanze'
+                ? (flow === 'booking'
+                    ? 'Richiesta di prenotazione ricevuta - Torre Pali Vacanze'
+                    : 'Richiesta ricevuta - Torre Pali Vacanze')
                 : 'Richiesta info Appartamenti Torre Pali';
             const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(to); 
 
@@ -1484,6 +1518,9 @@ Francesco`;
 
                 <label for="generatedEmailCheckOut">Data check-out</label>
                 <input type="date" id="generatedEmailCheckOut" style="margin-bottom:12px;">
+
+                <input type="hidden" id="generatedEmailThreadKey" value="">
+                <input type="hidden" id="generatedEmailFlow" value="preventivo">
 
                 <label for="generatedEmailBody">Testo email</label>
                 <textarea id="generatedEmailBody" placeholder="Premi Genera email oppure scrivi un testo personalizzato" style="margin-bottom:12px;"></textarea>
