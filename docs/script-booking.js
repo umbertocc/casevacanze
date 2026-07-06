@@ -144,14 +144,23 @@ function openPreventivoRequestModal(appartamento, prezzoTotale, checkIn, checkOu
 
                 let bookingCreationNote = '';
                 const casaIdNum = Number(form.casaId.value || Number(appartamento));
-                const checkInValue = String(form.checkIn.value || '').trim();
-                const checkOutValue = String(form.checkOut.value || '').trim();
+                const normalizeBookingDate = function(value) {
+                    const raw = String(value || '').trim();
+                    if (/^\d{4}-\d{2}-\d{2}$/.test(raw)) return raw;
+                    if (/^\d{2}\/\d{2}\/\d{4}$/.test(raw)) {
+                        const parts = raw.split('/');
+                        return parts[2] + '-' + parts[1] + '-' + parts[0];
+                    }
+                    return raw;
+                };
+                const checkInValue = normalizeBookingDate(form.checkIn.value);
+                const checkOutValue = normalizeBookingDate(form.checkOut.value);
                 const personeValue = Number(form.persone.value);
                 const hasBookingData = Number.isFinite(casaIdNum) && casaIdNum > 0 && checkInValue && checkOutValue && Number.isFinite(personeValue) && personeValue > 0;
 
                 if (hasBookingData) {
                     try {
-                        await eseguiPrenotazioneOnline({
+                        const createdBooking = await eseguiPrenotazioneOnline({
                             casaId: casaIdNum,
                             ospiteNome: String(form.nome.value || '').trim(),
                             checkIn: checkInValue,
@@ -161,10 +170,14 @@ function openPreventivoRequestModal(appartamento, prezzoTotale, checkIn, checkOu
                             numOspiti: personeValue,
                             note: String(form.messaggio.value || '').trim() || null
                         });
-                        bookingCreationNote = '<p style="margin:10px 0 0 0;color:#166534;font-size:0.95em;">Abbiamo registrato anche una richiesta di prenotazione con queste date.</p>';
+                        const bookingId = createdBooking && (createdBooking.id || createdBooking.prenotazioneId) ? String(createdBooking.id || createdBooking.prenotazioneId) : '';
+                        bookingCreationNote = `<p style="margin:10px 0 0 0;color:#166534;font-size:0.95em;">Abbiamo registrato anche una richiesta di prenotazione con queste date${bookingId ? ` (ID: ${bookingId})` : ''}.</p>`;
                     } catch (bookingErr) {
-                        bookingCreationNote = '<p style="margin:10px 0 0 0;color:#92400e;font-size:0.95em;">La richiesta è stata salvata; la prenotazione verrà confermata dal nostro team.</p>';
+                        const bookingReason = bookingErr && bookingErr.message ? String(bookingErr.message) : 'Prenotazione non creata in automatico.';
+                        bookingCreationNote = `<p style="margin:10px 0 0 0;color:#92400e;font-size:0.95em;">La richiesta è stata salvata; la prenotazione verrà confermata dal nostro team.<br><span style="font-size:0.9em;color:#7c2d12;">Dettaglio: ${bookingReason}</span></p>`;
                     }
+                } else {
+                    bookingCreationNote = '<p style="margin:10px 0 0 0;color:#92400e;font-size:0.95em;">Richiesta salvata. Prenotazione automatica non creata: dati soggiorno incompleti.</p>';
                 }
 
                 modalBody.innerHTML = `<div style="text-align:center;padding:32px 0;"><h2 style="color:#2d7a46;">Richiesta inviata!</h2><p>Grazie per aver richiesto il preventivo.<br>Ti ricontatteremo al più presto.</p>${bookingCreationNote}<button id="closePrenotaModal2" style="margin-top:18px;background:#2d7a46;color:#fff;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;">Chiudi</button></div>`;
