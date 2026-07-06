@@ -7,7 +7,6 @@
         let adminToken = null;
         let caseListCache = [];
         let selectedPreventivoForEmail = null;
-        let selectedPrenotazioneForEmail = null;
         let prenotazioniCheckInSortDirection = 'desc';
         let prezziDataInizioSortDirection = 'desc';
         // Recupera il token dal localStorage all'avvio
@@ -99,20 +98,6 @@
                 `Messaggio ricevuto:\n${preventivo.messaggio || ''}`;
         }
 
-            function buildPrenotazioneReferenceBlock(prenotazione) {
-                if (!prenotazione) return '';
-                return `Riferimento richiesta prenotazione\n` +
-                `- ID prenotazione: ${prenotazione.id || ''}\n` +
-                `- Ospite: ${prenotazione.ospiteNome || ''}\n` +
-                `- Email: ${prenotazione.emailOspite || ''}\n` +
-                `- Check-in: ${prenotazione.checkIn || ''}\n` +
-                `- Check-out: ${prenotazione.checkOut || ''}\n` +
-                `- Ospiti: ${prenotazione.numOspiti || ''}\n` +
-                `- Prezzo totale: ${prenotazione.prezzoTotale || ''}\n` +
-                `- Caparra: ${prenotazione.caparra || ''}\n` +
-                `- Stato: ${prenotazione.stato || ''}`;
-            }
-
         function appendPreventivoReferenceToEmail(text) {
             const raw = String(text || '').trim();
             if (!selectedPreventivoForEmail) return raw;
@@ -125,29 +110,14 @@
             return `${raw}\n\n${block}`;
         }
 
-        function appendPrenotazioneReferenceToEmail(text) {
-            const raw = String(text || '').trim();
-            if (!selectedPrenotazioneForEmail) return raw;
-
-            const marker = 'Riferimento richiesta prenotazione';
-            if (raw.includes(marker)) return raw;
-
-            const block = buildPrenotazioneReferenceBlock(selectedPrenotazioneForEmail);
-            if (!block) return raw;
-            return `${raw}\n\n${block}`;
-        }
-
         function prefillEmailFromPreventivo(preventivo) {
             selectedPreventivoForEmail = preventivo || null;
-            selectedPrenotazioneForEmail = null;
             const toInput = document.getElementById('generatedEmailTo');
             const casaInput = document.getElementById('generatedEmailCasaId');
             const checkInInput = document.getElementById('generatedEmailCheckIn');
             const checkOutInput = document.getElementById('generatedEmailCheckOut');
             const bodyInput = document.getElementById('generatedEmailBody');
             const prezzoInput = document.getElementById('generatedEmailPrezzo');
-            const prenotazioneIdInput = document.getElementById('generatedEmailPrenotazioneId');
-            const paymentUrlInput = document.getElementById('generatedEmailPaymentUrl');
 
             if (toInput) toInput.value = preventivo.email || '';
             if (checkInInput) checkInInput.value = preventivo.checkIn || '';
@@ -159,8 +129,6 @@
             if (bodyInput) {
                 bodyInput.value = buildPreventivoReferenceBlock(preventivo);
             }
-            if (prenotazioneIdInput) prenotazioneIdInput.value = '';
-            if (paymentUrlInput) paymentUrlInput.value = '';
 
             if (prezzoInput) {
                 const hasPrezzo = preventivo && preventivo.prezzo !== null && preventivo.prezzo !== undefined && String(preventivo.prezzo).trim() !== '';
@@ -177,41 +145,6 @@
             const emailSection = document.querySelector('.email-tools');
             if (emailSection) emailSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
             showNotification('Campi email precompilati dal preventivo selezionato.');
-        }
-
-        function prefillEmailFromPrenotazione(prenotazione, casaId) {
-            selectedPrenotazioneForEmail = prenotazione || null;
-            selectedPreventivoForEmail = null;
-            const toInput = document.getElementById('generatedEmailTo');
-            const casaInput = document.getElementById('generatedEmailCasaId');
-            const checkInInput = document.getElementById('generatedEmailCheckIn');
-            const checkOutInput = document.getElementById('generatedEmailCheckOut');
-            const bodyInput = document.getElementById('generatedEmailBody');
-            const prezzoInput = document.getElementById('generatedEmailPrezzo');
-            const prenotazioneIdInput = document.getElementById('generatedEmailPrenotazioneId');
-            const paymentUrlInput = document.getElementById('generatedEmailPaymentUrl');
-
-            if (toInput) toInput.value = prenotazione.emailOspite || '';
-            if (checkInInput) checkInInput.value = prenotazione.checkIn || '';
-            if (checkOutInput) checkOutInput.value = prenotazione.checkOut || '';
-            if (casaInput && casaId) casaInput.value = String(casaId);
-            if (prenotazioneIdInput) prenotazioneIdInput.value = prenotazione.id || '';
-            if (paymentUrlInput) paymentUrlInput.value = '';
-
-            if (bodyInput) {
-                bodyInput.value = buildPrenotazioneReferenceBlock(prenotazione);
-            }
-
-            if (prezzoInput) {
-                const prezzoNumber = Number(prenotazione && prenotazione.prezzoTotale);
-                prezzoInput.value = Number.isFinite(prezzoNumber)
-                    ? prezzoNumber.toLocaleString('it-IT', { style: 'currency', currency: 'EUR' })
-                    : (prenotazione && prenotazione.prezzoTotale ? String(prenotazione.prezzoTotale) : '');
-            }
-
-            const emailSection = document.querySelector('.email-tools');
-            if (emailSection) emailSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            showNotification('Campi email precompilati dalla prenotazione selezionata.');
         }
 
         function loadPreventivi() {
@@ -340,51 +273,16 @@
                 .replace(/'/g, '&#39;');
         }
 
-        function buildGeneratedSaldoEmailHtml(plainText, detailUrl, paymentUrl, language) {
+        function buildGeneratedSaldoEmailHtml(plainText, detailUrl, language) {
             const escapedText = escapeHtml(plainText).replace(/\n/g, '<br>');
             const hasDetailUrl = Boolean(detailUrl && String(detailUrl).trim());
             const safeUrl = hasDetailUrl ? escapeHtml(detailUrl) : '';
-            const hasPaymentUrl = Boolean(paymentUrl && String(paymentUrl).trim());
-            const safePaymentUrl = hasPaymentUrl ? escapeHtml(paymentUrl) : '';
             const buttonLabel = language === 'en' ? 'View the property' : 'Vedi la struttura';
-            const paymentButtonLabel = language === 'en' ? 'Pay deposit' : 'Paga caparra';
             const buttonHtml = hasDetailUrl
                 ? `<p style="margin:0 0 18px 0;"><a href="${safeUrl}" target="_blank" rel="noopener" style="display:inline-block;background:#0f766e;color:#ffffff;text-decoration:none;font-weight:700;padding:10px 16px;border-radius:999px;">${buttonLabel}</a></p>`
                 : '';
-            const paymentButtonHtml = hasPaymentUrl
-                ? `<p style="margin:0 0 18px 0;"><a href="${safePaymentUrl}" target="_blank" rel="noopener" style="display:inline-block;background:#188841;color:#ffffff;text-decoration:none;font-weight:700;padding:10px 16px;border-radius:999px;">${paymentButtonLabel}</a></p>`
-                : '';
 
-            return `<!doctype html><html lang="it"><body style="margin:0;padding:20px;background:#f8fafc;font-family:Arial,sans-serif;color:#1f2937;"><div style="max-width:700px;margin:0 auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:12px;padding:20px;line-height:1.6;font-size:14px;">${buttonHtml}${paymentButtonHtml}<p style="margin:0;">${escapedText}</p></div></body></html>`;
-        }
-
-        function fetchStripePaymentUrl(prenotazioneId) {
-            const id = String(prenotazioneId || '').trim();
-            if (!id) {
-                return Promise.reject(new Error('ID prenotazione mancante.'));
-            }
-
-            return fetch(`${API_BASE}/api/prenotazioni/public/${encodeURIComponent(id)}/payment-session`, {
-                headers: {
-                    ...(adminToken ? { 'Authorization': 'Bearer ' + adminToken } : {})
-                }
-            })
-                .then(res => {
-                    if (!res.ok) {
-                        return res.text().then(msg => {
-                            const message = (msg || '').trim();
-                            throw new Error(message || 'Impossibile generare il link Stripe.');
-                        });
-                    }
-                    return res.json();
-                })
-                .then(data => {
-                    const paymentUrl = data && data.paymentUrl ? String(data.paymentUrl).trim() : '';
-                    if (!paymentUrl) {
-                        throw new Error('Link Stripe non disponibile.');
-                    }
-                    return paymentUrl;
-                });
+            return `<!doctype html><html lang="it"><body style="margin:0;padding:20px;background:#f8fafc;font-family:Arial,sans-serif;color:#1f2937;"><div style="max-width:700px;margin:0 auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:12px;padding:20px;line-height:1.6;font-size:14px;">${buttonHtml}<p style="margin:0;">${escapedText}</p></div></body></html>`;
         }
 
         function generateSaldoEmailText() {
@@ -475,17 +373,13 @@ Francesco`;
 
         function generatePrenotazioneEmailText() {
             const body = document.getElementById('generatedEmailBody');
-            const prenotazioneIdInput = document.getElementById('generatedEmailPrenotazioneId');
-            const paymentUrlInput = document.getElementById('generatedEmailPaymentUrl');
             const prezzoInput = document.getElementById('generatedEmailPrezzo');
             const checkInInput = document.getElementById('generatedEmailCheckIn');
             const checkOutInput = document.getElementById('generatedEmailCheckOut');
             const casaInput = document.getElementById('generatedEmailCasaId');
-            if (!body || !prenotazioneIdInput || !paymentUrlInput) return;
-
-            const prenotazioneId = (prenotazioneIdInput.value || '').trim();
-            if (!prenotazioneId) {
-                showNotification('Inserisci o precompila prima l\'ID prenotazione.');
+            if (!body) return;
+            if (!selectedPreventivoForEmail) {
+                showNotification('Precompila prima i campi da una riga del preventivo.');
                 return;
             }
 
@@ -497,69 +391,55 @@ Francesco`;
             const nomeCasa = casaSelezionata ? (casaSelezionata.nome || casaSelezionata.name || '') : '';
             const language = resolveGeneratedEmailLanguage();
 
-            fetchStripePaymentUrl(prenotazioneId)
-                .then(paymentUrl => {
-                    paymentUrlInput.value = paymentUrl;
+            const generatedText = `Ciao,\n\n` +
+                `grazie per la tua richiesta di prenotazione.\n` +
+                `Confermiamo la disponibilita per il soggiorno richiesto e ti contatteremo a breve telefonicamente o via WhatsApp per completare la prenotazione.\n\n` +
+                `Riepilogo:\n` +
+                `- Struttura: ${nomeCasa || selectedPreventivoForEmail.appartamento || 'non disponibile'}\n` +
+                `- Check-in: ${checkIn || selectedPreventivoForEmail.checkIn || '-'}\n` +
+                `- Check-out: ${checkOut || selectedPreventivoForEmail.checkOut || '-'}\n` +
+                `- Ospiti: ${selectedPreventivoForEmail.persone || '-'}\n` +
+                `- Prezzo totale: ${prezzo || '-'}\n\n` +
+                `Per urgenze puoi contattarci direttamente su WhatsApp o telefono.\n\n` +
+                `Un saluto,\nFrancesco`;
 
-                    const generatedText = `Ciao,\n\n` +
-                        `ti confermo la disponibilita per la tua prenotazione:\n\n` +
-                        `- ID prenotazione: ${prenotazioneId}\n` +
-                        `- Struttura: ${nomeCasa || 'non disponibile'}\n` +
-                        `- Check-in: ${checkIn || '-'}\n` +
-                        `- Check-out: ${checkOut || '-'}\n` +
-                        `- Prezzo totale: ${prezzo || '-'}\n\n` +
-                        `Per confermare, puoi pagare la caparra da questo link sicuro Stripe:\n${paymentUrl}\n\n` +
-                        `Un saluto,\nFrancesco`;
+            const generatedTextEn = `Hello,\n\n` +
+                `thank you for your booking request.\n` +
+                `We confirm availability for your requested stay and we will contact you shortly by phone or WhatsApp to complete the booking.\n\n` +
+                `Summary:\n` +
+                `- Property: ${nomeCasa || selectedPreventivoForEmail.appartamento || 'not available'}\n` +
+                `- Check-in: ${checkIn || selectedPreventivoForEmail.checkIn || '-'}\n` +
+                `- Check-out: ${checkOut || selectedPreventivoForEmail.checkOut || '-'}\n` +
+                `- Guests: ${selectedPreventivoForEmail.persone || '-'}\n` +
+                `- Total price: ${prezzo || '-'}\n\n` +
+                `For urgent requests, you can contact us directly via WhatsApp or phone.\n\n` +
+                `Kind regards,\nFrancesco`;
 
-                    const generatedTextEn = `Hello,\n\n` +
-                        `I confirm availability for your booking:\n\n` +
-                        `- Booking ID: ${prenotazioneId}\n` +
-                        `- Property: ${nomeCasa || 'not available'}\n` +
-                        `- Check-in: ${checkIn || '-'}\n` +
-                        `- Check-out: ${checkOut || '-'}\n` +
-                        `- Total price: ${prezzo || '-'}\n\n` +
-                        `To confirm, you can pay the deposit using this secure Stripe link:\n${paymentUrl}\n\n` +
-                        `Kind regards,\nFrancesco`;
-
-                    body.value = appendPrenotazioneReferenceToEmail(language === 'en' ? generatedTextEn : generatedText);
-                    showNotification('Email prenotazione generata con link Stripe.');
-                })
-                .catch(err => {
-                    showNotification(err && err.message ? err.message : 'Errore nella generazione del link Stripe.');
-                });
+            body.value = appendPreventivoReferenceToEmail(language === 'en' ? generatedTextEn : generatedText);
+            showNotification('Email prenotazione generata.');
         }
 
         function sendGeneratedSaldoEmail() {
             const toInput = document.getElementById('generatedEmailTo');
             const bodyInput = document.getElementById('generatedEmailBody');
             const casaInput = document.getElementById('generatedEmailCasaId');
-            const paymentUrlInput = document.getElementById('generatedEmailPaymentUrl');
-            const prenotazioneIdInput = document.getElementById('generatedEmailPrenotazioneId');
             const sendBtn = document.getElementById('sendGeneratedEmailBtn');
             if (!toInput || !bodyInput) return;
 
             const to = (toInput.value || '').trim();
-            const textWithPreventivo = appendPreventivoReferenceToEmail(bodyInput.value || '');
-            const text = appendPrenotazioneReferenceToEmail(textWithPreventivo);
+            const text = appendPreventivoReferenceToEmail(bodyInput.value || '');
             const casaId = casaInput ? (casaInput.value || '').trim() : '';
             const casaSelezionata = caseListCache.find(c => String(c.id) === String(casaId));
             const linkDettaglio = casaSelezionata ? (casaSelezionata.link_dettaglio || casaSelezionata.linkDettaglio || '') : '';
             const linkDettaglioAssoluto = toAbsoluteDetailUrl(linkDettaglio);
-            const paymentUrl = paymentUrlInput ? (paymentUrlInput.value || '').trim() : '';
             const language = resolveGeneratedEmailLanguage();
-            const html = buildGeneratedSaldoEmailHtml(text, linkDettaglioAssoluto, paymentUrl, language);
-            const preventivoThreadKey = selectedPreventivoForEmail && selectedPreventivoForEmail.id
+            const html = buildGeneratedSaldoEmailHtml(text, linkDettaglioAssoluto, language);
+            const threadKey = selectedPreventivoForEmail && selectedPreventivoForEmail.id
                 ? String(selectedPreventivoForEmail.id).trim().toLowerCase()
                 : '';
-            const prenotazioneThreadKey = prenotazioneIdInput && prenotazioneIdInput.value
-                ? String(prenotazioneIdInput.value).trim().toLowerCase()
-                : '';
-            const threadKey = preventivoThreadKey || prenotazioneThreadKey;
-            const subject = prenotazioneThreadKey
+            const subject = threadKey
                 ? 'Richiesta di prenotazione - Torre Pali Vacanze'
-                : (threadKey
-                    ? 'Richiesta ricevuta - Torre Pali Vacanze'
-                    : 'Richiesta info Appartamenti Torre Pali');
+                : 'Richiesta info Appartamenti Torre Pali';
             const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(to); 
 
             if (!emailOk) {
@@ -712,7 +592,6 @@ Francesco`;
                             <td>${p.note ?? ''}</td>
                             <td>${p.createdAt ? new Date(p.createdAt).toLocaleString() : ''}</td>
                             <td>
-                                <button class="btn" style="padding:4px 10px;font-size:0.95rem;background:#0f766e;" onclick='prefillEmailFromPrenotazione(${JSON.stringify(p)}, "${String(casaId)}")'>Precompila email</button>
                                 <button class="btn" style="padding:4px 10px;font-size:0.95rem;" onclick='openEditModal(${JSON.stringify(p)})'>Modifica</button>
                                 <button class="btn" style="padding:4px 10px;font-size:0.95rem;background:#e74c3c;" onclick='deletePrenotazione("${p.id}")'>Elimina</button>
                             </td>
@@ -1174,7 +1053,6 @@ Francesco`;
         window.generateSaldoEmailText = generateSaldoEmailText;
         window.generatePrenotazioneEmailText = generatePrenotazioneEmailText;
         window.sendGeneratedSaldoEmail = sendGeneratedSaldoEmail;
-        window.prefillEmailFromPrenotazione = prefillEmailFromPrenotazione;
 
             // --- Calcolo automatico Prezzo Totale nella modale prezzi ---
             function calcolaPrezzoTotale() {
@@ -1606,12 +1484,6 @@ Francesco`;
 
                 <label for="generatedEmailCheckOut">Data check-out</label>
                 <input type="date" id="generatedEmailCheckOut" style="margin-bottom:12px;">
-
-                <label for="generatedEmailPrenotazioneId">ID prenotazione (opzionale per email prenotazione)</label>
-                <input type="text" id="generatedEmailPrenotazioneId" placeholder="UUID prenotazione" style="margin-bottom:12px;">
-
-                <label for="generatedEmailPaymentUrl">Link pagamento Stripe</label>
-                <input type="text" id="generatedEmailPaymentUrl" placeholder="Viene compilato da Genera email prenotazione" style="margin-bottom:12px;">
 
                 <label for="generatedEmailBody">Testo email</label>
                 <textarea id="generatedEmailBody" placeholder="Premi Genera email oppure scrivi un testo personalizzato" style="margin-bottom:12px;"></textarea>
