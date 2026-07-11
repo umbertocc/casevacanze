@@ -211,18 +211,59 @@
                         <td>${esc(p.persone)}</td>
                         <td>${prezzoDisplay}</td>
                         <td style="max-width:280px;white-space:pre-wrap;">${esc(p.messaggio)}</td>
-                        <td><button class="btn" style="padding:6px 10px;font-size:0.9rem;" type="button">Precompila email</button></td>
+                        <td style="display:flex;gap:8px;flex-wrap:wrap;">
+                            <button class="btn btn-prefill" style="padding:6px 10px;font-size:0.9rem;" type="button">Precompila email</button>
+                            <button class="btn btn-delete" style="padding:6px 10px;font-size:0.9rem;background:#e74c3c;" type="button">Elimina</button>
+                        </td>
                     `;
-                    const prefillBtn = tr.querySelector('button');
+                    const prefillBtn = tr.querySelector('.btn-prefill');
                     if (prefillBtn) {
                         prefillBtn.addEventListener('click', function() {
                             prefillEmailFromPreventivo(p);
                         });
                     }
+                    const deleteBtn = tr.querySelector('.btn-delete');
+                    if (deleteBtn) {
+                        if (!p || !p.id) {
+                            deleteBtn.disabled = true;
+                            deleteBtn.title = 'ID preventivo non disponibile';
+                            deleteBtn.style.opacity = '0.65';
+                            deleteBtn.style.cursor = 'not-allowed';
+                        } else {
+                            deleteBtn.addEventListener('click', function() {
+                                deletePreventivo(p.id);
+                            });
+                        }
+                    }
                     body.appendChild(tr);
                 });
             })
             .catch(() => showNotification('Errore nel caricamento richieste preventivo.'));
+        }
+
+        function deletePreventivo(id) {
+            if (!id) {
+                showNotification('ID preventivo non valido.');
+                return;
+            }
+            if (!confirm('Sei sicuro di voler eliminare questo preventivo?')) return;
+
+            fetch(`${API_BASE}/admin/preventivi/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    ...(adminToken ? { 'Authorization': 'Bearer ' + adminToken } : {})
+                }
+            })
+            .then(res => {
+                if (res.ok) {
+                    showNotification('Preventivo eliminato!');
+                    loadPreventivi();
+                } else {
+                    showNotification('Errore nell\'eliminazione del preventivo.');
+                }
+            })
+            .catch(() => showNotification('Errore di rete durante l\'eliminazione.'));
         }
 
         function toAbsoluteDetailUrl(url) {
