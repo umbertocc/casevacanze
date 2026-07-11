@@ -95,6 +95,221 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         transform: translateY(0);
     }
 
+    html {
+        scroll-behavior: smooth;
+    }
+
+    :root {
+        --sea-900: #0f3d4c;
+        --sea-700: #1f5f73;
+        --sea-600: #0f766e;
+        --sea-500: #10908a;
+        --mint-500: #25d366;
+        --mint-700: #128c7e;
+        --sand-100: #f7fbfa;
+        --sand-200: #eef6f3;
+        --ink-900: #102027;
+        --ink-700: #334e57;
+        --ink-500: #5b7680;
+        --border-soft: #d6e8e2;
+        --shadow-soft: 0 14px 36px rgba(15, 76, 92, 0.12);
+        --shadow-card: 0 10px 24px rgba(16, 72, 89, 0.09);
+        --radius-xl: 24px;
+        --radius-lg: 16px;
+        --radius-md: 12px;
+    }
+
+    body.booking-page {
+        background:
+            radial-gradient(1200px 480px at 18% -12%, rgba(56, 178, 172, 0.15), rgba(56, 178, 172, 0)),
+            radial-gradient(900px 420px at 95% 10%, rgba(37, 211, 102, 0.1), rgba(37, 211, 102, 0)),
+            linear-gradient(180deg, #edf8ff 0%, #e8f4f4 42%, #e9f4f0 100%);
+        color: var(--ink-900);
+    }
+
+    .booking-hero {
+        text-align: center;
+        margin-top: 88px;
+        margin-bottom: 30px;
+        padding: 28px 20px 20px 20px;
+        border-radius: var(--radius-xl);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.88) 0%, rgba(244, 252, 250, 0.88) 100%);
+        border: 1px solid var(--border-soft);
+        box-shadow: var(--shadow-soft);
+    }
+
+    .booking-hero h1 {
+        color: var(--sea-900);
+        font-size: clamp(1.95rem, 5.6vw, 2.85rem);
+        line-height: 1.2;
+        margin-bottom: 12px;
+        text-wrap: balance;
+    }
+
+    .booking-hero .tagline {
+        color: var(--ink-700);
+        font-size: clamp(1rem, 2.7vw, 1.18rem);
+        max-width: 56ch;
+        margin: 0 auto;
+        line-height: 1.55;
+    }
+
+    .booking-form-section {
+        width: min(100%, 1040px);
+        margin: 0 auto;
+    }
+
+    .booking-photo-strip {
+        margin: 0 auto 18px auto;
+        padding: 14px;
+        border-radius: var(--radius-lg);
+        border: 1px solid #d5e8e2;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(241, 251, 247, 0.9) 100%);
+        box-shadow: var(--shadow-card);
+    }
+
+    .booking-photo-strip h2 {
+        margin: 0 0 6px 0;
+        color: var(--sea-900);
+        text-align: center;
+        font-size: clamp(1.05rem, 2.4vw, 1.3rem);
+    }
+
+    .booking-photo-strip p {
+        margin: 0 0 12px 0;
+        text-align: center;
+        color: var(--ink-700);
+        font-size: 0.9rem;
+    }
+
+    .booking-photo-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .booking-photo-item {
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        aspect-ratio: 4 / 3;
+        border: 1px solid #d7e8e2;
+    }
+
+    .booking-photo-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.35s ease;
+    }
+
+    .booking-photo-item:hover img {
+        transform: scale(1.04);
+    }
+
+    .booking-photo-label {
+        position: absolute;
+        left: 8px;
+        bottom: 8px;
+        background: rgba(16, 32, 39, 0.68);
+        color: #ffffff;
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 4px 8px;
+        border-radius: 999px;
+    }
+
+    .booking-benefits {
+        margin-top: 16px;
+        padding: 18px 14px;
+        border: 1px solid #cfe5dd;
+        border-radius: var(--radius-lg);
+        background: linear-gradient(180deg, #ffffff 0%, #f4fcf8 100%);
+        box-shadow: var(--shadow-card);
+    }
+
+    .booking-benefits h3 {
+        margin: 0 0 10px 0;
+        text-align: center;
+        font-size: 1.08rem;
+        color: var(--sea-900);
+    }
+
+    .booking-benefits-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .booking-benefits-list li {
+        padding: 9px 10px;
+        border-radius: 10px;
+        border: 1px solid #d7e9e2;
+        background: #ffffff;
+        color: var(--ink-700);
+        font-size: 0.9rem;
+        font-weight: 600;
+        line-height: 1.35;
+    }
+
+    .homes-toggle-wrap {
+        display: flex;
+        justify-content: center;
+        margin-top: 12px;
+        margin-bottom: 6px;
+    }
+
+    .homes-toggle-btn {
+        border: 1px solid #b9ddd0;
+        background: linear-gradient(180deg, #ffffff 0%, #f1fbf7 100%);
+        color: var(--sea-900);
+        font-weight: 700;
+        font-size: 0.92rem;
+        padding: 10px 16px;
+        border-radius: 999px;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .homes-toggle-btn:hover,
+    .homes-toggle-btn:focus {
+        transform: translateY(-1px);
+        border-color: #96cdbb;
+        box-shadow: 0 6px 16px rgba(16, 72, 89, 0.12);
+        outline: none;
+    }
+
+    #staticHomesList[hidden] {
+        display: none !important;
+    }
+
+    #booking-form {
+        scroll-margin-top: 110px;
+    }
+
+    #booking-form:target .date-input,
+    #booking-form:target .ospiti-stepper {
+        animation: bookingFocusPulse 1.2s ease;
+        border-color: #25d366;
+        box-shadow: 0 0 0 4px rgba(37, 211, 102, 0.14), 0 8px 22px rgba(37, 211, 102, 0.12);
+    }
+
+    @keyframes bookingFocusPulse {
+        0% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-1px);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+
     /* Restyling sezione case statiche */
     #staticHomesList {
         margin-top: 40px;
@@ -104,6 +319,119 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             radial-gradient(1200px 260px at 10% -10%, rgba(15, 118, 110, 0.12), rgba(15, 118, 110, 0)),
             linear-gradient(180deg, #f8fffc 0%, #f1f8f5 100%);
         border: 1px solid #d9efe7;
+    }
+
+    #staticHomesList {
+        margin-top: 26px !important;
+        padding: 22px 14px 18px 14px !important;
+        border-radius: var(--radius-xl) !important;
+        width: 100% !important;
+        background:
+            radial-gradient(1100px 220px at 12% -16%, rgba(16, 185, 129, 0.13), rgba(16, 185, 129, 0)),
+            linear-gradient(180deg, #f8fdfa 0%, #eff8f4 100%) !important;
+        border: 1px solid var(--border-soft) !important;
+        box-shadow: var(--shadow-soft);
+    }
+
+    #staticHomesList > h3 {
+        margin: 0 0 14px 0 !important;
+        padding: 14px 16px !important;
+        color: var(--sea-900) !important;
+        font-size: clamp(1.2rem, 3.7vw, 1.7rem) !important;
+        text-align: center;
+        border-radius: var(--radius-lg);
+        background: linear-gradient(90deg, #ecfdf5 0%, #e9f6ff 100%) !important;
+        border: 1px solid #cde9df;
+        letter-spacing: 0.01em;
+    }
+
+    .homes-subtitle {
+        text-align: center;
+        color: var(--ink-700);
+        font-size: 0.94rem;
+        margin: 2px 0 18px 0;
+    }
+
+    #staticHomesList > div {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 16px !important;
+        width: 100% !important;
+        align-items: stretch;
+    }
+
+    #staticHomesList .image-main-wrap {
+        margin-bottom: 10px !important;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    #staticHomesList .image-main-wrap img {
+        width: 100% !important;
+        margin-bottom: 0 !important;
+        transition: transform 0.35s ease;
+    }
+
+    #staticHomesList > div > article:hover .image-main-wrap img {
+        transform: scale(1.03);
+    }
+
+    #staticHomesList > div > article {
+        background: #ffffff !important;
+        border: 1px solid #d7e8e1 !important;
+        border-radius: var(--radius-lg) !important;
+        padding: 14px !important;
+        box-shadow: var(--shadow-card);
+        transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    #staticHomesList > div > article:hover {
+        transform: translateY(-3px);
+        border-color: #bad9ce !important;
+        box-shadow: 0 14px 28px rgba(16, 72, 89, 0.14);
+    }
+
+    #staticHomesList article h4 {
+        margin: 0 0 10px 0 !important;
+        color: var(--sea-900) !important;
+        font-size: 1.14rem;
+        line-height: 1.25;
+    }
+
+    #staticHomesList article p {
+        line-height: 1.5;
+    }
+
+    #staticHomesList article p.property-compliance-static + p {
+        margin: 4px 0 9px 0 !important;
+        display: inline-flex;
+        align-items: center;
+        padding: 6px 10px;
+        background: #e7faf3;
+        color: #0f766e !important;
+        border: 1px solid #bde9d7;
+        border-radius: 999px;
+        font-weight: 700 !important;
+        font-size: 0.8rem !important;
+    }
+
+    #staticHomesList article p.property-compliance-static + p + p {
+        margin: 0 0 10px 0 !important;
+        color: var(--ink-700) !important;
+        font-size: 0.92rem !important;
+    }
+
+    #staticHomesList article p.property-compliance-static + p + p + p {
+        margin: 0 0 10px 0 !important;
+        color: #1864ab !important;
+        font-size: 0.83rem !important;
+        font-weight: 700;
+    }
+
+    #staticHomesList .property-availability-link {
+        width: 100%;
+        margin-top: 4px;
+        min-height: 44px;
     }
 
     #staticHomesList h2 {
@@ -156,6 +484,116 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         border-radius: 12px;
     }
 
+    #staticHomesList .image-main-wrap {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        overflow: hidden;
+        border-radius: 10px;
+    }
+
+    @media (min-width: 992px) {
+        #staticHomesList .image-main-wrap {
+            width: min(62%, 560px);
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+    #staticHomesList .image-main-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        border-radius: 0;
+    }
+
+    #staticHomesList .gallery-trigger {
+        position: absolute;
+        right: 12px;
+        bottom: 12px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 10px 16px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #0f766e 0%, #166534 100%);
+        color: #ffffff;
+        font-size: 0.92rem;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        text-decoration: none;
+        border: 2px solid #ffffff;
+        box-shadow: 0 10px 22px rgba(6, 95, 70, 0.42), 0 0 0 2px rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+        transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+        animation: galleryPulse 2s ease-in-out infinite;
+    }
+
+    #staticHomesList .gallery-trigger:hover,
+    #staticHomesList .gallery-trigger:focus {
+        transform: translateY(-2px) scale(1.03);
+        background: linear-gradient(135deg, #065f46 0%, #14532d 100%);
+        box-shadow: 0 14px 26px rgba(6, 95, 70, 0.5), 0 0 0 3px rgba(255, 255, 255, 0.45);
+        color: #ffffff;
+    }
+
+    @keyframes galleryPulse {
+        0% {
+            box-shadow: 0 10px 22px rgba(6, 95, 70, 0.42), 0 0 0 2px rgba(255, 255, 255, 0.4);
+        }
+        50% {
+            box-shadow: 0 12px 24px rgba(6, 95, 70, 0.5), 0 0 0 4px rgba(255, 255, 255, 0.28);
+        }
+        100% {
+            box-shadow: 0 10px 22px rgba(6, 95, 70, 0.42), 0 0 0 2px rgba(255, 255, 255, 0.4);
+        }
+    }
+
+    #staticHomesList a.gallery-link-hidden {
+        display: none !important;
+    }
+
+    #staticHomesList .property-compliance-static {
+        margin: 0 0 10px 0;
+        font-size: 0.9rem;
+        line-height: 1.4;
+        color: #334155;
+        background: #f8fafc;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        padding: 8px 10px;
+    }
+
+    #staticHomesList .property-availability-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 6px;
+        padding: 11px 16px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+        color: #ffffff;
+        font-size: 0.9rem;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+        text-decoration: none;
+        box-shadow: 0 10px 20px rgba(18, 140, 126, 0.24);
+        transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+    }
+
+    #staticHomesList .property-availability-link:hover,
+    #staticHomesList .property-availability-link:focus {
+        transform: translateY(-1px);
+        box-shadow: 0 14px 26px rgba(18, 140, 126, 0.3);
+        filter: brightness(1.02);
+        color: #ffffff;
+    }
+
     #staticHomesList .property-info {
         padding: 14px 16px 18px 16px;
     }
@@ -184,7 +622,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
 
     #staticHomesList .open-preventivo-modal,
-    #staticHomesList a[href*="casa-"] {
+    #staticHomesList .property-detail-link {
         display: inline-flex;
         align-items: center;
         gap: 6px;
@@ -195,7 +633,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
 
     #staticHomesList .open-preventivo-modal:hover,
-    #staticHomesList a[href*="casa-"]:hover {
+    #staticHomesList .property-detail-link:hover {
         color: #065f46;
     }
 
@@ -209,6 +647,97 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             gap: 24px;
             grid-template-columns: 1fr;
         }
+
+        .booking-hero {
+            margin-top: 76px;
+            margin-bottom: 18px;
+            padding: 22px 14px 18px 14px;
+            border-radius: 18px;
+        }
+
+        .booking-hero h1 {
+            font-size: clamp(1.62rem, 7.1vw, 2.1rem);
+            margin-bottom: 10px;
+        }
+
+        .booking-hero .tagline {
+            font-size: 0.94rem;
+        }
+
+        .booking-benefits {
+            padding: 14px 10px;
+            border-radius: 14px;
+        }
+
+        .booking-photo-strip {
+            padding: 10px;
+            border-radius: 14px;
+            margin-bottom: 14px;
+        }
+
+        .booking-photo-strip h2 {
+            font-size: 1rem;
+        }
+
+        .booking-photo-strip p {
+            font-size: 0.84rem;
+            margin-bottom: 10px;
+        }
+
+        .booking-photo-grid {
+            grid-template-columns: 1fr;
+            gap: 8px;
+        }
+
+        .booking-photo-item {
+            aspect-ratio: 16 / 9;
+        }
+
+        .booking-benefits-list {
+            grid-template-columns: 1fr;
+        }
+
+        .booking-benefits-list li {
+            font-size: 0.88rem;
+            padding: 8px 9px;
+        }
+
+        .homes-toggle-btn {
+            width: 100%;
+            max-width: 340px;
+        }
+
+        #staticHomesList {
+            padding: 18px 10px 14px 10px !important;
+            border-radius: 18px !important;
+        }
+
+        #staticHomesList > h3 {
+            font-size: 1.1rem !important;
+            padding: 10px 10px !important;
+            margin-bottom: 10px !important;
+        }
+
+        .homes-subtitle {
+            font-size: 0.88rem;
+            margin-bottom: 14px;
+        }
+
+        #staticHomesList > div {
+            gap: 12px !important;
+            grid-template-columns: 1fr !important;
+        }
+
+        #staticHomesList > div > article {
+            padding: 12px !important;
+            border-radius: 14px !important;
+        }
+    }
+
+    @media (min-width: 1100px) {
+        #staticHomesList > div {
+            grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        }
     }
     </style>
     <!-- Flatpickr CSS -->
@@ -218,29 +747,35 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             width: 100%;
             max-width: 420px;
             margin: 0 auto;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(243, 252, 248, 0.97) 100%);
+            border: 1px solid var(--border-soft);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-soft);
+            padding: 22px 16px 16px 16px;
         }
         .form-group {
             position: relative;
-            margin-bottom: 28px;
+            margin-bottom: 18px;
         }
         .form-group label {
             font-weight: 600;
-            color: #22577a;
-            margin-bottom: 8px;
+            color: var(--sea-900);
+            margin-bottom: 7px;
             display: block;
             letter-spacing: 0.02em;
+            font-size: 0.88rem;
         }
         /* Migliora stile input data (flatpickr) */
         .form-group .date-input {
             width: 100%;
-            padding: 14px 44px 14px 18px;
-            border: 2px solid #b2f2d7;
-            border-radius: 14px;
-            font-size: 1.08em;
+            padding: 13px 44px 13px 16px;
+            border: 1.5px solid #bde9d7;
+            border-radius: 12px;
+            font-size: 1em;
             font-family: 'Poppins', Arial, sans-serif;
             background: #f8fffb url('https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_green.svg') no-repeat right 16px center/28px 28px;
-            color: #22577a;
-            box-shadow: 0 2px 12px rgba(67,233,123,0.07);
+            color: var(--ink-900);
+            box-shadow: 0 1px 8px rgba(67,233,123,0.06);
             transition: border-color 0.3s, box-shadow 0.3s;
             cursor: pointer;
         }
@@ -250,30 +785,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             align-items: center;
             gap: 8px;
             padding: 6px;
-            border: 2px solid #b2f2d7;
-            border-radius: 14px;
+            border: 1.5px solid #bde9d7;
+            border-radius: 12px;
             background: #f8fffb;
-            box-shadow: 0 2px 12px rgba(67,233,123,0.07);
+            box-shadow: 0 1px 8px rgba(67,233,123,0.06);
             transition: border-color 0.3s, box-shadow 0.3s;
         }
         .form-group .date-input:focus {
-            border-color: #25d366;
+            border-color: var(--mint-500);
             background-color: #fff;
             outline: none;
-            box-shadow: 0 4px 18px rgba(37,211,102,0.13);
+            box-shadow: 0 0 0 4px rgba(37, 211, 102, 0.11), 0 6px 18px rgba(37, 211, 102, 0.12);
         }
         .form-group .ospiti-stepper:focus-within {
-            border-color: #25d366;
+            border-color: var(--mint-500);
             background-color: #fff;
-            box-shadow: 0 4px 18px rgba(37,211,102,0.13);
+            box-shadow: 0 0 0 4px rgba(37, 211, 102, 0.11), 0 6px 18px rgba(37, 211, 102, 0.12);
         }
         .form-group .ospiti-stepper input[type="number"] {
             flex: 1;
             border: none;
             background: transparent;
-            color: #22577a;
+            color: var(--ink-900);
             text-align: center;
-            font-size: 1.08em;
+            font-size: 1em;
             font-family: 'Poppins', Arial, sans-serif;
             padding: 8px 4px;
             min-width: 0;
@@ -292,13 +827,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             -moz-appearance: textfield;
         }
         .ospiti-btn {
-            width: 40px;
-            height: 40px;
+            width: 34px;
+            height: 34px;
             border: none;
-            border-radius: 11px;
+            border-radius: 10px;
             background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
             color: #fff;
-            font-size: 1.45em;
+            font-size: 1.2em;
             line-height: 1;
             font-weight: 700;
             cursor: pointer;
@@ -335,10 +870,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             font-weight: 700;
         }
         .flatpickr-day.calendar-day-unavailable {
-            background: #fef2f2;
-            border-color: #fca5a5;
-            color: #991b1b;
-            opacity: 0.88;
+            background: #f1f5f9;
+            border-color: #cbd5e1;
+            color: #64748b;
+            opacity: 0.92;
         }
         .flatpickr-day.calendar-day-checkout-available {
             background: #dcfce7;
@@ -360,7 +895,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             opacity: 0.85;
         }
         .form-btn {
-            margin-top: 10px;
+            width: 100%;
+            margin-top: 6px;
+            padding: 14px 18px !important;
+            font-size: 1rem !important;
+            border-radius: 14px !important;
+            letter-spacing: 0.01em;
         }
         /* Uniforma la dimensione immagini nelle card risultati */
         #fadeSlideResults .property-image,
@@ -399,7 +939,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>  <!-- Google Tag Manager (noscript) -->
+<body class="booking-page">  <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FP79B56"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
@@ -472,12 +1012,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         });
     </script>
 
-    <main class="container">
-        <header style="text-align:center; margin-bottom: 50px; margin-top: 90px;">
+        <main class="container">
+                <header class="booking-hero">
             <h1>Prenota la tua casa vacanza a Torre Pali</h1>
-            <p class="tagline">Seleziona le date e il numero di ospiti per verificare le disponibilità. Il soggiorno è possibile solo da sabato a sabato, con una permanenza minima di 1 settimana, i giorni prenotabili sono evidenziati in verde nel calendario.</p>
-          <!-- FILTRO DATE INIZIO --></p>
+            <p class="tagline">Appartamenti a pochi passi dal mare di Torre Pali, con tutti i comfort per famiglie e coppie. Verifica ora la disponibilità inserendo le tue date e vivi la tua vacanza esclusiva nel Salento.</p> 
+                    <!-- FILTRO DATE INIZIO -->
         </header>
+
+        <section class="booking-photo-strip" aria-label="Foto Torre Pali e case vacanza">
+            <h2>Torre Pali, un'oasi di relax e bellezza</h2>
+            <p>Alcune immagini di Torre Pali.</p>
+            <div class="booking-photo-grid">
+                <figure class="booking-photo-item">
+                    <img src="img/torre-pali/torrepali-mobile.webp" alt="Spiaggia di Torre Pali" width="1200" height="900" loading="eager" decoding="async">
+                    <figcaption class="booking-photo-label">Spiaggia di Torre Pali</figcaption>
+                </figure>
+                <figure class="booking-photo-item">
+                    <img src="img/torre-pali/molo3.jpg" alt="Molo di Torre Pali al tramonto" width="1200" height="900" loading="lazy" decoding="async">
+                    <figcaption class="booking-photo-label">Il molo al tramonto</figcaption>
+                </figure>
+                <figure class="booking-photo-item">
+                    <img src="img/torre-pali/torrepali10.webp" alt="Mare cristallino a Torre Pali" width="1200" height="900" loading="lazy" decoding="async">
+                    <figcaption class="booking-photo-label">Mare cristallino</figcaption>
+                </figure>
+            </div>
+        </section>
+
         <section class="booking-form-section">
             <form id="booking-form">
                 <div class="form-group">
@@ -499,63 +1059,183 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <button type="submit" class="form-btn">Cerca disponibilità</button>
        
             </form>
-            <div id="staticHomesList" style="margin-top:22px; padding:18px; border:1px solid #e5e7eb; border-radius:12px; background:#f8fafc;">
-                <h3 style="margin:0 0 10px 0; color:#1f2937; font-size:1.05rem;">Le nostre case vacanza</h3>
-                <p style="margin:0 0 14px 0; color:#4b5563; font-size:0.95rem;">Anteprima case ispirata alla sezione Case Vacanza. Questa vetrina scompare quando avvii la ricerca disponibilita.</p>
+            <div id="results"></div>
+            <section class="booking-benefits" aria-label="Vantaggi case vacanza">
+                <h3>Perche scegliere le nostre case a Torre Pali</h3>
+                <ul class="booking-benefits-list">
+                    <li>Posizioni strategiche vicino al mare e ai servizi</li>
+                    <li>Parcheggio e comfort pensati per famiglie</li>
+                    <li>Assistenza rapida via WhatsApp tutti i giorni</li>
+                    <li>Prezzi chiari e disponibilita aggiornata</li>
+                </ul>
+            </section>
 
-                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:12px;">
+            <div class="homes-toggle-wrap">
+                <button type="button" id="toggleStaticHomes" class="homes-toggle-btn" aria-controls="staticHomesList" aria-expanded="false">Vedi tutte le case vacanza</button>
+            </div>
+
+            <div id="staticHomesList" hidden>
+                <h3>Le nostre case vacanza</h3>
+                <p class="homes-subtitle">Scegli la casa che preferisci e verifica subito la disponibilità.</p>
+
+                <div>
                     <article style="background:#fff; border:1px solid #dbe3ee; border-radius:10px; padding:12px;">
-                        <img src="img/casa-bella-vista1/prospetto.webp" alt="Casa Bellavista 1" loading="lazy" style="width:100%; height:150px; object-fit:cover; border-radius:8px; margin-bottom:10px;">
                         <h4 style="margin:0 0 6px 0; color:#0f172a;">Casa Bellavista 1</h4>
+                        <div class="image-main-wrap" style="margin-bottom:10px;">
+                            <img src="img/casa-bella-vista1/prospetto.webp" alt="Casa Bellavista 1" loading="lazy" style="width:100%; margin-bottom:0;">
+                            <a href="img/casa-bella-vista1/prospetto.webp" class="gallery-trigger" data-fancybox="gallery-bellavista-1" data-caption="Casa Bellavista 1 - Prospetto">Vedi foto</a>
+                        </div>
+                        <a href="img/casa-bella-vista1/veranda.jpg" class="gallery-link-hidden" data-fancybox="gallery-bellavista-1" data-caption="Casa Bellavista 1 - Veranda" aria-hidden="true" tabindex="-1">Veranda</a>
+                        <a href="img/casa-bella-vista1/veranda2.jpg" class="gallery-link-hidden" data-fancybox="gallery-bellavista-1" data-caption="Casa Bellavista 1 - Veranda" aria-hidden="true" tabindex="-1">Veranda 2</a>
+                        <a href="img/casa-bella-vista1/veranda3.jpg" class="gallery-link-hidden" data-fancybox="gallery-bellavista-1" data-caption="Casa Bellavista 1 - Veranda" aria-hidden="true" tabindex="-1">Veranda 3</a>
+                        <a href="img/casa-bella-vista1/veranda4.jpg" class="gallery-link-hidden" data-fancybox="gallery-bellavista-1" data-caption="Casa Bellavista 1 - Veranda" aria-hidden="true" tabindex="-1">Veranda 4</a>
+                        <a href="img/casa-bella-vista1/cucina.jpg" class="gallery-link-hidden" data-fancybox="gallery-bellavista-1" data-caption="Casa Bellavista 1 - Cucina" aria-hidden="true" tabindex="-1">Cucina</a>
+                        <a href="img/casa-bella-vista1/corridoio.jpg" class="gallery-link-hidden" data-fancybox="gallery-bellavista-1" data-caption="Casa Bellavista 1 - Corridoio" aria-hidden="true" tabindex="-1">Corridoio</a>
+                        <a href="img/casa-bella-vista1/corridoio1.jpg" class="gallery-link-hidden" data-fancybox="gallery-bellavista-1" data-caption="Casa Bellavista 1 - Corridoio" aria-hidden="true" tabindex="-1">Corridoio 2</a>
+                        <a href="img/casa-bella-vista1/camera.jpg" class="gallery-link-hidden" data-fancybox="gallery-bellavista-1" data-caption="Casa Bellavista 1 - Camera" aria-hidden="true" tabindex="-1">Camera</a>
+                        <a href="img/casa-bella-vista1/camera2.jpg" class="gallery-link-hidden" data-fancybox="gallery-bellavista-1" data-caption="Casa Bellavista 1 - Camera" aria-hidden="true" tabindex="-1">Camera 2</a>
+                        <a href="img/casa-bella-vista1/camera3.jpg" class="gallery-link-hidden" data-fancybox="gallery-bellavista-1" data-caption="Casa Bellavista 1 - Camera" aria-hidden="true" tabindex="-1">Camera 3</a>
+                        <a href="img/casa-bella-vista1/seconda-camera.jpg" class="gallery-link-hidden" data-fancybox="gallery-bellavista-1" data-caption="Casa Bellavista 1 - Camera" aria-hidden="true" tabindex="-1">Seconda Camera</a>
+                        <a href="img/casa-bella-vista1/secondacamera2.jpg" class="gallery-link-hidden" data-fancybox="gallery-bellavista-1" data-caption="Casa Bellavista 1 - Camera" aria-hidden="true" tabindex="-1">Seconda Camera 2</a>
+                        <a href="img/casa-bella-vista1/bagno.jpg" class="gallery-link-hidden" data-fancybox="gallery-bellavista-1" data-caption="Casa Bellavista 1 - Bagno" aria-hidden="true" tabindex="-1">Bagno</a>
+                        <a href="img/casa-bella-vista1/bagno2.jpg" class="gallery-link-hidden" data-fancybox="gallery-bellavista-1" data-caption="Casa Bellavista 1 - Bagno" aria-hidden="true" tabindex="-1">Bagno 2</a>
+                        <a href="img/casa-bella-vista1/scale.jpg" class="gallery-link-hidden" data-fancybox="gallery-bellavista-1" data-caption="Casa Bellavista 1 - Scale" aria-hidden="true" tabindex="-1">Scale</a>
+                        <a href="img/casa-bella-vista1/prospetto2.jpg" class="gallery-link-hidden" data-fancybox="gallery-bellavista-1" data-caption="Casa Bellavista 1 - Prospetto" aria-hidden="true" tabindex="-1">Prospetto 2</a>
+                        <a href="img/casa-bella-vista1/prospetto_mare.jpg" class="gallery-link-hidden" data-fancybox="gallery-bellavista-1" data-caption="Casa Bellavista 1 - Vista Mare" aria-hidden="true" tabindex="-1">Vista Mare</a>
+                        <p class="property-compliance-static"><strong>CIN:</strong> IT075066C200071293<br><strong>CIS:</strong> LE07506691000031092</p>
                         <p style="margin:0 0 8px 0; color:#0f766e; font-weight:600; font-size:0.92rem;">100m dalla spiaggia</p>
                         <p style="margin:0 0 8px 0; color:#334155; font-size:0.9rem;">Appartamento primo piano a 100 metri dalla spiaggia con spazio esterno panoramico. 2 camere grandi (5 posti letto), bagno, cucina, aria condizionata, lavatrice. Parcheggio gratuito con pass. Ideale per famiglie e relax vicino al mare.</p>
-                        <p style="margin:0 0 8px 0; color:#1f2937; font-size:0.86rem;">2 camere - 1 bagno - 70mq - AC - Lavatrice</p>
-                        <a href="#" class="open-preventivo-modal" data-appartamento="Casa Bellavista 1" style="display:block; color:#0f766e; text-decoration:none; font-weight:600; margin-bottom:6px;">Richiedi preventivo</a>
-                        <a href="casa-bellavista-1" style="color:#0f766e; text-decoration:none; font-weight:600;">Vedi dettagli</a>
+                        <p style="margin:0 0 8px 0; color:#1f2937; font-size:0.86rem; color:#1877f2">2 camere - 5 posti letto - 1 bagno - 70mq - AC - Lavatrice</p>
+                        <a href="#booking-form" class="property-availability-link">Verifica disponibilità</a>
                     </article>
 
                     <article style="background:#fff; border:1px solid #dbe3ee; border-radius:10px; padding:12px;">
-                        <img src="img/casa-bella-vista/prospetto-mobile.webp" alt="Casa Bellavista 2" loading="lazy" style="width:100%; height:150px; object-fit:cover; border-radius:8px; margin-bottom:10px;">
                         <h4 style="margin:0 0 6px 0; color:#0f172a;">Casa Bellavista 2</h4>
+                        <div class="image-main-wrap" style="margin-bottom:10px;">
+                            <img src="img/casa-bella-vista/prospetto-mobile.webp" alt="Casa Bellavista 2" loading="lazy" style="width:100%; margin-bottom:0;">
+                            <a href="img/casa-bella-vista/prospetto-mobile.webp" class="gallery-trigger" data-fancybox="gallery-bellavista-2" data-caption="Casa Bellavista 2 - Prospetto">Vedi foto</a>
+                        </div>
+                        <a href="img/casa-bella-vista/soggiorno_1.webp" class="gallery-link-hidden" data-fancybox="gallery-bellavista-2" data-caption="Casa Bellavista 2 - Soggiorno" aria-hidden="true" tabindex="-1">Soggiorno</a>
+                        <a href="img/casa-bella-vista/soggiorno_2.webp" class="gallery-link-hidden" data-fancybox="gallery-bellavista-2" data-caption="Casa Bellavista 2 - Soggiorno 2" aria-hidden="true" tabindex="-1">Soggiorno 2</a>
+                        <a href="img/casa-bella-vista/soggiorno_3.webp" class="gallery-link-hidden" data-fancybox="gallery-bellavista-2" data-caption="Casa Bellavista 2 - Soggiorno 3" aria-hidden="true" tabindex="-1">Soggiorno 3</a>
+                        <a href="img/casa-bella-vista/cucina.webp" class="gallery-link-hidden" data-fancybox="gallery-bellavista-2" data-caption="Casa Bellavista 2 - Cucina" aria-hidden="true" tabindex="-1">Cucina</a>
+                        <a href="img/casa-bella-vista/cortile.webp" class="gallery-link-hidden" data-fancybox="gallery-bellavista-2" data-caption="Casa Bellavista 2 - Cortile" aria-hidden="true" tabindex="-1">Cortile</a>
+                        <a href="img/casa-bella-vista/giardino_1.webp" class="gallery-link-hidden" data-fancybox="gallery-bellavista-2" data-caption="Casa Bellavista 2 - Giardino" aria-hidden="true" tabindex="-1">Giardino</a>
+                        <a href="img/casa-bella-vista/giardino_2.webp" class="gallery-link-hidden" data-fancybox="gallery-bellavista-2" data-caption="Casa Bellavista 2 - Giardino" aria-hidden="true" tabindex="-1">Giardino 2</a>
+                        <a href="img/casa-bella-vista/giardino_3.webp" class="gallery-link-hidden" data-fancybox="gallery-bellavista-2" data-caption="Casa Bellavista 2 - Giardino" aria-hidden="true" tabindex="-1">Giardino 3</a>
+                        <a href="img/casa-bella-vista/giardino_4.webp" class="gallery-link-hidden" data-fancybox="gallery-bellavista-2" data-caption="Casa Bellavista 2 - Giardino" aria-hidden="true" tabindex="-1">Giardino 4</a>
+                        <a href="img/casa-bella-vista/prima_camera_1.webp" class="gallery-link-hidden" data-fancybox="gallery-bellavista-2" data-caption="Casa Bellavista 2 - Camera" aria-hidden="true" tabindex="-1">Camera 1</a>
+                        <a href="img/casa-bella-vista/prima_camera_2.webp" class="gallery-link-hidden" data-fancybox="gallery-bellavista-2" data-caption="Casa Bellavista 2 - Camera" aria-hidden="true" tabindex="-1">Camera 1 (2)</a>
+                        <a href="img/casa-bella-vista/prima_camera_3.webp" class="gallery-link-hidden" data-fancybox="gallery-bellavista-2" data-caption="Casa Bellavista 2 - Camera" aria-hidden="true" tabindex="-1">Camera 1 (3)</a>
+                        <a href="img/casa-bella-vista/seconda_camera.webp" class="gallery-link-hidden" data-fancybox="gallery-bellavista-2" data-caption="Casa Bellavista 2 - Camera" aria-hidden="true" tabindex="-1">Camera 2</a>
+                        <a href="img/casa-bella-vista/seconda_camera_2.webp" class="gallery-link-hidden" data-fancybox="gallery-bellavista-2" data-caption="Casa Bellavista 2 - Camera" aria-hidden="true" tabindex="-1">Camera 2 (2)</a>
+                        <a href="img/casa-bella-vista/seconda_camera_5.webp" class="gallery-link-hidden" data-fancybox="gallery-bellavista-2" data-caption="Casa Bellavista 2 - Camera" aria-hidden="true" tabindex="-1">Camera 2 (3)</a>
+                        <a href="img/casa-bella-vista/terza_camera_2.webp" class="gallery-link-hidden" data-fancybox="gallery-bellavista-2" data-caption="Casa Bellavista 2 - Camera" aria-hidden="true" tabindex="-1">Camera 3</a>
+                        <a href="img/casa-bella-vista/terza_camera_4.webp" class="gallery-link-hidden" data-fancybox="gallery-bellavista-2" data-caption="Casa Bellavista 2 - Camera" aria-hidden="true" tabindex="-1">Camera 3 (2)</a>
+                        <a href="img/casa-bella-vista/primo_bagno.webp" class="gallery-link-hidden" data-fancybox="gallery-bellavista-2" data-caption="Casa Bellavista 2 - Bagno" aria-hidden="true" tabindex="-1">Bagno 1</a>
+                        <a href="img/casa-bella-vista/secondo_bagno.webp" class="gallery-link-hidden" data-fancybox="gallery-bellavista-2" data-caption="Casa Bellavista 2 - Bagno" aria-hidden="true" tabindex="-1">Bagno 2</a>
+                        <a href="img/casa-bella-vista/prospetto.webp" class="gallery-link-hidden" data-fancybox="gallery-bellavista-2" data-caption="Casa Bellavista 2 - Prospetto" aria-hidden="true" tabindex="-1">Prospetto</a>
+                        <a href="img/casa-bella-vista/prospetto_2.webp" class="gallery-link-hidden" data-fancybox="gallery-bellavista-2" data-caption="Casa Bellavista 2 - Prospetto" aria-hidden="true" tabindex="-1">Prospetto 2</a>
+                        <p class="property-compliance-static"><strong>CIN:</strong> IT075066C200071298<br><strong>CIS:</strong> LE07506691000031096</p>
                         <p style="margin:0 0 8px 0; color:#0f766e; font-weight:600; font-size:0.92rem;">20m dalla spiaggia</p>
-                        <p style="margin:0 0 8px 0; color:#334155; font-size:0.9rem;">Quadrilocale piano terra a 20 metri dalla spiaggia con cortile privato in affitto. Soggiorno-cucina, 3 camere (matrimoniale+singolo, matrimoniale, tripla), 2 bagni, lavatrice, TV. Parcheggio privato per 2 vetture. Affitto ideale per famiglie che desiderano un'esperienza completa con tutti i comfort. </p>
-                        <p style="margin:0 0 8px 0; color:#1f2937; font-size:0.86rem;">3 camere - 2 bagni - 90mq - WiFi - AC</p>
-                        <a href="#" class="open-preventivo-modal" data-appartamento="Casa Bellavista 2" style="display:block; color:#0f766e; text-decoration:none; font-weight:600; margin-bottom:6px;">Richiedi preventivo</a>
-                        <a href="casa-bellavista-2" style="color:#0f766e; text-decoration:none; font-weight:600;">Vedi dettagli</a>
+                        <p style="margin:0 0 8px 0; color:#334155; font-size:0.9rem;">Quadrilocale piano terra a 20 metri dalla spiaggia con cortile privato in affitto. Soggiorno-cucina, 3 camere (matrimoniale+singolo, matrimoniale, tripla), 2 bagni, lavatrice, TV. Parcheggio privato per 2 vetture. Affitto ideale per famiglie che desiderano un'esperienza completa con tutti i comfort.</p>
+                        <p style="margin:0 0 8px 0; color:#1f2937; font-size:0.86rem; color:#1877f2">3 camere - 8 posti letto - 2 bagni - 90mq - WiFi - AC</p>
+                        <a href="#booking-form" class="property-availability-link">Verifica disponibilità</a>
                     </article>
 
                     <article style="background:#fff; border:1px solid #dbe3ee; border-radius:10px; padding:12px;">
-                        <img src="img/casa-giorgio/prospetto-mobile.webp" alt="Casa Giorgio 4" loading="lazy" style="width:100%; height:150px; object-fit:cover; border-radius:8px; margin-bottom:10px;">
                         <h4 style="margin:0 0 6px 0; color:#0f172a;">Casa Giorgio 4</h4>
+                        <div class="image-main-wrap" style="margin-bottom:10px;">
+                            <img src="img/casa-giorgio/prospetto-mobile.webp" alt="Casa Giorgio 4" loading="lazy" style="width:100%; margin-bottom:0;">
+                            <a href="img/casa-giorgio/prospetto-mobile.webp" class="gallery-trigger" data-fancybox="gallery-giorgio-4" data-caption="Casa Giorgio 4 - Prospetto">Vedi foto</a>
+                        </div>
+                        <a href="img/casa-giorgio/soggiorno.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-4" data-caption="Casa Giorgio 4 - Soggiorno" aria-hidden="true" tabindex="-1">Soggiorno</a>
+                        <a href="img/casa-giorgio/soggiorno2.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-4" data-caption="Casa Giorgio 4 - Soggiorno 2" aria-hidden="true" tabindex="-1">Soggiorno 2</a>
+                        <a href="img/casa-giorgio/soggiorno3.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-4" data-caption="Casa Giorgio 4 - Soggiorno 3" aria-hidden="true" tabindex="-1">Soggiorno 3</a>
+                        <a href="img/casa-giorgio/cucina.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-4" data-caption="Casa Giorgio 4 - Cucina" aria-hidden="true" tabindex="-1">Cucina</a>
+                        <a href="img/casa-giorgio/cortileinterno.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-4" data-caption="Casa Giorgio 4 - Cortile" aria-hidden="true" tabindex="-1">Cortile</a>
+                        <a href="img/casa-giorgio/cortileinterno1.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-4" data-caption="Casa Giorgio 4 - Cortile 2" aria-hidden="true" tabindex="-1">Cortile 2</a>
+                        <a href="img/casa-giorgio/cortileinterno3.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-4" data-caption="Casa Giorgio 4 - Cortile 3" aria-hidden="true" tabindex="-1">Cortile 3</a>
+                        <a href="img/casa-giorgio/camera.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-4" data-caption="Casa Giorgio 4 - Camera" aria-hidden="true" tabindex="-1">Camera</a>
+                        <a href="img/casa-giorgio/camera2.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-4" data-caption="Casa Giorgio 4 - Camera" aria-hidden="true" tabindex="-1">Camera 2</a>
+                        <a href="img/casa-giorgio/camera3.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-4" data-caption="Casa Giorgio 4 - Camera" aria-hidden="true" tabindex="-1">Camera 3</a>
+                        <a href="img/casa-giorgio/camera4.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-4" data-caption="Casa Giorgio 4 - Camera" aria-hidden="true" tabindex="-1">Camera 4</a>
+                        <a href="img/casa-giorgio/camera5.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-4" data-caption="Casa Giorgio 4 - Camera" aria-hidden="true" tabindex="-1">Camera 5</a>
+                        <a href="img/casa-giorgio/camera6.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-4" data-caption="Casa Giorgio 4 - Camera" aria-hidden="true" tabindex="-1">Camera 6</a>
+                        <a href="img/casa-giorgio/camera7.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-4" data-caption="Casa Giorgio 4 - Camera" aria-hidden="true" tabindex="-1">Camera 7</a>
+                        <a href="img/casa-giorgio/corridoio.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-4" data-caption="Casa Giorgio 4 - Corridoio" aria-hidden="true" tabindex="-1">Corridoio</a>
+                        <a href="img/casa-giorgio/bagno1.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-4" data-caption="Casa Giorgio 4 - Bagno" aria-hidden="true" tabindex="-1">Bagno</a>
+                        <a href="img/casa-giorgio/ripostiglio.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-4" data-caption="Casa Giorgio 4 - Ripostiglio" aria-hidden="true" tabindex="-1">Ripostiglio</a>
+                        <a href="img/casa-giorgio/prospetto.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-4" data-caption="Casa Giorgio 4 - Prospetto" aria-hidden="true" tabindex="-1">Prospetto</a>
+                        <a href="img/casa-giorgio/prospetto2.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-4" data-caption="Casa Giorgio 4 - Prospetto" aria-hidden="true" tabindex="-1">Prospetto 2</a>
+                        <a href="img/casa-giorgio/prospetto3.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-4" data-caption="Casa Giorgio 4 - Prospetto" aria-hidden="true" tabindex="-1">Prospetto 3</a>
+                        <p class="property-compliance-static"><strong>CIN:</strong> IT075066C200123457<br><strong>CIS:</strong> LE07506691000075733</p>
                         <p style="margin:0 0 8px 0; color:#0f766e; font-weight:600; font-size:0.92rem;">40m dalla spiaggia</p>
                         <p style="margin:0 0 8px 0; color:#334155; font-size:0.9rem;">Appartamento in affitto piano terra a 40 metri dalla spiaggia con spazi esterni attrezzati. 3 camere (fino a 3 matrimoniali possibili), doccia esterna, zanzariere, climatizzatore. Affitto a 50m da tutti i servizi e 100m dal porticciolo. Parcheggio gratuito con pass.</p>
-                        <p style="margin:0 0 8px 0; color:#1f2937; font-size:0.86rem;">3 camere - 1 bagno - Piano terra - AC - TV Sat</p>
-                        <a href="#" class="open-preventivo-modal" data-appartamento="Casa Giorgio 4" style="display:block; color:#0f766e; text-decoration:none; font-weight:600; margin-bottom:6px;">Richiedi preventivo</a>
-                        <a href="casa-giorgio-4" style="color:#0f766e; text-decoration:none; font-weight:600;">Vedi dettagli</a>
+                        <p style="margin:0 0 8px 0; color:#1f2937; font-size:0.86rem; color:#1877f2">3 camere - 6 posti letto - 1 bagno - Piano terra - AC - TV Sat</p>
+                        <a href="#booking-form" class="property-availability-link">Verifica disponibilità</a>
                     </article>
 
                     <article style="background:#fff; border:1px solid #dbe3ee; border-radius:10px; padding:12px;">
-                        <img src="img/casa-giorgio2/prospetto_mare.webp" alt="Casa Giorgio 6" loading="lazy" style="width:100%; height:150px; object-fit:cover; border-radius:8px; margin-bottom:10px;">
                         <h4 style="margin:0 0 6px 0; color:#0f172a;">Casa Giorgio 6</h4>
+                        <div class="image-main-wrap" style="margin-bottom:10px;">
+                            <img src="img/casa-giorgio2/prospetto_mare.webp" alt="Casa Giorgio 6" loading="lazy" style="width:100%; margin-bottom:0;">
+                            <a href="img/casa-giorgio2/prospetto_mare.webp" class="gallery-trigger" data-fancybox="gallery-giorgio-6" data-caption="Casa Giorgio 6 - Vista mare">Vedi foto</a>
+                        </div>
+                        <a href="img/casa-giorgio2/soggiorno.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-6" data-caption="Casa Giorgio 6 - Soggiorno" aria-hidden="true" tabindex="-1">Soggiorno</a>
+                        <a href="img/casa-giorgio2/soggiorno2.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-6" data-caption="Casa Giorgio 6 - Soggiorno" aria-hidden="true" tabindex="-1">Soggiorno 2</a>
+                        <a href="img/casa-giorgio2/camera.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-6" data-caption="Casa Giorgio 6 - Camera" aria-hidden="true" tabindex="-1">Camera</a>
+                        <a href="img/casa-giorgio2/camera2.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-6" data-caption="Casa Giorgio 6 - Camera" aria-hidden="true" tabindex="-1">Camera 2</a>
+                        <a href="img/casa-giorgio2/camera3.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-6" data-caption="Casa Giorgio 6 - Camera" aria-hidden="true" tabindex="-1">Camera 3</a>
+                        <a href="img/casa-giorgio2/camera4.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-6" data-caption="Casa Giorgio 6 - Camera" aria-hidden="true" tabindex="-1">Camera 4</a>
+                        <a href="img/casa-giorgio2/camera5.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-6" data-caption="Casa Giorgio 6 - Camera" aria-hidden="true" tabindex="-1">Camera 5</a>
+                        <a href="img/casa-giorgio2/camera6.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-6" data-caption="Casa Giorgio 6 - Camera" aria-hidden="true" tabindex="-1">Camera 6</a>
+                        <a href="img/casa-giorgio2/ingresso.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-6" data-caption="Casa Giorgio 6 - Ingresso" aria-hidden="true" tabindex="-1">Ingresso</a>
+                        <a href="img/casa-giorgio2/scala.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-6" data-caption="Casa Giorgio 6 - Scala" aria-hidden="true" tabindex="-1">Scala</a>
+                        <a href="img/casa-giorgio2/bagno.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-6" data-caption="Casa Giorgio 6 - Bagno" aria-hidden="true" tabindex="-1">Bagno</a>
+                        <a href="img/casa-giorgio2/balcone.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-6" data-caption="Casa Giorgio 6 - Balcone" aria-hidden="true" tabindex="-1">Balcone</a>
+                        <a href="img/casa-giorgio2/balcone2.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-6" data-caption="Casa Giorgio 6 - Balcone" aria-hidden="true" tabindex="-1">Balcone 2</a>
+                        <a href="img/casa-giorgio2/balcone3.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-6" data-caption="Casa Giorgio 6 - Balcone" aria-hidden="true" tabindex="-1">Balcone 3</a>
+                        <a href="img/casa-giorgio2/balcone4.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-6" data-caption="Casa Giorgio 6 - Balcone" aria-hidden="true" tabindex="-1">Balcone 4</a>
+                        <a href="img/casa-giorgio2/prospetto2.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-6" data-caption="Casa Giorgio 6 - Prospetto" aria-hidden="true" tabindex="-1">Prospetto 2</a>
+                        <a href="img/casa-giorgio2/prospetto3.webp" class="gallery-link-hidden" data-fancybox="gallery-giorgio-6" data-caption="Casa Giorgio 6 - Prospetto" aria-hidden="true" tabindex="-1">Prospetto 3</a>
+                        <p class="property-compliance-static"><strong>CIN:</strong> IT075066C200123459<br><strong>CIS:</strong> LE07506691000075734</p>
                         <p style="margin:0 0 8px 0; color:#0f766e; font-weight:600; font-size:0.92rem;">Primo piano vista mare</p>
                         <p style="margin:0 0 8px 0; color:#334155; font-size:0.9rem;">Appartamento di 90mq al primo piano a 40 metri dalla spiaggia con veranda vista mare. 3 camere, scala coperta, spazi esterni attrezzati per pranzi all'aperto. Parcheggio gratuito con pass.</p>
-                        <p style="margin:0 0 8px 0; color:#1f2937; font-size:0.86rem;">3 camere - 1 bagno - 90mq - Vista mare</p>
-                        <a href="#" class="open-preventivo-modal" data-appartamento="Casa Giorgio 6" style="display:block; color:#0f766e; text-decoration:none; font-weight:600; margin-bottom:6px;">Richiedi preventivo</a>
-                        <a href="casa-giorgio-6" style="color:#0f766e; text-decoration:none; font-weight:600;">Vedi dettagli</a>
+                        <p style="margin:0 0 8px 0; color:#1f2937; font-size:0.86rem; color:#1877f2">3 camere - 6 posti letto - 1 bagno - 90mq - Vista mare</p>
+                        <a href="#booking-form" class="property-availability-link">Verifica disponibilità</a>
                     </article>
 
                     <article style="background:#fff; border:1px solid #dbe3ee; border-radius:10px; padding:12px;">
-                        <img src="img/respirodimare/prospetto4.webp" alt="Respiro di Mare" loading="lazy" style="width:100%; height:150px; object-fit:cover; border-radius:8px; margin-bottom:10px;">
                         <h4 style="margin:0 0 6px 0; color:#0f172a;">Respiro di Mare</h4>
+                        <div class="image-main-wrap" style="margin-bottom:10px;">
+                            <img src="img/respirodimare/prospetto4.webp" alt="Respiro di Mare" loading="lazy" style="width:100%; margin-bottom:0;">
+                            <a href="img/respirodimare/prospetto4.webp" class="gallery-trigger" data-fancybox="gallery-respiro" data-caption="Respiro di Mare - Prospetto">Vedi foto</a>
+                        </div>
+                        <a href="img/respirodimare/soggiorno.webp" class="gallery-link-hidden" data-fancybox="gallery-respiro" data-caption="Respiro di Mare - Soggiorno" aria-hidden="true" tabindex="-1">Soggiorno</a>
+                        <a href="img/respirodimare/cucina.webp" class="gallery-link-hidden" data-fancybox="gallery-respiro" data-caption="Respiro di Mare - Cucina" aria-hidden="true" tabindex="-1">Cucina</a>
+                        <a href="img/respirodimare/camera.webp" class="gallery-link-hidden" data-fancybox="gallery-respiro" data-caption="Respiro di Mare - Camera" aria-hidden="true" tabindex="-1">Camera</a>
+                        <a href="img/respirodimare/camera2.webp" class="gallery-link-hidden" data-fancybox="gallery-respiro" data-caption="Respiro di Mare - Camera" aria-hidden="true" tabindex="-1">Camera 2</a>
+                        <a href="img/respirodimare/camera3.webp" class="gallery-link-hidden" data-fancybox="gallery-respiro" data-caption="Respiro di Mare - Camera" aria-hidden="true" tabindex="-1">Camera 3</a>
+                        <a href="img/respirodimare/corridoio.webp" class="gallery-link-hidden" data-fancybox="gallery-respiro" data-caption="Respiro di Mare - Corridoio" aria-hidden="true" tabindex="-1">Corridoio</a>
+                        <a href="img/respirodimare/bagno.webp" class="gallery-link-hidden" data-fancybox="gallery-respiro" data-caption="Respiro di Mare - Bagno" aria-hidden="true" tabindex="-1">Bagno</a>
+                        <a href="img/respirodimare/balcone.webp" class="gallery-link-hidden" data-fancybox="gallery-respiro" data-caption="Respiro di Mare - Balcone" aria-hidden="true" tabindex="-1">Balcone</a>
+                        <a href="img/respirodimare/balcone2.webp" class="gallery-link-hidden" data-fancybox="gallery-respiro" data-caption="Respiro di Mare - Balcone" aria-hidden="true" tabindex="-1">Balcone 2</a>
+                        <a href="img/respirodimare/balcone3.webp" class="gallery-link-hidden" data-fancybox="gallery-respiro" data-caption="Respiro di Mare - Balcone" aria-hidden="true" tabindex="-1">Balcone 3</a>
+                        <a href="img/respirodimare/balcone4.webp" class="gallery-link-hidden" data-fancybox="gallery-respiro" data-caption="Respiro di Mare - Balcone" aria-hidden="true" tabindex="-1">Balcone 4</a>
+                        <a href="img/respirodimare/scale.webp" class="gallery-link-hidden" data-fancybox="gallery-respiro" data-caption="Respiro di Mare - Scale" aria-hidden="true" tabindex="-1">Scale</a>
+                        <a href="img/respirodimare/parcheggio.webp" class="gallery-link-hidden" data-fancybox="gallery-respiro" data-caption="Respiro di Mare - Parcheggio" aria-hidden="true" tabindex="-1">Parcheggio</a>
+                        <a href="img/respirodimare/prospetto.webp" class="gallery-link-hidden" data-fancybox="gallery-respiro" data-caption="Respiro di Mare - Prospetto" aria-hidden="true" tabindex="-1">Prospetto</a>
+                        <a href="img/respirodimare/prospetto2.webp" class="gallery-link-hidden" data-fancybox="gallery-respiro" data-caption="Respiro di Mare - Prospetto" aria-hidden="true" tabindex="-1">Prospetto 2</a>
+                        <a href="img/respirodimare/prospetto3.webp" class="gallery-link-hidden" data-fancybox="gallery-respiro" data-caption="Respiro di Mare - Prospetto" aria-hidden="true" tabindex="-1">Prospetto 3</a>
+                        <p class="property-compliance-static"><strong>CIN:</strong> IT075066C200123490<br><strong>CIS:</strong> LE07506691000075753</p>
                         <p style="margin:0 0 8px 0; color:#0f766e; font-weight:600; font-size:0.92rem;">Veranda con vista mare</p>
                         <p style="margin:0 0 8px 0; color:#334155; font-size:0.9rem;">Appartamento di 90mq al primo piano a 40 metri dalla spiaggia con veranda vista mare. 3 camere, scala coperta, spazi esterni attrezzati per pranzi all'aperto. Parcheggio gratuito con pass.</p>
-                        <p style="margin:0 0 8px 0; color:#1f2937; font-size:0.86rem;">3 camere - 1 bagno - 90mq - Vista mare</p>
-                        <a href="#" class="open-preventivo-modal" data-appartamento="Respiro di Mare" style="display:block; color:#0f766e; text-decoration:none; font-weight:600; margin-bottom:6px;">Richiedi preventivo</a>
-                        <a href="respiro-di-mare" style="color:#0f766e; text-decoration:none; font-weight:600;">Vedi dettagli</a>
+                        <p style="margin:0 0 8px 0; color:#1f2937; font-size:0.86rem; color:#1877f2">3 camere - 6 posti letto - 1 bagno - 90mq - Vista mare</p>
+                        <a href="#booking-form" class="property-availability-link">Verifica disponibilità</a>
                     </article>
                 </div>
             </div>
-            <div id="results"></div>
         </section>
     </main>
     <footer class="footer" aria-label="Footer Torre Pali Salento">
@@ -592,7 +1272,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <h3>Contatti Torre Pali Vacanze</h3>
                 <p> <a href="tel:+393886587080" onclick="gtag('event','click_telefono'); return gtag_report_conversion('tel:+393886587080');"> 📞+39 388 658 70 80</a></p>
                 <p>📧 <strong>info@torrepalivacanze.it</strong></p>
-                <p><a href="https://wa.me/393886587080?text=Ciao!%20Vorrei%20informazioni%20sulle%20vostre%20case%20vacanza%20a%20Torre%20Pali" onclick="gtag('event','click_whatsapp'); gtag_report_conversion()" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill="#fff" style="background:#25d366; border-radius:3px;"><path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 7.933-2.127c2.42 1.37 5.173 2.127 8.067 2.127 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.467c-2.482 0-4.908-0.646-7.07-1.87l-0.507-0.292-4.713 1.262 1.262-4.669-0.292-0.508c-1.207-2.100-1.847-4.507-1.847-6.978 0-7.51 6.11-13.619 13.619-13.619s13.619 6.109 13.619 13.619c0 7.51-6.11 13.619-13.619 13.619zM21.789 18.75c-0.214-0.107-1.268-0.625-1.464-0.696s-0.339-0.107-0.482 0.107c-0.143 0.214-0.554 0.696-0.679 0.839s-0.25 0.161-0.464 0.054c-0.214-0.107-0.902-0.333-1.718-1.060-0.635-0.567-1.064-1.268-1.189-1.482s-0.013-0.329 0.094-0.435c0.096-0.096 0.214-0.25 0.321-0.375s0.143-0.214 0.214-0.357 0.036-0.268-0.018-0.375c-0.054-0.107-0.482-1.161-0.661-1.589s-0.349-0.362-0.482-0.369c-0.125-0.007-0.268-0.007-0.411-0.007s-0.375 0.054-0.571 0.268c-0.196 0.214-0.75 0.732-0.75 1.786s0.768 2.071 0.875 2.214c0.107 0.143 1.5 2.357 3.653 3.304 0.51 0.214 0.909 0.343 1.219 0.438 0.512 0.161 0.978 0.139 1.346 0.084 0.411-0.061 1.268-0.518 1.446-1.018s0.179-0.929 0.125-1.018c-0.054-0.089-0.196-0.143-0.411-0.25z"/></svg>WhatsApp</a></p>
+                <p><a href="https://wa.me/393886587080?text=Ciao!%20Vorrei%20informazioni%20sulle%20vostre%20case%20vacanza%20a%20Torre%20Pali" onclick="gtag('event','click_whatsapp'); gtag_report_whatsapp_conversion()" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill="#fff" style="background:#25d366; border-radius:3px;"><path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 7.933-2.127c2.42 1.37 5.173 2.127 8.067 2.127 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.467c-2.482 0-4.908-0.646-7.07-1.87l-0.507-0.292-4.713 1.262 1.262-4.669-0.292-0.508c-1.207-2.100-1.847-4.507-1.847-6.978 0-7.51 6.11-13.619 13.619-13.619s13.619 6.109 13.619 13.619c0 7.51-6.11 13.619-13.619 13.619zM21.789 18.75c-0.214-0.107-1.268-0.625-1.464-0.696s-0.339-0.107-0.482 0.107c-0.143 0.214-0.554 0.696-0.679 0.839s-0.25 0.161-0.464 0.054c-0.214-0.107-0.902-0.333-1.718-1.060-0.635-0.567-1.064-1.268-1.189-1.482s-0.013-0.329 0.094-0.435c0.096-0.096 0.214-0.25 0.321-0.375s0.143-0.214 0.214-0.357 0.036-0.268-0.018-0.375c-0.054-0.107-0.482-1.161-0.661-1.589s-0.349-0.362-0.482-0.369c-0.125-0.007-0.268-0.007-0.411-0.007s-0.375 0.054-0.571 0.268c-0.196 0.214-0.75 0.732-0.75 1.786s0.768 2.071 0.875 2.214c0.107 0.143 1.5 2.357 3.653 3.304 0.51 0.214 0.909 0.343 1.219 0.438 0.512 0.161 0.978 0.139 1.346 0.084 0.411-0.061 1.268-0.518 1.446-1.018s0.179-0.929 0.125-1.018c-0.054-0.089-0.196-0.143-0.411-0.25z"/></svg>WhatsApp</a></p>
                 <p><a href="https://www.facebook.com/profile.php?id=61577506430394" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#fff" style="background:#1877f2; border-radius:3px;"><path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.406.595 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.406 24 22.674V1.326C24 .592 23.406 0 22.675 0z"/></svg>Seguici su Facebook</a></p>
                 <p style="margin-top: 15px;">Orario: 09:00 - 20:00<br>Risposta entro 1 ora</p>
             </div>
@@ -602,7 +1282,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </footer>
     <script>
-    // Permetti solo la selezione dei sabati nei campi data
+    // Validazioni base per i campi data
     function isSaturday(dateStr) {
         const d = new Date(dateStr);
         return d.getDay() === 6;
@@ -614,7 +1294,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         const month = parts[1];
         return month === 11 || month === 12 || month === 1 || month === 2 || month === 3;
     }
-
+    
     function isBeforeToday(dateStr) {
         if (!/^\d{4}-\d{2}-\d{2}$/.test(String(dateStr || ''))) return false;
         const parts = dateStr.split('-').map(Number);
@@ -624,7 +1304,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         today.setHours(0, 0, 0, 0);
         return selected < today;
     }
-
+    
     function getTodayKey() {
         const now = new Date();
         const y = now.getFullYear();
@@ -632,15 +1312,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         const d = String(now.getDate()).padStart(2, '0');
         return `${y}-${m}-${d}`;
     }
-
+    
     function restrictToSaturday(input) {
         input.addEventListener('input', function() {
             if (this.value && isBeforeToday(this.value)) {
                 this.setCustomValidity('Non puoi selezionare una data passata');
             } else if (this.value && isWinterBlockedDate(this.value)) {
                 this.setCustomValidity('Date non prenotabili dal 1 novembre al 31 marzo');
-            } else if (this.value && !isSaturday(this.value)) {
-                this.setCustomValidity('Seleziona solo un sabato');
             } else {
                 this.setCustomValidity('');
             }
@@ -732,6 +1410,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         let checkInSelected = null;
         let houseIds = [];
         let bookingsByHouse = {};
+        let turnoverCheckInDates = new Set();
+        let turnoverCheckOutDates = new Set();
 
         function hasAnyHouseAvailable(checkInKey, checkOutKey) {
             if (!houseIds.length) return true;
@@ -745,6 +1425,49 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 }
                 return true;
             });
+        }
+
+        function isAllowedCheckInDate(date) {
+            const key = toDateKey(date);
+            return enableOnlySaturday(date) || turnoverCheckInDates.has(key);
+        }
+
+        function isAllowedCheckOutDate(date) {
+            const key = toDateKey(date);
+            return enableOnlySaturday(date) || turnoverCheckOutDates.has(key);
+        }
+
+        function hasAnyHouseWithAvailableStayFrom(checkInDate) {
+            if (!checkInDate) return false;
+            const checkInKey = toDateKey(checkInDate);
+
+            // Regola: è sufficiente trovare un checkout valido successivo al check-in
+            // (sabato o giorno turnover) senza sovrapposizione.
+            for (let i = 1; i <= 60; i++) {
+                const candidate = addDays(checkInDate, i);
+                if (isWinterBlocked(candidate)) continue;
+                if (!isAllowedCheckOutDate(candidate)) continue;
+
+                const candidateKey = toDateKey(candidate);
+                if (hasAnyHouseAvailable(checkInKey, candidateKey)) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        function findFirstAvailableCheckInDate(maxDaysAhead) {
+            const limit = Number.isFinite(maxDaysAhead) ? maxDaysAhead : 365;
+            for (let i = 0; i <= limit; i++) {
+                const candidate = addDays(today, i);
+                if (isWinterBlocked(candidate)) continue;
+                if (!isAllowedCheckInDate(candidate)) continue;
+                if (hasAnyHouseWithAvailableStayFrom(candidate)) {
+                    return candidate;
+                }
+            }
+            return null;
         }
 
         try {
@@ -763,10 +1486,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 houseIds.forEach(function(houseId, idx) {
                     bookingsByHouse[houseId] = Array.isArray(bookingResponses[idx]) ? bookingResponses[idx] : [];
                 });
+
+                turnoverCheckInDates = new Set();
+                turnoverCheckOutDates = new Set();
+                houseIds.forEach(function(houseId) {
+                    const bookings = bookingsByHouse[houseId] || [];
+                    bookings.forEach(function(booking) {
+                        if (booking && booking.checkOut) {
+                            turnoverCheckInDates.add(String(booking.checkOut));
+                        }
+                        if (booking && booking.checkIn) {
+                            turnoverCheckOutDates.add(String(booking.checkIn));
+                        }
+                    });
+                });
             }
         } catch (err) {
             console.warn('Impossibile caricare le prenotazioni per il calendario dinamico:', err);
         }
+
+        const firstAvailableCheckInDate = findFirstAvailableCheckInDate(540);
 
         flatpickr(checkInInput, {
             dateFormat: "Y-m-d",
@@ -774,20 +1513,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             disable: [function(date) {
                 if (date < today) return true;
                 if (isWinterBlocked(date)) return true;
-                if (!enableOnlySaturday(date)) return true;
-                const checkInKey = toDateKey(date);
-                const checkOutKey = toDateKey(addDays(date, 7));
-                return !hasAnyHouseAvailable(checkInKey, checkOutKey);
+                if (!isAllowedCheckInDate(date)) return true;
+                return !hasAnyHouseWithAvailableStayFrom(date);
             }],
             minDate: "today",
+            onReady: function(selectedDates, dateStr, fp) {
+                if (firstAvailableCheckInDate) {
+                    fp.jumpToDate(firstAvailableCheckInDate);
+                }
+            },
             onDayCreate: function(dObj, dStr, fp, dayElem) {
                 const dayDate = dayElem.dateObj;
                 if (dayDate < today) return;
                 if (isWinterBlocked(dayDate)) return;
-                if (!enableOnlySaturday(dayDate)) return;
-                const dayKey = toDateKey(dayDate);
-                const plusWeekKey = toDateKey(addDays(dayDate, 7));
-                if (hasAnyHouseAvailable(dayKey, plusWeekKey)) {
+                if (!isAllowedCheckInDate(dayDate)) return;
+                if (hasAnyHouseWithAvailableStayFrom(dayDate)) {
                     dayElem.classList.add('calendar-day-available');
                 } else {
                     dayElem.classList.add('calendar-day-unavailable');
@@ -817,7 +1557,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 const dayDate = dayElem.dateObj;
                 if (dayDate < today) return;
                 if (isWinterBlocked(dayDate)) return;
-                if (!enableOnlySaturday(dayDate)) return;
+                if (!isAllowedCheckOutDate(dayDate)) return;
                 if (!checkInInput.value) return;
 
                 const checkInDate = new Date(checkInInput.value);
@@ -833,7 +1573,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 function(date) {
                     if (date < today) return true;
                     if (isWinterBlocked(date)) return true;
-                    if (!enableOnlySaturday(date)) return true;
+                    if (!isAllowedCheckOutDate(date)) return true;
                     if (checkInInput.value) {
                         const checkInDate = new Date(checkInInput.value);
                         if (date <= checkInDate) return true;
@@ -850,7 +1590,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
-    <script src="script-booking1.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.Fancybox) {
+            Fancybox.bind('[data-fancybox]', {
+                animated: true,
+                showClass: 'fancybox-fadeIn',
+                hideClass: 'fancybox-fadeOut'
+            });
+        }
+
+        const staticHomesList = document.getElementById('staticHomesList');
+        const toggleStaticHomesBtn = document.getElementById('toggleStaticHomes');
+
+        if (staticHomesList && toggleStaticHomesBtn) {
+            toggleStaticHomesBtn.addEventListener('click', function() {
+                const isHidden = staticHomesList.hasAttribute('hidden');
+
+                if (isHidden) {
+                    staticHomesList.removeAttribute('hidden');
+                    this.textContent = 'Nascondi elenco case';
+                    this.setAttribute('aria-expanded', 'true');
+                    staticHomesList.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } else {
+                    staticHomesList.setAttribute('hidden', '');
+                    this.textContent = 'Vedi tutte le case vacanza';
+                    this.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+    });
+    </script>
+    <script src="script-booking.js"></script>
 </main>
 
 <!-- WhatsApp Flottante -->
