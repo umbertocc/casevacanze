@@ -336,7 +336,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                         <div class="property-info">                            
                             ${prezzoTotale !== null ? `<p style="margin:8px 0 8px 0;font-size:1.05em;color:#166534;font-weight:700;">Total price: ${formatEuro(prezzoTotale)}</p>` : ''} 
                             <p style="margin:0 0 10px 0;font-size:0.9em;line-height:1.4;color:#334155;background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:8px 10px;"><strong>CIN:</strong> ${cin || '-'}<br><strong>CIS:</strong> ${cis || '-'}</p>
-                            <p style="margin:0 0 14px 0;font-size:0.9em;line-height:1.4;color:#374151;background:#f8fafc;border:1px solid #dbeafe;border-radius:8px;padding:10px 12px;"><strong>Price info:</strong> includes air conditioning, guest registration, cleaning and parking pass. <strong>Deposit:</strong> 20% of the total amount.</p> 
+                            <p style="margin:0 0 14px 0;font-size:0.9em;line-height:1.4;color:#374151;background:#f8fafc;border:1px solid #dbeafe;border-radius:8px;padding:10px 12px;"><strong>Price info:</strong> includes air conditioning, tourist tax, cleaning and parking pass. <strong>Deposit:</strong> 20% of the total amount.</p> 
                             <div class="property-features">
                                 ${caratteristiche.map(f => `<span class="feature-badge">${f}</span>`).join(' ')}
                             </div>
