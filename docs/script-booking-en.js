@@ -243,6 +243,41 @@ document.getElementById('booking-form').addEventListener('submit', async functio
             });
         }
 
+        function getEnglishHouseDescription(casa) {
+            const id = Number(casa && casa.id);
+            const name = String((casa && casa.nome) || '').toLowerCase();
+
+            const descriptionsById = {
+                1: 'Ground-floor apartment about 20m from the sea, with private outdoor spaces and all main comforts for families and groups.',
+                2: 'Ground-floor apartment about 40m from the beach, with equipped outdoor spaces, 3 bedrooms, air conditioning and parking pass.',
+                3: 'First-floor 90 sqm apartment about 40m from the beach, with sea-view veranda, 3 bedrooms and equipped outdoor spaces.',
+                4: 'Ground-floor apartment in Torre Pali, with furnished veranda, practical interior spaces and quick access to beach and services.',
+                5: 'First-floor apartment close to the beach, with sea-view veranda, 3 bedrooms and equipped spaces for outdoor dining.'
+            };
+
+            if (descriptionsById[id]) {
+                return descriptionsById[id];
+            }
+
+            if (name.includes('bellavista 1')) {
+                return descriptionsById[4];
+            }
+            if (name.includes('bellavista 2')) {
+                return descriptionsById[1];
+            }
+            if (name.includes('giorgio 4')) {
+                return descriptionsById[2];
+            }
+            if (name.includes('giorgio 6')) {
+                return descriptionsById[3];
+            }
+            if (name.includes('respiro')) {
+                return descriptionsById[5];
+            }
+
+            return casa && casa.descrizione ? casa.descrizione : '';
+        }
+
         const queryParams = new URLSearchParams({
             checkIn: checkIn,
             checkOut: checkOut,
@@ -285,6 +320,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                     // id univoco per il pulsante
                     const btnId = `prenota-btn-${idx}`;
                     const onlineBtnId = `prenota-online-btn-${idx}`;
+                    const descriptionText = getEnglishHouseDescription(casa);
                     let englishDetailLink = casa.link_dettaglio || '';
                     if (String(englishDetailLink).includes('casa-bellavista-1')) englishDetailLink = 'casa-bellavista-1-en';
                     else if (String(englishDetailLink).includes('casa-bellavista-2')) englishDetailLink = 'casa-bellavista-2-en';
@@ -304,7 +340,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                             <div class="property-features">
                                 ${caratteristiche.map(f => `<span class="feature-badge">${f}</span>`).join(' ')}
                             </div>
-                            <p class="property-description">${casa.descrizione || ''}</p>
+                            <p class="property-description">${descriptionText}</p>
                             <div style="margin-top: 18px; margin-bottom: 10px;">
                                <a href="#" class="prenota-btn" id="${btnId}" style="color: #48bb78; text-decoration: underline; font-weight: 500; display: block; margin-bottom: 10px; font-size:1.24em">📋 Request information</a> 
                                 ${englishDetailLink ? `<a href="${englishDetailLink}" style="color: #48bb78; text-decoration: underline; font-weight: 500; font-size: 1.24em; display: block; margin-bottom: 10px;">📋 View property</a>` : ''}
