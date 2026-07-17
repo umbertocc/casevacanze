@@ -326,7 +326,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                     else if (String(englishDetailLink).includes('casa-bellavista-2')) englishDetailLink = 'casa-bellavista-2-en';
                     else if (String(englishDetailLink).includes('casa-giorgio-4')) englishDetailLink = 'casa-giorgio-4-en';
                     else if (String(englishDetailLink).includes('casa-giorgio-6')) englishDetailLink = 'casa-giorgio-6-en';
-                    else if (String(englishDetailLink).includes('respiro-di-mare') || String(englishDetailLink).includes('casa-respiro-di-mare')) englishDetailLink = 'respiro-di-mare-en';
+                    else if (String(englishDetailLink).includes('respiro-di-mare') || String(englishDetailLink).includes('respiro-di-mare')) englishDetailLink = 'respiro-di-mare-en';
                     return `
                     <div class="property-card" style="margin-bottom: 68px;">
                         <div class="availability-badge" style="font-size:1.08rem;font-weight:800;letter-spacing:0.02em;background:linear-gradient(90deg,#0f766e 0%,#15803d 100%);color:#fff;padding:10px 16px;text-transform:uppercase;box-shadow:0 6px 18px rgba(21,128,61,0.35);">${casa.nome || casa.id || 'Casa'}</div>
@@ -380,7 +380,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                 <div style=\"margin-bottom:12px; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:8px; padding:12px 14px;\">
                                     <p style=\"margin:0 0 8px 0; font-weight:700; font-size:0.98em; color:#166534;\">Info soggiorno essenziali</p>
                                     <ul style=\"margin:0; padding-left:18px; font-size:0.9em; color:#374151; line-height:1.6;\">
-                                        <li>Il prezzo include pulizia finale, cambio biancheria, registrazione ospiti, supporto all'arrivo, pass parcheggio, spese di consumo. Non sono previste altre spese aggiuntive.</li>
+                                        <li>Il prezzo include pulizia finale, cambio biancheria, tassa di soggiorno, supporto all'arrivo, pass parcheggio, spese di consumo. Non sono previste altre spese aggiuntive.</li>
                                         <li>Al vostro arrivo saremo presenti in struttura per accoglienza, consegna chiavi e tutte le informazioni utili sul soggiorno e sulla zona.</li>
                                         <li>Al termine della prenotazione riceverai una email di riepilogo con tutte le informazioni utili per il soggiorno.</li>
                                         <li>È ammesso al massimo 1 animale domestico per soggiorno: ti chiediamo di indicarlo nel campo messaggio qui sotto.</li>

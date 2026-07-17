@@ -338,7 +338,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                 <div style=\"margin-bottom:12px; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:8px; padding:12px 14px;\">
                                     <p style=\"margin:0 0 8px 0; font-weight:700; font-size:0.98em; color:#166534;\">Info soggiorno essenziali</p>
                                     <ul style=\"margin:0; padding-left:18px; font-size:0.9em; color:#374151; line-height:1.6;\">
-                                        <li>Il prezzo include pulizia finale, cambio biancheria, registrazione ospiti, supporto all'arrivo, pass parcheggio, spese di consumo. Non sono previste altre spese aggiuntive.</li>
+                                        <li>Il prezzo include pulizia finale, cambio biancheria, tassa di soggiorno, supporto all'arrivo, pass parcheggio, spese di consumo. Non sono previste altre spese aggiuntive.</li>
                                         <li>Al vostro arrivo saremo presenti in struttura per accoglienza, consegna chiavi e tutte le informazioni utili sul soggiorno e sulla zona.</li>
                                         <li>Al termine della prenotazione riceverai una email di riepilogo con tutte le informazioni utili per il soggiorno.</li>
                                         <li>È ammesso al massimo 1 animale domestico per soggiorno: ti chiediamo di indicarlo nel campo messaggio qui sotto.</li>

@@ -1140,7 +1140,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           if (detailLink.indexOf('casa-bellavista-2') !== -1 || name.indexOf('bellavista 2') !== -1) return 'casa-bellavista-2';
           if (detailLink.indexOf('casa-giorgio-4') !== -1 || name.indexOf('giorgio 4') !== -1) return 'casa-giorgio-4';
           if (detailLink.indexOf('casa-giorgio-6') !== -1 || name.indexOf('giorgio 6') !== -1) return 'casa-giorgio-6';
-          if (detailLink.indexOf('respiro-di-mare') !== -1 || detailLink.indexOf('casa-respiro-di-mare') !== -1 || name.indexOf('respiro di mare') !== -1) return 'respiro-di-mare';
+          if (detailLink.indexOf('respiro-di-mare') !== -1 || detailLink.indexOf('respiro-di-mare') !== -1 || name.indexOf('respiro di mare') !== -1) return 'respiro-di-mare';
           return '';
         }
 
@@ -1160,7 +1160,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           const englishSlug = englishByKey[houseKey];
           if (!englishSlug) return baseLink;
           if (/^https?:\/\//i.test(baseLink)) {
-            return baseLink.replace(/(casa-bellavista-1|casa-bellavista-2|casa-giorgio-4|casa-giorgio-6|respiro-di-mare|casa-respiro-di-mare)(?=$|[/?#])/i, englishSlug);
+            return baseLink.replace(/(casa-bellavista-1|casa-bellavista-2|casa-giorgio-4|casa-giorgio-6|respiro-di-mare|respiro-di-mare)(?=$|[/?#])/i, englishSlug);
           }
           return englishSlug;
         }
@@ -1592,7 +1592,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <a href="casa-bellavista-2">Casa Bellavista 2</a>
 <a href="casa-giorgio-4">Casa Giorgio 4</a>
 <a href="casa-giorgio-6">Casa Giorgio 6</a>
-<a href="casa-respiro-di-mare">Respiro di Mare</a>
+<a href="respiro-di-mare">Respiro di Mare</a>
 <a href="torre-pali">Discover Torre Pali</a>
 <a href="torre-pali-posizione">Where Torre Pali is located</a>
 <a href="molo-torre-pali">Torre Pali pier</a>
