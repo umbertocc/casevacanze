@@ -147,61 +147,6 @@
   opacity: 1;
   transform: translateX(-50%) translateY(0);
 }
-
-.sticky-booking-cta {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1100;
-  display: none;
-  background: rgba(255, 255, 255, 0.97);
-  backdrop-filter: blur(10px);
-  border-top: 1px solid rgba(34, 87, 122, 0.12);
-  box-shadow: 0 -8px 28px rgba(0, 0, 0, 0.12);
-  padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px));
-}
-
-.sticky-booking-cta-inner {
-  max-width: 900px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.sticky-booking-cta-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  width: min(420px, 100%);
-  padding: 13px 18px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, #2d7a46 0%, #1abc9c 100%);
-  color: #fff;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 0.98em;
-  box-shadow: 0 8px 24px rgba(34, 87, 122, 0.28);
-}
-
-.sticky-booking-cta-link:hover,
-.sticky-booking-cta-link:focus {
-  color: #fff;
-  text-decoration: none;
-}
-
-@media (max-width: 900px) {
-  .sticky-booking-cta {
-    display: block;
-    padding-left: 64px;
-  }
-
-  .whatsapp-float {
-    bottom: 92px !important;
-  }
-}
 </style>
 <!-- Flatpickr CSS per date simili a prenotazione.html -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
@@ -797,22 +742,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </ul>
     </div>
   </nav>
-
-  <div class="sticky-booking-cta">
-    <div class="sticky-booking-cta-inner">
-      <a
-        href="#"
-        class="sticky-booking-cta-link prenota-btn"
-        data-casa-id=""
-        data-casa-nome=""
-        data-casa-generale="true"
-        aria-label="Request info"
-      >
-        <span aria-hidden="true">✉️</span>
-        Request info
-      </a>
-    </div>
-  </div>
 
   <script>
   // Menu Hamburger
@@ -1803,25 +1732,19 @@ document.addEventListener('DOMContentLoaded', function() {
       // Recupera dati casa dalla card, se esiste
           let casaId = prenotaTrigger.dataset && prenotaTrigger.dataset.casaId ? prenotaTrigger.dataset.casaId : '';
           let casaNome = prenotaTrigger.dataset && prenotaTrigger.dataset.casaNome ? prenotaTrigger.dataset.casaNome : '';
-      const isGeneralRequest = prenotaTrigger.dataset && prenotaTrigger.dataset.casaGenerale === 'true';
       const card = prenotaTrigger.closest('.property-card');
       if (card) {
         const titleEl = card.querySelector('.property-title');
             casaId = card.dataset && card.dataset.casaId ? card.dataset.casaId : casaId;
             casaNome = card.dataset && card.dataset.casaNome ? card.dataset.casaNome : (titleEl ? titleEl.textContent : casaNome);
       }
-      const generalRequestMessage = "Haven't chosen a property yet? Contact us for availability, recommendations, and a personalized quote.";
-      const subtitleHtml = isGeneralRequest
-        ? `<div class="modal-span-2" style='margin-bottom:6px;font-size:0.95em;color:#22577a;'>${generalRequestMessage}</div>`
-        : (casaNome ? `<div class="modal-span-2" style='margin-bottom:6px;font-size:0.95em;'><b>${casaNome}</b></div>` : '');
-      const casaValue = casaId || (isGeneralRequest ? 'general-request' : casaNome);
       const modal = document.getElementById('prenota-modal');
       const modalBody = document.getElementById('prenota-modal-body');
       modalBody.innerHTML = `
         <h2 style="font-size:1.1em;color:#2d7a46;">Request information</h2>
-        ${subtitleHtml}
+        ${casaNome ? `<div class="modal-span-2" style='margin-bottom:6px;font-size:0.95em;'><b>${casaNome}</b></div>` : ''}
         <form id="prenotaForm" class="modal-form">
-          <input type="hidden" name="casa" value="${casaValue}">
+          <input type="hidden" name="casa" value="${casaId || casaNome}">
           <div class="form-group">
             <label for="arrivo">Check-in date *</label>
             <input type="date" id="arrivo" name="arrivo" required placeholder="Check-in date">
