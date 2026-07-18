@@ -989,10 +989,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         // Funzione per generare tutte le date della stagione (1 giugno - 30 settembre)
         function getAllSeasonDates() {
-          const startSeason = new Date(Date.UTC(new Date().getFullYear(), 5, 1)); // 1 giugno UTC
-          const endSeason = new Date(Date.UTC(new Date().getFullYear(), 8, 30)); // 30 settembre UTC
+          const now = new Date();
+          const startSeason = new Date(Date.UTC(now.getFullYear(), 5, 1)); // 1 giugno UTC
+          const endSeason = new Date(Date.UTC(now.getFullYear(), 8, 30)); // 30 settembre UTC
+          const todayUtc = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
+          const effectiveStart = todayUtc > startSeason ? todayUtc : startSeason;
           let allDates = [];
-          let d = new Date(startSeason);
+          let d = new Date(effectiveStart);
           while (d <= endSeason) {
             allDates.push(d.toISOString().slice(0,10));
             d.setUTCDate(d.getUTCDate() + 1);
