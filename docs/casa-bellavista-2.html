@@ -188,7 +188,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "name": "Come posso prenotare Casa Bellavista 2?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Puoi prenotare direttamente dalla pagina dell'appartamento, oppure su WhatsApp o chiamandoci al 3886587080: verifica prima la disponibilità, inserisci i dati richiesti e procedi al pagamento della caparra. Dopo l'invio riceverai una email con i dettagli della prenotazione."
+        "text": "Puoi inviare una richiesta di prenotazione direttamente dalla pagina dell'appartamento, oppure su WhatsApp o chiamandoci al 3886587080: verifica prima la disponibilità, inserisci i dati richiesti e invia la tua richiesta. Dopo l'invio riceverai una email con i dettagli."
       }
     },
     {
@@ -204,7 +204,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "name": "Cosa include il prezzo della prenotazione?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "il prezzo totale include il soggiorno per le date selezionate. La caparra richiesta è pari al 20% del totale. Le pulizie finali sono incluse, nessun costo aggiuntivo previsto."
+        "text": "il prezzo totale include il soggiorno per le date selezionate. Le pulizie finali sono incluse, nessun costo aggiuntivo previsto."
       }
     },
     {
@@ -212,7 +212,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "name": "Qual è la politica di cancellazione?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "La cancellazione è gratuita fino a 90 giorni prima del check-in, con rimborso integrale della caparra. Oltre questo termine, di norma non è previsto rimborso."
+        "text": "La cancellazione è gratuita fino a 90 giorni prima del check-in. Oltre questo termine, di norma non è previsto rimborso."
       }
     }
   ]
@@ -1181,8 +1181,8 @@ document.addEventListener('DOMContentLoaded', function() {
   <ul style="margin-left: 20px; line-height: 2;">
     <li><strong>Quanto costa l'affitto dell'appartamento?</strong><br>Puoi richiedere un preventivo personalizzato da <a href="preventivo" style="color:#0074d9;text-decoration:underline;">qui</a>.</li>
     <li><strong>Quali sono gli orari di check-in e check-out?</strong><br>Il check-in è previsto dalle 15:00 e il check-out entro le 10:00. All'arrivo saremo presenti in struttura per la consegna delle chiavi e per eventuali informazioni utili.</li>
-    <li><strong>Cosa include il prezzo della prenotazione?</strong><br>il prezzo totale include il soggiorno per le date selezionate. La caparra richiesta è pari al 20% del totale. Le pulizie finali sono incluse, nessun costo aggiuntivo previsto.</li>
-    <li><strong>Qual è la politica di cancellazione?</strong><br>La cancellazione è gratuita fino a 90 giorni prima del check-in, con rimborso integrale della caparra. Oltre questo termine, di norma non è previsto rimborso.</li>
+    <li><strong>Cosa include il prezzo della prenotazione?</strong><br>il prezzo totale include il soggiorno per le date selezionate. Le pulizie finali sono incluse, nessun costo aggiuntivo previsto.</li>
+    <li><strong>Qual è la politica di cancellazione?</strong><br>La cancellazione è gratuita fino a 90 giorni prima del check-in. Oltre questo termine, di norma non è previsto rimborso.</li>
   </ul>
   <p style="margin-top:18px;font-size:1.08em;">Per ulteriori informazioni consulta la <a href="faq" style="color:#0074d9;text-decoration:underline;">sezione FAQ</a> oppure <a href="contatti" style="color:#0074d9;text-decoration:underline;">compila il form contatti</a>.</p>
 </section>
@@ -1262,7 +1262,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="sticky-booking-cta">
   <div class="sticky-booking-cta-inner">
     <a href="https://wa.me/393886587080?text=Ciao!%20Sono%20interessato%20alla%20Casa%20Bella%20Vista%202%20a%20Torre%20Pali" class="sticky-booking-cta-link whatsapp" onclick="gtag('event','click_whatsapp'); gtag_report_whatsapp_conversion()" target="_blank" rel="noopener">WhatsApp</a>
-    <!-- <a href="/prenotazione" class="sticky-booking-cta-link" id="bellavista2BookingCta">Prenota</a> -->
+    <a href="#" class="sticky-booking-cta-link quote compact" id="bellavista2BookingCta">Invia richiesta</a>
   </div>
 </div>
 
@@ -1270,8 +1270,8 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="bellavista2-booking-modal-card" role="dialog" aria-modal="true" aria-labelledby="bellavista2BookingModalTitle">
     <div class="bellavista2-booking-modal-header">
       <div>
-        <h2 id="bellavista2BookingModalTitle" class="bellavista2-booking-modal-title">Prenota Casa Bellavista 2</h2>
-        <p class="bellavista2-booking-modal-subtitle">Paga la caparra e blocca le tue date.</p>
+        <h2 id="bellavista2BookingModalTitle" class="bellavista2-booking-modal-title">Richiesta prenotazione Casa Bellavista 2</h2>
+        <p class="bellavista2-booking-modal-subtitle">Verifica disponibilita e invia la tua richiesta di prenotazione.</p>
       </div>
       <button type="button" class="bellavista2-booking-modal-close" id="bellavista2BookingModalClose" aria-label="Chiudi modale">&times;</button>
     </div>
@@ -1281,7 +1281,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         <div class="bellavista2-booking-summary" style="margin-top:0; margin-bottom:14px;">
           <div><strong>Prezzo totale:</strong> <span id="bellavista2QuotePrice">-</span></div>
-          <div style="margin-top:6px;"><strong>Caparra:</strong> <span id="bellavista2QuoteDeposit">-</span></div>
+          <div style="margin-top:6px;"><strong>Importo richiesto:</strong> <span id="bellavista2QuoteDeposit">-</span></div>
           <div class="bellavista2-booking-status" id="bellavista2BookingStatus" style="margin-top:10px;">Seleziona check-in, check-out e ospiti per vedere la disponibilità.</div>
         </div>
 
@@ -1357,10 +1357,10 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
 
             <div style="margin-bottom: 18px; padding: 12px; background: #fff0f5; border-left: 4px solid #e74c3c; border-radius: 4px;">
-              <p style="margin-bottom: 8px;"><strong style="color: #e74c3c;">💳 Pagamento</strong></p>
+              <p style="margin-bottom: 8px;"><strong style="color: #e74c3c;">💳 Richiesta prenotazione</strong></p>
               <ul style="margin-left: 20px; font-size: 0.95em; color: #555;">
-                <li><strong>Caparra:</strong> 20% all'atto della prenotazione</li>
-                <li><strong>Saldo:</strong> 80% al momento del check-in</li>
+                <li><strong>Importo richiesto:</strong> 20% al momento della conferma</li>
+                <li><strong>Saldo:</strong> 80% al check-in</li>
               </ul>
             </div>
 
@@ -1385,7 +1385,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
           <div class="bellavista2-booking-actions">
             <button type="button" class="secondary" id="bellavista2PrevStep3">Indietro</button>
-            <button type="button" class="primary" id="bellavista2ProceedBtn" disabled>Procedi al pagamento</button>
+            <button type="button" class="primary" id="bellavista2ProceedBtn" disabled>Invia richiesta prenotazione</button>
           </div>
         </div>
       </form>
@@ -1708,10 +1708,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function setConfirmedStatusByStep() {
     if (currentStep === 3) {
-      setStatus('Disponibilità confermata, controlla i dati e procedi al pagamento della caparra.', false);
+      setStatus('Disponibilità confermata. Controlla i dati e invia la richiesta di prenotazione.', false);
       return;
     }
-    setStatus('Disponibilità confermata. Completa i dati di contatto e procedi al pagamento della caparra.', false);
+    setStatus('Disponibilità confermata. Completa i dati di contatto e invia la richiesta di prenotazione.', false);
   }
 
   function clearPaymentTimers() {
@@ -1742,14 +1742,14 @@ document.addEventListener('DOMContentLoaded', function() {
     hideResultPanel();
     bookingModal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
-    proceedBtn.textContent = 'Procedi al pagamento';
+    proceedBtn.textContent = 'Invia richiesta prenotazione';
     updateSummary();
   }
 
   function showBookingError(message) {
     showResultPanel(
       '<div style="text-align:center;padding:18px 6px;">' +
-      '<h3 style="color:#b91c1c;margin-bottom:10px;">Prenotazione non completata</h3>' +
+      '<h3 style="color:#b91c1c;margin-bottom:10px;">Richiesta non inviata</h3>' +
       '<p style="color:#475569;line-height:1.6;">' + message + '</p>' +
       '<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px;">' +
       '<button type="button" id="bellavista2RetryBookingBtn" class="secondary" style="border:none;border-radius:999px;padding:12px 18px;font-weight:700;cursor:pointer;background:#0f766e;color:#fff;">Riprova</button>' +
@@ -1764,7 +1764,7 @@ document.addEventListener('DOMContentLoaded', function() {
       retryBtn.addEventListener('click', function() {
         hideResultPanel();
         proceedBtn.disabled = false;
-        proceedBtn.textContent = 'Procedi al pagamento';
+        proceedBtn.textContent = 'Invia richiesta prenotazione';
         setStatus('Verifica completata. Riprova quando vuoi.', false);
       });
     }
@@ -1802,11 +1802,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     showResultPanel(
       '<div style="text-align:center;padding:18px 6px;">' +
-      '<h3 style="color:#166534;margin-bottom:10px;">Prenotazione creata!</h3>' +
-      '<p style="color:#475569;line-height:1.6;">Importo caparra (20%): <strong>' + formatEuro(importoCaparra) + '</strong></p>' +
+      '<h3 style="color:#166534;margin-bottom:10px;">Richiesta inviata!</h3>' +
+      '<p style="color:#475569;line-height:1.6;">Abbiamo ricevuto la tua richiesta e la stiamo verificando.</p>' +
       '<p style="color:#475569;line-height:1.6;">Reindirizzamento al checkout Stripe tra <strong><span id="bellavista2PaymentCountdown">' + countdown + '</span>s</strong>.</p>' +
       '<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px;">' +
-      '<button type="button" id="bellavista2GoToPaymentNow" style="border:none;border-radius:999px;padding:12px 18px;font-weight:700;cursor:pointer;background:#0f766e;color:#fff;">Paga ora</button>' +
+      '<button type="button" id="bellavista2GoToPaymentNow" style="border:none;border-radius:999px;padding:12px 18px;font-weight:700;cursor:pointer;background:#0f766e;color:#fff;">Continua</button>' +
       '<button type="button" id="bellavista2CloseSuccessBtn" style="border:none;border-radius:999px;padding:12px 18px;font-weight:700;cursor:pointer;background:#eef2f7;color:#1f2937;">Chiudi</button>' +
       '</div>' +
       '<p style="margin-top:10px;color:#64748b;font-size:0.92em;">Se non parte il redirect, usa il pulsante oppure <a href="' + paymentSession.paymentUrl + '" target="_blank" rel="noopener">apri Stripe</a>.</p>' +
@@ -1844,14 +1844,14 @@ document.addEventListener('DOMContentLoaded', function() {
   function showPaymentRetry(prenotazioneId) {
     showResultPanel(
       '<div style="text-align:center;padding:18px 6px;">' +
-      '<h3 style="color:#b45309;margin-bottom:10px;">Prenotazione creata</h3>' +
-      '<p style="color:#475569;line-height:1.6;">La prenotazione è stata registrata, ma non siamo riusciti ad avviare il pagamento Stripe.</p>' +
-      '<p style="color:#64748b;font-size:0.92em;">Codice prenotazione: <strong>' + prenotazioneId + '</strong></p>' +
+      '<h3 style="color:#b45309;margin-bottom:10px;">Richiesta registrata</h3>' +
+      '<p style="color:#475569;line-height:1.6;">La richiesta è stata registrata, ma non siamo riusciti a completare il passaggio successivo.</p>' +
+      '<p style="color:#64748b;font-size:0.92em;">Codice richiesta: <strong>' + prenotazioneId + '</strong></p>' +
       '<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px;">' +
-      '<button type="button" id="bellavista2RetryPaymentBtn" style="border:none;border-radius:999px;padding:12px 18px;font-weight:700;cursor:pointer;background:#0f766e;color:#fff;">Riprova pagamento</button>' +
+      '<button type="button" id="bellavista2RetryPaymentBtn" style="border:none;border-radius:999px;padding:12px 18px;font-weight:700;cursor:pointer;background:#0f766e;color:#fff;">Riprova</button>' +
       '<button type="button" id="bellavista2CloseRetryBtn" style="border:none;border-radius:999px;padding:12px 18px;font-weight:700;cursor:pointer;background:#eef2f7;color:#1f2937;">Chiudi</button>' +
       '</div>' +
-      '<p id="bellavista2RetryPaymentError" style="display:none;margin-top:10px;color:#b91c1c;font-size:0.92em;">Pagamento non disponibile in questo momento. Riprova tra poco.</p>' +
+      '<p id="bellavista2RetryPaymentError" style="display:none;margin-top:10px;color:#b91c1c;font-size:0.92em;">Richiesta non disponibile in questo momento. Riprova tra poco.</p>' +
       '</div>'
     );
 
@@ -1874,7 +1874,7 @@ document.addEventListener('DOMContentLoaded', function() {
           showPaymentRedirect(paymentSession, prenotazioneId);
         } catch (retryErr) {
           retryBtn.disabled = false;
-          retryBtn.textContent = 'Riprova pagamento';
+          retryBtn.textContent = 'Riprova';
           if (retryError) {
             retryError.style.display = 'block';
           }
@@ -1892,7 +1892,7 @@ document.addEventListener('DOMContentLoaded', function() {
       priceEl.textContent = '-';
       depositEl.textContent = '-';
       proceedBtn.disabled = true;
-      proceedBtn.textContent = 'Paga';
+      proceedBtn.textContent = 'Invia richiesta prenotazione';
       recapCheckInEl.textContent = checkInInput.value || '-';
       recapCheckOutEl.textContent = checkOutInput.value || '-';
       recapOspitiEl.textContent = ospitiInput.value || '-';
@@ -1902,7 +1902,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     priceEl.textContent = formatEuro(quote.prezzoTotale);
     depositEl.textContent = formatEuro(quote.importoCaparra);
-    proceedBtn.textContent = 'Paga ' + formatEuro(quote.importoCaparra);
+    proceedBtn.textContent = 'Invia richiesta prenotazione';
 
     const requiredFieldsFilled = checkInInput.value && checkOutInput.value && ospitiInput.value && nomeInput.value.trim() && emailInput.value.trim() && telefonoInput.value.trim() && privacyInput.checked;
     proceedBtn.disabled = !(quote.available && requiredFieldsFilled);
@@ -1924,7 +1924,7 @@ document.addEventListener('DOMContentLoaded', function() {
     } else if (currentStep === 2) {
       stepIndicatorEl.textContent = 'Passo 2 di 3 - Dati di contatto';
     } else {
-      stepIndicatorEl.textContent = 'Passo 3 di 3 - Riepilogo e pagamento';
+      stepIndicatorEl.textContent = 'Passo 3 di 3 - Riepilogo e invio richiesta';
       updateSummary();
     }
 
@@ -2239,8 +2239,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     proceedBtn.disabled = true;
-    proceedBtn.textContent = 'Prenotazione in corso...';
-    setStatus('Creo la prenotazione e apro Stripe...', false);
+    proceedBtn.textContent = 'Invio richiesta...';
+    setStatus('Invio richiesta prenotazione in corso...', false);
 
     let prenotazioneId = null;
     try {

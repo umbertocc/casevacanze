@@ -7,7 +7,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-5FP79B56');</script>
 <!-- End Google Tag Manager -->                                                             
-<!-- <!-- <script type="text/javascript" charset="UTF-8" src="//cdn.cookie-script.com/s/9087d0590c9fc1b6da95bcf76a164ed6.js"></script> --> -->
+<!-- <script type="text/javascript" charset="UTF-8" src="//cdn.cookie-script.com/s/9087d0590c9fc1b6da95bcf76a164ed6.js"></script> -->
 <style>
   /* Migliorie per la lightbox */
   .lightbox {
@@ -148,6 +148,31 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .sticky-booking-cta-link.whatsapp {
     background: linear-gradient(135deg, #25d366, #1fa855);
     box-shadow: 0 8px 22px rgba(37, 211, 102, 0.25);
+  }
+  .sticky-booking-cta-link.quote {
+    background: linear-gradient(135deg, #22577a, #1f4f70);
+    box-shadow: 0 8px 22px rgba(34, 87, 122, 0.25);
+  }
+  .sticky-booking-cta-link.compact {
+    min-width: 0;
+    max-width: 220px;
+    padding: 10px 14px;
+    font-size: 0.92em;
+    line-height: 1.2;
+    gap: 7px;
+  }
+  .sticky-booking-cta-link .btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+  .sticky-booking-cta-link .btn-icon svg {
+    width: 18px;
+    height: 18px;
+    display: block;
   }
   .bellavista1-booking-modal {
     position: fixed !important;
@@ -377,12 +402,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     .sticky-booking-cta {
       /* Lascia spazio al badge CookieScript in basso a sinistra */
-      padding-left: 64px;
+      padding-left: 48px;
+      padding-right: 14px;
     }
     .sticky-booking-cta-inner {
       flex-direction: row;
       align-items: center;
-      gap: 10px;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+      max-width: 520px;
     }
     .sticky-booking-cta-text {
       text-align: center;
@@ -394,6 +423,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       max-width: none;
       padding: 13px 10px;
       font-size: 0.95em;
+      text-align: center;
+    }
+    .sticky-booking-cta-link.compact {
+      width: auto;
+      flex: 1 1 0;
+      max-width: none;
+      min-width: 0;
+      padding: 10px 6px;
+      font-size: 0.78em;
+      justify-content: center;
+      white-space: normal;
+      line-height: 1.1;
+      text-align: center;
+      min-height: 42px;
     }
     .highlight-box.cin-cis {
       flex-direction: column;
@@ -1007,8 +1050,8 @@ document.addEventListener('DOMContentLoaded', function() {
 </main>
 <div class="sticky-booking-cta">
   <div class="sticky-booking-cta-inner">
-    <a href="https://wa.me/393886587080?text=Ciao!%20Sono%20interessato%20alla%20Casa%20Bella%20Vista%201%20a%20Torre%20Pali" class="sticky-booking-cta-link whatsapp" onclick="gtag('event','click_whatsapp'); gtag_report_whatsapp_conversion()" target="_blank" rel="noopener">WhatsApp</a>
-    <!-- <a href="/prenotazione" class="sticky-booking-cta-link" id="bellavista1BookingCta">Prenota</a> -->
+    <a href="https://wa.me/393886587080?text=Ciao!%20Sono%20interessato%20alla%20Casa%20Bella%20Vista%201%20a%20Torre%20Pali" class="sticky-booking-cta-link whatsapp compact" onclick="gtag('event','click_whatsapp'); gtag_report_whatsapp_conversion()" target="_blank" rel="noopener"><span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="white"><path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 7.933-2.127c2.42 1.37 5.173 2.127 8.067 2.127 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.467c-2.482 0-4.908-0.646-7.07-1.87l-0.507-0.292-4.713 1.262 1.262-4.669-0.292-0.508c-1.207-2.100-1.847-4.507-1.847-6.978 0-7.51 6.11-13.619 13.619-13.619s13.619 6.109 13.619 13.619c0 7.51-6.11 13.619-13.619 13.619zM21.789 18.75c-0.214-0.107-1.268-0.625-1.464-0.696s-0.339-0.107-0.482 0.107c-0.143 0.214-0.554 0.696-0.679 0.839s-0.25 0.161-0.464 0.054c-0.214-0.107-0.902-0.333-1.718-1.060-0.635-0.567-1.064-1.268-1.189-1.482s-0.013-0.329 0.094-0.435c0.096-0.096 0.214-0.25 0.321-0.375s0.143-0.214 0.214-0.357 0.036-0.268-0.018-0.375c-0.054-0.107-0.482-1.161-0.661-1.589s-0.349-0.362-0.482-0.369c-0.125-0.007-0.268-0.007-0.411-0.007s-0.375 0.054-0.571 0.268c-0.196 0.214-0.75 0.732-0.75 1.786s0.768 2.071 0.875 2.214c0.107 0.143 1.5 2.357 3.653 3.304 0.51 0.214 0.909 0.343 1.219 0.438 0.512 0.161 0.978 0.139 1.346 0.084 0.411-0.061 1.268-0.518 1.446-1.018s0.179-0.929 0.125-1.018c-0.054-0.089-0.196-0.143-0.411-0.25z"/></svg></span>WhatsApp</a>
+    <a href="#" class="sticky-booking-cta-link quote compact" id="bellavista1BookingCta">Invia Richiesta</a>
   </div>
 </div> 
 
@@ -1016,8 +1059,8 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="bellavista1-booking-modal-card" role="dialog" aria-modal="true" aria-labelledby="bellavista1BookingModalTitle">
     <div class="bellavista1-booking-modal-header">
       <div>
-        <h2 id="bellavista1BookingModalTitle" class="bellavista1-booking-modal-title">Prenota Casa Bellavista 1</h2>
-        <p class="bellavista1-booking-modal-subtitle">Paga la caparra e blocca le tue date.</p>
+        <h2 id="bellavista1BookingModalTitle" class="bellavista1-booking-modal-title">Richiesta prenotazione Casa Bellavista 1</h2>
+        <p class="bellavista1-booking-modal-subtitle">Verifica disponibilita e invia la tua richiesta di prenotazione.</p>
       </div>
       <button type="button" class="bellavista1-booking-modal-close" id="bellavista1BookingModalClose" aria-label="Chiudi modale">&times;</button>
     </div>
@@ -1064,7 +1107,7 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
             <div class="bellavista1-booking-field full">
               <label for="bellavista1Telefono">Telefono</label>
-              <input type="tel" id="bellavista1Telefono" name="telefono" placeholder="Inserisci numero di telefono" required>
+              <input type="tel" id="bellavista1Telefono" name="telefono" placeholder="Inserisci numero di telefono (opzionale)">
             </div>
             <div class="bellavista1-booking-field full">
               <label for="bellavista1Note">Messaggio</label>
@@ -1131,7 +1174,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
           <div class="bellavista1-booking-actions">
             <button type="button" class="secondary" id="bellavista1PrevStep3">Indietro</button>
-            <button type="button" class="primary" id="bellavista1ProceedBtn" disabled>Procedi al pagamento</button>
+            <button type="button" class="primary" id="bellavista1ProceedBtn" disabled>Invia richiesta prenotazione</button>
           </div>
         </div>
       </form>
@@ -1462,10 +1505,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function setConfirmedStatusByStep() {
     if (currentStep === 3) {
-      setStatus('Disponibilità confermata, controlla i dati e procedi al pagamento della caparra.', false);
+      setStatus('Disponibilita confermata. Controlla i dati e invia la richiesta di prenotazione.', false);
       return;
     }
-    setStatus('Disponibilità confermata. Completa i dati di contatto e procedi al pagamento della caparra.', false);
+    setStatus('Disponibilita confermata. Completa i dati di contatto e invia la richiesta di prenotazione.', false);
   }
 
   function clearPaymentTimers() {
@@ -1496,14 +1539,14 @@ document.addEventListener('DOMContentLoaded', function() {
     hideResultPanel();
     bookingModal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
-    proceedBtn.textContent = 'Procedi al pagamento';
+    proceedBtn.textContent = 'Invia richiesta prenotazione';
     updateSummary();
   }
 
   function showBookingError(message) {
     showResultPanel(
       '<div style="text-align:center;padding:18px 6px;">' +
-      '<h3 style="color:#b91c1c;margin-bottom:10px;">Prenotazione non completata</h3>' +
+      '<h3 style="color:#b91c1c;margin-bottom:10px;">Richiesta non inviata</h3>' +
       '<p style="color:#475569;line-height:1.6;">' + message + '</p>' +
       '<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px;">' +
       '<button type="button" id="bellavista1RetryBookingBtn" class="secondary" style="border:none;border-radius:999px;padding:12px 18px;font-weight:700;cursor:pointer;background:#0f766e;color:#fff;">Riprova</button>' +
@@ -1518,7 +1561,7 @@ document.addEventListener('DOMContentLoaded', function() {
       retryBtn.addEventListener('click', function() {
         hideResultPanel();
         proceedBtn.disabled = false;
-        proceedBtn.textContent = 'Procedi al pagamento';
+        proceedBtn.textContent = 'Invia richiesta prenotazione';
         setStatus('Verifica completata. Riprova quando vuoi.', false);
       });
     }
@@ -1646,7 +1689,7 @@ document.addEventListener('DOMContentLoaded', function() {
       priceEl.textContent = '-';
       depositEl.textContent = '-';
       proceedBtn.disabled = true;
-      proceedBtn.textContent = 'Paga';
+      proceedBtn.textContent = 'Invia richiesta prenotazione';
       recapCheckInEl.textContent = checkInInput.value || '-';
       recapCheckOutEl.textContent = checkOutInput.value || '-';
       recapOspitiEl.textContent = ospitiInput.value || '-';
@@ -1656,9 +1699,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     priceEl.textContent = formatEuro(quote.prezzoTotale);
     depositEl.textContent = formatEuro(quote.importoCaparra);
-    proceedBtn.textContent = 'Paga ' + formatEuro(quote.importoCaparra);
+    proceedBtn.textContent = 'Invia richiesta prenotazione';
 
-    const requiredFieldsFilled = checkInInput.value && checkOutInput.value && ospitiInput.value && nomeInput.value.trim() && emailInput.value.trim() && telefonoInput.value.trim() && privacyInput.checked;
+    const requiredFieldsFilled = checkInInput.value && checkOutInput.value && ospitiInput.value && nomeInput.value.trim() && emailInput.value.trim() && privacyInput.checked;
     proceedBtn.disabled = !(quote.available && requiredFieldsFilled);
     recapCheckInEl.textContent = checkInInput.value || '-';
     recapCheckOutEl.textContent = checkOutInput.value || '-';
@@ -1678,7 +1721,7 @@ document.addEventListener('DOMContentLoaded', function() {
     } else if (currentStep === 2) {
       stepIndicatorEl.textContent = 'Passo 2 di 3 - Dati di contatto';
     } else {
-      stepIndicatorEl.textContent = 'Passo 3 di 3 - Riepilogo e pagamento';
+      stepIndicatorEl.textContent = 'Passo 3 di 3 - Riepilogo e invio richiesta';
       updateSummary();
     }
 
@@ -1993,68 +2036,62 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     proceedBtn.disabled = true;
-    proceedBtn.textContent = 'Prenotazione in corso...';
-    setStatus('Creo la prenotazione e apro Stripe...', false);
+    proceedBtn.textContent = 'Invio richiesta...';
+    setStatus('Invio richiesta prenotazione in corso...', false);
 
-    let prenotazioneId = null;
     try {
-      const payload = {
-        casaId: CASA_ID,
-        ospiteNome: nomeInput.value.trim(),
+      const preventivoParams = new URLSearchParams({
+        nome: nomeInput.value.trim(),
+        email: emailInput.value.trim(),
+        persone: String(Number(ospitiInput.value)),
+        appartamento: 'Casa Bellavista 1',
         checkIn: checkInInput.value,
         checkOut: checkOutInput.value,
-        emailOspite: emailInput.value.trim(),
-        telefonoOspite: telefonoInput.value.trim(),
-        numOspiti: Number(ospitiInput.value),
-        stato: 'IN_ATTESA_CAPARRA',
-        prezzoTotale: quote.prezzoTotale,
-        caparra: null,
-        note: noteInput.value.trim(),
-        successUrl: SUCCESS_PAGE_URL,
-        cancelUrl: CANCEL_PAGE_URL,
-        createdAt: null
-      };
+        prezzo: String(quote.prezzoTotale),
+        prezzoTotale: String(quote.prezzoTotale),
+        messaggio: noteInput.value.trim(),
+        source: 'bellavista1-modal'
+      });
 
-      const bookingResponse = await fetch(API_BASE + '/api/prenotazioni/public', {
+      const telefonoValue = telefonoInput.value.trim();
+      if (telefonoValue) {
+        preventivoParams.append('telefono', telefonoValue);
+      }
+
+      const bookingResponse = await fetch(API_BASE + '/api/preventivi/public', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded',
           'Accept': 'application/json'
         },
-        body: JSON.stringify(payload)
+        body: preventivoParams
       });
 
       if (!bookingResponse.ok) {
         const details = await bookingResponse.text().catch(function() { return ''; });
-        const error = new Error(details || 'Prenotazione non completata');
+        const error = new Error(details || 'Invio richiesta prenotazione non completato');
         error.status = bookingResponse.status;
         throw error;
       }
 
-      const bookingData = await bookingResponse.json();
-      prenotazioneId = bookingData && (bookingData.prenotazioneId || bookingData.id);
-      if (!prenotazioneId) {
-        throw new Error('Prenotazione creata ma identificativo mancante');
+      setStatus('Richiesta prenotazione inviata con successo. Ti contatteremo al piu presto.', false);
+      showResultPanel(
+        '<div style="text-align:center;padding:18px 6px;">' +
+        '<h3 style="color:#166534;margin-bottom:10px;">Richiesta inviata!</h3>' +
+        '<p style="color:#475569;line-height:1.6;">Grazie, abbiamo ricevuto la tua richiesta per Casa Bellavista 1.<br>Ti contatteremo al piu presto per conferma disponibilita e dettagli.</p>' +
+        '<button type="button" id="bellavista1CloseSuccessBtn" style="margin-top:14px;border:none;border-radius:999px;padding:12px 18px;font-weight:700;cursor:pointer;background:#0f766e;color:#fff;">Chiudi</button>' +
+        '</div>'
+      );
+      const closeSuccessBtn = document.getElementById('bellavista1CloseSuccessBtn');
+      if (closeSuccessBtn) {
+        closeSuccessBtn.addEventListener('click', closeModal);
       }
-
-      const paymentSession = await getPublicPaymentSession(prenotazioneId);
-      if (!paymentSession || !paymentSession.paymentUrl) {
-        throw new Error('URL di pagamento non disponibile');
-      }
-
-      setStatus('Prenotazione completata. Reindirizzamento a Stripe...', false);
-      showPaymentRedirect(paymentSession, prenotazioneId);
     } catch (err) {
-      if (prenotazioneId) {
-        showPaymentRetry(prenotazioneId);
-        return;
-      }
-
-      let errorMessage = 'Non è stato possibile registrare la prenotazione online. Riprova tra poco.';
+      let errorMessage = 'Non e stato possibile inviare la richiesta prenotazione. Riprova tra poco.';
       if (err && err.status === 400) {
         errorMessage = 'I dati inseriti non sono validi. Controlla date, ospiti e recapiti e riprova.';
       } else if (err && err.status === 409) {
-        errorMessage = 'Le date selezionate non sono più disponibili. Scegli un altro periodo.';
+        errorMessage = 'Le date selezionate non sono piu disponibili. Scegli un altro periodo.';
       } else if (err && err.status === 429) {
         errorMessage = 'Hai effettuato troppi tentativi in poco tempo. Attendi qualche minuto e riprova.';
       } else if (err && err.message) {

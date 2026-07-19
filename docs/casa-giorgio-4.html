@@ -275,6 +275,18 @@ h1 { font-size: 3em; color: #111; margin-bottom: 15px; font-weight: 700; text-sh
   background: linear-gradient(135deg, #25d366, #1fa855);
   box-shadow: 0 8px 22px rgba(37, 211, 102, 0.25);
 }
+  .sticky-booking-cta-link.quote {
+    background: linear-gradient(135deg, #22577a, #1f4f70);
+    box-shadow: 0 8px 22px rgba(34, 87, 122, 0.25);
+  }
+  .sticky-booking-cta-link.compact {
+    min-width: 0;
+    max-width: 220px;
+    padding: 10px 14px;
+    font-size: 0.92em;
+    line-height: 1.2;
+    gap: 7px;
+  }
 .giorgio-booking-modal {
   position: fixed !important;
   inset: 0 !important;
@@ -543,11 +555,13 @@ h1 { font-size: 3em; color: #111; margin-bottom: 15px; font-weight: 700; text-sh
   .whatsapp-float { bottom: 92px !important; }
   .sticky-booking-cta {
     /* Lascia spazio al badge CookieScript in basso a sinistra */
-    padding-left: 64px;
+    padding-left: 48px;
+    padding-right: 14px;
   }
-  .sticky-booking-cta-inner { flex-direction: row; align-items: center; gap: 10px; }
+  .sticky-booking-cta-inner { flex-direction: row; align-items: center; justify-content: center; gap: 6px; width: 100%; max-width: 520px; }
   .sticky-booking-cta-text { text-align: center; font-size: 0.92em; }
-  .sticky-booking-cta-link { width: 100%; min-width: 0; max-width: none; padding: 13px 10px; font-size: 0.95em; }
+  .sticky-booking-cta-link { width: 100%; min-width: 0; max-width: none; padding: 13px 10px; font-size: 0.95em; text-align: center; }
+  .sticky-booking-cta-link.compact { width: auto; flex: 1 1 0; max-width: none; min-width: 0; padding: 11px 8px; font-size: 0.84em; justify-content: center; white-space: normal; line-height: 1.15; }
   .giorgio-booking-grid {
     gap: 12px;
   }
@@ -1269,7 +1283,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <ul style="margin-left: 20px; line-height: 2;">
     <li><strong>Quanto costa l'affitto dell'appartamento?</strong><br>Puoi richiedere un preventivo personalizzato da <a href="preventivo" style="color:#0074d9;text-decoration:underline;">qui</a>.</li>
     <li><strong>Quali sono gli orari di check-in e check-out?</strong><br>Il check-in è previsto dalle 15:00 e il check-out entro le 10:00. All'arrivo saremo presenti in struttura per la consegna delle chiavi e per eventuali informazioni utili.</li>
-    <li><strong>Cosa include il prezzo della prenotazione?</strong><br>il prezzo totale include il soggiorno per le date selezionate. La caparra richiesta è pari al 20% del totale. Le pulizie finali sono incluse, nessun costo aggiuntivo previsto.</li>
+    <li><strong>Cosa include il prezzo della prenotazione?</strong><br>il prezzo totale include il soggiorno per le date selezionate. Le pulizie finali sono incluse, nessun costo aggiuntivo previsto.</li>
     <li><strong>Qual è la politica di cancellazione?</strong><br>La cancellazione è gratuita fino a 90 giorni prima del check-in, con rimborso integrale della caparra. Oltre questo termine, di norma non è previsto rimborso.</li>
   </ul>
   <p style="margin-top:18px;font-size:1.08em;">Per ulteriori informazioni consulta la <a href="faq" style="color:#0074d9;text-decoration:underline;">sezione FAQ</a> oppure <a href="contatti" style="color:#0074d9;text-decoration:underline;">compila il form contatti</a>.</p>
@@ -1639,7 +1653,7 @@ document.addEventListener('DOMContentLoaded', function () {
         "name": "Come posso prenotare l'appartamento Casa Giorgio 4?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Puoi prenotare direttamente dalla pagina dell'appartamento, oppure su WhatsApp o chiamandoci al 3886587080: verifica prima la disponibilità, inserisci i dati richiesti e procedi al pagamento della caparra. Dopo l'invio riceverai una email di conferma con i dettagli della prenotazione."
+          "text": "Puoi inviare una richiesta di prenotazione direttamente dalla pagina dell'appartamento, oppure su WhatsApp o chiamandoci al 3886587080: verifica prima la disponibilità, inserisci i dati richiesti e invia la tua richiesta. Dopo l'invio riceverai una email di conferma con i dettagli."
         }
       },
       {
@@ -1655,7 +1669,7 @@ document.addEventListener('DOMContentLoaded', function () {
         "name": "Cosa include il prezzo della prenotazione?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "il prezzo totale include il soggiorno per le date selezionate. La caparra richiesta è pari al 20% del totale. Le pulizie finali sono incluse, nessun costo aggiuntivo previsto."
+          "text": "il prezzo totale include il soggiorno per le date selezionate. Le pulizie finali sono incluse, nessun costo aggiuntivo previsto."
         }
       },
       {
@@ -1663,7 +1677,7 @@ document.addEventListener('DOMContentLoaded', function () {
         "name": "Qual è la politica di cancellazione?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "La cancellazione è gratuita fino a 90 giorni prima del check-in, con rimborso integrale della caparra. Oltre questo termine, di norma non è previsto rimborso."
+          "text": "La cancellazione è gratuita fino a 90 giorni prima del check-in. Oltre questo termine, di norma non è previsto rimborso."
         }
       }
     ]
@@ -1674,7 +1688,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <div class="sticky-booking-cta">
   <div class="sticky-booking-cta-inner">
     <a href="https://wa.me/393886587080?text=Ciao!%20Sono%20interessato%20alla%20Casa%20Giorgio%204%20a%20Torre%20Pali" class="sticky-booking-cta-link whatsapp" onclick="gtag('event','click_whatsapp'); gtag_report_whatsapp_conversion()" target="_blank" rel="noopener">WhatsApp</a>
-    <!-- <a href="/prenotazione" class="sticky-booking-cta-link" id="giorgioBookingCta">Prenota</a> -->
+    <a href="#" class="sticky-booking-cta-link quote compact" id="giorgioBookingCta">Invia richiesta</a>
   </div>
 </div> 
 
@@ -1682,8 +1696,8 @@ document.addEventListener('DOMContentLoaded', function () {
   <div class="giorgio-booking-modal-card" role="dialog" aria-modal="true" aria-labelledby="giorgioBookingModalTitle">
     <div class="giorgio-booking-modal-header">
       <div>
-        <h2 id="giorgioBookingModalTitle" class="giorgio-booking-modal-title">Prenota Casa Giorgio 4</h2>
-        <p class="giorgio-booking-modal-subtitle">Paga la caparra e blocca le tue date.</p>
+        <h2 id="giorgioBookingModalTitle" class="giorgio-booking-modal-title">Richiesta prenotazione Casa Giorgio 4</h2>
+        <p class="giorgio-booking-modal-subtitle">Verifica disponibilita e invia la tua richiesta di prenotazione.</p>
       </div>
       <button type="button" class="giorgio-booking-modal-close" id="giorgioBookingModalClose" aria-label="Chiudi modale">&times;</button>
     </div>
@@ -1730,7 +1744,7 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>
             <div class="giorgio-booking-field full">
               <label for="giorgioTelefono">Telefono</label>
-              <input type="tel" id="giorgioTelefono" name="telefono" placeholder="Inserisci numero di telefono" required>
+              <input type="tel" id="giorgioTelefono" name="telefono" placeholder="Inserisci numero di telefono (opzionale)">
             </div>
             <div class="giorgio-booking-field full">
               <label for="giorgioNote">Messaggio</label>
@@ -2082,10 +2096,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function setConfirmedStatusByStep() {
     if (currentStep === 3) {
-      setStatus('Disponibilità confermata, controlla i dati e procedi al pagamento della caparra.', false);
+      setStatus('Disponibilità confermata. Controlla i dati e invia la richiesta di prenotazione.', false);
       return;
     }
-    setStatus('Disponibilità confermata. Completa i dati di contatto e procedi al pagamento della caparra.', false);
+    setStatus('Disponibilità confermata. Completa i dati di contatto e invia la richiesta di prenotazione.', false);
   }
 
   function clearPaymentTimers() {
@@ -2176,11 +2190,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     showResultPanel(
       '<div style="text-align:center;padding:18px 6px;">' +
-      '<h3 style="color:#166534;margin-bottom:10px;">Prenotazione creata!</h3>' +
-      '<p style="color:#475569;line-height:1.6;">Importo caparra (20%): <strong>' + formatEuro(importoCaparra) + '</strong></p>' +
+      '<h3 style="color:#166534;margin-bottom:10px;">Richiesta inviata!</h3>' +
+      '<p style="color:#475569;line-height:1.6;">Abbiamo ricevuto la tua richiesta e la stiamo verificando.</p>' +
       '<p style="color:#475569;line-height:1.6;">Reindirizzamento al checkout Stripe tra <strong><span id="giorgioPaymentCountdown">' + countdown + '</span>s</strong>.</p>' +
       '<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px;">' +
-      '<button type="button" id="giorgioGoToPaymentNow" style="border:none;border-radius:999px;padding:12px 18px;font-weight:700;cursor:pointer;background:#0f766e;color:#fff;">Paga ora</button>' +
+      '<button type="button" id="giorgioGoToPaymentNow" style="border:none;border-radius:999px;padding:12px 18px;font-weight:700;cursor:pointer;background:#0f766e;color:#fff;">Continua</button>' +
       '<button type="button" id="giorgioCloseSuccessBtn" style="border:none;border-radius:999px;padding:12px 18px;font-weight:700;cursor:pointer;background:#eef2f7;color:#1f2937;">Chiudi</button>' +
       '</div>' +
       '<p style="margin-top:10px;color:#64748b;font-size:0.92em;">Se non parte il redirect, usa il pulsante oppure <a href="' + paymentSession.paymentUrl + '" target="_blank" rel="noopener">apri Stripe</a>.</p>' +
@@ -2218,11 +2232,11 @@ document.addEventListener('DOMContentLoaded', function() {
   function showPaymentRetry(prenotazioneId) {
     showResultPanel(
       '<div style="text-align:center;padding:18px 6px;">' +
-      '<h3 style="color:#b45309;margin-bottom:10px;">Prenotazione creata</h3>' +
-      '<p style="color:#475569;line-height:1.6;">La prenotazione è stata registrata, ma non siamo riusciti ad avviare il pagamento Stripe.</p>' +
-      '<p style="color:#64748b;font-size:0.92em;">Codice prenotazione: <strong>' + prenotazioneId + '</strong></p>' +
+      '<h3 style="color:#b45309;margin-bottom:10px;">Richiesta registrata</h3>' +
+      '<p style="color:#475569;line-height:1.6;">La richiesta è stata registrata, ma non siamo riusciti a completare il passaggio successivo.</p>' +
+      '<p style="color:#64748b;font-size:0.92em;">Codice richiesta: <strong>' + prenotazioneId + '</strong></p>' +
       '<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px;">' +
-      '<button type="button" id="giorgioRetryPaymentBtn" style="border:none;border-radius:999px;padding:12px 18px;font-weight:700;cursor:pointer;background:#0f766e;color:#fff;">Riprova pagamento</button>' +
+      '<button type="button" id="giorgioRetryPaymentBtn" style="border:none;border-radius:999px;padding:12px 18px;font-weight:700;cursor:pointer;background:#0f766e;color:#fff;">Riprova</button>' +
       '<button type="button" id="giorgioCloseRetryBtn" style="border:none;border-radius:999px;padding:12px 18px;font-weight:700;cursor:pointer;background:#eef2f7;color:#1f2937;">Chiudi</button>' +
       '</div>' +
       '<p id="giorgioRetryPaymentError" style="display:none;margin-top:10px;color:#b91c1c;font-size:0.92em;">Pagamento non disponibile in questo momento. Riprova tra poco.</p>' +
@@ -2248,7 +2262,7 @@ document.addEventListener('DOMContentLoaded', function() {
           showPaymentRedirect(paymentSession, prenotazioneId);
         } catch (retryErr) {
           retryBtn.disabled = false;
-          retryBtn.textContent = 'Riprova pagamento';
+          retryBtn.textContent = 'Riprova';
           if (retryError) {
             retryError.style.display = 'block';
           }
@@ -2276,7 +2290,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     priceEl.textContent = formatEuro(quote.prezzoTotale);
     depositEl.textContent = formatEuro(quote.importoCaparra);
-    proceedBtn.textContent = 'Paga ' + formatEuro(quote.importoCaparra);
+    proceedBtn.textContent = 'Invia richiesta prenotazione';
 
     const requiredFieldsFilled = checkInInput.value && checkOutInput.value && ospitiInput.value && nomeInput.value.trim() && emailInput.value.trim() && telefonoInput.value.trim() && privacyInput.checked;
     proceedBtn.disabled = !(quote.available && requiredFieldsFilled);
