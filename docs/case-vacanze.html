@@ -1582,6 +1582,21 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
+  function trackMessengerClick() {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'click_messenger',
+      source: 'case-vacanze-modal'
+    });
+    if (typeof gtag === 'function') {
+      gtag('event', 'click_messenger', {
+        event_category: 'contatto',
+        event_label: 'case-vacanze-modal'
+      });
+    }
+    return true;
+  }
+
   // Crea la modale se non esiste
   if (!document.getElementById('prenota-modal')) {
     const modalDiv = document.createElement('div');
@@ -1629,6 +1644,41 @@ document.addEventListener('DOMContentLoaded', function() {
         justify-content: flex-end;
         margin-top: 4px;
       }
+      #prenota-modal-content .modal-alt-contact {
+        grid-column: 1 / -1;
+        margin-top: 8px;
+        padding-top: 12px;
+        border-top: 1px solid #d9e7ef;
+      }
+      #prenota-modal-content .modal-alt-contact p {
+        margin: 0 0 10px 0;
+        font-size: 0.92em;
+        color: #4b5563;
+      }
+      #prenota-modal-content .modal-alt-links {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      #prenota-modal-content .modal-alt-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 14px;
+        border-radius: 999px;
+        text-decoration: none;
+        font-size: 0.92em;
+        font-weight: 700;
+        color: #173d59;
+        background: #f3f8fb;
+        border: 1px solid #d4e6f0;
+      }
+      #prenota-modal-content .modal-alt-link:hover,
+      #prenota-modal-content .modal-alt-link:focus {
+        color: #173d59;
+        background: #e8f4fb;
+        text-decoration: none;
+      }
       @media (max-width: 700px) {
         #prenota-modal-content {
           width: calc(100dvw - 16px) !important;
@@ -1652,6 +1702,9 @@ document.addEventListener('DOMContentLoaded', function() {
           padding: 9px 12px !important;
           font-size: 0.92em !important;
         }
+        #prenota-modal-content .modal-alt-links {
+          flex-direction: column;
+        }
       }
     `;
     document.head.appendChild(style);
@@ -1672,6 +1725,9 @@ document.addEventListener('DOMContentLoaded', function() {
       }
       const modal = document.getElementById('prenota-modal');
       const modalBody = document.getElementById('prenota-modal-body');
+      const contactTarget = casaNome || 'una casa vacanza a Torre Pali';
+      const whatsappUrl = `https://wa.me/393886587080?text=${encodeURIComponent(`Ciao! Vorrei informazioni per ${contactTarget}.`)}`;
+      const messengerUrl = 'https://m.me/61577506430394';
       modalBody.innerHTML = `
         <h2 style="font-size:1.1em;color:#2d7a46;">Richiesta preventivo</h2>
         ${casaNome ? `<div class="modal-span-2" style='margin-bottom:6px;font-size:0.95em;'><b>${casaNome}</b></div>` : ''}
@@ -1697,6 +1753,19 @@ document.addEventListener('DOMContentLoaded', function() {
           <div class="modal-span-2 modal-actions">
             <button type="button" id="annullaPrenotaModal" style="background:#e0e0e0;color:#2d7a46;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;">Annulla</button>
             <button type="submit" style="background:#2d7a46;color:#fff;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;">Invia richiesta</button>
+          </div>
+          <div class="modal-alt-contact">
+            <p>Preferisci scriverci subito? Puoi contattarci anche qui:</p>
+            <div class="modal-alt-links">
+              <a href="${whatsappUrl}" class="modal-alt-link" target="_blank" rel="noopener" onclick="gtag('event','click_whatsapp'); return gtag_report_whatsapp_conversion(this.href);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 32 32" fill="#25d366" aria-hidden="true" focusable="false"><path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 7.933-2.127c2.42 1.37 5.173 2.127 8.067 2.127 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.467c-2.482 0-4.908-0.646-7.07-1.87l-0.507-0.292-4.713 1.262 1.262-4.669-0.292-0.508c-1.207-2.100-1.847-4.507-1.847-6.978 0-7.51 6.11-13.619 13.619-13.619s13.619 6.109 13.619 13.619c0 7.51-6.11 13.619-13.619 13.619zM21.789 18.75c-0.214-0.107-1.268-0.625-1.464-0.696s-0.339-0.107-0.482 0.107c-0.143 0.214-0.554 0.696-0.679 0.839s-0.25 0.161-0.464 0.054c-0.214-0.107-0.902-0.333-1.718-1.060-0.635-0.567-1.064-1.268-1.189-1.482s-0.013-0.329 0.094-0.435c0.096-0.096 0.214-0.25 0.321-0.375s0.143-0.214 0.214-0.357 0.036-0.268-0.018-0.375c-0.054-0.107-0.482-1.161-0.661-1.589s-0.349-0.362-0.482-0.369c-0.125-0.007-0.268-0.007-0.411-0.007s-0.375 0.054-0.571 0.268c-0.196 0.214-0.75 0.732-0.75 1.786s0.768 2.071 0.875 2.214c0.107 0.143 1.5 2.357 3.653 3.304 0.51 0.214 0.909 0.343 1.219 0.438 0.512 0.161 0.978 0.139 1.346 0.084 0.411-0.061 1.268-0.518 1.446-1.018s0.179-0.929 0.125-1.018c-0.054-0.089-0.196-0.143-0.411-0.25z"/></svg>
+                WhatsApp
+              </a>
+              <a href="${messengerUrl}" class="modal-alt-link" target="_blank" rel="noopener" onclick="return trackMessengerClick();">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#0084ff" aria-hidden="true" focusable="false"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.494 1.742 6.611 4.463 8.648V24l4.09-2.246c1.091.303 2.245.468 3.447.468 6.627 0 12-4.974 12-11.111S18.627 0 12 0zm1.193 14.963-3.056-3.259-5.963 3.259 6.559-6.963 3.13 3.259 5.889-3.259-6.559 6.963z"/></svg>
+                Messenger
+              </a>
+            </div>
           </div>
         </form>
       `;
