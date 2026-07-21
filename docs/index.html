@@ -1287,18 +1287,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </footer>
     <script>
     // Validazioni base per i campi data
-    function isSaturday(dateStr) {
-        const d = new Date(dateStr);
-        return d.getDay() === 6;
-    }
-
-    function isWinterBlockedDate(dateStr) {
-        if (!/^\d{4}-\d{2}-\d{2}$/.test(String(dateStr || ''))) return false;
-        const parts = dateStr.split('-').map(Number);
-        const month = parts[1];
-        return month === 11 || month === 12 || month === 1 || month === 2 || month === 3;
-    }
-    
     function isBeforeToday(dateStr) {
         if (!/^\d{4}-\d{2}-\d{2}$/.test(String(dateStr || ''))) return false;
         const parts = dateStr.split('-').map(Number);
@@ -1316,13 +1304,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         const d = String(now.getDate()).padStart(2, '0');
         return `${y}-${m}-${d}`;
     }
-    
-    function restrictToSaturday(input) {
+
+    function restrictDateInput(input) {
         input.addEventListener('input', function() {
             if (this.value && isBeforeToday(this.value)) {
                 this.setCustomValidity('Non puoi selezionare una data passata');
-            } else if (this.value && isWinterBlockedDate(this.value)) {
-                this.setCustomValidity('Date non prenotabili dal 1 novembre al 31 marzo');
             } else {
                 this.setCustomValidity('');
             }
@@ -1334,8 +1320,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         const todayKey = getTodayKey();
         checkIn.setAttribute('min', todayKey);
         checkOut.setAttribute('min', todayKey);
-        restrictToSaturday(checkIn);
-        restrictToSaturday(checkOut);
+        restrictDateInput(checkIn);
+        restrictDateInput(checkOut);
     });
     </script>
     <!-- Flatpickr JS -->
@@ -1345,15 +1331,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.addEventListener('DOMContentLoaded', async function() {
         const today = new Date();
         today.setHours(0, 0, 0, 0);
-
-        function enableOnlySaturday(date) {
-            return (date.getDay() === 6);
-        }
-
-        function isWinterBlocked(date) {
-            const month = date.getMonth() + 1;
-            return month === 11 || month === 12 || month === 1 || month === 2 || month === 3;
-        }
+        const availabilitySearchWindowDays = 540;
 
         function toDateKey(date) {
             const y = date.getFullYear();
@@ -1420,8 +1398,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         let checkInSelected = null;
         let houseIds = [];
         let bookingsByHouse = {};
-        let turnoverCheckInDates = new Set();
-        let turnoverCheckOutDates = new Set();
 
         function hasAnyHouseAvailable(checkInKey, checkOutKey) {
             if (!houseIds.length) return true;
@@ -1437,26 +1413,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             });
         }
 
-        function isAllowedCheckInDate(date) {
-            const key = toDateKey(date);
-            return key === todayKey || enableOnlySaturday(date) || turnoverCheckInDates.has(key);
-        }
-
-        function isAllowedCheckOutDate(date) {
-            const key = toDateKey(date);
-            return enableOnlySaturday(date) || turnoverCheckOutDates.has(key);
-        }
-
         function hasAnyHouseWithAvailableStayFrom(checkInDate) {
             if (!checkInDate) return false;
             const checkInKey = toDateKey(checkInDate);
 
-            // Regola: è sufficiente trovare un checkout valido successivo al check-in
-            // (sabato o giorno turnover) senza sovrapposizione.
-            for (let i = 1; i <= 60; i++) {
+            for (let i = 1; i <= availabilitySearchWindowDays; i++) {
                 const candidate = addDays(checkInDate, i);
-                if (isWinterBlocked(candidate)) continue;
-                if (!isAllowedCheckOutDate(candidate)) continue;
 
                 const candidateKey = toDateKey(candidate);
                 if (hasAnyHouseAvailable(checkInKey, candidateKey)) {
@@ -1471,8 +1433,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             const limit = Number.isFinite(maxDaysAhead) ? maxDaysAhead : 365;
             for (let i = 0; i <= limit; i++) {
                 const candidate = addDays(today, i);
-                if (isWinterBlocked(candidate)) continue;
-                if (!isAllowedCheckInDate(candidate)) continue;
                 if (hasAnyHouseWithAvailableStayFrom(candidate)) {
                     return candidate;
                 }
@@ -1488,8 +1448,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
             for (let i = 1; i <= limit; i++) {
                 const candidate = addDays(checkInDate, i);
-                if (isWinterBlocked(candidate)) continue;
-                if (!isAllowedCheckOutDate(candidate)) continue;
 
                 const candidateKey = toDateKey(candidate);
                 if (hasAnyHouseAvailable(checkInKey, candidateKey)) {
@@ -1516,20 +1474,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 houseIds.forEach(function(houseId, idx) {
                     bookingsByHouse[houseId] = Array.isArray(bookingResponses[idx]) ? bookingResponses[idx] : [];
                 });
-
-                turnoverCheckInDates = new Set();
-                turnoverCheckOutDates = new Set();
-                houseIds.forEach(function(houseId) {
-                    const bookings = bookingsByHouse[houseId] || [];
-                    bookings.forEach(function(booking) {
-                        if (booking && booking.checkOut) {
-                            turnoverCheckInDates.add(String(booking.checkOut));
-                        }
-                        if (booking && booking.checkIn) {
-                            turnoverCheckOutDates.add(String(booking.checkIn));
-                        }
-                    });
-                });
             }
         } catch (err) {
             console.warn('Impossibile caricare le prenotazioni per il calendario dinamico:', err);
@@ -1543,8 +1487,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             locale: flatpickr.l10ns.it,
             disable: [function(date) {
                 if (date < today) return true;
-                if (isWinterBlocked(date)) return true;
-                if (!isAllowedCheckInDate(date)) return true;
                 return !hasAnyHouseWithAvailableStayFrom(date);
             }],
             minDate: todayKey,
@@ -1556,8 +1498,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             onDayCreate: function(dObj, dStr, fp, dayElem) {
                 const dayDate = dayElem.dateObj;
                 if (dayDate < today) return;
-                if (isWinterBlocked(dayDate)) return;
-                if (!isAllowedCheckInDate(dayDate)) return;
                 if (hasAnyHouseWithAvailableStayFrom(dayDate)) {
                     dayElem.classList.add('calendar-day-available');
                 } else {
@@ -1572,16 +1512,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     checkOutInput._flatpickr.redraw();
                     checkOutInput.value = '';
                     if (checkInSelected) {
-                        const firstAvailableCheckOutDate = findFirstAvailableCheckOutDate(checkInSelected, 60);
+                        const firstAvailableCheckOutDate = findFirstAvailableCheckOutDate(checkInSelected, availabilitySearchWindowDays);
                         if (firstAvailableCheckOutDate) {
                             checkOutInput._flatpickr.jumpToDate(firstAvailableCheckOutDate);
                             checkOutInput._flatpickr.setDate(firstAvailableCheckOutDate, false);
                         } else {
-                            let nextSaturday = addDays(checkInSelected, 1);
-                            while (nextSaturday.getDay() !== 6) {
-                                nextSaturday.setDate(nextSaturday.getDate() + 1);
-                            }
-                            checkOutInput._flatpickr.jumpToDate(nextSaturday);
+                            checkOutInput._flatpickr.jumpToDate(addDays(checkInSelected, 1));
                         }
                     }
                 }
@@ -1593,8 +1529,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             onDayCreate: function(dObj, dStr, fp, dayElem) {
                 const dayDate = dayElem.dateObj;
                 if (dayDate < today) return;
-                if (isWinterBlocked(dayDate)) return;
-                if (!isAllowedCheckOutDate(dayDate)) return;
                 if (!checkInInput.value) return;
 
                 const checkInDate = parseDateKey(checkInInput.value);
@@ -1610,8 +1544,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             disable: [
                 function(date) {
                     if (date < today) return true;
-                    if (isWinterBlocked(date)) return true;
-                    if (!isAllowedCheckOutDate(date)) return true;
                     if (checkInInput.value) {
                         const checkInDate = parseDateKey(checkInInput.value);
                         if (!checkInDate) return true;
@@ -1628,7 +1560,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         if (firstAvailableCheckInDate) {
             checkInPicker.setDate(firstAvailableCheckInDate, true);
-            const firstAvailableCheckOutDate = findFirstAvailableCheckOutDate(firstAvailableCheckInDate, 60);
+            const firstAvailableCheckOutDate = findFirstAvailableCheckOutDate(firstAvailableCheckInDate, availabilitySearchWindowDays);
             if (firstAvailableCheckOutDate) {
                 checkOutPicker.set('minDate', addDays(firstAvailableCheckInDate, 1));
                 checkOutPicker.setDate(firstAvailableCheckOutDate, false);
