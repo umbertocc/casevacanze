@@ -874,7 +874,42 @@ function gtag_report_whatsapp_conversion(url) {
   });
 }
 </script>  
-</head>                               
+<style>
+  .sticky-booking-cta-link.case-vacanze-cta {
+    gap: 8px;
+    min-width: 0;
+    max-width: 360px;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 1.02em;
+    background: #48bb78;
+    box-shadow: 0 2px 8px rgba(67,233,123,0.10);
+  }
+  .sticky-booking-cta-link.case-vacanze-cta:hover,
+  .sticky-booking-cta-link.case-vacanze-cta:focus {
+    background: #38a169;
+    box-shadow: 0 4px 16px rgba(67,233,123,0.18);
+    color: #fff;
+    text-decoration: none;
+  }
+  .contact-channel-hints {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: 2px;
+    opacity: 0.95;
+    font-size: 0.9em;
+  }
+  @media (max-width: 768px) {
+    .sticky-booking-cta-link.case-vacanze-cta {
+      width: 100%;
+      max-width: none;
+      padding: 12px 18px;
+      font-size: 0.95em;
+    }
+  }
+</style>
+</head>
 <body>  <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FP79B56"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -1702,8 +1737,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <div class="sticky-booking-cta">
   <div class="sticky-booking-cta-inner">
-    <a href="https://wa.me/393886587080?text=Ciao!%20Sono%20interessato%20a%20Respiro%20di%20Mare%20a%20Torre%20Pali" class="sticky-booking-cta-link whatsapp" onclick="gtag('event','click_whatsapp'); gtag_report_whatsapp_conversion()" target="_blank" rel="noopener">WhatsApp</a>
-    <a href="#" class="sticky-booking-cta-link quote compact" id="respiroBookingCta">Invia richiesta</a>
+    <a href="#" class="sticky-booking-cta-link case-vacanze-cta" id="respiroBookingCta" aria-label="Richiedi preventivo per Respiro di Mare"><span aria-hidden="true">✉️</span> Richiedi preventivo<span class="contact-channel-hints" aria-hidden="true">WhatsApp • Messenger</span></a>
   </div>
 </div> 
 
@@ -2535,15 +2569,37 @@ document.addEventListener('DOMContentLoaded', function() {
     rebuildCheckOutPicker();
   }
 
-  bookingCta.addEventListener('click', function(e) {
-    e.preventDefault();
-    openModal();
-    initPickersAndData().then(function() {
-      updateSummary();
-    }).catch(function(err) {
-      setStatus(err && err.message ? err.message : 'Impossibile inizializzare la modale', true);
-    });
-  });
+  function ensureCaseVacanzeQuoteModal() {
+    let modal = document.getElementById('prenota-modal');
+    if (modal) return modal;
+    modal = document.createElement('div');
+    modal.id = 'prenota-modal';
+    modal.style.cssText = 'display:none;position:fixed;z-index:10000;left:0;top:0;right:0;bottom:0;background:rgba(0,0,0,0.5);align-items:stretch;justify-content:stretch;padding:0;box-sizing:border-box;';
+    modal.innerHTML = '<div id="prenota-modal-content" style="background:#fff;padding:48px 20px 20px 20px;border-radius:0;width:100%;height:100%;max-height:none;overflow-y:auto;position:relative;box-sizing:border-box;">' + '<button id="closePrenotaModal" style="position:absolute;top:12px;right:12px;font-size:2em;line-height:1;background:#fff;border:1px solid #d1d5db;border-radius:50%;width:42px;height:42px;cursor:pointer;color:#333;display:flex;align-items:center;justify-content:center;">&times;</button>' + '<div id="prenota-modal-body"></div>' + '</div>';
+    document.body.appendChild(modal);
+    const closeModal = function() { modal.style.display = 'none'; document.body.style.overflow = ''; };
+    document.getElementById('closePrenotaModal').onclick = closeModal;
+    modal.addEventListener('click', function(evt) { if (evt.target === modal) closeModal(); });
+    return modal;
+  }
+
+  function openCaseVacanzeQuoteModal() {
+    const modal = ensureCaseVacanzeQuoteModal();
+    const modalBody = document.getElementById('prenota-modal-body');
+    const casaId = String(CASA_ID || '5');
+    const casaNome = 'Respiro di Mare';
+    const casaLink = 'respiro-di-mare';
+    const normalizedCasaLink = `https://torrepalivacanze.it/${casaLink}`;
+    const whatsappUrl = `https://wa.me/393804580135?text=${encodeURIComponent(`Ciao! Vorrei informazioni per ${casaNome}.\n${normalizedCasaLink}`)}`;
+    const messengerUrl = 'https://m.me/61577506430394';
+    modalBody.innerHTML = `<h2 style="font-size:1.1em;color:#2d7a46;margin:0 0 10px 0;">Richiesta preventivo</h2><div style="margin-bottom:10px;font-size:0.95em;"><b>${casaNome}</b></div><form id="prenotaForm" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;"><input type="hidden" name="casa" value="${casaId}"><div style="display:flex;flex-direction:column;gap:6px;"><label for="arrivo">Data di Arrivo *</label><input type="date" id="arrivo" name="arrivo" required style="padding:10px;border:1px solid #d1d5db;border-radius:8px;"></div><div style="display:flex;flex-direction:column;gap:6px;"><label for="partenza">Data di Partenza *</label><input type="date" id="partenza" name="partenza" required style="padding:10px;border:1px solid #d1d5db;border-radius:8px;"></div><div style="grid-column:1 / -1;"><input required name="nome" type="text" placeholder="Nome *" style="width:100%;padding:10px;border:1px solid #d1d5db;border-radius:8px;box-sizing:border-box;"></div><div style="grid-column:1 / -1;"><input required name="email" type="email" placeholder="Email *" style="width:100%;padding:10px;border:1px solid #d1d5db;border-radius:8px;box-sizing:border-box;"></div><div style="grid-column:1 / -1;"><input name="telefono" type="tel" placeholder="Telefono" style="width:100%;padding:10px;border:1px solid #d1d5db;border-radius:8px;box-sizing:border-box;"></div><div style="grid-column:1 / -1;"><input required name="persone" type="number" min="1" max="20" placeholder="Numero di Persone *" style="width:100%;padding:10px;border:1px solid #d1d5db;border-radius:8px;box-sizing:border-box;"></div><div style="grid-column:1 / -1;"><textarea name="messaggio" placeholder="Messaggio (opzionale)" style="width:100%;min-height:90px;padding:10px;border:1px solid #d1d5db;border-radius:8px;box-sizing:border-box;"></textarea></div><label style="grid-column:1 / -1;display:flex;align-items:flex-start;gap:8px;font-size:0.83em;color:#374151;cursor:pointer;line-height:1.4;"><input type="checkbox" name="accettaPrivacy" required style="margin-top:3px;width:16px;height:16px;accent-color:#2d7a46;flex-shrink:0;"><span>Prendo atto dell'informativa sul trattamento dei dati personali.</span></label><div style="grid-column:1 / -1;display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;"><button type="button" id="annullaPrenotaModal" style="background:#e5e7eb;color:#1f2937;padding:10px 22px;border:none;border-radius:8px;font-size:1em;cursor:pointer;">Annulla</button><button type="submit" style="background:#2d7a46;color:#fff;padding:10px 22px;border:none;border-radius:8px;font-size:1em;cursor:pointer;">Invia richiesta</button></div><div style="grid-column:1 / -1;margin-top:6px;padding-top:12px;border-top:1px solid #e5e7eb;"><p style="margin:0 0 10px 0;color:#374151;">Preferisci scriverci subito? Puoi contattarci anche qui:</p><div style="display:flex;gap:10px;flex-wrap:wrap;"><a href="${whatsappUrl}" target="_blank" rel="noopener" onclick="gtag('event','click_whatsapp'); return gtag_report_whatsapp_conversion(this.href);" style="display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;background:#ecfdf5;color:#166534;text-decoration:none;font-weight:700;">WhatsApp</a><a href="${messengerUrl}" target="_blank" rel="noopener" onclick="return typeof trackMessengerClick === 'function' ? trackMessengerClick() : true;" style="display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;background:#eff6ff;color:#1d4ed8;text-decoration:none;font-weight:700;">Messenger</a></div></div></form>`;
+    modal.style.display = 'flex'; document.body.style.overflow = 'hidden';
+    const closeModal = function() { modal.style.display = 'none'; document.body.style.overflow = ''; };
+    const cancelBtn = document.getElementById('annullaPrenotaModal'); if (cancelBtn) cancelBtn.onclick = closeModal;
+    document.getElementById('prenotaForm').onsubmit = async function(ev) { ev.preventDefault(); const form = ev.target; const arrivo = form.arrivo.value.trim(); const partenza = form.partenza.value.trim(); if (!arrivo || !partenza) { alert('Compila sia la data di arrivo che di partenza!'); return; } modalBody.innerHTML = '<div style="text-align:center;padding:32px 0;"><div style="border:4px solid #f3f3f3;border-top:4px solid #188841;border-radius:50%;width:32px;height:32px;animation:spin 1s linear infinite;margin:0 auto 18px auto;"></div><span style="color:#188841;font-weight:500;">Invio in corso...</span></div>'; const nome = form.nome.value, email = form.email.value, telefono = form.telefono.value, persone = form.persone.value, messaggio = form.messaggio.value, casa = form.casa.value; try { const response = await fetch('https://demo-mail-993653817397.europe-west8.run.app/api/preventivi/public', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Accept': 'application/json' }, body: new URLSearchParams({ nome, email, telefono, appartamento: casa, arrivo, partenza, persone, messaggio, source: 'case-vacanze-modal' }) }); modalBody.innerHTML = response.ok ? '<div style="text-align:center;padding:32px 0;"><h2 style="color:#2d7a46;">Richiesta inviata!</h2><p>Grazie per aver richiesto il preventivo.<br>Ti ricontatteremo al più presto.</p><button id="closePrenotaModal2" style="margin-top:18px;background:#2d7a46;color:#fff;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;">Chiudi</button></div>' : '<div style="text-align:center;padding:32px 0;"><h2 style="color:#b91c1c;">Errore nell\'invio</h2><p>Si è verificato un errore nell\'invio della richiesta.<br>Riprova o contattaci via WhatsApp.</p><button id="closePrenotaModal2" style="margin-top:18px;background:#b91c1c;color:#fff;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;">Chiudi</button></div>'; } catch (err) { modalBody.innerHTML = '<div style="text-align:center;padding:32px 0;"><h2 style="color:#b91c1c;">Errore nell\'invio</h2><p>Si è verificato un errore nell\'invio della richiesta.<br>Riprova o contattaci via WhatsApp.</p><button id="closePrenotaModal2" style="margin-top:18px;background:#b91c1c;color:#fff;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;">Chiudi</button></div>'; } const closeBtn = document.getElementById('closePrenotaModal2'); if (closeBtn) closeBtn.onclick = closeModal; };
+  }
+
+  bookingCta.addEventListener('click', function(e) { e.preventDefault(); openCaseVacanzeQuoteModal(); });
 
   closeBtn.addEventListener('click', closeModal);
   bookingModal.addEventListener('click', function(e) {
