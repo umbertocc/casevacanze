@@ -1676,6 +1676,8 @@ document.addEventListener('DOMContentLoaded', function() {
         ctaWrap.style.opacity = visible ? '1' : '0';
         ctaWrap.style.visibility = visible ? 'visible' : 'hidden';
         ctaWrap.style.pointerEvents = visible ? 'auto' : 'none';
+        ctaWrap.setAttribute('aria-hidden', visible ? 'false' : 'true');
+        ctaBtn.tabIndex = visible ? 0 : -1;
     }
 
     function ensureGenericInfoModal() {
@@ -1684,7 +1686,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         modal = document.createElement('div');
         modal.id = 'generic-info-modal';
-        modal.style.cssText = 'display:none;position:fixed;z-index:1200;left:0;top:0;right:0;bottom:0;background:rgba(0,0,0,0.52);padding:0;align-items:stretch;justify-content:stretch;';
+        modal.setAttribute('role', 'dialog');
+        modal.setAttribute('aria-modal', 'true');
+        modal.style.cssText = 'display:none;position:fixed;z-index:2147483646;left:0;top:0;right:0;bottom:0;background:rgba(0,0,0,0.52);padding:0;align-items:stretch;justify-content:stretch;';
         modal.innerHTML = '<div style="background:#fff;border-radius:0;width:100%;height:100%;max-width:none;max-height:none;overflow:auto;position:relative;padding:52px 18px 18px 18px;box-sizing:border-box;"><button type="button" id="closeGenericInfoModal" aria-label="Chiudi" style="position:fixed;top:10px;right:12px;border:1px solid #d1d5db;background:#fff;border-radius:999px;width:40px;height:40px;font-size:1.7em;line-height:1;cursor:pointer;z-index:1;">&times;</button><div id="generic-info-modal-body" style="max-width:680px;margin:0 auto;"></div></div>';
         document.body.appendChild(modal);
 
