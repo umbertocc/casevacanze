@@ -2044,6 +2044,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
+    const modalContent = document.getElementById('prenota-modal-content');
+    if (modalContent) {
+      modalContent.scrollTop = 0;
+      requestAnimationFrame(function() {
+        modalContent.scrollTop = 0;
+      });
+    }
 
     const closeModal = function() {
       modal.style.display = 'none';
