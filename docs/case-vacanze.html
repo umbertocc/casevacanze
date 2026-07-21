@@ -1617,8 +1617,8 @@ document.addEventListener('DOMContentLoaded', function() {
   if (!document.getElementById('prenota-modal')) {
     const modalDiv = document.createElement('div');
     modalDiv.id = 'prenota-modal';
-    modalDiv.style = 'display:none;position:fixed;z-index:10000;left:0;top:0;width:100vw;height:100dvh;padding:4px;box-sizing:border-box;background:rgba(0,0,0,0.35);align-items:center;justify-content:center;';
-    modalDiv.innerHTML = `<div id=\"prenota-modal-content\" style=\"background:#fff;padding:22px 16px 14px 16px;max-width:520px;width:min(520px,calc(100dvw - 16px));max-height:calc(100dvh - 16px);display:flex;flex-direction:column;justify-content:flex-start;overflow-y:auto;overflow-x:hidden;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,0.18);position:relative;\">\n      <button id=\"closePrenotaModal\" style=\"position:absolute;top:6px;right:10px;font-size:1.4em;background:none;border:none;cursor:pointer;z-index:10;line-height:1;\">&times;</button>\n      <div id=\"prenota-modal-body\" style=\"flex:1 1 auto;overflow:visible;\"></div>\n    </div>`;
+    modalDiv.style = 'display:none;position:fixed;z-index:2147483646;left:0;top:0;right:0;bottom:0;background:rgba(0,0,0,0.52);padding:0;align-items:stretch;justify-content:stretch;';
+    modalDiv.innerHTML = `<div id=\"prenota-modal-content\" style=\"background:#fff;border-radius:0;width:100%;height:100%;max-width:none;max-height:none;overflow:auto;position:relative;padding:52px 18px 18px 18px;box-sizing:border-box;\"><button id=\"closePrenotaModal\" aria-label=\"Chiudi\" style=\"position:fixed;top:10px;right:12px;border:1px solid #d1d5db;background:#fff;border-radius:999px;width:40px;height:40px;font-size:1.7em;line-height:1;cursor:pointer;z-index:1;\">&times;</button><div id=\"prenota-modal-body\" style=\"max-width:680px;margin:0 auto;\"></div></div>`;
     document.body.appendChild(modalDiv);
     document.getElementById('closePrenotaModal').onclick = () => {
       modalDiv.style.display = 'none';
@@ -1627,63 +1627,36 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     const style = document.createElement('style');
     style.innerHTML = `
-      #prenota-modal-content {
-        max-height: calc(100dvh - 8px) !important;
-        overflow-y: auto !important;
-        overflow-x: hidden !important;
-      }
-      #prenota-modal-content h2 {
-        margin-top: 0;
-        margin-bottom: 10px;
-      }
       #prenota-modal-content .modal-form {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        row-gap: 12px;
-        column-gap: 8px;
+        gap: 8px;
       }
       #prenota-modal-content .modal-date-row {
-        grid-column: 1 / -1;
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 8px;
       }
-      #prenota-modal-content .modal-date-row .form-group {
-        margin-bottom: 0;
-      }
-      #prenota-modal-content .modal-span-2 {
-        grid-column: 1 / -1;
-      }
-      #prenota-modal-content .modal-field {
-        margin-bottom: 0;
-      }
-      #prenota-modal-content .modal-full {
-        grid-column: 1 / -1;
-        margin-bottom: 0;
-      }
-      #prenota-modal-content .form-group {
-        margin-bottom: 0;
-      }
-      #prenota-modal-content label {
-        display: block;
-        margin-bottom: 4px;
-        font-size: 0.85em;
+      #prenota-modal-content input,
+      #prenota-modal-content textarea,
+      #prenota-modal-content select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        box-sizing: border-box;
+        font: inherit;
       }
       #prenota-modal-content textarea {
-        min-height: 46px;
-        max-height: 56px;
+        min-height: 64px;
       }
       #prenota-modal-content .modal-actions {
         display: flex;
         gap: 8px;
         justify-content: flex-end;
-        margin-top: 4px;
+        margin-top: 2px;
       }
       #prenota-modal-content .modal-alt-contact {
-        grid-column: 1 / -1;
-        margin-top: 8px;
-        padding-top: 12px;
-        border-top: 1px solid #d9e7ef;
+        margin-top: 2px;
       }
       #prenota-modal-content .modal-alt-contact p {
         margin: 0 0 10px 0;
@@ -1715,32 +1688,9 @@ document.addEventListener('DOMContentLoaded', function() {
         text-decoration: none;
       }
       @media (max-width: 700px) {
-        #prenota-modal-content {
-          width: calc(100dvw - 16px) !important;
-          max-height: calc(100dvh - 8px) !important;
-          padding: 16px 12px 12px 12px !important;
-          border-radius: 14px !important;
-          overflow-y: auto !important;
-        }
-        #prenota-modal-content .modal-form {
-          grid-template-columns: 1fr;
-          row-gap: 8px;
-          column-gap: 6px;
-        }
         #prenota-modal-content .modal-date-row {
           grid-template-columns: 1fr 1fr;
           gap: 8px;
-        }
-        #prenota-modal-content input,
-        #prenota-modal-content textarea,
-        #prenota-modal-content select {
-          padding: 7px 8px !important;
-          font-size: 0.92em !important;
-          margin-bottom: 0 !important;
-        }
-        #prenota-modal-content .modal-actions button {
-          padding: 9px 12px !important;
-          font-size: 0.92em !important;
         }
         #prenota-modal-content .modal-alt-links {
           flex-direction: column;
@@ -1774,11 +1724,12 @@ document.addEventListener('DOMContentLoaded', function() {
       const whatsappUrl = `https://wa.me/393804580135?text=${encodeURIComponent(`Ciao! Vorrei informazioni per ${contactTarget}.\n${normalizedCasaLink}`)}`;
       const messengerUrl = 'https://m.me/61577506430394';
       modalBody.innerHTML = `
-        <h2 style="font-size:1.1em;color:#2d7a46;">Richiesta preventivo</h2>
-        ${casaNome ? `<div class="modal-span-2" style='margin-bottom:6px;font-size:0.95em;'><b>${casaNome}</b></div>` : ''}
+        <h2 style="margin:0 0 8px 0;color:#0f766e;font-size:1.25em;">Richiedi info</h2>
+        <p style="margin:0 0 12px 0;color:#475569;font-size:0.94em;line-height:1.5;">Invia una richiesta e ti risponderemo il prima possibile.</p>
+        ${casaNome ? `<div style='margin:0 0 10px 0;font-size:0.95em;'><b>${casaNome}</b></div>` : ''}
         <form id="prenotaForm" class="modal-form">
           <input type="hidden" name="casa" value="${casaId || casaNome}">
-          <div class="modal-date-row modal-span-2">
+          <div class="modal-date-row">
             <div class="form-group">
               <label for="arrivo">Data di Arrivo *</label>
               <input type="date" id="arrivo" name="arrivo" required placeholder="Data check-in">
@@ -1788,20 +1739,20 @@ document.addEventListener('DOMContentLoaded', function() {
               <input type="date" id="partenza" name="partenza" required placeholder="Data check-out">
             </div>
           </div>
-          <div class="modal-field"><input required name="nome" type="text" placeholder="Nome *"></div>
-          <div class="modal-field"><input required name="email" type="email" placeholder="Email *"></div>
-          <div class="modal-field"><input name="telefono" type="tel" placeholder="Telefono"></div>
-          <div class="modal-field"><input required name="persone" type="number" min="1" max="20" placeholder="Numero di Persone *"></div>
-          <div class="modal-full"><textarea name="messaggio" placeholder="Messaggio (opzionale)"></textarea></div>
-          <label class="modal-full" style="display:flex;align-items:flex-start;gap:8px;margin-bottom:0;font-size:0.83em;color:#374151;cursor:pointer;line-height:1.4;">
+          <input required name="nome" type="text" placeholder="Nome e Cognome *">
+          <input required name="email" type="email" placeholder="Email *">
+          <input name="telefono" type="tel" placeholder="Telefono (opzionale)">
+          <input required name="persone" type="number" min="1" max="20" placeholder="Numero di persone *">
+          <textarea name="messaggio" placeholder="Messaggio (opzionale)"></textarea>
+          <label style="display:flex;align-items:flex-start;gap:8px;font-size:0.84em;color:#374151;line-height:1.45;">
             <input type="checkbox" name="accettaPrivacy" required style="margin-top:3px;width:16px;height:16px;accent-color:#2d7a46;flex-shrink:0;">
             <span>Prendo atto dell'informativa sul trattamento dei dati personali.</span>
           </label>
-          <div class="modal-full modal-actions">
-            <button type="button" id="annullaPrenotaModal" style="background:#e0e0e0;color:#2d7a46;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;">Annulla</button>
-            <button type="submit" style="background:#2d7a46;color:#fff;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;">Invia richiesta</button>
+          <div class="modal-actions">
+            <button type="button" id="annullaPrenotaModal" style="background:#e0e0e0;color:#2d7a46;padding:10px 16px;border:none;border-radius:8px;font-size:1em;cursor:pointer;">Annulla</button>
+            <button type="submit" style="background:#188841;color:#fff;padding:10px 16px;border:none;border-radius:8px;font-size:1em;font-weight:700;cursor:pointer;">Invia richiesta</button>
           </div>
-          <div class="modal-full modal-alt-contact">
+          <div class="modal-alt-contact">
             <p>Preferisci scriverci subito? Puoi contattarci anche qui:</p>
             <div class="modal-alt-links">
               <a href="${whatsappUrl}" class="modal-alt-link" target="_blank" rel="noopener" onclick="gtag('event','click_whatsapp'); return gtag_report_whatsapp_conversion(this.href);">
@@ -1922,25 +1873,4 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 <!-- MODALE PREVENTIVO FINE -->
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  var modal = document.getElementById('prenota-modal');
-  var content = document.getElementById('prenota-modal-content');
-  if (modal) {
-    modal.style.padding = '0';
-    modal.style.alignItems = 'stretch';
-    modal.style.justifyContent = 'stretch';
-  }
-  if (content) {
-    content.style.width = '100vw';
-    content.style.height = '100dvh';
-    content.style.maxWidth = 'none';
-    content.style.maxHeight = 'none';
-    content.style.borderRadius = '0';
-    content.style.boxShadow = 'none';
-    content.style.overflow = 'auto';
-  }
-});
-</script>
 
