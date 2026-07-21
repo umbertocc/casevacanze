@@ -1581,8 +1581,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   let bookedRanges = [];
-  let turnoverCheckInDates = new Set();
-  let turnoverCheckOutDates = new Set();
   let quote = null;
   let quoteRequestToken = 0;
   let currentStep = 1;
@@ -1621,14 +1619,8 @@ document.addEventListener('DOMContentLoaded', function() {
     return result;
   }
 
-  function enableOnlySaturday(date) {
-    return date.getDay() === 6;
-  }
-
-  function isWinterBlocked(date) {
-    const month = date.getMonth() + 1;
-    return month === 11 || month === 12 || month === 1 || month === 2 || month === 3;
-  }
+  const minStayNights = 3;
+  const availabilitySearchWindowDays = 540;
 
   function isCancelledBooking(booking) {
     const state = String(booking && booking.stato ? booking.stato : '').toUpperCase();
@@ -1639,16 +1631,6 @@ document.addEventListener('DOMContentLoaded', function() {
     return bookedRanges.some(function(range) {
       return date >= range.start && date < range.end;
     });
-  }
-
-  function isAllowedCheckInDate(date) {
-    if (isWinterBlocked(date)) return false;
-    return enableOnlySaturday(date) || turnoverCheckInDates.has(toKey(date));
-  }
-
-  function isAllowedCheckOutDate(date) {
-    if (isWinterBlocked(date)) return false;
-    return enableOnlySaturday(date) || turnoverCheckOutDates.has(toKey(date));
   }
 
   function isStayAvailable(checkInDate, checkOutDate) {
@@ -1663,14 +1645,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function hasAvailableStayFrom(checkInDate) {
     if (!checkInDate) return false;
-    for (let i = 1; i <= 60; i++) {
+    for (let i = minStayNights; i <= availabilitySearchWindowDays; i++) {
       const checkOutDate = addDays(checkInDate, i);
-      if (isWinterBlocked(checkOutDate)) {
-        continue;
-      }
-      if (!isAllowedCheckOutDate(checkOutDate)) {
-        continue;
-      }
       if (isStayAvailable(checkInDate, checkOutDate)) {
         return true;
       }
@@ -1684,9 +1660,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const limit = Number.isFinite(limitDays) ? limitDays : 365;
     for (let i = 0; i <= limit; i++) {
       const candidate = addDays(today, i);
-      if (!isAllowedCheckInDate(candidate)) {
-        continue;
-      }
       if (!isDateOccupied(candidate) && hasAvailableStayFrom(candidate)) {
         return candidate;
       }
@@ -1939,6 +1912,13 @@ document.addEventListener('DOMContentLoaded', function() {
       ospitiInput.reportValidity();
       return false;
     }
+    const checkInDate = parseDate(checkInInput.value);
+    const checkOutDate = parseDate(checkOutInput.value);
+    if (!checkInDate || !checkOutDate || checkOutDate < addDays(checkInDate, minStayNights)) {
+      setStatus('Il soggiorno minimo è di 3 notti.', true);
+      checkOutInput.focus();
+      return false;
+    }
     if (!quote || !quote.available) {
       setStatus('Verifica prima disponibilità e prezzo nel passo 1.', true);
       return false;
@@ -1981,14 +1961,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     const bookings = await response.json();
-    turnoverCheckInDates = new Set();
-    turnoverCheckOutDates = new Set();
     bookedRanges = Array.isArray(bookings)
       ? bookings.filter(function(booking) {
           return booking && booking.checkIn && booking.checkOut && !isCancelledBooking(booking);
         }).map(function(booking) {
-          turnoverCheckInDates.add(String(booking.checkOut));
-          turnoverCheckOutDates.add(String(booking.checkIn));
           return {
             start: parseDate(String(booking.checkIn)),
             end: parseDate(String(booking.checkOut))
@@ -2007,17 +1983,15 @@ document.addEventListener('DOMContentLoaded', function() {
     checkOutPicker = flatpickr(checkOutInput, {
       dateFormat: 'Y-m-d',
       locale: flatpickr.l10ns.it,
-      minDate: checkInInput.value ? addDays(parseDate(checkInInput.value), 1) : 'today',
+      minDate: checkInInput.value ? addDays(parseDate(checkInInput.value), minStayNights) : 'today',
       disable: [function(date) {
         const today = new Date();
         today.setHours(0, 0, 0, 0);
         if (date < today) return true;
-        if (isWinterBlocked(date)) return true;
-        if (!checkInInput.value) return isDateOccupied(date) || !isAllowedCheckOutDate(date);
+        if (!checkInInput.value) return isDateOccupied(date);
         const checkInDate = parseDate(checkInInput.value);
         if (!checkInDate) return true;
-        if (date <= checkInDate) return true;
-        if (!isAllowedCheckOutDate(date)) return true;
+        if (date < addDays(checkInDate, minStayNights)) return true;
         return !isStayAvailable(checkInDate, date);
       }],
       onChange: function() {
@@ -2120,13 +2094,13 @@ document.addEventListener('DOMContentLoaded', function() {
       disable: [function(date) {
         const today = new Date();
         today.setHours(0, 0, 0, 0);
-        return date < today || isWinterBlocked(date) || isDateOccupied(date) || !isAllowedCheckInDate(date) || !hasAvailableStayFrom(date);
+        return date < today || isDateOccupied(date) || !hasAvailableStayFrom(date);
       }],
       onChange: function(selectedDates) {
         if (selectedDates && selectedDates[0]) {
           const checkInDate = selectedDates[0];
           if (checkOutPicker) {
-            checkOutPicker.set('minDate', addDays(checkInDate, 1));
+            checkOutPicker.set('minDate', addDays(checkInDate, minStayNights));
             checkOutPicker.clear();
           }
           resetQuote();
