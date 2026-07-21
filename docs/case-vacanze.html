@@ -768,54 +768,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 
   document.addEventListener('DOMContentLoaded', function() {
-      // Stile per input grandi nella modale preventivo
-      const styleInputs = document.createElement('style');
-      styleInputs.innerHTML = `
-        #prenota-modal-content input[type="text"],
-        #prenota-modal-content input[type="email"],
-        #prenota-modal-content input[type="tel"],
-        #prenota-modal-content input[type="number"],
-        #prenota-modal-content textarea,
-        #prenota-modal-content select {
-          width: 100%;
-          padding: 8px 10px;
-          font-size: 1em;
-          border-radius: 8px;
-          border: 2px solid #b7e0c7;
-          margin-bottom: 8px;
-          font-family: inherit;
-          box-sizing: border-box;
-          background: #f8fcfa;
-          transition: border-color 0.18s, box-shadow 0.18s;
-        }
-        #prenota-modal-content input[type="text"]:focus,
-        #prenota-modal-content input[type="email"]:focus,
-        #prenota-modal-content input[type="tel"]:focus,
-        #prenota-modal-content input[type="number"]:focus,
-        #prenota-modal-content input[type="date"]:focus,
-        #prenota-modal-content textarea:focus,
-        #prenota-modal-content select:focus {
-          border-color: #2d7a46;
-          outline: none;
-          box-shadow: 0 0 0 2px #b7e0c7;
-        }
-        #prenota-modal-content textarea {
-          min-height: 68px;
-          resize: vertical;
-        }
-        @media (max-width: 700px) {
-          #prenota-modal-content input,
-          #prenota-modal-content textarea,
-          #prenota-modal-content select {
-            font-size: 0.98em;
-            padding: 8px 10px;
-          }
-        }
-          #prenota-modal-content input[type="date"] {
-          font-size: 0.9em;
-        }
-      `;
-      document.head.appendChild(styleInputs);
     const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
     dropdownToggles.forEach(function(toggle) {
       toggle.addEventListener('click', function(e) {
@@ -1641,6 +1593,7 @@ document.addEventListener('DOMContentLoaded', function() {
       #prenota-modal-content select {
         width: 100%;
         padding: 10px;
+        font-size: 1rem;
         border: 1px solid #d1d5db;
         border-radius: 8px;
         box-sizing: border-box;
@@ -1725,7 +1678,6 @@ document.addEventListener('DOMContentLoaded', function() {
       const messengerUrl = 'https://m.me/61577506430394';
       modalBody.innerHTML = `
         <h2 style="margin:0 0 8px 0;color:#0f766e;font-size:1.25em;">Richiedi info</h2>
-        <p style="margin:0 0 12px 0;color:#475569;font-size:0.94em;line-height:1.5;">Invia una richiesta e ti risponderemo il prima possibile.</p>
         ${casaNome ? `<div style='margin:0 0 10px 0;font-size:0.95em;'><b>${casaNome}</b></div>` : ''}
         <form id="prenotaForm" class="modal-form">
           <input type="hidden" name="casa" value="${casaId || casaNome}">
