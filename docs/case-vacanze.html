@@ -1642,6 +1642,15 @@ document.addEventListener('DOMContentLoaded', function() {
         row-gap: 12px;
         column-gap: 8px;
       }
+      #prenota-modal-content .modal-date-row {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+      #prenota-modal-content .modal-date-row .form-group {
+        margin-bottom: 0;
+      }
       #prenota-modal-content .modal-span-2 {
         grid-column: 1 / -1;
       }
@@ -1714,9 +1723,13 @@ document.addEventListener('DOMContentLoaded', function() {
           overflow-y: auto !important;
         }
         #prenota-modal-content .modal-form {
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: 1fr;
           row-gap: 8px;
           column-gap: 6px;
+        }
+        #prenota-modal-content .modal-date-row {
+          grid-template-columns: 1fr;
+          gap: 8px;
         }
         #prenota-modal-content input,
         #prenota-modal-content textarea,
@@ -1765,18 +1778,20 @@ document.addEventListener('DOMContentLoaded', function() {
         ${casaNome ? `<div class="modal-span-2" style='margin-bottom:6px;font-size:0.95em;'><b>${casaNome}</b></div>` : ''}
         <form id="prenotaForm" class="modal-form">
           <input type="hidden" name="casa" value="${casaId || casaNome}">
-          <div class="form-group">
-            <label for="arrivo">Data di Arrivo *</label>
-            <input type="date" id="arrivo" name="arrivo" required placeholder="Data check-in">
+          <div class="modal-date-row modal-span-2">
+            <div class="form-group">
+              <label for="arrivo">Data di Arrivo *</label>
+              <input type="date" id="arrivo" name="arrivo" required placeholder="Data check-in">
+            </div>
+            <div class="form-group">
+              <label for="partenza">Data di Partenza *</label>
+              <input type="date" id="partenza" name="partenza" required placeholder="Data check-out">
+            </div>
           </div>
-          <div class="form-group">
-            <label for="partenza">Data di Partenza *</label>
-            <input type="date" id="partenza" name="partenza" required placeholder="Data check-out">
-          </div>
-          <div class="modal-field"><input required name="nome" type="text" placeholder="Nome *"></div>
-          <div class="modal-field"><input required name="email" type="email" placeholder="Email *"></div>
-          <div class="modal-field"><input name="telefono" type="tel" placeholder="Telefono"></div>
-          <div class="modal-field"><input required name="persone" type="number" min="1" max="20" placeholder="Numero di Persone *"></div>
+          <div class="modal-field modal-span-2"><input required name="nome" type="text" placeholder="Nome *"></div>
+          <div class="modal-field modal-span-2"><input required name="email" type="email" placeholder="Email *"></div>
+          <div class="modal-field modal-span-2"><input name="telefono" type="tel" placeholder="Telefono"></div>
+          <div class="modal-field modal-span-2"><input required name="persone" type="number" min="1" max="20" placeholder="Numero di Persone *"></div>
           <div class="modal-full"><textarea name="messaggio" placeholder="Messaggio (opzionale)"></textarea></div>
           <label class="modal-full" style="display:flex;align-items:flex-start;gap:8px;margin-bottom:0;font-size:0.83em;color:#374151;cursor:pointer;line-height:1.4;">
             <input type="checkbox" name="accettaPrivacy" required style="margin-top:3px;width:16px;height:16px;accent-color:#2d7a46;flex-shrink:0;">
