@@ -57,113 +57,6 @@ function ensurePrenotaModalContainer() {
     return modalDiv;
 }
 
-function openPreventivoRequestModal(appartamento, prezzoTotale, checkIn, checkOut, casaId) {
-    const modalDiv = ensurePrenotaModalContainer();
-    const modalBody = document.getElementById('prenota-modal-body');
-    const prezzoNumerico = Number(prezzoTotale);
-    const prezzoValido = Number.isFinite(prezzoNumerico);
-    const prezzoFormattato = prezzoValido
-        ? prezzoNumerico.toLocaleString('it-IT', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 })
-        : '';
-    const formatDateLabel = function(value) {
-        if (!value || !/^\d{4}-\d{2}-\d{2}$/.test(value)) {
-            return value || '-';
-        }
-        const parts = value.split('-');
-        return parts[2] + '/' + parts[1] + '/' + parts[0];
-    };
-
-    modalBody.innerHTML = `
-        <div style="margin:10px 0 12px 0;display:flex;justify-content:space-between;align-items:center;gap:10px;">
-            <h2 style="margin:0;font-size:1.2em;color:#2d7a46;">Richiesta info</h2>
-        </div>
-        <p style="margin:0 0 12px 0;color:#4b5563;font-size:0.95em;">Compila i dati per ricevere conferma disponibilita e prezzo finale. Nessun addebito ora e nessun impegno di prenotazione.</p>
-        <div style="margin-bottom:10px;font-weight:600;font-size:0.95em;">${appartamento || 'Richiesta generica'}</div>
-        ${prezzoValido ? `<div style="margin-bottom:10px;padding:8px 10px;border-radius:8px;background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;font-weight:700;font-size:0.95em;">Prezzo totale: ${prezzoFormattato}</div>` : ''}
-        <div style="margin-bottom:10px;display:grid;grid-template-columns:1fr;gap:6px;">
-            <div style="padding:8px 10px;border-radius:8px;background:#f8fafc;border:1px solid #dbeafe;color:#1e3a8a;font-size:0.9em;"><strong>Check-in:</strong> ${formatDateLabel(checkIn)}</div>
-            <div style="padding:8px 10px;border-radius:8px;background:#f8fafc;border:1px solid #dbeafe;color:#1e3a8a;font-size:0.9em;"><strong>Check-out:</strong> ${formatDateLabel(checkOut)}</div>
-        </div>
-        <form id="quickPreventivoForm" style="margin-bottom:0;">
-            <input type="hidden" name="appartamento" value="${appartamento || ''}">
-            <input type="hidden" name="casaId" value="${casaId || ''}">
-            <input type="hidden" name="prezzo" value="${prezzoValido ? prezzoNumerico : ''}">
-            <input type="hidden" name="checkIn" value="${checkIn || ''}">
-            <input type="hidden" name="checkOut" value="${checkOut || ''}">
-            <div style="margin-bottom:10px;">
-                <input required name="nome" type="text" placeholder="Nome *" style="width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;">
-                <input required name="email" type="email" placeholder="Email *" style="width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;">
-                <input name="telefono" type="tel" placeholder="Telefono (opzionale)" style="width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;">
-                <input required name="persone" type="number" min="1" max="8" placeholder="Numero di Persone *" style="width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;">
-            </div>
-            <textarea name="messaggio" placeholder="Messaggio (opzionale)" style="width:100%;padding:10px;border-radius:5px;border:1px solid #ccc;min-height:60px;max-height:120px;font-size:0.95em;margin-bottom:12px;box-sizing:border-box;display:block;"></textarea>
-            <div style="display:flex;gap:10px;padding-bottom:10px;flex-wrap:wrap;">
-                <button type="submit" style="flex:2;background:#2d7a46;color:#fff;padding:12px;border:none;border-radius:6px;font-size:1em;font-weight:600;cursor:pointer;">Invia richiesta</button>
-                <button type="button" id="cancelQuickPreventivoBtn" style="flex:1;background:#f3f4f6;color:#1f2937;padding:12px;border:1px solid #d1d5db;border-radius:6px;font-size:1em;cursor:pointer;">Annulla</button>
-            </div>
-        </form>
-    `;
-
-    modalDiv.style.display = 'flex';
-
-    const cancelBtn = document.getElementById('cancelQuickPreventivoBtn');
-    if (cancelBtn) {
-        cancelBtn.onclick = function() {
-            modalDiv.style.display = 'none';
-        };
-    }
-
-    const quickForm = document.getElementById('quickPreventivoForm');
-    if (quickForm) {
-        quickForm.onsubmit = async function(ev) {
-            ev.preventDefault();
-            const form = ev.currentTarget;
-
-            try {
-                const response = await fetch('https://demo-mail-993653817397.europe-west8.run.app/api/preventivi/public', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                        'Accept': 'application/json'
-                    },
-                    body: new URLSearchParams({
-                        nome: form.nome.value,
-                        email: form.email.value,
-                        telefono: form.telefono.value,
-                        checkIn: form.checkIn.value || '',
-                        checkOut: form.checkOut.value || '',
-                        persone: String(Number(form.persone.value)),
-                        messaggio: form.messaggio.value,
-                        appartamento: form.appartamento.value,
-                        prezzo: form.prezzo.value || '',
-                        source: 'booking-static-modal'
-                    })
-                });
-
-                if (!response.ok) throw new Error('Errore invio richiesta preventivo');
-
-                modalBody.innerHTML = `<div style="text-align:center;padding:32px 0;"><h2 style="color:#2d7a46;">Richiesta inviata!</h2><p>Grazie per aver richiesto il preventivo.<br>Ti ricontatteremo al più presto.</p><button id="closePrenotaModal2" style="margin-top:18px;background:#2d7a46;color:#fff;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;">Chiudi</button></div>`;
-                const closeBtn = document.getElementById('closePrenotaModal2');
-                if (closeBtn) closeBtn.onclick = function() { modalDiv.style.display = 'none'; };
-            } catch (err) {
-                modalBody.innerHTML = `<div style="text-align:center;padding:32px 0;color:#b91c1c;"><h2>Errore</h2><p>Si e verificato un errore durante l'invio.<br>Riprova più tardi.</p><button id="closePrenotaModal2" style="margin-top:18px;background:#f3f4f6;color:#1f2937;padding:10px 22px;border:1px solid #d1d5db;border-radius:6px;font-size:1em;cursor:pointer;">Chiudi</button></div>`;
-                const closeBtn = document.getElementById('closePrenotaModal2');
-                if (closeBtn) closeBtn.onclick = function() { modalDiv.style.display = 'none'; };
-            }
-        };
-    }
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    const links = document.querySelectorAll('.open-preventivo-modal');
-    links.forEach(function(link) {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            openPreventivoRequestModal(link.dataset.appartamento || '', '', '', '', link.dataset.casaId || '');
-        });
-    });
-});
-
 document.getElementById('booking-form').addEventListener('submit', async function(e) {
     e.preventDefault();
     const checkIn = document.getElementById('checkIn').value;
@@ -300,7 +193,6 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                     }
                     if (!Array.isArray(caratteristiche)) caratteristiche = [];
                     // id univoco per il pulsante
-                    const btnId = `prenota-btn-${idx}`;
                     const onlineBtnId = `prenota-online-btn-${idx}`;
                     return `
                     <div class="property-card" style="margin-bottom: 68px;">
@@ -330,11 +222,10 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                 if (el) el.classList.add('visible');
                 const title = document.getElementById('fadeSlideTitle');
                 if (title) title.classList.add('visible');
-                // Aggiungi event listener ai pulsanti Prenota
+                // Aggiungi event listener ai pulsanti prenotazione online
                 data.forEach((item, idx) => {
                     const casa = item.casa || {};
                     const prezzoTotale = typeof item.prezzoTotale === 'number' ? item.prezzoTotale : null;
-                    const btn = document.getElementById(`prenota-btn-${idx}`);
                     const onlineBtn = document.getElementById(`prenota-online-btn-${idx}`);
                     const openModal = (e) => { e.preventDefault();
                             const modal = document.getElementById('prenota-modal');
@@ -388,13 +279,13 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                         <span>Prendo atto dell'informativa sul trattamento dei dati personali.</span>
                                     </label>
                                     <div style="display:flex;gap:10px;padding-bottom:10px;flex-wrap:wrap;">
-                                     <!--   <button type="submit" style="flex:2;background:#2d7a46;color:#fff;padding:12px;border:none;border-radius:6px;font-size:1em;font-weight:600;cursor:pointer;">Invia richiesta</button> -->
                                         <button type="button" id="prenotaOnlineBtn" style="flex:2;background:#188841;color:#fff;padding:12px;border:none;border-radius:6px;font-size:1em;font-weight:600;cursor:pointer;">Procedi al pagamento</button> 
                                         <button type="button" id="cancelPrenotaBtn" style="flex:1;background:#f3f4f6;color:#1f2937;padding:12px;border:1px solid #d1d5db;border-radius:6px;font-size:1em;cursor:pointer;">Annulla</button>
                                     </div>
                                 </form>
                             `;
                             modal.style.display = 'flex';
+                            const prenotaForm = document.getElementById('prenotaForm');
                             const cancelBtn = document.getElementById('cancelPrenotaBtn');
                             if (cancelBtn) {
                                 cancelBtn.onclick = function() {
@@ -403,6 +294,12 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                             }
 
                             const prenotaOnlineBtn = document.getElementById('prenotaOnlineBtn');
+                            if (prenotaForm && prenotaOnlineBtn) {
+                                prenotaForm.onsubmit = function(ev) {
+                                    ev.preventDefault();
+                                    prenotaOnlineBtn.click();
+                                };
+                            }
                             if (prenotaOnlineBtn) {
                                 prenotaOnlineBtn.onclick = async function() {
                                     const form = document.getElementById('prenotaForm');
@@ -522,11 +419,11 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                             return;
                                         }
 
-                                        let errorMessage = 'Non è stato possibile registrare la prenotazione online.<br>Puoi inviare una richiesta oppure riprovare più tardi.';
+                                        let errorMessage = 'Non è stato possibile registrare la prenotazione online.<br>Riprova più tardi o contattaci su WhatsApp.';
                                         if (err && err.status === 400) {
                                             errorMessage = 'I dati inseriti non sono validi oppure non rispettano le regole della casa.<br>Controlla date, ospiti e recapiti e riprova.';
                                         } else if (err && err.status === 409) {
-                                            errorMessage = 'Le date selezionate non sono piu disponibili.<br>Scegli un altro periodo o invia una richiesta.';
+                                            errorMessage = 'Le date selezionate non sono piu disponibili.<br>Scegli un altro periodo.';
                                         } else if (err && err.status === 429) {
                                             errorMessage = 'Hai effettuato troppi tentativi in poco tempo.<br>Attendi qualche minuto e riprova.';
                                         } else if (err && err.message) {
@@ -540,96 +437,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                 };
                             }
 
-                            // Gestione submit form
-                            document.getElementById('prenotaForm').onsubmit = async function(ev) {
-                                ev.preventDefault();
-                                const form = ev.target;
-                                // Mostra spinner
-                                modalBody.innerHTML = `<div style=\"text-align:center;padding:32px 0;\"><div style=\"border:4px solid #f3f3f3;border-top:4px solid #188841;border-radius:50%;width:32px;height:32px;animation:spin 1s linear infinite;margin:0 auto 18px auto;\"></div><span style=\"color:#188841;font-weight:500;\">Invio in corso...</span></div>`;
-                                // Raccogli dati
-                                const nome = form.nome.value;
-                                const email = form.email.value;
-                                const telefono = form.telefono.value;
-                                const persone = form.persone.value;
-                                // Enhanced conversions - Google Ads Advanced Conversions
-                                // Funzione per hashare in SHA256
-                                async function sha256(str) {
-                                    const encoder = new TextEncoder();
-                                    const data = encoder.encode(str);
-                                    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-                                    const hashArray = Array.from(new Uint8Array(hashBuffer));
-                                    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-                                }
-
-                                (async function() {
-                                    const userDataPayload = {};
-                                    if (email) {
-                                        const emailNorm = email.trim().toLowerCase();
-                                        userDataPayload.email = await sha256(emailNorm);
-                                    }
-                                    if (telefono) {
-                                        let phoneE164 = telefono.trim().replace(/[\s\-().]/g, '');
-                                        if (!phoneE164.startsWith('+')) phoneE164 = '+39' + phoneE164.replace(/^0/, '');
-                                        userDataPayload.phone_number = await sha256(phoneE164);
-                                    }
-                                    if ((userDataPayload.email || userDataPayload.phone_number) && typeof gtag === 'function') {
-                                        gtag('set', 'user_data', userDataPayload);
-                                    }
-                                })();
-                                const messaggio = form.messaggio.value;
-                                const casa = form.casa.value;
-                                const checkIn = form.checkIn.value;
-                                const checkOut = form.checkOut.value;
-                                const prezzoTotale = form.prezzoTotale.value;
-                                try {
-                                    const response = await fetch('https://demo-mail-993653817397.europe-west8.run.app/api/preventivi/public', {
-                                        method: 'POST',
-                                        headers: {
-                                            'Content-Type': 'application/x-www-form-urlencoded',
-                                            'Accept': 'application/json'
-                                        },
-                                        body: new URLSearchParams({
-                                            nome: nome,
-                                            email: email,
-                                            telefono: telefono,
-                                            persone: persone,
-                                            appartamento: casa,
-                                            checkIn: checkIn,
-                                            checkOut: checkOut,
-                                            prezzo: prezzoTotale,
-                                            prezzoTotale: prezzoTotale,
-                                            messaggio: messaggio,
-                                            source: 'booking-modal'
-                                        })
-                                    });
-                                    if (response.ok) {
-                                        if (typeof gtag === 'function') {
-                                            gtag('event', 'conversion', { 'send_to': 'AW-17941172028/OvpCCP_1jJQcELyegutC' });
-                                        }
-                                            modalBody.innerHTML = `<div style=\"text-align:center;padding:32px 0;\"><h2 style=\"color:#2d7a46;\">Richiesta inviata!</h2><p>Grazie per aver richiesto il preventivo.<br>Ti ricontatteremo al più presto.</p><button id=\"closePrenotaModal2\" style=\"margin-top:18px;background:#2d7a46;color:#fff;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;\">Chiudi</button></div>`;
-                                        document.getElementById('closePrenotaModal2').onclick = () => {
-                                            modal.style.display = 'none';
-                                        };
-                                    } else {
-                                        modalBody.innerHTML = `<div style=\"text-align:center;padding:32px 0;\"><h2 style=\"color:#b91c1c;\">Errore nell'invio</h2><p>Si è verificato un errore nell'invio della richiesta.<br>Riprova o contattaci via WhatsApp.</p><button id=\"closePrenotaModal2\" style=\"margin-top:18px;background:#b91c1c;color:#fff;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;\">Chiudi</button></div>`;
-                                        document.getElementById('closePrenotaModal2').onclick = () => {
-                                            modal.style.display = 'none';
-                                        };
-                                    }
-                                } catch (err) {
-                                    modalBody.innerHTML = `<div style=\"text-align:center;padding:32px 0;\"><h2 style=\"color:#b91c1c;\">Errore nell'invio</h2><p>Si è verificato un errore nell'invio della richiesta.<br>Riprova o contattaci via WhatsApp.</p><button id=\"closePrenotaModal2\" style=\"margin-top:18px;background:#b91c1c;color:#fff;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;\">Chiudi</button></div>`;
-                                    document.getElementById('closePrenotaModal2').onclick = () => {
-                                        modal.style.display = 'none';
-                                    };
-                                }
-                            };
                     };
-                    if (btn) {
-                        btn.onclick = function(e) {
-                            e.preventDefault();
-                            openPreventivoRequestModal(casa.nome || casa.id || 'Richiesta generica', prezzoTotale, checkIn, checkOut, casa.id || '');
-                        };
-                    }
                     if (onlineBtn) {
                         onlineBtn.onclick = openModal;
                     }
