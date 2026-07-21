@@ -1728,7 +1728,7 @@ document.addEventListener('DOMContentLoaded', function() {
           column-gap: 6px;
         }
         #prenota-modal-content .modal-date-row {
-          grid-template-columns: 1fr;
+          grid-template-columns: 1fr 1fr;
           gap: 8px;
         }
         #prenota-modal-content input,
@@ -1788,10 +1788,10 @@ document.addEventListener('DOMContentLoaded', function() {
               <input type="date" id="partenza" name="partenza" required placeholder="Data check-out">
             </div>
           </div>
-          <div class="modal-field modal-span-2"><input required name="nome" type="text" placeholder="Nome *"></div>
-          <div class="modal-field modal-span-2"><input required name="email" type="email" placeholder="Email *"></div>
-          <div class="modal-field modal-span-2"><input name="telefono" type="tel" placeholder="Telefono"></div>
-          <div class="modal-field modal-span-2"><input required name="persone" type="number" min="1" max="20" placeholder="Numero di Persone *"></div>
+          <div class="modal-field"><input required name="nome" type="text" placeholder="Nome *"></div>
+          <div class="modal-field"><input required name="email" type="email" placeholder="Email *"></div>
+          <div class="modal-field"><input name="telefono" type="tel" placeholder="Telefono"></div>
+          <div class="modal-field"><input required name="persone" type="number" min="1" max="20" placeholder="Numero di Persone *"></div>
           <div class="modal-full"><textarea name="messaggio" placeholder="Messaggio (opzionale)"></textarea></div>
           <label class="modal-full" style="display:flex;align-items:flex-start;gap:8px;margin-bottom:0;font-size:0.83em;color:#374151;cursor:pointer;line-height:1.4;">
             <input type="checkbox" name="accettaPrivacy" required style="margin-top:3px;width:16px;height:16px;accent-color:#2d7a46;flex-shrink:0;">
