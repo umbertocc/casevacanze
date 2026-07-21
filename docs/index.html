@@ -1331,6 +1331,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.addEventListener('DOMContentLoaded', async function() {
         const today = new Date();
         today.setHours(0, 0, 0, 0);
+        const minStayNights = 3;
         const availabilitySearchWindowDays = 540;
 
         function toDateKey(date) {
@@ -1417,7 +1418,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             if (!checkInDate) return false;
             const checkInKey = toDateKey(checkInDate);
 
-            for (let i = 1; i <= availabilitySearchWindowDays; i++) {
+            for (let i = minStayNights; i <= availabilitySearchWindowDays; i++) {
                 const candidate = addDays(checkInDate, i);
 
                 const candidateKey = toDateKey(candidate);
@@ -1446,7 +1447,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             const limit = Number.isFinite(maxDaysAhead) ? maxDaysAhead : 60;
             const checkInKey = toDateKey(checkInDate);
 
-            for (let i = 1; i <= limit; i++) {
+            for (let i = minStayNights; i <= limit; i++) {
                 const candidate = addDays(checkInDate, i);
 
                 const candidateKey = toDateKey(candidate);
@@ -1507,7 +1508,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             onChange: function(selectedDates, dateStr) {
                 checkInSelected = selectedDates && selectedDates[0] ? selectedDates[0] : null;
                 if (checkOutInput._flatpickr) {
-                    const minDate = checkInSelected ? addDays(checkInSelected, 1) : todayKey;
+                    const minDate = checkInSelected ? addDays(checkInSelected, minStayNights) : todayKey;
                     checkOutInput._flatpickr.set('minDate', minDate);
                     checkOutInput._flatpickr.redraw();
                     checkOutInput.value = '';
@@ -1517,7 +1518,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             checkOutInput._flatpickr.jumpToDate(firstAvailableCheckOutDate);
                             checkOutInput._flatpickr.setDate(firstAvailableCheckOutDate, false);
                         } else {
-                            checkOutInput._flatpickr.jumpToDate(addDays(checkInSelected, 1));
+                            checkOutInput._flatpickr.jumpToDate(addDays(checkInSelected, minStayNights));
                         }
                     }
                 }
@@ -1533,7 +1534,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                 const checkInDate = parseDateKey(checkInInput.value);
                 if (!checkInDate) return;
-                if (dayDate <= checkInDate) return;
+                if (dayDate < addDays(checkInDate, minStayNights)) return;
 
                 const checkInKey = toDateKey(checkInDate);
                 const checkOutKey = toDateKey(dayDate);
@@ -1547,7 +1548,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     if (checkInInput.value) {
                         const checkInDate = parseDateKey(checkInInput.value);
                         if (!checkInDate) return true;
-                        if (date <= checkInDate) return true;
+                        if (date < addDays(checkInDate, minStayNights)) return true;
                         const checkInKey = toDateKey(checkInDate);
                         const checkOutKey = toDateKey(date);
                         if (!hasAnyHouseAvailable(checkInKey, checkOutKey)) return true;
@@ -1562,7 +1563,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             checkInPicker.setDate(firstAvailableCheckInDate, true);
             const firstAvailableCheckOutDate = findFirstAvailableCheckOutDate(firstAvailableCheckInDate, availabilitySearchWindowDays);
             if (firstAvailableCheckOutDate) {
-                checkOutPicker.set('minDate', addDays(firstAvailableCheckInDate, 1));
+                checkOutPicker.set('minDate', addDays(firstAvailableCheckInDate, minStayNights));
                 checkOutPicker.setDate(firstAvailableCheckOutDate, false);
             }
         }

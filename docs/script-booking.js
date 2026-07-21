@@ -171,6 +171,21 @@ document.getElementById('booking-form').addEventListener('submit', async functio
     const ospiti = document.getElementById('ospiti').value;
     const resultsDiv = document.getElementById('results');
     const staticHomesList = document.getElementById('staticHomesList');
+    const minStayNights = 3;
+
+    function parseDateKey(dateKey) {
+        if (!dateKey || !/^\d{4}-\d{2}-\d{2}$/.test(dateKey)) return null;
+        const parts = dateKey.split('-').map(Number);
+        return new Date(parts[0], parts[1] - 1, parts[2]);
+    }
+
+    function getStayNights(startKey, endKey) {
+        const startDate = parseDateKey(startKey);
+        const endDate = parseDateKey(endKey);
+        if (!startDate || !endDate) return NaN;
+        return Math.round((endDate.getTime() - startDate.getTime()) / (24 * 60 * 60 * 1000));
+    }
+
     // Validazione campi obbligatori
     let errorMsg = '';
     if (!checkIn && !checkOut) {
@@ -181,6 +196,8 @@ document.getElementById('booking-form').addEventListener('submit', async functio
         errorMsg = 'Inserisci la data di check-out.';
     } else if (!ospiti) {
         errorMsg = 'Inserisci il numero di ospiti.';
+    } else if (getStayNights(checkIn, checkOut) < minStayNights) {
+        errorMsg = 'Il soggiorno minimo è di 3 notti.';
     }
     if (errorMsg) {
         resultsDiv.innerHTML = `<p style=\"color:#b91c1c;font-weight:600;margin-top:18px;\">${errorMsg}</p>`;

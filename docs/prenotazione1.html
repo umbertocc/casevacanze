@@ -475,7 +475,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <main class="container">
         <header style="text-align:center; margin-bottom: 50px; margin-top: 90px;">
             <h1>Prenota la tua casa vacanza a Torre Pali</h1>
-            <p class="tagline">Seleziona le date e il numero di ospiti per verificare le disponibilità. Il soggiorno è possibile solo da sabato a sabato, con una permanenza minima di 1 settimana, i giorni prenotabili sono evidenziati in verde nel calendario.</p>
+            <p class="tagline">Seleziona le date e il numero di ospiti per verificare le disponibilità. Il soggiorno minimo è di 3 notti e il calendario mostra solo intervalli realmente disponibili.</p>
           <!-- FILTRO DATE INIZIO --></p>
         </header>
         <section class="booking-form-section">
@@ -602,19 +602,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </footer>
     <script>
-    // Permetti solo la selezione dei sabati nei campi data
-    function isSaturday(dateStr) {
-        const d = new Date(dateStr);
-        return d.getDay() === 6;
-    }
-
-    function isWinterBlockedDate(dateStr) {
-        if (!/^\d{4}-\d{2}-\d{2}$/.test(String(dateStr || ''))) return false;
-        const parts = dateStr.split('-').map(Number);
-        const month = parts[1];
-        return month === 11 || month === 12 || month === 1 || month === 2 || month === 3;
-    }
-
     function isBeforeToday(dateStr) {
         if (!/^\d{4}-\d{2}-\d{2}$/.test(String(dateStr || ''))) return false;
         const parts = dateStr.split('-').map(Number);
@@ -633,14 +620,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         return `${y}-${m}-${d}`;
     }
 
-    function restrictToSaturday(input) {
+    function restrictDateInput(input) {
         input.addEventListener('input', function() {
             if (this.value && isBeforeToday(this.value)) {
                 this.setCustomValidity('Non puoi selezionare una data passata');
-            } else if (this.value && isWinterBlockedDate(this.value)) {
-                this.setCustomValidity('Date non prenotabili dal 1 novembre al 31 marzo');
-            } else if (this.value && !isSaturday(this.value)) {
-                this.setCustomValidity('Seleziona solo un sabato');
             } else {
                 this.setCustomValidity('');
             }
@@ -652,8 +635,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         const todayKey = getTodayKey();
         checkIn.setAttribute('min', todayKey);
         checkOut.setAttribute('min', todayKey);
-        restrictToSaturday(checkIn);
-        restrictToSaturday(checkOut);
+        restrictDateInput(checkIn);
+        restrictDateInput(checkOut);
     });
     </script>
     <!-- Flatpickr JS -->
@@ -663,21 +646,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.addEventListener('DOMContentLoaded', async function() {
         const today = new Date();
         today.setHours(0, 0, 0, 0);
-
-        function enableOnlySaturday(date) {
-            return (date.getDay() === 6);
-        }
-
-        function isWinterBlocked(date) {
-            const month = date.getMonth() + 1;
-            return month === 11 || month === 12 || month === 1 || month === 2 || month === 3;
-        }
+        const minStayNights = 3;
+        const availabilitySearchWindowDays = 540;
 
         function toDateKey(date) {
             const y = date.getFullYear();
             const m = String(date.getMonth() + 1).padStart(2, '0');
             const d = String(date.getDate()).padStart(2, '0');
             return `${y}-${m}-${d}`;
+        }
+
+        function parseDateKey(dateKey) {
+            if (!/^\d{4}-\d{2}-\d{2}$/.test(String(dateKey || ''))) return null;
+            const parts = dateKey.split('-').map(Number);
+            return new Date(parts[0], parts[1] - 1, parts[2]);
         }
 
         function addDays(date, days) {
@@ -747,6 +729,49 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             });
         }
 
+        function hasAnyHouseWithAvailableStayFrom(checkInDate) {
+            if (!checkInDate) return false;
+            const checkInKey = toDateKey(checkInDate);
+
+            for (let i = minStayNights; i <= availabilitySearchWindowDays; i++) {
+                const candidate = addDays(checkInDate, i);
+                const candidateKey = toDateKey(candidate);
+                if (hasAnyHouseAvailable(checkInKey, candidateKey)) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        function findFirstAvailableCheckInDate(maxDaysAhead) {
+            const limit = Number.isFinite(maxDaysAhead) ? maxDaysAhead : 365;
+            for (let i = 0; i <= limit; i++) {
+                const candidate = addDays(today, i);
+                if (hasAnyHouseWithAvailableStayFrom(candidate)) {
+                    return candidate;
+                }
+            }
+            return null;
+        }
+
+        function findFirstAvailableCheckOutDate(checkInDate, maxDaysAhead) {
+            if (!checkInDate) return null;
+
+            const limit = Number.isFinite(maxDaysAhead) ? maxDaysAhead : availabilitySearchWindowDays;
+            const checkInKey = toDateKey(checkInDate);
+
+            for (let i = minStayNights; i <= limit; i++) {
+                const candidate = addDays(checkInDate, i);
+                const candidateKey = toDateKey(candidate);
+                if (hasAnyHouseAvailable(checkInKey, candidateKey)) {
+                    return candidate;
+                }
+            }
+
+            return null;
+        }
+
         try {
             const housesRes = await fetch(`${API_BASE}/api/case/public`);
             if (housesRes.ok) {
@@ -768,26 +793,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             console.warn('Impossibile caricare le prenotazioni per il calendario dinamico:', err);
         }
 
-        flatpickr(checkInInput, {
+        const todayKey = toDateKey(today);
+        const firstAvailableCheckInDate = findFirstAvailableCheckInDate(availabilitySearchWindowDays);
+
+        const checkInPicker = flatpickr(checkInInput, {
             dateFormat: "Y-m-d",
             locale: flatpickr.l10ns.it,
             disable: [function(date) {
                 if (date < today) return true;
-                if (isWinterBlocked(date)) return true;
-                if (!enableOnlySaturday(date)) return true;
-                const checkInKey = toDateKey(date);
-                const checkOutKey = toDateKey(addDays(date, 7));
-                return !hasAnyHouseAvailable(checkInKey, checkOutKey);
+                return !hasAnyHouseWithAvailableStayFrom(date);
             }],
-            minDate: "today",
+            minDate: todayKey,
+            onReady: function(selectedDates, dateStr, fp) {
+                if (!selectedDates.length && firstAvailableCheckInDate) {
+                    fp.jumpToDate(firstAvailableCheckInDate);
+                }
+            },
             onDayCreate: function(dObj, dStr, fp, dayElem) {
                 const dayDate = dayElem.dateObj;
                 if (dayDate < today) return;
-                if (isWinterBlocked(dayDate)) return;
-                if (!enableOnlySaturday(dayDate)) return;
-                const dayKey = toDateKey(dayDate);
-                const plusWeekKey = toDateKey(addDays(dayDate, 7));
-                if (hasAnyHouseAvailable(dayKey, plusWeekKey)) {
+                if (hasAnyHouseWithAvailableStayFrom(dayDate)) {
                     dayElem.classList.add('calendar-day-available');
                 } else {
                     dayElem.classList.add('calendar-day-unavailable');
@@ -796,32 +821,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             onChange: function(selectedDates, dateStr) {
                 checkInSelected = selectedDates && selectedDates[0] ? selectedDates[0] : null;
                 if (checkOutInput._flatpickr) {
-                    const minDate = checkInSelected ? new Date(checkInSelected.getTime() + 24*60*60*1000) : "today";
+                    const minDate = checkInSelected ? addDays(checkInSelected, minStayNights) : todayKey;
                     checkOutInput._flatpickr.set('minDate', minDate);
                     checkOutInput._flatpickr.redraw();
                     checkOutInput.value = '';
                     if (checkInSelected) {
-                        let nextSaturday = new Date(checkInSelected.getTime() + 24*60*60*1000);
-                        while (nextSaturday.getDay() !== 6) {
-                            nextSaturday.setDate(nextSaturday.getDate() + 1);
+                        const firstAvailableCheckOutDate = findFirstAvailableCheckOutDate(checkInSelected, availabilitySearchWindowDays);
+                        if (firstAvailableCheckOutDate) {
+                            checkOutInput._flatpickr.jumpToDate(firstAvailableCheckOutDate);
+                            checkOutInput._flatpickr.setDate(firstAvailableCheckOutDate, false);
+                        } else {
+                            checkOutInput._flatpickr.jumpToDate(addDays(checkInSelected, minStayNights));
                         }
-                        checkOutInput._flatpickr.jumpToDate(nextSaturday);
                     }
                 }
             }
         });
-        flatpickr("#checkOut", {
+        const checkOutPicker = flatpickr("#checkOut", {
             dateFormat: "Y-m-d",
             locale: flatpickr.l10ns.it,
             onDayCreate: function(dObj, dStr, fp, dayElem) {
                 const dayDate = dayElem.dateObj;
                 if (dayDate < today) return;
-                if (isWinterBlocked(dayDate)) return;
-                if (!enableOnlySaturday(dayDate)) return;
                 if (!checkInInput.value) return;
 
-                const checkInDate = new Date(checkInInput.value);
-                if (dayDate <= checkInDate) return;
+                const checkInDate = parseDateKey(checkInInput.value);
+                if (!checkInDate) return;
+                if (dayDate < addDays(checkInDate, minStayNights)) return;
 
                 const checkInKey = toDateKey(checkInDate);
                 const checkOutKey = toDateKey(dayDate);
@@ -832,11 +858,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             disable: [
                 function(date) {
                     if (date < today) return true;
-                    if (isWinterBlocked(date)) return true;
-                    if (!enableOnlySaturday(date)) return true;
                     if (checkInInput.value) {
-                        const checkInDate = new Date(checkInInput.value);
-                        if (date <= checkInDate) return true;
+                        const checkInDate = parseDateKey(checkInInput.value);
+                        if (!checkInDate) return true;
+                        if (date < addDays(checkInDate, minStayNights)) return true;
                         const checkInKey = toDateKey(checkInDate);
                         const checkOutKey = toDateKey(date);
                         if (!hasAnyHouseAvailable(checkInKey, checkOutKey)) return true;
@@ -844,8 +869,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     return false;
                 }
             ],
-            minDate: "today"
+            minDate: todayKey
         });
+
+        if (firstAvailableCheckInDate) {
+            checkInPicker.setDate(firstAvailableCheckInDate, true);
+            const firstAvailableCheckOutDate = findFirstAvailableCheckOutDate(firstAvailableCheckInDate, availabilitySearchWindowDays);
+            if (firstAvailableCheckOutDate) {
+                checkOutPicker.set('minDate', addDays(firstAvailableCheckInDate, minStayNights));
+                checkOutPicker.setDate(firstAvailableCheckOutDate, false);
+            }
+        }
     });
     </script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
