@@ -876,21 +876,27 @@ function gtag_report_whatsapp_conversion(url) {
 </script>  
 <style>
   .sticky-booking-cta-link.case-vacanze-cta {
+    width: 100%;
+    max-width: 460px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 8px;
-    min-width: 0;
-    max-width: 360px;
-    padding: 12px 18px;
-    border-radius: 8px;
-    font-size: 1.02em;
-    background: #48bb78;
-    box-shadow: 0 2px 8px rgba(67,233,123,0.10);
+    border: 0;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+    color: #fff;
+    font-weight: 800;
+    font-size: 1rem;
+    padding: 12px 16px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(18, 140, 126, 0.28);
   }
   .sticky-booking-cta-link.case-vacanze-cta:hover,
   .sticky-booking-cta-link.case-vacanze-cta:focus {
-    background: #38a169;
-    box-shadow: 0 4px 16px rgba(67,233,123,0.18);
-    color: #fff;
-    text-decoration: none;
+    filter: brightness(1.03);
+    outline: none;
   }
   .contact-channel-hints {
     display: inline-flex;
@@ -904,8 +910,9 @@ function gtag_report_whatsapp_conversion(url) {
     .sticky-booking-cta-link.case-vacanze-cta {
       width: 100%;
       max-width: none;
-      padding: 12px 18px;
-      font-size: 0.95em;
+      margin: 0 auto;
+      padding: 12px 16px;
+      font-size: 1rem;
     }
   }
 </style>
