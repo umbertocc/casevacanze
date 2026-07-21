@@ -1555,7 +1555,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalDiv = document.createElement('div');
     modalDiv.id = 'prenota-modal';
     modalDiv.style = 'display:none;position:fixed;z-index:2147483646;left:0;top:0;right:0;bottom:0;background:rgba(0,0,0,0.52);padding:0;align-items:stretch;justify-content:stretch;';
-    modalDiv.innerHTML = `<div id=\"prenota-modal-content\" style=\"background:#fff;border-radius:0;width:100%;height:100%;max-width:none;max-height:none;overflow:auto;position:relative;padding:52px 18px 18px 18px;box-sizing:border-box;\"><button id=\"closePrenotaModal\" aria-label=\"Chiudi\" style=\"position:fixed;top:10px;right:12px;border:1px solid #d1d5db;background:#fff;border-radius:999px;width:40px;height:40px;font-size:1.7em;line-height:1;cursor:pointer;z-index:1;\">&times;</button><div id=\"prenota-modal-body\" style=\"max-width:680px;margin:0 auto;\"></div></div>`;
+    modalDiv.innerHTML = `<div id=\"prenota-modal-content\" style=\"background:#fff;border-radius:0;width:100%;height:100%;max-width:none;max-height:none;overflow:auto;position:relative;padding:40px 18px 18px 18px;box-sizing:border-box;\"><button id=\"closePrenotaModal\" aria-label=\"Chiudi\" style=\"position:fixed;top:10px;right:12px;border:1px solid #d1d5db;background:#fff;border-radius:999px;width:40px;height:40px;font-size:1.7em;line-height:1;cursor:pointer;z-index:1;\">&times;</button><div id=\"prenota-modal-body\" style=\"max-width:680px;margin:0 auto;\"></div></div>`;
     document.body.appendChild(modalDiv);
     document.getElementById('closePrenotaModal').onclick = () => {
       modalDiv.style.display = 'none';
