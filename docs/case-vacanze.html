@@ -1702,6 +1702,13 @@ document.addEventListener('DOMContentLoaded', function() {
       setGenericInfoCtaVisible(false);
       modal.style.display = 'flex';
       document.body.style.overflow = 'hidden';
+      const modalContent = document.getElementById('prenota-modal-content');
+      if (modalContent) {
+        modalContent.scrollTop = 0;
+        requestAnimationFrame(function() {
+          modalContent.scrollTop = 0;
+        });
+      }
             // Tasto annulla chiude la modale
             setTimeout(function() {
               var annullaBtn = document.getElementById('annullaPrenotaModal');
