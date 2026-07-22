@@ -350,7 +350,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="/index-en" onclick="closeMenu()">Home</a></li>
         <li><a href="vacation-rentals" onclick="closeMenu()">Vacation Rentals</a></li>
         <li><a href="torre-pali" onclick="closeMenu()">Torre Pali</a></li>
-        <li><a href="recensioni-en" onclick="closeMenu()">? Reviews</a></li>
+        <li><a href="recensioni-en" onclick="closeMenu()">&#11088; Reviews</a></li>
         <li><a href="faq-en" onclick="closeMenu()">FAQ</a></li>
         <li><a href="preventivo-en" onclick="closeMenu()">Request a Quote</a></li>
         <li><a href="contatti-en" onclick="closeMenu()">Contact</a></li>
@@ -440,7 +440,7 @@ document.addEventListener('click', function(event) {
       ],
       "telephone": "+393886587080",
       "email": "info@torrepalivacanze.it",
-      "priceRange": "��"
+      "priceRange": "\u20AC\u20AC"
     }
     </script>
 
@@ -691,7 +691,7 @@ document.getElementById('booking-form').addEventListener('submit', function(e) {
       }
       userDataPayload.phone_number = await sha256(phoneE164);
     }
-    // Invia solo se almeno uno dei due campi � presente
+    // Send only if at least one of the two fields is present
     if (userDataPayload.email || userDataPayload.phone_number) {
       gtag('set', 'user_data', userDataPayload);
     }
@@ -723,7 +723,7 @@ document.getElementById('booking-form').addEventListener('submit', function(e) {
       });
       gtag('event', 'conversion', { 'send_to': 'AW-17941172028/OvpCCP_1jJQcELyegutC' });
       confirmation.style.display = 'block';
-      confirmation.textContent = '? Request sent! We will reply within 1 hour by email or WhatsApp.';
+      confirmation.textContent = '\u2705 Request sent! We will reply within 1 hour by email or WhatsApp.';
       form.reset();
       window.scrollTo({top: 0, behavior: 'smooth'});
     } else {

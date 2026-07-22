@@ -768,7 +768,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="/index-en" onclick="closeMenu()">Home</a></li>
         <li><a href="vacation-rentals" onclick="closeMenu()">Vacation Rentals</a></li>
         <li><a href="torre-pali" onclick="closeMenu()">Torre Pali</a></li>
-        <li><a href="recensioni-en" onclick="closeMenu()">? Reviews</a></li>
+        <li><a href="recensioni-en" onclick="closeMenu()">&#11088; Reviews</a></li>
         <li><a href="faq-en" onclick="closeMenu()">FAQ</a></li>
         <li><a href="preventivo-en" onclick="closeMenu()">Request a Quote</a></li>
         <li><a href="contatti-en" onclick="closeMenu()">Contact</a></li>
@@ -975,7 +975,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                   fullyAvailable.push(house);
                   return;
                 }
-                // Trova se la casa � libera per tutto il periodo
+                // Check whether the house is free for the entire requested range
                 var isFree = true;
                 for (var i=0; i<bookings.length; i++) {
                   var b = bookings[i];
@@ -1009,7 +1009,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     if (!current) current = { dal: ds, al: ds };
                     else current.al = ds;
                   } else {
-                    // Se il giorno occupato � il check-in di una prenotazione ed � compreso nel periodo richiesto, includilo come libero
+                    // If an occupied day is a booking check-in within the requested range, treat it as available
                     var isCheckIn = bookings.some(function(b) { return b.checkIn === ds && ds >= checkin && ds <= checkout; });
                     if (isCheckIn) {
                       if (!current) current = { dal: ds, al: ds };
@@ -1236,7 +1236,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 parseInt(p.checkOut.slice(5,7))-1,
                 parseInt(p.checkOut.slice(8,10))
               ));
-              while (d < end) { // il giorno di checkOut NON � occupato
+              while (d < end) { // checkout day is not occupied
                 const key = d.toISOString().slice(0,10);
                 bookedDates.add(key);
                 d.setUTCDate(d.getUTCDate() + 1);
@@ -1396,7 +1396,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         // Salva dati globali per il filtro
         window._caseVacanzaData = { houses: houses, bookings: allBookings };
 
-        // Mostra tutte le case all�inizio
+        // Show all houses at startup
         grid.innerHTML = '';
         houses.forEach(function(house, idx) {
           var card = document.createElement('div');
@@ -1497,7 +1497,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div style="max-width:700px; margin:60px auto 0 auto;">
       <div class="contact-form">
         <h2>Invia un Messaggio</h2>
-        <div class="success-message" id="successMsg">? Messaggio inviato con successo! Ti contatteremo presto.</div>
+        <div class="success-message" id="successMsg">&#9989; Message sent successfully! We will contact you soon.</div>
         <form id="contactForm" action="https://formspree.io/f/mvzrrpdr" method="POST">
           
           <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
@@ -1557,7 +1557,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
         // Subject ottimizzato per evitare spam
         data.append('_subject', `Nuova Richiesta da ${userName} - Affitti Torre Pali`);
-        // Template HTML per email pi� professionale
+        // HTML template for a more reliable deliverability format
         data.append('_template', 'box');
         // Conferma automatica all'utente
         data.append('_autoresponse', 'Grazie per averci contattato! Abbiamo ricevuto la tua richiesta e ti risponderemo entro 1 ora. - Affitti Torre Pali');
@@ -1582,11 +1582,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           } else {
             const text = await resp.text();
             console.error('Formspree error', resp.status, text);
-            alert('Si � verificato un errore durante l\'invio. Riprova pi� tardi.');
+            alert('An error occurred while sending. Please try again later.');
           }
         } catch (err) {
           console.error(err);
-          alert('Errore di rete. Riprova pi� tardi.');
+          alert('Network error. Please try again later.');
         }
       });
     });
