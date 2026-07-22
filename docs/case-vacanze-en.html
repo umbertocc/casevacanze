@@ -1,4 +1,4 @@
-﻿<style>
+<style>
    /* Allineamento CTA bottoni orizzontale desktop */
   .cta-btn-row {
     display: flex;
@@ -757,7 +757,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
   <nav class="navbar" style="position:fixed !important">
     <div class="navbar-container">
-      <a href="/index-en" class="navbar-brand">🏝️ Torre Pali Vacanze</a>
+      <a href="/index-en" class="navbar-brand">??? Torre Pali Vacanze</a>
       <a href="/case-vacanze" aria-label="Passa alla versione italiana" style="position:absolute;top:10px;right:64px;z-index:2002;display:inline-flex;align-items:center;justify-content:center;padding:7px 10px;border-radius:999px;background:#ffffff;color:#22577a;text-decoration:none;font-weight:700;font-size:0.84em;box-shadow:0 2px 10px rgba(0,0,0,0.12);">IT</a>
       <button class="hamburger" onclick="toggleMenu()" aria-label="Open navigation menu" tabindex="0" style="position:absolute;top:10px;right:10px;z-index:2001;display:flex;">
         <span></span>
@@ -768,7 +768,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="/index-en" onclick="closeMenu()">Home</a></li>
         <li><a href="vacation-rentals" onclick="closeMenu()">Vacation Rentals</a></li>
         <li><a href="torre-pali" onclick="closeMenu()">Torre Pali</a></li>
-        <li><a href="recensioni-en" onclick="closeMenu()">⭐ Reviews</a></li>
+        <li><a href="recensioni-en" onclick="closeMenu()">? Reviews</a></li>
         <li><a href="faq-en" onclick="closeMenu()">FAQ</a></li>
         <li><a href="preventivo-en" onclick="closeMenu()">Request a Quote</a></li>
         <li><a href="contatti-en" onclick="closeMenu()">Contact</a></li>
@@ -886,14 +886,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <header style="text-align:center; margin-bottom: 50px;">
       <div class="call-top-row">
         <a href="tel:+393886587080" class="call-float" aria-label="Call Torre Pali Vacanze now" onclick="gtag('event','click_telefono'); return gtag_report_conversion('tel:+393886587080');">
-          <span aria-hidden="true">📞</span>
+          <span aria-hidden="true">??</span>
           3886587080
         </a>
       </div>
       <h1>Vacation Rentals and Beach Apartments in Torre Pali, Salento</h1>
       <p class="tagline">Stay a short walk from the beach in Torre Pali, with comfortable apartments for families, couples and small groups.</p>
       <!-- <div style="margin: 16px 0 8px 0; text-align:center;">
-        <a href="tel:+393886587080" class="btn" onclick="gtag('event','click_telefono'); return gtag_report_conversion('tel:+393886587080');" style="display:flex;align-items:center;justify-content:center;margin:0 auto;max-width:300px;width:92%;font-size:1.08em;font-weight:700;padding:14px 18px;border-radius:28px;box-shadow:0 8px 24px rgba(34,87,122,0.2);">📞 +39 388 658 70 80</a>
+        <a href="tel:+393886587080" class="btn" onclick="gtag('event','click_telefono'); return gtag_report_conversion('tel:+393886587080');" style="display:flex;align-items:center;justify-content:center;margin:0 auto;max-width:300px;width:92%;font-size:1.08em;font-weight:700;padding:14px 18px;border-radius:28px;box-shadow:0 8px 24px rgba(34,87,122,0.2);">?? +39 388 658 70 80</a>
       </div> -->
           <script>
           // Filtro date collegato alle case vacanza, stile e UX come prenotazione.html
@@ -975,7 +975,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                   fullyAvailable.push(house);
                   return;
                 }
-                // Trova se la casa è libera per tutto il periodo
+                // Trova se la casa � libera per tutto il periodo
                 var isFree = true;
                 for (var i=0; i<bookings.length; i++) {
                   var b = bookings[i];
@@ -1009,7 +1009,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     if (!current) current = { dal: ds, al: ds };
                     else current.al = ds;
                   } else {
-                    // Se il giorno occupato è il check-in di una prenotazione ed è compreso nel periodo richiesto, includilo come libero
+                    // Se il giorno occupato � il check-in di una prenotazione ed � compreso nel periodo richiesto, includilo come libero
                     var isCheckIn = bookings.some(function(b) { return b.checkIn === ds && ds >= checkin && ds <= checkout; });
                     if (isCheckIn) {
                       if (!current) current = { dal: ds, al: ds };
@@ -1224,7 +1224,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 parseInt(p.checkOut.slice(5,7))-1,
                 parseInt(p.checkOut.slice(8,10))
               ));
-              while (d < end) { // il giorno di checkOut NON è occupato
+              while (d < end) { // il giorno di checkOut NON � occupato
                 const key = d.toISOString().slice(0,10);
                 bookedDates.add(key);
                 d.setUTCDate(d.getUTCDate() + 1);
@@ -1349,7 +1349,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
               <p class="property-description">${houseDescription}</p>
               <div class="periodi-disponibili">
-                <strong><span class="calendar-icon">📅</span>Available dates:</strong>
+                <strong><span class="calendar-icon">??</span>Available dates:</strong>
                 <div>
                   ${periodiDisponibili.length > 0
                     ? periodiDisponibili.map(p => `<span class='periodo-badge'>${formatPeriodo(p.dal, p.al)}</span>`).join('')
@@ -1357,13 +1357,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
                 <div class="periodi-cta-row" style="margin-top: 25px; display:flex; flex-wrap:wrap; gap:12px;">
                   <a href="${englishDetailLink}" class="periodi-cta-btn" aria-label="View the page for ${houseTitle}">
-                    <span aria-hidden="true">🏠</span> View property
+                    <span aria-hidden="true">??</span> View property
                   </a>
                   <a href="#" class="periodi-cta-btn prenota-btn" data-casa-id="${house.id}" data-casa-nome="${houseTitle}" aria-label="Request a quote for ${houseTitle}">
-                    <span aria-hidden="true">✉️</span> Request a quote
+                    <span aria-hidden="true">??</span> Request a quote
                   </a>
                   <a href="https://wa.me/393886587080?text=${waText}" class="periodi-cta-btn periodi-whatsapp-btn" aria-label="Contact us on WhatsApp about ${houseTitle}" target="_blank" rel="noopener" onclick="gtag('event','click_whatsapp'); return gtag_report_whatsapp_conversion(this.href);">
-                    <span aria-hidden="true">💬</span> WhatsApp
+                    <span aria-hidden="true">??</span> WhatsApp
                   </a>
                 </div>
               </div>
@@ -1384,7 +1384,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         // Salva dati globali per il filtro
         window._caseVacanzaData = { houses: houses, bookings: allBookings };
 
-        // Mostra tutte le case all’inizio
+        // Mostra tutte le case all�inizio
         grid.innerHTML = '';
         houses.forEach(function(house, idx) {
           var card = document.createElement('div');
@@ -1476,7 +1476,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
   </style>
   <div class="cta-btn-row">
-    <a href="contatti-en" class="btn" aria-label="Contact us" tabindex="0"><span class="cta-icon">✉️</span> Contact us</a>
+    <a href="contatti-en" class="btn" aria-label="Contact us" tabindex="0"><span class="cta-icon">??</span> Contact us</a>
   </div>
  
 </div>
@@ -1485,7 +1485,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div style="max-width:700px; margin:60px auto 0 auto;">
       <div class="contact-form">
         <h2>Invia un Messaggio</h2>
-        <div class="success-message" id="successMsg">✅ Messaggio inviato con successo! Ti contatteremo presto.</div>
+        <div class="success-message" id="successMsg">? Messaggio inviato con successo! Ti contatteremo presto.</div>
         <form id="contactForm" action="https://formspree.io/f/mvzrrpdr" method="POST">
           
           <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
@@ -1519,7 +1519,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="form-group" style="margin-bottom:16px;">
             <label style="display:flex;align-items:flex-start;gap:8px;font-size:0.88em;color:#374151;cursor:pointer;line-height:1.5;font-weight:normal;">
               <input type="checkbox" name="accettaPrivacy" required style="margin-top:3px;width:16px;height:16px;accent-color:#22577a;flex-shrink:0;">
-              <span>Ho letto e accetto la <a href="/privacy.html" target="_blank" rel="noopener" style="color:#22577a;text-decoration:underline;">privacy policy</a>.</span>
+              <span>Ho letto e accetto la <a href="/privacy-en.html" target="_blank" rel="noopener" style="color:#22577a;text-decoration:underline;">privacy policy</a>.</span>
             </label>
           </div>
           <button type="submit" class="form-btn">Invia Messaggio</button>
@@ -1545,7 +1545,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
         // Subject ottimizzato per evitare spam
         data.append('_subject', `Nuova Richiesta da ${userName} - Affitti Torre Pali`);
-        // Template HTML per email più professionale
+        // Template HTML per email pi� professionale
         data.append('_template', 'box');
         // Conferma automatica all'utente
         data.append('_autoresponse', 'Grazie per averci contattato! Abbiamo ricevuto la tua richiesta e ti risponderemo entro 1 ora. - Affitti Torre Pali');
@@ -1570,11 +1570,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           } else {
             const text = await resp.text();
             console.error('Formspree error', resp.status, text);
-            alert('Si è verificato un errore durante l\'invio. Riprova più tardi.');
+            alert('Si � verificato un errore durante l\'invio. Riprova pi� tardi.');
           }
         } catch (err) {
           console.error(err);
-          alert('Errore di rete. Riprova più tardi.');
+          alert('Errore di rete. Riprova pi� tardi.');
         }
       });
     });
@@ -1586,9 +1586,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <footer class="footer" aria-label="Torre Pali Salento footer">
 <div class="footer-container">
 <div class="footer-section">
-<h3>🏝️ Torre Pali Vacanze</h3>
+<h3>??? Torre Pali Vacanze</h3>
 <p>Vacation rentals in Torre Pali, Salento, just a short walk from the beach with all the essentials for a comfortable stay.</p>
-<p style="margin-top: 15px;">📍 Torre Pali, Lecce (LE)<br>Salento, Puglia, Italy</p>
+<p style="margin-top: 15px;">?? Torre Pali, Lecce (LE)<br>Salento, Puglia, Italy</p>
 </div>
 <div class="footer-section">
 <h3>Useful links</h3>
@@ -1604,7 +1604,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <a href="molo-torre-pali">Torre Pali pier</a>
 <a href="galleria-torre-pali">Torre Pali gallery</a>
 <a href="contatti-en">Contact</a>
-<a href="privacy">Privacy Policy</a>
+<a href="privacy-en">Privacy Policy</a>
  <a href="cookie-policy">Cookie Policy</a>
 <!-- <a href="registra-struttura.html">Registra la tua struttura</a> -->
 <br>
@@ -1616,8 +1616,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 <div class="footer-section">
 <h3>Contact Torre Pali Vacanze</h3>
-<p> <a href="tel:+393886587080" onclick="gtag('event','click_telefono'); return gtag_report_conversion('tel:+393886587080');"> 📞+39 388 658 70 80</a></p>
-<p>📧 <strong>info@torrepalivacanze.it</strong></p>
+<p> <a href="tel:+393886587080" onclick="gtag('event','click_telefono'); return gtag_report_conversion('tel:+393886587080');"> ??+39 388 658 70 80</a></p>
+<p>?? <strong>info@torrepalivacanze.it</strong></p>
 <p><a href="https://wa.me/393886587080?text=Hello!%20I%20would%20like%20more%20information%20about%20your%20vacation%20rentals%20in%20Torre%20Pali" onclick="gtag('event','click_whatsapp'); return gtag_report_whatsapp_conversion(this.href)" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill="#fff" style="background:#25d366; border-radius:3px;"><path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 7.933-2.127c2.42 1.37 5.173 2.127 8.067 2.127 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.467c-2.482 0-4.908-0.646-7.07-1.87l-0.507-0.292-4.713 1.262 1.262-4.669-0.292-0.508c-1.207-2.100-1.847-4.507-1.847-6.978 0-7.51 6.11-13.619 13.619-13.619s13.619 6.109 13.619 13.619c0 7.51-6.11 13.619-13.619 13.619zM21.789 18.75c-0.214-0.107-1.268-0.625-1.464-0.696s-0.339-0.107-0.482 0.107c-0.143 0.214-0.554 0.696-0.679 0.839s-0.25 0.161-0.464 0.054c-0.214-0.107-0.902-0.333-1.718-1.060-0.635-0.567-1.064-1.268-1.189-1.482s-0.013-0.329 0.094-0.435c0.096-0.096 0.214-0.25 0.321-0.375s0.143-0.214 0.214-0.357 0.036-0.268-0.018-0.375c-0.054-0.107-0.482-1.161-0.661-1.589s-0.349-0.362-0.482-0.369c-0.125-0.007-0.268-0.007-0.411-0.007s-0.375 0.054-0.571 0.268c-0.196 0.214-0.75 0.732-0.75 1.786s0.768 2.071 0.875 2.214c0.107 0.143 1.5 2.357 3.653 3.304 0.51 0.214 0.909 0.343 1.219 0.438 0.512 0.161 0.978 0.139 1.346 0.084 0.411-0.061 1.268-0.518 1.446-1.018s0.179-0.929 0.125-1.018c-0.054-0.089-0.196-0.143-0.411-0.25z"/></svg>WhatsApp</a></p>
 <p><a href="https://www.facebook.com/profile.php?id=61577506430394" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#fff" style="background:#1877f2; border-radius:3px;"><path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.406.595 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.406 24 22.674V1.326C24 .592 23.406 0 22.675 0z"/></svg>Follow us on Facebook</a></p>
 <p style="margin-top: 15px;">Hours: 09:00 - 20:00<br>Reply within 1 hour</p>
