@@ -975,7 +975,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                   fullyAvailable.push(house);
                   return;
                 }
-                // Trova se la casa è libera per tutto il periodo
+                // Trova se la casa ï¿½ libera per tutto il periodo
                 var isFree = true;
                 for (var i=0; i<bookings.length; i++) {
                   var b = bookings[i];
@@ -1009,7 +1009,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     if (!current) current = { dal: ds, al: ds };
                     else current.al = ds;
                   } else {
-                    // Se il giorno occupato è il check-in di una prenotazione ed è compreso nel periodo richiesto, includilo come libero
+                    // Se il giorno occupato ï¿½ il check-in di una prenotazione ed ï¿½ compreso nel periodo richiesto, includilo come libero
                     var isCheckIn = bookings.some(function(b) { return b.checkIn === ds && ds >= checkin && ds <= checkout; });
                     if (isCheckIn) {
                       if (!current) current = { dal: ds, al: ds };
@@ -1150,9 +1150,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           return '';
         }
 
+        function normalizeDetailLink(link) {
+          const raw = String(link || '').trim();
+          if (!raw) return '#';
+          if (/^https?:\/\//i.test(raw)) {
+            try {
+              const parsed = new URL(raw);
+              const path = (parsed.pathname || '').replace(/\/+$/, '');
+              return path ? path.replace(/^\/+/, '') : '#';
+            } catch {
+              return raw;
+            }
+          }
+          return raw.replace(/^\/+/, '');
+        }
+
         function getHouseEnglishDetailLink(house, houseKey) {
           const rawLink = String((house && house.link_dettaglio) || '').trim();
-          const baseLink = rawLink || '#';
+          const baseLink = normalizeDetailLink(rawLink);
           if (!houseKey || baseLink === '#') return baseLink;
 
           const englishByKey = {
@@ -1165,9 +1180,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
           const englishSlug = englishByKey[houseKey];
           if (!englishSlug) return baseLink;
-          if (/^https?:\/\//i.test(baseLink)) {
-            return baseLink.replace(/(casa-bellavista-1|casa-bellavista-2|casa-giorgio-4|casa-giorgio-6|respiro-di-mare|respiro-di-mare)(?=$|[/?#])/i, englishSlug);
-          }
           return englishSlug;
         }
 
@@ -1224,7 +1236,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 parseInt(p.checkOut.slice(5,7))-1,
                 parseInt(p.checkOut.slice(8,10))
               ));
-              while (d < end) { // il giorno di checkOut NON è occupato
+              while (d < end) { // il giorno di checkOut NON ï¿½ occupato
                 const key = d.toISOString().slice(0,10);
                 bookedDates.add(key);
                 d.setUTCDate(d.getUTCDate() + 1);
@@ -1384,7 +1396,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         // Salva dati globali per il filtro
         window._caseVacanzaData = { houses: houses, bookings: allBookings };
 
-        // Mostra tutte le case all’inizio
+        // Mostra tutte le case allï¿½inizio
         grid.innerHTML = '';
         houses.forEach(function(house, idx) {
           var card = document.createElement('div');
@@ -1545,7 +1557,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
         // Subject ottimizzato per evitare spam
         data.append('_subject', `Nuova Richiesta da ${userName} - Affitti Torre Pali`);
-        // Template HTML per email più professionale
+        // Template HTML per email piï¿½ professionale
         data.append('_template', 'box');
         // Conferma automatica all'utente
         data.append('_autoresponse', 'Grazie per averci contattato! Abbiamo ricevuto la tua richiesta e ti risponderemo entro 1 ora. - Affitti Torre Pali');
@@ -1570,11 +1582,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           } else {
             const text = await resp.text();
             console.error('Formspree error', resp.status, text);
-            alert('Si è verificato un errore durante l\'invio. Riprova più tardi.');
+            alert('Si ï¿½ verificato un errore durante l\'invio. Riprova piï¿½ tardi.');
           }
         } catch (err) {
           console.error(err);
-          alert('Errore di rete. Riprova più tardi.');
+          alert('Errore di rete. Riprova piï¿½ tardi.');
         }
       });
     });
