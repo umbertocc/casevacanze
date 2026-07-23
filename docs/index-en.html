@@ -259,37 +259,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         line-height: 1.35;
     }
 
-    .homes-toggle-wrap {
-        display: flex;
-        justify-content: center;
-        margin-top: 12px;
-        margin-bottom: 6px;
-    }
-
-    .homes-toggle-btn {
-        border: 1px solid #b9ddd0;
-        background: linear-gradient(180deg, #ffffff 0%, #f1fbf7 100%);
-        color: var(--sea-900);
-        font-weight: 700;
-        font-size: 0.92rem;
-        padding: 10px 16px;
-        border-radius: 999px;
-        cursor: pointer;
-        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-    }
-
-    .homes-toggle-btn:hover,
-    .homes-toggle-btn:focus {
-        transform: translateY(-1px);
-        border-color: #96cdbb;
-        box-shadow: 0 6px 16px rgba(16, 72, 89, 0.12);
-        outline: none;
-    }
-
-    #staticHomesList[hidden] {
-        display: none !important;
-    }
-
     #booking-form {
         scroll-margin-top: 110px;
     }
@@ -703,11 +672,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         .booking-benefits-list li {
             font-size: 0.88rem;
             padding: 8px 9px;
-        }
-
-        .homes-toggle-btn {
-            width: 100%;
-            max-width: 340px;
         }
 
         #staticHomesList {
@@ -1130,10 +1094,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </ul>
             </section>
 
-            <div class="homes-toggle-wrap">
-                <button type="button" id="toggleStaticHomes" class="homes-toggle-btn" aria-controls="staticHomesList" aria-expanded="true">Hide property list</button>
-            </div>
-
             <div id="staticHomesList">
                 <h3>Our vacation rentals</h3>
                 <p class="homes-subtitle">Choose the apartment you like and check availability right away.</p>
@@ -1387,7 +1347,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.addEventListener('DOMContentLoaded', async function() {
         const today = new Date();
         today.setHours(0, 0, 0, 0);
-        const minStayNights = 3;
         const availabilitySearchWindowDays = 540;
 
         function toDateKey(date) {
@@ -1470,11 +1429,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             });
         }
 
+        function hasAnyHouseFreeOnDate(date) {
+            if (!date) return false;
+            const checkInKey = toDateKey(date);
+            const nextDayKey = toDateKey(addDays(date, 1));
+            return hasAnyHouseAvailable(checkInKey, nextDayKey);
+        }
+
         function hasAnyHouseWithAvailableStayFrom(checkInDate) {
             if (!checkInDate) return false;
             const checkInKey = toDateKey(checkInDate);
 
-            for (let i = minStayNights; i <= availabilitySearchWindowDays; i++) {
+            for (let i = 1; i <= availabilitySearchWindowDays; i++) {
                 const candidate = addDays(checkInDate, i);
 
                 const candidateKey = toDateKey(candidate);
@@ -1490,7 +1456,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             const limit = Number.isFinite(maxDaysAhead) ? maxDaysAhead : 365;
             for (let i = 0; i <= limit; i++) {
                 const candidate = addDays(today, i);
-                if (hasAnyHouseWithAvailableStayFrom(candidate)) {
+                if (hasAnyHouseFreeOnDate(candidate)) {
                     return candidate;
                 }
             }
@@ -1500,11 +1466,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         function findFirstAvailableCheckOutDate(checkInDate, maxDaysAhead) {
             if (!checkInDate) return null;
 
-            const limit = Number.isFinite(maxDaysAhead) ? maxDaysAhead : availabilitySearchWindowDays;
+            const limit = Number.isFinite(maxDaysAhead) ? maxDaysAhead : 60;
             const checkInKey = toDateKey(checkInDate);
 
-            for (let i = minStayNights; i <= limit; i++) {
+            for (let i = 1; i <= limit; i++) {
                 const candidate = addDays(checkInDate, i);
+
                 const candidateKey = toDateKey(candidate);
                 if (hasAnyHouseAvailable(checkInKey, candidateKey)) {
                     return candidate;
@@ -1542,19 +1509,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             dateFormat: "Y-m-d",
             locale: flatpickr.l10ns.it,
             disable: [function(date) {
-                if (date < today) return true;
-                return !hasAnyHouseWithAvailableStayFrom(date);
+                return date < today;
             }],
             minDate: todayKey,
             onReady: function(selectedDates, dateStr, fp) {
-                if (firstAvailableCheckInDate) {
+                if (!selectedDates.length && firstAvailableCheckInDate) {
                     fp.jumpToDate(firstAvailableCheckInDate);
                 }
             },
             onDayCreate: function(dObj, dStr, fp, dayElem) {
                 const dayDate = dayElem.dateObj;
                 if (dayDate < today) return;
-                if (hasAnyHouseWithAvailableStayFrom(dayDate)) {
+                if (hasAnyHouseFreeOnDate(dayDate)) {
                     dayElem.classList.add('calendar-day-available');
                 } else {
                     dayElem.classList.add('calendar-day-unavailable');
@@ -1563,7 +1529,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             onChange: function(selectedDates, dateStr) {
                 checkInSelected = selectedDates && selectedDates[0] ? selectedDates[0] : null;
                 if (checkOutInput._flatpickr) {
-                    const minDate = checkInSelected ? addDays(checkInSelected, minStayNights) : todayKey;
+                    const minDate = checkInSelected || today;
                     checkOutInput._flatpickr.set('minDate', minDate);
                     checkOutInput._flatpickr.redraw();
                     checkOutInput.value = '';
@@ -1573,7 +1539,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             checkOutInput._flatpickr.jumpToDate(firstAvailableCheckOutDate);
                             checkOutInput._flatpickr.setDate(firstAvailableCheckOutDate, false);
                         } else {
-                            checkOutInput._flatpickr.jumpToDate(addDays(checkInSelected, minStayNights));
+                            checkOutInput._flatpickr.jumpToDate(checkInSelected);
                         }
                     }
                 }
@@ -1589,26 +1555,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                 const checkInDate = parseDateKey(checkInInput.value);
                 if (!checkInDate) return;
-                if (dayDate < addDays(checkInDate, minStayNights)) return;
+
+                if (dayDate <= checkInDate) {
+                    dayElem.classList.add('calendar-day-unavailable');
+                    return;
+                }
 
                 const checkInKey = toDateKey(checkInDate);
                 const checkOutKey = toDateKey(dayDate);
                 if (hasAnyHouseAvailable(checkInKey, checkOutKey)) {
                     dayElem.classList.add('calendar-day-checkout-available');
+                } else {
+                    dayElem.classList.add('calendar-day-unavailable');
                 }
             },
             disable: [
                 function(date) {
                     if (date < today) return true;
-                    if (checkInInput.value) {
-                        const checkInDate = parseDateKey(checkInInput.value);
-                        if (!checkInDate) return true;
-                        if (date < addDays(checkInDate, minStayNights)) return true;
-                        const checkInKey = toDateKey(checkInDate);
-                        const checkOutKey = toDateKey(date);
-                        if (!hasAnyHouseAvailable(checkInKey, checkOutKey)) return true;
-                    }
-                    return false;
+                    if (!checkInInput.value) return false;
+
+                    const checkInDate = parseDateKey(checkInInput.value);
+                    if (!checkInDate) return true;
+                    if (date <= checkInDate) return true;
+
+                    const checkInKey = toDateKey(checkInDate);
+                    const checkOutKey = toDateKey(date);
+                    return !hasAnyHouseAvailable(checkInKey, checkOutKey);
                 }
             ],
             minDate: todayKey
@@ -1618,7 +1590,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             checkInPicker.setDate(firstAvailableCheckInDate, true);
             const firstAvailableCheckOutDate = findFirstAvailableCheckOutDate(firstAvailableCheckInDate, availabilitySearchWindowDays);
             if (firstAvailableCheckOutDate) {
-                checkOutPicker.set('minDate', addDays(firstAvailableCheckInDate, minStayNights));
+                checkOutPicker.set('minDate', firstAvailableCheckInDate);
                 checkOutPicker.setDate(firstAvailableCheckOutDate, false);
             }
         }
@@ -1633,26 +1605,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 animated: true,
                 showClass: 'fancybox-fadeIn',
                 hideClass: 'fancybox-fadeOut'
-            });
-        }
-
-        const staticHomesList = document.getElementById('staticHomesList');
-        const toggleStaticHomesBtn = document.getElementById('toggleStaticHomes');
-
-        if (staticHomesList && toggleStaticHomesBtn) {
-            toggleStaticHomesBtn.addEventListener('click', function() {
-                const isHidden = staticHomesList.hasAttribute('hidden');
-
-                if (isHidden) {
-                    staticHomesList.removeAttribute('hidden');
-                    this.textContent = 'Hide property list';
-                    this.setAttribute('aria-expanded', 'true');
-                    staticHomesList.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                } else {
-                    staticHomesList.setAttribute('hidden', '');
-                    this.textContent = 'View all vacation rentals';
-                    this.setAttribute('aria-expanded', 'false');
-                }
             });
         }
     });
