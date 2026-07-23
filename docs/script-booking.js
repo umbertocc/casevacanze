@@ -201,7 +201,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                             ${galleryHtml}
                         </div>
                         <div class="property-info">                            
-                            ${prezzoTotale !== null ? `<p style="margin:8px 0 8px 0;font-size:1.05em;color:#166534;font-weight:700;">Prezzo totale: ${formatEuro(prezzoTotale)}</p>` : ''} 
+                           <!-- ${prezzoTotale !== null ? `<p style="margin:8px 0 8px 0;font-size:1.05em;color:#166534;font-weight:700;">Prezzo totale: ${formatEuro(prezzoTotale)}</p>` : ''} -->
                             <p style="margin:0 0 10px 0;font-size:0.9em;line-height:1.4;color:#334155;background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:8px 10px;"><strong>CIN:</strong> ${cin || '-'}<br><strong>CIS:</strong> ${cis || '-'}</p>
                             <div class="property-features">
                                 ${caratteristiche.map(f => `<span class="feature-badge">${f}</span>`).join(' ')}
