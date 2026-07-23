@@ -1674,6 +1674,12 @@ document.addEventListener('DOMContentLoaded', function() {
     function openGenericInfoModal() {
         const modal = ensureGenericInfoModal();
         const body = document.getElementById('generic-info-modal-body');
+        const mainCheckInInput = document.getElementById('checkIn');
+        const mainCheckOutInput = document.getElementById('checkOut');
+        const mainCheckInValue = mainCheckInInput ? String(mainCheckInInput.value || '').trim() : '';
+        const mainCheckOutValue = mainCheckOutInput ? String(mainCheckOutInput.value || '').trim() : '';
+        const today = new Date();
+        const todayKey = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
         const whatsappUrl = 'https://wa.me/393804580135?text=' + encodeURIComponent('Ciao! Vorrei informazioni sulle case vacanza a Torre Pali.');
         body.innerHTML = `
             <h2 style="margin:0 0 8px 0;color:#0f766e;font-size:1.25em;">Richiedi info</h2>
@@ -1682,6 +1688,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 <input name="nome" type="text" required placeholder="Nome e Cognome *" style="width:100%;padding:10px;border:1px solid #d1d5db;border-radius:8px;box-sizing:border-box;">
                 <input name="email" type="email" required placeholder="Email *" style="width:100%;padding:10px;border:1px solid #d1d5db;border-radius:8px;box-sizing:border-box;">
                 <input name="telefono" type="tel" placeholder="Telefono (opzionale)" style="width:100%;padding:10px;border:1px solid #d1d5db;border-radius:8px;box-sizing:border-box;">
+                <input name="checkIn" type="date" required value="${mainCheckInValue}" min="${todayKey}" aria-label="Data check-in" style="width:100%;padding:10px;border:1px solid #d1d5db;border-radius:8px;box-sizing:border-box;">
+                <input name="checkOut" type="date" required value="${mainCheckOutValue}" min="${mainCheckInValue || todayKey}" aria-label="Data check-out" style="width:100%;padding:10px;border:1px solid #d1d5db;border-radius:8px;box-sizing:border-box;">
                 <input name="persone" type="number" min="1" max="20" required placeholder="Numero di persone *" style="width:100%;padding:10px;border:1px solid #d1d5db;border-radius:8px;box-sizing:border-box;">
                 <textarea name="messaggio" placeholder="Messaggio (opzionale)" style="width:100%;min-height:64px;padding:10px;border:1px solid #d1d5db;border-radius:8px;box-sizing:border-box;"></textarea>
                 <label style="display:flex;align-items:flex-start;gap:8px;font-size:0.84em;color:#374151;line-height:1.45;">
@@ -1706,9 +1714,27 @@ document.addEventListener('DOMContentLoaded', function() {
         setCtaVisibility(false);
 
         const form = document.getElementById('genericInfoForm');
+        const modalCheckInInput = form && form.elements ? form.elements.checkIn : null;
+        const modalCheckOutInput = form && form.elements ? form.elements.checkOut : null;
+
+        if (modalCheckInInput && modalCheckOutInput) {
+            modalCheckInInput.addEventListener('change', function() {
+                modalCheckOutInput.min = this.value || todayKey;
+                if (modalCheckOutInput.value && modalCheckOutInput.value <= this.value) {
+                    modalCheckOutInput.value = '';
+                }
+            });
+        }
+
         form.onsubmit = async function(ev) {
             ev.preventDefault();
             const f = ev.currentTarget;
+
+            if (f.checkIn.value && f.checkOut.value && f.checkOut.value <= f.checkIn.value) {
+                alert('La data di check-out deve essere successiva al check-in.');
+                return;
+            }
+
             body.innerHTML = '<div style="text-align:center;padding:26px 0;"><div style="border:4px solid #f3f3f3;border-top:4px solid #188841;border-radius:50%;width:28px;height:28px;animation:spin 1s linear infinite;margin:0 auto 14px auto;"></div><span style="color:#188841;font-weight:600;">Invio in corso...</span></div>';
 
             try {
@@ -1722,6 +1748,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         nome: f.nome.value,
                         email: f.email.value,
                         telefono: f.telefono.value,
+                        checkIn: f.checkIn.value,
+                        checkOut: f.checkOut.value,
                         persone: f.persone.value,
                         messaggio: f.messaggio.value,
                         appartamento: 'Richiesta generica da index',
