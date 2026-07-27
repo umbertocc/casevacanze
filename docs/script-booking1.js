@@ -369,10 +369,12 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                     <input type=\"hidden\" name=\"prezzoTotale\" value=\"${prezzoTotale !== null ? prezzoTotale : ''}\">
                                     <input type=\"hidden\" name=\"checkIn\" value=\"${checkIn}\">
                                     <input type=\"hidden\" name=\"checkOut\" value=\"${checkOut}\">
+                                    <input type=\"hidden\" name=\"persone\" value=\"${ospiti || ''}\">
                                     
                                     <div style=\"margin-bottom:10px;\">
                                         <div style=\"padding:8px 10px;border-radius:6px;border:1px solid #d1fae5;background:#f0fdf4;color:#14532d;font-size:0.85em;margin-bottom:6px;\"><strong>Check-in:</strong> ${formatDateIt(checkIn)}</div>
-                                        <div style=\"padding:8px 10px;border-radius:6px;border:1px solid #d1fae5;background:#f0fdf4;color:#14532d;font-size:0.85em;\"><strong>Check-out:</strong> ${formatDateIt(checkOut)}</div>
+                                        <div style=\"padding:8px 10px;border-radius:6px;border:1px solid #d1fae5;background:#f0fdf4;color:#14532d;font-size:0.85em;margin-bottom:6px;\"><strong>Check-out:</strong> ${formatDateIt(checkOut)}</div>
+                                        <div style=\"padding:8px 10px;border-radius:6px;border:1px solid #d1fae5;background:#f0fdf4;color:#14532d;font-size:0.85em;\"><strong>Numero persone:</strong> ${ospiti || ''}</div>
                                     </div>
 
                                     <div style=\"margin-bottom:10px;\">
@@ -385,7 +387,6 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                             <option value=\"email\">Email</option>
                                             <option value=\"whatsapp\">WhatsApp</option>
                                         </select>
-                                        <input required name=\"persone\" type=\"number\" min=\"1\" max=\"8\" placeholder=\"Numero di Persone *\" style=\"width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;\">
                                     </div>
 
                                     <textarea name=\"messaggio\" placeholder=\"Messaggio (opzionale)\" style=\"width:100%;padding:10px;border-radius:5px;border:1px solid #ccc;min-height:50px;max-height:80px;font-size:0.9em;margin-bottom:12px;box-sizing:border-box;display:block;\"></textarea>
