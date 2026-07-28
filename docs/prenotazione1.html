@@ -332,19 +332,28 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             background: #ecfdf3;
             border-color: #34d399;
             color: #166534;
-            font-weight: 700;
+            font-weight: 400;
         }
         .flatpickr-day.calendar-day-unavailable {
-            background: #fef2f2;
-            border-color: #fca5a5;
-            color: #991b1b;
-            opacity: 0.88;
+            background: transparent;
+            border-color: transparent;
+            color: #94a3b8;
+            opacity: 0.65;
+            font-weight: 400;
         }
         .flatpickr-day.calendar-day-checkout-available {
             background: #dcfce7;
             border-color: #22c55e;
             color: #14532d;
-            font-weight: 800;
+            font-weight: 400;
+        }
+        .flatpickr-day.calendar-day-checkout-available.disabled,
+        .flatpickr-day.calendar-day-checkout-available.disabled:hover {
+            background: transparent;
+            border-color: transparent;
+            color: #94a3b8;
+            opacity: 0.65;
+            font-weight: 400;
         }
         .flatpickr-months .flatpickr-month {
             color: #22577a;
@@ -847,7 +856,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                 const checkInDate = parseDateKey(checkInInput.value);
                 if (!checkInDate) return;
-                if (dayDate < addDays(checkInDate, minStayNights)) return;
+                if (dayDate < addDays(checkInDate, minStayNights)) {
+                    dayElem.classList.add('calendar-day-unavailable');
+                    return;
+                }
 
                 const checkInKey = toDateKey(checkInDate);
                 const checkOutKey = toDateKey(dayDate);
