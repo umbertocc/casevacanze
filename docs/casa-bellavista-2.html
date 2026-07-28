@@ -1300,7 +1300,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <div class="sticky-booking-cta">
   <div class="sticky-booking-cta-inner">
-    <a href="#" class="sticky-booking-cta-link case-vacanze-cta" id="bellavista2BookingCta" aria-label="Richiedi preventivo per Casa Bellavista 2">Richiedi info</a>
+    <a href="#" class="sticky-booking-cta-link case-vacanze-cta" id="bellavista2BookingCta" aria-label="Prenota Casa Bellavista 2">Prenota</a>
   </div>
 </div>
 
@@ -1308,8 +1308,8 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="bellavista2-booking-modal-card" role="dialog" aria-modal="true" aria-labelledby="bellavista2BookingModalTitle">
     <div class="bellavista2-booking-modal-header">
       <div>
-        <h2 id="bellavista2BookingModalTitle" class="bellavista2-booking-modal-title">Richiesta prenotazione Casa Bellavista 2</h2>
-        <p class="bellavista2-booking-modal-subtitle">Verifica disponibilita e invia la tua richiesta di prenotazione.</p>
+        <h2 id="bellavista2BookingModalTitle" class="bellavista2-booking-modal-title">Prenota Casa Bellavista 2</h2>
+        <p class="bellavista2-booking-modal-subtitle">Verifica disponibilità e procedi con la prenotazione.</p>
       </div>
       <button type="button" class="bellavista2-booking-modal-close" id="bellavista2BookingModalClose" aria-label="Chiudi modale">&times;</button>
     </div>
@@ -1414,6 +1414,7 @@ document.addEventListener('DOMContentLoaded', function() {
               <p style="margin-bottom: 8px;"><strong style="color: #f39c12;">🧹 Pulizia</strong></p>
               <ul style="margin-left: 20px; font-size: 0.95em; color: #555;">
                 <li><strong>✅ Pulizia inclusa</strong> nel prezzo della prenotazione</li>
+                <li><strong>Lenzuola non sono incluse:</strong> gli ospiti le portano con sé</li>
                 <li><strong>Nessun costo aggiuntivo</strong> è previsto</li>
               </ul>
             </div>
@@ -1423,7 +1424,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
           <div class="bellavista2-booking-actions">
             <button type="button" class="secondary" id="bellavista2PrevStep3">Indietro</button>
-            <button type="button" class="primary" id="bellavista2ProceedBtn" disabled>Invia richiesta prenotazione</button>
+            <button type="button" class="primary" id="bellavista2ProceedBtn" disabled>Procedi al pagamento</button>
           </div>
         </div>
       </form>
@@ -1719,10 +1720,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function setConfirmedStatusByStep() {
     if (currentStep === 3) {
-      setStatus('Disponibilità confermata. Controlla i dati e invia la richiesta di prenotazione.', false);
+      setStatus('Disponibilità confermata. Controlla i dati e procedi al pagamento.', false);
       return;
     }
-    setStatus('Disponibilità confermata. Completa i dati di contatto e invia la richiesta di prenotazione.', false);
+    setStatus('Disponibilità confermata. Completa i dati di contatto e procedi al pagamento.', false);
   }
 
   function clearPaymentTimers() {
@@ -1753,7 +1754,7 @@ document.addEventListener('DOMContentLoaded', function() {
     hideResultPanel();
     bookingModal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
-    proceedBtn.textContent = 'Invia richiesta prenotazione';
+    proceedBtn.textContent = 'Procedi al pagamento';
     updateSummary();
   }
 
@@ -1775,7 +1776,7 @@ document.addEventListener('DOMContentLoaded', function() {
       retryBtn.addEventListener('click', function() {
         hideResultPanel();
         proceedBtn.disabled = false;
-        proceedBtn.textContent = 'Invia richiesta prenotazione';
+        proceedBtn.textContent = 'Procedi al pagamento';
         setStatus('Verifica completata. Riprova quando vuoi.', false);
       });
     }
@@ -1813,8 +1814,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     showResultPanel(
       '<div style="text-align:center;padding:18px 6px;">' +
-      '<h3 style="color:#166534;margin-bottom:10px;">Richiesta inviata!</h3>' +
-      '<p style="color:#475569;line-height:1.6;">Abbiamo ricevuto la tua richiesta e la stiamo verificando.</p>' +
+      '<h3 style="color:#166534;margin-bottom:10px;">Prenotazione creata!</h3>' +
+      '<p style="color:#475569;line-height:1.6;">Abbiamo creato la tua prenotazione e stiamo preparando il pagamento.</p>' +
       '<p style="color:#475569;line-height:1.6;">Reindirizzamento al checkout Stripe tra <strong><span id="bellavista2PaymentCountdown">' + countdown + '</span>s</strong>.</p>' +
       '<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px;">' +
       '<button type="button" id="bellavista2GoToPaymentNow" style="border:none;border-radius:999px;padding:12px 18px;font-weight:700;cursor:pointer;background:#0f766e;color:#fff;">Continua</button>' +
@@ -1903,7 +1904,7 @@ document.addEventListener('DOMContentLoaded', function() {
       priceEl.textContent = '-';
       depositEl.textContent = '-';
       proceedBtn.disabled = true;
-      proceedBtn.textContent = 'Invia richiesta prenotazione';
+      proceedBtn.textContent = 'Procedi al pagamento';
       recapCheckInEl.textContent = checkInInput.value || '-';
       recapCheckOutEl.textContent = checkOutInput.value || '-';
       recapOspitiEl.textContent = ospitiInput.value || '-';
@@ -1913,7 +1914,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     priceEl.textContent = formatEuro(quote.prezzoTotale);
     depositEl.textContent = formatEuro(quote.importoCaparra);
-    proceedBtn.textContent = 'Invia richiesta prenotazione';
+    proceedBtn.textContent = 'Procedi al pagamento';
 
     const requiredFieldsFilled = checkInInput.value && checkOutInput.value && ospitiInput.value && nomeInput.value.trim() && emailInput.value.trim() && telefonoInput.value.trim() && privacyInput.checked;
     proceedBtn.disabled = !(quote.available && requiredFieldsFilled);
@@ -1935,7 +1936,7 @@ document.addEventListener('DOMContentLoaded', function() {
     } else if (currentStep === 2) {
       stepIndicatorEl.textContent = 'Passo 2 di 3 - Dati di contatto';
     } else {
-      stepIndicatorEl.textContent = 'Passo 3 di 3 - Riepilogo e invio richiesta';
+      stepIndicatorEl.textContent = 'Passo 3 di 3 - Riepilogo e pagamento';
       updateSummary();
     }
 
@@ -2123,6 +2124,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setCurrentStep(1);
     bookingModal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+    void initPickersAndData();
   }
 
   async function initPickersAndData() {
@@ -2199,7 +2201,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('prenotaForm').onsubmit = async function(ev) { ev.preventDefault(); const form = ev.target; const arrivo = form.arrivo.value.trim(); const partenza = form.partenza.value.trim(); if (!arrivo || !partenza) { alert('Compila sia la data di arrivo che di partenza!'); return; } modalBody.innerHTML = '<div style="text-align:center;padding:32px 0;"><div style="border:4px solid #f3f3f3;border-top:4px solid #188841;border-radius:50%;width:32px;height:32px;animation:spin 1s linear infinite;margin:0 auto 18px auto;"></div><span style="color:#188841;font-weight:500;">Invio in corso...</span></div>'; const nome = form.nome.value, email = form.email.value, telefono = form.telefono.value, persone = form.persone.value, messaggio = form.messaggio.value, casa = form.casa.value; try { const response = await fetch('https://demo-mail-993653817397.europe-west8.run.app/api/preventivi/public', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Accept': 'application/json' }, body: new URLSearchParams({ nome, email, telefono, appartamento: casa, arrivo, partenza, persone, messaggio, source: 'case-vacanze-modal' }) }); if (response.ok) { modalBody.innerHTML = '<div style="text-align:center;padding:32px 0;"><h2 style="color:#2d7a46;">Richiesta inviata!</h2><p>Grazie per aver richiesto il preventivo.<br>Ti ricontatteremo al più presto.</p><button id="closePrenotaModal2" style="margin-top:18px;background:#2d7a46;color:#fff;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;">Chiudi</button></div>'; } else { modalBody.innerHTML = '<div style="text-align:center;padding:32px 0;"><h2 style="color:#b91c1c;">Errore nell\'invio</h2><p>Si è verificato un errore nell\'invio della richiesta.<br>Riprova o contattaci via WhatsApp.</p><button id="closePrenotaModal2" style="margin-top:18px;background:#b91c1c;color:#fff;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;">Chiudi</button></div>'; } } catch (err) { modalBody.innerHTML = '<div style="text-align:center;padding:32px 0;"><h2 style="color:#b91c1c;">Errore nell\'invio</h2><p>Si è verificato un errore nell\'invio della richiesta.<br>Riprova o contattaci via WhatsApp.</p><button id="closePrenotaModal2" style="margin-top:18px;background:#b91c1c;color:#fff;padding:10px 22px;border:none;border-radius:6px;font-size:1em;cursor:pointer;">Chiudi</button></div>'; } const closeBtn = document.getElementById('closePrenotaModal2'); if (closeBtn) closeBtn.onclick = closeModal; };
   }
 
-  bookingCta.addEventListener('click', function(e) { e.preventDefault(); openCaseVacanzeQuoteModal(); });
+  bookingCta.addEventListener('click', function(e) { e.preventDefault(); openModal(); });
 
   closeBtn.addEventListener('click', closeModal);
   bookingModal.addEventListener('click', function(e) {
@@ -2281,8 +2283,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     proceedBtn.disabled = true;
-    proceedBtn.textContent = 'Invio richiesta...';
-    setStatus('Invio richiesta prenotazione in corso...', false);
+    proceedBtn.textContent = 'Prenotazione in corso...';
+    setStatus('Creo la prenotazione e apro Stripe...', false);
 
     let prenotazioneId = null;
     try {

@@ -318,33 +318,46 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         .flatpickr-calendar {
             font-family: 'Poppins', Arial, sans-serif;
             border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(37,211,102,0.13);
-            border: 1.5px solid #b2f2d7;
+            box-shadow: 0 8px 32px rgba(34, 87, 122, 0.12);
+            border: 1.5px solid #d7e3ec;
         }
         .flatpickr-day.selected, .flatpickr-day.startRange, .flatpickr-day.endRange, .flatpickr-day.selected.inRange, .flatpickr-day.startRange.inRange, .flatpickr-day.endRange.inRange {
-            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%) !important;
+            background: #22577a !important;
+            border-color: #22577a !important;
             color: #fff !important;
         }
         .flatpickr-day.today {
-            border-color: #25d366;
+            border-color: #94a3b8;
+            color: #22577a;
+            font-weight: 600;
+        }
+        .flatpickr-day:hover {
+            border-color: #94a3b8;
         }
         .flatpickr-day.calendar-day-available {
-            background: #ecfdf3;
-            border-color: #34d399;
-            color: #166534;
-            font-weight: 700;
+            background: transparent !important;
+            border-color: transparent !important;
+            box-shadow: none !important;
+            color: inherit !important;
+            font-weight: 600;
         }
         .flatpickr-day.calendar-day-unavailable {
-            background: #fef2f2;
-            border-color: #fca5a5;
-            color: #991b1b;
-            opacity: 0.88;
+            background: transparent !important;
+            border-color: transparent !important;
+            box-shadow: none !important;
+            color: #94a3b8 !important;
+            opacity: 0.65;
         }
         .flatpickr-day.calendar-day-checkout-available {
-            background: #dcfce7;
-            border-color: #22c55e;
-            color: #14532d;
-            font-weight: 800;
+            background: transparent !important;
+            border-color: transparent !important;
+            box-shadow: none !important;
+            color: inherit !important;
+            font-weight: 600;
+        }
+        .flatpickr-day.disabled, .flatpickr-day.disabled:hover, .flatpickr-day.prevMonthDay, .flatpickr-day.nextMonthDay {
+            color: #cbd5e1;
+            background: transparent;
         }
         .flatpickr-months .flatpickr-month {
             color: #22577a;
@@ -730,6 +743,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             });
         }
 
+        function hasAnyHouseFreeOnDate(date) {
+            if (!date) return false;
+            const checkInKey = toDateKey(date);
+            const nextDayKey = toDateKey(addDays(date, 1));
+            return hasAnyHouseAvailable(checkInKey, nextDayKey);
+        }
+
         function hasAnyHouseWithAvailableStayFrom(checkInDate) {
             if (!checkInDate) return false;
             const checkInKey = toDateKey(checkInDate);
@@ -749,7 +769,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             const limit = Number.isFinite(maxDaysAhead) ? maxDaysAhead : 365;
             for (let i = 0; i <= limit; i++) {
                 const candidate = addDays(today, i);
-                if (hasAnyHouseWithAvailableStayFrom(candidate)) {
+                if (hasAnyHouseFreeOnDate(candidate)) {
                     return candidate;
                 }
             }
@@ -801,8 +821,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             dateFormat: "Y-m-d",
             locale: flatpickr.l10ns.it,
             disable: [function(date) {
-                if (date < today) return true;
-                return !hasAnyHouseWithAvailableStayFrom(date);
+                return date < today;
             }],
             minDate: todayKey,
             onReady: function(selectedDates, dateStr, fp) {
@@ -813,7 +832,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             onDayCreate: function(dObj, dStr, fp, dayElem) {
                 const dayDate = dayElem.dateObj;
                 if (dayDate < today) return;
-                if (hasAnyHouseWithAvailableStayFrom(dayDate)) {
+                if (hasAnyHouseFreeOnDate(dayDate)) {
                     dayElem.classList.add('calendar-day-available');
                 } else {
                     dayElem.classList.add('calendar-day-unavailable');
@@ -848,26 +867,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                 const checkInDate = parseDateKey(checkInInput.value);
                 if (!checkInDate) return;
-                if (dayDate < addDays(checkInDate, minStayNights)) return;
+                if (dayDate <= checkInDate) {
+                    dayElem.classList.add('calendar-day-unavailable');
+                    return;
+                }
 
                 const checkInKey = toDateKey(checkInDate);
                 const checkOutKey = toDateKey(dayDate);
                 if (hasAnyHouseAvailable(checkInKey, checkOutKey)) {
                     dayElem.classList.add('calendar-day-checkout-available');
+                } else {
+                    dayElem.classList.add('calendar-day-unavailable');
                 }
             },
             disable: [
                 function(date) {
                     if (date < today) return true;
-                    if (checkInInput.value) {
-                        const checkInDate = parseDateKey(checkInInput.value);
-                        if (!checkInDate) return true;
-                        if (date < addDays(checkInDate, minStayNights)) return true;
-                        const checkInKey = toDateKey(checkInDate);
-                        const checkOutKey = toDateKey(date);
-                        if (!hasAnyHouseAvailable(checkInKey, checkOutKey)) return true;
-                    }
-                    return false;
+                    if (!checkInInput.value) return false;
+
+                    const checkInDate = parseDateKey(checkInInput.value);
+                    if (!checkInDate) return true;
+                    if (date <= checkInDate) return true;
+
+                    const checkInKey = toDateKey(checkInDate);
+                    const checkOutKey = toDateKey(date);
+                    return !hasAnyHouseAvailable(checkInKey, checkOutKey);
                 }
             ],
             minDate: todayKey
