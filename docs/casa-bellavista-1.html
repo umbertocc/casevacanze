@@ -1215,7 +1215,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
           <div class="bellavista1-booking-actions">
             <button type="button" class="secondary" id="bellavista1PrevStep3">Indietro</button>
-            <button type="button" class="primary" id="bellavista1ProceedBtn" disabled>Procedi al pagamento</button>
+            <button type="button" class="primary" id="bellavista1ProceedBtn" disabled>Paga</button>
           </div>
         </div>
       </form>
@@ -1525,6 +1525,14 @@ document.addEventListener('DOMContentLoaded', function() {
     setStatus('Disponibilità confermata. Completa i dati di contatto e procedi al pagamento.', false);
   }
 
+  function updateProceedButtonLabel() {
+    if (!quote || !quote.available || quote.importoCaparra == null) {
+      proceedBtn.textContent = 'Paga';
+      return;
+    }
+    proceedBtn.textContent = 'Paga ' + formatEuro(quote.importoCaparra);
+  }
+
   function clearPaymentTimers() {
     if (paymentCountdownInterval) {
       clearInterval(paymentCountdownInterval);
@@ -1553,7 +1561,7 @@ document.addEventListener('DOMContentLoaded', function() {
     hideResultPanel();
     bookingModal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
-    proceedBtn.textContent = 'Procedi al pagamento';
+    updateProceedButtonLabel();
     updateSummary();
   }
 
@@ -1575,7 +1583,7 @@ document.addEventListener('DOMContentLoaded', function() {
       retryBtn.addEventListener('click', function() {
         hideResultPanel();
         proceedBtn.disabled = false;
-        proceedBtn.textContent = 'Invia richiesta prenotazione';
+        updateProceedButtonLabel();
         setStatus('Verifica completata. Riprova quando vuoi.', false);
       });
     }
@@ -1703,7 +1711,7 @@ document.addEventListener('DOMContentLoaded', function() {
       priceEl.textContent = '-';
       depositEl.textContent = '-';
       proceedBtn.disabled = true;
-      proceedBtn.textContent = 'Procedi al pagamento';
+      updateProceedButtonLabel();
       recapCheckInEl.textContent = checkInInput.value || '-';
       recapCheckOutEl.textContent = checkOutInput.value || '-';
       recapOspitiEl.textContent = ospitiInput.value || '-';
@@ -1713,7 +1721,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     priceEl.textContent = formatEuro(quote.prezzoTotale);
     depositEl.textContent = formatEuro(quote.importoCaparra);
-    proceedBtn.textContent = 'Procedi al pagamento';
+    updateProceedButtonLabel();
 
     const requiredFieldsFilled = checkInInput.value && checkOutInput.value && ospitiInput.value && nomeInput.value.trim() && emailInput.value.trim() && privacyInput.checked;
     proceedBtn.disabled = !(quote.available && requiredFieldsFilled);

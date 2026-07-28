@@ -1319,7 +1319,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         <div class="bellavista2-booking-summary" style="margin-top:0; margin-bottom:14px;">
           <div><strong>Prezzo totale:</strong> <span id="bellavista2QuotePrice">-</span></div>
-          <div style="margin-top:6px;"><strong>Importo richiesto:</strong> <span id="bellavista2QuoteDeposit">-</span></div>
+          <div style="margin-top:6px;"><strong>Caparra:</strong> <span id="bellavista2QuoteDeposit">-</span></div>
           <div class="bellavista2-booking-status" id="bellavista2BookingStatus" style="margin-top:10px;">Seleziona check-in, check-out e ospiti per vedere la disponibilità.</div>
         </div>
 
@@ -1397,7 +1397,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div style="margin-bottom: 18px; padding: 12px; background: #fff0f5; border-left: 4px solid #e74c3c; border-radius: 4px;">
               <p style="margin-bottom: 8px;"><strong style="color: #e74c3c;">💳 Richiesta prenotazione</strong></p>
               <ul style="margin-left: 20px; font-size: 0.95em; color: #555;">
-                <li><strong>Importo richiesto:</strong> 20% al momento della conferma</li>
+                <li><strong>Caparra:</strong> 20% al momento della conferma</li>
                 <li><strong>Saldo:</strong> 80% al check-in</li>
               </ul>
             </div>
@@ -1424,7 +1424,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
           <div class="bellavista2-booking-actions">
             <button type="button" class="secondary" id="bellavista2PrevStep3">Indietro</button>
-            <button type="button" class="primary" id="bellavista2ProceedBtn" disabled>Procedi al pagamento</button>
+            <button type="button" class="primary" id="bellavista2ProceedBtn" disabled>Paga</button>
           </div>
         </div>
       </form>
@@ -1726,6 +1726,14 @@ document.addEventListener('DOMContentLoaded', function() {
     setStatus('Disponibilità confermata. Completa i dati di contatto e procedi al pagamento.', false);
   }
 
+  function updateProceedButtonLabel() {
+    if (!quote || !quote.available || quote.importoCaparra == null) {
+      proceedBtn.textContent = 'Paga';
+      return;
+    }
+    proceedBtn.textContent = 'Paga ' + formatEuro(quote.importoCaparra);
+  }
+
   function clearPaymentTimers() {
     if (paymentCountdownInterval) {
       clearInterval(paymentCountdownInterval);
@@ -1754,7 +1762,7 @@ document.addEventListener('DOMContentLoaded', function() {
     hideResultPanel();
     bookingModal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
-    proceedBtn.textContent = 'Procedi al pagamento';
+    updateProceedButtonLabel();
     updateSummary();
   }
 
@@ -1776,7 +1784,7 @@ document.addEventListener('DOMContentLoaded', function() {
       retryBtn.addEventListener('click', function() {
         hideResultPanel();
         proceedBtn.disabled = false;
-        proceedBtn.textContent = 'Procedi al pagamento';
+        updateProceedButtonLabel();
         setStatus('Verifica completata. Riprova quando vuoi.', false);
       });
     }
@@ -1904,7 +1912,7 @@ document.addEventListener('DOMContentLoaded', function() {
       priceEl.textContent = '-';
       depositEl.textContent = '-';
       proceedBtn.disabled = true;
-      proceedBtn.textContent = 'Procedi al pagamento';
+      updateProceedButtonLabel();
       recapCheckInEl.textContent = checkInInput.value || '-';
       recapCheckOutEl.textContent = checkOutInput.value || '-';
       recapOspitiEl.textContent = ospitiInput.value || '-';
@@ -1914,7 +1922,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     priceEl.textContent = formatEuro(quote.prezzoTotale);
     depositEl.textContent = formatEuro(quote.importoCaparra);
-    proceedBtn.textContent = 'Procedi al pagamento';
+    updateProceedButtonLabel();
 
     const requiredFieldsFilled = checkInInput.value && checkOutInput.value && ospitiInput.value && nomeInput.value.trim() && emailInput.value.trim() && telefonoInput.value.trim() && privacyInput.checked;
     proceedBtn.disabled = !(quote.available && requiredFieldsFilled);
