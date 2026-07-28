@@ -356,7 +356,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                                         // Modale con date precompilate dalla ricerca (non modificabili)
                                                         modalBody.innerHTML = `
                                                             <div style=\"margin-bottom:12px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px; margin-top: 30px;\">
-                                                                        <h2 style=\"margin:0;font-size:1.15em;color:#2d7a46;\">Richiesta prenotazione</h2>
+                                                                        <h2 style=\"margin:0;font-size:1.15em;color:#2d7a46;\">Prenotazione</h2>
                                                                         ${prezzoTotale != null ? `<div style=\"text-align:right;color:#166534;font-weight:700;font-size:1.05em;\">Prezzo totale: ${formatEuro(prezzoTotale)}</div>` : ''}
                                                                 </div>
                                 
