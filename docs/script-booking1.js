@@ -359,9 +359,28 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                                                         <h2 style=\"margin:0;font-size:1.15em;color:#2d7a46;\">Prenotazione</h2>
                                                                         ${prezzoTotale != null ? `<div style=\"text-align:right;color:#166534;font-weight:700;font-size:1.05em;\">Prezzo totale: ${formatEuro(prezzoTotale)}</div>` : ''}
                                                                 </div>
-                                
-                                                                <p style=\"margin-bottom:10px; font-size: 0.9em; color: #4b5563; line-height:1.35; background:#f8fafc; border:1px solid #dbeafe; border-radius:8px; padding:8px 10px;\"><strong>Politica cancellazione:</strong> rimborso caparra 100% fino a 60 giorni prima del check-in; 50% da 60 a 30 giorni; 0% sotto i 30 giorni o in caso di no-show.</p>
-                                 
+
+                                                                <div style=\"margin-bottom:12px;font-size:0.92em;line-height:1.5;color:#374151;background:#f8fafc;border:1px solid #dbeafe;border-radius:8px;padding:10px 12px;\">
+                                                                    <p style=\"margin:0 0 8px 0;\"><strong>Check-in:</strong> dalle 15:00 (consegna chiavi in struttura, proprietari presenti)</p>
+                                                                    <p style=\"margin:0 0 8px 0;\"><strong>Check-out:</strong> entro le 10:00 (restituzione chiavi, appartamento in ordine)</p>
+                                                                    <p style=\"margin:12px 0 8px 0;\"><strong>Pagamento</strong></p>
+                                                                    <ul style=\"margin:0 0 8px 18px;padding:0;\">
+                                                                        <li><strong>Caparra:</strong> 20% all'atto della prenotazione</li>
+                                                                        <li><strong>Saldo:</strong> 80% al momento del check-in</li>
+                                                                    </ul>
+                                                                    <p style=\"margin:12px 0 8px 0;\"><strong>Condizioni di Cancellazione</strong></p>
+                                                                    <ul style=\"margin:0 0 8px 18px;padding:0;\">
+                                                                        <li><strong>Fino a 90 giorni prima del check-in:</strong> rimborso integrale della caparra</li>
+                                                                        <li><strong>Meno di 90 giorni:</strong> nessun rimborso</li>
+                                                                    </ul>
+                                                                    <p style=\"margin:12px 0 8px 0;\"><strong>Pulizia</strong></p>
+                                                                    <ul style=\"margin:0 0 0 18px;padding:0;\">
+                                                                        <li>✅ Pulizia inclusa nel prezzo della prenotazione</li>
+                                                                        <li>Lenzuola non incluse: gli ospiti le portano con sé</li>
+                                                                        <li>Nessun costo aggiuntivo previsto</li>
+                                                                    </ul>
+                                                                </div>
+
                                                                 <div style=\"margin-bottom:10px; font-weight:600; font-size:0.95em;\">${casa.nome || casa.id || 'Casa'}</div>
 
                                 <form id=\"prenotaForm\" style=\"margin-bottom:0;\">
