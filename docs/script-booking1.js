@@ -379,6 +379,8 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                                                         <li>Lenzuola non incluse: gli ospiti le portano con sé</li>
                                                                         <li>Nessun costo aggiuntivo previsto</li>
                                                                     </ul>
+                                                                    <p style=\"margin:12px 0 0 0;\"><strong>Animali domestici:</strong> è ammesso al massimo 1 animale domestico.</p>
+                                                                    <p style=\"margin:8px 0 0 0;\">Per info chiamare il <a href=\"tel:+393886587080\" style=\"color:#0f766e;font-weight:700;text-decoration:underline;\">3886587080</a>.</p>
                                                                 </div>
 
                                                                 <div style=\"margin-bottom:10px; font-weight:600; font-size:0.95em;\">${casa.nome || casa.id || 'Casa'}</div>
