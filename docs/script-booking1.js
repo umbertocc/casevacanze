@@ -71,8 +71,8 @@ function openPreventivoRequestModal(appartamento) {
             <input type="hidden" name="appartamento" value="${appartamento || ''}">
             <div style="margin-bottom:10px;">
                 <input required name="nome" type="text" placeholder="Nome e Cognome *" style="width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;">
-                <input name="email" type="email" placeholder="Email" style="width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;">
-                <input name="telefono" type="tel" placeholder="Telefono" style="width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;">
+                                        <input required name="email" type="email" placeholder="Email *" style="width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;">
+                                        <input required name="telefono" type="tel" placeholder="Telefono *" style="width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;">
                 <select required name="preferenza_ricontatto" style="width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;background:#fff;">
                     <option value="" selected disabled>Come preferisci essere ricontattato? *</option>
                     <option value="telefono">Telefono</option>
@@ -355,9 +355,9 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                                         const modalBody = document.getElementById('prenota-modal-body');
                                                         // Modale con date precompilate dalla ricerca (non modificabili)
                                                         modalBody.innerHTML = `
-                                                            <div style=\"margin-bottom:12px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px; margin-top: 30px;\">
-                                                                        <h2 style=\"margin:0;font-size:1.15em;color:#2d7a46;\">Prenotazione</h2>
-                                                                        ${prezzoTotale != null ? `<div style=\"text-align:right;color:#166534;font-weight:700;font-size:1.05em;\">Prezzo totale: ${formatEuro(prezzoTotale)}</div>` : ''}
+                                                                <div style=\"margin-bottom:12px;margin-top:30px;\">
+                                                                    <h2 style=\"margin:0;font-size:1.15em;color:#2d7a46;\">Prenotazione</h2>
+                                                                    ${prezzoTotale != null ? `<div style=\"margin-top:8px;color:#166534;font-weight:700;font-size:1.05em;\">Prezzo totale: ${formatEuro(prezzoTotale)}</div><div style=\"color:#0f766e;font-weight:700;font-size:0.98em;margin-top:4px;\">Caparra: ${formatEuro(prezzoTotale * 0.2)}</div>` : ''}
                                                                 </div>
 
                                                                 <div style=\"margin-bottom:12px;font-size:0.92em;line-height:1.5;color:#374151;background:#f8fafc;border:1px solid #dbeafe;border-radius:8px;padding:10px 12px;\">
@@ -416,7 +416,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                     
                                     <div style="display:flex;gap:10px;padding-bottom:10px;flex-wrap:wrap;">
                                         <button type="submit" style="flex:2;background:#2d7a46;color:#fff;padding:12px;border:none;border-radius:6px;font-size:1em;font-weight:600;cursor:pointer;">Invia richiesta</button>
-                                        <button type="button" id="prenotaOnlineBtn" style="flex:2;background:#188841;color:#fff;padding:12px;border:none;border-radius:6px;font-size:1em;font-weight:600;cursor:pointer;">Prenota online</button> 
+                                        <button type="button" id="prenotaOnlineBtn" style="flex:2;background:#188841;color:#fff;padding:12px;border:none;border-radius:6px;font-size:1em;font-weight:600;cursor:pointer;">${prezzoTotale != null ? `Paga ${formatEuro(prezzoTotale * 0.2)}` : 'Paga la caparra'}</button> 
                                         <button type="button" id="cancelPrenotaBtn" style="flex:1;background:#f3f4f6;color:#1f2937;padding:12px;border:1px solid #d1d5db;border-radius:6px;font-size:1em;cursor:pointer;">Annulla</button>
                                     </div>
                                 </form>
