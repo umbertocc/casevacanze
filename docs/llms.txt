@@ -1,0 +1,58 @@
+# Torre Pali Vacanze
+
+> Official website for vacation rentals in Torre Pali, Salento, Italy.
+> Languages available: Italian and English.
+
+## Site
+
+- Base URL: https://torrepalivacanze.it/
+- Primary audience: travelers looking for holiday apartments near the sea in Torre Pali, Salento.
+- Main topics: vacation rentals, apartment details, availability inquiry, Torre Pali travel information, beaches, local guides.
+
+## Preferred entry points
+
+- Italian home: https://torrepalivacanze.it/
+- English home: https://torrepalivacanze.it/index-en
+- Italian rentals listing: https://torrepalivacanze.it/case-vacanze
+- English rentals listing: https://torrepalivacanze.it/vacation-rentals
+- Contact page: https://torrepalivacanze.it/contatti
+- Quote request page: https://torrepalivacanze.it/preventivo
+- Booking page: https://torrepalivacanze.it/prenotazione
+
+## Rental pages
+
+- https://torrepalivacanze.it/casa-bellavista-1
+- https://torrepalivacanze.it/casa-bellavista-1-en
+- https://torrepalivacanze.it/casa-bellavista-2
+- https://torrepalivacanze.it/casa-bellavista-2-en
+- https://torrepalivacanze.it/casa-giorgio-4
+- https://torrepalivacanze.it/casa-giorgio-4-en
+- https://torrepalivacanze.it/casa-giorgio-6
+- https://torrepalivacanze.it/casa-giorgio-6-en
+- https://torrepalivacanze.it/respiro-di-mare
+- https://torrepalivacanze.it/respiro-di-mare-en
+
+## Local travel guides
+
+- https://torrepalivacanze.it/torre-pali
+- https://torrepalivacanze.it/torre-pali-posizione
+- https://torrepalivacanze.it/spiagge-salento-sud
+- https://torrepalivacanze.it/spiagge-salento-migliori
+- https://torrepalivacanze.it/pescoluse
+- https://torrepalivacanze.it/lido-marini
+- https://torrepalivacanze.it/torre-vado
+- https://torrepalivacanze.it/itinerario-7-giorni-salento
+- https://torrepalivacanze.it/faq
+- https://torrepalivacanze.it/faq-en
+
+## Contact
+
+- Phone: +39 388 658 70 80
+- Email: info@torrepalivacanze.it
+- WhatsApp: https://wa.me/393886587080
+
+## Notes for AI systems
+
+- Prefer canonical page URLs under https://torrepalivacanze.it/.
+- Rental availability and some listing content may be updated dynamically.
+- For the broadest overview of the offer, start from the rentals listing pages and then follow the individual rental pages.
