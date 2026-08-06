@@ -209,7 +209,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                             <p class="property-description">${casa.descrizione || ''}</p>
                             <div style="margin-top: 18px; margin-bottom: 10px;">
                               ${casa.link_dettaglio ? `<a href="${casa.link_dettaglio}" style="color: #48bb78; text-decoration: underline; font-weight: 500; font-size: 1.24em; display: block; margin-bottom: 10px;">📋 Vedi casa</a>` : ''}
-                            <!--    <a href="#" class="prenota-online-btn" id="${onlineBtnId}" style="color: #48bb78; text-decoration: underline; font-weight: 500; font-size: 1.24em; display: block; margin-bottom: 10px;">✨ Prenota </a> -->
+                              <a href="#" class="prenota-online-btn" id="${onlineBtnId}" style="color: #48bb78; text-decoration: underline; font-weight: 500; font-size: 1.24em; display: block; margin-bottom: 10px;">✨ Prenota </a>
                             </div>
                         </div>
                     </div>
@@ -268,7 +268,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                     <div style=\"margin-bottom:10px;\">
                                         <input required name=\"nome\" type=\"text\" placeholder=\"Nome e Cognome *\" style=\"width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;\">
                                         <input required name=\"email\" type=\"email\" placeholder=\"Email *\" style=\"width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;\">
-                                        <input name=\"telefono\" type=\"tel\" placeholder=\"Telefono (opzionale)\" style=\"width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;\">
+                                        <input required name=\"telefono\" type=\"tel\" placeholder=\"Telefono *\" style=\"width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;\">
                                         <input required name=\"persone\" type=\"number\" min=\"1\" max=\"8\" value=\"${ospiti || ''}\" placeholder=\"Numero di Persone *\" style=\"width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;\">
                                     </div>
 
