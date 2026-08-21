@@ -168,7 +168,8 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                 '<div class="properties-grid fade-slide-in" id="fadeSlideResults">' +
                 data.map((item, idx) => {
                     const casa = item.casa || {};
-                    const prezzoTotale = typeof item.prezzoTotale === 'number' ? item.prezzoTotale : null;
+                    const prezzoTotaleRaw = Number(item.prezzoTotale);
+                    const prezzoTotale = Number.isFinite(prezzoTotaleRaw) ? prezzoTotaleRaw : null;
                     const cin = String(casa.cin || casa.CIN || casa.codiceCin || casa.codice_cin || '').trim();
                     const cis = String(casa.cis || casa.CIS || casa.codiceCis || casa.codice_cis || '').trim();
                     const galleryImages = getGalleryImagesForHouse(casa);
@@ -200,8 +201,8 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                         <div class="property-image">
                             ${galleryHtml}
                         </div>
-                        <div class="property-info">                            
-                           <!-- ${prezzoTotale !== null ? `<p style="margin:8px 0 8px 0;font-size:1.05em;color:#166534;font-weight:700;">Prezzo totale: ${formatEuro(prezzoTotale)}</p>` : ''} -->
+                                <div class="property-info">                            
+                                    ${prezzoTotale !== null ? `<p style="margin:8px 0 10px 0;font-size:1.05em;color:#166534;font-weight:700;background:#ecfdf5;border:1px solid #bbf7d0;border-radius:8px;padding:8px 10px;">Prezzo totale soggiorno: ${formatEuro(prezzoTotale)}</p>` : ''}
                             <p style="margin:0 0 10px 0;font-size:0.9em;line-height:1.4;color:#334155;background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:8px 10px;"><strong>CIN:</strong> ${cin || '-'}<br><strong>CIS:</strong> ${cis || '-'}</p>
                             <div class="property-features">
                                 ${caratteristiche.map(f => `<span class="feature-badge">${f}</span>`).join(' ')}
@@ -209,7 +210,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                             <p class="property-description">${casa.descrizione || ''}</p>
                             <div style="margin-top: 18px; margin-bottom: 10px;">
                               ${casa.link_dettaglio ? `<a href="${casa.link_dettaglio}" style="color: #48bb78; text-decoration: underline; font-weight: 500; font-size: 1.24em; display: block; margin-bottom: 10px;">📋 Vedi casa</a>` : ''}
-                             <!--   <a href="#" class="prenota-online-btn" id="${onlineBtnId}" style="color: #48bb78; text-decoration: underline; font-weight: 500; font-size: 1.24em; display: block; margin-bottom: 10px;">✨ Prenota </a> -->
+                             <a href="#" class="prenota-online-btn" id="${onlineBtnId}" style="color: #48bb78; text-decoration: underline; font-weight: 500; font-size: 1.24em; display: block; margin-bottom: 10px;">✨ Prenota </a> 
                             </div>
                         </div>
                     </div>
@@ -224,7 +225,8 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                 // Aggiungi event listener ai pulsanti prenotazione online
                 data.forEach((item, idx) => {
                     const casa = item.casa || {};
-                    const prezzoTotale = typeof item.prezzoTotale === 'number' ? item.prezzoTotale : null;
+                    const prezzoTotaleRaw = Number(item.prezzoTotale);
+                    const prezzoTotale = Number.isFinite(prezzoTotaleRaw) ? prezzoTotaleRaw : null;
                     const onlineBtn = document.getElementById(`prenota-online-btn-${idx}`);
                     const openModal = (e) => { e.preventDefault();
                             const modal = document.getElementById('prenota-modal');
@@ -263,13 +265,13 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                     <div style=\"margin-bottom:10px;\">
                                         <div style=\"padding:8px 10px;border-radius:6px;border:1px solid #d1fae5;background:#f0fdf4;color:#14532d;font-size:0.85em;margin-bottom:6px;\"><strong>Check-in:</strong> ${formatDateIt(checkIn)}</div>
                                         <div style=\"padding:8px 10px;border-radius:6px;border:1px solid #d1fae5;background:#f0fdf4;color:#14532d;font-size:0.85em;\"><strong>Check-out:</strong> ${formatDateIt(checkOut)}</div>
+                                        <input required name=\"persone\" type=\"number\" min=\"1\" max=\"8\" value=\"${ospiti || ''}\" aria-label=\"Numero di ospiti\" readonly style=\"width:100%;padding:8px 10px;border-radius:6px;border:1px solid #d1fae5;background:#f0fdf4;color:#14532d;font-size:0.85em;box-sizing:border-box;margin-top:6px;cursor:default;\">
                                     </div>
 
                                     <div style=\"margin-bottom:10px;\">
                                         <input required name=\"nome\" type=\"text\" placeholder=\"Nome e Cognome *\" style=\"width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;\">
                                         <input required name=\"email\" type=\"email\" placeholder=\"Email *\" style=\"width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;\">
                                         <input name=\"telefono\" type=\"tel\" placeholder=\"Telefono (opzionale)\" style=\"width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;\">
-                                        <input required name=\"persone\" type=\"number\" min=\"1\" max=\"8\" value=\"${ospiti || ''}\" placeholder=\"Numero di Persone *\" style=\"width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;\">
                                     </div>
 
                                     <textarea name=\"messaggio\" placeholder=\"Messaggio (opzionale)\" style=\"width:100%;padding:10px;border-radius:5px;border:1px solid #ccc;min-height:50px;max-height:80px;font-size:0.95em;margin-bottom:12px;box-sizing:border-box;display:block;\"></textarea>
