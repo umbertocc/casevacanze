@@ -265,13 +265,14 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                     <div style=\"margin-bottom:10px;\">
                                         <div style=\"padding:8px 10px;border-radius:6px;border:1px solid #d1fae5;background:#f0fdf4;color:#14532d;font-size:0.85em;margin-bottom:6px;\"><strong>Check-in:</strong> ${formatDateIt(checkIn)}</div>
                                         <div style=\"padding:8px 10px;border-radius:6px;border:1px solid #d1fae5;background:#f0fdf4;color:#14532d;font-size:0.85em;\"><strong>Check-out:</strong> ${formatDateIt(checkOut)}</div>
-                                        <input required name=\"persone\" type=\"number\" min=\"1\" max=\"8\" value=\"${ospiti || ''}\" aria-label=\"Numero di ospiti\" readonly style=\"width:100%;padding:8px 10px;border-radius:6px;border:1px solid #d1fae5;background:#f0fdf4;color:#14532d;font-size:0.85em;box-sizing:border-box;margin-top:6px;cursor:default;\">
+                                        <label for=\"prenota-ospiti\" style=\"display:block;margin-top:6px;margin-bottom:4px;color:#14532d;font-size:0.85em;font-weight:700;\">Numero ospiti:</label>
+                                        <input id=\"prenota-ospiti\" required name=\"persone\" type=\"number\" min=\"1\" max=\"8\" value=\"${ospiti || ''}\" aria-label=\"Numero ospiti\" readonly style=\"width:100%;padding:8px 10px;border-radius:6px;border:1px solid #d1fae5;background:#f0fdf4;color:#14532d;font-size:0.85em;box-sizing:border-box;cursor:default;\">
                                     </div>
 
                                     <div style=\"margin-bottom:10px;\">
                                         <input required name=\"nome\" type=\"text\" placeholder=\"Nome e Cognome *\" style=\"width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;\">
                                         <input required name=\"email\" type=\"email\" placeholder=\"Email *\" style=\"width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;\">
-                                        <input name=\"telefono\" type=\"tel\" placeholder=\"Telefono (opzionale)\" style=\"width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;\">
+                                        <input required name=\"telefono\" type=\"tel\" placeholder=\"Telefono *\" autocomplete=\"tel\" style=\"width:100%;padding:11px;border-radius:5px;border:1px solid #ccc;font-size:0.95em;box-sizing:border-box;margin-bottom:8px;\">
                                     </div>
 
                                     <textarea name=\"messaggio\" placeholder=\"Messaggio (opzionale)\" style=\"width:100%;padding:10px;border-radius:5px;border:1px solid #ccc;min-height:50px;max-height:80px;font-size:0.95em;margin-bottom:12px;box-sizing:border-box;display:block;\"></textarea>
