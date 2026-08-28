@@ -33,6 +33,38 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body { padding-bottom: 82px; }
+  .apartments-sticky-cta {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 1100;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50px;
+    padding: 12px 22px;
+    background: #22577a;
+    color: #ffffff;
+    border-radius: 6px;
+    box-shadow: 0 6px 18px rgba(34, 87, 122, 0.3);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .apartments-sticky-cta:hover,
+  .apartments-sticky-cta:focus-visible {
+    background: #163d57;
+    color: #ffffff;
+  }
+  @media (max-width: 480px) {
+    .apartments-sticky-cta {
+      right: 12px;
+      bottom: 12px;
+      left: 12px;
+    }
+  }
+</style>
     <!-- Structured Data (Schema.org) BreadcrumbList -->
     <script type="application/ld+json">
     {
@@ -186,6 +218,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </main>
 </div>
+
+<a class="apartments-sticky-cta" href="index.html">Vedi appartamenti</a>
 
 <footer class="footer" aria-label="Footer Torre Pali Salento">
   <div class="footer-container">
