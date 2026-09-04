@@ -1895,17 +1895,48 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
     });
     </script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
-    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        if (window.Fancybox) {
-            Fancybox.bind('[data-fancybox]', {
-                animated: true,
-                showClass: 'fancybox-fadeIn',
-                hideClass: 'fancybox-fadeOut'
+        let fancyboxPromise;
+
+        function loadFancybox() {
+            if (fancyboxPromise) return fancyboxPromise;
+
+            fancyboxPromise = new Promise(function(resolve, reject) {
+                const stylesheet = document.createElement('link');
+                stylesheet.rel = 'stylesheet';
+                stylesheet.href = 'https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css';
+                document.head.appendChild(stylesheet);
+
+                const script = document.createElement('script');
+                script.src = 'https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js';
+                script.onload = resolve;
+                script.onerror = reject;
+                document.body.appendChild(script);
             });
+
+            return fancyboxPromise;
         }
+
+        document.addEventListener('click', function(event) {
+            const trigger = event.target.closest('[data-fancybox]');
+            if (!trigger) return;
+
+            event.preventDefault();
+            loadFancybox().then(function() {
+                Fancybox.show([{
+                    src: trigger.href,
+                    type: 'image',
+                    caption: trigger.dataset.caption || ''
+                }], {
+                    animated: true,
+                    showClass: 'fancybox-fadeIn',
+                    hideClass: 'fancybox-fadeOut'
+                });
+            }).catch(function() {
+                window.location.href = trigger.href;
+            });
+        });
 
     });
     </script>
