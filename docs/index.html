@@ -1587,10 +1587,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         let checkInSelected = null;
         let houseIds = [];
         let bookingsByHouse = {};
+        const availabilityCache = new Map();
+        const stayAvailabilityCache = new Map();
 
         function hasAnyHouseAvailable(checkInKey, checkOutKey) {
-            if (!houseIds.length) return true;
-            return houseIds.some(function(houseId) {
+            const cacheKey = `${checkInKey}|${checkOutKey}`;
+            if (availabilityCache.has(cacheKey)) {
+                return availabilityCache.get(cacheKey);
+            }
+            if (!houseIds.length) {
+                availabilityCache.set(cacheKey, true);
+                return true;
+            }
+            const available = houseIds.some(function(houseId) {
                 const bookings = bookingsByHouse[houseId] || [];
                 for (let i = 0; i < bookings.length; i++) {
                     const booking = bookings[i];
@@ -1600,6 +1609,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 }
                 return true;
             });
+            availabilityCache.set(cacheKey, available);
+            return available;
         }
 
         function hasAnyHouseFreeOnDate(date) {
@@ -1612,16 +1623,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         function hasAnyHouseWithAvailableStayFrom(checkInDate) {
             if (!checkInDate) return false;
             const checkInKey = toDateKey(checkInDate);
+            if (stayAvailabilityCache.has(checkInKey)) {
+                return stayAvailabilityCache.get(checkInKey);
+            }
 
             for (let i = MIN_STAY_NIGHTS; i <= availabilitySearchWindowDays; i++) {
                 const candidate = addDays(checkInDate, i);
 
                 const candidateKey = toDateKey(candidate);
                 if (hasAnyHouseAvailable(checkInKey, candidateKey)) {
+                    stayAvailabilityCache.set(checkInKey, true);
                     return true;
                 }
             }
 
+            stayAvailabilityCache.set(checkInKey, false);
             return false;
         }
 
