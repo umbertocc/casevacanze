@@ -1589,6 +1589,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         let bookingsByHouse = {};
         const availabilityCache = new Map();
         const stayAvailabilityCache = new Map();
+        let backendAvailableCheckIns = null;
 
         function hasAnyHouseAvailable(checkInKey, checkOutKey) {
             const cacheKey = `${checkInKey}|${checkOutKey}`;
@@ -1623,6 +1624,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         function hasAnyHouseWithAvailableStayFrom(checkInDate) {
             if (!checkInDate) return false;
             const checkInKey = toDateKey(checkInDate);
+            if (backendAvailableCheckIns) {
+                return backendAvailableCheckIns.has(checkInKey);
+            }
             if (stayAvailabilityCache.has(checkInKey)) {
                 return stayAvailabilityCache.get(checkInKey);
             }
@@ -1671,7 +1675,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
 
         try {
-            const housesRes = await fetch(`${API_BASE}/api/case/public`);
+            const [calendarRes, housesRes] = await Promise.all([
+                fetch(`${API_BASE}/api/disponibilita/calendario?giorni=${availabilitySearchWindowDays}`),
+                fetch(`${API_BASE}/api/case/public`)
+            ]);
+            if (calendarRes.ok) {
+                const calendar = await calendarRes.json();
+                if (Array.isArray(calendar.checkInDisponibili)) {
+                    backendAvailableCheckIns = new Set(calendar.checkInDisponibili);
+                }
+            }
             if (housesRes.ok) {
                 const houses = await housesRes.json();
                 houseIds = Array.isArray(houses) ? houses.map(function(h) { return h.id; }).filter(Boolean) : [];
