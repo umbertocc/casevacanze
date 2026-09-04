@@ -1417,8 +1417,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <input type="email" name="email" placeholder="Email *" required>
                     <input type="tel" name="telefono" placeholder="Telefono (opzionale)">
                     <input type="number" name="persone" min="1" max="20" placeholder="Numero persone *" required>
-                    <input type="text" name="checkIn" id="quoteCheckIn" class="full date-input" placeholder="Data check-in *" autocomplete="off" required>
-                    <input type="text" name="checkOut" id="quoteCheckOut" class="full date-input" placeholder="Data check-out *" autocomplete="off" required>
+                    <input type="date" name="checkIn" id="quoteCheckIn" class="full date-input" autocomplete="off" required>
+                    <input type="date" name="checkOut" id="quoteCheckOut" class="full date-input" autocomplete="off" required>
                     <textarea name="messaggio" class="full" placeholder="Messaggio (opzionale)"></textarea>
                     <label class="consent full">
                         <input type="checkbox" required>
@@ -1631,18 +1631,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 return stayAvailabilityCache.get(checkInKey);
             }
 
-            for (let i = MIN_STAY_NIGHTS; i <= availabilitySearchWindowDays; i++) {
-                const candidate = addDays(checkInDate, i);
-
-                const candidateKey = toDateKey(candidate);
-                if (hasAnyHouseAvailable(checkInKey, candidateKey)) {
-                    stayAvailabilityCache.set(checkInKey, true);
-                    return true;
-                }
-            }
-
-            stayAvailabilityCache.set(checkInKey, false);
-            return false;
+            const minimumStayCheckOutKey = toDateKey(addDays(checkInDate, MIN_STAY_NIGHTS));
+            const available = hasAnyHouseAvailable(checkInKey, minimumStayCheckOutKey);
+            stayAvailabilityCache.set(checkInKey, available);
+            return available;
         }
 
         function findFirstAvailableCheckInDate(maxDaysAhead) {
@@ -1802,109 +1794,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         const quoteCheckInInput = document.getElementById('quoteCheckIn');
         const quoteCheckOutInput = document.getElementById('quoteCheckOut');
         if (quoteCheckInInput && quoteCheckOutInput) {
-            let quoteCheckOutPicker = null;
-            const quoteCheckInPicker = flatpickr(quoteCheckInInput, {
-                dateFormat: "Y-m-d",
-                locale: flatpickr.l10ns.it,
-                disable: [function(date) {
-                    return date < today || !hasAnyHouseWithAvailableStayFrom(date);
-                }],
-                minDate: todayKey,
-                onReady: function(selectedDates, dateStr, fp) {
-                    if (!selectedDates.length && firstAvailableCheckInDate) {
-                        fp.jumpToDate(firstAvailableCheckInDate);
-                    }
-                },
-                onDayCreate: function(dObj, dStr, fp, dayElem) {
-                    const dayDate = dayElem.dateObj;
-                    if (dayDate < today) return;
-                    if (hasAnyHouseWithAvailableStayFrom(dayDate)) {
-                        dayElem.classList.add('calendar-day-available');
-                    } else {
-                        dayElem.classList.add('calendar-day-unavailable');
-                    }
-                },
-                onChange: function(selectedDates) {
-                    const selectedCheckIn = selectedDates && selectedDates[0] ? selectedDates[0] : null;
-                    if (!quoteCheckOutPicker) return;
-                    const minDate = selectedCheckIn ? addDays(selectedCheckIn, MIN_STAY_NIGHTS) : today;
-                    quoteCheckOutPicker.set('minDate', minDate);
-                    quoteCheckOutPicker.redraw();
+            quoteCheckInInput.min = todayKey;
+            quoteCheckOutInput.min = todayKey;
+            quoteCheckInInput.addEventListener('change', function() {
+                const checkInDate = parseDateKey(this.value);
+                const minCheckOutDate = checkInDate ? addDays(checkInDate, MIN_STAY_NIGHTS) : today;
+                quoteCheckOutInput.min = toDateKey(minCheckOutDate);
+                if (quoteCheckOutInput.value && quoteCheckOutInput.value < quoteCheckOutInput.min) {
                     quoteCheckOutInput.value = '';
-                    if (selectedCheckIn) {
-                        const firstAvailableQuoteCheckOut = findFirstAvailableCheckOutDate(selectedCheckIn, availabilitySearchWindowDays);
-                        if (firstAvailableQuoteCheckOut) {
-                            quoteCheckOutPicker.jumpToDate(firstAvailableQuoteCheckOut);
-                            quoteCheckOutPicker.setDate(firstAvailableQuoteCheckOut, false);
-                        } else {
-                            quoteCheckOutPicker.jumpToDate(minDate);
-                        }
-                    }
                 }
             });
-
-            quoteCheckOutPicker = flatpickr(quoteCheckOutInput, {
-                dateFormat: "Y-m-d",
-                locale: flatpickr.l10ns.it,
-                onDayCreate: function(dObj, dStr, fp, dayElem) {
-                    const dayDate = dayElem.dateObj;
-                    if (dayDate < today) return;
-                    if (!quoteCheckInInput.value) return;
-
-                    const checkInDate = parseDateKey(quoteCheckInInput.value);
-                    if (!checkInDate) return;
-
-                    const minCheckOutDate = addDays(checkInDate, MIN_STAY_NIGHTS);
-                    if (dayDate < minCheckOutDate) {
-                        dayElem.classList.add('calendar-day-unavailable');
-                        return;
-                    }
-
-                    const checkInKey = toDateKey(checkInDate);
-                    const checkOutKey = toDateKey(dayDate);
-                    if (hasAnyHouseAvailable(checkInKey, checkOutKey)) {
-                        dayElem.classList.add('calendar-day-checkout-available');
-                    } else {
-                        dayElem.classList.add('calendar-day-unavailable');
-                    }
-                },
-                disable: [
-                    function(date) {
-                        if (date < today) return true;
-                        if (!quoteCheckInInput.value) return false;
-
-                        const checkInDate = parseDateKey(quoteCheckInInput.value);
-                        if (!checkInDate) return true;
-                        const minCheckOutDate = addDays(checkInDate, MIN_STAY_NIGHTS);
-                        if (date < minCheckOutDate) return true;
-
-                        const checkInKey = toDateKey(checkInDate);
-                        const checkOutKey = toDateKey(date);
-                        return !hasAnyHouseAvailable(checkInKey, checkOutKey);
-                    }
-                ],
-                minDate: todayKey
-            });
-
-            const mainCheckInDate = parseDateKey(checkInInput.value);
-            if (mainCheckInDate && hasAnyHouseWithAvailableStayFrom(mainCheckInDate)) {
-                quoteCheckInPicker.setDate(mainCheckInDate, true);
-                const mainCheckOutDate = parseDateKey(checkOutInput.value);
-                if (mainCheckOutDate && mainCheckOutDate > mainCheckInDate) {
-                    const checkInKey = toDateKey(mainCheckInDate);
-                    const checkOutKey = toDateKey(mainCheckOutDate);
-                    if (hasAnyHouseAvailable(checkInKey, checkOutKey)) {
-                        quoteCheckOutPicker.setDate(mainCheckOutDate, false);
-                    }
-                }
-            } else if (firstAvailableCheckInDate) {
-                quoteCheckInPicker.setDate(firstAvailableCheckInDate, true);
-                const firstAvailableQuoteCheckOut = findFirstAvailableCheckOutDate(firstAvailableCheckInDate, availabilitySearchWindowDays);
-                if (firstAvailableQuoteCheckOut) {
-                    quoteCheckOutPicker.set('minDate', addDays(firstAvailableCheckInDate, MIN_STAY_NIGHTS));
-                    quoteCheckOutPicker.setDate(firstAvailableQuoteCheckOut, false);
-                }
-            }
         }
     });
     </script>
