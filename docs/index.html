@@ -67,6 +67,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link rel="stylesheet" href="style-casa-bellavista-2.min.css">
     <style>
     /* Effetti fade e slide per risultati */
+    .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+
     .fade-slide-in {
         opacity: 0;
         transform: translateY(40px);
@@ -1417,7 +1429,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <input type="email" name="email" placeholder="Email *" required>
                     <input type="tel" name="telefono" placeholder="Telefono (opzionale)">
                     <input type="number" name="persone" min="1" max="20" placeholder="Numero persone *" required>
+                    <label for="quoteCheckIn" class="visually-hidden">Data di arrivo</label>
                     <input type="date" name="checkIn" id="quoteCheckIn" class="full date-input" autocomplete="off" required>
+                    <label for="quoteCheckOut" class="visually-hidden">Data di partenza</label>
                     <input type="date" name="checkOut" id="quoteCheckOut" class="full date-input" autocomplete="off" required>
                     <textarea name="messaggio" class="full" placeholder="Messaggio (opzionale)"></textarea>
                     <label class="consent full">
