@@ -11,45 +11,45 @@
 
 ## Preferred entry points
 
-- Italian home: https://torrepalivacanze.it/
-- English home: https://torrepalivacanze.it/index-en
-- Italian rentals listing: https://torrepalivacanze.it/case-vacanze
-- English rentals listing: https://torrepalivacanze.it/vacation-rentals
-- Contact page: https://torrepalivacanze.it/contatti
-- Quote request page: https://torrepalivacanze.it/preventivo
-- Booking page: https://torrepalivacanze.it/prenotazione
+- [Italian home](https://torrepalivacanze.it/): Overview of vacation rentals and local information.
+- [English home](https://torrepalivacanze.it/index-en): English-language site overview.
+- [Italian rentals listing](https://torrepalivacanze.it/case-vacanze): Available holiday apartments in Italian.
+- [English rentals listing](https://torrepalivacanze.it/vacation-rentals): Available holiday apartments in English.
+- [Contact page](https://torrepalivacanze.it/contatti): Contact information and enquiry options.
+- [Quote request page](https://torrepalivacanze.it/preventivo): Request a stay quote.
+- [Booking page](https://torrepalivacanze.it/prenotazione): Booking request form.
 
 ## Rental pages
 
-- https://torrepalivacanze.it/casa-bellavista-1
-- https://torrepalivacanze.it/casa-bellavista-1-en
-- https://torrepalivacanze.it/casa-bellavista-2
-- https://torrepalivacanze.it/casa-bellavista-2-en
-- https://torrepalivacanze.it/casa-giorgio-4
-- https://torrepalivacanze.it/casa-giorgio-4-en
-- https://torrepalivacanze.it/casa-giorgio-6
-- https://torrepalivacanze.it/casa-giorgio-6-en
-- https://torrepalivacanze.it/respiro-di-mare
-- https://torrepalivacanze.it/respiro-di-mare-en
+- [Casa Bellavista 1](https://torrepalivacanze.it/casa-bellavista-1): Italian property details.
+- [Casa Bellavista 1 in English](https://torrepalivacanze.it/casa-bellavista-1-en): English property details.
+- [Casa Bellavista 2](https://torrepalivacanze.it/casa-bellavista-2): Italian property details.
+- [Casa Bellavista 2 in English](https://torrepalivacanze.it/casa-bellavista-2-en): English property details.
+- [Casa Giorgio 4](https://torrepalivacanze.it/casa-giorgio-4): Italian property details.
+- [Casa Giorgio 4 in English](https://torrepalivacanze.it/casa-giorgio-4-en): English property details.
+- [Casa Giorgio 6](https://torrepalivacanze.it/casa-giorgio-6): Italian property details.
+- [Casa Giorgio 6 in English](https://torrepalivacanze.it/casa-giorgio-6-en): English property details.
+- [Respiro di Mare](https://torrepalivacanze.it/respiro-di-mare): Italian property details.
+- [Respiro di Mare in English](https://torrepalivacanze.it/respiro-di-mare-en): English property details.
 
 ## Local travel guides
 
-- https://torrepalivacanze.it/torre-pali
-- https://torrepalivacanze.it/torre-pali-posizione
-- https://torrepalivacanze.it/spiagge-salento-sud
-- https://torrepalivacanze.it/spiagge-salento-migliori
-- https://torrepalivacanze.it/pescoluse
-- https://torrepalivacanze.it/lido-marini
-- https://torrepalivacanze.it/torre-vado
-- https://torrepalivacanze.it/itinerario-7-giorni-salento
-- https://torrepalivacanze.it/faq
-- https://torrepalivacanze.it/faq-en
+- [Torre Pali guide](https://torrepalivacanze.it/torre-pali): Local destination guide.
+- [Torre Pali location](https://torrepalivacanze.it/torre-pali-posizione): Location and travel information.
+- [Southern Salento beaches](https://torrepalivacanze.it/spiagge-salento-sud): Beach guide.
+- [Best Salento beaches](https://torrepalivacanze.it/spiagge-salento-migliori): Beach recommendations.
+- [Pescoluse](https://torrepalivacanze.it/pescoluse): Destination guide.
+- [Lido Marini](https://torrepalivacanze.it/lido-marini): Destination guide.
+- [Torre Vado](https://torrepalivacanze.it/torre-vado): Destination guide.
+- [Seven-day Salento itinerary](https://torrepalivacanze.it/itinerario-7-giorni-salento): Suggested itinerary.
+- [Italian FAQ](https://torrepalivacanze.it/faq): Frequently asked questions in Italian.
+- [English FAQ](https://torrepalivacanze.it/faq-en): Frequently asked questions in English.
 
 ## Contact
 
 - Phone: +39 388 658 70 80
 - Email: info@torrepalivacanze.it
-- WhatsApp: https://wa.me/393886587080
+- [WhatsApp](https://wa.me/393886587080): Direct contact.
 
 ## Notes for AI systems
 
