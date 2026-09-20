@@ -1850,15 +1850,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
             event.preventDefault();
             loadFancybox().then(function() {
-                Fancybox.show([{
-                    src: trigger.href,
-                    type: 'image',
-                    caption: trigger.dataset.caption || ''
-                }], {
+                const galleryTriggers = Array.from(document.querySelectorAll('[data-fancybox]'))
+                    .filter(function(item) {
+                        return item.dataset.fancybox === trigger.dataset.fancybox;
+                    });
+                const slides = galleryTriggers.map(function(item) {
+                    return {
+                        src: item.href,
+                        type: 'image',
+                        caption: item.dataset.caption || ''
+                    };
+                });
+                const triggerIndex = galleryTriggers.indexOf(trigger);
+
+                Fancybox.show(slides, {
                     animated: true,
                     showClass: 'fancybox-fadeIn',
                     hideClass: 'fancybox-fadeOut'
-                });
+                }, triggerIndex);
             }).catch(function() {
                 window.location.href = trigger.href;
             });
