@@ -855,13 +855,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         background: #ffffff;
     }
 
-    .quick-preventivo-form input[type="date"] {
+    .quick-preventivo-form input.date-input {
         min-height: 48px;
         color-scheme: light;
         cursor: pointer;
     }
 
-    .quick-preventivo-form input[type="date"]:focus-visible {
+    .quick-preventivo-form input.date-input:focus-visible {
         border-color: #128c7e;
         outline: 3px solid rgba(18, 140, 126, 0.18);
         outline-offset: 1px;
@@ -1474,11 +1474,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <div class="quote-date-fields full">
                         <div class="quote-date-field">
                             <label for="quoteCheckIn">Arrivo</label>
-                            <input type="date" name="checkIn" id="quoteCheckIn" class="date-input" autocomplete="off" aria-describedby="quoteDateHint" required>
+                            <input type="text" name="checkIn" id="quoteCheckIn" class="date-input" placeholder="gg/mm/aaaa" autocomplete="off" aria-describedby="quoteDateHint" required>
                         </div>
                         <div class="quote-date-field">
                             <label for="quoteCheckOut">Partenza</label>
-                            <input type="date" name="checkOut" id="quoteCheckOut" class="date-input" autocomplete="off" aria-describedby="quoteDateHint" required>
+                            <input type="text" name="checkOut" id="quoteCheckOut" class="date-input" placeholder="gg/mm/aaaa" autocomplete="off" aria-describedby="quoteDateHint" required>
                         </div>
                         <p class="quote-date-hint" id="quoteDateHint">Seleziona prima l’arrivo; la partenza deve essere almeno 3 notti dopo.</p>
                     </div>
@@ -1857,14 +1857,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         const quoteCheckInInput = document.getElementById('quoteCheckIn');
         const quoteCheckOutInput = document.getElementById('quoteCheckOut');
         if (quoteCheckInInput && quoteCheckOutInput) {
-            quoteCheckInInput.min = todayKey;
-            quoteCheckOutInput.min = todayKey;
-            quoteCheckInInput.addEventListener('change', function() {
-                const checkInDate = parseDateKey(this.value);
-                const minCheckOutDate = checkInDate ? addDays(checkInDate, MIN_STAY_NIGHTS) : today;
-                quoteCheckOutInput.min = toDateKey(minCheckOutDate);
-                if (quoteCheckOutInput.value && quoteCheckOutInput.value < quoteCheckOutInput.min) {
-                    quoteCheckOutInput.value = '';
+            const quoteCheckOutPicker = flatpickr(quoteCheckOutInput, {
+                dateFormat: 'Y-m-d',
+                altInput: true,
+                altFormat: 'd/m/Y',
+                allowInput: false,
+                disableMobile: true,
+                locale: flatpickr.l10ns.it,
+                minDate: todayKey
+            });
+            flatpickr(quoteCheckInInput, {
+                dateFormat: 'Y-m-d',
+                altInput: true,
+                altFormat: 'd/m/Y',
+                allowInput: false,
+                disableMobile: true,
+                locale: flatpickr.l10ns.it,
+                minDate: todayKey,
+                onChange: function(selectedDates) {
+                    const checkInDate = selectedDates[0] || null;
+                    const minCheckOutDate = checkInDate ? addDays(checkInDate, MIN_STAY_NIGHTS) : today;
+                    quoteCheckOutPicker.set('minDate', minCheckOutDate);
+                    const checkOutDate = quoteCheckOutPicker.selectedDates[0];
+                    if (checkOutDate && checkOutDate < minCheckOutDate) {
+                        quoteCheckOutPicker.clear();
+                    }
                 }
             });
         }
@@ -2118,6 +2135,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const f = ev.currentTarget;
         if (!f.reportValidity()) return;
+
+        const missingDateInput = !checkInInput.value ? checkInInput : !checkOutInput.value ? checkOutInput : null;
+        if (missingDateInput) {
+            feedback.className = 'quick-preventivo-feedback error';
+            feedback.textContent = 'Seleziona le date di arrivo e partenza.';
+            missingDateInput._flatpickr.altInput.focus();
+            missingDateInput._flatpickr.open();
+            return;
+        }
 
         if (f.checkIn.value && f.checkOut.value && f.checkOut.value <= f.checkIn.value) {
             feedback.className = 'quick-preventivo-feedback error';
