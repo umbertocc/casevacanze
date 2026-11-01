@@ -198,25 +198,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- Tag Manager rimosso per policy privacy: solo cookie tecnici -->
 
 <!-- Navbar -->
-  <nav class="navbar">
-    <div class="navbar-container" style="position:relative;">
-      <a href="/" class="navbar-brand">🏝️ Torre Pali Vacanze</a>
-      <button class="hamburger" onclick="toggleMenu()" aria-label="Apri menu di navigazione" tabindex="0" style="position:absolute;top:10px;right:10px;z-index:2001;display:flex;">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <ul class="navbar-menu" id="navbarMenu">
-        <li><a href="/" onclick="closeMenu()">Home</a></li>
-                <li><a href="case-vacanze" onclick="closeMenu()">Case Vacanza</a></li>
-        <li><a href="torre-pali" onclick="closeMenu()">Torre Pali</a></li>
-        <li><a href="recensioni" onclick="closeMenu()">Recensioni</a></li>
-        <li><a href="faq" onclick="closeMenu()">FAQ</a></li>
-        <li><a href="preventivo" onclick="closeMenu()">Preventivo</a></li>                                       <li><a href="prenotazione" onclick="closeMenu()">Prenotazione</a></li>
-        <li><a href="contatti" onclick="closeMenu()">Contatti</a></li>
-      </ul>
-    </div>
-  </nav>
+  <div data-site-navbar data-language="it"></div>
 
 <!-- WhatsApp Flottante -->
 <a href="https://wa.me/393886587080"  onclick="gtag('event','click_whatsapp'); gtag_report_conversion()" class="whatsapp-float" style="position: fixed !important; bottom: 20px !important; right: 20px !important; top: auto !important; left: auto !important;" target="_blank" aria-label="Contattaci su WhatsApp">
@@ -1007,5 +989,6 @@ document.addEventListener('click', function(event) {
 });
 </script>
 
+  <script defer src="/navbar.js"></script>
 </body>
 </html>

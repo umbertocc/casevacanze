@@ -113,33 +113,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- Tag Manager rimosso per policy privacy: solo cookie tecnici -->
 
 <!-- Navbar -->
-<nav class="navbar">
-<div class="navbar-container">
-<a href="/" class="navbar-brand">🏝️ Torre Pali Vacanze</a>
-<div class="hamburger" onclick="toggleMenu()">
-<span></span>
-<span></span>
-<span></span>
-</div>
-<ul class="navbar-menu" id="navbarMenu">
-<li><a href="/" onclick="closeMenu()">Home</a></li>
-<li><a href="/#appartamenti" onclick="closeMenu()">Appartamenti</a></li>
-<li class="dropdown">
-<span class="dropdown-toggle" style="color: #4a5568; font-weight: 500;">Scopri il Salento</span>
-<div class="dropdown-menu">
-<a href="torre-pali" onclick="closeMenu()">⭐ Torre Pali</a>
-<a href="spiagge-salento-sud" onclick="closeMenu()">Guida Spiagge</a>
-<a href="eventi-salento" onclick="closeMenu()">Eventi e Tradizioni</a>
-<a href="faq-salento" onclick="closeMenu()">FAQ Salento</a>
-</div>
-</li>
-<li><a href="recensioni" onclick="closeMenu()">Recensioni</a></li>
-<li><a href="faq" onclick="closeMenu()">FAQ</a></li>
-<li><a href="preventivo" onclick="closeMenu()">Preventivo</a></li>                                       <li><a href="prenotazione" onclick="closeMenu()">Prenotazione</a></li>
-<li><a href="contatti" onclick="closeMenu()">Contatti</a></li>
-</ul>
-</div>
-</nav>
+<div data-site-navbar data-language="it"></div>
 
 <!-- WhatsApp Flottante -->
 <a href="https://wa.me/393886587080?text=Ciao!%20Vorrei%20informazioni%20sulle%20vostre%20case%20vacanza%20a%20Torre%20Pali" class="whatsapp-float" style="position: fixed !important; bottom: 20px !important; right: 20px !important; top: auto !important; left: auto !important;" target="_blank" aria-label="Contattaci su WhatsApp">
@@ -254,5 +228,6 @@ document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
   });
 });
 </script>
+  <script defer src="/navbar.js"></script>
 </body>
 </html>
