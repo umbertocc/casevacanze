@@ -3,14 +3,14 @@
   <!-- Homepage -->
   <url>
     <loc>https://torrepalivacanze.it</loc>
-      <lastmod>2026-04-07</lastmod>
+      <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://torrepalivacanze.it/index-en</loc>
-      <lastmod>2026-07-13</lastmod>
+      <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -18,14 +18,14 @@
   <!-- Case Vacanze -->
   <url>
     <loc>https://torrepalivacanze.it/case-vacanze</loc>
-    <lastmod>2026-04-07</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://torrepalivacanze.it/vacation-rentals</loc>
-    <lastmod>2026-07-13</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -33,14 +33,14 @@
   <!-- Casa Bellavista 1 -->
   <url>
     <loc>https://torrepalivacanze.it/casa-bellavista-1</loc>
-      <lastmod>2026-04-07</lastmod>
+      <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://torrepalivacanze.it/casa-bellavista-1-en</loc>
-      <lastmod>2026-07-13</lastmod>
+      <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -48,14 +48,14 @@
   <!-- Casa Bellavista 2 -->
   <url>
     <loc>https://torrepalivacanze.it/casa-bellavista-2</loc>
-      <lastmod>2026-04-07</lastmod>
+      <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://torrepalivacanze.it/casa-bellavista-2-en</loc>
-      <lastmod>2026-07-13</lastmod>
+      <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -63,21 +63,21 @@
   <!-- Pagina Registrazione Struttura -->
   <url>
     <loc>https://torrepalivacanze.it/registra-struttura.html</loc>
-    <lastmod>2026-05-14</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <!-- Casa Giorgio 4 -->
   <url>
     <loc>https://torrepalivacanze.it/casa-giorgio-4</loc>
-      <lastmod>2026-04-07</lastmod>
+      <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://torrepalivacanze.it/casa-giorgio-4-en</loc>
-      <lastmod>2026-07-13</lastmod>
+      <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -85,14 +85,14 @@
   <!-- Casa Giorgio 6 -->
   <url>
     <loc>https://torrepalivacanze.it/casa-giorgio-6</loc>
-      <lastmod>2026-04-07</lastmod>
+      <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://torrepalivacanze.it/casa-giorgio-6-en</loc>
-      <lastmod>2026-07-13</lastmod>
+      <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -100,14 +100,14 @@
    <!-- Casa Respiro di Mare -->
   <url>
     <loc>https://torrepalivacanze.it/respiro-di-mare</loc>
-      <lastmod>2026-04-07</lastmod>
+      <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://torrepalivacanze.it/respiro-di-mare-en</loc>
-      <lastmod>2026-07-13</lastmod>
+      <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -115,14 +115,14 @@
   <!-- Recensioni -->
   <url>
     <loc>https://torrepalivacanze.it/recensioni</loc>
-      <lastmod>2026-04-07</lastmod>
+      <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://torrepalivacanze.it/recensioni-en</loc>
-      <lastmod>2026-07-13</lastmod>
+      <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -130,7 +130,7 @@
   <!-- Itinerario 7 giorni Salento -->
   <url>
     <loc>https://torrepalivacanze.it/itinerario-7-giorni-salento</loc>
-    <lastmod>2026-04-07</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -138,49 +138,49 @@
   <!-- LocalitÃ  -->
   <url>
     <loc>https://torrepalivacanze.it/torre-pali</loc>
-      <lastmod>2026-04-07</lastmod>
+      <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <!-- Posizione Torre Pali -->
   <url>
     <loc>https://torrepalivacanze.it/torre-pali-posizione</loc>
-    <lastmod>2026-04-07</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://torrepalivacanze.it/torre-vado</loc>
-      <lastmod>2026-04-07</lastmod>
+      <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://torrepalivacanze.it/pescoluse</loc>
-      <lastmod>2026-04-07</lastmod>
+      <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://torrepalivacanze.it/lido-marini</loc>
-      <lastmod>2026-04-07</lastmod>
+      <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://torrepalivacanze.it/spiagge-salento-sud</loc>
-      <lastmod>2026-04-07</lastmod>
+      <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://torrepalivacanze.it/spiagge-salento-migliori</loc>
-      <lastmod>2026-04-07</lastmod>
+      <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -188,14 +188,14 @@
   <!-- Guide e Informazioni Salento -->
   <url>
     <loc>https://torrepalivacanze.it/faq-salento</loc>
-      <lastmod>2026-04-07</lastmod>
+      <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>https://torrepalivacanze.it/eventi-salento</loc>
-      <lastmod>2026-04-07</lastmod>
+      <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -203,14 +203,14 @@
   <!-- FAQ -->
   <url>
     <loc>https://torrepalivacanze.it/faq</loc>
-      <lastmod>2026-04-07</lastmod>
+      <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://torrepalivacanze.it/faq-en</loc>
-      <lastmod>2026-07-13</lastmod>
+      <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -218,14 +218,14 @@
   <!-- Contatti -->
   <url>
     <loc>https://torrepalivacanze.it/contatti</loc>
-      <lastmod>2026-04-07</lastmod>
+      <lastmod>2026-11-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://torrepalivacanze.it/contatti-en</loc>
-      <lastmod>2026-07-13</lastmod>
+      <lastmod>2026-11-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -233,7 +233,7 @@
   <!-- Privacy -->
   <url>
     <loc>https://torrepalivacanze.it/privacy</loc>
-    <lastmod>2026-04-07</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
@@ -241,14 +241,14 @@
     <!-- Prenotazione -->
     <url>
       <loc>https://torrepalivacanze.it/prenotazione</loc>
-      <lastmod>2026-04-07</lastmod>
+      <lastmod>2026-11-01</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
     </url>
 
     <url>
       <loc>https://torrepalivacanze.it/preventivo-en</loc>
-      <lastmod>2026-07-13</lastmod>
+      <lastmod>2026-11-01</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
     </url>
@@ -256,7 +256,7 @@
       <!-- Preventivo -->
     <url>
       <loc>https://torrepalivacanze.it/preventivo</loc>
-      <lastmod>2026-04-07</lastmod>
+      <lastmod>2026-11-01</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
     </url>
@@ -264,7 +264,7 @@
   <!-- Molo Torre Pali -->
   <url>
     <loc>https://torrepalivacanze.it/molo-torre-pali</loc>
-    <lastmod>2026-04-07</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -272,7 +272,7 @@
   <!-- Galleria Torre Pali -->
   <url>
     <loc>https://torrepalivacanze.it/galleria-torre-pali</loc>
-    <lastmod>2026-04-07</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
