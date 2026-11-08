@@ -987,15 +987,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         const houses = await res.json();
         grid.innerHTML = '';
 
-        // Funzione per generare tutte le date della stagione (1 giugno - 30 settembre)
+        // Funzione per generare tutte le date della stagione (1 aprile - 31 ottobre 2027)
         function getAllSeasonDates() {
-          const now = new Date();
-          const startSeason = new Date(Date.UTC(now.getFullYear(), 5, 1)); // 1 giugno UTC
-          const endSeason = new Date(Date.UTC(now.getFullYear(), 8, 30)); // 30 settembre UTC
-          const todayUtc = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
-          const effectiveStart = todayUtc > startSeason ? todayUtc : startSeason;
+          const startSeason = new Date(Date.UTC(2027, 3, 1)); // 1 aprile UTC
+          const endSeason = new Date(Date.UTC(2027, 9, 31)); // 31 ottobre UTC
           let allDates = [];
-          let d = new Date(effectiveStart);
+          let d = new Date(startSeason);
           while (d <= endSeason) {
             allDates.push(d.toISOString().slice(0,10));
             d.setUTCDate(d.getUTCDate() + 1);
