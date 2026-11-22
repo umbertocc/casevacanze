@@ -790,8 +790,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         height: 40px;
     }
 
+    .property-actions {
+        display: inline-flex;
+        flex-direction: column;
+        gap: 10px;
+        margin: 18px 0 10px;
+    }
+
+    .property-actions .property-action {
+        display: block;
+        background: #188841;
+        color: #fff;
+        padding: 12px 18px;
+        border-radius: 6px;
+        font-weight: 600;
+        text-align: center;
+        text-decoration: none;
+    }
+
     .quick-preventivo-section {
         margin-top: 28px;
+        scroll-margin-top: 90px;
         padding: 22px 16px;
         border-radius: 18px;
         border: 1px solid #cfe9de;
@@ -1440,7 +1459,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </ul>
             </section>
 
-            <section class="quick-preventivo-section" aria-label="Richiedi preventivo rapido">
+            <section id="richiedi-preventivo" class="quick-preventivo-section" aria-label="Richiedi preventivo rapido">
                 <h3>Richiedi un preventivo</h3>
                 <p>Inserisci le date del soggiorno e ti rispondiamo il prima possibile.</p>
                 <form id="quickPreventivoForm" class="quick-preventivo-form" novalidate>

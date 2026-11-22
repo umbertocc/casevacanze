@@ -208,8 +208,9 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                                 ${caratteristiche.map(f => `<span class="feature-badge">${f}</span>`).join(' ')}
                             </div>
                             <p class="property-description">${casa.descrizione || ''}</p>
-                            <div style="margin-top: 18px; margin-bottom: 10px;">
-                              ${casa.link_dettaglio ? `<a href="${casa.link_dettaglio}" style="color: #48bb78; text-decoration: underline; font-weight: 500; font-size: 1.24em; display: block; margin-bottom: 10px;">📋 Vedi casa</a>` : ''}
+                            <div class="property-actions">
+                              ${casa.link_dettaglio ? `<a class="property-action" href="${casa.link_dettaglio}">📋 Vedi casa</a>` : ''}
+                              <a class="property-action" href="#richiedi-preventivo">Richiedi preventivo</a>
                             </div>
                         </div>
                     </div>
