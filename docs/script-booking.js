@@ -137,7 +137,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
             }
 
             const imagesById = {
-                1: ['prospetto-mobile.webp', 'giardino_1.webp', 'giardino_2.webp', 'soggiorno_2.webp', 'cucina.webp', 'prima_camera_1.webp', 'prima_camera_2.webp', 'prima_camera_3.webp', 'seconda_camera.webp', 'seconda_camera_2.webp', 'seconda_camera_5.webp', 'primo_bagno.webp', 'secondo_bagno.webp'],
+                1: ['prospetto.webp', 'prospetto_2.webp', 'prospetto_3.webp', 'soggiorno_2.webp', 'cucina.webp', 'prima_camera_1.webp', 'prima_camera_2.webp', 'prima_camera_3.webp', 'seconda_camera.webp', 'seconda_camera_2.webp', 'seconda_camera_5.webp', 'primo_bagno.webp', 'secondo_bagno.webp'],
                 2: ['prospetto.webp', 'soggiorno.webp', 'cucina.webp', 'cortileinterno.webp', 'cortileinterno1.webp', 'camera.webp', 'camera2.webp', 'camera3.webp', 'camera4.webp', 'camera5.webp', 'camera6.webp', 'bagno1.webp'],
                 3: ['prospetto_mare.webp', 'prospetto3.webp', 'balcone.webp', 'soggiorno.webp', 'camera.webp', 'camera2.webp', 'camera3.webp', 'camera4.webp', 'camera5.webp', 'camera6.webp', 'bagno.webp', 'soggiorno2.webp'],
                 4: ['prospetto.jpg', 'veranda.jpg', 'veranda2.jpg', 'corridoio.jpg', 'corridoio1.jpg', 'cucina.jpg', 'camera.jpg', 'camera2.jpg', 'camera3.jpg', 'seconda-camera.jpg', 'secondacamera2.jpg', 'bagno.jpg'],
@@ -202,7 +202,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                             ${galleryHtml}
                         </div>
                                 <div class="property-info">                            
-                                    ${prezzoTotale !== null ? `<p style="margin:8px 0 10px 0;font-size:1.05em;color:#166534;font-weight:700;background:#ecfdf5;border:1px solid #bbf7d0;border-radius:8px;padding:8px 10px;">Prezzo totale soggiorno: ${formatEuro(prezzoTotale)}</p>` : ''}
+             
                             <p style="margin:0 0 10px 0;font-size:0.9em;line-height:1.4;color:#334155;background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:8px 10px;"><strong>CIN:</strong> ${cin || '-'}<br><strong>CIS:</strong> ${cis || '-'}</p>
                             <div class="property-features">
                                 ${caratteristiche.map(f => `<span class="feature-badge">${f}</span>`).join(' ')}
@@ -210,7 +210,6 @@ document.getElementById('booking-form').addEventListener('submit', async functio
                             <p class="property-description">${casa.descrizione || ''}</p>
                             <div style="margin-top: 18px; margin-bottom: 10px;">
                               ${casa.link_dettaglio ? `<a href="${casa.link_dettaglio}" style="color: #48bb78; text-decoration: underline; font-weight: 500; font-size: 1.24em; display: block; margin-bottom: 10px;">📋 Vedi casa</a>` : ''}
-                             <a href="#" class="prenota-online-btn" id="${onlineBtnId}" style="color: #48bb78; text-decoration: underline; font-weight: 500; font-size: 1.24em; display: block; margin-bottom: 10px;">✨ Prenota </a> 
                             </div>
                         </div>
                     </div>
