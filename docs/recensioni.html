@@ -80,7 +80,7 @@ h1 { font-size: 3.5em; margin-bottom: 20px; font-weight: 700; position: relative
 .stat-number { font-size: 3em; font-weight: 700; background: linear-gradient(135deg, #22577a 0%, #22577a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 10px; }
 .stat-label { font-size: 1.1em; color: #4a5568; font-weight: 500; }
 .stars { color: #fbbf24; font-size: 1.5em; margin-bottom: 10px; }
-.filter-buttons { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; margin-bottom: 40px; }
+.filter-buttons { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 20px; justify-content: center; margin-bottom: 40px; }
 .filter-btn { background: white; border: 2px solid #e2e8f0; color: #4a5568; padding: 12px 30px; border-radius: 50px; cursor: pointer; font-weight: 600; transition: all 0.3s; font-size: 1em; }
 .filter-btn:hover { border-color: #22577a; color: #22577a; transform: translateY(-2px); }
 .filter-btn.active { background: linear-gradient(135deg, #22577a 0%, #22577a 100%); color: white; border-color: #22577a; }
@@ -90,13 +90,12 @@ h1 { font-size: 3.5em; margin-bottom: 20px; font-weight: 700; position: relative
 .review-card.casa-bellavista { border-left-color: #22577a; }
 .review-card.casa-giorgio-4 { border-left-color: #48bb78; }
 .review-card.casa-giorgio-6 { border-left-color: #ed8936; }
+.review-card.respiro-di-mare { border-left-color: #ed36a7; }
+.review-card.casa-bellavista-1 { border-left-color: #cf0000; }
 .review-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px; }
 .review-author { font-size: 1.3em; font-weight: 700; color: #2d3748; }
 .review-date { color: #718096; font-size: 0.95em; }
 .review-casa { display: inline-block; padding: 8px 20px; border-radius: 50px; font-weight: 600; font-size: 0.9em; margin-bottom: 15px; }
-.casa-bellavista { background: linear-gradient(135deg, #22577a 0%, #22577a 100%); color: white; }
-.casa-giorgio-4 { background: linear-gradient(135deg, #48bb78 0%, #38a169 100%); color: white; }
-.casa-giorgio-6 { background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%); color: white; }
 .review-rating { margin-bottom: 20px; }
 .review-text { font-size: 1.1em; color: #4a5568; line-height: 1.9; font-style: italic; position: relative; padding-left: 30px; }
 .review-text::before { content: '"'; position: absolute; left: 0; top: -10px; font-size: 4em; color: rgba(102, 126, 234, 0.2); font-family: Georgia, serif; }
@@ -110,7 +109,7 @@ h1 { font-size: 3.5em; margin-bottom: 20px; font-weight: 700; position: relative
   h1 { font-size: 2.5em; }
   header { padding: 60px 25px; }
   .stats-grid { grid-template-columns: 1fr; }
-  .filter-buttons { gap: 10px; }
+  .filter-buttons { gap: 10px; margin-top: 20px; }
   .filter-btn { padding: 10px 20px; font-size: 0.9em; }
   .review-card { padding: 30px; }
   .cta-section { padding: 35px 25px; }
@@ -216,7 +215,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="stat-label">Valutazione Media</div>
 </div>
 <div class="stat-card">
-<div class="stat-number">8+</div>
+<div class="stat-number">15+</div>
 <div class="stat-label">Recensioni Verificate</div>
 </div>
 <div class="stat-card">
@@ -230,6 +229,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <button class="filter-btn" onclick="filterReviews('casa-bellavista')">Casa Bellavista 2</button>
 <button class="filter-btn" onclick="filterReviews('casa-giorgio-4')">Casa Giorgio 4</button>
 <button class="filter-btn" onclick="filterReviews('casa-giorgio-6')">Casa Giorgio 6</button>
+<button class="filter-btn" onclick="filterReviews('casa-bellavista-1')">Casa Bellavista 1</button>
+<button class="filter-btn" onclick="filterReviews('respiro-di-mare')">Respiro di Mare</button>
 <div class="dropdown-menu">
 <a href="spiagge-salento-sud" onclick="closeMenu()">Guida Spiagge</a>
 <a href="torre-pali" onclick="closeMenu()">⭐ Torre Pali</a>
@@ -291,6 +292,52 @@ Proprietari davvero fantastici, disponibilissimi! L'appartamento ha davvero tutt
 </div>
 </div>
 
+
+<div class="review-card casa-giorgio-6" data-casa="casa-giorgio-6">
+<div class="review-header">
+<div class="review-author">Antonio</div>
+<div class="review-date">Luglio 2026</div>
+</div>
+<span class="review-casa casa-giorgio-6">Casa Giorgio 6</span>
+<div class="review-rating stars">⭐⭐⭐⭐⭐</div>
+<div class="review-text">
+Abbiamo trascorso una splendida vacanza in famiglia dal 20 al 27 giugno a Torre Pali, nel meraviglioso Salento, e non avremmo potuto desiderare di meglio.
+Un sentito ringraziamento va al Sig. Francesco Cucinelli, una persona eccezionale, sempre disponibile, gentile e attenta a ogni minimo dettaglio. Fin dal nostro arrivo ci ha accolti con grande professionalità e cordialità, soddisfacendo ogni nostra esigenza e consigliandoci i luoghi più belli da visitare, le escursioni in barca, i tour, i migliori ristoranti e i negozi della zona. I suoi suggerimenti hanno reso la nostra vacanza ancora più speciale.
+L’appartamento è spazioso, impeccabilmente pulito, climatizzato e dotato di tutti i comfort necessari. Si trova in una posizione fantastica, a soli 30 metri dal mare di Torre Pali e a circa 5 minuti d’auto dalle spettacolari Maldive del Salento, una delle spiagge più belle della Puglia.
+Vogliamo inoltre ringraziare di cuore tutta la famiglia Cucinelli: il fratello Umberto, il papà Antonio e la mamma Stella, persone squisite che ci hanno accolto con grande affetto, disponibilità e simpatia, facendoci sentire davvero come parte della famiglia.
+È raro trovare un’ospitalità così autentica e genuina. Torniamo a casa con splendidi ricordi e con la certezza di voler ritornare.
+Consigliamo questa struttura al 100% a chiunque voglia trascorrere una vacanza all’insegna del relax, del mare cristallino e dell’accoglienza. Grazie di cuore a tutta la famiglia Cucinelli per aver reso la nostra vacanza indimenticabile! ⭐⭐⭐⭐⭐
+</div>
+</div>
+
+<div class="review-card respiro-di-mare" data-casa="respiro-di-mare">
+<div class="review-header">
+<div class="review-author">Nicoletta</div>
+<div class="review-date">Agosto 2026</div>
+</div>
+<span class="review-casa respiro-di-mare">Respiro di Mare</span>
+<div class="review-rating stars">⭐⭐⭐⭐⭐</div>
+<div class="review-text">
+Proprietari super simpatici e disponibili. Un’accoglienza unica!
+</div>
+</div>
+
+<div class="review-card respiro-di-mare" data-casa="respiro-di-mare">
+<div class="review-header">
+<div class="review-author">Luigi</div>
+<div class="review-date">Luglio 2026</div>
+</div>
+<span class="review-casa respiro-di-mare">Respiro di Mare</span>
+<div class="review-rating stars">⭐⭐⭐⭐⭐</div>
+<div class="review-text">
+Grazie a Francesco abbiamo trascorso um bellisimo mese a Torre Pali, una localita" molto tranquilla, a misura di uomo e nello stesso tempo provista di tutto il necessariio ( negozi, farmacia e ristorantini). Mare e' pulitissimo e ricco di pesce .
+La casa e' spaziosa e conforrevole, completa di tutto il necessario.
+Eravamo in smart working e Francesco ci ha supportato mettendo a diposizione una comoda scrovania e la conessione ad hoc.
+Un esperienza MOLTO POSITIVA.
+Grazie
+</div>
+</div>
+
 <!-- Casa Giorgio 4 Reviews -->
 <div class="review-card casa-giorgio-4" data-casa="casa-giorgio-4">
 <div class="review-header">
@@ -313,6 +360,111 @@ La casa si trova a 40 metri dal mare, un bel posto tranquillo e i proprietari ge
 <div class="review-rating stars">⭐⭐⭐⭐⭐</div>
 <div class="review-text">
 Abbiamo soggiornato per 15 giorni dopo il ferragosto, ci siamo trovati bene. Il paese è bello, tranquillo, mare vicino, vacanze relax e proprietari gentili, disponibili e un ambiente familiare. Ci ritorneremo. Saluti a tutti e al mare!
+</div>
+</div>
+
+<div class="review-card casa-giorgio-4" data-casa="casa-giorgio-4">
+<div class="review-header">
+<div class="review-author">Irene</div>
+<div class="review-date">Luglio 2026</div>
+</div>
+<span class="review-casa casa-giorgio-4">Casa Giorgio 4</span>
+<div class="review-rating stars">⭐⭐⭐⭐</div>
+<div class="review-text">
+Proprietari gentili, disponibili per ogni necessità!! Ci siamo sentiti a casa 🏠
+</div>
+</div>
+
+<div class="review-card casa-giorgio-4" data-casa="casa-giorgio-4">
+<div class="review-header">
+<div class="review-author">Adriano</div>
+<div class="review-date">Luglio 2026</div>
+</div>
+<span class="review-casa casa-giorgio-4">Casa Giorgio 4</span>
+<div class="review-rating stars">⭐⭐⭐⭐</div>
+<div class="review-text">
+Appartamento pulitissimo, tutto perfettamente funzionante e Francesco, il titolare, persona eccezionale. Un saluto alla mamma e al papà. Grazie
+</div>
+</div>
+
+<div class="reviews-grid" id="reviewsContainer">
+<!-- Casa Bella vista 2 Reviews -->
+<div class="review-card casa-bellavista" data-casa="casa-bellavista">
+<div class="review-header">
+<div class="review-author">Vito</div>
+<div class="review-date">Giugno 2026</div>
+</div>
+<span class="review-casa casa-bellavista">Casa Bella Vista 2</span>
+<div class="review-rating stars">⭐⭐⭐⭐⭐</div>
+<div class="review-text">
+Grazie Francesco siete delle belle persone sempre disponibili per tutto casa bellissima posto tranquillo per una bella vacanza rilassante la cosa che non posso non sottolineare è che non siete persone invadenti e il turista si sente a casa un abbraccio è grazie.
+</div>
+</div>
+
+<div class="reviews-grid" id="reviewsContainer">
+<!-- Casa Bella vista 2 Reviews -->
+<div class="review-card casa-bellavista" data-casa="casa-bellavista">
+<div class="review-header">
+<div class="review-author">Erika</div>
+<div class="review-date">Settembre 2026</div>
+</div>
+<span class="review-casa casa-bellavista">Casa Bella Vista 2</span>
+<div class="review-rating stars">⭐⭐⭐⭐⭐</div>
+<div class="review-text">
+Bellissimo appartamento con uno spazio esterno che ci ha permesso di parcheggiare entrambe le nostre auto e cenare all' aperto. Francesco è una persona attenta ai suoi ospiti sempre sempre disponibile, pronto ad aiutare nelle varie attività, così come tutta la sua famiglia, veramente gentile. Nota particolare al piccolo condizionatore che posizionato in punto strategico e molto funzionale permette di stare al fresco in tutto l' appartamento. Stra consigliato.
+</div>
+</div>
+
+<div class="reviews-grid" id="reviewsContainer">
+<!-- Casa Bella vista 1 Reviews -->
+<div class="review-card casa-bellavista-1" data-casa="casa-bellavista-1">
+<div class="review-header">
+<div class="review-author">Erika</div>
+<div class="review-date">Settembre 2026</div>
+</div>
+<span class="review-casa casa-bellavista-1">Casa Bella Vista 1</span>
+<div class="review-rating stars">⭐⭐⭐⭐⭐</div>
+<div class="review-text">
+Abbiamo passato una bellissima settimana in questa comodissima casa a due passi dal mare, fornita di tutto l’essenziale per un soggiorno davvero piacevole, i proprietari di casa Francesco e tutta la sua famiglia sono persone davvero adorabili, disponibili e super accoglienti, come tutte le persone che abbiamo incontrato a Torre Pali e nei dintorni..è stato davvero un piacere conoscere la gente di questo paese e le loro storiche radici legate a questo meraviglioso posto. Inoltre Francesco ci teneva sempre al corrente di tutti gli eventi che ci sarebbero stati in quella settimana. Provare per credere, il Salento è meraviglioso, ed è stato ancora più bello a casa di Francesco e della sua famiglia. Consigliatissimo per chi volesse soggiornare da loro, meritano tanto.
+Grazie mille per tutto !!!
+</div>
+</div>
+
+<div class="reviews-grid" id="reviewsContainer">
+<!-- Casa Bella vista 1 Reviews -->
+<div class="review-card casa-bellavista-1" data-casa="casa-bellavista-1">
+<div class="review-header">
+<div class="review-author">Valeria</div>
+<div class="review-date">Settembre 2026</div>
+</div>
+<span class="review-casa casa-bellavista-1">Casa Bella Vista 1</span>
+<div class="review-rating stars">⭐⭐⭐⭐⭐</div>
+<div class="review-text">
+Non ci sono parole per descrivere il fantastico soggiorno. Francesco e tutta la sua famiglia ci hanno fatto sentire come a casa, molto premurosi sempre a disposizione per qualsiasi cosa, oltre alla casa bella e comoda a due passi dalla spiaggia il posto in sé è quasi magico, non si può spiegare se non lo si vive, se cercate tranquillità comodità e un ottima posizione per raggiungere diverse spiagge, paesi e città allora affidatevi a loro!!
+Grazie anche a tutte le persone del posto, che come la famiglia di Francesco ci hanno dato un grande benvenuto nel loro prezioso Salento..
+Il Salento ti entra nell’anima, ti avvolge e non ti lascia più.
+A presto, grazie di tutto ❤️
+</div>
+</div>
+
+<div class="reviews-grid" id="reviewsContainer">
+<!-- Casa Bella vista 1 Reviews -->
+<div class="review-card casa-bellavista-1" data-casa="casa-bellavista-1">
+<div class="review-header">
+<div class="review-author">Jack</div>
+<div class="review-date">Agosto 2026</div>
+</div>
+<span class="review-casa casa-bellavista-1">Casa Bella Vista 1</span>
+<div class="review-rating stars">⭐⭐⭐⭐⭐</div>
+<div class="review-text">
+Abbiamo trascorso una piacevole settimana di mare a Torre Pali.
+Siamo stati accolti con molta gentilezza e disponibilità da Francesco e dalla sua famiglia.
+L’appartamento grande, con due camere da letto, cucina, bagno e un bel terrazzino angolare coperto dove poter far colazione, pranzare, cenare o anche solamente sostare per godere della tranquillità del posto.
+Durante il soggiorno ci hanno aggiornato in merito agli eventi offerti dalla località e dalle zone limitrofe.
+Inoltre avendo avuto purtroppo problemi con la nostra auto si sono subito resi disponibili ad accompagnarci e a riprenderci dal meccanico indicatoci sempre da loro.
+Insomma l’ideale per chi cerca una vacanza di mare in tutta tranquillità.
+La prima spiaggia (libera) a soli 50 mt. dal nostro appartamento e a pochi minuti di macchina (4-5 min. ) spiagge private attrezzate con tutti i servizi e a costi più che accettabili.
+Grazie ancora Francesco & famiglia.
 </div>
 </div>
 
