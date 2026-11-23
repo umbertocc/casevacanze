@@ -142,6 +142,15 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- Cosa fare  -->
+  <url>
+    <loc>https://torrepalivacanze.it/torre-pali/cosa-fare</loc>
+      <lastmod>2026-11-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Posizione Torre Pali -->
   <url>
     <loc>https://torrepalivacanze.it/torre-pali-posizione</loc>
